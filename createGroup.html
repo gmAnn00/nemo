@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/createGroup.css">
+</head>
+<body>
+    <!-- header 시작 -->
+    <header>
+
+    </header>
+    <!-- header 종료-->
+
+    <!-- main content 시작-->
+    <div>
+        <!-- 프로필 사진 등록 영역-->
+        <div>
+            <h2>네모 만들기</h2>
+            <img src="" alt="">
+            <button class="btn ">네모 프로필 사진 사진등록</button>
+        </div>
+
+        <!-- 소모임 생성 정보 입력 영역 -->
+        <div>
+            <p><strong class="require">필수</strong>는 필수항목입니다</p>
+            <form action="createGroup.jsp" method="post" id="createGruop" name="createGroup">
+                <fieldset>
+                    <legend>네모 생성 정보 입력</legend>
+                    <table>
+                        <tr>
+                            <th>
+                                <strong class="require">필수</strong><span>네모이름</span>
+                            </th>
+                            <td>
+                                <input type="text" name="groupName" maxlength="11" required>
+                                <p>※2~10글자 이내</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <strong class="require">필수</strong><span>네모인원</span>
+                            </th>
+                            <td>
+                                <input type="text" name="groupNum" maxlength="3"><span>명</span>
+                                <p>※최소 2명~최대 50명</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <strong class="require">필수</strong><span>카테고리</span>
+                            </th>
+                            <td>
+                                <p>※대분류/소분류 모두 선택하셔야 합니다.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>대분류</th>
+                            <th>소분류</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="" id="">
+                                    <option value="1">선택하기</option>
+                                    <option value="2">선택하기</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="1">선택하기</option>
+                                    <option value="2">선택하기</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">
+                                <strong class="require">필수</strong><span>네모장소</span>
+                            </th>
+                            <td>
+                                <input type="text" name="" id=""><button>우편번호</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <strong class="require">필수</strong><span>네모소개</span>
+                            </th>
+                            <td>
+                                <p>최소 100자 이상 작성해주세요(최대1000자)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <textarea name="" id="" cols="30" rows="10" maxlength="1000">
+                                </textarea>
+                                <p> (<span>0/0</span>)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>가입설정</span>
+                            </th>
+                            <td>
+                                <label for="a">
+                                    <input type="checkbox" name="" id="a">
+                                    네모장승인제 (체크시 승인된 사람만 가입가능합니다.)
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                               <label for="b">
+                                <input type="checkbox" name="" id="b">
+                                네모 이용 약관에 동의합합니다.
+                               </label>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <input type="submit" name="" id="">
+            </form>
+
+        </div>
+        
+
+    </div>
+    <!-- main content 종료-->
+
+    <!-- footer 시작-->
+    <footer>
+
+    </footer>
+    <!-- footer 종료-->
+    
+</body>
+</html>
