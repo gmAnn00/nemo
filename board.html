@@ -3,39 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>네모 소모임 게시판</title>
+    <title>게시판</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
-    <!-- 소모임 이름 뿌려줘야 함 -->
-    <h3>소모임 이름</h3>
-    <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
-    <div id="insideMenu">
-        <h4>게시판</h4>
-        <ul>
-            <li><a href="schedule.html">일정</a></li>
-            <li><a href="board.html">게시판</a></li>
-            <li><a href="">멤버</a></li>
-        </ul>
-    </div>    
-    <div id="board">
-        <div class="list">
-            <table>
-                <tr>
-                    <th>
-                        
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="pagenation">
-
+    <div id="header"></div>
+    <div id="contentsArea">
+        <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
+        <div id="insideMenu">
+        <!-- 소모임 이름 뿌려줘야 함 -->
+            <h3>소모임 이름</h3>
+            <h4>게시판</h4>
+            <ul class="meetMenu">
+                <li><a href="schedule.html">일정</a></li>
+                <li><a href="board.html">게시판</a></li>
+                <li><a href="">멤버</a></li>
+            </ul>
+        </div>    
+        <div id="board">
+            <div class="search">
+                <!-- 검색 부분 필요할 듯 -->
+                <select name="" id="boardSearch">                   
+                    <option value="writer">작성자</option>
+                    <option value="title">제목</option>
+                    <option value="content">내용</option>                      
+                </select>
+                <input type="text" name="" id="">                
+            </div>
+            <div class="list">                
+                <table>
+                    <tr>
+                        <!-- 말머리 대신 번호? -->
+                        <th>말머리</th><th>제목</th><th>작성자</th><th>작성일자</th>
+                    </tr>                
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                    <tr>
+                        <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
+                    </tr>
+                </table>
+                <div class="pagenation">
+                    <span>&lt&lt</span><span>&lt</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>&gt</span><span>&gt&gt</span>
+                </div>
+            </div>          
         </div>
     </div>
-
+    <div id="footer"></div>
 </body>
 </html>

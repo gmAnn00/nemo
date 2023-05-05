@@ -1,0 +1,50 @@
+#insideMenu {
+    height: 100px;
+    border: 2px solid red;
+    margin-bottom: 20px;
+}
+/* 일정,게시판,멤버 메뉴. 공통부분 합친 후 margin 수정필요 */
+.meetMenu {
+    width: 120px;
+    height: 150px;
+    border: 2px solid red;
+    margin: 20px 0 0 50px;
+    display: inline-block;
+    background-color: #eee;    
+}
+.meetMenu li {
+    list-style: none;
+    margin: 15px;
+}
+#board {
+    margin: 0 auto;
+    width: 820px;
+    border: 2px solid red;
+}
+.list {
+    display: inline-block;    
+    padding: 5px;    
+    border: 2px solid #ccc;
+}
+.list thead tr th:first-child::after {
+    margin-right: 5px;
+    content: " | ";
+}
+table {
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    width: 800px;
+    height: 600px;
+}
+table tr {
+    margin: 10px;
+    height: 35px;
+    border-bottom: 2px solid #ccc;
+}
+.pagenation {
+    text-align: center;
+}
+.pagenation span {
+    margin: 5px 10px;
+}
