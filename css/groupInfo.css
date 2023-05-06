@@ -9,21 +9,20 @@ body, div, h3, button, section, table, tr, td, th{
     display: none;
 }
 
+/* 메인 컨텐츠 영역*/
 .mainContent {
     width: 1200px;
     margin: 0 auto;
 }
-.mainInner{
-
-}
 
 
-.titleArea {
+/* 소모임 이름 영역 */
+.nameArea {
     padding: 0 80px;
     margin-bottom: 20px;
     text-align: left;
 }
-.grpTitle {
+.grpName {
     display: inline-block;
 }
 
@@ -41,6 +40,7 @@ body, div, h3, button, section, table, tr, td, th{
     margin: 0 auto;
 }
 
+/* 간략 정보 영역 */
 .shortInfoArea {
     width: 1040;
     padding: 0 90px;
@@ -76,21 +76,23 @@ body, div, h3, button, section, table, tr, td, th{
     text-align: justify;
 
 }
+.shortInfoTbl tr:nth-child(2)>th, .shortInfoTbl tr:nth-child(3)>th, .shortInfoTbl tr:nth-child(6)>th{
+    letter-spacing: 3px;
+}
 .shortInfoTbl tr:nth-child(4)>th, .shortInfoTbl tr:nth-child(5)>th{
     letter-spacing: 10px;
 }
 
-
 .shortInfoTbl tr:not(:first-child)>td {
     width: 360px;
-    background-color: beige;
     padding-left: 10px;
 }
 
 
+/* 소모임 자세한 정보 영역 */
 .infoDetailArea {
     padding: 50px 100px;
-    background-color: rgb(255, 245, 255);
+    background-color: rgb(255, 249, 243);
 }
 
 .infoDetailArea section {
@@ -102,11 +104,48 @@ body, div, h3, button, section, table, tr, td, th{
     letter-spacing: 10px;
 }
 
+.infoDetailArea section p {
+    margin-left: 10px;
+    text-indent: 5px;
+}
+
+
+/* 소모임 장소 영역*/
 .mapArea {
     padding: 0 10px;
 }
-
 .mapArea #map {
-    border: 1px solid #666;
+    border: 1px solid #ccc;
+    background-color: #fff;
     text-align: center;
+    line-height: 300px;
+}
+
+
+/* 소모임 카테고리 영역 */
+.cateIcon {
+    display: inline-block;
+    width: 100px;
+    margin: 0 5px 0 10px;
+    letter-spacing: 5px;
+    padding: 5px 10px;
+    text-align: center;
+    background-color: rgb(135, 177, 255);
+    border-radius: 20px;
+}
+
+
+/* 가입하기 버튼 영역 */
+.btnArea {
+    margin: 20px 0;
+    text-align: center;
+}
+.joinBtn{
+    width: 100px;
+    height: 50px;
+    padding: 10px 15px;
+    background-color: rgb(255, 210, 220);
+    border: 1px solid #eee;
+    border-radius: 2px;
+    cursor: pointer;
 }
