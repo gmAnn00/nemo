@@ -1,1 +1,112 @@
 @charset "utf-8";
+
+body, div, h3, button, section, table, tr, td, th{
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.mainContent {
+    width: 1200px;
+    margin: 0 auto;
+}
+.mainInner{
+
+}
+
+
+.titleArea {
+    padding: 0 80px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.grpTitle {
+    display: inline-block;
+}
+
+.grpLikeBtn {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    cursor: pointer;
+}
+
+.grpLike {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}
+
+.shortInfoArea {
+    width: 1040;
+    padding: 0 90px;
+    margin-bottom: 20px;
+}
+
+
+.shortInfoTbl {
+    display: inline-block;
+    width: 1020px;
+    height: 300px;
+}
+
+.imgCrop {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 300px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.imgCrop img {
+    position: absolute;
+    top: 0;
+    left: -300px;
+    width: 1200px;
+    height: 400px;
+}
+
+.shortInfoTbl th {
+    width: 150px;
+    text-align: justify;
+
+}
+.shortInfoTbl tr:nth-child(4)>th, .shortInfoTbl tr:nth-child(5)>th{
+    letter-spacing: 10px;
+}
+
+
+.shortInfoTbl tr:not(:first-child)>td {
+    width: 360px;
+    background-color: beige;
+    padding-left: 10px;
+}
+
+
+.infoDetailArea {
+    padding: 50px 100px;
+    background-color: rgb(255, 245, 255);
+}
+
+.infoDetailArea section {
+    margin-bottom: 30px;
+}
+
+.infoDetailArea section h3{
+    margin: 5px 0 10px 0;
+    letter-spacing: 10px;
+}
+
+.mapArea {
+    padding: 0 10px;
+}
+
+.mapArea #map {
+    border: 1px solid #666;
+    text-align: center;
+}
