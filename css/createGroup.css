@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+* {
+    box-sizing: border-box;
+}
 
 .hidden {
     display: none;
@@ -68,6 +71,7 @@
 }
 
 .formArea {
+    margin: 0 auto;
     padding: 0 50px;
 }
 
@@ -79,18 +83,43 @@
 }
 
 .formTbl {
-    padding: 0 20px;
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+
 }
 
-.formTbl th {
+.formTbl tr:not(:nth-of-type(8)) {
+    height: 50px;
+}
+
+
+.formTbl tr:not(:nth-of-type(4)) th{
     width: 200px;
+    text-indent: 10px;
     text-align: justify;
 
 }
 
+.innerTblArea {
+    display: inline-block;
+    width: 800px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.innerTblArea .cateTbl {
+    width: 780px;
+}
 
+.formTbl tr:nth-of-type(8) td{
+    padding: 0 50px;
+}
+.formTbl tr:nth-of-type(8) p{
+    text-align: right;
+}
 
 #grpDescription {
-    width: 800px;
+    width: 700px;
+    padding: 5px;
     resize: none;
 }
