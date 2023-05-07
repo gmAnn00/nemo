@@ -31,10 +31,14 @@
                 <div class="imgCrop">
                     <img src="images/tmp01.jpg" alt="" class="grpImg">
                 </div><br>
+                <div>
+                    <p></p>
+                </div>
                 <label for="file">
-                    <div class="btnUpload">네모 프로필 사진 사진등록</div>
+                    <div class="btnUpload btnComm">네모 프로필 사진 사진등록</div>
                 </label>
                 <input type="file" name="file" id="file" class=hidden accept="image/gif, image/jpeg, image/png">
+                <div class="btnCancle btnComm">취소</div>
             </div>
 
             <!-- 소모임 생성 정보 입력 영역 -->
@@ -43,7 +47,7 @@
                 <form action="createGroup.jsp" method="post" id="createGruop" name="createGroup">
                     <fieldset>
                         <legend class="hidden">네모 생성 정보 입력</legend>
-                        <table>
+                        <table class="formTbl">
                             <tr>
                                 <th>
                                     <strong class="require">필수</strong><span>네모이름</span>
@@ -98,7 +102,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text">
+                                    <input type="text" name="" id="" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -111,7 +115,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <textarea name="" id="" cols="30" rows="10" maxlength="1000">
+                                    <textarea name="grpDescription" id="grpDescription" cols="30" rows="10" maxlength="1000">
                                     </textarea>
                                     <p> (<span>0/0</span>)</p>
                                 </td>
@@ -138,6 +142,7 @@
                         </table>
                     </fieldset>
                     <input type="submit" name="" id="">
+
                 </form>
             </div>
         </div>

@@ -36,20 +36,61 @@
 }
 
 
-.btnUpload {
+.btnComm {
     display: inline-block;
     margin: 0 auto;
     text-align: center;
-    width: 300px;
+    width: 200px;
     height: 30px;
-    background: #f49a9a;
     border: 1px solid #ccc;
-    border-radius: 10px;
     cursor: pointer;
+    border-radius: 10px;
     line-height: 30px;
+}
+.btnUpload {
+    background: #f49a9a;
+}
+
+.require {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    white-space: nowrap;
+    text-indent: 12px;
+    overflow: hidden;
+}
+.require::before {
+    color:#E66B62;
+    content: '*';
+    position: relative;
+    left: -10px;
 
 }
 
-fieldset {
-    border: none;
+.formArea {
+    padding: 0 50px;
+}
+
+.formArea>p {
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+    text-align: right;
+    border-bottom: 2px solid #E66B62;
+}
+
+.formTbl {
+    padding: 0 20px;
+}
+
+.formTbl th {
+    width: 200px;
+    text-align: justify;
+
+}
+
+
+
+#grpDescription {
+    width: 800px;
+    resize: none;
 }
