@@ -68,3 +68,8 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
 }
+/* 숨김 콘텐츠 */
+.hidden {
+  position: absolute;
+  left: -9999px;
+}
