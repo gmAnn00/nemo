@@ -86,6 +86,7 @@ body, div, h3, button, section, table, tr, td, th{
 .shortInfoTbl tr:not(:first-child)>td {
     width: 360px;
     padding-left: 10px;
+    letter-spacing: 2px;
 }
 
 
