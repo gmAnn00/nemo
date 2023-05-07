@@ -39,7 +39,7 @@ div.MayIHelpYouArea p::after {
   border-bottom: 0px solid transparent;
   content: "";
   position: absolute;
-  left: -15px;
+  left: -14px;
 }
 
 div.chattingMessageArea {
@@ -109,7 +109,7 @@ div.helpMessageArea p::after {
   border-bottom: 0px solid transparent;
   content: "";
   position: absolute;
-  left: -15px;
+  left: -14px;
 }
 
 div.sendMessageArea {
