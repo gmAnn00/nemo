@@ -14,8 +14,8 @@
         <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
         <div id="insideMenu">
         <!-- 소모임 이름 뿌려줘야 함 -->
-            <h3>소모임 이름</h3>
-            <h4>게시판</h4>
+            <h2>소모임 이름</h2>
+            <h3>게시판</h3>
             <ul class="meetMenu">
                 <li><a href="schedule.html">일정</a></li>
                 <li><a href="board.html">게시판</a></li>
@@ -23,20 +23,66 @@
             </ul>
         </div>    
         <div id="boardView">
-            <div class="edit">
+            <!-- 글 위쪽 버튼 영역 -->
+            <div class="articleToolBtns">
                 <!-- 기능 구현에 따라 코딩 수정요 -->
-                <button>수정</button>
-                <button>수정</button>
+                <a href="#" role="button">수정</a>
+                <a href="#" role="button">삭제</a>                
+                <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
+                <a href="board.html" role="button">목록</a>
+            </div>
+            <div class="articleContentBox">
+                <!-- 제목 영역 -->
+                <div class="articleHeader">
+                    <div class="articleTitle">
+                        <div class="titleHead">말머리</div>                        
+                        <div class="titleArea">제 목</div>                                
+                    </div>                    
+                    <div class="writerInfo">
+                        <div class="thumbArea">
+                            <img src="./images/temp.png" alt="profilePhoto">
+                        </div>
+                        <div class="profileArea">
+                            <div class="profileInfo">
+                                <button class="writerNick">작성자닉네임</button>
+                            </div>
+                        </div>
+                        <div class="articleInfo">
+                            <span class="date">2023.05.07. 18:30</span>
+                        </div>
+                    </div>
+                    <div class="articleTool">
+                        <!-- 네이버카페처럼 댓글 몇개있는지 보여주고 아래로 이동시킬지 -->
+                        <a href="#commentArea">댓글 <strong class="num">2</strong></a>
+                        <a href="#" class="buttonUrl">URL 복사</a>
+                        <div class="toastUrlCopySuccessful" style="display: none;">url이 복사되었습니다. 원하는 곳에 붙여넣으세요</div>
+                        <div class="moreArea">
+                            <a id="articleTool" role="button" title="더보기" class="buttonMore" href="#"></a>
+                            <img src="./images/temp.png" alt="더보기버튼" width="20px">
+                        </div>
+                    </div>
+                </div>
+                <!-- 내용 영역 -->
+                <div id="contentArea" class="contentArea">
+                    <p>내용</p>
+                </div>
+                <!-- 댓글 영역 -->
+                <div id="commentArea" class="commentArea">
+                    <p><span>작성자</span><span>댓글내용</span></p>
+                    <p><span>작성자</span><span>댓글내용</span></p>
+                    <p><span>닉네임</span><input type="text" name="comWrite" id="comWrite"></p>
+                </div>
+            </div>                       
+            <!-- 글 아래쪽 버튼 영역 --> 
+            <div class="articleBottomBtns">
+                <!-- 기능 구현에 따라 코딩 수정요 -->
+                <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
+                <a href="#" role="button">글쓰기</a>                       
                 <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-                <button><a href="board.html">목록</a></button>                
+                <a href="board.html" role="button" class="commentList">목록</a>
+                <a href="#boardView" role="button" class="commentTop">Top</a>                
             </div>
-            <div class="title">
-                
-            </div>
-            <div class="comment">
-
-            </div>
-        </div>
+        </div>       
     </div>
     <div id="footer"></div>
 </body>

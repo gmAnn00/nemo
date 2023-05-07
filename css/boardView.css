@@ -1,0 +1,98 @@
+#contentsArea {
+    margin: 0 auto;
+    width: 1200px;
+}
+#insideMenu {
+    height: 100px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+#insideMenu h2, #insideMenu h3 {
+    padding-left: 30px;
+}
+/* 소모임내부메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
+.meetMenu {
+    width: 100px;
+    height: 150px;    
+    margin: 60px 0 0 30px;    
+    display: inline-block;
+    background-color: #eee;
+    padding: 10px 20px;
+}
+.meetMenu li {
+    list-style: none;
+    line-height: 30px;
+    margin: 15px;
+}
+.meetMenu li a {
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+/* 게시글 조회 부분 */
+#boardView {
+    margin: 20px 50px 20px 220px;
+    width: 850px;
+    padding: 20px 50px;
+    /* border: 2px solid red; */
+}
+/* 목록 버튼 오른쪽 정렬 */
+.articleToolBtns {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.articleToolBtns a:last-child {
+    float: right;
+}
+/* 제목 영역 */
+.articleHeader {
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;   
+    overflow: hidden;
+    position: relative;
+}
+.articleHeader div {
+    float: left;
+}
+.articleTitle {
+    margin-bottom: 10px;
+}
+.titleHead {
+    width: 150px;
+    font-size: 20px;
+}
+.titleArea {
+    width: 700px;
+    font-size: 24px;
+}
+
+/* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
+.writerInfo {
+    font-size: 12px;    
+}
+.thumbArea img {
+    width: 40px;
+}
+.writerNick {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+}
+.articleInfo .date {
+    position: relative;
+}
+/* 내용 영역 */
+.contentArea {
+    height: 300px;
+}
+/* 댓글 영역 */
+.commentArea {
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+.commentList {
+    float: right;
+}
+.commentTop{
+    float: right;
+}

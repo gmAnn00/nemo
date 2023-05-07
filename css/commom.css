@@ -1,0 +1,70 @@
+/* 공통부분 CSS */
+@charset "utf-8";
+
+/* 초기화 */
+html,
+body,
+div,
+header,
+nav,
+section,
+aside,
+article,
+footer,
+figure,
+figcaption,
+legend,
+fieldset,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h6,
+form,
+img,
+th,
+td,
+input,
+select,
+textarea,
+button,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+dl,
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+input,
+select,
+textarea,
+button {
+  /* 임시 스타일 */
+  background-color: #fff;
+}
+
+body {
+  background: #fff;
+}
+
+#header,
+#contentsArea {
+  width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

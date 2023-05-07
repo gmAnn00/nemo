@@ -29,43 +29,13 @@
     color: #111;
     font-weight: bold;
 }
-/* 게시판 부분 */
-#board {
+/* 게시글 조회 부분 */
+#boardView {
     margin: 20px 50px 20px 220px;
     width: 850px;
     padding: 20px 50px;
     /* border: 2px solid red; */
 }
-.search {
-    margin-bottom: 20px;
-}
-.boardList {
-    display: inline-block;
-    padding: 20px;
-    border: 2px solid #ccc;
-}
-/* 말머리 뒤에 | 붙이기 */
-.list thead tr th:first-child::after {
-    margin-right: 5px;
-    content: " | ";
-}
-table {
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
-    width: 800px;
-    height: 600px;
-}
-table tr {
-    margin: 10px;
-    height: 35px;
-    border-bottom: 2px solid #ccc;
-}
-.pagenation {
-    height: 50px;    
-    line-height: 50px;
-    text-align: center;
-}
-.pagenation span {
-    margin: 5px 10px;
+.editT {
+    
 }
