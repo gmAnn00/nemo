@@ -26,10 +26,10 @@
             <!-- 글 위쪽 버튼 영역 -->
             <div class="articleToolBtns">
                 <!-- 기능 구현에 따라 코딩 수정요 -->
-                <a href="#" role="button">수정</a>
-                <a href="#" role="button">삭제</a>                
+                <a href="#" role="button" class="button btnEdit">수정</a>
+                <a href="#" role="button" class="button btnDel">삭제</a>                
                 <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
-                <a href="board.html" role="button">목록</a>
+                <a href="board.html" role="button" class="button btnList">목록</a>
             </div>
             <div class="articleContentBox">
                 <!-- 제목 영역 -->
@@ -40,7 +40,7 @@
                     </div>                    
                     <div class="writerInfo">
                         <div class="thumbArea">
-                            <img src="./images/temp.png" alt="profilePhoto">
+                            <img src="./images/temp.png" alt="프로필사진">
                         </div>
                         <div class="profileArea">
                             <div class="profileInfo">
@@ -48,17 +48,17 @@
                             </div>
                         </div>
                         <div class="articleInfo">
-                            <span class="date">2023.05.07. 18:30</span>
+                            <p class="date">2023.05.07. 18:30</p>
                         </div>
                     </div>
                     <div class="articleTool">
                         <!-- 네이버카페처럼 댓글 몇개있는지 보여주고 아래로 이동시킬지 -->
                         <a href="#commentArea">댓글 <strong class="num">2</strong></a>
                         <a href="#" class="buttonUrl">URL 복사</a>
-                        <div class="toastUrlCopySuccessful" style="display: none;">url이 복사되었습니다. 원하는 곳에 붙여넣으세요</div>
+                        <div class="toastUrlCopySuccessful" style="display: none;">
+                            url이 복사되었습니다. 원하는 곳에 붙여넣으세요</div>
                         <div class="moreArea">
-                            <a id="articleTool" role="button" title="더보기" class="buttonMore" href="#"></a>
-                            <img src="./images/temp.png" alt="더보기버튼" width="20px">
+                            <a id="articleTool" role="button" title="더보기" class="buttonMore" href="#"><img src="./images/temp.png" alt="더보기버튼"></a>                            
                         </div>
                     </div>
                 </div>
@@ -67,20 +67,68 @@
                     <p>내용</p>
                 </div>
                 <!-- 댓글 영역 -->
-                <div id="commentArea" class="commentArea">
-                    <p><span>작성자</span><span>댓글내용</span></p>
-                    <p><span>작성자</span><span>댓글내용</span></p>
-                    <p><span>닉네임</span><input type="text" name="comWrite" id="comWrite"></p>
-                </div>
-            </div>                       
+                <div id="commentArea" class="commentArea">     
+                    <p class="comment">댓글</p>               
+                    <ul class="commentList">
+                        <li id="" class="commentItem">
+                            <div class="commentbox">                              
+                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+                                <a href="#" class="commentThumb">
+                                    <img src="./images/temp.png" alt="프로필사진">
+                                </a>    
+                                <div class="commentNick">
+                                    <a href="#" role="button" class="commentNickInfo">작성자닉네임</a>
+                                </div>
+                                <div class="commentText">
+                                    <p>댓글 내용</p>
+                                </div>
+                                <div class="commentInfo">
+                                    <p class="commentDate">2023.05.07. 18:30</p>
+                                </div>                                
+                            </div>
+                        </li>
+                        <li id="" class="commentItem">
+                            <div class="commentbox">                              
+                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+                                <a href="#" class="commentThumb">
+                                    <img src="./images/temp.png" alt="프로필사진">
+                                </a>    
+                                <div class="commentNick">
+                                    <a href="#" role="button" class="commentNickInfo">작성자닉네임</a>
+                                </div>
+                                <div class="commentText">
+                                    <p>댓글 내용</p>
+                                </div>
+                                <div class="commentInfo">
+                                    <p class="commentDate">2023.05.07. 18:30</p>
+                                </div>                                
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 댓글 쓰기 -->
+                    <div class="commentWriter">
+                        <div class="commentInbox">
+                            <strong>모닝스타</strong>
+                            <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1"></textarea>
+                        </div>
+                        <div class="commentRegister">
+                            <a href="#" role="button" class="button btnRegister">등록</a>
+                        </div>                        
+                    </div>
+                </div>  
+            </div>                     
             <!-- 글 아래쪽 버튼 영역 --> 
             <div class="articleBottomBtns">
                 <!-- 기능 구현에 따라 코딩 수정요 -->
-                <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-                <a href="#" role="button">글쓰기</a>                       
-                <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-                <a href="board.html" role="button" class="commentList">목록</a>
-                <a href="#boardView" role="button" class="commentTop">Top</a>                
+                <div class="leftArea">
+                    <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
+                    <a href="#" role="button" class="button">글쓰기</a>                       
+                </div>
+                <div class="rightArea">
+                    <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
+                <a href="board.html" role="button" class="button btnList">목록</a>
+                <a href="#boardView" role="button" class="button btnTop">Top</a>                
+                </div>
             </div>
         </div>       
     </div>

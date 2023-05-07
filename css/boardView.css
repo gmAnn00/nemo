@@ -68,31 +68,155 @@
 
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
 .writerInfo {
-    font-size: 12px;    
+    font-size: 13px;    
 }
 .thumbArea img {
+    border-radius: 50%;
     width: 40px;
 }
-.writerNick {
+.writerNick {/* 작성자 닉네임 */
     border: none;
     background-color: transparent;
     font-weight: bold;
 }
 .articleInfo .date {
     position: relative;
+    top: 8px;
+    left: -78px;
 }
+/* 댓글, URL복사, 더보기 영역 */
+.articleTool {
+    position: absolute;
+    top: 45px;
+    right: 25px;
+    font-size: 13px;
+}
+.moreArea {
+    position: absolute;
+    right: -20px;
+    top: 0;
+}
+.moreArea img {
+    width: 15px;
+}
+
 /* 내용 영역 */
 .contentArea {
     height: 300px;
 }
 /* 댓글 영역 */
 .commentArea {
-    border-top: 2px solid #ccc;
-    border-bottom: 2px solid #ccc;
+    border-top: 5px solid #ccc; 
+}
+.comment {
+    font-weight: bold;
 }
 .commentList {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+.commentItem {
+    list-style: none;
+    padding: 12px 23px 10px 0;
+    border-top: 1px solid #ccc;
+}
+.commentItem:first-child {
+    border-top: 0;
+}
+.commentbox {
+    position: relative;
+    padding-left: 50px;
+}
+.commentThumb img {
+    width: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 댓글 쓰기 */
+.commentWriter {
+    margin: 12px 0 20px 0;
+    padding: 16px 10px 10px 18px;    
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+.commentInbox {    
+    font-size: 13px;
+    padding: 5px;  
+}
+.commentInboxText {    
+    width: 100%;
+    min-height: 17px;
+    margin-top: 5px;
+    padding-right: 1px;
+    border: 0;
+    font-size: 13px;
+    resize: none;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+    background: transparent;
+    outline: 0;
+}
+.commentRegister {
     float: right;
 }
-.commentTop{
+.commentRegister a {
+    display: inline-block;
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    line-height: 36px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #ccc;  
+}
+
+/* 아래쪽 버튼 영역 */
+.articleBottomBtns {
+    overflow: hidden;
+}
+.articleBottomBtns .leftArea {
+    float: left;
+}
+.articleBottomBtns .leftArea a {
+    display: inline-block;
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    line-height: 36px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #ccc;  
+}
+.articleBottomBtns .rightArea {
     float: right;
+}
+.articleBottomBtns .rightArea a {
+    display: inline-block;
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    line-height: 36px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #ccc;  
 }
