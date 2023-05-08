@@ -2,15 +2,23 @@
     margin: 0 auto;
     width: 1200px;
 }
-#insideMenu {
+a {
+    text-decoration: none;
+    color: #111;
+}
+/* 소모임 */
+.insideMenu {
     height: 100px;
     border-bottom: 2px solid #ccc;
     margin-bottom: 20px;
 }
-#insideMenu h2, #insideMenu h3 {
+.insideMenu h2, .insideMenu h3 {
     padding-left: 30px;
+    margin: 20px 0;
+    font-weight: bold;
 }
-/* 소모임내부메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
+
+/* 소모임내부 좌측메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
 .meetMenu {
     width: 100px;
     height: 150px;    
@@ -30,7 +38,7 @@
     font-weight: bold;
 }
 /* 게시글 조회 부분 */
-#boardView {
+.boardView {
     margin: 20px 50px 20px 220px;
     width: 850px;
     padding: 20px 50px;
@@ -55,24 +63,34 @@
     float: left;
 }
 .articleTitle {
-    margin-bottom: 10px;
+    margin: 15px 0 10px 0;
 }
 .titleHead {
     width: 150px;
-    font-size: 20px;
+    text-align: center;
+    line-height: 13px;
+    font-size: 13px;
 }
 .titleArea {
-    width: 700px;
-    font-size: 24px;
+    width: 700px;    
+    line-height: 20px;
+    font-size: 20px;
 }
 
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
-.writerInfo {
-    font-size: 13px;    
+.writerInfo {    
+    font-size: 13px;
 }
 .thumbArea img {
     border-radius: 50%;
     width: 40px;
+}
+.profileArea {
+    padding: 0 10px;
+    margin-bottom: 5px;    
+    width: 150px;
+    height: 45px;
+    position: relative;
 }
 .writerNick {/* 작성자 닉네임 */
     border: none;
@@ -80,9 +98,9 @@
     font-weight: bold;
 }
 .articleInfo .date {
-    position: relative;
-    top: 8px;
-    left: -78px;
+    position: absolute;
+    top: 20px;
+    left: 10px;
 }
 /* 댓글, URL복사, 더보기 영역 */
 .articleTool {
@@ -104,6 +122,7 @@
 .contentArea {
     height: 300px;
 }
+
 /* 댓글 영역 */
 .commentArea {
     border-top: 5px solid #ccc; 
@@ -134,6 +153,9 @@
     position: absolute;
     top: 0;
     left: 0;
+}
+.commentInfo {
+    color: #999;
 }
 
 /* 댓글 쓰기 */

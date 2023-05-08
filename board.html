@@ -12,25 +12,27 @@
     <div id="header"></div>
     <div id="contentsArea">
         <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
-        <div id="insideMenu">
-        <!-- 소모임 이름 뿌려줘야 함 -->
-            <h2>소모임 이름</h2>
-            <h3>게시판</h3>
+        <div class="insideMenu">
+            <!-- 소모임 이름 뿌려줘야 함 -->
+            <h2><a href="#">소모임 이름</a></h2>
+            <h3><a href="boardWrite.html">게시글 조회</a></h3>
+            <!-- 좌측메뉴 -->
             <ul class="meetMenu">
                 <li><a href="schedule.html">일정</a></li>
                 <li><a href="board.html">게시판</a></li>
                 <li><a href="">멤버</a></li>
             </ul>
         </div>    
-        <div id="board">
+        <div class="board">
             <div class="search">
                 <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
-                <select name="" id="boardSearch">                   
-                    <option value="writer">작성자</option>
-                    <option value="title">제목</option>
+                <select name="" id="boardSearch">                    
+                    <option value="title">제목</option>                    
                     <option value="content">내용</option>
+                    <option value="writer">작성자</option>
                 </select>
-                <input type="text" name="" id="">                
+                <input type="text" name="" id="">
+                <a href="#" role="button" class="button" type="submit">검색</a>
             </div>
             <div class="boardListArea">                
                 <table class="boardList">
