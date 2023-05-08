@@ -85,15 +85,30 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <select name="" id="">
-                                                        <option value="1">선택하기</option>
-                                                        <option value="2">선택하기</option>
+                                                    <select name="largeCate" id="cateLarge" onchange="change(this);" class="input">
+                                                        <option value="0">선택하기</option>
+                                                        <option value="1">문화/공연/축제</option>
+                                                        <option value="2">음악/악기</option>
+                                                        <option value="3">사진/영상</option>
+                                                        <option value="4">아웃도어/여행</option>
+                                                        <option value="5">운동/스포츠</option>
+                                                        <option value="6">인문학/책/글</option>
+                                                        <option value="7">업종/직무</option>
+                                                        <option value="8">공예/만들기</option>
+                                                        <option value="9">댄스/무용</option>
+                                                        <option value="10">봉사활동</option>
+                                                        <option value="11">사교/인맥</option>
+                                                        <option value="12">차/오토바이</option>
+                                                        <option value="13">스포츠 관람</option>
+                                                        <option value="14">게임/오락</option>
+                                                        <option value="15">요리/제조</option>
+                                                        <option value="16">반려동물</option>
+
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="" id="">
-                                                        <option value="1">선택하기</option>
-                                                        <option value="2">선택하기</option>
+                                                    <select name="smallCate" id="smallCate" class=select>
+                                                        <option value=''>선택하기</option>
                                                     </select>
                                                 </td>
                                             </tr>
@@ -106,17 +121,17 @@
                                     <strong class="require">필수</strong><span>네모장소</span>
                                 </th>
                                 <td>
-                                    <!-- 
+                                    
                                     <input type="text" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호">
                                     <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                                    <input type="text" id="sample6_address" placeholder="주소"> -->
+                                    <input type="text" id="sample6_address" placeholder="주소"> 
+                                    <!--
                                     <input type="text" id="sample6_postcode" placeholder="우편번호">
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample6_address" placeholder="주소"><br>
-<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-
-                                    
+                                    <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                                    <input type="text" id="sample6_address" placeholder="주소"><br>
+                                    <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                                    <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+                                    -->
                                 </td>
                             </tr>
                             <tr>
@@ -133,7 +148,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="2" class="textAreaTd">
                                     <textarea name="grpDescription" id="grpDescription" rows="10" maxlength="1000"></textarea>
                                     <p> (<span>0/0</span>)</p>
                                 </td>
@@ -143,8 +158,8 @@
                                     <span>가입설정</span>
                                 </th>
                                 <td>
-                                    <label for="a">
-                                        <input type="checkbox" name="" id="a">
+                                    <label for="checkConfirm">
+                                        <input type="checkbox" name="checkConfirm" id="checkConfirm">
                                         네모장승인제 (체크시 승인된 사람만 가입가능합니다.)
                                     </label>
                                 </td>
@@ -179,6 +194,10 @@
     <!-- footer 종료-->
     
 </body>
+<script src="js/jquery-3.6.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/createGroup/createGroup.js"></script>
+<!--
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -229,4 +248,5 @@
         }).open();
     }
 </script>
+-->
 </html>
