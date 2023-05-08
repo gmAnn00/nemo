@@ -63,14 +63,6 @@ div.myScheduleCalAndList {
   color: red;
 }
 
-div.mySchedule {
-  position: relative;
-}
-div.mySchedule img {
-  width: 100px;
-  height: 100px;
-}
-
 div.myScheduleListArea {
   margin: 0 auto;
   width: 600px;
@@ -79,6 +71,11 @@ div.mySchedule {
   border: 1px solid red;
   position: relative;
 }
+div.mySchedule img {
+  width: 100px;
+  height: 100px;
+}
+
 div.mySchedule p.myScheduleDate {
   font-weight: bold;
   font-size: 1.5em;
