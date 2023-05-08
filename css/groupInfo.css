@@ -14,6 +14,9 @@ body, div, h3, button, section, table, tr, td, th{
     width: 1200px;
     margin: 0 auto;
 }
+.mainInner {
+    padding: 0 100px;
+}
 
 
 /* 소모임 이름 영역 */
@@ -42,15 +45,14 @@ body, div, h3, button, section, table, tr, td, th{
 
 /* 간략 정보 영역 */
 .shortInfoArea {
-    width: 1040;
-    padding: 0 90px;
+    width: 800px;
     margin-bottom: 20px;
 }
 
 
 .shortInfoTbl {
     display: inline-block;
-    width: 1020px;
+    width: 800px;
     height: 300px;
 }
 
@@ -59,7 +61,7 @@ body, div, h3, button, section, table, tr, td, th{
     display: inline-block;
     width: 500px;
     height: 300px;
-    margin-right: 20px;
+    margin-right: 10px;
     overflow: hidden;
 }
 
@@ -73,18 +75,19 @@ body, div, h3, button, section, table, tr, td, th{
 
 .shortInfoTbl th {
     width: 150px;
-    text-align: justify;
+    
+    text-align: center;
 
 }
 .shortInfoTbl tr:nth-child(2)>th, .shortInfoTbl tr:nth-child(3)>th, .shortInfoTbl tr:nth-child(6)>th{
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
 }
 .shortInfoTbl tr:nth-child(4)>th, .shortInfoTbl tr:nth-child(5)>th{
     letter-spacing: 10px;
 }
 
 .shortInfoTbl tr:not(:first-child)>td {
-    width: 360px;
+    width: 140px;
     padding-left: 10px;
     letter-spacing: 2px;
 }
@@ -92,6 +95,7 @@ body, div, h3, button, section, table, tr, td, th{
 
 /* 소모임 자세한 정보 영역 */
 .infoDetailArea {
+    width: 1000px;
     padding: 50px 100px;
     background-color: rgb(255, 249, 243);
 }
