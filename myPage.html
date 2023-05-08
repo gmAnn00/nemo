@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+
+    <link rel="stylesheet" href="css/myPage.css">
+
+</head>
+<body>
+    <h1 class="hidden">마이페이지(프로필)</h1>
+    <h2 class="myPro">프로필</h2>
+    <!--<div class="menu">
+        <ul>
+            <li><a href="#">프로필</a></li>
+            <li><a href="#">내 일정</a></li>
+            <li><a href="#">내 소모임</a></li>
+            <li><a href="#"> 게시글·댓글</a></li>
+        </ul>
+    </div>-->
+    <div class="profile">
+        <h3>내정보조회</h3>
+        <img src="images/dall.png" alt="profile">
+        <input type="file">이미지수정
+        <ul class="profileModi">
+            <li class="name">이름</li>
+            <li class="nName">닉네임</li>
+            <li class="area">지역</li>
+            <li class="tel">핸드폰 번호</li>
+            <li class="email">이메일</li>
+            <li class="birth">생년월일</li>
+        </ul>
+        <button>수정</button>
+        <ul>
+            <li class="myHabi">내 관심사
+                <ul>
+                    <li>고양이</li>
+                    <li>영화관람</li>
+                    <li>봉사활동</li>
+                </ul>
+            </li>
+        </ul>
+        <button>수정</button>
+    </div>
+
+    <div>
+        <!--내 소모임 조회-->
+        <section>
+            <h2><a href="#">내 소모임 조회</a></h2>
+            <ul>
+                <li>
+                    <a href="#">네모 소모임</a>
+                    <time datetime="2023-04-27">2023.04.27</time>
+                </li>
+
+                <li>
+                    <a href="#">종각소모임</a>
+                    <time datetime="2023-04-27">2023.04.27</time>
+                </li>
+
+                <li>
+                    <a href="#">동네 소모임</a>
+                    <p>대기중</p>
+                </li>
+            <a href="#" class="more" title="내 소모임 조회">더보기</a>
+        </section>
+    </div>
+
+    <div>
+
+        <!--찜한 소모임-->
+        <section>
+            <h2><a href="#">찜한 소모임</a></h2>
+            <ul>
+                <li>
+                    <a href="#">춘식 소모임</a>
+                    <button>찜하기 취소</button>
+                </li>
+                <li>
+                    <a href="#">카페 소모임</a>
+                    <button>찜하기 취소</button>
+                </li>                    
+            </ul>
+            <a href="#" class="more" title="찜한 소모임">더보기</a>
+        </section>
+    </div>
+
+
+</body>
+</html>

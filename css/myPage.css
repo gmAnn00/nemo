@@ -1,0 +1,75 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+/*글머리 기호 없애기*/
+ul, li {
+    list-style: none;
+}
+
+/*필셋 박스 선 없애기*/
+fieldset{
+    border: 0;
+}
+
+.hidden {
+    position: absolute;
+    left: -9999px; 
+}
+/*a 태그*/
+a:link {
+    color: #4f4f4f; /*파랑색을 약간 회색으로*/
+    text-decoration: none; /*밑줄 없애기*/
+}
+
+a:visited { 
+    color: #8a8e91; /*방문시 보라색에서 회색*/
+    text-decoration: none;
+}
+
+.myPro {
+    position: relative;
+    top: 30px;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    width: 1200px;
+}
+
+.profile {
+    position: relative;
+    top: 60px;
+    left: 400px;
+}
+
+.profile >h3 {
+    font-size: 0.9em;
+}
+.profile > input {
+    display: block; 
+}
+
+.profile .profileModi > li {
+    position: absolute;
+    display: inline;
+    left: 150px;
+}
+
+.profile ul > .name {
+    top: 30px;
+}
+.profile ul > .nName {
+    top: 60px;
+}
+.profile ul > .area {
+    top: 90px;
+}   
+.profile ul > .tel {
+    top: 120px;
+}
+.profile ul > .email {
+    top: 150px;
+}
+.profile ul > .birth {
+    top: 180px;
+}
