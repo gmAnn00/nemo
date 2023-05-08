@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네모</title>
+    <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/myPageGroup.css">
+</head>
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+    #wrapper {
+        position: relative;
+        width: 1000px;
+        height: 100%;
+        margin: 60px auto;
+    }
+    .sc_img {
+        width: 70px;
+        height: 70px;
+    }
+    .section1 {
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+    }
+    .sc1_title {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+    .section2 {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 60px;
+    }
+    .sc2_contents {
+        width: 100%;
+        display: flex;
+    }
+    .sc2_title {
+        padding-bottom: 10px;
+        border-bottom: 1px solid black;
+    }
+    .sc2_menu {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+        height: 300px;
+        border: 1px solid black;
+        margin-top: 20px;
+        text-align: left;
+        box-sizing: border-box;
+        padding-left: 20px;
+    }
+    ul {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    li {
+        line-height: 60px;
+    }
+    li i {
+        margin-right: 20px;
+    }
+    .sc2_subcontents {
+        width: 750px;
+        float: right;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        margin-top: 20px;
+    }
+    .searchBox {
+        display: inline-block;
+        border-bottom: 1px solid black;
+        padding-bottom: 5px;
+    }
+    .searchBox_Bar {
+        width: 300px;
+        border: none;
+    }
+    .searchBox_Bar:focus {
+        outline: none;
+    }
+    .searchBox>i {
+        transform: rotate(90deg);
+    }
+    .sc2_member {
+        width: 100%;
+        height: auto;
+    }
+    .sc2_member_title {
+        padding: 20px;
+        border: 1px solid black;
+        border-bottom: none;
+    }
+    .sc2_member_title_name {
+        margin-right: 20px;
+    }
+    .sc2_table {
+        width: 100%;
+        border: 1px solid black;
+    }
+    .sc2_table table {
+        border-collapse: collapse;
+    }
+    .sc2_table thead {
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+    .sc2_table thead th {
+        padding: 20px;
+    }
+    .sc2_table tbody tr {
+        border-bottom: 1px solid black;
+    }
+    .sc2_table tbody tr:last-child {
+        border-bottom: none;
+    }
+    .sc2_table tbody td {
+        padding: 20px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .sc2_table tbody td:first-child {
+        text-align: left;
+    }
+    .sc2_table tbody td i {
+        margin-right: 5px;
+    }
+    .sc2_table tbody td:last-child {
+        padding: 0;
+    }
+    .sc2_admin {
+        
+        margin-top: 30px;
+    }
+    .sc2_admin_name {
+        padding-bottom: 20px;
+    }
+    .sc2_button {
+        border: none;
+    }
+</style>
+<body>
+    <!-- wrapper 시작 -->
+    <div id="wrapper">
+        
+        <!-- section1 시작 -->
+        <div class="section1">
+            <img src="images/sc1_title.jpeg" alt="title" class="sc_img">
+            <a href="#" class="sc1_title">이젠 종로 학원</a>
+        </div>
+        <!-- section1 종료 -->
+        
+        <!-- section2 시작 -->
+        <div class="section2">
+            <div class="sc2_title">
+                <i class="fa-solid fa-user-group"></i>
+                <span class="sc2_title_name">멤버</span>     
+            </div>
+            <div class="sc2_menu">
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-calendar-days"></i>일정</a></li>
+                    <li><a href="#"><i class="fa-regular fa-clipboard"></i>게시판</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user-group"></i>멤버</a></li>
+                    <li><a href="#"><i class="fa-sharp fa-regular fa-gear"></i>소모임관리</a></li>
+                </ul>
+            </div>
+            <div class="sc2_subcontents">
+                <div class="sc2_member">
+                    <div class="sc2_member_title">
+                        <span class="sc2_member_title_name">7 members</span>
+                        <div class="searchBox">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input class="searchBox_Bar" type="text" placeholder="search">
+                        </div>
+                    </div>
+                    <table class="sc2_table">
+                        <colgroup>
+                            <col style="width: 16.1%;">
+                            <col style="width: 16.1%;">
+                            <col style="width: 16.1%;">
+                            <col style="width: 16.1%;">
+                            <col style="width: 16.1%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>닉네임</th>
+                                <th>멤버등급</th>
+                                <th>지역</th>
+                                <th>가입일</th>
+                                <th>최종방문일</th>
+                                <th><button class="sc2_button">전체쪽지</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fa-solid fa-circle-user"></i>고구마</td>
+                                <td>회원</td>
+                                <td>서울</td>
+                                <td>21/01/01</td>
+                                <td>23/02/02</td>
+                                <td>
+                                    <button class="sc2_button">쪽지</button>
+                                    <button class="sc2_button">추방</button>
+                                    <button class="sc2_button">위임</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-circle-user"></i>감자</td>
+                                <td>회원</td>
+                                <td>서울</td>
+                                <td>21/01/01</td>
+                                <td>23/02/02</td>
+                                <td>
+                                    <button class="sc2_button">쪽지</button>
+                                    <button class="sc2_button">추방</button>
+                                    <button class="sc2_button">위임</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="sc2_admin">
+                        <div class="sc2_admin_name">가입 승인</div>
+                        <table class="sc2_table">
+                            <colgroup>
+                                <col style="width: 16.1%;">
+                                <col style="width: 16.1%;">
+                                <col style="width: 16.1%;">
+                                <col style="width: 16.1%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>닉네임</th>
+                                    <th>나이</th>
+                                    <th>지역</th>
+                                    <th>가입신청일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="fa-solid fa-circle-user"></i>새우깡</td>
+                                    <td>29</td>
+                                    <td>서울</td>
+                                    <td>23/01/01</td>
+                                    <td>
+                                        <button class="sc2_button">승인</button>
+                                        <button class="sc2_button">거절</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!-- section2 종료 -->
+    </div>
+    <!-- wrapper 종료 -->
+</body>
+</html>
