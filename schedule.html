@@ -4,8 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>일정</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/schedule.css">
 </head>
 <body>
-    
+    <!-- 헤더 영역 -->
+    <div id="header"></div>
+
+    <!-- 콘텐츠 영역 -->
+    <div id="contentsArea">
+        <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
+        <div class="insideMenu">
+            <!-- 소모임 이름 뿌려줘야 함 -->
+            <h2><a href="#">소모임 이름</a></h2>
+            <h3><a href="boardWrite.html">게시글 조회</a></h3>
+            <!-- 좌측메뉴 -->
+            <ul class="meetMenu">
+                <li><a href="schedule.html">일정</a></li>
+                <li><a href="board.html">게시판</a></li>
+                <li><a href="">멤버</a></li>
+            </ul>
+        </div>    
+        <!-- 일정 등록, 확인 영역 시작 -->
+        <div class="schedule">
+            <div class="calendarSchedule">
+                <!-- 달력 및 간단일정 영역 -->
+                <!-- 달력부분 -->
+                <div id="scheduleCalendarArea"></div>
+                <div class="scheduleNP">                    
+                    <div class="nextSchedule">
+                        예정된 모임일정
+                    </div>
+                    <div class="pastSchedule">
+                        지난 모임일정
+                    </div>
+                </div>
+            </div>
+            <div class="scheduleEdit">
+                일정 등록
+                <!-- 등록을 누르면 등록창이 나오는 것 -->
+            </div>
+            <div class="scheduleDetail">                
+                <div class="top">
+                    <strong>상세 일정보기</strong>
+                    <a href="#" role="button" class="button btnDel">삭제</a>
+                    <a href="#" role="button" class="button btnEdit">수정</a>                    
+                </div>
+                <div class="title">
+
+                </div>
+                <div class="contentLocationMap">
+                    <div class="content">
+
+                    </div>
+                    <div class="locationMap">
+                        
+                    </div>
+                </div>
+                <div class="participant">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 영역 -->
+    <div id="footer"></div>
 </body>
 </html>
