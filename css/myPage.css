@@ -1,22 +1,4 @@
 @charset "utf-8";
-*{
-    margin: 0;
-    padding: 0;
-}
-/*글머리 기호 없애기*/
-ul, li {
-    list-style: none;
-}
-
-/*필셋 박스 선 없애기*/
-fieldset{
-    border: 0;
-}
-
-.hidden {
-    position: absolute;
-    left: -9999px; 
-}
 /*a 태그*/
 a:link {
     color: #4f4f4f; /*파랑색을 약간 회색으로*/
@@ -27,49 +9,81 @@ a:visited {
     color: #8a8e91; /*방문시 보라색에서 회색*/
     text-decoration: none;
 }
+/*1.전체 부분*/
+.all{
+    width: 1000px;
+    margin: 0 auto ;
+}
 
-.myPro {
-    position: relative;
-    top: 30px;
+/*2.프로필 제목부분*/
+.profile {
     margin: 0 auto;
     border-bottom: 1px solid black;
-    width: 1200px;
+    width: 100%;
+    font-size: 1em;
+   
+}
+/*3.메뉴*/
+.menu {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #ccc;
+    border-radius: 10px;
+    width: 200px;
+}
+.menu i {
+    margin-right: 10px  ;
+}
+.menu li:first-child {
+    text-align: center;
+    padding: 0;
+}
+.menu li {
+    line-height: 50px;
+    padding-left: 40px;
 }
 
-.profile {
-    position: relative;
-    top: 60px;
-    left: 400px;
-}
 
-.profile >h3 {
+/*4.내정보 조회*/
+.myPro {
+    bottom: 10px;
+    float: right;
+    width: 700px;
+    margin-top: 20px;
+}
+/*5.*/
+.myProMo > div {
+    float: left;
+}
+/*5-1*/
+.myModi1 {
+    margin-bottom: 10px;
     font-size: 0.9em;
 }
-.profile > input {
-    display: block; 
+/*5-2*/
+.myImage > label{
+    display: block;
+    margin-right: 30px;
+    text-align: center;
+    padding-left: 10px;
+}
+/*5-3*/
+.myModi2 {
+    margin-left: 30px;
+    font-size: 1.2em;
+}
+.myModi2 li {
+    line-height: 40px;
+}
+/*5-4*/
+.button > button {
+    margin: 15px 0  0 60px ;
+    font-size: 1.2em;
+    width: 150px;
+    border-radius: 15px;
+    background-color: aquamarine;
 }
 
-.profile .profileModi > li {
-    position: absolute;
-    display: inline;
-    left: 150px;
-}
-
-.profile ul > .name {
-    top: 30px;
-}
-.profile ul > .nName {
-    top: 60px;
-}
-.profile ul > .area {
-    top: 90px;
-}   
-.profile ul > .tel {
-    top: 120px;
-}
-.profile ul > .email {
-    top: 150px;
-}
-.profile ul > .birth {
-    top: 180px;
-}
