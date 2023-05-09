@@ -18,7 +18,11 @@ a {
   text-decoration: none;
   color: #111;
 }
-
+.clearfixed:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 #contentsArea {
   margin: 0 auto;
   width: 1200px;
@@ -114,6 +118,7 @@ a {
 }
 /* 달력부분 mySchedule.css-----끝 */
 
+/* 예정모임, 지난모임 일정 */
 .scheduleNP {
   border: 1px solid #ccc;
   width: 415px;
@@ -129,6 +134,68 @@ a {
   border: 1px solid #ccc;
   margin-top: 15px;
 }
+
+/* --일정상세-- */
 .scheduleDetail {
+  border: 1px solid #ccc;  
+  position: relative;;
+}
+.top {
+  padding-left: 10px;
+}
+.topBtn {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+/* 제목부분 */
+.scheduleTitle {
+  padding: 10px;
+  background-color: #eee;
+  margin-bottom: 15px;
+}
+.scheduleTitleText {
+  resize: none;
+  width: 800px;
+  outline: 0;
+}
+/* 내용 지도 부분 */
+.contentLocationMap {
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #eee;
+}
+.dateTime {
+  margin: 0 auto;
+}
+.contentDetail {
+  margin: 0 auto;
+}
+.contentDetailText {
+  resize: none;
+  width: 800px;
+  outline: 0;
+}
+.locationMap {
+  width: 800px;
+  margin: 0 auto;
+}
+.map {
+  width: 780px;
+  height: 240px;
+  margin: 0 auto;
   border: 1px solid #ccc;
+  background-color: antiquewhite;
+}
+.participant {
+  padding-left: 10px; 
+  position: relative;
+}
+.partBtn a {
+  /* float: right; */
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
