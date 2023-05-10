@@ -4,21 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원정보 수정</title>
+
+    <link rel="stylesheet" href="css/modifyProfile.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    
 </head>
 <body>
 
-    <div id="contentsArea">
-        <!--회원정보 수정 영역-->
-        <section id="memberArea">
+    <!--1. all-->
+    <div class="all">
 
+        <!--2.-->
+        <div class="modify">
             <h2>회원정보 수정</h2>
+        </div>
+
+        <!--3. myImage-->
+        <div class="myImage">
+            <img src="images/dall.png" alt="profile" class="my">
+            <label class="imageM" for="hidden" id="file">이미지 수정</label>
+            <input id="hidden" type="file" style="display:none;">
+        </div>
+
+
+        <!--4.-->
+        <div class="myMo">                   
             <form action="#" id="modifyPro" name="modifyPro">
+
                 <fieldset>
                     <legend>회원정보 수정 폼</legend> <!--안보임-->
-                    <div>
-                        <img src="#" alt="profile">
-                        <input type="file">이미지수정
-                    </div>
                     <p>
                         <label for="name">이름</label>
                         <input type="text" id="name" name="name">
@@ -59,7 +74,7 @@
                     </div>
                 </fieldset>
             </form>
-        </section>
+        </div>
 
     </div>
 
