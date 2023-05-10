@@ -9,9 +9,6 @@ a:visited {
     color: #8a8e91; /*방문시 보라색에서 회색*/
     text-decoration: none;
 }
-fieldset, legend {
-    overflow: hidden;
-}
 
 /*1.전체 부분*/
 .all{
@@ -29,7 +26,30 @@ fieldset, legend {
 
 /*3번*/
 .myImage {
+    padding-top: 30px;
     width: 700px;
     text-align: center;
     margin: 0 auto;
 }
+
+/*4번*/
+.profileM {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+    margin-top: 10px;
+}
+.profileM > p {
+    padding: 10px 0;
+}
+
+.profileM label {
+    float: left;
+    margin-left: 50px;
+    margin: 10px 0;
+}
+.profileM input {
+    margin: 10px 0;
+}
+
