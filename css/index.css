@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+#contentsArea {
+  width: 1200px;
+}
+.mainPage {
+  position: relative;
+  width: 100%;
+  height: 450px;
+}
+.mainImg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 450px;
+}
+.mainImg img {
+  width: 100%;
+  height: 450px;
+}
+.mainImgBtn01 {
+  position: absolute;
+  background-color: antiquewhite;
+  padding: 20px;
+  top: 300px;
+  left: 200px;
+}
+.mainImgBtn02 {
+  position: absolute;
+  background-color: antiquewhite;
+  padding: 20px;
+  top: 300px;
+  right: 200px;
+}
+.categories {
+  position: relative;
+  width: 100%;
+  padding-bottom: 30px;
+}
+.categoriesGoto {
+  float: left;
+  margin: 20px;
+}
+.mimgs {
+  position: relative;
+  width: 1200px;
+  overflow: hidden;
+}
+.sliderImage01 {
+  position: relative;
+  width: 2000px;
+}
+.sliderImage02 {
+  position: relative;
+  width: 2000px;
+}
+.sliderImage {
+  width: 190px;
+  height: 190px;
+  float: left;
+  margin: 5px;
+}
+.group01 {
+  width: 100%;
+  height: 100%;
+}
+.smallGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.groupImg img {
+  width: 100%;
+}
+.smallText {
+  margin: 20px;
+}
+.closeGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.closeText {
+  margin: 20px;
+}
+.recommend {
+  text-align: center;
+  width: 100%;
+  margin: 10px 0 10px 0;
+}
+.recommend img {
+  width: 90%;
+}
