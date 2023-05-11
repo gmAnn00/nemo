@@ -54,7 +54,6 @@ a:visited {
 .bodarBox{
     width: 750px;
     float: right;
-    
 }
 
 /*5번*/
@@ -78,6 +77,8 @@ a:visited {
 }
 
 /*4-3번, 5-3번*/
-.table {
-    background-color: green;
+.table > table {
+    width: 750px;
+    text-align: center;
+    
 }
