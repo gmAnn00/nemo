@@ -26,27 +26,46 @@ a {
 #contentsArea {
   margin: 0 auto;
   width: 1200px;
+  position: relative;
 }
 /* 소모임 */
-.insideMenu {
-  height: 100px;
-  border-bottom: 2px solid #ccc;
+.insideMenu {  
   margin-bottom: 20px;
 }
-.insideMenu h2, .insideMenu h3 {
-  padding-left: 30px;
-  margin: 20px 0;
-  font-weight: bold;
+.meetNameTitle {
+  margin: 20px auto;
+  padding: 120px 110px 20px 0;
+  text-align: right;
+  /* border: 2px solid red; */
 }
 
 /* 소모임내부 좌측메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
+.selectedMenu{
+  width: 120px;
+  height: 30px;
+  padding: 10px 10px;
+  margin-top: 20px;
+  margin-left: 30px;
+  background-color: #999;  
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  position: absolute;
+}
+.selectedMenu a {
+  color: #fff;
+}
+.leftMenu ul {
+  float: left;
+}
 .meetMenu {
   width: 100px;
   height: 150px;    
-  margin: 60px 0 0 30px;    
+  margin: 60px 0 0 30px;
+  padding: 10px 20px;
   display: inline-block;
   background-color: #eee;
-  padding: 10px 20px;
+  position: absolute;
 }
 .meetMenu li {
   list-style: none;
@@ -69,30 +88,52 @@ a {
   float: left;
 }
 /* 달력부분 mySchedule.css----- */
-#scheduleCalendarArea {
-  width: 415px;
-  height: 450px;
-  margin: 0 auto;
+.scheduleCalendar {
   border: 1px solid #ccc;
 }
-.calendarTable {
-  margin: 0 auto;
-  width: 600px;
-  border: 1px solid red;
+#myscheduleCalendarArea {
+  width: 415px;
+  height: 450px;
+  /* margin: 0 auto; */  
 }
-.calendarTable td {
-  width: 80px;
-  height: 75px;
+.calendarTable {
+  margin-top: 13px;
+  width: 415px; 
+  /* border: 1px solid red; */  
+  font-weight: bold;
+}
+.calendarTable tr {
+  font-weight: normal;
+}
+.calendarTable .prev {
+  border: 0;
+  margin-right: 50px;
+}
+.calendarTable .next {
+  border: 0;
+  margin-left: 50px;
+}
+.calendarTable .today {
+  border: 0;
+  color: #fff;
+  padding: 0 7px;
+  border-radius: 3px;
+  background-color: #999;
+  margin: 0 10px 0 15px;
+}
+.calendarTable td {  
+  width: 20px;
+  height: 70px;
 }
 .calDate {
-  height: 50px;
+  height: 35px;
   position: relative;
 }
 .calDate span {
-  height: 40px;
+  height: 50px;
 }
 .calWeek {
-  height: 40px;
+  height: 50px;
 }
 .calendarTable {
   background: #fff;
