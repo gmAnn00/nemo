@@ -34,7 +34,7 @@
             <!-- 프로필 사진 등록 영역-->
             <div class="uploadArea">
                 <div class="imgCrop">
-                    <img src="images/tmp01.jpg" alt="" class="grpImg">
+                    <img src="images/tmp01.jpg" alt="" class="grpImg" id="previewImage">
                 </div><br>
                 <div>
                     <p></p>
@@ -42,8 +42,8 @@
                 <label for="file">
                     <div class="btnUpload btnComm">네모 프로필 사진 사진등록</div>
                 </label>
-                <input type="file" name="file" id="file" class=hidden accept="image/gif, image/jpeg, image/png">
-                <div class="btnCancle btnComm">취소</div>
+                <input type="file" name="file" id="file" class=hidden accept="image/gif, image/jpeg, image/png" onchange="readImage(this);">
+                <div class="btnCancle btnComm" onClick="popupImgFileRm();">취소</div>
             </div>
 
             <!-- 소모임 생성 정보 입력 영역 -->
@@ -136,6 +136,7 @@
                                     <input type="text" id="sample6_detailAddress" placeholder="상세주소">
                                     <input type="text" id="sample6_extraAddress" placeholder="참고항목">
                                     -->
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -199,8 +200,8 @@
     
 </body>
 <script src="js/createGroup/createGroup.js"></script>
-<!--
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!--
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
