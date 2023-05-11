@@ -68,13 +68,14 @@
         font-size: 100px;
     }
     .active {
-        background-color: rgba(0, 0, 0, 0.3);
+        filter: blur(5px);
+        pointer-events: none;
     }
 </style>
 <script>
    $(document).ready(function(){
-        $('.menu_btn>a').on('click', function(){
-            $('.all').addClass('active');
+        $('.menu_btn').click(function(){
+            $('.wrapper').addClass('active');
             $('body,html').css({
                 height:'100vh',
                 overflow:'hidden'
@@ -83,8 +84,8 @@
                 right:0
              });  
         });
-        $('.close_btn>a, .all').on('click', function(){
-            $('.all').removeClass('active');
+        $('.close_btn, .all').click(function(event){
+            $('.wrapper').removeClass('active');
             $('body,html').css({
                 height:'auto',
                 overflow:'visible',
