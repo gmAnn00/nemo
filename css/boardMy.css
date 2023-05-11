@@ -1,1 +1,83 @@
 @charset "utf-8";
+/*a 태그*/
+a:link {
+    color: #4f4f4f; /*파랑색을 약간 회색으로*/
+    text-decoration: none; /*밑줄 없애기*/
+}
+
+a:visited { 
+    color: #8a8e91; /*방문시 보라색에서 회색*/
+    text-decoration: none;
+}
+
+/*1번*/
+.all{
+    width: 1000px;
+    margin: 0 auto;
+
+
+}
+/*2번*/
+.h2Text{
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    padding: 20px;
+
+}
+
+/*3번*/
+.menu {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #ccc;
+    border-radius: 10px;
+    width: 200px;
+    float: left;
+}
+.menu i {
+    margin-right: 10px  ;
+}
+.menu li:first-child {
+    text-align: center;
+    padding: 0;
+}
+.menu li {
+    line-height: 50px;
+    padding-left: 40px;
+}
+
+
+/*4번*/
+.bodarBox{
+    width: 750px;
+    float: right;
+    
+}
+
+/*5번*/
+.repBox {
+    clear: both; 
+    width: 750px;
+    float: right;
+}
+
+/*4-1번, 5-1번*/
+.boxText {
+    width: 750px;
+    display: inline-block;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+/*4-2번, 5-2번*/
+.selectD {
+    
+}
+
+/*4-3번, 5-3번*/
+.table {
+    background-color: green;
+}
