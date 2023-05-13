@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+body, div, h3, button, section, table, tr, td, th{
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 메인 컨텐츠 영역*/
+.mainContent {
+    width: 1200px;
+    margin: 0 auto;
+}
+.mainInner {
+    padding: 0 100px;
+}
+
+
+/* 소모임 이름 영역 */
+.nameArea {
+    padding: 0 80px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.grpName {
+    display: inline-block;
+}
+
+.grpLikeBtn {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    cursor: pointer;
+}
+
+.grpLike {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}
+
+/* 간략 정보 영역 */
+.shortInfoArea {
+    width: 800px;
+    margin-bottom: 20px;
+}
+
+
+.shortInfoTbl {
+    display: inline-block;
+    width: 800px;
+    height: 300px;
+}
+
+.imgCrop {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 300px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.imgCrop img {
+    position: absolute;
+    top: 0;
+    left: -300px;
+    width: 1200px;
+    height: 400px;
+}
+
+.shortInfoTbl th {
+    width: 150px;
+    
+    text-align: center;
+
+}
+.shortInfoTbl tr:nth-child(2)>th, .shortInfoTbl tr:nth-child(3)>th, .shortInfoTbl tr:nth-child(6)>th{
+    letter-spacing: 3.5px;
+}
+.shortInfoTbl tr:nth-child(4)>th, .shortInfoTbl tr:nth-child(5)>th{
+    letter-spacing: 10px;
+}
+
+.shortInfoTbl tr:not(:first-child)>td {
+    width: 140px;
+    padding-left: 10px;
+    letter-spacing: 2px;
+}
+
+
+/* 소모임 자세한 정보 영역 */
+.infoDetailArea {
+    width: 1000px;
+    padding: 50px 100px;
+    background-color: rgb(255, 249, 243);
+}
+
+.infoDetailArea section {
+    margin-bottom: 30px;
+}
+
+.infoDetailArea section h3{
+    margin: 5px 0 10px 0;
+    letter-spacing: 10px;
+}
+
+.infoDetailArea section p {
+    margin-left: 10px;
+    text-indent: 5px;
+}
+
+
+/* 소모임 장소 영역*/
+.mapArea {
+    padding: 0 10px;
+}
+.mapArea #map {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-align: center;
+    line-height: 300px;
+}
+
+
+/* 소모임 카테고리 영역 */
+.cateIcon {
+    display: inline-block;
+    width: 100px;
+    margin: 0 5px 0 10px;
+    letter-spacing: 5px;
+    padding: 5px 10px;
+    text-align: center;
+    background-color: rgb(135, 177, 255);
+    border-radius: 20px;
+}
+
+
+/* 가입하기 버튼 영역 */
+.btnArea {
+    margin: 20px 0;
+    text-align: center;
+}
+.joinBtn{
+    width: 100px;
+    height: 50px;
+    padding: 10px 15px;
+    background-color: rgb(255, 210, 220);
+    border: 1px solid #eee;
+    border-radius: 2px;
+    cursor: pointer;
+}

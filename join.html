@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/join.css">
+</head>
+<body>
+    <h2>회원가입</h2>
+    <h3>회원이 되어 다양한 사람들과 만나보세요!</h3>
+    <h4>(모든 항목을 입력해주세요)</h3>
+    <form>
+        <div>
+            <label for="id" >아이디</label>
+            <button type="button" class="idCheck check">중복 확인</button>
+            <input type="text" id="id" name="id" placeholder="아이디 입력(?~??자)" required>
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)" required>
+        </div>
+        <div>
+            <label for="passwordCheck">비밀번호 확인</label>
+            <input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 재입력" required>
+        </div>
+        <div>
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
+        </div>
+        <div>
+            <label for="nickname">닉네임</label>
+            <button type="tbuton" class="nicknameCheck check">중복 확인</button>
+            <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required>
+        </div>
+        <div>
+            <label for="address">주소</label>
+            <button type="button" class="findZipcode">우편번호 찾기</button>
+            <input type="tel" id="zipcode" name="zipcode" maxlength="10" size="10" placeholder="우편 번호" required>
+            <input type="text" id="address" name="address" maxlength="100" size="60" placeholder="예) 101동 3층, 202동 302호">
+        </div>
+        <div>
+            <label for="birthdate">생년월일</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+        </div>
+        <div>
+            <label for="phone">전화번호</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호 입력 ('-'제외 11자리 입력)" required>
+        </div>
+        <div class="email">
+            <label for="email">이메일주소</label>
+            <input type="text" id="emailId" name="emailId">
+            <span>@</span>
+            <input type="text" id="emailDomain"  name="emailDomain">
+            <select name="domainList" id="domainList">
+                <option value="self">직접입력</option>
+                <option value="gmail">gmail.com</option>
+                <option value="naver">naver.com</option>
+                <option value="daum">daum.net</option>
+                <option value="hanmail">hanmail.net</option>
+                <option value="yahoo">yahoo.com</option>
+                <option value="nate">nate.com</option>
+            </select>
+        </div>
+        <div class="emailCheck">
+            <input type="checkbox">
+            <button type="button" class="emailCheckBtn">이메일 중복 확인</button>
+        </div>
+        <div class="submitCancel">
+            <button type="submit">가입하기</button>
+            <button type="button" class="cancel">가입취소</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+#contentsArea {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.innerCont {
+    padding: 0 100px;
+}
+
+.uploadArea {
+    text-align: center; 
+}
+
+.imgCrop {
+    display: inline-block;
+    position: relative;
+    width: 500px;
+    height: 300px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.imgCrop img {
+    position: absolute;
+    top: 0;
+    left: -300px;
+    width: 1200px;
+    height: 400px;
+}
+
+
+.btnComm {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 10px;
+    line-height: 30px;
+}
+.btnUpload {
+    background: #f49a9a;
+}
+
+.require {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    white-space: nowrap;
+    text-indent: 12px;
+    overflow: hidden;
+}
+.require::before {
+    color:#E66B62;
+    content: '*';
+    position: relative;
+    left: -10px;
+    top: -2px;
+
+}
+
+.formArea {
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.formArea>p {
+    margin-top: 10px;
+    padding: 0 0 10px 0;
+    text-align: right;
+    border-bottom: 2px solid #E66B62;
+}
+
+.formTbl {
+    width: 800px;
+    margin: 0 auto;
+
+}
+
+.formTbl tr:not(:nth-of-type(5)), .formTbl tr:not(:nth-of-type(7)) {
+    height: 50px;
+}
+
+
+.formTbl tr th{
+    width: 200px;
+    text-indent: 10px;
+    text-align: justify;
+    letter-spacing: 10px;
+
+}
+
+.innerTblArea {
+    display: inline-block;
+    width: 800px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.innerTblArea .cateTbl {
+    width: 780px;
+}
+
+
+.formTbl tr:nth-of-type(8) td{
+    padding: 0 50px;
+}
+.formTbl tr:nth-of-type(8) p{
+    text-align: right;
+}
+.formTbl tr:nth-of-type(9) th,tr:nth-of-type(9) td  {
+    border-top: 1px dashed #E66B62;
+    border-bottom: 1px dashed #E66B62; 
+}
+
+.formTbl tr:nth-of-type(10) td {
+    padding: 0 10px;
+}
+
+.formTbl tr:nth-of-type(11) td{
+    text-align: center;
+}
+#grpDescription {
+    width: 700px;
+    padding: 5px;
+    resize: none;
+}
+
+#createGrpBtn {
+    display: inline-block;
+    width: 100px;
+    padding: 10px 15px;
+
+}
