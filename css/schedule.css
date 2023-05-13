@@ -28,15 +28,20 @@ a {
   width: 1200px;
   position: relative;
 }
+
 /* 소모임 */
 .insideMenu {  
+  margin: 20px auto;
+}
+.meetName{
   margin-bottom: 20px;
 }
 .meetNameTitle {
-  margin: 20px auto;
-  padding: 120px 110px 20px 0;
+  margin: 20px 0;
+  padding: 120px 200px 20px 0;
+  width: 100%;  
   text-align: right;
-  /* border: 2px solid red; */
+  border: 2px solid red;
 }
 
 /* 소모임내부 좌측메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
