@@ -116,15 +116,6 @@ li {
        url('font/Neo/NanumSquareNeo-eHv.woff')  format('woff'),
        url('font/Neo/NanumSquareNeo-eHv.ttf')  format("truetype");
 }
-@font-face {
-  font-family: "webcafeIcon";
-  font-weight: 400;
-  src: url("font/webcafeIcon/webcafeIcon.eot?#iefix") format("embedd-opentype"),
-  url("font/webcafeIcon/webcafeIcon.woff") format("woff"),
-  url("font/webcafeIcon/webcafeIcon.ttf") format("truetype"),
-  url("font/webcafeIcon/webcafeIcon.svg#webcaferegular") format("svg");
-}
-
 
 
 input,
