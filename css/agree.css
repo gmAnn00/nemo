@@ -1,0 +1,29 @@
+.terms {
+    width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.terms h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+.termsContent {
+    border: 1px solid #000;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 10px;
+}
+.terms .allAg {
+    position: relative;
+    top: 20px;
+}
+.terms .btn {
+    position: relative;
+    top: 35px;
+    left: 220px;
+    margin: 0 auto;
+}
