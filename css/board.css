@@ -1,0 +1,105 @@
+#contentsArea {
+    margin: 0 auto;
+    width: 1200px;
+}
+a {
+    text-decoration: none;
+    color: #111;
+}
+/* 소모임 */
+.insideMenu {
+    height: 100px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+.insideMenu h2, .insideMenu h3 {
+    padding-left: 30px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* 소모임내부 좌측메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
+.meetMenu {
+    width: 100px;
+    height: 150px;    
+    margin: 60px 0 0 30px;    
+    display: inline-block;
+    background-color: #eee;
+    padding: 10px 20px;
+}
+.meetMenu li {
+    list-style: none;
+    line-height: 30px;
+    margin: 15px;
+}
+.meetMenu li a {
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+/* 게시판 부분 */
+.board {
+    margin: 20px 50px 20px 220px;
+    width: 850px;
+    padding: 20px 50px;
+    /* border: 2px solid red; */
+}
+.search {
+    margin-left: 110px;
+    height: 36px;
+    line-height: 36px;
+    margin-bottom: 20px;
+}
+.search select {
+    height: 36px;
+    border: 1px solid #ccc;
+}
+.search input {
+    height: 34px;
+    width: 500px;
+    border: 1px solid #ccc;
+}
+.boardListArea {
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid #ccc;
+}
+/* 말머리 뒤에 | 붙이기 */
+.list thead tr th:first-child::after {
+    margin-right: 5px;
+    content: " | ";
+}
+.boardList {
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    width: 800px;
+    height: 500px;
+}
+.boardList tr {
+    margin: 10px;
+    height: 30px;
+    border-bottom: 2px solid #ccc;
+}
+.pagenation {
+    height: 40px;    
+    line-height: 60px;
+    text-align: center;
+}
+.pagenation span {
+    margin: 5px 10px;
+}
+.button {
+    display: inline-block;
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    line-height: 36px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #ccc;  
+}
