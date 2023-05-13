@@ -52,71 +52,70 @@ li {
 @font-face {
   font-family: "SansLight";
   font-weight: 300;
-  src: url('font/gSans/GmarketSansLight.eot?#iefix') format('embedded-opentype'),
-  url('font/gSans/GmarketSansLight.woff2') format('woff2'),
-  url('font/gSans/GmarketSansLight.woff') format('woff'),
-  url('font/gSans/GmarketSansLight.ttf') format('truetype');
+  src: url("font/gSans/GmarketSansLight.eot?#iefix") format("embedded-opentype"),
+    url("font/gSans/GmarketSansLight.woff2") format("woff2"),
+    url("font/gSans/GmarketSansLight.woff") format("woff"),
+    url("font/gSans/GmarketSansLight.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "SansMedium";
   font-weight: 500;
-  src: url('font/gSans/GmarketSansMedium.eot#iefix') format('embedded-opentype'),
-  url('font/gSans/GmarketSansMedium.woff2') format('woff2'),
-  url('font/gSans/GmarketSansMedium.woff') format('woff'),
-  url('font/gSans/GmarketSansMedium.ttf') format('truetype');
+  src: url("font/gSans/GmarketSansMedium.eot#iefix") format("embedded-opentype"),
+    url("font/gSans/GmarketSansMedium.woff2") format("woff2"),
+    url("font/gSans/GmarketSansMedium.woff") format("woff"),
+    url("font/gSans/GmarketSansMedium.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "SansBold";
   font-weight: 700;
-  src: url('font/gSans/GmarketSansBold.eot?#iefix') format('embedded-opentype'),
-  url('font/gSans/GmarketSansBold.woff2') format('woff2'),
-  url('font/gSans/GmarketSansBold.woff') format('woff'),
-  url('font/gSans/GmarketSansBold.ttf') format('truetype');
+  src: url("font/gSans/GmarketSansBold.eot?#iefix") format("embedded-opentype"),
+    url("font/gSans/GmarketSansBold.woff2") format("woff2"),
+    url("font/gSans/GmarketSansBold.woff") format("woff"),
+    url("font/gSans/GmarketSansBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "NeoLight";
   font-weight: 300;
-  src: url('font/Neo/NanumSquareNeo-aLt.eot?#iefix') format('embedded-opentype'),
-       url('font/Neo/NanumSquareNeo-aLt.woff2')  format('woff2'),
-       url('font/Neo/NanumSquareNeo-aLt.woff')  format('woff'),
-       url('font/Neo/NanumSquareNeo-aLt.ttf')  format("truetype");
+  src: url("font/Neo/NanumSquareNeo-aLt.eot?#iefix") format("embedded-opentype"),
+    url("font/Neo/NanumSquareNeo-aLt.woff2") format("woff2"),
+    url("font/Neo/NanumSquareNeo-aLt.woff") format("woff"),
+    url("font/Neo/NanumSquareNeo-aLt.ttf") format("truetype");
 }
 @font-face {
   font-family: "NeoRegular";
   font-weight: 400;
-  src: url('font/Neo/NanumSquareNeo-bRg.eot?#iefix') format('embedded-opentype'),
-       url('font/Neo/NanumSquareNeo-bRg.woff2')  format('woff2'),
-       url('font/Neo/NanumSquareNeo-bRg.woff')  format('woff'),
-       url('font/Neo/NanumSquareNeo-bRg.ttf')  format("truetype");
+  src: url("font/Neo/NanumSquareNeo-bRg.eot?#iefix") format("embedded-opentype"),
+    url("font/Neo/NanumSquareNeo-bRg.woff2") format("woff2"),
+    url("font/Neo/NanumSquareNeo-bRg.woff") format("woff"),
+    url("font/Neo/NanumSquareNeo-bRg.ttf") format("truetype");
 }
 @font-face {
   font-family: "NeoBold";
   font-weight: 700;
-  src: url('font/Neo/NanumSquareNeo-cBd.eot?#iefix') format('embedded-opentype'),
-       url('font/Neo/NanumSquareNeo-cBd.woff2')  format('woff2'),
-       url('font/Neo/NanumSquareNeo-cBd.woff')  format('woff'),
-       url('font/Neo/NanumSquareNeo-cBd.ttf')  format("truetype");
+  src: url("font/Neo/NanumSquareNeo-cBd.eot?#iefix") format("embedded-opentype"),
+    url("font/Neo/NanumSquareNeo-cBd.woff2") format("woff2"),
+    url("font/Neo/NanumSquareNeo-cBd.woff") format("woff"),
+    url("font/Neo/NanumSquareNeo-cBd.ttf") format("truetype");
 }
 @font-face {
   font-family: "NeoExBold";
   font-weight: 800;
-  src: url('font/Neo/NanumSquareNeo-dEb.eot?#iefix') format('embedded-opentype'),
-       url('font/Neo/NanumSquareNeo-dEb.woff2')  format('woff2'),
-       url('font/Neo/NanumSquareNeo-dEb.woff')  format('woff'),
-       url('font/Neo/NanumSquareNeo-dEb.ttf')  format("truetype");
+  src: url("font/Neo/NanumSquareNeo-dEb.eot?#iefix") format("embedded-opentype"),
+    url("font/Neo/NanumSquareNeo-dEb.woff2") format("woff2"),
+    url("font/Neo/NanumSquareNeo-dEb.woff") format("woff"),
+    url("font/Neo/NanumSquareNeo-dEb.ttf") format("truetype");
 }
 @font-face {
   font-family: "NeoExHeavy";
   font-weight: 900;
-  src: url('font/Neo/NanumSquareNeo-eHv.eot?#iefix') format('embedded-opentype'),
-       url('font/Neo/NanumSquareNeo-eHv.woff2')  format('woff2'),
-       url('font/Neo/NanumSquareNeo-eHv.woff')  format('woff'),
-       url('font/Neo/NanumSquareNeo-eHv.ttf')  format("truetype");
+  src: url("font/Neo/NanumSquareNeo-eHv.eot?#iefix") format("embedded-opentype"),
+    url("font/Neo/NanumSquareNeo-eHv.woff2") format("woff2"),
+    url("font/Neo/NanumSquareNeo-eHv.woff") format("woff"),
+    url("font/Neo/NanumSquareNeo-eHv.ttf") format("truetype");
 }
-
 
 input,
 select,
@@ -136,7 +135,6 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
 }
-
 /* 숨김 콘텐츠 */
 .hidden {
   position: absolute;
