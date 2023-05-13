@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 재설정</title>
+    <script src="js/jquery-3.6.3.min.js"></script>
+    <script src="js/findIdPass.js"></script>
+    <link rel="stylesheet" href="css/findIdPass.css">
+</head>
+<body>
+    <!-- 아이디/비밀번호 찾기 영역 -->
+    <div class="container">
+        <ul class="tabs">
+            <li class="tabId" data-tab="idTab"><a href="findIdPass.html">아이디 찾기</a></li>
+            <li class="tabPass" data-tab="passTab">비밀번호 재설정</li>
+        </ul>
+        
+        <div id="idTab" class="tabContent current">
+            <h2>아이디 찾기</h2>
+            <p>아이디는 가입시 입력하신 이메일로 찾으실 수 있습니다.</p>
+            <form action="findId.html">
+                <label for="nameInput"></label>
+                <input type="text" id="nameInput" placeholder="이름을 입력해주세요" required/>
+                <label for="emailInput"></label>
+                <input type="text" id="emailInput" placeholder="이메일을 입력해주세요" required/>
+                <button type="submit">아이디 찾기</button>
+            </form>
+        </div>
+        <div id="passTab" class="tabContent"> 
+            <h2>비밀번호 재설정</h2>
+            <p>비밀번호는 아이디, 이름, 이메일을 입력하시면 재설정 하실 수 있습니다.</p>
+            <form action="passReset.html">
+                <label for="password"></label>
+                <input type="text" id="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)" required />
+                <label for="passwordCheck"></label>
+                <input type="text" id="passwordCheck" placeholder="비밀번호 확인" required/>
+                <button type="submit">비밀번호 재설정 하기</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
