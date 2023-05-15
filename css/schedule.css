@@ -12,7 +12,7 @@
   font-weight: bold;
   text-align: center;
   vertical-align: top;
-  background-color: #ccc;  
+  background-color: #ccc;
 }
 a {
   text-decoration: none;
@@ -30,16 +30,16 @@ a {
 }
 
 /* 소모임 */
-.insideMenu {  
+.insideMenu {
   margin: 20px auto;
 }
-.meetName{
+.meetName {
   margin-bottom: 20px;
 }
 .meetNameTitle {
   margin: 20px 0;
   padding: 120px 200px 20px 0;
-  width: 100%;  
+  /* width: 100%;   */
   text-align: right;
   border: 2px solid red;
 }
@@ -59,7 +59,7 @@ a {
 }
 .meetMenu {
   width: 100px;
-  height: 110px;    
+  height: 110px;
   /* margin: 30px 0 0 30px; */
   padding: 40px 20px;
   display: inline-block;
@@ -71,18 +71,18 @@ a {
 .meetMenu li {
   list-style: none;
   line-height: 25px;
-  margin: 15px;  
+  margin: 15px;
 }
-.meetMenu li.title {  
-  width: 90px;  
+.meetMenu li.title {
+  width: 90px;
   padding: 5px 20px 5px 30px;
   margin: 0 auto;
-  position: absolute;  
+  position: absolute;
   top: 0px;
-  left: 0px;  
+  left: 0px;
   line-height: 30px;
   font-size: 16px;
-  font-weight: bold;  
+  font-weight: bold;
   letter-spacing: 10px;
   text-align: center;
   background-color: #999;
@@ -92,8 +92,6 @@ a {
   font-weight: bold;
 }
 
-
-
 /* 일정등록, 확인 영역 시작 */
 .schedule {
   margin: 20px 30px 20px 220px;
@@ -101,7 +99,7 @@ a {
   padding: 20px 20px;
   /* border: 2px solid red; */
 }
-.calendarSchedule>div{
+.calendarSchedule > div {
   float: left;
 }
 /* 달력부분 mySchedule.css----- */
@@ -111,12 +109,12 @@ a {
 #myscheduleCalendarArea {
   width: 415px;
   height: 450px;
-  /* margin: 0 auto; */  
+  /* margin: 0 auto; */
 }
 .calendarTable {
   margin-top: 13px;
-  width: 415px; 
-  /* border: 1px solid red; */  
+  width: 415px;
+  /* border: 1px solid red; */
   font-weight: bold;
 }
 .calendarTable tr {
@@ -138,7 +136,7 @@ a {
   background-color: #999;
   margin: 0 10px 0 15px;
 }
-.calendarTable td {  
+.calendarTable td {
   width: 20px;
   height: 70px;
 }
@@ -176,8 +174,6 @@ a {
 }
 /* 달력부분 mySchedule.css-----끝 */
 
-
-
 /* 예정모임, 지난모임 일정 */
 .scheduleNP {
   /* border: 1px solid #ccc; */
@@ -185,11 +181,11 @@ a {
   height: 450px;
   margin-left: 15px;
 }
-.scheduleNP > div > strong {  
+.scheduleNP > div > strong {
   margin-left: 20px;
   line-height: 30px;
 }
-.scheduleNP table { 
+.scheduleNP table {
   width: 380px;
   height: 100px;
   text-align: center;
@@ -223,7 +219,7 @@ a {
 
 /* --일정상세-- */
 /* 빈 일정 */
-.scheduleNone {  
+.scheduleNone {
   border: 1px solid #ccc;
   margin: 20px 0;
   position: relative;
@@ -239,7 +235,7 @@ a {
 }
 /* 일정 조회 */
 .scheduleDetail {
-  border: 1px solid #ccc;  
+  border: 1px solid #ccc;
   position: relative;
 }
 .detailTop {
@@ -270,7 +266,7 @@ a {
   background-color: #eee;
 }
 .content {
-  margin: 0 auto;  
+  margin: 0 auto;
   /* border: 1px solid #ccc; */
 }
 .dateTime {
@@ -309,7 +305,7 @@ a {
   background-color: antiquewhite;
 }
 .participant {
-  padding-left: 10px; 
+  padding-left: 10px;
   position: relative;
 }
 .partBtn a {
