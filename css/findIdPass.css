@@ -30,6 +30,7 @@ ul.tabs li.current{
 }
 .tabContent h2, p{
     text-align: center;
+    margin: 20px;
 }
 .tabContent.current{
     display: inherit;
