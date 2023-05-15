@@ -1,0 +1,24 @@
+.contentsArea {
+    width: 800px;
+    margin: 0 auto;
+}
+.contentsArea h2 {
+    margin-bottom: 30px;
+}
+.contentsArea h3 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.btnInterest {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 150px;
+}
+.saveInterest {
+    margin-top: 30px;
+    text-align: center;
+}
+.saveInterest button{
+    display: inline-block;
+    padding: 10px;
+}
