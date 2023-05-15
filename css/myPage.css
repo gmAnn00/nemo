@@ -68,6 +68,8 @@ a:visited {
 .myProMo {
     width: 600px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 
 }
 .myProMo >h3 {
