@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글·댓글</title>
+
+    <link rel="stylesheet" href="css/boardMy.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <!--1번-->
+    <div class="all">
+        <!--2번-->
+        <div class="h2Text">
+            <h2>게시글·댓글</h2>
+        </div>
+
+        <!--3. 메뉴-->
+        <div class="menu">
+            <ul>
+                <li><a href="#">프로필</a></li>
+                <li><a href="#"><i class="fa-solid fa-calendar-days"></i>내 일정</a></li>
+                <li><a href="#"><i class="fa-solid fa-user-group"></i>내 소모임</a></li>
+                <li><a href="#"><i class="fa-solid fa-border-all"></i>게시글·댓글</a></li>
+            </ul>
+        </div>
+
+        <!--4번-->
+        <div class="bodarBox">
+            <!--4-1-->
+            <div class="boxText">
+                <h3>게시글 관리</h3> 
+            </div>
+            <!--4-2-->
+            <div class="button">
+                <button class="selectD">선택삭제</button>
+            </div>
+            <!--4-3-->
+            <div class="table">
+                <table border="1">
+                    <th>번호</th><th>제목</th><th>날짜</th>
+                    <tr>
+                        <td>No.1</td><td>소모임1|고양이들은 야옹야옹</td><td>2023.04.30</td><button>삭제</button>
+                    </tr>
+                    <tr>
+                        <td>No.2</td><td>소모임2|강아지들은 멍멍</td><td>2023.04.30</td><button>삭제</button>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+
+        <!--5번-->
+        <div class="repBox">
+            <!--5-1-->
+            <div class="boxText">
+                <h3>댓글 관리</h3>
+            </div>
+            <!--5-2-->
+            <div class="button">
+                <button class="selectD">선택삭제</button>
+            </div>
+            <!--5-3-->
+            <div class="table">
+                <table border="1">
+                    <th>번호</th><th>제목</th><th>날짜</th>
+                    <tr>
+                        <td rowspan="2">No.1</td><td rowspan="2">소모임3|오리는 꽥꽥<br>ㄴ Re : 병아리는 삐약</td><td>2023.04.30</td><button>삭제</button><br>
+                    </tr>
+                    <tr>
+                        <td>2023.04.27</td><button>삭제</button>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2">No.2</td><td rowspan="2">소모임4|나만 고영희 없어<br>ㄴ Re : 나도 없어ㅠ</td><td>2023.04.28</td><button>삭제</button><br>
+                    </tr>
+                    <tr>
+                        <td>2023.04.30</td><button>삭제</button>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
