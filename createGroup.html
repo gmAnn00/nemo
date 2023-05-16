@@ -6,6 +6,7 @@
     <title>NEMO</title>
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/createGroup.css">
@@ -265,16 +266,46 @@
     </div>
     <!-- main content 종료-->
 
-    <!-- footer 시작-->
+    <!-- 푸터 영역 시작 -->
     <footer id="footer">
-
+        <div id="footerInner">
+            <div class="footerContents">
+                <div class="footerLeft">
+                    <ul>
+                        <li><a href="#">동네모임네모</a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보 처리방침</a></li>
+                    </ul>
+                </div>
+                <div class="footerRight">
+                    <div class="sns">
+                        <img src="images/temp.png" alt="" />
+                        <img src="images/temp.png" alt="" />
+                        <img src="images/temp.png" alt="" />
+                        <img src="images/temp.png" alt="" />
+                    </div>
+                <div class="address">
+                    <address>
+                        <p>Addr. 서울시 종로구 종로78</p>
+                        <p>T. 02-123-4567</p>
+                        <p>E. admin@nemo.com</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
-    <!-- footer 종료-->
+    <!-- 푸터 영역 끝 -->
     
 </body>
 <script src="js/createGroup/createGroup.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <!--
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({

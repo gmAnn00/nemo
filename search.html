@@ -7,12 +7,93 @@
     <link rel="stylesheet" href="css/search.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/normalize.css">
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+    <script src="js/header.js"></script>
     <title>검색페이지</title>
     <style>
       
     </style>
   </head>
   <body>
+        <!-- header 시작 -->
+        <header>
+          <h1 class="logo">
+              <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+          </h1>
+          <div class="menu_btn">
+              <a href="#">       
+                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
+              </a>
+          </div>
+          <div class="sidebar_menu">
+              <div class="close_btn">
+                  <a href="#">       
+                      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+                  </a>
+              </div>
+              <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+              <ul class="menu_wrap">
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox">
+                              <i class="fa-solid fa-user-plus"></i>
+                          </div>
+                          <div>소모임 만들기</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox">
+                              <i class="fa-solid fa-person-chalkboard"></i>
+                          </div>
+                          <div>소모임 검색</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
+                      <div>프로필</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
+                          <div>내 일정</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
+                          <div>내 소모임</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
+                          <div>고객센터</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+                  <li>
+                      <div class="icon_menu">
+                          <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
+                          <div>로그아웃</div>
+                      </div>
+                      <i class="fa-solid fa-angle-right"></i>
+                  </li>
+              </ul>
+          </div>
+      </header>
+      <!-- header 종료 -->
+      <!-- 배경색 조정 -->
+      <div class="menu_bg"></div>
+
     <div id="contentsArea">
       <!--카테고리 영역-->
       <div class="categoriesArea">
