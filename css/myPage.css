@@ -66,16 +66,15 @@ a:visited {
 }
 /*4-1*/
 .myProMo {
-    margin: 20px 0;
+    margin: 10px 0;
     width: 600px;
-
     display: flex;
     justify-content: space-between;
 
 }
 .myProMo >h3 {
     display: inline-block;
-    font-size: 0.9em;
+    font-size: 1.2em;
 
 }
 
@@ -83,21 +82,31 @@ a:visited {
 .myIM {
     display: flex;
 }
+.myImage > label {
+    display: block;
+    text-align: center;
 
-.myModi li {
-    margin: 10px 40px;
 }
-/*5번*/
+
+/*4-3*/
+.profileModi {
+    width: 300px;
+    margin-bottom: 20px;
+}
+.myModi li {
+    margin: 0 20px 10px 80px;
+}
 .myHabi {
     width: 700px;
+    margin-top: 50px;
+    border-bottom: 1px solid black;
 }
 .myHabiText {
     display: flex;
     justify-content: space-between;
 }
 .myHabiText > h3 {
-    font-size: 0.9em;
-  
+    font-size: 1.2em;
 }
 .modify {
     padding: 10px 20px;
@@ -105,6 +114,55 @@ a:visited {
 .myHabiI li {
     display: inline-block;
     margin: 30px 20px;
+}
+
+/*5번*/
+/*5-1*/
+.mySomoim1 {
+    height: 150px;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+.nemoText{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+.nemoText > h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+/*5-2*/
+.nemoTextArea1 li {
+    display: flex;
+    margin: 10px 40px;
+    justify-content: space-between;
+}
+
+/*6번*/
+/*6-1*/
+.myHSomoim2 {
+    height: 150px;
+    margin-left: 30px;
+    margin-top: 50px;
+    border-bottom: 1px solid black;
+}
+.nemoText{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+.nemoText > h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+/*5-2*/
+.nemoTextArea2 li {
+    display: flex;
+    margin: 10px 40px;
+    justify-content: space-between;
 }
 
 
