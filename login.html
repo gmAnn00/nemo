@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 화면</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header></header>
+
+    <!-- 로그인 영역 -->
+    <div id="contentsArea">
+        <section class="imageArea box">
+            <a href="index.html">
+                <img src="images/nemoLogo1.jpg" alt="Logo">
+            </a>
+            <p class="msg">로그인하여 다양한</p>
+            <p class="msg">사람들과 만나보세요</p>
+            <p class="url"><a href="index.html"><span>www.nemo.com</span></a></p>
+        </section>
+        <section class="loginArea box">
+            <h2>로그인</h2>
+            <form method="post" action="#" id="loginForm">
+                <input type="text" name="userName" id="userName" placeholder="아이디" required>
+                <input type="password" name="userPassword" id="userPassword" placeholder="비밀번호" required>
+                <input type="submit" value="로그인">
+                <label for="keepLogin">
+                    <input type="checkbox" class="keepLogin">로그인 상태 유지
+                </label>
+                <label for="rememberCheck">
+                    <input type="checkbox" class="rememberCheck">아이디 저장
+                </label>
+                <p class="joinFind">
+                    <a href="join.html" class="join">회원가입</a>
+                    <a href="find.html" class="find">아이디/비밀번호 찾기</a>
+                </p>
+                <input type="button" value="네이버 아이디로 로그인" class="naverLog">
+                <input type="button" value="카카오 아이디로 로그인" class="kakaoLog">
+                <input type="button" value="구글 아이디로 로그인" class="googleLog">
+            </form>
+        </section>
+    </div>
+
+    <!-- 푸터 영역 -->
+    <footer></footer>
+</body>
+</html>

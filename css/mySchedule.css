@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+div.myScheduleMenuAndCal {
+  width: 1000px;
+  display: flex;
+}
+
+ul.myScheduleMenu {
+  width: 150px;
+  height: 300px;
+  background: #ccc;
+}
+
+div.myScheduleCalAndList {
+  display: flex;
+  flex-direction: column;
+}
+
+#myScheduleCalendarArea {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.calendarTable {
+  margin: 0 auto;
+  width: 600px;
+  border: 1px solid red;
+}
+.calendarTable td {
+  width: 80px;
+  height: 75px;
+}
+.calDate {
+  height: 50px;
+  position: relative;
+}
+.calDate span {
+  height: 40px;
+}
+.calWeek {
+  height: 40px;
+}
+.calendarTable {
+  background: #fff;
+}
+.calendarTable td.passedDay.hasDay {
+  /* 음... 지나간날 css */
+}
+.calendarTable td.hasDay {
+  text-align: center;
+  cursor: pointer;
+}
+.calendarTable td.hasDay:hover {
+  background: pink;
+}
+.calendarTable tbody td.selectDay.hasDay:not(.passedDay) {
+  background: pink;
+}
+.calendarTable .blue {
+  color: blue;
+}
+.calendarTable .red {
+  color: red;
+}
+
+div.myScheduleListArea {
+  margin: 0 auto;
+  width: 600px;
+}
+div.mySchedule {
+  border: 1px solid red;
+  position: relative;
+}
+div.mySchedule img {
+  width: 100px;
+  height: 100px;
+}
+
+div.mySchedule p.myScheduleDate {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+div.mySchedule p.myScheduleGroupName {
+  display: inline-block;
+  font-size: 1.2em;
+  position: relative;
+  top: -50px;
+}
+div.mySchedule p.contents {
+  margin-left: 105px;
+  position: relative;
+  top: -50px;
+}

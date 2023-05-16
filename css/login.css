@@ -1,0 +1,121 @@
+a {
+    text-decoration: none;
+}
+#contentsArea{
+    width: 900px;
+    height: 600px;
+    padding: 40px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+}
+#contentsArea h2{
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.imageArea {
+    background-image: url("../images/야옹대가족.JPG");
+    background-size: 451px 343px;
+    background-repeat: no-repeat;
+    background-position-y: 80px;
+    width: 55%;
+    position: relative;
+}
+.imageArea img {
+    width: 300px;
+    height: 60px;
+    margin-top: 20px;
+}
+.imageArea .msg {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3em;
+    position: relative;
+    top: 150px;
+    left: 10px;
+}
+.imageArea .url {
+    display: inline-block;
+    position: relative;
+    top: 300px;
+    left: 100px;
+    font-size: 2em;
+    font-weight: bold;
+}
+.imageArea span {
+    color: #000;
+}
+.loginArea {
+    width: 45%;
+}
+.loginArea .keepLogin {
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+.loginArea .rememberCheck {
+    margin-left: 15px;
+}
+.loginArea .joinFind {
+    margin-bottom: 20px;
+}
+.loginArea .joinFind a {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: #000;
+    padding: 3px 3px;
+}
+.loginArea .joinFind .join {
+    margin-left: 15px;
+    border: 1px solid #ccc;
+}
+.loginArea .joinFind .find {
+    margin-left: 40px;
+    border: 1px solid #ccc;
+}
+#loginForm, h2 {
+    width: 80%;
+    margin: 0 auto;
+}
+#loginForm > input{
+    width: 100%;
+    height: 36px;
+    padding: 0 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+#loginForm > #userName, #userPassword {
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, red 0%, orange 100%);
+    border-image-slice: 1;
+}
+#loginForm > input::placeholder{
+    color: #333;
+}
+#loginForm > input[type="submit"]{
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    border: transparent;
+    background: linear-gradient(to right, red 0%, orange 100%);
+}
+#loginForm > label{
+    font-size: 0.9em;
+}
+#loginForm > input[type="button"] {
+    border: transparent;
+    color: #fff;
+}
+#loginForm > .naverLog {
+    background: linear-gradient(to right, #2db400 70%, #8de160 100%);
+}
+#loginForm > .kakaoLog {
+    background: linear-gradient(to right, #f9e000 70%, #f4e779 100%);
+}
+#loginForm > .googleLog {
+    background: linear-gradient(to right, #888 70%, #b9b9b9 100%);
+}

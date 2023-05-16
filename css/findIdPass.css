@@ -1,0 +1,50 @@
+a {
+    text-decoration: none;
+    color: #000;
+}
+.container{
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+ul.tabs li.current{
+    background: #ededed;
+    color: #222;
+}
+.tabContent{
+    display: none;
+    background: #ededed;
+    padding: 15px;
+}
+.tabContent h2, p{
+    text-align: center;
+    margin: 20px;
+}
+.tabContent.current{
+    display: inherit;
+}
+.tabContent input {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 300px;
+}
+.tabContent button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 200px;
+}

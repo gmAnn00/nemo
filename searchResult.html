@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/search.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/searchResult.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <title>검색페이지</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div id="contentsArea">
+      <!--카테고리 영역-->
+      <div class="categoriesArea">
+        <div class="categories01">
+          <h3>카테고리</h3>
+          <div class="bar">
+          <!--대분류-->
+          <div class="bar01">
+            <div class="barText"><span>대분류</span></div>
+            <select name="bigBar" class="barSel">
+              <option value="1">대분류1</option>
+              <option value="2">대분류2</option>
+              <option value="3">대분류3</option>
+              <option value="4">대분류4</option>
+              <option value="5">대분류5</option>
+            </select>
+          </div>
+       <!--소분류-->
+          <div class="bar02">
+          <div class="barText"><span>소분류</span></div>
+        <select name="smallBar" class="barSel">
+              <option value="1">소분류1</option>
+              <option value="2">소분류2</option>
+              <option value="3">소분류3</option>
+              <option value="4">소분류4</option>
+              <option value="5">소분류5</option>
+            </select>
+        </div>
+      </div>
+      </div>
+        <div class="area">
+          <h3>지역</h3>
+          <div class="bar03">
+            <select name="areaBar" class="barSel">
+              <option value="1">지역1</option>
+              <option value="2">지역2</option>
+              <option value="3">지역3</option>
+              <option value="4">지역4</option>
+              <option value="5">지역5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="nameSearch">
+        <h2>소모임 이름 검색</h2>
+        <div class="nameBtn">
+        <input type="text" class="searchText" />
+        <form action="#" method="get" class="searchBtn">
+          <button type="button">검색</button>
+        </form>
+      </div>
+      </div>
+      <div class="searchResult">
+        <h2 class="resultH2">검색 결과를 알 수 없습니다</h2>
+        <button class="resultBtn" type="button"><a href="#">소모임 만들기</a></button>
+        
+      </div>
+      <div class="groupPage"><span> 1 2 3 4 5</span></div>
+    </div>
+  </div>
+  </body>
+</html>

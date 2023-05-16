@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+a {
+    text-decoration: none;
+    color: black;
+}
+#contentsArea,.contTopArea,.contMainArea {
+    width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.contTopArea {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0 0 0;
+    background-color: rgb(255, 249, 243);
+}
+.contTopArea h2{
+    margin: 20px 0;
+}
+.grpMenu > li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 50px;
+
+}
+
+.imgCrop {
+    width: 1200px;
+    height: 300px;
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.imgCrop img {
+    width: 1200px;
+    height: 400px;
+}
+
+.contMainArea {
+    padding: 0 200px;
+}
+
+.recentDiv {
+    margin-bottom: 50px;
+}
+.mainTitle {
+    position: relative;
+    padding: 20px 30px;
+    margin: 10px 0;
+}
+
+/* 더보기 버튼 설정영역*/
+.more {
+    position: absolute;
+    font-size: 0.9em;
+    top:25px;
+    right: 45px;
+}
+.fa-plus {
+    margin-right: 5px;
+}
+
+/* 최근일정, 최근 게시글 테이블 설정영역*/
+.recentTbl {
+    width: 800px;
+    box-sizing: border-box;
+}
+.recentTbl tr{
+    height: 30px;
+}
+.recentTbl tr td {
+    padding: 8px 5px 8px 10px;
+    border-bottom: 1px dashed #ccc ;
+}
+
+.recentScheduledTbl tr th:nth-of-type(1), .recentScheduledTbl tr td:nth-of-type(1),
+.recentBoard tr th:nth-of-type(3), .recentBoard tr td:nth-of-type(3){
+    width: 200px;
+    text-align: center;
+
+}
+.recentScheduledTbl tr th:nth-of-type(2), .recentScheduledTbl tr td:nth-of-type(2),
+.recentBoard tr th:nth-of-type(1), .recentBoard tr td:nth-of-type(1) {
+    width: 430px;
+}
+.recentScheduledTbl tr td:nth-of-type(2) p, .recentBoard tr td:nth-of-type(1) p{
+    width: 430px;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-indent: 5px;
+}
+.recentScheduledTbl tr th:nth-of-type(3), .recentScheduledTbl tr td:nth-of-type(3),
+.recentBoard tr th:nth-of-type(2), .recentBoard tr td:nth-of-type(2) {
+    width: 150px;
+}
+
+
+/* 멤버 영역 시작*/
+.memberArea {
+    width: 800px;
+    height: 200px;
+    position: relative;
+    padding-bottom: 30px;
+    background-color: rgb(255, 249, 243);
+
+}
+.animationSlide {
+    width: 700px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.sliderPanel {
+    position: relative;
+}
+.nemoMemTitle {
+    display: inline-block;
+    width: 100px;
+}
+.fa-chevron {
+    font-size: 40px;
+}
+.btnEventPrev {
+    position: absolute;
+    top:100px;
+    left: 25px;
+
+}
+.btnEventNext {
+    position: absolute;
+    top:100px;
+    right: 25px;
+}
+
+.fa-chevron.btnActive {
+    cursor: pointer;
+    color: #222;
+}
