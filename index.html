@@ -3,69 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/header.css">
+    
     <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/header.js"></script>
     <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <title>메인페이지</title>
-    <style>
-header {
-  width: 100%;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-}
-    </style>
-  <script>
-    $(document).ready(function(){
-        $('.menu_btn>a').click(function(){
-            $('.menu_bg').show();
-            $('.wrapper').addClass('active');
-            $('body,html').css({
-                height:'100vh',
-                overflow:'hidden'
-            });
-            $('.sidebar_menu').show().animate({
-                right:0
-             });  
-        });
-        $('.close_btn>a, .menu_bg').click(function(){
-            $('.menu_bg').hide();
-            $('.wrapper').removeClass('active');
-            $('body,html').css({
-                height:'auto',
-                overflow:'visible',
-            });
-            $('.sidebar_menu').animate({
-                right: '-20%'
-            },function(){
-                $('.sidebar_menu').hide(); 
-            }); 
-         });
-
-  $('.swiper').each(function(index) {
-  t = $(this);
-  t.addClass('swiepr-' + index);
-
-  let swiper = new Swiper( t, {
-    autoplay: {
-      delay: 0, //add
-      disableOnInteraction: false,
-    },
-    speed: 5000,
-    loop: true,
-    loopAdditionalSlides: 1,
-    slidesPerView: 5,
-  });
-});
-});
-</script>
   </head>
   <body>
-    <!-- header 시작 -->
     <header>
       <h1 class="logo">
           <a href="index.html"><img src="images/logo.png" alt="logo"></a>
@@ -139,11 +87,9 @@ header {
           </ul>
       </div>
   </header>
-  <!-- header 종료 -->
-  <!-- 배경색 조정 -->
-  <div class="menu_bg"></div>
 
-
+  <div class="menu_bg">
+  </div>
     <!--메인 이미지 영역-->
     <div id="contentsArea">
       <div class="mainPage">
@@ -192,6 +138,7 @@ header {
           </div>
         </div>
       </div>
+
       <!-- 관심사, 소모임 보여주는 영역-->
       <div class="group01">
         <div class="smallGroup">
@@ -241,6 +188,7 @@ header {
               </div>
           </div>
         </div>
+
         <!--가까운 소모임 영역-->
         <div class="closeGroup">
             <div class="closeText">
@@ -291,6 +239,7 @@ header {
         </div>
       </div>
     </div>
+
     <!-- 푸터 영역 시작 -->
     <footer id="footer">
       <div id="footerInner">
