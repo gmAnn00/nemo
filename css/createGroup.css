@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+/*
 * {
     box-sizing: border-box;
 }
@@ -7,7 +7,7 @@
 .hidden {
     display: none;
 }
-
+*/
 #contentsArea {
     width: 1200px;
     margin: 0 auto;
