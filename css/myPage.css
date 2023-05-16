@@ -1,0 +1,106 @@
+@charset "utf-8";
+/*a 태그*/
+a:link {
+    color: #4f4f4f; /*파랑색을 약간 회색으로*/
+    text-decoration: none; /*밑줄 없애기*/
+}
+
+a:visited { 
+    color: #8a8e91; /*방문시 보라색에서 회색*/
+    text-decoration: none;
+}
+/*전체 부분*/
+.all {
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+}
+
+/*2번*/
+.menu {
+    height: 170px;
+    margin: 80px 60px 0 50px;
+    display: inline-block;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #ccc;
+    border-radius: 10px;
+    width: 200px;
+    float: left;
+}
+
+.menu i {
+    margin-right: 10px  ;
+}
+.menu li:first-child {
+    text-align: center;
+    padding: 0;
+    border: 0px solid #6f6f6f;
+}
+.menu li {
+    line-height: 30px;
+    padding-left: 40px;
+}
+
+/*3번*/
+.contentBox {
+    margin-top: 80px;
+    margin: 80px 60px 0 0;
+}
+
+/*4번 제목부분*/
+.firstText {
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+.firstText > h3 {
+    margin-bottom: 10px;
+}
+/*4번*/
+.myProfile {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 30px;
+}
+/*4-1*/
+.myProMo {
+    width: 600px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.myProMo >h3 {
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+/*4-2*/
+.myIM {
+    display: flex;
+}
+
+.myModi li {
+    
+}
+/*5번*/
+.myHabi {
+    width: 700px;
+}
+.myHabiText {
+    display: flex;
+    justify-content: space-between;
+}
+.myHabiText > h3 {
+    font-size: 0.9em;
+    margin: 20px 0;
+    
+}
+.myHabiI li {
+    display: inline-block;
+    margin: 30px 20px;
+}
+
+
