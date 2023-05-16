@@ -30,6 +30,7 @@ ul.tabs li.current{
 }
 .tabContent h2, p{
     text-align: center;
+    margin: 20px;
 }
 .tabContent.current{
     display: inherit;
@@ -38,7 +39,8 @@ ul.tabs li.current{
     display: block;
     margin: 0 auto;
     padding: 10px;
-    width: 200px;
+    width: 220px;
+    height: 40px;
 }
 .tabContent button[type="button"] a {
     text-decoration: none;

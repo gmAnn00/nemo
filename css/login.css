@@ -1,3 +1,6 @@
+a {
+    text-decoration: none;
+}
 #contentsArea{
     width: 900px;
     height: 600px;
@@ -35,20 +38,28 @@
 .imageArea .url {
     display: inline-block;
     position: relative;
-    top: 200px;
+    top: 300px;
     left: 100px;
     font-size: 2em;
     font-weight: bold;
+}
+.imageArea span {
+    color: #000;
 }
 .loginArea {
     width: 45%;
 }
 .loginArea .keepLogin {
     margin-left: 15px;
+    margin-bottom: 20px;
 }
 .loginArea .rememberCheck {
     margin-left: 15px;
-}.loginArea .joinFind a {
+}
+.loginArea .joinFind {
+    margin-bottom: 20px;
+}
+.loginArea .joinFind a {
     text-decoration: none;
     font-size: 0.9em;
     color: #000;
@@ -78,7 +89,7 @@
     border-top: transparent;
     border-left: transparent;
     border-right: transparent;
-    border-bottom: 3px solid;
+    border-bottom: 2px solid;
     border-image: linear-gradient(to right, red 0%, orange 100%);
     border-image-slice: 1;
 }
