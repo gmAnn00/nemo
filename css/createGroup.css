@@ -12,6 +12,7 @@
     width: 1200px;
     margin: 0 auto;
     margin-bottom: 40px;
+    padding-top: 103px;
 }
 
 .innerCont {
@@ -78,7 +79,7 @@
 }
 
 .formArea>p {
-    margin-top: 10px;
+    margin: 15px 0;
     padding: 0 0 10px 0;
     text-align: right;
     border-bottom: 2px solid #E66B62;
