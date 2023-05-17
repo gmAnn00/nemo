@@ -66,41 +66,53 @@ a:visited {
 }
 /*4-1*/
 .myProMo {
+    margin: 10px 0;
     width: 600px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
 
 }
 .myProMo >h3 {
     display: inline-block;
-    font-size: 0.9em;
+    font-size: 1.2em;
+
 }
 
 /*4-2*/
 .myIM {
     display: flex;
 }
+.myImage > label {
+    display: block;
+    text-align: center;
 
-.myModi li {
-    
 }
-/*5번*/
+
+/*4-3*/
+.profileModi {
+    width: 300px;
+    margin-bottom: 20px;
+}
+.myModi li {
+    margin: 0 20px 10px 80px;
+}
 .myHabi {
     width: 700px;
+    margin-top: 50px;
+    border-bottom: 1px solid black;
 }
 .myHabiText {
     display: flex;
     justify-content: space-between;
 }
 .myHabiText > h3 {
-    font-size: 0.9em;
-    margin: 20px 0;
-    
+    font-size: 1.2em;
+}
+.modify {
+    padding: 10px 20px;
 }
 .myHabiI li {
     display: inline-block;
     margin: 30px 20px;
 }
-
 
