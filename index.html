@@ -13,6 +13,67 @@
     <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
     <title>메인페이지</title>
   </head>
+  <Script>
+     $(window).on('load', function () {
+    setFlowBanner1();  
+})
+function setFlowBanner1(){
+    const $wrap = $('.flowBanner1');
+    const $list = $('.flowBanner1 .list01');
+    let wrapWidth = $wrap.width();
+    let listWidth = $list.width();
+    const speed = 35; //1초에 몇픽셀 이동하는지 설정
+
+    //리스트 복제
+    let $clone = $list.clone();
+    $wrap.append($clone);
+    flowBannerAct()
+
+    //배너 실행 함수
+    function flowBannerAct() {
+        //무한 반복을 위해 리스트를 복제 후 배너에 추가
+        if (listWidth < wrapWidth) {
+            const listCount = Math.ceil(wrapWidth * 2 / listWidth);
+            for (let i = 2; i < listCount; i++) {
+                $clone = $clone.clone();
+                $wrap.append($clone);
+            }
+        }
+        $wrap.find('.list01').css({ 'animation': `${listWidth / speed}s linear infinite flowRolling1` }); 
+    } 
+}
+
+$(window).on('load', function () {
+    setFlowBanner2();  
+});
+
+<!-- flow2 scr영역 -->
+function setFlowBanner2(){
+    const $wrap = $('.flowBanner2');
+    const $list = $('.flowBanner2 .list02');
+    let wrapWidth = $wrap.width();
+    let listWidth = $list.width();
+    const speed = 35; //1초에 몇픽셀 이동하는지 설정
+
+    //리스트 복제
+    let $clone = $list.clone();
+    $wrap.append($clone);
+    flowBannerAct()
+
+    //배너 실행 함수
+    function flowBannerAct() {
+        //무한 반복을 위해 리스트를 복제 후 배너에 추가
+        if (listWidth < wrapWidth) {
+            const listCount = Math.ceil(wrapWidth * 2 / listWidth);
+            for (let i = 2; i < listCount; i++) {
+                $clone = $clone.clone();
+                $wrap.append($clone);
+            }
+        }
+        $wrap.find('.list02').css({ 'animation': `${listWidth / speed}s linear infinite flowRolling2` }); 
+    } 
+}
+  </Script>
   <body>
     <header>
       <h1 class="logo">
@@ -86,10 +147,10 @@
               </li>
           </ul>
       </div>
-  </header>
-
-  <div class="menu_bg">
+ <div class="menu_bg">
   </div>
+    </header>
+  
     <!--메인 이미지 영역-->
     <div id="contentsArea">
       <div class="mainPage">
@@ -105,39 +166,39 @@
       </div>
 
       <!-- 카테고리 슬라이드 영역-->
-      <div class="categories">
-        <div class="categoriesGoto">
-          <div class="categories_text"><h2>소모임 카테고리</h2></div>
-        </div>
-        <div class="swiper" dir="ltr">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="1" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="2" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="3" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="4" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="5" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="6" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="7" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="8" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="9" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="0" /></div>
+    <div class="categories"> 
+          <div class="categoriesText">
+              <h2>소모임 카테고리</h2>
           </div>
+        <div class="flowBanner1">
+          <ul class="list01">
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+              <li><img class="slide" src="images/temp.png" alt=""></li>
+          </ul>
         </div>
-        <div class="swiper" dir="ltr">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="1" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="2" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="3" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="4" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="5" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="6" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="7" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="8" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="9" /></div>
-            <div class="swiper-slide"><img class="swiper-slide" src="images/temp.png" alt="0" /></div>
-          </div>
-        </div>
-      </div>
+    <div class="flowBanner2">
+      <ul class="list02">
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+            <li><img class="slide" src="images/temp.png" alt=""></li>
+      </ul>
+    </div>
+    </div>
 
       <!-- 관심사, 소모임 보여주는 영역-->
       <div class="group01">
