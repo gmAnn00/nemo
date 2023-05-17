@@ -9,8 +9,6 @@
   height: 450px;
 }
 .mainImg {
-  display: flex;
-  justify-content: center;
   width: 100%;
   height: 450px;
 }
@@ -33,7 +31,6 @@
   right: 200px;
 }
 .categories {
-  position: relative;
   width: 100%;
   padding-bottom: 30px;
 }
@@ -41,31 +38,30 @@
   float: left;
   margin: 20px;
 }
-.categoriesText{
+.categoriesText {
   margin: 20px;
 }
 .flowBanner1 {
-overflow: hidden;
-display: flex;
-max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  max-width: 100%;
 }
 .flowBanner1 .list01 {
-display: flex;
+  display: flex;
 }
 .flowBanner1 .list01 > li {
-
 }
 @keyframes flowRolling1 {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .flowBanner2 {
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   max-width: 100%;
 }
@@ -75,18 +71,18 @@ display: flex;
 .flowBanner2 .list02 > li {
 }
 @keyframes flowRolling2 {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .slide {
-    width: 190px!important;
-    height: 190px!important;
-    margin: 5px;
-    padding: 15px 0;
+  width: 190px !important;
+  height: 190px !important;
+  margin: 5px;
+  padding: 15px 0;
 }
 
 .group01 {
