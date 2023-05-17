@@ -47,7 +47,7 @@
 .flowBanner1 {
 overflow: hidden;
 display: flex;
-max-width: 1180px;
+max-width: 100%;
 }
 .flowBanner1 .list01 {
 display: flex;
@@ -67,7 +67,7 @@ display: flex;
 .flowBanner2 {
   overflow: hidden; 
   display: flex;
-  max-width: 1180px;
+  max-width: 100%;
 }
 .flowBanner2 .list02 {
   display: flex;
