@@ -1,171 +1,286 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시판</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/submenu.css" />
+    <link rel="stylesheet" href="css/groupSetting.css" />
+    <link rel="stylesheet" href="css/board.css" />
     <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/header.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- header 시작 -->
     <header>
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-        </h1>
-        <div class="menu_btn">
-            <a href="#">       
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
-            </a>
+      <h1 class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+      </h1>
+      <div class="menu_btn">
+        <a href="#">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+"
+          />
+        </a>
+      </div>
+      <div class="sidebar_menu">
+        <div class="close_btn">
+          <a href="#">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+"
+            />
+          </a>
         </div>
-        <div class="sidebar_menu">
-            <div class="close_btn">
-                <a href="#">       
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-                </a>
+        <div class="profile">
+          <i class="fa-solid fa-circle-user"></i
+          ><span class="profile_name">사이다</span>
+        </div>
+        <ul class="menu_wrap">
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div>소모임 만들기</div>
             </div>
-            <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-            <ul class="menu_wrap">
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-user-plus"></i>
-                        </div>
-                        <div>소모임 만들기</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-person-chalkboard"></i>
-                        </div>
-                        <div>소모임 검색</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-                    <div>프로필</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div>내 일정</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-                        <div>내 소모임</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
-                        <div>고객센터</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
-                        <div>로그아웃</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-            </ul>
-        </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-person-chalkboard"></i>
+              </div>
+              <div>소모임 검색</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
+              <div>프로필</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <div>내 일정</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
+              <div>내 소모임</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-circle-question"></i>
+              </div>
+              <div>고객센터</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </div>
+              <div>로그아웃</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+        </ul>
+      </div>
     </header>
-    <!-- header 종료 -->
     <!-- 배경색 조정 -->
     <div class="menu_bg"></div>
-
-    <div id="contentsArea">
+    <!-- header 종료 -->
+    <!-- 헤더 제외 body -->
+    <div class="header_except_body">
+      <!-- section1 시작 -->
+      <div class="section1">
+        <div class="group_containter">
+          <div class="group_all">
+            <div class="group_img">
+              <img src="images/free-icon-group-8847475.png" alt="group_img" />
+            </div>
+            <div class="group_name">
+              <span>이젠종로학원</span>
+            </div>
+            <div class="group_info">
+              <div class="group_info_member">
+                <span>멤버수 7</span>
+              </div>
+              <div class="group_info_follower">
+                <span>팔로잉 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- section1 종료 -->
+      <!-- 콘텐츠 영역 -->
+      <div id="contentsArea">
         <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
         <div class="insideMenu">
-            <!-- 소모임 이름 뿌려줘야 함 -->
-            <h2><a href="#">소모임 이름</a></h2>
-            <h3><a href="boardWrite.html">게시글 조회</a></h3>
-            <!-- 좌측메뉴 -->
-            <ul class="meetMenu">
-                <li><a href="schedule.html">일정</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="">멤버</a></li>
-            </ul>
-        </div>    
-        <div class="board">
-            <div class="search">
-                <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
-                <select name="" id="boardSearch">                    
-                    <option value="title">제목</option>                    
-                    <option value="content">내용</option>
-                    <option value="writer">작성자</option>
-                </select>
-                <input type="text" name="" id="">
-                <a href="#" role="button" class="button" type="submit">검색</a>
+          <!-- 메뉴바 시작 -->
+          <div class="sc2_menu_contents">
+            <div class="sc2_menu">
+              <h2 class="sc2_menu_title">나의 모임</h2>
+              <ul class="sc2_menu_list">
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>일정</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>게시판</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>멤버</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>소모임관리</span></div>
+                    <i class="fa-solid fa-minus"></i>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div class="boardListArea">                
-                <table class="boardList">
-                    <tr>
-                        <!-- 말머리 대신 번호? -->
-                        <th>말머리</th><th>제목</th><th>작성자</th><th>작성일자</th>
-                    </tr>    
-                    <tbody>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                        <tr>
-                            <td>자유</td><td>제목입니다</td><td>mornstar</td><td>23.05.06</td>
-                        </tr>
-                    </tbody>                            
-                </table>
-                <div class="pagenation">
-                    <span>&lt&lt</span><span>&lt</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>&gt</span><span>&gt&gt</span>
-                </div>
-            </div>          
+            <!-- <div class="secession">
+                <span>삭제하기</span>
+            </div> -->
+          </div>
+          <!-- 메뉴바 종료 -->
         </div>
+
+        <!-- 게시판 영역 시작 -->
+        <div class="board">
+          <div class="search">
+            <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
+            <select name="" id="boardSearch">
+              <option value="title">제목</option>
+              <option value="content">내용</option>
+              <option value="writer">작성자</option>
+            </select>
+            <input type="text" name="" id="" />
+            <a href="#" role="button" class="button" type="submit">검색</a>
+          </div>
+          <div class="boardListArea">
+            <table class="boardList">
+              <tr>
+                <!-- 말머리 대신 번호? -->
+                <th>말머리</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일자</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+                <tr>
+                  <td>자유</td>
+                  <td>제목입니다</td>
+                  <td>mornstar</td>
+                  <td>23.05.06</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pagenation">
+              <span>&lt&lt</span><span>&lt</span><span>1</span><span>2</span
+              ><span>3</span><span>4</span><span>5</span><span>&gt</span
+              ><span>&gt&gt</span>
+            </div>
+          </div>
+        </div>
+        <!-- 게시판 영역 끝 -->
+      </div>
     </div>
     <div id="footer"></div>
-</body>
+  </body>
 </html>

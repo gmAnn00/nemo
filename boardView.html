@@ -1,220 +1,310 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시글 조회</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/boardView.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/submenu.css" />
+    <link rel="stylesheet" href="css/groupSetting.css" />
+    <link rel="stylesheet" href="css/boardView.css" />
     <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/header.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- header 시작 -->
     <header>
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-        </h1>
-        <div class="menu_btn">
-            <a href="#">       
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
-            </a>
+      <h1 class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+      </h1>
+      <div class="menu_btn">
+        <a href="#">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+"
+          />
+        </a>
+      </div>
+      <div class="sidebar_menu">
+        <div class="close_btn">
+          <a href="#">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+"
+            />
+          </a>
         </div>
-        <div class="sidebar_menu">
-            <div class="close_btn">
-                <a href="#">       
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-                </a>
+        <div class="profile">
+          <i class="fa-solid fa-circle-user"></i
+          ><span class="profile_name">사이다</span>
+        </div>
+        <ul class="menu_wrap">
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div>소모임 만들기</div>
             </div>
-            <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-            <ul class="menu_wrap">
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-user-plus"></i>
-                        </div>
-                        <div>소모임 만들기</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-person-chalkboard"></i>
-                        </div>
-                        <div>소모임 검색</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-                    <div>프로필</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div>내 일정</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-                        <div>내 소모임</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
-                        <div>고객센터</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
-                        <div>로그아웃</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-            </ul>
-        </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-person-chalkboard"></i>
+              </div>
+              <div>소모임 검색</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
+              <div>프로필</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <div>내 일정</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
+              <div>내 소모임</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-circle-question"></i>
+              </div>
+              <div>고객센터</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </div>
+              <div>로그아웃</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+        </ul>
+      </div>
     </header>
-    <!-- header 종료 -->
     <!-- 배경색 조정 -->
     <div class="menu_bg"></div>
-
-
-    <div id="contentsArea">
+    <!-- header 종료 -->
+    <!-- 헤더 제외 body -->
+    <div class="header_except_body">
+      <!-- section1 시작 -->
+      <div class="section1">
+        <div class="group_containter">
+          <div class="group_all">
+            <div class="group_img">
+              <img src="images/free-icon-group-8847475.png" alt="group_img" />
+            </div>
+            <div class="group_name">
+              <span>이젠종로학원</span>
+            </div>
+            <div class="group_info">
+              <div class="group_info_member">
+                <span>멤버수 7</span>
+              </div>
+              <div class="group_info_follower">
+                <span>팔로잉 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- section1 종료 -->
+      <!-- 콘텐츠 영역 -->
+      <div id="contentsArea">
         <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
         <div class="insideMenu">
-            <!-- 소모임 이름 뿌려줘야 함 -->
-            <h2><a href="#">소모임 이름</a></h2>
-            <h3><a href="boardWrite.html">게시글 조회</a></h3>
-            <!-- 좌측메뉴 -->
-            <ul class="meetMenu">
-                <li><a href="schedule.html">일정</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="">멤버</a></li>
-            </ul>
-        </div>    
+          <!-- 메뉴바 시작 -->
+          <div class="sc2_menu_contents">
+            <div class="sc2_menu">
+              <h2 class="sc2_menu_title">나의 모임</h2>
+              <ul class="sc2_menu_list">
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>일정</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>게시판</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>멤버</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>소모임관리</span></div>
+                    <i class="fa-solid fa-minus"></i>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="secession">
+                <span>삭제하기</span>
+            </div> -->
+          </div>
+          <!-- 메뉴바 종료 -->
+        </div>
+
+        <!-- 게시글 조회 영역 시작 -->
         <div class="boardView">
-            <!-- 글 위쪽 버튼 영역 -->
-            <div class="articleToolBtns">
-                <!-- 기능 구현에 따라 코딩 수정요 -->
-                <a href="#" role="button" class="button btnEdit">수정</a>
-                <a href="#" role="button" class="button btnDel">삭제</a>                
-                <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
-                <a href="board.html" role="button" class="button btnList">목록</a>
+          <!-- 글 위쪽 버튼 영역 -->
+          <div class="articleToolBtns">
+            <!-- 기능 구현에 따라 코딩 수정요 -->
+            <a href="#" role="button" class="button btnEdit">수정</a>
+            <a href="#" role="button" class="button btnDel">삭제</a>
+            <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
+            <a href="board.html" role="button" class="button btnList">목록</a>
+          </div>
+          <div class="articleContentBox">
+            <!-- 제목 영역 -->
+            <div class="articleHeader">
+              <div class="articleTitle">
+                <div class="titleHead">말머리</div>
+                <div class="titleArea">제 목</div>
+              </div>
+              <div class="writerInfo">
+                <div class="thumbArea">
+                  <img src="./images/temp.png" alt="프로필사진" />
+                </div>
+                <div class="profileArea">
+                  <div class="profileInfo">
+                    <button class="writerNick">작성자닉네임</button>
+                  </div>
+                  <div class="articleInfo">
+                    <p class="date">2023.05.07. 18:30</p>
+                  </div>
+                </div>
+              </div>
+              <div class="articleTool">
+                <!-- 네이버카페처럼 댓글 몇개있는지 보여주고 아래로 이동시킬지 -->
+                <a href="#commentArea">댓글 <strong class="num">2</strong></a>
+                <a href="#" class="buttonUrl">URL 복사</a>
+                <div class="toastUrlCopySuccessful" style="display: none">
+                  url이 복사되었습니다. 원하는 곳에 붙여넣으세요
+                </div>
+                <div class="moreArea">
+                  <a
+                    id="articleTool"
+                    role="button"
+                    title="더보기"
+                    class="buttonMore"
+                    href="#"
+                    ><img src="./images/temp.png" alt="더보기버튼"
+                  /></a>
+                </div>
+              </div>
             </div>
-            <div class="articleContentBox">
-                <!-- 제목 영역 -->
-                <div class="articleHeader">
-                    <div class="articleTitle">
-                        <div class="titleHead">말머리</div>                        
-                        <div class="titleArea">제 목</div>                                
-                    </div>                    
-                    <div class="writerInfo">
-                        <div class="thumbArea">
-                            <img src="./images/temp.png" alt="프로필사진">
-                        </div>
-                        <div class="profileArea">
-                            <div class="profileInfo">
-                                <button class="writerNick">작성자닉네임</button>
-                            </div>
-                            <div class="articleInfo">
-                                <p class="date">2023.05.07. 18:30</p>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div class="articleTool">
-                        <!-- 네이버카페처럼 댓글 몇개있는지 보여주고 아래로 이동시킬지 -->
-                        <a href="#commentArea">댓글 <strong class="num">2</strong></a>
-                        <a href="#" class="buttonUrl">URL 복사</a>
-                        <div class="toastUrlCopySuccessful" style="display: none;">
-                            url이 복사되었습니다. 원하는 곳에 붙여넣으세요</div>
-                        <div class="moreArea">
-                            <a id="articleTool" role="button" title="더보기" class="buttonMore" href="#"><img src="./images/temp.png" alt="더보기버튼"></a>                            
-                        </div>
-                    </div>
-                </div>
-                <!-- 내용 영역 -->
-                <div id="contentArea" class="contentArea">
-                    <p>내용</p>
-                </div>
-                <!-- 댓글 영역 -->
-                <div id="commentArea" class="commentArea">     
-                    <p class="comment">댓글</p>               
-                    <ul class="commentList">
-                        <li id="" class="commentItem">
-                            <div class="commentbox">                              
-                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-                                <a href="#" class="commentThumb">
-                                    <img src="./images/temp.png" alt="프로필사진">
-                                </a>    
-                                <div class="commentNick">
-                                    <a href="#" role="button" class="commentNickInfo">작성자닉네임</a>
-                                </div>
-                                <div class="commentText">
-                                    <p>댓글 내용</p>
-                                </div>
-                                <div class="commentInfo">
-                                    <p class="commentDate">2023.05.07. 18:30</p>
-                                </div>                                
-                            </div>
-                        </li>
-                        <li id="" class="commentItem">
-                            <div class="commentbox">                              
-                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-                                <a href="#" class="commentThumb">
-                                    <img src="./images/temp.png" alt="프로필사진">
-                                </a>    
-                                <div class="commentNick">
-                                    <a href="#" role="button" class="commentNickInfo">작성자닉네임</a>
-                                </div>
-                                <div class="commentText">
-                                    <p>댓글 내용</p>
-                                </div>
-                                <div class="commentInfo">
-                                    <p class="commentDate">2023.05.07. 18:30</p>
-                                </div>                                
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- 댓글 쓰기 -->
-                    <div class="commentWriter">
-                        <div class="commentInbox">
-                            <strong>모닝스타</strong>
-                            <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1"></textarea>
-                        </div>
-                        <div class="commentRegister">
-                            <a href="#" role="button" class="button btnRegister">등록</a>
-                        </div>                        
-                    </div>
-                </div>  
-            </div>                     
-            <!-- 글 아래쪽 버튼 영역 --> 
-            <div class="articleBottomBtns">
-                <!-- 기능 구현에 따라 코딩 수정요 -->
-                <div class="leftArea">
-                    <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-                    <a href="#" role="button" class="button">글쓰기</a>
-                </div>
-                <div class="rightArea">
-                    <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-                <a href="board.html" role="button" class="button btnList">목록</a>
-                <a href="#boardView" role="button" class="button btnTop">Top</a>                
-                </div>
+            <!-- 내용 영역 -->
+            <div id="contentArea" class="contentArea">
+              <p>내용</p>
             </div>
-        </div>       
+            <!-- 댓글 영역 -->
+            <div id="commentArea" class="commentArea">
+              <p class="comment">댓글</p>
+              <ul class="commentList">
+                <li id="" class="commentItem">
+                  <div class="commentbox">
+                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+                    <a href="#" class="commentThumb">
+                      <img src="./images/temp.png" alt="프로필사진" />
+                    </a>
+                    <div class="commentNick">
+                      <a href="#" role="button" class="commentNickInfo"
+                        >작성자닉네임</a
+                      >
+                    </div>
+                    <div class="commentText">
+                      <p>댓글 내용</p>
+                    </div>
+                    <div class="commentInfo">
+                      <p class="commentDate">2023.05.07. 18:30</p>
+                    </div>
+                  </div>
+                </li>
+                <li id="" class="commentItem">
+                  <div class="commentbox">
+                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+                    <a href="#" class="commentThumb">
+                      <img src="./images/temp.png" alt="프로필사진" />
+                    </a>
+                    <div class="commentNick">
+                      <a href="#" role="button" class="commentNickInfo"
+                        >작성자닉네임</a
+                      >
+                    </div>
+                    <div class="commentText">
+                      <p>댓글 내용</p>
+                    </div>
+                    <div class="commentInfo">
+                      <p class="commentDate">2023.05.07. 18:30</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- 댓글 쓰기 -->
+              <div class="commentWriter">
+                <div class="commentInbox">
+                  <strong>모닝스타</strong>
+                  <textarea
+                    placeholder="댓글을 남겨보세요"
+                    class="commentInboxText"
+                    rows="1"
+                  ></textarea>
+                </div>
+                <div class="commentRegister">
+                  <a href="#" role="button" class="button btnRegister">등록</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 글 아래쪽 버튼 영역 -->
+          <div class="articleBottomBtns">
+            <!-- 기능 구현에 따라 코딩 수정요 -->
+            <div class="leftArea">
+              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
+              <a href="#" role="button" class="button">글쓰기</a>
+            </div>
+            <div class="rightArea">
+              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
+              <a href="board.html" role="button" class="button btnList">목록</a>
+              <a href="#boardView" role="button" class="button btnTop">Top</a>
+            </div>
+          </div>
+        </div>
+        <!-- 게시글 조회 영역 시작 -->
+      </div>
     </div>
+
     <div id="footer"></div>
-</body>
+  </body>
 </html>

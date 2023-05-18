@@ -1,151 +1,234 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시글 등록</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/boardWrite.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/submenu.css" />
+    <link rel="stylesheet" href="css/groupSetting.css" />
+    <link rel="stylesheet" href="css/boardWrite.css" />
     <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/header.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- header 시작 -->
     <header>
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-        </h1>
-        <div class="menu_btn">
-            <a href="#">       
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
-            </a>
+      <h1 class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+      </h1>
+      <div class="menu_btn">
+        <a href="#">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+"
+          />
+        </a>
+      </div>
+      <div class="sidebar_menu">
+        <div class="close_btn">
+          <a href="#">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+"
+            />
+          </a>
         </div>
-        <div class="sidebar_menu">
-            <div class="close_btn">
-                <a href="#">       
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-                </a>
+        <div class="profile">
+          <i class="fa-solid fa-circle-user"></i
+          ><span class="profile_name">사이다</span>
+        </div>
+        <ul class="menu_wrap">
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div>소모임 만들기</div>
             </div>
-            <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-            <ul class="menu_wrap">
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-user-plus"></i>
-                        </div>
-                        <div>소모임 만들기</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-person-chalkboard"></i>
-                        </div>
-                        <div>소모임 검색</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-                    <div>프로필</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div>내 일정</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-                        <div>내 소모임</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
-                        <div>고객센터</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
-                        <div>로그아웃</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-            </ul>
-        </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-person-chalkboard"></i>
+              </div>
+              <div>소모임 검색</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
+              <div>프로필</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <div>내 일정</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
+              <div>내 소모임</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-circle-question"></i>
+              </div>
+              <div>고객센터</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </div>
+              <div>로그아웃</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+        </ul>
+      </div>
     </header>
-    <!-- header 종료 -->
     <!-- 배경색 조정 -->
     <div class="menu_bg"></div>
-
-    <div id="contentsArea">
+    <!-- header 종료 -->
+    <!-- 헤더 제외 body -->
+    <div class="header_except_body">
+      <!-- section1 시작 -->
+      <div class="section1">
+        <div class="group_containter">
+          <div class="group_all">
+            <div class="group_img">
+              <img src="images/free-icon-group-8847475.png" alt="group_img" />
+            </div>
+            <div class="group_name">
+              <span>이젠종로학원</span>
+            </div>
+            <div class="group_info">
+              <div class="group_info_member">
+                <span>멤버수 7</span>
+              </div>
+              <div class="group_info_follower">
+                <span>팔로잉 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- section1 종료 -->
+      <!-- 콘텐츠 영역 -->
+      <div id="contentsArea">
         <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
         <div class="insideMenu">
-            <!-- 소모임 이름 뿌려줘야 함 -->
-            <h2><a href="#">소모임 이름</a></h2>
-            <h3><a href="boardWrite.html">게시글 등록</a></h3>
-            <!-- 좌측메뉴 -->
-            <ul class="meetMenu">
-                <li><a href="schedule.html">일정</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="">멤버</a></li>
-            </ul>
-        </div>
-        <div class="boardWrite">
-            <div class="boardWriteArea">
-                <!-- 제목 영역 -->
-                <div class="articleWritingTitle">
-                    <!-- 말머리 컨텐츠 확인 필요 -->
-                    <!-- 네이버 카페는 말머리를 button으로 처리 -->                
-                        <select name="headTitle" id="headTitle" class="headTitle">
-                            <option value="">말머리선택</option>
-                            <option value="notice">공지사항</option>
-                            <option value="afterMeeting">모임후기</option>
-                            <option value="freeArticle">자유글</option>
-                        </select>
-                        <!-- 제목 -->
-                        <textarea name="writeTitle" id="writeTitle" class="writeTitle" rows="1" placeholder="제목을 입력해주세요"></textarea>
-                </div>
-                <!-- 글쓰는 영역 -->
-                <div class="editorArea">
-                    <div class="toolbar">
-                        <form action="">
-                            <!-- 사진첨부 하면 글에 들어가도록 어떻게 하는건지 확인필요 -->
-                            <label for="photoAttach" class="hidden">사진첨부영역</label>
-                            <input type="file" name="photoAttach" id="photoAttach">
-                        </form>
-                    </div>
-                    <div class="propertyToolbar">
-                        <img src="./images/property_toolbar.png" alt="글자조정툴바">
-                    </div>
-                    <!-- 글 내용 -->
-                    <!-- 네이버는 어떤 방법인지, 엔터치면 글쓰는 영역에 p태그가 늘어나게 하는데 어떻게 하는지 모르겠음; -->
-                    <div class="article">
-                        <textarea name="articleText" id="articleText" rows="10"></textarea>
-                    </div>
-                    <!-- 등록 버튼 -->                
-                    <div class="btnRegister">
-                        <a href="#" role="button" class="button">취소</a>
-                        <a href="#" role="button" class="button">등록</a>
-                    </div>
-                </div>
+          <!-- 메뉴바 시작 -->
+          <div class="sc2_menu_contents">
+            <div class="sc2_menu">
+              <h2 class="sc2_menu_title">나의 모임</h2>
+              <ul class="sc2_menu_list">
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>일정</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>게시판</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>멤버</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </li>
+                <li>
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>소모임관리</span></div>
+                    <i class="fa-solid fa-minus"></i>
+                  </div>
+                </li>
+              </ul>
             </div>
+            <!-- <div class="secession">
+                <span>삭제하기</span>
+            </div> -->
+          </div>
+          <!-- 메뉴바 종료 -->
         </div>
+
+        <!-- 게시판 글쓰기 영역 시작 -->
+        <div class="boardWrite">
+          <div class="boardWriteArea">
+            <!-- 제목 영역 -->
+            <div class="articleWritingTitle">
+              <!-- 말머리 컨텐츠 확인 필요 -->
+              <!-- 네이버 카페는 말머리를 button으로 처리 -->
+              <select name="headTitle" id="headTitle" class="headTitle">
+                <option value="">말머리선택</option>
+                <option value="notice">공지사항</option>
+                <option value="afterMeeting">모임후기</option>
+                <option value="freeArticle">자유글</option>
+              </select>
+              <!-- 제목 -->
+              <textarea
+                name="writeTitle"
+                id="writeTitle"
+                class="writeTitle"
+                rows="1"
+                placeholder="제목을 입력해주세요"
+              ></textarea>
+            </div>
+            <!-- 글쓰는 영역 -->
+            <div class="editorArea">
+              <div class="toolbar">
+                <form action="">
+                  <!-- 사진첨부 하면 글에 들어가도록 어떻게 하는건지 확인필요 -->
+                  <label for="photoAttach" class="hidden">사진첨부영역</label>
+                  <input type="file" name="photoAttach" id="photoAttach" />
+                </form>
+              </div>
+              <div class="propertyToolbar">
+                <img src="./images/property_toolbar.png" alt="글자조정툴바" />
+              </div>
+              <!-- 글 내용 -->
+              <!-- 네이버는 어떤 방법인지, 엔터치면 글쓰는 영역에 p태그가 늘어나게 하는데 어떻게 하는지 모르겠음; -->
+              <div class="article">
+                <textarea
+                  name="articleText"
+                  id="articleText"
+                  rows="10"
+                ></textarea>
+              </div>
+              <!-- 등록 버튼 -->
+              <div class="btnRegister">
+                <a href="#" role="button" class="button">취소</a>
+                <a href="#" role="button" class="button">등록</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 게시판 글쓰기 영역 끝 -->
+      </div>
     </div>
 
     <div id="footer"></div>
-</body>
+  </body>
 </html>
