@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+/*
 body, div, h3, button, section, table, tr, td, th{
     box-sizing: border-box;
     margin: 0 auto;
@@ -7,7 +7,7 @@ body, div, h3, button, section, table, tr, td, th{
 
 .hidden {
     display: none;
-}
+}*/
 
 /* 메인 컨텐츠 영역*/
 .mainContent {
@@ -18,10 +18,8 @@ body, div, h3, button, section, table, tr, td, th{
     padding: 0 100px;
 }
 
-
 /* 소모임 이름 영역 */
 .nameArea {
-    padding: 0 80px;
     margin-bottom: 20px;
     text-align: left;
 }
@@ -95,7 +93,7 @@ body, div, h3, button, section, table, tr, td, th{
 
 /* 소모임 자세한 정보 영역 */
 .infoDetailArea {
-    width: 1000px;
+    /*width: 1000px;*/
     padding: 50px 100px;
     background-color: rgb(255, 249, 243);
 }

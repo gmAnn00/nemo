@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/groupSetting.css">
     <link rel="stylesheet" href="css/groupMain.css">
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
     <script src="js/header.js"></script>
+    <script src="js/gruopMain/groupMain.js"></script>
 </head>
 <body>
     <!-- header 시작 -->
@@ -94,21 +96,49 @@
     <!-- 배경색 조정 -->
     <div class="menu_bg"></div>
 
-    <!-- main content 시작-->
-    <div id="#contentsArea">
+
+    <!-- 헤더 제외 body -->
+    <div class="header_except_body">
+        <!-- section1 시작 -->
+        <div class="section1">
+            <div class="group_containter">
+                <div class="group_all">
+                    <div class="group_img">
+                        <img src="images/free-icon-group-8847475.png" alt="group_img">
+                    </div>
+                    <div class="group_name">
+                        <span>이젠종로학원</span>
+                    </div>
+                    <div class="group_info">
+                        <div class="group_info_member">
+                            <span>멤버수 7</span>
+                        </div>
+                        <div class="group_info_follower">
+                            <span>팔로잉 10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- section1 종료 -->
+
         <!-- 소모임 이름/메뉴 영역 -->
-        <div class="contTopArea">
-            <h2><a href="groupMain.html" title="">네모이름</a></h2>
+        <div class="grpMenuArea">
+            <!-- <h2><a href="groupMain.html" title="">네모이름</a></h2> -->
             <ul class="grpMenu">
-                <li><a href="schedule.html">일정</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="myPageGroup.html">멤버</a></li>
+                <li><h3><a href="schedule.html">일정</a></h3></li>
+                <li><h3><a href="board.html">게시판</a></h3></li>
+                <li><h3><a href="myPageGroup.html">멤버</a></h3></li>
             </ul>
+            <!--
             <div class="imgCrop">
                 <img src="images/tmp01.jpg" alt="" class="grpImg">
             </div>
+            -->
         </div>
-        
+
+    <!-- main content 시작-->
+    <div id="#contentsArea">
         <div class="contMainArea">
             <!-- 최근 일정 영역 시작-->
             <div class="recentSchedule recentDiv">
@@ -175,12 +205,12 @@
             <!-- 멤버 영역 시작-->
             <div class="memberArea">
                 <div class="mainTitle">
-                    <h3 class="nemoMemTitle">네모멤버</h3><span>(<span class="currentNum">0</span>/<span class="maxNum">10</span>)</span>
+                    <h3 class="nemoMemTitle">네모멤버</h3><span>(<span class="currentNum">0</span>/<span class="maxNum">50</span>)</span>
                 </div>
                 <span class="btnEventPrev" title="이전보기"><i class="fa-solid fa-chevron fa-chevron-left"></i></span>
                     <div class="animationSlide">
                         <div class="sliderPanel">
-                            <p><center>이미지슬라이드영역~</center></p>
+                            <!-- <p><center>이미지슬라이드영역~</center></p> -->
                         </div>
                         <!-- slide panel 종료-->
                     </div>

@@ -1,24 +1,18 @@
 @charset "utf-8";
 
-a {
-    text-decoration: none;
-    color: black;
-}
-#contentsArea,.contTopArea,.contMainArea {
-    width: 1200px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-.contTopArea {
+.grpMenuArea {
+    width: 100%;
     text-align: center;
+    margin: 0 auto;
     margin-bottom: 20px;
-    padding: 10px 0 0 0;
+    padding: 15px 0;
     background-color: rgb(255, 249, 243);
 }
-.contTopArea h2{
+/*
+.grpMenuArea h2{
     margin: 20px 0;
 }
+*/
 .grpMenu > li {
     display: inline-block;
     list-style: none;
@@ -40,10 +34,16 @@ a {
     height: 400px;
 }
 
+#contentsArea,.contMainArea {
+    width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
 .contMainArea {
     padding: 0 200px;
 }
-
 .recentDiv {
     margin-bottom: 50px;
 }
@@ -104,11 +104,16 @@ a {
 
 
 /* 멤버 영역 시작*/
+.nemoMemTitle {
+    display: inline-block;
+    width: 100px;
+}
+
 .memberArea {
     width: 800px;
-    height: 200px;
+    height: 250px;
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     background-color: rgb(255, 249, 243);
 
 }
@@ -119,24 +124,45 @@ a {
 }
 .sliderPanel {
     position: relative;
-}
-.nemoMemTitle {
     display: inline-block;
-    width: 100px;
+    width: max-content;
 }
+.slideContent {
+    display: inline-block;
+    text-align: center;
+    padding: 0 8px;
+    
+}
+.memImg {
+    display: inline-block;
+    width: 125px;
+    height: 125px;
+    background-color: rgb(248, 180, 200);
+    border-radius: 50%;
+}
+.memName {
+    text-align: center;
+    display: inline-block;
+}
+
+
 .fa-chevron {
     font-size: 40px;
 }
+.fa-solid.btnActive {
+    cursor: pointer;
+    color: #222;
+} 
 .btnEventPrev {
     position: absolute;
-    top:100px;
-    left: 25px;
+    top:120px;
+    left: 20px;
 
 }
 .btnEventNext {
     position: absolute;
-    top:100px;
-    right: 25px;
+    top:120px;
+    right: 20px;
 }
 
 .fa-chevron.btnActive {
