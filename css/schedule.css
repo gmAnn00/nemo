@@ -1,8 +1,5 @@
 @charset "utf-8";
-
-::-webkit-scrollbar {
-  display: none;
-} /*
+/*
 .button {
   display: inline-block;
   min-width: 46px;
@@ -22,13 +19,14 @@
   display: block;
   clear: both;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 #contentsArea {
   margin: 0 auto;
   /* width: 1200px; */
   display: flex;
   position: relative;
-  -ms-overflow-style: none;
 }
 
 /* 소모임 */
@@ -88,7 +86,7 @@
 .schedule {
   width: 53.125em;
   margin: 1.25em auto;
-  /* padding-left: 50px; */
+  padding: 30px;
   /* border: 2px solid red; */
 }
 .calendarSchedule {
