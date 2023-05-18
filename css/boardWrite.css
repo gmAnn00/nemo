@@ -47,8 +47,8 @@ a {
 .boardWrite {
   margin: 0 auto;
   width: 850px;
-  padding: 20px 30px;
-  border: 2px solid #ccc;
+  padding: 30px;
+  /* border: 2px solid #ccc; */
 }
 .boardWriteArea {
   margin-left: 5px;

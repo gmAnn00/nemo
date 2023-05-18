@@ -90,6 +90,7 @@
   /* border: 2px solid red; */
 }
 .calendarSchedule {
+  margin-top: 30px;
   width: 1000px;
 }
 .calendarSchedule > div {
@@ -194,7 +195,7 @@
   box-sizing: border-box;
   width: 23.75em;
   height: 12.5em;
-  background-color: #eee;
+  background-color: #f5f5f5;
 }
 .pastSchedule {
   height: 11.4375em;
@@ -207,7 +208,7 @@
   box-sizing: border-box;
   width: 23.75em;
   height: 8.4375em;
-  background-color: #eee;
+  background-color: #f5f5f5;
 }
 
 /* --일정상세-- */
@@ -217,16 +218,24 @@
   margin: 1.25em 0;
   position: relative;
 }
-.scheduleNone h4 {
-  margin-left: 0.625em;
+.scheduleNone h3 {
+  margin: 0.625em;
 }
 .scheduleNone .topBtn {
   text-align: right;
-  position: absolute;
+  padding: 0.9375em 1.25em;
+  /* position: absolute; 
   top: 0.9375em;
-  right: 0.625em;
+  right: 20px;*/
 }
 /* 일정 조회 */
+.scheduleDetailArea {
+  position: relative;
+}
+.scheduleTitle p {
+  text-align: left;
+  padding-left: 0.625em;
+}
 .scheduleDetail {
   border: 1px solid #ccc;
   position: relative;
@@ -234,16 +243,24 @@
 .detailTop {
   padding-left: 0.625em;
 }
-.detailTop .topBtn {
-  position: absolute;
-  top: 0.9375em;
-  right: 0.625em;
+.detailTop h3 {
+  margin: 0.625em;
+}
+.editBtn {
+  padding: 15px 20px;
+  text-align: right;
+}
+.btnDel {
+  color: red;
+}
+.btncan {
+  color: red;
 }
 
 /* 제목부분 */
 .scheduleTitle {
   padding: 0.625em;
-  background-color: #eee;
+  background-color: #f5f5f5;
   margin-bottom: 0.9375em;
   text-align: center;
 }
@@ -256,7 +273,7 @@
 .contentLocationMap {
   margin: 0 auto;
   padding: 0.625em;
-  background-color: #eee;
+  /* background-color: #f5f5f5; */
 }
 .content {
   margin: 0 auto;
@@ -288,25 +305,35 @@
   margin: 0.625em auto;
 }
 .locationMap h4 {
-  margin-bottom: 0.3125em;
+  margin: 0.625em;
 }
 .map {
   width: 50em;
   height: 15em;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   background-color: antiquewhite;
 }
 .participant {
-  padding-left: 0.625em;
+  padding-left: 1.25em;
   position: relative;
+}
+.participant h4 {
+  margin: 0.625em;
+}
+.participant span {
+  margin-left: 20px;
+  width: 60px;
+}
+.participant img {
+  border-radius: 50%;
 }
 .partBtn a {
   /* float: right; */
   margin: 0.625em;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
 }
 .scheduleEdit {
   border: 1px solid #ccc;
