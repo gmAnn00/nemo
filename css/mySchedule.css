@@ -1,5 +1,15 @@
 @charset "utf-8";
 
+#contentsArea {
+  padding-top: 115px;
+  display: flex;
+  flex-direction: row;
+}
+
+#wrap {
+  flex: 3;
+}
+
 div.myScheduleMenuAndCal {
   width: 1000px;
   display: flex;
