@@ -6,7 +6,40 @@
 
 #contentsArea {
   padding-top: 115px;
-  width: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+}
+#memberListWindow {
+  background-color: pink;
+  overflow-y: scroll;
+}
+.memberSearch {
+  text-align: center;
+}
+.memberContainer {
+  position: relative;
+  padding: 30px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.memberContainer img {
+  width: 100px;
+}
+.memberContainer span {
+  position: absolute;
+  top: 50%;
+  transform: translate(20%, -50%);
+}
+#memberListWindow {
+  flex: 1;
+}
+
+#chattingWindow {
+  flex: 4;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 #contentsArea .chattingArea {

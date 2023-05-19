@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/help.css" />
+    <link rel="stylesheet" href="css/adminHelp.css" />
     <script src="js/jquery-3.6.4.min.js"></script>
     <script
       src="https://kit.fontawesome.com/3d4603cd1d.js"
@@ -111,36 +111,61 @@
 
     <!-- 콘텐츠 영역 시작 -->
     <div id="contentsArea">
-      <h2 class="helpTitle">고객센터 1:1 문의</h2>
-      <div class="chattingArea">
-        <div class="MayIHelpYouArea">
-          <img
-            src="images/only_logo.png"
-            alt="무엇을 도와드릴까요 프로필 이미지"
-          />
-          <p>무엇을 도와드릴까요?</p>
+      <div id="memberListWindow">
+        <div class="memberSearch">
+          <input type="text" />
         </div>
+        <div class="memberList">
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원1</span>
+          </div>
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원2</span>
+          </div>
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원3</span>
+          </div>
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원4</span>
+          </div>
+        </div>
+      </div>
+      <div id="chattingWindow">
+        <h2 class="helpTitle">고객센터 1:1 문의</h2>
+        <div class="chattingArea">
+          <div class="MayIHelpYouArea">
+            <img
+              src="images/only_logo.png"
+              alt="무엇을 도와드릴까요 프로필 이미지"
+            />
+            <p>무엇을 도와드릴까요?</p>
+          </div>
 
-        <div class="chattingMessageArea">
-          <div class="userMessageArea">
-            <p class="userMessage">회원가입은 어떻게 하나요?</p>
-            <img src="images/temp.png" alt="유저 프로필" />
+          <div class="chattingMessageArea">
+            <div class="userMessageArea">
+              <p class="userMessage">회원가입은 어떻게 하나요?</p>
+              <img src="images/temp.png" alt="유저 프로필" />
+            </div>
+            <div class="helpMessageArea">
+              <img src="images/only_logo.png" alt="고객센터 프로필" />
+              <p class="helpMessage">회원가입 하는 방법을 알려드리겠습니다.</p>
+            </div>
           </div>
-          <div class="helpMessageArea">
-            <img src="images/only_logo.png" alt="고객센터 프로필" />
-            <p class="helpMessage">회원가입 하는 방법을 알려드리겠습니다.</p>
+          <div class="sendMessageArea">
+            <input
+              type="text"
+              id="messageInput"
+              placeholder="문의사항을 입력해 주세요"
+            />
+            <button type="button" id="sendMessage" class="sendMessage">
+              <!-- <img src="images/temp.png" alt="전송사진" /> -->
+            </button>
+            <input type="hidden" id="idSend" class="idSend" />
           </div>
-        </div>
-        <div class="sendMessageArea">
-          <input
-            type="text"
-            id="messageInput"
-            placeholder="문의사항을 입력해 주세요"
-          />
-          <button type="button" id="sendMessage" class="sendMessage">
-            <!-- <img src="images/temp.png" alt="전송사진" /> -->
-          </button>
-          <input type="hidden" id="idSend" class="idSend" />
         </div>
       </div>
     </div>
