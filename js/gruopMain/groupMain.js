@@ -22,6 +22,9 @@ $(function(){
 });
 let memNum=memberNum(1,50); // 소모임 멤버 받아오기 현재는 1~50 랜덤
 let slideIndx=0;    //image slide index
+let mod=memNum%5;
+let qoutient=memNum/5;
+let slideCnt=0;
 
 
 //소모임 멤버 수 받아오는 함수
