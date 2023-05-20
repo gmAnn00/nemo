@@ -219,7 +219,7 @@
   position: relative;
 }
 .scheduleNone h3 {
-  margin: 0.625em;
+  margin: 1em;
 }
 .scheduleNone .topBtn {
   text-align: right;
@@ -240,11 +240,12 @@
   border: 1px solid #ccc;
   position: relative;
 }
+/* 상세일정 등록하기*/
 .detailTop {
   padding-left: 0.625em;
 }
 .detailTop h3 {
-  margin: 0.625em;
+  margin: 1em;
 }
 .editBtn {
   padding: 15px 20px;
@@ -305,7 +306,7 @@
   margin: 0.625em auto;
 }
 .locationMap h4 {
-  margin: 0.625em;
+  margin: 0.875em;
 }
 .map {
   width: 50em;
@@ -314,18 +315,28 @@
   /* border: 1px solid #ccc; */
   background-color: antiquewhite;
 }
+/* 참석자 부분 */
 .participant {
   padding-left: 1.25em;
   position: relative;
 }
 .participant h4 {
-  margin: 0.625em;
+  margin: 0.875em;
 }
-.participant span {
-  margin-left: 20px;
+.partMember {
+  display: flex;
+}
+.partMember li {
+  display: inline-block;
+  margin: 0 10px;
+  text-align: center;
+}
+.partMember span {
   width: 60px;
+  display: grid;
+  text-align: center;
 }
-.participant img {
+.partMember img {
   border-radius: 50%;
 }
 .partBtn a {
