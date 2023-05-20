@@ -6,14 +6,16 @@
 }
 .categoriesArea {
   padding: 50px;
-  margin-left: 250px;
+  display: flex;
+  justify-content: space-evenly;
 }
-.categoriesArea h3 {
-  margin-bottom: 10px;
-}
+
 .categories01 {
+  width: 600px;
 }
 .nameSearch {
+  width: 100%;
+  margin-left: 30px;
 }
 .categories01 h3 {
   margin-bottom: 20px;
@@ -21,34 +23,26 @@
 
 .categories02 {
 }
-.area {
-}
-.area h3 {
-}
 
 .bar {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
-.bar01 {
-  margin-right: 20px;
+.bar03 h3 {
+  padding-bottom: 50px;
 }
-.bar02 {
-  margin-right: 20px;
-}
-.bar03 {
-  margin-right: 20px;
+.bar div {
 }
 .barText {
   margin-bottom: 10px;
 }
 
 .barSel {
-  width: 200px;
+  width: 250px;
   height: 30px;
 }
 .nameSearch {
-  height: 150px;
 }
 .nameSearch h2 {
   margin-bottom: 20px;
@@ -70,13 +64,14 @@
 }
 .result {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 20px;
 }
 .resultText {
-  width: 200px;
-  height: 30px;
-  text-align: center;
+  margin-right: 275px;
+}
+.resultBtn button {
+  margin-right: 50px;
 }
 .searchResult {
   width: 100%;
@@ -85,7 +80,8 @@
   justify-content: center;
 }
 .resultGroup {
-  width: 1000px;
+  width: 800px;
+  margin-right: 20px;
 }
 .group {
   position: relative;
