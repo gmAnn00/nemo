@@ -6,192 +6,338 @@
     <title>관리자-회원 관리 페이지</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/submenu.css" />
     <link rel="stylesheet" href="css/adminMember.css" />
     <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/header.js"></script>
   </head>
   <body>
     <!-- header 시작 -->
     <header>
       <h1 class="logo">
-          <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
       </h1>
       <div class="menu_btn">
-          <a href="#">       
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
-          </a>
+        <a href="#">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+"
+          />
+        </a>
       </div>
       <div class="sidebar_menu">
-          <div class="close_btn">
-              <a href="#">       
-                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-              </a>
-          </div>
-          <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-          <ul class="menu_wrap">
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox">
-                          <i class="fa-solid fa-user-plus"></i>
-                      </div>
-                      <div>소모임 만들기</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox">
-                          <i class="fa-solid fa-person-chalkboard"></i>
-                      </div>
-                      <div>소모임 검색</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-                  <div>프로필</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
-                      <div>내 일정</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-                      <div>내 소모임</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
-                      <div>고객센터</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
-                      <div>로그아웃</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-          </ul>
+        <div class="close_btn">
+          <a href="#">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+"
+            />
+          </a>
+        </div>
+        <div class="profile">
+          <i class="fa-solid fa-circle-user"></i
+          ><span class="profile_name">사이다</span>
+        </div>
+        <ul class="menu_wrap">
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div>소모임 만들기</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-person-chalkboard"></i>
+              </div>
+              <div>소모임 검색</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
+              <div>프로필</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <div>내 일정</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
+              <div>내 소모임</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-circle-question"></i>
+              </div>
+              <div>고객센터</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+          <li>
+            <div class="icon_menu">
+              <div class="iconbox">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </div>
+              <div>로그아웃</div>
+            </div>
+            <i class="fa-solid fa-angle-right"></i>
+          </li>
+        </ul>
       </div>
-  </header>
-  <!-- header 종료 -->
-  <!-- 배경색 조정 -->
-  <div class="menu_bg"></div>
+    </header>
+    <!-- header 종료 -->
+    <!-- 배경색 조정 -->
+    <div class="menu_bg"></div>
 
     <!-- 콘텐츠 영역 시작 -->
-    <div id="contentsArea">
-      <h2 class="adminMemberTitle">모든 회원 목록</h2>
-      <div class="searchMemberArea">
-        <input type="text" placeholder="아이디로 검색" />
-        <button id="adminSearchMemberIdBtn">검색</button>
-      </div>
-      <div class="sortMemberArea">
-        <button id="adminSortByMemberIdBtn">번호순 정렬</button>
-        <button id="adminSortByMemberReportBtn">신고 횟수 정렬</button>
-      </div>
-      <div class="memberListArea">
-        <div class="memberList">
-          <!-- 테이블 동적생성 해야함 -->
-          <table border="1" class="adminMemberTbl">
-            <thead>
-              <tr>
-                <th>회원번호</th>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>생년월일</th>
-                <th>성별</th>
-                <th>이메일</th>
-                <th>휴대전화</th>
-                <th>가입일</th>
-                <th>신고횟수</th>
-                <th>탈퇴처리</th>
-              </tr>
-            </thead>
 
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>honggilddong</td>
-                <td>홍길동</td>
-                <td>2000/01/01</td>
-                <td>M</td>
-                <td>gildong@gmail.com</td>
-                <td>01012345678</td>
-                <td>2023/05/01</td>
-                <td>1</td>
-                <td><button>탈퇴처리</button></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>honggilddong</td>
-                <td>홍길동</td>
-                <td>2000/01/01</td>
-                <td>M</td>
-                <td>gildong@gmail.com</td>
-                <td>01012345678</td>
-                <td>2023/05/01</td>
-                <td>2</td>
-                <td><button>탈퇴처리</button></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>honggilddong</td>
-                <td>홍길동</td>
-                <td>2000/01/01</td>
-                <td>M</td>
-                <td>gildong@gmail.com</td>
-                <td>01012345678</td>
-                <td>2023/05/01</td>
-                <td>3</td>
-                <td><button>탈퇴처리</button></td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>honggilddong</td>
-                <td>홍길동</td>
-                <td>2000/01/01</td>
-                <td>M</td>
-                <td>gildong@gmail.com</td>
-                <td>01012345678</td>
-                <td>2023/05/01</td>
-                <td>4</td>
-                <td><button>탈퇴처리</button></td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>honggilddong</td>
-                <td>홍길동</td>
-                <td>2000/01/01</td>
-                <td>M</td>
-                <td>gildong@gmail.com</td>
-                <td>01012345678</td>
-                <td>2023/05/01</td>
-                <td>5</td>
-                <td><button>탈퇴처리</button></td>
-              </tr>
-            </tbody>
-          </table>
+    <div id="contentsArea">
+      <!-- 메뉴바 시작 -->
+      <div class="sc2_menu_contents">
+        <div class="sc2_menu">
+          <h2 class="sc2_menu_title">회원 관리</h2>
+          <ul class="sc2_menu_list">
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name"><span>회원 관리</span></div>
+                <i class="fa-solid fa-minus"></i>
+              </div>
+            </li>
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name"><span>소모임 관리</span></div>
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </li>
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name">
+                  <span>문의사항 관리</span>
+                </div>
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </li>
+          </ul>
         </div>
-        <!-- <div class="memberTablePage"></div> -->
+        <!-- <div class="secession">
+<span>삭제하기</span>
+</div> -->
+      </div>
+      <!-- 메뉴바 종료 -->
+
+      <div id="wrap">
+        <h2 class="adminMemberTitle">모든 회원 목록</h2>
+        <div class="searchMemberArea">
+          <!-- <input type="text" placeholder="아이디로 검색" /> -->
+          <!-- <button id="adminSearchMemberIdBtn">검색</button> -->
+        </div>
+        <!-- <div class="sortMemberArea">
+          <button id="adminSortByMemberIdBtn">번호순 정렬</button>
+          <button id="adminSortByMemberReportBtn">신고 횟수 정렬</button>
+        </div> -->
+        <div class="memberListArea">
+          <div class="memberList">
+            <!-- 테이블 동적생성 해야함 -->
+            <table border="1" class="adminMemberTbl">
+              <thead>
+                <tr>
+                  <th>회원번호</th>
+                  <th>아이디</th>
+                  <th>이름</th>
+                  <th>생년월일</th>
+                  <th>성별</th>
+                  <th>이메일</th>
+                  <th>휴대전화</th>
+                  <th>가입일</th>
+                  <th>신고횟수</th>
+                  <th>탈퇴처리</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>1</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>2</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>3</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>4</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>5</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>5</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>5</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>5</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>5</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>honggilddong</td>
+                  <td>홍길동</td>
+                  <td>2000/01/01</td>
+                  <td>M</td>
+                  <td>gildong@gmail.com</td>
+                  <td>01012345678</td>
+                  <td>2023/05/01</td>
+                  <td>5</td>
+                  <td><button>탈퇴처리</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- <div class="memberTablePage"></div> -->
+        </div>
       </div>
     </div>
     <!-- 콘텐츠 영역 종료-->
+
     <!-- 푸터 영역 시작 -->
-    <footer id="footer"></footer>
-    <!-- 푸터 영역 종료 -->
+    <footer id="footer">
+      <div id="footerInner">
+        <div class="footerContents">
+          <div class="footerLeft">
+            <ul>
+              <li><a href="#">동네모임네모</a></li>
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보 처리방침</a></li>
+            </ul>
+          </div>
+          <div class="footerRight">
+            <div class="sns">
+              <img src="images/temp.png" alt="" />
+              <img src="images/temp.png" alt="" />
+              <img src="images/temp.png" alt="" />
+              <img src="images/temp.png" alt="" />
+            </div>
+            <div class="address">
+              <address>
+                <p>Addr. 서울시 종로구 종로78</p>
+                <p>T. 02-123-4567</p>
+                <p>E. admin@nemo.com</p>
+              </address>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- 푸터 영역 끝 -->
+
     <script src="js/jquery-3.6.4.min.js"></script>
     <link href="DataTables/datatables.min.css" rel="stylesheet" />
     <script src="DataTables/datatables.min.js"></script>

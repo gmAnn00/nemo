@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+#contentsArea {
+  width: 100%;
+  padding: 0 20px 0 20px;
+}
+.nameSearch {
+  width: 500px;
+  padding: 10px;
+}
+.nameBtn {
+}
+.categoriesArea {
+  padding: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 90px;
+  z-index: 10;
+  background: #fff;
+}
+
+.categories01 {
+  padding-top: 26px;
+}
+
+.categories01 h3 {
+  margin-bottom: 20px;
+}
+
+.categories02 {
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.bar03 h3 {
+  padding-bottom: 50px;
+}
+.bar div {
+  margin-right: 10px;
+}
+.barText {
+  margin-bottom: 10px;
+}
+
+.barSel {
+  width: 120px;
+  height: 30px;
+}
+.searchText {
+  width: 400px;
+  height: 30px;
+}
+.searchBtn {
+  display: inline-block;
+  margin-left: 12px;
+}
+.searchBtn button {
+  width: 50px;
+  height: 30px;
+}
+.result {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.resultText {
+  margin-right: 275px;
+}
+.resultBtn button {
+  margin-right: 50px;
+}
+.searchResult {
+  width: 100%;
+  display: flex;
+}
+.resultGroup {
+  flex: 3;
+  width: 100%;
+  margin-right: 20px;
+}
+.GroupMap {
+  flex: 2;
+  position: sticky;
+  top: 200px;
+}
+.group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.groupImg {
+  flex: 1;
+  width: 100%;
+  margin: 15px;
+}
+.SteamedImg {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 125px;
+  bottom: 15px;
+}
+.groupText {
+  flex: 2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.groupText04 {
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.SteamedImg img {
+  width: 100%;
+}
+.groupPage {
+  text-align: center;
+}

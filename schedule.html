@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>일정</title>
-    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/header.css" />
@@ -138,45 +137,52 @@
         <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
         <div class="insideMenu">
           <!-- 메뉴바 시작 -->
-          <div class="sc2_menu_contents">
-            <div class="sc2_menu">
-              <h2 class="sc2_menu_title">나의 모임</h2>
-              <ul class="sc2_menu_list">
-                <li>
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>일정</span></div>
-                    <i class="fa-solid fa-angle-right"></i>
-                  </div>
-                </li>
-                <li>
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>게시판</span></div>
-                    <i class="fa-solid fa-angle-right"></i>
-                  </div>
-                </li>
-                <li>
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>멤버</span></div>
-                    <i class="fa-solid fa-angle-right"></i>
-                  </div>
-                </li>
-                <li>
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>소모임관리</span></div>
-                    <i class="fa-solid fa-minus"></i>
-                  </div>
-                </li>
-              </ul>
+          <div class="sc2_subcontents">
+            <div class="sc2_menu_contents">
+              <div class="sc2_menu">
+                <h2 class="sc2_menu_title">나의 모임</h2>
+                <ul class="sc2_menu_list">
+                  <li>
+                    <div class="sc2_icon_menu">
+                      <div class="menu_submenu_name"><span>일정</span></div>
+                      <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="sc2_icon_menu">
+                      <div class="menu_submenu_name"><span>게시판</span></div>
+                      <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="sc2_icon_menu">
+                      <div class="menu_submenu_name"><span>멤버</span></div>
+                      <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="sc2_icon_menu">
+                      <div class="menu_submenu_name">
+                        <span>소모임관리</span>
+                      </div>
+                      <i class="fa-solid fa-minus"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- <div class="secession">
+                  <span>삭제하기</span>
+              </div> -->
             </div>
-            <!-- <div class="secession">
-                <span>삭제하기</span>
-            </div> -->
           </div>
           <!-- 메뉴바 종료 -->
         </div>
 
         <!-- 일정 등록, 확인 영역 시작 -->
         <div class="schedule">
+          <div class="sc2_section_title">
+            <span>일정</span>
+          </div>
           <div class="calendarSchedule clearfixed">
             <!-- 달력 및 간단일정 영역 -->
             <!-- 달력부분 -->
@@ -244,109 +250,110 @@
           <div class="scheduleArea clearfixed">
             <!-- 빈 일정 (등록버튼만 있음) -->
             <div class="scheduleNone">
-              <h4>빈 일정</h4>
+              <h3>빈 일정</h3>
               <div class="topBtn">
                 <a href="#" role="button" class="button btnResi">등록</a>
               </div>
             </div>
             <!-- 일정 상세보기 -->
-            <div class="scheduleDetail clearfixed">
-              <div class="detailTop">
-                <h4>일정 상세보기</h4>
-                <div class="topBtn">
-                  <a href="#" role="button" class="button btnDel">삭제</a>
-                  <a href="#" role="button" class="button btnEdit">수정</a>
+            <div class="scheduleDetailArea clearfixed">
+              <div class="scheduleDetail">
+                <div class="detailTop">
+                  <h3>일정 상세보기</h3>
                 </div>
-              </div>
-              <div class="scheduleTitle">
-                <textarea
-                  placeholder="모임일정 제목을 입력하세요"
-                  class="scheduleTitleText"
-                  rows="1"
-                ></textarea>
-              </div>
-              <div class="contentLocationMap">
-                <div class="content">
-                  <div class="dateTime">
-                    <input type="date" name="" id="" />
-                    <input type="time" />
+                <div class="scheduleTitle">
+                  <p><strong>이번에 종각에서 모여요</strong></p>
+                </div>
+                <div class="contentLocationMap">
+                  <div class="content">
+                    <div class="dateTime">
+                      <input type="date" name="" id="" />
+                      <input type="time" />
+                    </div>
+                    <div class="contentDetail">
+                      <p>모임 일정 내용</p>
+                      <img src="./images/temp.png" alt="모임사진" />
+                    </div>
                   </div>
-                  <div class="contentDetail">
-                    <p>모임 일정 내용</p>
-                    <img src="./images/temp.png" alt="모임사진" />
+                  <div class="locationMap">
+                    <h4>모임 위치</h4>
+                    <div class="map"></div>
                   </div>
                 </div>
-                <div class="locationMap">
-                  <h4>모임 위치</h4>
-                  <div class="map"></div>
+                <div class="participant clearfixed">
+                  <h4>참석자</h4>
+                  <div class="partMember">
+                    <ul>
+                      <li><img
+                        src="./images/temp.png"
+                        alt="프로필사진"
+                        width="40px"
+                      />
+                        <span>닉네임</span>
+                      </li>
+                      <li><img
+                        src="./images/temp.png"
+                        alt="프로필사진"
+                        width="40px"
+                      />
+                        <span>닉네임</span>
+                      </li>
+                      <li><img
+                        src="./images/temp.png"
+                        alt="프로필사진"
+                        width="40px"
+                      />
+                        <span>닉네임</span>
+                      </li>
+                  </div>
+                  <div class="partBtn clearfixed">
+                    <!-- 한번 더 누르면 참석취소 -->
+                    <a href="#" role="button" class="button btnPart">참석</a>
+                    <!-- <a href="#" role="button" class="button btnPartcan">참석취소</a> -->
+                  </div>
                 </div>
               </div>
-              <div class="participant clearfixed">
-                <h4>참석자</h4>
-                <div class="partMember">
-                  <span
-                    ><img
-                      src="./images/temp.png"
-                      alt="프로필사진"
-                      width="40px"
-                    />닉네임</span
-                  >
-                  <span
-                    ><img
-                      src="./images/temp.png"
-                      alt="프로필사진"
-                      width="40px"
-                    />닉네임</span
-                  >
-                  <span
-                    ><img
-                      src="./images/temp.png"
-                      alt="프로필사진"
-                      width="40px"
-                    />닉네임</span
-                  >
-                </div>
-                <div class="partBtn clearfixed">
-                  <!-- 한번 더 누르면 참석취소 -->
-                  <a href="#" role="button" class="button btnPart">참석</a>
-                  <!-- <a href="#" role="button" class="button btnPartcan">참석취소</a> -->
-                </div>
+              <div class="editBtn">
+                <a href="#" role="button" class="button btnDel">삭제</a>
+                <a href="#" role="button" class="button btnEdit">수정</a>
               </div>
             </div>
             <!-- 상세 일정 등록하기 -->
-            <div class="scheduleEdit clearfixed">
-              <div class="detailTop">
-                <h4>상세 일정 등록하기</h4>
-                <div class="topBtn">
-                  <a href="#" role="button" class="button btncan">취소</a>
-                  <a href="#" role="button" class="button btnResi">등록</a>
+            <div class="scheduleEditArea clearfixed">
+              <div class="scheduleEdit">
+                <div class="detailTop">
+                  <h3>상세 일정 등록하기</h3>
+                </div>
+                <div class="scheduleTitle">
+                  <textarea
+                    placeholder="모임일정 제목을 입력하세요"
+                    class="scheduleTitleText"
+                    rows="1"
+                  ></textarea>
+                </div>
+                <div class="contentLocationMap">
+                  <div class="content">
+                    <div class="dateTime">
+                      <input type="date" name="" id="" />
+                      <input type="time" />
+                    </div>
+                    <div class="contentDetail">
+                      <textarea
+                        placeholder="모임일정 내용을 입력하세요"
+                        class="contentDetailText"
+                        rows="10"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="locationMap">
+                    <h4>모임 위치</h4>
+                    <div class="map"></div>
+                  </div>
                 </div>
               </div>
-              <div class="scheduleTitle">
-                <textarea
-                  placeholder="모임일정 제목을 입력하세요"
-                  class="scheduleTitleText"
-                  rows="1"
-                ></textarea>
-              </div>
-              <div class="contentLocationMap">
-                <div class="content">
-                  <div class="dateTime">
-                    <input type="date" name="" id="" />
-                    <input type="time" />
-                  </div>
-                  <div class="contentDetail">
-                    <textarea
-                      placeholder="모임일정 내용을 입력하세요"
-                      class="contentDetailText"
-                      rows="10"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="locationMap">
-                  <h4>모임 위치</h4>
-                  <div class="map"></div>
-                </div>
+              <div class="editBtn">
+                <a href="#" role="button" class="button btncan">취소</a>
+                <a href="#" role="button" class="button btnResi">등록</a>
               </div>
             </div>
           </div>

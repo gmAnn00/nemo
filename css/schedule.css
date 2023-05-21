@@ -1,8 +1,5 @@
 @charset "utf-8";
-
-::-webkit-scrollbar {
-  display: none;
-} /*
+/*
 .button {
   display: inline-block;
   min-width: 46px;
@@ -22,12 +19,14 @@
   display: block;
   clear: both;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 #contentsArea {
   margin: 0 auto;
   /* width: 1200px; */
   display: flex;
   position: relative;
-  -ms-overflow-style: none;
 }
 
 /* 소모임 */
@@ -85,10 +84,14 @@
 
 /* 일정등록, 확인 영역 시작 */
 .schedule {
-  /* margin: 20px 30px 20px 220px; */
-  width: 850px;
-  padding: 20px 20px;
+  width: 53.125em;
+  margin: 1.25em auto;
+  padding: 30px;
   /* border: 2px solid red; */
+}
+.calendarSchedule {
+  margin-top: 30px;
+  width: 1000px;
 }
 .calendarSchedule > div {
   float: left;
@@ -98,13 +101,13 @@
   border: 1px solid #ccc;
 }
 #myscheduleCalendarArea {
-  width: 415px;
-  height: 450px;
+  width: 25.9375em;
+  height: 28.125em;
   /* margin: 0 auto; */
 }
 .calendarTable {
-  margin-top: 13px;
-  width: 415px;
+  margin-top: 0.8125em;
+  width: 25.9375em;
   /* border: 1px solid red; */
   font-weight: bold;
 }
@@ -113,33 +116,33 @@
 }
 .calendarTable .prev {
   border: 0;
-  margin-right: 50px;
+  margin-right: 3.125em;
 }
 .calendarTable .next {
   border: 0;
-  margin-left: 50px;
+  margin-left: 3.125em;
 }
 .calendarTable .today {
   border: 0;
   color: #fff;
-  padding: 0 7px;
-  border-radius: 3px;
+  padding: 0 0.4375em;
+  border-radius: 0.1875em;
   background-color: #999;
-  margin: 0 10px 0 15px;
+  margin: 0 0.625em 0 0.9375em;
 }
 .calendarTable td {
-  width: 20px;
-  height: 70px;
+  width: 1.25em;
+  height: 4.375em;
 }
 .calDate {
-  height: 35px;
+  height: 2.1875em;
   position: relative;
 }
 .calDate span {
-  height: 50px;
+  height: 3.125em;
 }
 .calWeek {
-  height: 50px;
+  height: 3.125em;
 }
 .calendarTable {
   background: #fff;
@@ -168,93 +171,110 @@
 /* 예정모임, 지난모임 일정 */
 .scheduleNP {
   /* border: 1px solid #ccc; */
-  width: 415px;
-  height: 450px;
-  margin-left: 15px;
+  width: 25.9375em;
+  height: 28.125em;
+  margin-left: 0.9375em;
 }
 .scheduleNP > div > strong {
-  margin-left: 20px;
-  line-height: 30px;
+  margin-left: 1.25em;
+  line-height: 1.875em;
 }
 .scheduleNP table {
-  width: 380px;
-  height: 100px;
+  width: 23.75em;
+  height: 6.25em;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.8125em;
 }
 .nextSchedule {
-  height: 250px;
+  height: 15.625em;
   border: 1px solid #ccc;
 }
 .nextList {
-  margin: 5px auto;
-  padding: 5px;
+  margin: 0.3125em auto;
+  padding: 0.3125em;
   box-sizing: border-box;
-  width: 380px;
-  height: 200px;
-  background-color: #eee;
+  width: 23.75em;
+  height: 12.5em;
+  background-color: #f5f5f5;
 }
 .pastSchedule {
-  height: 183px;
+  height: 11.4375em;
   border: 1px solid #ccc;
-  margin-top: 15px;
+  margin-top: 0.9375em;
 }
 .pastList {
-  margin: 5px auto;
-  padding: 5px;
+  margin: 0.3125em auto;
+  padding: 0.3125em;
   box-sizing: border-box;
-  width: 380px;
-  height: 135px;
-  background-color: #eee;
+  width: 23.75em;
+  height: 8.4375em;
+  background-color: #f5f5f5;
 }
 
 /* --일정상세-- */
 /* 빈 일정 */
 .scheduleNone {
   border: 1px solid #ccc;
-  margin: 20px 0;
+  margin: 1.25em 0;
   position: relative;
 }
-.scheduleNone h4 {
-  margin-left: 10px;
+.scheduleNone h3 {
+  margin: 1em;
 }
 .scheduleNone .topBtn {
   text-align: right;
-  position: absolute;
-  top: 15px;
-  right: 10px;
+  padding: 0.9375em 1.25em;
+  /* position: absolute; 
+  top: 0.9375em;
+  right: 20px;*/
 }
 /* 일정 조회 */
+.scheduleDetailArea {
+  position: relative;
+}
+.scheduleTitle p {
+  text-align: left;
+  padding-left: 0.625em;
+}
 .scheduleDetail {
   border: 1px solid #ccc;
   position: relative;
 }
+/* 상세일정 등록하기*/
 .detailTop {
-  padding-left: 10px;
+  padding-left: 0.625em;
 }
-.detailTop .topBtn {
-  position: absolute;
-  top: 15px;
-  right: 10px;
+.detailTop h3 {
+  margin: 1em;
+}
+.editBtn {
+  padding: 15px 20px;
+  text-align: right;
+}
+.btnDel {
+  color: red;
+}
+.btncan {
+  color: red;
 }
 
 /* 제목부분 */
 .scheduleTitle {
-  padding: 10px;
-  background-color: #eee;
-  margin-bottom: 15px;
+  padding: 0.625em;
+  background-color: #f5f5f5;
+  margin-bottom: 0.9375em;
   text-align: center;
 }
 .scheduleTitleText {
   resize: none;
-  width: 800px;
+  width: 50em;
   outline: 0;
 }
 /* 내용 지도 부분 */
 .contentLocationMap {
   margin: 0 auto;
-  padding: 10px;
-  background-color: #eee;
+  padding: 0.625em;
+  /* background-color: #f5f5f5; */
 }
 .content {
   margin: 0 auto;
@@ -262,52 +282,72 @@
 }
 .dateTime {
   display: block;
-  margin-bottom: 10px;
-  margin-left: 14px;
+  margin-bottom: 0.625em;
+  margin-left: 0.875em;
 }
 .dateTime input {
-  margin-right: 10px;
+  margin-right: 0.625em;
 }
 .contentDetail {
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
   text-align: center;
   /* border: 1px solid red; */
 }
 .contentDetail img {
-  width: 200px;
+  width: 12.5em;
 }
 .contentDetailText {
   resize: none;
-  width: 800px;
+  width: 50em;
   outline: 0;
 }
 .locationMap {
-  width: 800px;
-  margin: 10px auto;
+  width: 50em;
+  margin: 0.625em auto;
 }
 .locationMap h4 {
-  margin-bottom: 5px;
+  margin: 0.875em;
 }
 .map {
-  width: 800px;
-  height: 240px;
+  width: 50em;
+  height: 15em;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   background-color: antiquewhite;
 }
+/* 참석자 부분 */
 .participant {
-  padding-left: 10px;
+  padding-left: 1.25em;
   position: relative;
+}
+.participant h4 {
+  margin: 0.875em;
+}
+.partMember {
+  display: flex;
+}
+.partMember li {
+  display: inline-block;
+  margin: 0 10px;
+  text-align: center;
+}
+.partMember span {
+  width: 60px;
+  display: grid;
+  text-align: center;
+}
+.partMember img {
+  border-radius: 50%;
 }
 .partBtn a {
   /* float: right; */
-  margin: 10px;
+  margin: 0.625em;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
 }
 .scheduleEdit {
   border: 1px solid #ccc;
   position: relative;
-  margin-top: 20px;
+  margin-top: 1.25em;
 }

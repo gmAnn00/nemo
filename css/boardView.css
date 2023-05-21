@@ -1,244 +1,249 @@
 #contentsArea {
-    margin: 0 auto;
-    width: 1200px;
+  margin: 0 auto;
+  /* width: 1200px; */
+  display: flex;
+  position: relative;
 }
 a {
-    text-decoration: none;
-    color: #111;
+  text-decoration: none;
+  color: #111;
 }
 /* 소모임 */
+/*
 .insideMenu {
-    height: 100px;
-    border-bottom: 2px solid #ccc;
-    margin-bottom: 20px;
+  height: 100px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
 }
-.insideMenu h2, .insideMenu h3 {
-    padding-left: 30px;
-    margin: 20px 0;
-    font-weight: bold;
-}
+.insideMenu h2,
+.insideMenu h3 {
+  padding-left: 30px;
+  margin: 20px 0;
+  font-weight: bold;
+}*/
 
 /* 소모임내부 좌측메뉴(일정,게시판,멤버). 공통부분 합친 후 위치(margin) 수정필요 */
-.meetMenu {
-    width: 100px;
-    height: 150px;    
-    margin: 60px 0 0 30px;    
-    display: inline-block;
-    background-color: #eee;
-    padding: 10px 20px;
+/*.meetMenu {
+  width: 100px;
+  height: 150px;
+  margin: 60px 0 0 30px;
+  display: inline-block;
+  background-color: #eee;
+  padding: 10px 20px;
 }
 .meetMenu li {
-    list-style: none;
-    line-height: 30px;
-    margin: 15px;
+  list-style: none;
+  line-height: 30px;
+  margin: 15px;
 }
 .meetMenu li a {
-    text-decoration: none;
-    color: #111;
-    font-weight: bold;
-}
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+}*/
 /* 게시글 조회 부분 */
 .boardView {
-    margin: 20px 50px 20px 220px;
-    width: 850px;
-    padding: 20px 50px;
-    /* border: 2px solid red; */
+  margin: 0 auto;
+  width: 62.5em;
+  padding: 30px;
+  /* border: 2px solid red; */
 }
 /* 목록 버튼 오른쪽 정렬 */
 .articleToolBtns {
-    overflow: hidden;
-    margin-bottom: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 .articleToolBtns a:last-child {
-    float: right;
+  float: right;
 }
 /* 제목 영역 */
 .articleHeader {
-    border-top: 2px solid #ccc;
-    border-bottom: 2px solid #ccc;   
-    overflow: hidden;
-    position: relative;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  overflow: hidden;
+  position: relative;
 }
 .articleHeader div {
-    float: left;
+  float: left;
 }
 .articleTitle {
-    margin: 15px 0 10px 0;
+  margin: 15px 0 10px 0;
 }
 .titleHead {
-    width: 150px;
-    text-align: center;
-    line-height: 13px;
-    font-size: 13px;
+  width: 150px;
+  text-align: center;
+  line-height: 13px;
+  font-size: 13px;
 }
 .titleArea {
-    width: 700px;    
-    line-height: 20px;
-    font-size: 20px;
+  width: 700px;
+  line-height: 20px;
+  font-size: 20px;
 }
 
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
-.writerInfo {    
-    font-size: 13px;
+.writerInfo {
+  font-size: 13px;
 }
 .thumbArea img {
-    border-radius: 50%;
-    width: 40px;
+  border-radius: 50%;
+  width: 40px;
 }
 .profileArea {
-    padding: 0 10px;
-    margin-bottom: 5px;    
-    width: 150px;
-    height: 45px;
-    position: relative;
+  padding: 0 10px;
+  margin-bottom: 5px;
+  width: 150px;
+  height: 45px;
+  position: relative;
 }
-.writerNick {/* 작성자 닉네임 */
-    border: none;
-    background-color: transparent;
-    font-weight: bold;
+.writerNick {
+  /* 작성자 닉네임 */
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
 }
 .articleInfo .date {
-    position: absolute;
-    top: 20px;
-    left: 10px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
 }
 /* 댓글, URL복사, 더보기 영역 */
 .articleTool {
-    position: absolute;
-    top: 45px;
-    right: 25px;
-    font-size: 13px;
+  position: absolute;
+  top: 45px;
+  right: 25px;
+  font-size: 13px;
 }
 .moreArea {
-    position: absolute;
-    right: -20px;
-    top: 0;
+  position: absolute;
+  right: -20px;
+  top: 0;
 }
 .moreArea img {
-    width: 15px;
+  width: 15px;
 }
 
 /* 내용 영역 */
 .contentArea {
-    height: 300px;
+  height: 300px;
 }
 
 /* 댓글 영역 */
 .commentArea {
-    border-top: 5px solid #ccc; 
+  border-top: 5px solid #ccc;
 }
 .comment {
-    font-weight: bold;
+  font-weight: bold;
 }
 .commentList {
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
 }
 .commentItem {
-    list-style: none;
-    padding: 12px 23px 10px 0;
-    border-top: 1px solid #ccc;
+  list-style: none;
+  padding: 12px 23px 10px 0;
+  border-top: 1px solid #ccc;
 }
 .commentItem:first-child {
-    border-top: 0;
+  border-top: 0;
 }
 .commentbox {
-    position: relative;
-    padding-left: 50px;
+  position: relative;
+  padding-left: 50px;
 }
 .commentThumb img {
-    width: 40px;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .commentInfo {
-    color: #999;
+  color: #999;
 }
 
 /* 댓글 쓰기 */
 .commentWriter {
-    margin: 12px 0 20px 0;
-    padding: 16px 10px 10px 18px;    
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
+  margin: 12px 0 20px 0;
+  padding: 16px 10px 10px 18px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
 }
-.commentInbox {    
-    font-size: 13px;
-    padding: 5px;  
+.commentInbox {
+  font-size: 13px;
+  padding: 5px;
 }
-.commentInboxText {    
-    width: 100%;
-    min-height: 17px;
-    margin-top: 5px;
-    padding-right: 1px;
-    border: 0;
-    font-size: 13px;
-    resize: none;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    box-sizing: border-box;
-    background: transparent;
-    outline: 0;
+.commentInboxText {
+  width: 100%;
+  min-height: 17px;
+  margin-top: 5px;
+  padding-right: 1px;
+  border: 0;
+  font-size: 13px;
+  resize: none;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  background: transparent;
+  outline: 0;
 }
 .commentRegister {
-    float: right;
+  float: right;
 }
 .commentRegister a {
-    display: inline-block;
-    min-width: 46px;
-    height: 36px;
-    padding: 0 12px;
-    line-height: 36px;
-    font-size: 13px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: top;
-    background-color: #ccc;  
+  display: inline-block;
+  min-width: 46px;
+  height: 36px;
+  padding: 0 12px;
+  line-height: 36px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #ccc;
 }
 
 /* 아래쪽 버튼 영역 */
 .articleBottomBtns {
-    overflow: hidden;
+  overflow: hidden;
 }
 .articleBottomBtns .leftArea {
-    float: left;
+  float: left;
 }
 .articleBottomBtns .leftArea a {
-    display: inline-block;
-    min-width: 46px;
-    height: 36px;
-    padding: 0 12px;
-    line-height: 36px;
-    font-size: 13px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: top;
-    background-color: #ccc;  
+  display: inline-block;
+  min-width: 46px;
+  height: 36px;
+  padding: 0 12px;
+  line-height: 36px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #ccc;
 }
 .articleBottomBtns .rightArea {
-    float: right;
+  float: right;
 }
 .articleBottomBtns .rightArea a {
-    display: inline-block;
-    min-width: 46px;
-    height: 36px;
-    padding: 0 12px;
-    line-height: 36px;
-    font-size: 13px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: top;
-    background-color: #ccc;  
+  display: inline-block;
+  min-width: 46px;
+  height: 36px;
+  padding: 0 12px;
+  line-height: 36px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #ccc;
 }

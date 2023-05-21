@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>내 일정</title>
+    <title>네모 고객센터</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/adminHelp.css" />
+    <script src="js/jquery-3.6.4.min.js"></script>
     <script
-      src="https://kit.fontawesome.com/bc604c01cc.js"
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/mySchedule.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/submenu.css" />
+    <script src="js/header.js"></script>
   </head>
   <body>
-    <!-- 헤더 영역 시작 -->
+    <!-- 경민-고객센터 페이지 -->
+
     <!-- header 시작 -->
     <header>
       <h1 class="logo">
@@ -104,77 +106,65 @@
       </div>
     </header>
     <!-- header 종료 -->
-
     <!-- 배경색 조정 -->
     <div class="menu_bg"></div>
-    <!-- 헤더 영역 시작 -->
 
     <!-- 콘텐츠 영역 시작 -->
     <div id="contentsArea">
-      <!-- 메뉴바 시작 -->
-      <div class="sc2_menu_contents">
-        <div class="sc2_menu">
-          <h2 class="sc2_menu_title">내 일정</h2>
-          <ul class="sc2_menu_list">
-            <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name"><span>프로필</span></div>
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </li>
-            <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name"><span>내 일정</span></div>
-                <i class="fa-solid fa-minus"></i>
-              </div>
-            </li>
-            <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name">
-                  <span>내 소모임</span>
-                </div>
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </li>
-            <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name">
-                  <span>내가 쓴 글·댓글</span>
-                </div>
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </li>
-          </ul>
+      <div id="memberListWindow">
+        <div class="memberSearch">
+          <input type="text" />
         </div>
-        <!-- <div class="secession">
-          <span>삭제하기</span>
-      </div> -->
+        <div class="memberList">
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원1</span>
+          </div>
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원2</span>
+          </div>
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원3</span>
+          </div>
+          <div class="memberContainer">
+            <img src="images/temp.png" alt="회원 이미지" />
+            <span>회원4</span>
+          </div>
+        </div>
       </div>
-      <!-- 메뉴바 종료 -->
+      <div id="chattingWindow">
+        <h2 class="helpTitle">고객센터 1:1 문의</h2>
+        <div class="chattingArea">
+          <div class="MayIHelpYouArea">
+            <img
+              src="images/only_logo.png"
+              alt="무엇을 도와드릴까요 프로필 이미지"
+            />
+            <p>무엇을 도와드릴까요?</p>
+          </div>
 
-      <div id="wrap">
-        <h2>내 일정</h2>
-        <div class="myScheduleMenuAndCal">
-          <div class="myScheduleCalAndList">
-            <div id="myScheduleCalendarArea"></div>
-            <div class="myScheduleListArea">
-              <div class="mySchedule">
-                <p class="myScheduleDate">2023년 4월 25일</p>
-                <img src="images/temp.png" alt="소모임 사진" />
-                <p class="myScheduleGroupName">이젠 종로 학원</p>
-                <p class="contents">
-                  와이어프레임 짜기 | 오후 3시 30분 | 서울시 종로구
-                </p>
-              </div>
-              <div class="mySchedule">
-                <p class="myScheduleDate">2023년 4월 27일</p>
-                <img src="images/temp.png" alt="소모임 사진" />
-                <p class="myScheduleGroupName">맛집 탐방 모임</p>
-                <p class="contents">
-                  인스타 맛집 탐방 | 오후 1시 30분 | 서울시 강남구
-                </p>
-              </div>
+          <div class="chattingMessageArea">
+            <div class="userMessageArea">
+              <p class="userMessage">회원가입은 어떻게 하나요?</p>
+              <img src="images/temp.png" alt="유저 프로필" />
             </div>
+            <div class="helpMessageArea">
+              <img src="images/only_logo.png" alt="고객센터 프로필" />
+              <p class="helpMessage">회원가입 하는 방법을 알려드리겠습니다.</p>
+            </div>
+          </div>
+          <div class="sendMessageArea">
+            <input
+              type="text"
+              id="messageInput"
+              placeholder="문의사항을 입력해 주세요"
+            />
+            <button type="button" id="sendMessage" class="sendMessage">
+              <!-- <img src="images/temp.png" alt="전송사진" /> -->
+            </button>
+            <input type="hidden" id="idSend" class="idSend" />
           </div>
         </div>
       </div>
@@ -214,9 +204,6 @@
         </div>
       </div>
     </footer>
-    <!-- 푸터 영역 종료 -->
+    <!-- 푸터 영역 끝 -->
   </body>
-  <script src="js/jquery-3.6.4.min.js"></script>
-  <script src="js/mySchedule.js"></script>
-  <script src="js/header.js"></script>
 </html>
