@@ -14,71 +14,26 @@ a:visited {
 .all{
     width: 1000px;
     margin: 0 auto;
-
-
-}
-/*2번*/
-.h2Text{
-    margin: 0 auto;
-    border-bottom: 1px solid black;
-    padding: 20px;
-
+    display: flex;
 }
 
-/*3번*/
-.menu {
-    margin-top: 20px;
+
+
+.board {
+    width: 700px;
+
+}
+
+.list {
+    display: flex;
+    border: 1px solid black;
+}
+
+.list > li {
+    list-style: none;
+    margin: 5px 0;
     display: inline-block;
-    padding: 5px 0;
-    box-sizing: border-box;
-    border: none;
-    background-color: #ccc;
-    border-radius: 10px;
-    width: 200px;
-    float: left;
 }
-.menu i {
-    margin-right: 10px  ;
-}
-.menu li:first-child {
-    text-align: center;
-    padding: 0;
-}
-.menu li {
-    line-height: 50px;
-    padding-left: 40px;
-}
-
-
-/*4번*/
-.bodarBox{
-    width: 750px;
-    float: right;
-}
-
-/*5번*/
-.repBox {
-    clear: both; 
-    width: 750px;
-    float: right;
-}
-
-/*4-1번, 5-1번*/
-.boxText {
-    width: 750px;
-    display: inline-block;
-    padding: 10px 0;
-    border-bottom: 1px solid black;
-}
-
-/*4-2번, 5-2번*/
-.selectD {
-    
-}
-
-/*4-3번, 5-3번*/
-.table > table {
-    width: 750px;
-    text-align: center;
-    
+.title {
+    flex: 2;
 }
