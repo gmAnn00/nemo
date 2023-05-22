@@ -88,6 +88,8 @@
   flex: 2;
   position: sticky;
   top: 200px;
+  width: 500px;
+  height: 300px;
 }
 .group {
   position: relative;
