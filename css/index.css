@@ -6,8 +6,9 @@
 }
 .mainPage {
   position: relative;
-  width: 100%;
+  width: 1400px;
   height: 450px;
+  margin: 0 auto;
 }
 .mainImg {
   width: 100%;
@@ -19,17 +20,25 @@
 }
 .mainImgBtn01 {
   position: absolute;
-  background-color: antiquewhite;
+  background-color: black;
   padding: 20px;
   top: 300px;
   left: 200px;
+  border-radius: 20px;
+}
+.mainImgBtn01 a {
+  color: #fff;
 }
 .mainImgBtn02 {
   position: absolute;
-  background-color: antiquewhite;
+  background-color: black;
   padding: 20px;
   top: 300px;
   right: 200px;
+  border-radius: 20px;
+}
+.mainImgBtn02 a {
+  color: #fff;
 }
 .categories {
   width: 100%;
@@ -40,7 +49,7 @@
   margin: 20px;
 }
 .categoriesText {
-  margin: 20px;
+  margin-left: 80px;
 }
 .flowBanner1 {
   overflow: hidden;
@@ -93,9 +102,7 @@
 .smallGroup {
   width: 100%;
 }
-.groupImg img {
-  width: 100%;
-}
+
 .smallText {
   margin: 20px;
 }
@@ -118,9 +125,22 @@
 }
 .recommend {
   text-align: center;
-  width: 200px;
+  width: 300px;
   margin: 10px 0 10px 0;
 }
 .recommend img {
-  width: 90%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.recommendText1 {
+  margin-bottom: 10px;
+}
+.recommendText2 {
+  margin-bottom: 15px;
+}
+.recommend2 a {
+  background-color: #bdbdbd;
+  color: #fff;
+  padding: 10px;
+  border-radius: 15px;
 }
