@@ -110,7 +110,7 @@ a {
 /* 댓글, URL복사, 더보기 영역 */
 .articleTool {
   position: absolute;
-  top: 45px;
+  bottom: 15px;
   right: 25px;
   font-size: 13px;
 }
@@ -126,6 +126,7 @@ a {
 /* 내용 영역 */
 .contentArea {
   height: 300px;
+  padding: 10px;
 }
 
 /* 댓글 영역 */
@@ -134,6 +135,7 @@ a {
 }
 .comment {
   font-weight: bold;
+  margin: 10px;
 }
 .commentList {
   margin: 0;
@@ -150,14 +152,20 @@ a {
 }
 .commentbox {
   position: relative;
-  padding-left: 50px;
+  padding-left: 60px;
+}
+.commentbox div {
+  margin: 5px;
 }
 .commentThumb img {
   width: 40px;
   border-radius: 50%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10px;
+}
+.commentNick {
+  font-weight: bold;
 }
 .commentInfo {
   color: #999;
