@@ -27,20 +27,29 @@ a:visited {
     width:600px; 
     margin: 0 auto; 
     position:relative; 
-    
+}
+.checkS {
+    display: inline-block;
+    width: 30px;
 }
 .tabmenu ul{
     position: relative;
     
 }
-.tabmenu ul li{
+.tabmenu ul .btnCon{
     display:  inline-block;
     width:150px;
-    float:left;  
-    text-align:center;
+    float:left;
     background :#f9f9f9;
-    line-height:30px;
+    line-height:40px;
     
+}
+.list > li {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    text-align: left;
+    padding-left: 20px;
 }
 
 .tabmenu label{
@@ -48,18 +57,19 @@ a:visited {
     width:100%; 
     height:40px;
     line-height:40px;
+    text-align: center;
 }
 .tabmenu #tabmenu1,.tabmenu #tabmenu2{
     display:none;
 }
 .tabCon{
     display:none; 
+    width: 100%;
     text-align:left; 
     padding: 20px;
     position:absolute; 
-    left:0;
-    right: 10px;
-    top:40px; 
+    left:0; top:40px; 
+    box-sizing: border-box; 
     border : 5px solid #f9f9f9;
 }
 
@@ -76,9 +86,4 @@ a:visited {
     display:block;
 }
 /*5번*/
-.title > div {
-    width: 200px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
+
