@@ -6,7 +6,7 @@
 }
 .mainPage {
   position: relative;
-  width: 1400px;
+  width: 85%;
   height: 650px;
   margin: 0 auto;
   margin-bottom: 150px;
@@ -103,14 +103,60 @@
   width: 250px;
   height: 250px;
   border-radius: 10px;
-  background-image: url(../images/icon_bicycle.png);
   background-repeat: no-repeat;
   background-size: 250px 250px;
   margin: 10px;
   padding: 15px 0;
   background-color: #ccc;
-  /* background: url(../images/야옹대가족.JPG) no-repeat; */
-} 
+}
+.sle1 {
+  background-image: url(../images/icon_01garland.png);
+}
+.sle2 {
+  background-image: url(../images/icon_02music.png);
+}
+.sle3 {
+  background-image: url(../images/icon_03photo.png);
+}
+.sle4 {
+  background-image: url(../images/icon_04outdoor.png);
+}
+.sle5 {
+  background-image: url(../images/icon_05kick.png);
+}
+.sle6 {
+  background-image: url(../images/icon_06book.png);
+}
+.sle7 {
+  background-image: url(../images/icon_07foreign.png);
+}
+.sle8 {
+  background-image: url(../images/icon_08craft.png);
+}
+.sle9 {
+  background-image: url(../images/icon_09dance.png);
+}
+.sle10 {
+  background-image: url(../images/icon_10volunteer.png);
+}
+.sle11 {
+  background-image: url(../images/icon_11people.png);
+}
+.sle12 {
+  background-image: url(../images/icon_12bike.png);
+}
+.sle13 {
+  background-image: url(../images/icon_13stadium.png);
+}
+.sle14 {
+  background-image: url(../images/icon_14game.png);
+}
+.sle15 {
+  background-image: url(../images/icon_15cook.png);
+}
+.sle16 {
+  background-image: url(../images/icon_16pet.png);
+}
 .group01 {
   width: 100%;
   height: 100%;
