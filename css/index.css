@@ -7,22 +7,23 @@
 .mainPage {
   position: relative;
   width: 1400px;
-  height: 450px;
+  height: 650px;
   margin: 0 auto;
+  margin-bottom: 150px;
 }
 .mainImg {
   width: 100%;
-  height: 450px;
+  height: 650px;
 }
 .mainImg img {
   width: 100%;
-  height: 450px;
+  height: 650px;
 }
 .mainImgBtn01 {
   position: absolute;
   background-color: black;
   padding: 20px;
-  top: 300px;
+  top: 500px;
   left: 200px;
   border-radius: 20px;
 }
@@ -33,7 +34,7 @@
   position: absolute;
   background-color: black;
   padding: 20px;
-  top: 300px;
+  top: 500px;
   right: 200px;
   border-radius: 20px;
 }
@@ -41,8 +42,10 @@
   color: #fff;
 }
 .categories {
-  width: 100%;
+  width: 85%;
   padding-bottom: 30px;
+  margin-bottom: 150px;
+  margin: 0 auto;
 }
 .categoriesGoto {
   float: left;
@@ -89,15 +92,29 @@
   }
 }
 .slide {
-  width: 190px !important;
-  height: 190px !important;
-  margin: 5px;
+  width: 250px !important;
+  height: 250px !important;
+  margin: 10px;
   padding: 15px 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
 }
-
+.imgBox {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  background-image: url(../images/icon_bicycle.png);
+  background-repeat: no-repeat;
+  background-size: 250px 250px;
+  margin: 10px;
+  padding: 15px 0;
+  background-color: #ccc;
+  /* background: url(../images/야옹대가족.JPG) no-repeat; */
+} 
 .group01 {
   width: 100%;
   height: 100%;
+  margin-bottom: 100px;
 }
 .smallGroup {
   width: 100%;
@@ -115,6 +132,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 }
 .closePage {
   display: flex;
@@ -134,9 +152,11 @@
 }
 .recommendText1 {
   margin-bottom: 10px;
+  font-size: 1.2em;
 }
 .recommendText2 {
   margin-bottom: 15px;
+  font-size: 0.9em;
 }
 .recommend2 a {
   background-color: #bdbdbd;
