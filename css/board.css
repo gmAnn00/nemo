@@ -83,6 +83,7 @@ a {
   margin: 10px;
   height: 30px;
   border-bottom: 2px solid #ccc;
+  padding: 5px;
 }
 .pagenation {
   height: 40px;
