@@ -12,6 +12,7 @@
     <script src="js/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="css/header.css" />
     <script src="js/header.js"></script>
+    <script src="js/boardMy.js"></script>
 
     <link rel="stylesheet" href="css/boardMy.css">
     <link rel="stylesheet" href="css/common.css">
@@ -141,105 +142,101 @@
         </div>
         <!-- 메뉴바 종료 -->
 
-        <!--3번-->
-        <div class="all_2">
 
-            <!--4번-->
-            <div class="tabmenu">
-                <ul>
-                    <li id="tab1" class="btnCon">
-                        <input type="radio" checked name="tabmenu" id="tabmenu1" >
-                        <label for="tabmenu1">게시판</label>
 
-                        <div class="tabCon">
-                            <ul class="list">
-                                <li> <input type="checkbox" class="check"> </li>
-                                <li>번호</li>
-                                <li class="title">제목</li>
-                                <li>날짜</li>
-                            </ul>
 
-                            <ul class="list">
-                                <li> <input type="checkbox" class="check"> </li>
-                                <li>No.1</li>
-                                <li class="title">소모임1|고양이들은 야옹</li>
-                                <li>2023.04.30</li>
-                                <li><button>삭제</button></li>
-                            </ul>
+        <!--4번-->
 
-                            <ul class="list">
-                                <li> <input type="checkbox" class="check"> </li>
-                                <li>No.2</li>
-                                <li class="title">소모임2|강아지들은 멍멍</li>
-                                <li>2023.04.30</li>
-                                <li><button>삭제</button></li>
-                            </ul>
-                        </div>
-                    </li>
+        <div class="container">
+            <!-- 탭 메뉴 상단 시작 -->
+                <ul class="tabs">
+                    <li class="tab-link current" data-tab="tab-1">게시판</li>
+                    <li class="tab-link" data-tab="tab-2">댓글</li>
                 </ul>
+            <!-- 탭 메뉴 상단 끝 -->
+            <!-- 탭 메뉴 내용 시작 -->
+                <div id="tab-1" class="tab-content current">
+                    <ul class="list top" >
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>번호</li>
+                        <li class="title">제목</li>
+                        <li>날짜</li>
+                        <li></li>
+                    </ul>
 
-                <!--5번-->
-                <div class="tabmenu">
-                    <ul>
-                        <li id="tab2" class="btnCon">
-                            <input type="radio" checked name="tabmenu" id="tabmenu2" >
-                            <label for="tabmenu2">댓글</label>
-                            <div class="tabCon">
-                                <ul class="list">
-                                    <li> <input type="checkbox" class="check"> </li>
-                                    <li>번호</li>
-                                    <li class="title">제목</li>
-                                    <li>날짜</li>
-                                </ul>
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.1</li>
+                        <li class="title">소모임1|고양이들은 야옹</li>
+                        <li>2023.04.30</li>
+                        <li><button>삭제</button></li>
+                    </ul>
 
-                                <ul class="list">
-                                    <li> <input type="checkbox" class="check"> </li>
-                                    <li>No.1</li>
-                                    <li class="title">
-                                        <div>
-                                            소모임3|오리는 꽥꽥
-                                        </div>
-                                        <div>
-                                            ㄴ Re : 병아리는 삐약
-                                        </div>
-                                    </li>
-                                    <li class="title">
-                                        <div>
-                                            2023.04.27
-                                        </div>
-                                        <div>
-                                            2023.04.30
-                                        </div>
-                                    </li>
-                                    <li><button>삭제</button></li>
-                                </ul>
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.2</li>
+                        <li class="title">소모임2|강아지들은 멍멍</li>
+                        <li>2023.04.30</li>
+                        <li><button>삭제</button></li>
+                    </ul>
+                </div>
 
-                                <ul class="list">
-                                    <li> <input type="checkbox" class="check"> </li>
-                                    <li>No.1</li>
-                                    <li class="title">
-                                        <div>
-                                            소모임1|나만 고영희 없어
-                                        </div>
-                                        <div>
-                                            ㄴ Re : 나도없어ㅠ
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            2023.04.28
-                                        </div>
-                                        <div>
-                                            2023.04.30
-                                        </div>
-                                    </li>
-                                    <li><button>삭제</button></li>
-                                </ul>
+                <div id="tab-2" class="tab-content">
+                    <ul class="list top">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>번호</li>
+                        <li class="title">제목</li>
+                        <li>날짜</li>
+                        <li></li>
+                    </ul>
+
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.1</li>
+                        <li class="title">
+                            <div>
+                                소모임3|오리는 꽥꽥
+                            </div>
+                            <div>
+                                ㄴ Re : 병아리는 삐약
                             </div>
                         </li>
+                        <li class="title">
+                            <div>
+                                2023.04.27
+                            </div>
+                            <div>
+                                2023.04.30
+                            </div>
+                        </li>
+                        <li><button>삭제</button></li>
                     </ul>
-            </div>
+
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.1</li>
+                        <li class="title">
+                            <div>
+                                소모임1|나만 고영희 없어
+                            </div>
+                            <div>
+                                ㄴ Re : 나도없어ㅠ
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                2023.04.28
+                            </div>
+                            <div>
+                                2023.04.30
+                            </div>
+                        </li>
+                        <li><button>삭제</button></li>
+                    </ul>
+                </div>
+            <!-- 탭 메뉴 내용 끝 -->
         </div>
+
 
     </div>
 </body>

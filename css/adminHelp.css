@@ -5,13 +5,13 @@
 }
 
 #contentsArea {
-  padding-top: 115px;
   width: 100%;
   display: flex;
   flex-direction: row;
   height: 80vh;
 }
 #memberListWindow {
+  padding-top: 30px;
   background-color: pink;
   overflow-y: scroll;
 }

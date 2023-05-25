@@ -47,14 +47,14 @@ function calendarMaker(target, date) {
     let calendarHTMLCode =
       "<table class='calendarTable'>" +
       "<caption class='calDate'>" +
-      "<button type='button' class='prev'>< 이전 달</button>" +
+      "<button type='button' class='prev button'>< 이전 달</button>" +
       "<span>" +
       year +
       "년 " +
       month +
       "월</span>" +
-      "<button type='button' class='today'>오늘</button>" +
-      "<button type='button' class='next'>다음 달 ></button>" +
+      "<button type='button' class='today button'>오늘</button>" +
+      "<button type='button' class='next button'>다음 달 ></button>" +
       "</caption>" +
       "<thead  class='calWeek'>" +
       "<th class='red'>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class='blue'>토</th>" +
