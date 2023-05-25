@@ -158,7 +158,7 @@ a {
 .commentbox div {
   margin: 5px;
 }
-/* 프로필 사진 테스트 */
+/* 프로필 사진 */
 .commentThumb img {
   width: 40px;
   border-radius: 50%;
@@ -166,14 +166,6 @@ a {
   top: 0;
   left: 10px;
   background-color: #ccc;
-}
-.commentThumb2 img {
-  width: 40px;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 10px;
-  background-color: #fff;
 }
 .commentThumb .commentNick {
   font-weight: bold;
