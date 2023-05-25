@@ -20,6 +20,7 @@
 
 }
 
+/*
 .imgCrop {
     width: 1200px;
     height: 300px;
@@ -33,9 +34,10 @@
     width: 1200px;
     height: 400px;
 }
+*/
 
 #contentsArea,.contMainArea {
-    width: 1200px;
+    /*width: 1200px;*/
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -66,7 +68,7 @@
 
 /* 최근일정, 최근 게시글 테이블 설정영역*/
 .recentTbl {
-    width: 800px;
+    width: 100%;
     box-sizing: border-box;
 }
 .recentTbl tr{
@@ -79,16 +81,20 @@
 
 .recentScheduledTbl tr th:nth-of-type(1), .recentScheduledTbl tr td:nth-of-type(1),
 .recentBoard tr th:nth-of-type(3), .recentBoard tr td:nth-of-type(3){
-    width: 200px;
+    /*width: 200px;*/
+    width: 25%;
     text-align: center;
 
 }
 .recentScheduledTbl tr th:nth-of-type(2), .recentScheduledTbl tr td:nth-of-type(2),
 .recentBoard tr th:nth-of-type(1), .recentBoard tr td:nth-of-type(1) {
-    width: 430px;
+    /*width: 430px;*/
+    width: 53.75%;
 }
 .recentScheduledTbl tr td:nth-of-type(2) p, .recentBoard tr td:nth-of-type(1) p{
-    width: 430px;
+    /*width: 430px;*/
+    width: 53.75%;
+
     display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -99,7 +105,8 @@
 }
 .recentScheduledTbl tr th:nth-of-type(3), .recentScheduledTbl tr td:nth-of-type(3),
 .recentBoard tr th:nth-of-type(2), .recentBoard tr td:nth-of-type(2) {
-    width: 150px;
+    /*width: 150px;*/
+    width: 18.75%;
 }
 
 
@@ -110,7 +117,8 @@
 }
 
 .memberArea {
-    width: 800px;
+    /*width: 800px;*/
+
     height: 250px;
     position: relative;
     padding-bottom: 10px;
@@ -118,7 +126,8 @@
 
 }
 .animationSlide {
-    width: 700px;
+    /*width: 700px;*/
+    width: 87.5%;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -131,7 +140,6 @@
     display: inline-block;
     text-align: center;
     padding: 0 8px;
-    
 }
 .memImg {
     display: inline-block;
@@ -166,6 +174,10 @@
 }
 
 .fa-chevron.btnActive {
+    cursor: pointer;
+    color: #222;
+}
+.btnActive {
     cursor: pointer;
     color: #222;
 }
