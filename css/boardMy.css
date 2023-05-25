@@ -14,71 +14,53 @@ a:visited {
 .all{
     width: 1000px;
     margin: 0 auto;
-
-
-}
-/*2번*/
-.h2Text{
-    margin: 0 auto;
-    border-bottom: 1px solid black;
-    padding: 20px;
-
+    display: flex;
 }
 
-/*3번*/
-.menu {
-    margin-top: 20px;
+.list {
+    display: flex;
+    border: 1px solid black;
+}
+
+.container {
+    width: 600px;
+}
+
+ul.tabs{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul.tabs li{
     display: inline-block;
-    padding: 5px 0;
-    box-sizing: border-box;
-    border: none;
-    background-color: #ccc;
-    border-radius: 10px;
-    width: 200px;
-    float: left;
-}
-.menu i {
-    margin-right: 10px  ;
-}
-.menu li:first-child {
-    text-align: center;
-    padding: 0;
-}
-.menu li {
-    line-height: 50px;
-    padding-left: 40px;
+	background: #898989;
+	color: white;
+	padding: 10px 15px;
+	cursor: pointer;
 }
 
-
-/*4번*/
-.bodarBox{
-    width: 750px;
-    float: right;
+ul.tabs li.current{
+	background: #e0e0e0;
+	color: #222;
 }
 
-/*5번*/
-.repBox {
-    clear: both; 
-    width: 750px;
-    float: right;
+.tab-content{
+    display: none;
+	background: #e0e0e0;
+	padding: 12px;
 }
 
-/*4-1번, 5-1번*/
-.boxText {
-    width: 750px;
-    display: inline-block;
-    padding: 10px 0;
-    border-bottom: 1px solid black;
+.tab-content.current{
+	display: inherit;
 }
 
-/*4-2번, 5-2번*/
-.selectD {
-    
+.list {
+    display: flex;
 }
-
-/*4-3번, 5-3번*/
-.table > table {
-    width: 750px;
-    text-align: center;
-    
+.list >li {
+    margin: 10px 20px;
+}
+.top > li{
+    margin: 10px 40px;
 }

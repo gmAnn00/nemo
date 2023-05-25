@@ -12,17 +12,19 @@
     <script src="js/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="css/header.css" />
     <script src="js/header.js"></script>
+    <script src="js/boardMy.js"></script>
 
     <link rel="stylesheet" href="css/boardMy.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/submenu.css">
 
     <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- header 시작 -->
-    <header>
+    <!-- <header>
         <h1 class="logo">
             <a href="index.html"><img src="images/logo.png" alt="logo"></a>
         </h1>
@@ -94,82 +96,145 @@
                 </li>
             </ul>
         </div>
-    </header>
+    </header> -->
     <!-- header 종료 -->
 
             <!-- 배경색 조정 -->
             <div class="menu_bg"></div>
     
+    
     <!--1번-->
     <div class="all">
-        <!--2번-->
-        <div class="h2Text">
-            <h2>게시글·댓글</h2>
+            <!-- 메뉴바 시작 -->
+        <div class="sc2_menu_contents">
+            <div class="sc2_menu">
+                <h2 class="sc2_menu_title">나의 모임</h2>
+                <ul class="sc2_menu_list">
+                    <li>
+                        <div class="sc2_icon_menu">
+                            <div class="menu_submenu_name"><span>일정</span></div>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sc2_icon_menu">
+                            <div class="menu_submenu_name"><span>게시판</span></div>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sc2_icon_menu">
+                            <div class="menu_submenu_name"><span>멤버</span></div>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sc2_icon_menu">
+                            <div class="menu_submenu_name"><span>소모임관리</span></div>
+                            <i class="fa-solid fa-minus"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="secession">
+                <span>삭제하기</span>
+            </div> -->
         </div>
+        <!-- 메뉴바 종료 -->
 
-        <!--3. 메뉴-->
-        <div class="menu">
-            <ul>
-                <li><a href="#">프로필</a></li>
-                <li><a href="#"><i class="fa-solid fa-calendar-days"></i>내 일정</a></li>
-                <li><a href="#"><i class="fa-solid fa-user-group"></i>내 소모임</a></li>
-                <li><a href="#"><i class="fa-solid fa-border-all"></i>게시글·댓글</a></li>
-            </ul>
-        </div>
+
+
 
         <!--4번-->
-        <div class="bodarBox">
-            <!--4-1-->
-            <div class="boxText">
-                <h3>게시글 관리</h3> 
-            </div>
-            <!--4-2-->
-            <div class="button">
-                <button class="selectD">선택삭제</button>
-            </div>
-            <!--4-3-->
-            <div class="table">
-                <table border="1">
-                    <th>번호</th><th>제목</th><th>날짜</th>
-                    <tr>
-                        <td>No.1</td><td>소모임1|고양이들은 야옹야옹</td><td>2023.04.30</td><button>삭제</button>
-                    </tr>
-                    <tr>
-                        <td>No.2</td><td>소모임2|강아지들은 멍멍</td><td>2023.04.30</td><button>삭제</button>
-                    </tr> 
-                </table>
-            </div>
-        </div>
 
-        <!--5번-->
-        <div class="repBox">
-            <!--5-1-->
-            <div class="boxText">
-                <h3>댓글 관리</h3>
-            </div>
-            <!--5-2-->
-            <div class="button">
-                <button class="selectD">선택삭제</button>
-            </div>
-            <!--5-3-->
-            <div class="table">
-                <table border="1">
-                    <th>번호</th><th>제목</th><th>날짜</th>
-                    <tr>
-                        <td rowspan="2">No.1</td><td rowspan="2">소모임3|오리는 꽥꽥<br>ㄴ Re : 병아리는 삐약</td><td>2023.04.30</td><button>삭제</button><br>
-                    </tr>
-                    <tr>
-                        <td>2023.04.27</td><button>삭제</button>
-                    </tr>
+        <div class="container">
+            <!-- 탭 메뉴 상단 시작 -->
+                <ul class="tabs">
+                    <li class="tab-link current" data-tab="tab-1">게시판</li>
+                    <li class="tab-link" data-tab="tab-2">댓글</li>
+                </ul>
+            <!-- 탭 메뉴 상단 끝 -->
+            <!-- 탭 메뉴 내용 시작 -->
+                <div id="tab-1" class="tab-content current">
+                    <ul class="list top" >
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>번호</li>
+                        <li class="title">제목</li>
+                        <li>날짜</li>
+                        <li></li>
+                    </ul>
 
-                    <tr>
-                        <td rowspan="2">No.2</td><td rowspan="2">소모임4|나만 고영희 없어<br>ㄴ Re : 나도 없어ㅠ</td><td>2023.04.28</td><button>삭제</button><br>
-                    </tr>
-                    <tr>
-                        <td>2023.04.30</td><button>삭제</button>
-                    </tr> 
-                </table>
-            </div>
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.1</li>
+                        <li class="title">소모임1|고양이들은 야옹</li>
+                        <li>2023.04.30</li>
+                        <li><button>삭제</button></li>
+                    </ul>
+
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.2</li>
+                        <li class="title">소모임2|강아지들은 멍멍</li>
+                        <li>2023.04.30</li>
+                        <li><button>삭제</button></li>
+                    </ul>
+                </div>
+
+                <div id="tab-2" class="tab-content">
+                    <ul class="list top">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>번호</li>
+                        <li class="title">제목</li>
+                        <li>날짜</li>
+                        <li></li>
+                    </ul>
+
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.1</li>
+                        <li class="title">
+                            <div>
+                                소모임3|오리는 꽥꽥
+                            </div>
+                            <div>
+                                ㄴ Re : 병아리는 삐약
+                            </div>
+                        </li>
+                        <li class="title">
+                            <div>
+                                2023.04.27
+                            </div>
+                            <div>
+                                2023.04.30
+                            </div>
+                        </li>
+                        <li><button>삭제</button></li>
+                    </ul>
+
+                    <ul class="list">
+                        <li class="checkS"> <input type="checkbox" class="check"> </li>
+                        <li>No.1</li>
+                        <li class="title">
+                            <div>
+                                소모임1|나만 고영희 없어
+                            </div>
+                            <div>
+                                ㄴ Re : 나도없어ㅠ
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                2023.04.28
+                            </div>
+                            <div>
+                                2023.04.30
+                            </div>
+                        </li>
+                        <li><button>삭제</button></li>
+                    </ul>
+                </div>
+            <!-- 탭 메뉴 내용 끝 -->
         </div>
 
 

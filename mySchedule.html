@@ -12,6 +12,7 @@
     ></script>
     <link rel="stylesheet" href="css/mySchedule.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/submenu.css" />
   </head>
   <body>
     <!-- 헤더 영역 시작 -->
@@ -110,34 +111,69 @@
 
     <!-- 콘텐츠 영역 시작 -->
     <div id="contentsArea">
-      <h2>내 일정</h2>
-      <div class="myScheduleMenuAndCal">
-        <div class="myScheduleMenuArea">
-          <ul class="myScheduleMenu">
-            <li><a href="#">프로필</a></li>
-            <li><a href="#">내 일정</a></li>
-            <li><a href="#">내 소모임</a></li>
-            <li><a href="#">게시글·댓글</a></li>
+      <!-- 메뉴바 시작 -->
+      <div class="sc2_menu_contents">
+        <div class="sc2_menu">
+          <h2 class="sc2_menu_title">마이페이지</h2>
+          <ul class="sc2_menu_list">
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name"><span>프로필</span></div>
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </li>
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name"><span>내 일정</span></div>
+                <i class="fa-solid fa-minus"></i>
+              </div>
+            </li>
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name">
+                  <span>내 소모임</span>
+                </div>
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </li>
+            <li>
+              <div class="sc2_icon_menu">
+                <div class="menu_submenu_name">
+                  <span>내가 쓴 글·댓글</span>
+                </div>
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </li>
           </ul>
         </div>
-        <div class="myScheduleCalAndList">
-          <div id="myScheduleCalendarArea"></div>
-          <div class="myScheduleListArea">
-            <div class="mySchedule">
-              <p class="myScheduleDate">2023년 4월 25일</p>
-              <img src="images/temp.png" alt="소모임 사진" />
-              <p class="myScheduleGroupName">이젠 종로 학원</p>
-              <p class="contents">
-                와이어프레임 짜기 | 오후 3시 30분 | 서울시 종로구
-              </p>
-            </div>
-            <div class="mySchedule">
-              <p class="myScheduleDate">2023년 4월 27일</p>
-              <img src="images/temp.png" alt="소모임 사진" />
-              <p class="myScheduleGroupName">맛집 탐방 모임</p>
-              <p class="contents">
-                인스타 맛집 탐방 | 오후 1시 30분 | 서울시 강남구
-              </p>
+        <!-- <div class="secession">
+          <span>삭제하기</span>
+      </div> -->
+      </div>
+      <!-- 메뉴바 종료 -->
+
+      <div id="wrap">
+        <h2>내 일정</h2>
+        <div class="myScheduleMenuAndCal">
+          <div class="myScheduleCalAndList">
+            <div id="myScheduleCalendarArea"></div>
+            <div class="myScheduleListArea">
+              <div class="mySchedule">
+                <p class="myScheduleDate">2023년 4월 25일</p>
+                <img src="images/temp.png" alt="소모임 사진" />
+                <p class="myScheduleGroupName">이젠 종로 학원</p>
+                <p class="contents">
+                  와이어프레임 짜기 | 오후 3시 30분 | 서울시 종로구
+                </p>
+              </div>
+              <div class="mySchedule">
+                <p class="myScheduleDate">2023년 4월 27일</p>
+                <img src="images/temp.png" alt="소모임 사진" />
+                <p class="myScheduleGroupName">맛집 탐방 모임</p>
+                <p class="contents">
+                  인스타 맛집 탐방 | 오후 1시 30분 | 서울시 강남구
+                </p>
+              </div>
             </div>
           </div>
         </div>

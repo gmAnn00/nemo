@@ -6,41 +6,53 @@
 }
 .mainPage {
   position: relative;
-  width: 100%;
-  height: 450px;
+  width: 85%;
+  height: 650px;
+  margin: 0 auto;
+  margin-bottom: 150px;
 }
 .mainImg {
   width: 100%;
-  height: 450px;
+  height: 650px;
 }
 .mainImg img {
   width: 100%;
-  height: 450px;
+  height: 650px;
 }
 .mainImgBtn01 {
   position: absolute;
-  background-color: antiquewhite;
+  background-color: black;
   padding: 20px;
-  top: 300px;
+  top: 500px;
   left: 200px;
+  border-radius: 20px;
+}
+.mainImgBtn01 a {
+  color: #fff;
 }
 .mainImgBtn02 {
   position: absolute;
-  background-color: antiquewhite;
+  background-color: black;
   padding: 20px;
-  top: 300px;
+  top: 500px;
   right: 200px;
+  border-radius: 20px;
+}
+.mainImgBtn02 a {
+  color: #fff;
 }
 .categories {
-  width: 100%;
+  width: 85%;
   padding-bottom: 30px;
+  margin-bottom: 150px;
+  margin: 0 auto;
 }
 .categoriesGoto {
   float: left;
   margin: 20px;
 }
 .categoriesText {
-  margin: 20px;
+  margin-left: 80px;
 }
 .flowBanner1 {
   overflow: hidden;
@@ -79,23 +91,92 @@
     transform: translateX(0);
   }
 }
-.slide {
-  width: 190px !important;
-  height: 190px !important;
-  margin: 5px;
+/* .slide {
+  width: 250px !important;
+  height: 250px !important;
+  margin: 10px;
   padding: 15px 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+} */
+.imgBox {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 120px 120px;
+  margin: 10px;
+  /* padding: 15px 0; */
+  background-color: #ccc;
+  background-position: 50% 10%;
+  position: relative;
 }
-
+.sle1 {
+  background-image: url(../images/icon_01garland.png);
+}
+.sle2 {
+  background-image: url(../images/icon_02music.png);
+}
+.sle3 {
+  background-image: url(../images/icon_03photo.png);
+}
+.sle4 {
+  background-image: url(../images/icon_04outdoor.png);
+}
+.sle5 {
+  background-image: url(../images/icon_05kick.png);
+}
+.sle6 {
+  background-image: url(../images/icon_06book.png);
+}
+.sle7 {
+  background-image: url(../images/icon_07foreign.png);
+}
+.sle8 {
+  background-image: url(../images/icon_08craft.png);
+}
+.sle9 {
+  background-image: url(../images/icon_09dance.png);
+}
+.sle10 {
+  background-image: url(../images/icon_10volunteer.png);
+}
+.sle11 {
+  background-image: url(../images/icon_11people.png);
+}
+.sle12 {
+  background-image: url(../images/icon_12bike.png);
+}
+.sle13 {
+  background-image: url(../images/icon_13stadium.png);
+}
+.sle14 {
+  background-image: url(../images/icon_14game.png);
+}
+.sle15 {
+  background-image: url(../images/icon_15cook.png);
+}
+.sle16 {
+  background-image: url(../images/icon_16pet.png);
+}
+.box_text {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 3px;
+  font-weight: 800;
+  font-size: 18px;
+}
 .group01 {
   width: 100%;
   height: 100%;
+  margin-bottom: 100px;
 }
 .smallGroup {
   width: 100%;
 }
-.groupImg img {
-  width: 100%;
-}
+
 .smallText {
   margin: 20px;
 }
@@ -108,6 +189,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 }
 .closePage {
   display: flex;
@@ -118,9 +200,24 @@
 }
 .recommend {
   text-align: center;
-  width: 200px;
+  width: 300px;
   margin: 10px 0 10px 0;
 }
 .recommend img {
-  width: 90%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.recommendText1 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+.recommendText2 {
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+.recommend2 a {
+  background-color: #bdbdbd;
+  color: #fff;
+  padding: 10px;
+  border-radius: 15px;
 }
