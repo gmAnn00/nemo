@@ -8,8 +8,6 @@
   width: 500px;
   padding: 10px;
 }
-.nameBtn {
-}
 .categoriesArea {
   padding: 10px;
   display: flex;
@@ -28,9 +26,6 @@
 
 .categories01 h3 {
   margin-bottom: 20px;
-}
-
-.categories02 {
 }
 
 .bar {
@@ -98,9 +93,11 @@
   border-bottom: 1px solid black;
 }
 .groupImg {
-  flex: 1;
-  width: 100%;
+  width: 100px;
   margin: 15px;
+}
+.groupImg img {
+  width: 100%;
 }
 .SteamedImg {
   position: absolute;
@@ -110,15 +107,12 @@
   bottom: 15px;
 }
 .groupText {
-  flex: 2;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  width: 500px;
 }
 .groupText04 {
   overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .SteamedImg img {
   width: 100%;
