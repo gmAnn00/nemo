@@ -7,10 +7,11 @@
     <title>네모</title>
     <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/myPageGroup.css">
     <link rel="stylesheet" href="css/submenu.css">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sectionTitle.css">
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/myPageGroup.js"></script>
     <script src="js/header.js"></script>
@@ -93,185 +94,222 @@
     <!-- header 종료 -->
     <div class="menu_bg"></div>
     
+ 
     <!-- section1 시작 -->
     <div class="section1">
-        <img src="images/sc1_title.jpeg" alt="title" class="sc_img">
-        <a href="#" class="sc1_title">이젠 종로 학원</a>
+        <div class="group_containter">
+            <div class="group_all">
+                <div class="group_img">
+                    <img src="images/free-icon-group-8847475.png" alt="group_img">
+                </div>
+                <div class="group_name">
+                    <span>이젠종로학원</span>
+                </div>
+                <div class="group_info">
+                    <div class="group_info_category">
+                        <div class="category_box group_info_category_box">sports</div>
+                        <div class="category_box group_info_category_box">game</div>
+                    </div>
+                    <div class="group_info_member">
+                        <div class="group_info_title"><span>멤버수</span></div>
+                        <div class="group_info_contents"><span>7</span></div>
+                    </div>
+                    <div class="group_info_follower">
+                        <div class="group_info_title"><span>개설일</span></div>
+                        <div class="group_info_contents"><span>2023. 05. 19.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- section1 종료 -->
 
     <!-- wrapper 시작 -->
     <div id="wrapper">
+
+        <!-- nav 바 시작 -->
+        <div class="nav_bar">
+            <a href="#">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            <i class="fa-solid fa-angle-right"></i>
+            <span>나의 모임</span>
+            <i class="fa-solid fa-angle-right"></i>
+            <span>멤버</span>
+        </div>
+        <!-- nav 바 종료 -->
         
         <!-- section2 시작 -->
         <div class="section2">
-            <div class="sc2_title">
-                <span class="sc2_title_name">멤버</span>     
-            </div>
+            
             <div class="sc2_subcontents">
                 
                 <!-- 메뉴바 시작 -->
                 <div class="sc2_menu_contents">
                     <div class="sc2_menu">
-                        <div class="sc2_menu_bar">
-                            <span class="sc2_menu_title">메뉴</span>
-                        </div>
+                        <h2 class="sc2_menu_title">나의 모임</h2>
                         <ul class="sc2_menu_list">
                             <li>
                                 <div class="sc2_icon_menu">
-                                    <div class="sc2_iconbox">
-                                        <i class="fa-solid fa-user"></i>
-                                    </div>
-                                    <div class="menu_submenu_name"><span>프로필</span></div>
+                                    <div class="menu_submenu_name"><span>일정</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
                                 </div>
                             </li>
                             <li>
                                 <div class="sc2_icon_menu">
-                                    <div class="sc2_iconbox">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </div>
-                                    <div class="menu_submenu_name">내 일정</div>
+                                    <div class="menu_submenu_name"><span>게시판</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
                                 </div>
                             </li>
                             <li>
                                 <div class="sc2_icon_menu">
-                                    <div class="sc2_iconbox">
-                                        <i class="fa-solid fa-user-group"></i>
-                                    </div>
-                                    <div class="menu_submenu_name">내 소모임</div>
+                                    <div class="menu_submenu_name"><span>멤버</span></div>
+                                    <i class="fa-solid fa-minus"></i>
                                 </div>
                             </li>
                             <li>
                                 <div class="sc2_icon_menu">
-                                    <div class="sc2_iconbox">
-                                        <i class="fa-regular fa-clipboard"></i>
-                                    </div>
-                                    <div class="menu_submenu_name">게시글/댓글</div>
+                                    <div class="menu_submenu_name"><span>소모임관리</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                    <div class="secession">
-                        <span>탈퇴하기</span>
                     </div>
                 </div>
                 <!-- 메뉴바 종료 -->
                 
-                <!-- 메인 컨텐츠 시작 -->
-                <div class="sc2_main_contents">
+                <!-- 컨텐츠 시작 -->
+                <div class="sc2_section">
+                    <div class="sc2_section_title">
+                        <span>멤버</span>
+                    </div>
                     
                     <div id="container">
-                        <!-- 메뉴 탭 시작 -->
-                        <ul class="tabs">
-                            <li class="active" rel="tab1">회원목록</li>
-                            <li rel="tab2">가입승인</li>
-                        </ul>
-                        <!-- 메뉴 탭 종료 -->
-
-                        <div class="tab_container">
-                            <!-- 멤버 탭 시작 -->
-                            <div id="tab1" class="tab_content">
-                                <div class="sc2_member">
-                                    <div class="sc2_member_title">
-                                        <span class="sc2_member_title_name">7 members</span>
-                                        <div class="searchBox">
-                                            <i class="fa-solid fa-magnifying-glass"></i>
-                                            <input class="searchBox_Bar" type="text" placeholder="search">
+                        <div data-tabs class="tabs">    
+                            <div class="tab">
+                               <input type="radio" name="tabgroup" id="tab-1" checked>
+                               <label for="tab-1">회원목록</label>
+                               <div class="tab__content">
+                                <div id="menu2" class="tabcont">
+                                    <div class="sc2_member">
+                                        <div class="sc2_member_title">
+                                            <span class="sc2_member_title_name">5 members</span>
+                                            <div class="searchBox">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                <input class="searchBox_Bar" type="text" placeholder="search">
+                                            </div>
+                                        </div>
+                                        <div class="profile_section">
+                                            <div class="profile_box">
+                                                <div class="profile_img"></div>
+                                                <div class="profile_info">
+                                                    <div class="profile_name">고구마</div>
+                                                    <div class="profile_date">2023년 1월 1일 가입</div>
+                                                </div>
+                                                <div class="profile_btns">
+                                                    <div class="profile_btn"><span>추방</span></div>
+                                                    <div class="profile_btn"><span>신고</span></div>
+                                                    <div class="profile_btn"><span>위임</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="profile_box">
+                                                <div class="profile_img"></div>
+                                                <div class="profile_info">
+                                                    <div class="profile_name">고구마</div>
+                                                    <div class="profile_date">2023년 1월 1일 가입</div>
+                                                </div>
+                                                <div class="profile_btns">
+                                                    <div class="profile_btn"><span>추방</span></div>
+                                                    <div class="profile_btn"><span>신고</span></div>
+                                                    <div class="profile_btn"><span>위임</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="profile_box">
+                                                <div class="profile_img"></div>
+                                                <div class="profile_info">
+                                                    <div class="profile_name">고구마</div>
+                                                    <div class="profile_date">2023년 1월 1일 가입</div>
+                                                </div>
+                                                <div class="profile_btns">
+                                                    <div class="profile_btn"><span>추방</span></div>
+                                                    <div class="profile_btn"><span>신고</span></div>
+                                                    <div class="profile_btn"><span>위임</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="profile_box">
+                                                <div class="profile_img"></div>
+                                                <div class="profile_info">
+                                                    <div class="profile_name">고구마</div>
+                                                    <div class="profile_date">2023년 1월 1일 가입</div>
+                                                </div>
+                                                <div class="profile_btns">
+                                                    <div class="profile_btn"><span>추방</span></div>
+                                                    <div class="profile_btn"><span>신고</span></div>
+                                                    <div class="profile_btn"><span>위임</span></div>
+                                                </div>
+                                            </div> 
+                                            <div class="profile_box">
+                                                <div class="profile_img"></div>
+                                                <div class="profile_info">
+                                                    <div class="profile_name">고구마</div>
+                                                    <div class="profile_date">2023년 1월 1일 가입</div>
+                                                </div>
+                                                <div class="profile_btns">
+                                                    <div class="profile_btn"><span>추방</span></div>
+                                                    <div class="profile_btn"><span>신고</span></div>
+                                                    <div class="profile_btn"><span>위임</span></div>
+                                                </div>
+                                            </div>    
                                         </div>
                                     </div>
-                                    <table class="sc2_table">
-                                        <colgroup>
-                                            <col style="width: 16.1%;">
-                                            <col style="width: 16.1%;">
-                                            <col style="width: 16.1%;">
-                                            <col style="width: 16.1%;">
-                                            <col style="width: 16.1%;">
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th>닉네임</th>
-                                                <th>멤버등급</th>
-                                                <th>지역</th>
-                                                <th>가입일</th>
-                                                <th>최종방문일</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><i class="fa-solid fa-circle-user"></i>고구마</td>
-                                                <td>회원</td>
-                                                <td>서울</td>
-                                                <td>21/01/01</td>
-                                                <td>23/02/02</td>
-                                                <td>
-                                                    <button class="sc2_button">추방</button>
-                                                    <button class="sc2_button">위임</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa-solid fa-circle-user"></i>감자</td>
-                                                <td>회원</td>
-                                                <td>서울</td>
-                                                <td>21/01/01</td>
-                                                <td>23/02/02</td>
-                                                <td>
-                                                    <button class="sc2_button">추방</button>
-                                                    <button class="sc2_button">위임</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
+                               </div> 
                             </div>
-                            <!-- 멤버 탭 종료 -->
-
-                            <!-- 가입승인 탭 시작 -->
-                            <div id="tab2" class="tab_content">
-                                <div id="menu2" class="tabcont">
-                                    <div class="sc2_admin">
-                                        <table class="sc2_table">
-                                            <colgroup>
-                                                <col style="width: 16.1%;">
-                                                <col style="width: 16.1%;">
-                                                <col style="width: 16.1%;">
-                                                <col style="width: 16.1%;">
-                                            </colgroup>
-                                            <thead>
-                                                <tr>
-                                                    <th>닉네임</th>
-                                                    <th>나이</th>
-                                                    <th>지역</th>
-                                                    <th>가입신청일</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><i class="fa-solid fa-circle-user"></i>새우깡</td>
-                                                    <td>29</td>
-                                                    <td>서울</td>
-                                                    <td>23/01/01</td>
-                                                    <td>
-                                                        <button class="sc2_button">승인</button>
-                                                        <button class="sc2_button">거절</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="tab">
+                               <input type="radio" name="tabgroup" id="tab-2">
+                               <label for="tab-2">가입승인</label>
+                               <div class="tab__content">
+                                <div class="sc2_admin">
+                                    <div class="profile_section">
+                                        <div class="profile_box">
+                                            <div class="profile_img"></div>
+                                            <div class="profile_info">
+                                                <div class="profile_name">고구마</div>
+                                                <div class="profile_date">2023년 1월 1일 가입</div>
+                                            </div>
+                                            <div class="profile_btns">
+                                                <div class="profile_btn"><span>승인</span></div>
+                                                <div class="profile_btn"><span>거절</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="profile_box">
+                                            <div class="profile_img"></div>
+                                            <div class="profile_info">
+                                                <div class="profile_name">고구마</div>
+                                                <div class="profile_date">2023년 1월 1일 가입</div>
+                                            </div>
+                                            <div class="profile_btns">
+                                                <div class="profile_btn"><span>승인</span></div>
+                                                <div class="profile_btn"><span>거절</span></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
-                            <!-- 가입승인 탭 종료 -->
-                            
-                        </div>
-                        <!-- .tab_container -->
+                         </div>
                     </div>
                     <!-- #container -->
                     
                 </div>
+                <!-- 컨텐츠 종료 -->
+
             </div>    
+        
         </div>
         <!-- section2 종료 -->
+    
     </div>
     <!-- wrapper 종료 -->
+
 </body>
 </html>
