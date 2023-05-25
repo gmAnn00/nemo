@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>네모</title>
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
     <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
     <script src="js/jquery-3.6.4.min.js"></script>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css">
     <script src="js/header.js"></script>
     <link rel="stylesheet" href="css/submenu.css">
     <link rel="stylesheet" href="css/myGroupList.css">
@@ -93,67 +92,56 @@
     <!-- header 종료 -->
     
     <!-- 컨텐츠 시작 -->
-    <div class="all">
-        <div class="wrapper">
-            <div class="section2">
+    <div id="wrapper">
+        <div class="section2">
 
-                <!-- 컨텐츠 이름 시작 -->
-                <div class="sc2_title">
-                    <span class="sc2_title_name">내 소모임</span>     
-                </div>
-                <!-- 컨텐츠 이름 종료 -->
-                
-                <div class="sc2_subcontents">
+            
+            <div class="sc2_subcontents">
 
-                    <!-- 메뉴바 시작 -->
-                    <div class="sc2_menu_contents">
-                        <div class="sc2_menu">
-                            <div class="sc2_menu_bar">
-                                <span class="sc2_menu_title">메뉴</span>
-                            </div>
-                            <ul class="sc2_menu_list">
-                                <li>
-                                    <div class="sc2_icon_menu">
-                                        <div class="sc2_iconbox">
-                                            <i class="fa-solid fa-user"></i>
-                                        </div>
-                                        <div class="menu_submenu_name"><span>프로필</span></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sc2_icon_menu">
-                                        <div class="sc2_iconbox">
-                                            <i class="fa-solid fa-calendar-days"></i>
-                                        </div>
-                                        <div class="menu_submenu_name">내 일정</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sc2_icon_menu">
-                                        <div class="sc2_iconbox">
-                                            <i class="fa-solid fa-user-group"></i>
-                                        </div>
-                                        <div class="menu_submenu_name">내 소모임</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sc2_icon_menu">
-                                        <div class="sc2_iconbox">
-                                            <i class="fa-regular fa-clipboard"></i>
-                                        </div>
-                                        <div class="menu_submenu_name">게시글/댓글</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="secession">
-                            <span>탈퇴하기</span>
-                        </div>
+                <!-- 메뉴바 시작 -->
+                <div class="sc2_menu_contents">
+                    <div class="sc2_menu">
+                        <h2 class="sc2_menu_title">마이페이지</h2>
+                        <ul class="sc2_menu_list">
+                            <li>
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>프로필</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>내 일정</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>내 소모임</span></div>
+                                    <i class="fa-solid fa-minus"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>내 글 관리</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- 메뉴바 종료 -->    
+                </div>
+                <!-- 메뉴바 종료 -->    
+                
+                <!-- 메인 컨텐츠 시작 -->
+                <div class="sc2_section">
                     
-                    <!-- 메인 컨텐츠 시작 -->
-                    <div class="sc2_section">
+                    <!-- 컨텐츠 이름 시작 -->
+                    <div class="sc2_title">
+                        <span class="sc2_title_name">내 소모임</span>     
+                    </div>
+                    <!-- 컨텐츠 이름 종료 -->
+                    
+                    <div class="sc2_contents_box">
                         <div class="sc2_contents">
                             <div class="sc2_contents_title">
                                 <div class="sc2_contents_title_name">
@@ -236,11 +224,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 메인 컨텐츠 종료 --> 
-
                 </div>
-            </div>    
-        </div>
+                <!-- 메인 컨텐츠 종료 --> 
+
+            </div>
+        </div>    
     </div>
     <!-- 컨텐츠 종료 -->
 </body>
