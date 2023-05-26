@@ -49,12 +49,13 @@ a {
   /* border: 2px solid red; */
 }
 .search {
-  margin: 30px 0 20px 110px;
+  margin: 30px 0 0px 100px;
   height: 36px;
   line-height: 36px;
 }
 .search select {
   height: 36px;
+  width: 100px;
   border: 1px solid #ccc;
 }
 .search input {
@@ -65,30 +66,59 @@ a {
 .boardListArea {
   display: inline-block;
   padding: 20px;
-  border: 2px solid #ccc;
+  /* border: 2px solid #ccc; */
 }
-/* 말머리 뒤에 | 붙이기 */
-.list thead tr th:first-child::after {
-  margin-right: 5px;
-  content: " | ";
-}
-.boardList {
+
+/* 게시글목록 table 시작 */
+table.boardList {
   margin: 0 auto;
   padding: 10px;
   text-align: center;
   width: 800px;
-  height: 500px;
+  height: 420px;
 }
 .boardList tr {
   margin: 10px;
   height: 30px;
-  border-bottom: 2px solid #ccc;
+  /* border-bottom: 2px solid #ccc; */
   padding: 5px;
+}
+.boardListHead {
+  border-bottom: 1px solid #666;
+  font-weight: bold;
+  /* margin-bottom: 5px; */
+}
+.boardList td,
+.boardList th {
+  vertical-align: middle;
+}
+.boardList tr > td:nth-child(1) {
+  width: 10%;
+}
+.boardList tr > td:nth-child(2) {
+  width: 10%;
+}
+.boardList tr > td:nth-child(4) {
+  width: 15%;
+}
+.boardList tr > td:nth-child(5) {
+  color: #333;
+  width: 15%;
+}
+/* 말머리 뒤에 | 붙이기 */
+.boardList tr > td:nth-child(3)::before {
+  margin-right: 25px;
+  content: " | ";
+}
+.boardList tr > td:nth-child(3) {
+  width: 500px;
+  text-align: left;
 }
 .pagenation {
   height: 40px;
   line-height: 60px;
   text-align: center;
+  border-top: 1px solid #666;
 }
 .pagenation span {
   margin: 5px 10px;

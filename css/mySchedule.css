@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 #contentsArea {
-  padding-top: 115px;
   display: flex;
   flex-direction: row;
 }
@@ -29,12 +28,17 @@ div.myScheduleCalAndList {
 #myScheduleCalendarArea {
   width: 1000px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .calendarTable {
   margin: 0 auto;
   width: 600px;
-  border: 1px solid red;
+  border: 1px solid #222;
+  border-collapse: collapse;
+  border-radius: 5px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #222;
 }
 .calendarTable td {
   width: 80px;
@@ -53,6 +57,13 @@ div.myScheduleCalAndList {
 .calendarTable {
   background: #fff;
 }
+.calendarTable span {
+  margin: 0 15px;
+  font-size: 1.2em;
+}
+.calendarTable button {
+  margin: 0 10px;
+}
 .calendarTable td.passedDay.hasDay {
   /* 음... 지나간날 css */
 }
@@ -67,19 +78,22 @@ div.myScheduleCalAndList {
   background: pink;
 }
 .calendarTable .blue {
-  color: blue;
+  color: rgb(73, 73, 223);
 }
 .calendarTable .red {
-  color: red;
+  color: rgb(231, 75, 75);
 }
 
 div.myScheduleListArea {
   margin: 0 auto;
   width: 600px;
+  margin-top: 30px;
 }
 div.mySchedule {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 div.mySchedule img {
   width: 100px;
@@ -97,7 +111,7 @@ div.mySchedule p.myScheduleGroupName {
   top: -50px;
 }
 div.mySchedule p.contents {
-  margin-left: 105px;
+  margin-left: 107px;
   position: relative;
   top: -50px;
 }

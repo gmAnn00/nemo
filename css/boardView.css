@@ -88,6 +88,7 @@ a {
 .thumbArea img {
   border-radius: 50%;
   width: 40px;
+  background: #ccc;
 }
 .profileArea {
   padding: 0 10px;
@@ -157,14 +158,16 @@ a {
 .commentbox div {
   margin: 5px;
 }
+/* 프로필 사진 */
 .commentThumb img {
   width: 40px;
   border-radius: 50%;
   position: absolute;
   top: 0;
   left: 10px;
+  background-color: #ccc;
 }
-.commentNick {
+.commentThumb .commentNick {
   font-weight: bold;
 }
 .commentInfo {
