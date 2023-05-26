@@ -9,6 +9,9 @@
   flex: 3;
 }
 
+h2 {
+  margin-bottom: 50px;
+}
 div.myScheduleMenuAndCal {
   width: 1000px;
   display: flex;
@@ -29,6 +32,7 @@ div.myScheduleCalAndList {
   width: 1000px;
   margin: 0 auto;
   margin-bottom: 20px;
+  /* padding: 20px; */
 }
 
 .calendarTable {
@@ -39,6 +43,7 @@ div.myScheduleCalAndList {
   border-radius: 5px;
   border-style: hidden;
   box-shadow: 0 0 0 1px #222;
+  /* padding: 10px; */
 }
 .calendarTable td {
   width: 80px;
@@ -88,30 +93,42 @@ div.myScheduleListArea {
   margin: 0 auto;
   width: 600px;
   margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
 }
 div.mySchedule {
   /* border: 1px solid red; */
-  position: relative;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
+  padding-bottom: 20px;
 }
-div.mySchedule img {
+div.myScheduleImgContent {
+  display: flex;
+  flex-direction: row;
+}
+div.groupImg {
   width: 100px;
   height: 100px;
+  background-image: url(../images/books.jpg);
+  background-size: 100px 100px;
+  border-radius: 5px;
 }
-
+div.myScheduleContent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
 div.mySchedule p.myScheduleDate {
   font-weight: bold;
   font-size: 1.5em;
+  margin-bottom: 20px;
 }
 div.mySchedule p.myScheduleGroupName {
   display: inline-block;
+  font-weight: bold;
   font-size: 1.2em;
-  position: relative;
-  top: -50px;
+  margin-bottom: 20px;
 }
 div.mySchedule p.contents {
-  margin-left: 107px;
-  position: relative;
-  top: -50px;
+  font-size: 1.1em;
 }

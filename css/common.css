@@ -153,7 +153,7 @@ a:visited {
   color: #000;
 }
 
-.button {
+.buttonA {
   display: inline-block;
   min-width: 46px;
   height: 36px;
@@ -166,6 +166,32 @@ a:visited {
   text-align: center;
   vertical-align: top;
   background-color: #ccc;
+}
+.buttonBtn {
+  display: inline-block;
+  min-width: 46px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #ccc;
+}
+input[type="text"] {
+  display: inline-block;
+  min-width: 46px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding-left: 10px;
+  vertical-align: top;
+  background-color: #fff;
 }
 /* 헤더 */
 html,
