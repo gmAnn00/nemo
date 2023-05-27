@@ -28,7 +28,24 @@
   display: flex;
   position: relative;
 }
-
+/* .sc2_subcontents {
+  display: flex;
+  padding: 30px;
+}
+.sc2_menu {
+  width: 230px;
+  margin-left: 20px;
+  position: sticky;
+  top: 120px;
+}
+.sc2_section_title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.sc2_section_title span {
+  font-size: 30px;
+  font-weight: 800;
+} */
 /* 소모임 */
 /*.insideMenu {
   margin: 50px auto;
@@ -85,7 +102,7 @@
 /* 일정등록, 확인 영역 시작 */
 .schedule {
   width: 53.125em;
-  margin: 1.25em auto;
+  margin: 0 auto;
   padding: 30px;
   /* border: 2px solid red; */
 }
