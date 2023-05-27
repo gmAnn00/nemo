@@ -16,8 +16,9 @@
     margin-bottom: 20px;
     padding: 15px 0;
     background-color: var(--grpMenuBackColor);
-
-    padding-top:50px;
+}
+.header_except_body {
+    padding-top: 20px;
 }
 /*
 .grpMenuArea h2{
