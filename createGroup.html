@@ -136,6 +136,7 @@
                                     <p>※2~10글자 이내</p>
                                 </td>
                             </tr>
+
                             <tr>
                                 <th>
                                     <strong class="require">필수</strong><span>네모인원</span>
@@ -145,6 +146,7 @@
                                     <p>※최소 2명~최대 50명</p>
                                 </td>
                             </tr>
+
                             <tr>
                                 <th>
                                     <strong class="require">필수</strong><span>카테고리</span>
@@ -153,6 +155,7 @@
                                     <p>※대분류/소분류 모두 선택하셔야 합니다.</p>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td colspan="2">
                                     <div class="innerTblArea">
@@ -163,39 +166,43 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <select name="largeCate" id="cateLarge" onchange="change(this);" class="input">
-                                                        <option value="0">선택하기</option>
-                                                        <option value="1">문화/공연/축제</option>
-                                                        <option value="2">음악/악기</option>
-                                                        <option value="3">사진/영상</option>
-                                                        <option value="4">아웃도어/여행</option>
-                                                        <option value="5">운동/스포츠</option>
-                                                        <option value="6">인문학/책/글</option>
-                                                        <option value="7">업종/직무</option>
-                                                        <option value="8">공예/만들기</option>
-                                                        <option value="9">댄스/무용</option>
-                                                        <option value="10">봉사활동</option>
-                                                        <option value="11">사교/인맥</option>
-                                                        <option value="12">차/오토바이</option>
-                                                        <option value="13">스포츠 관람</option>
-                                                        <option value="14">게임/오락</option>
-                                                        <option value="15">요리/제조</option>
-                                                        <option value="16">반려동물</option>
-
-                                                    </select>
+                                                    <div class="selectBox">
+                                                        <select name="largeCate" id="largeCate" onchange="change(this);" class="commonSelect input">
+                                                            <option value="0">선택하기</option>
+                                                            <option value="1">문화/공연/축제</option>
+                                                            <option value="2">음악/악기</option>
+                                                            <option value="3">사진/영상</option>
+                                                            <option value="4">아웃도어/여행</option>
+                                                            <option value="5">운동/스포츠</option>
+                                                            <option value="6">인문학/책/글</option>
+                                                            <option value="7">업종/직무</option>
+                                                            <option value="8">공예/만들기</option>
+                                                            <option value="9">댄스/무용</option>
+                                                            <option value="10">봉사활동</option>
+                                                            <option value="11">사교/인맥</option>
+                                                            <option value="12">차/오토바이</option>
+                                                            <option value="13">스포츠 관람</option>
+                                                            <option value="14">게임/오락</option>
+                                                            <option value="15">요리/제조</option>
+                                                            <option value="16">반려동물</option>
+                                                        </select>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <select name="smallCate" id="smallCate" class=select>
-                                                        <option value=''>선택하기</option>
-                                                    </select>
+                                                    <div class="selectBox">
+                                                        <select name="smallCate" id="smallCate" class="commonSelect select">
+                                                            <option value=''>선택하기</option>
+                                                        </select>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 </td>
                             </tr>
+
                             <tr>
-                                <th rowspan="2">
+                                <th>
                                     <strong class="require">필수</strong><span>네모장소</span>
                                 </th>
                                 <td>
@@ -207,17 +214,14 @@
                                     <input type="text" id="sample6_postcode" placeholder="우편번호">
                                     <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                                     <input type="text" id="sample6_address" placeholder="주소"><br>
-                                    <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                                    <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+                                    <!-- <input type="text" id="sample6_detailAddress" placeholder="상세주소"> 
+                                    <input type="text" id="sample6_extraAddress" placeholder="참고항목">-->
                                     
                                     
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="" id="" disabled>
-                                </td>
-                            </tr>
+                            
+
                             <tr>
                                 <th>
                                     <strong class="require">필수</strong><span>네모소개</span>
@@ -226,6 +230,7 @@
                                     <p>최소 100자 이상 작성해주세요(최대1000자)</p>
                                 </td>
                             </tr>
+                            
                             <tr>
                                 <td colspan="2" class="textAreaTd">
                                     <textarea name="grpDescription" id="grpDescription" rows="10" maxlength="1000"></textarea>
@@ -303,11 +308,5 @@
     
 </body>
 <script src="js/createGroup/createGroup.js"></script>
-
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-
-</script>
-
 </html>

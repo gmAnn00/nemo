@@ -139,7 +139,7 @@
 .slideContent {
     display: inline-block;
     text-align: center;
-    padding: 0 8px;
+    /*padding: 0 8px;*/
 }
 .memImg {
     display: inline-block;
@@ -173,10 +173,6 @@
     right: 20px;
 }
 
-.fa-chevron.btnActive {
-    cursor: pointer;
-    color: #222;
-}
 .btnActive {
     cursor: pointer;
     color: #222;
