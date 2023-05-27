@@ -52,18 +52,20 @@
         <ul class="tabs">
             <li class="tabId" data-tab="idTab"><a href="findId.html">아이디 찾기</a></li>
             <li class="tabPass" data-tab="passTab"><a href="findPass.html">비밀번호 재설정</a></li>
-
         </ul>
         
-        <div id="idTab" class="tabContent current">
-            <h2>아이디 찾기</h2>
-            <p>아이디는 가입시 입력하신 이메일로 찾으실 수 있습니다.</p>
-            <form action="findIdComplete.html">
+        
+        <div id="passTab" class="tabContent current"> 
+            <h2>비밀번호 재설정</h2>
+            <p>비밀번호는 아이디, 이름, 이메일을 입력하시면 재설정 하실 수 있습니다.</p>
+            <form action="findPassReset.html">
+                <label for="idInput"></label>
+                <input type="text" id="idInput" placeholder="아이디를 입력해주세요" required/>
                 <label for="nameInput"></label>
                 <input type="text" id="nameInput" placeholder="이름을 입력해주세요" required/>
                 <label for="emailInput"></label>
                 <input type="text" id="emailInput" placeholder="이메일을 입력해주세요" required/>
-                <button type="submit">아이디 찾기</button>
+                <button type="submit">비밀번호 재설정 하기</button>
             </form>
         </div>
     </div>
