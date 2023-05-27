@@ -86,7 +86,7 @@ function memImgSlide(slideIndx) {
             color:'#999'
         });
     }
-    if(slideIndx==0&&quotient>=1){
+    if(slideIndx==0&&quotient>0){
         $('.btnEventPrev').css({
             cursor:'default',
             color:'#999'
@@ -104,6 +104,11 @@ function memImgSlide(slideIndx) {
     }
 
     if(slideIndx>=quotient && mod!=0 && quotient!=0) {
+        $('.btnEventPrev').css({
+            cursor:'pointer',
+            color:'#222'
+            
+        });
         $('.btnEventNext').css({
             cursor:'default',
             color:'#999'

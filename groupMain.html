@@ -18,88 +18,42 @@
     <script src="js/gruopMain/groupMain.js"></script>
 </head>
 <body>
+    <!-- 사이드 메뉴시 배경색 조정 -->
+    <div class="menu_bg"></div>
     <!-- header 시작 -->
     <header>
         <h1 class="logo">
             <a href="index.html"><img src="images/logo.png" alt="logo"></a>
         </h1>
-        <div class="menu_btn">
-            <a href="#">       
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
-            </a>
-        </div>
-        <div class="sidebar_menu">
-            <div class="close_btn">
-                <a href="#">       
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-                </a>
-            </div>
-            <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-            <ul class="menu_wrap">
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-user-plus"></i>
-                        </div>
-                        <div>소모임 만들기</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox">
-                            <i class="fa-solid fa-person-chalkboard"></i>
-                        </div>
-                        <div>소모임 검색</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-                    <div>프로필</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div>내 일정</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-                        <div>내 소모임</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
-                        <div>고객센터</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-                <li>
-                    <div class="icon_menu">
-                        <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
-                        <div>로그아웃</div>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </li>
-            </ul>
-        </div>
     </header>
+    <button class="burger">
+        <span></span>
+    </button>
+    <div class="sidemenu">
+        <ul class="main_menu">
+            <li>
+                <a href="#">
+                    <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                </a>
+            </li>
+            <li><a href="#">소모임 만들기</a></li>
+            <li><a href="#">소모임 검색</a></li>
+            <li><a href="#">프로필</a></li>
+            <li><a href="#">내 일정</a></li>
+            <li><a href="#">내 소모임</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">로그아웃</a></li>
+        </ul>
+        <div class="sidemenu_footer">
+            <h3>Contact details</h3>
+            <p>글 넣을 거 있으면 넣기</p>
+        </div>
+    </div>
     <!-- header 종료 -->
-    <!-- 배경색 조정 -->
-    <div class="menu_bg"></div>
-
 
     <!-- 헤더 제외 body -->
     <div class="header_except_body">
-        <!-- section1 시작 -->
+        <!-- section1 시작 
         <div class="section1">
             <div class="group_containter">
                 <div class="group_all">
@@ -119,7 +73,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- section1 종료 -->
 
         <!-- 소모임 이름/메뉴 영역 -->

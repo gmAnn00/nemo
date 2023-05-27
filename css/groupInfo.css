@@ -18,6 +18,10 @@ body, div, h3, button, section, table, tr, td, th{
 :root {
     --heartColor:#f43965;
 }
+
+#contentsArea {
+    padding-top: 30px;
+}
 .mainInner {
     padding: 0 100px;
 }
