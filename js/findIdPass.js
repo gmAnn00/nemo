@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('ul.tabs li').click(function(){
+    $('ul.tabs > li').click(function(){
         let tabId = $(this).attr('data-tab');
 
         $('ul.tabs li').removeClass('current');

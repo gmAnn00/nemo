@@ -188,6 +188,7 @@ body::-webkit-scrollbar {
     border: none;
     outline: none;
     z-index: 200;
+    cursor: pointer;
 }
 .burger span {
     position: relative;

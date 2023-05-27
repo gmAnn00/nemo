@@ -5,74 +5,174 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+    <script src="js/header.js"></script>
+    <script src="js/zipcodefind.js"></script>
+    <script src="js/join.js"></script>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/join.css">
+    <link rel="stylesheet" href="css/header.css">
+    <!--<script>
+        function fnJoin(){
+            let frm = $("#frm");
+
+            frm.action = "url";
+            frm.submit();
+        }
+    </script>-->
 </head>
 <body>
-    <h2>회원가입</h2>
-    <h3>회원이 되어 다양한 사람들과 만나보세요!</h3>
-    <h4>(모든 항목을 입력해주세요)</h3>
-    <form>
-        <div>
-            <label for="id" >아이디</label>
-            <button type="button" class="idCheck check">중복 확인</button>
-            <input type="text" id="id" name="id" placeholder="아이디 입력(?~??자)" required>
+    <!-- 사이드 메뉴시 배경색 조정 -->
+    <div class="menu_bg"></div>
+    <!-- header 시작 -->
+    <header>
+        <h1 class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+        </h1>
+    </header>
+    <button class="burger">
+        <span></span>
+    </button>
+    <div class="sidemenu">
+        <ul class="main_menu">
+            <li>
+                <a href="#">
+                    <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                </a>
+            </li>
+            <li><a href="#">소모임 만들기</a></li>
+            <li><a href="#">소모임 검색</a></li>
+            <li><a href="#">프로필</a></li>
+            <li><a href="#">내 일정</a></li>
+            <li><a href="#">내 소모임</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">로그아웃</a></li>
+        </ul>
+        <div class="sidemenu_footer">
+            <h3>Contact details</h3>
+            <p>글 넣을 거 있으면 넣기</p>
         </div>
-        <div>
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)" required>
-        </div>
-        <div>
-            <label for="passwordCheck">비밀번호 확인</label>
-            <input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 재입력" required>
-        </div>
-        <div>
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
-        </div>
-        <div>
-            <label for="nickname">닉네임</label>
-            <button type="tbuton" class="nicknameCheck check">중복 확인</button>
-            <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required>
-        </div>
-        <div>
-            <label for="address">주소</label>
-            <button type="button" class="findZipcode">우편번호 찾기</button>
-            <input type="tel" id="zipcode" name="zipcode" maxlength="10" size="10" placeholder="우편 번호" required>
-            <input type="text" id="address" name="address" maxlength="100" size="60" placeholder="예) 101동 3층, 202동 302호">
-        </div>
-        <div>
-            <label for="birthdate">생년월일</label>
-            <input type="date" id="birthdate" name="birthdate" required>
-        </div>
-        <div>
-            <label for="phone">전화번호</label>
-            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호 입력 ('-'제외 11자리 입력)" required>
-        </div>
-        <div class="email">
-            <label for="email">이메일주소</label>
-            <input type="text" id="email" name="email">
-            <span>@</span>
-            <input type="text" id="emailDomain"  name="emailDomain">
-            <select name="domainList" id="domainList">
-                <option value="self">직접입력</option>
-                <option value="gmail">gmail.com</option>
-                <option value="naver">naver.com</option>
-                <option value="daum">daum.net</option>
-                <option value="hanmail">hanmail.net</option>
-                <option value="yahoo">yahoo.com</option>
-                <option value="nate">nate.com</option>
-            </select>
-        </div>
-        <div class="emailCheck">
-            <input type="checkbox">
-            <button type="button" class="emailCheckBtn">이메일 중복 확인</button>
-        </div>
-        <div class="submitCancel">
-            <button type="submit">가입하기</button>
-            <button type="button" class="cancel">가입취소</button>
-        </div>
-    </form>
+    </div>
+    <!-- header 종료 -->
+    
+    <!-- 회원가입 영역 -->>
+    <div id="loginForm">
+        <h2>회원가입</h2>
+        <h3>회원이 되어 다양한 사람들과 만나보세요!</h3>
+        <h4>(모든 항목을 입력해주세요)</h3>
+        <form id="frm" name="frm">
+            <div>
+                <label for="id" >아이디</label>
+                <button type="button" class="idCheck check" onclick="test();">중복 확인</button>
+                <input type="text" id="id" name="id" placeholder="아이디 입력(?~??자)" required>
+            </div>
+            <div>
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)" required>
+            </div>
+            <div>
+                <label for="passwordCheck">비밀번호 확인</label>
+                <input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 재입력" required>
+            </div>
+            <div>
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
+            </div>
+            <div>
+                <label for="nickname">닉네임</label>
+                <button type="button" class="nicknameCheck check">중복 확인</button>
+                <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required>
+            </div>
+            <div>
+                <label for="address">주소</label>
+                <button type="button" class="findZipcode" id="findZipcode">우편번호 찾기</button>
+                <input type="tel" id="zipcode" name="zipcode" maxlength="10" size="10" placeholder="우편 번호" required>
+                <input type="text" id="address" name="address" maxlength="100" size="60" placeholder="예) 101동 3층, 202동 302호">
+            </div>
+            <script>
+                window.onload = function(){
+                    document.getElementById("findZipcode").addEventListener("click", function(){
+                        new daum.Postcode({
+                            oncomplete: function(data) {
+                                document.getElementById("zipcode").value = data.zonecode; // 우편번호를 zipcode input 태그에 할당
+                                document.getElementById("address").value = data.address; // 주소를 address input 태그에 할당
+                                document.querySelector("input[name=address]").focus();
+                            }
+                        }).open();
+                    });
+                }
+            </script>
+            <div>
+                <label for="birthdate">생년월일</label>
+                <input type="date" id="birthdate" name="birthdate" min="1900-01-01"  required>
+            </div>
+            <div>
+                <label for="phone">전화번호</label>
+                <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호 입력 ('-'제외 11자리 입력)" required>
+            </div>
+            <div class="email">
+                <label for="email">이메일주소</label>
+                <input type="text" id="email" name="email">
+                <span>@</span>
+                <input type="text" id="emailDomain"  name="emailDomain">
+                <select name="domainList" id="domainList">
+                    <option value="self">직접입력</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option value="yahoo.com">yahoo.com</option>
+                    <option value="nate.com">nate.com</option>
+                </select>
+            </div>
+            <div class="emailCheck">
+                <input type="checkbox">
+                <button type="button" class="emailCheckBtn">이메일 중복 확인</button>
+            </div>
+            <div class="submitCancel">
+                <button type="submit" onclick="fnJoin();">가입하기</button> <!-- type을 버튼으로 바꾸고 action과 submit을 jsp 처리하기 -->
+                <button type="button" class="cancel">가입취소</button>
+            </div>
+        </form>
+    </div>
+    <!-- 회원가입 영역 종료 -->
+
+        <!-- 푸터 영역 시작 -->
+        <footer id="footer">
+            <div id="footerInner">
+              <div class="footerContents">
+                <div class="footerLeft">
+                  <ul>
+                    <li><a href="#">동네모임네모</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보 처리방침</a></li>
+                  </ul>
+                </div>
+                <div class="footerRight">
+                  <div class="sns">
+                    <img src="images/sns_blog.png" alt="" />
+                    <img src="images/sns_fb.png" alt="" />
+                    <img src="images/sns_instagram.png" alt="" />
+                    <img src="images/sns_youtube.png" alt="" />
+                  </div>
+                  <div class="address">
+                    <address>
+                      <p>Addr. 서울시 종로구 종로78</p>
+                      <p>T. 02-123-4567</p>
+                      <p>E. admin@nemo.com</p>
+                    </address>
+                  </div>
+                </div>
+              </div>
+              <div class="copyright">
+                <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+              </div>
+            </div>
+          </footer>
+          <!-- 푸터 영역 끝 -->
+      
 </body>
 </html>
