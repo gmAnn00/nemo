@@ -60,7 +60,17 @@ ul.tabs li.current{
 }
 .list >li {
     margin: 10px 20px;
+    
 }
 .top > li{
-    margin: 10px 40px;
+    margin: 10px 20px;
+}
+.list .title{
+    margin-left: 40px;
+}
+.list .date {
+    margin-left: 50px;
+}
+.box {
+    width: 200px;
 }

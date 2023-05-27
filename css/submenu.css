@@ -1,6 +1,10 @@
 @charset "utf-8";
+.sc2_subcontents {
+  display: flex;
+  padding: 30px;
+}
 .sc2_menu_contents {
-    flex: 1;
+  flex: 1;
 }
 .sc2_menu {
   width: 230px;
@@ -9,29 +13,40 @@
   top: 120px;
 }
 .sc2_menu_title {
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 .sc2_menu_list li {
-    line-height: 60px;
+  line-height: 60px;
 }
 .sc2_iconbox {
-    width: 25px;
+  width: 25px;
 }
 .sc2_icon_menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
 }
 .menu_submenu_name {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .fa-minus {
-    margin-right: 10px;
+  margin-right: 10px;
+}
+.fa-angle-right {
+  margin-right: 10px;
 }
 /* .secession {
     text-align: center;
     margin-top: 30px;
 } */
+.sc2_section_title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.sc2_section_title span {
+  font-size: 24px;
+  font-weight: 800;
+}
