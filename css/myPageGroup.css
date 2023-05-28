@@ -20,7 +20,7 @@
 #container {
     margin-top: 40px;
 }
-
+/*
 .section2 {
     position: relative;
     width: 100%;
@@ -48,7 +48,7 @@
     margin-bottom: 30px;
     margin-top: 20px;
 }
-
+*/
 /* section 공통 부분 종료 */
 
 .searchBox {
@@ -63,7 +63,7 @@
 .searchBox_Bar:focus {
     outline: none;
 }
-.searchBox>i {
+.searchBox > i {
     transform: rotate(90deg);
 }
 .sc2_member {
@@ -109,7 +109,7 @@
 .profile_img {
     width: 100px;
     height: 100px;
-    background-image: url('../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png');
+    background-image: url("../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 0 auto;
@@ -128,7 +128,7 @@
     border-radius: 10px;
     height: 30px;
 }
-.profile_btn>span {
+.profile_btn > span {
     vertical-align: middle;
     font-weight: 700;
 }
@@ -136,43 +136,43 @@
 
 .tabs {
     clear: both;
-    position: relative;   
+    position: relative;
 }
 
 .tab {
-	float: left;
+    float: left;
 }
 
 .tab label {
-	margin-right: 20px;
-	position: relative;
-	top: 0;
-	cursor: pointer;
-	color: #333;
+    margin-right: 20px;
+    position: relative;
+    top: 0;
+    cursor: pointer;
+    color: #333;
     text-transform: uppercase;
 }
 
-.tab [type=radio] {
-	display: none;   
+.tab [type="radio"] {
+    display: none;
 }
 
 .tab__content {
     position: relative;
-	top: 40px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	transition: opacity .2s cubic-bezier(.42,0,.34,1.01);
-	opacity: 0;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.2s cubic-bezier(0.42, 0, 0.34, 1.01);
+    opacity: 0;
 }
 
-[type=radio]:checked ~ label {
-	border-bottom: 2px solid #1d1d1d;
-	color: #1d1d1d;
-	z-index: 2;
+[type="radio"]:checked ~ label {
+    border-bottom: 2px solid #1d1d1d;
+    color: #1d1d1d;
+    z-index: 2;
 }
 
-[type=radio]:checked ~ label ~ .tab__content {
-	z-index: 1;
-	opacity: 1;
+[type="radio"]:checked ~ label ~ .tab__content {
+    z-index: 1;
+    opacity: 1;
 }
