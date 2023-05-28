@@ -1,117 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>관리자-소모임 관리 페이지</title>
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/submenu.css" />
-    <link href="DataTables/datatables.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/adminGroup.css" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>관리자-소모임 관리 페이지</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/header.css" />
+        <link rel="stylesheet" href="css/submenu.css" />
+        <link href="DataTables/datatables.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/adminGroup.css" />
 
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/header.js"></script>
-  </head>
-  <body>
-    <!-- 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <!-- header 시작 -->
-    <header>
-      <h1 class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
-      </h1>
-    </header>
-    <button class="burger">
-      <span></span>
-    </button>
-    <div class="sidemenu">
-      <ul class="main_menu">
-        <li>
-          <a href="#">
-            <div class="profile">
-              <i class="fa-solid fa-circle-user"></i
-              ><span class="profile_name">사이다</span>
+        <script src="js/jquery-3.6.4.min.js"></script>
+        <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+        <script src="js/header.js"></script>
+    </head>
+    <body>
+        <!-- 배경색 조정 -->
+        <div class="menu_bg"></div>
+        <!-- header 시작 -->
+        <header>
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+            </h1>
+        </header>
+        <button class="burger">
+            <span></span>
+        </button>
+        <div class="sidemenu">
+            <ul class="main_menu">
+                <li>
+                    <a href="#">
+                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                    </a>
+                </li>
+                <li><a href="createGroup.html">소모임 만들기</a></li>
+                <li><a href="search.html">소모임 검색</a></li>
+                <li><a href="myPage.html">프로필</a></li>
+                <li><a href="mySchedule.html">내 일정</a></li>
+                <li><a href="myGroupList.html">내 소모임</a></li>
+                <li><a href="adminHelp.html">고객센터</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+            <div class="sidemenu_footer">
+                <h3>Contact details</h3>
+                <p>글 넣을 거 있으면 넣기</p>
             </div>
-          </a>
-        </li>
-        <li><a href="createGroup.html">소모임 만들기</a></li>
-        <li><a href="search.html">소모임 검색</a></li>
-        <li><a href="myPage.html">프로필</a></li>
-        <li><a href="mySchedule.html">내 일정</a></li>
-        <li><a href="myGroupList.html">내 소모임</a></li>
-        <li><a href="adminHelp.html">고객센터</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-      <div class="sidemenu_footer">
-        <h3>Contact details</h3>
-        <p>글 넣을 거 있으면 넣기</p>
-      </div>
-    </div>
-    <!-- header 종료 -->
-
-    <!-- 콘텐츠 영역 시작 -->
-    <div id="contentsArea">
-      <!-- 메뉴바 시작 -->
-      <div class="sc2_menu_contents">
-        <div class="sc2_menu">
-          <h2 class="sc2_menu_title">관리자</h2>
-          <ul class="sc2_menu_list">
-            <li>
-              <a href="adminGroup.html">
-                <div class="sc2_icon_menu">
-                  <div class="menu_submenu_name"><span>소모임 관리</span></div>
-                  <i class="fa-solid fa-minus"></i>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="adminMember.html">
-                <div class="sc2_icon_menu">
-                  <div class="menu_submenu_name"><span>회원 관리</span></div>
-                  <i class="fa-solid fa-angle-right"></i>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="adminHelpQnA.html">
-                <div class="sc2_icon_menu">
-                  <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
-                  <i class="fa-solid fa-angle-right"></i>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="adminHelp.html">
-                <div class="sc2_icon_menu">
-                  <div class="menu_submenu_name">
-                    <span>고객센터 1:1 문의</span>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-                </div>
-              </a>
-            </li>
-          </ul>
         </div>
-      </div>
-      <!-- 메뉴바 종료 -->
+        <!-- header 종료 -->
 
-      <div id="wrap">
-        <h2 class="adminGroupTitle">모든 소모임 목록</h2>
-        <div class="searchGroupArea">
-          <select name="adminMainCategory" id="adminMainCategory"></select>
-          <select name="adminSmallCategory" id="adminSmallCategory"></select>
-          <input type="text" placeholder="소모임 이름으로 검색" />
-          <button role="button" id="adminSearchGroupNameBtn" class="btn">
-            검색
-          </button>
-        </div>
-        <!-- <div class="sortGroupArea">
+        <!-- 콘텐츠 영역 시작 -->
+        <div id="section2">
+            <div class="sc2_contents">
+                <!-- 메뉴바 시작 -->
+                <div class="sc2_menu">
+                    <h2 class="sc2_menu_title">관리자</h2>
+                    <ul class="sc2_menu_list">
+                        <li>
+                            <a href="adminGroup.html">
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>소모임 관리</span></div>
+                                    <i class="fa-solid fa-minus"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminMember.html">
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>회원 관리</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminHelpQnA.html">
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminHelp.html">
+                                <div class="sc2_icon_menu">
+                                    <div class="menu_submenu_name">
+                                        <span>고객센터 1:1 문의</span>
+                                    </div>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 메뉴바 종료 -->
+
+                <div class="sc2_subsection">
+                    <div class="sc2_subsection_title">
+                        <h2 class="sc2_subsection_title_name">소모임 관리</h2>
+                        <!-- nav 바 시작 -->
+                        <div class="nav_bar">
+                            <a href="index.html">
+                                <i class="fa-solid fa-house"></i>
+                            </a>
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>나의 모임</span>
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>소모임관리</span>
+                        </div>
+                        <!-- nav 바 종료 -->
+                    </div>
+                    <div class="searchGroupArea">
+                        <select name="adminMainCategory" id="adminMainCategory"></select>
+                        <select name="adminSmallCategory" id="adminSmallCategory"></select>
+                        <input type="text" placeholder="소모임 이름으로 검색" />
+                        <button role="button" id="adminSearchGroupNameBtn" class="btn">검색</button>
+                    </div>
+                    <!-- <div class="sortGroupArea">
           <a href="#" id="adminSortByGroupIndexBtn" class="button">
             번호순 정렬
           </a>
@@ -119,189 +123,190 @@
             신고 횟수 정렬
           </a>
         </div> -->
-        <div class="groupListArea">
-          <div class="groupList">
-            <table border="1" class="adminGroupTbl">
-              <thead>
-                <tr>
-                  <th>소모임 번호</th>
-                  <th>대분류</th>
-                  <th>소분류</th>
-                  <th>소모임 이름</th>
-                  <th>현재 인원</th>
-                  <th>최대 인원</th>
-                  <th>소모임장</th>
-                  <th>생성일</th>
-                  <th>신고횟수</th>
-                  <th>삭제 처리</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름1</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>1</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름2</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>2</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름3</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>3</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름4</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>4</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름5</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>5</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름5</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>5</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름5</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>5</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름5</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>5</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름5</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>5</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>스포츠</td>
-                  <td>헬스</td>
-                  <td>소모임 이름5</td>
-                  <td>2</td>
-                  <td>10</td>
-                  <td>honggilddong</td>
-                  <td>2023/05/01</td>
-                  <td>5</td>
-                  <td><button class="btn">삭제 처리</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="groupTablePage"></div>
-        </div>
-      </div>
-    </div>
-    <!-- 콘텐츠 영역 종료-->
-
-    <!-- 푸터 영역 시작 -->
-    <footer id="footer">
-      <div id="footerInner">
-        <div class="footerContents">
-          <div class="footerLeft">
-            <ul>
-              <li><a href="#">동네모임네모</a></li>
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">이용약관</a></li>
-              <li><a href="#">개인정보 처리방침</a></li>
-            </ul>
-          </div>
-          <div class="footerRight">
-            <div class="sns">
-              <img src="images/sns_blog.png" alt="" />
-              <img src="images/sns_fb.png" alt="" />
-              <img src="images/sns_instagram.png" alt="" />
-              <img src="images/sns_youtube.png" alt="" />
+                    <div class="groupListArea">
+                        <div class="groupList">
+                            <table border="1" class="adminGroupTbl">
+                                <thead>
+                                    <tr>
+                                        <th>소모임 번호</th>
+                                        <th>대분류</th>
+                                        <th>소분류</th>
+                                        <th>소모임 이름</th>
+                                        <th>현재 인원</th>
+                                        <th>최대 인원</th>
+                                        <th>소모임장</th>
+                                        <th>생성일</th>
+                                        <th>신고횟수</th>
+                                        <th>삭제 처리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름1</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>1</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름2</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>2</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름3</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>3</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름4</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>4</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름5</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>5</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름5</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>5</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름5</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>5</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름5</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>5</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름5</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>5</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>스포츠</td>
+                                        <td>헬스</td>
+                                        <td>소모임 이름5</td>
+                                        <td>2</td>
+                                        <td>10</td>
+                                        <td>honggilddong</td>
+                                        <td>2023/05/01</td>
+                                        <td>5</td>
+                                        <td><button class="btn">삭제 처리</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="groupTablePage"></div>
+                    </div>
+                </div>
             </div>
-            <div class="address">
-              <address>
-                <p>Addr. 서울시 종로구 종로78</p>
-                <p>T. 02-123-4567</p>
-                <p>E. admin@nemo.com</p>
-              </address>
-            </div>
-          </div>
         </div>
-        <div class="copyright">
-          <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-    <!-- 푸터 영역 끝 -->
+        <!-- 콘텐츠 영역 종료-->
 
-    <script src="DataTables/datatables.min.js"></script>
-    <script src="js/adminGroup.js"></script>
-  </body>
+        <!-- 푸터 영역 시작 -->
+        <footer id="footer">
+            <div id="footerInner">
+                <div class="footerContents">
+                    <div class="footerLeft">
+                        <ul>
+                            <li><a href="#">동네모임네모</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보 처리방침</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerRight">
+                        <div class="sns">
+                            <img src="images/sns_blog.png" alt="" />
+                            <img src="images/sns_fb.png" alt="" />
+                            <img src="images/sns_instagram.png" alt="" />
+                            <img src="images/sns_youtube.png" alt="" />
+                        </div>
+                        <div class="address">
+                            <address>
+                                <p>Addr. 서울시 종로구 종로78</p>
+                                <p>T. 02-123-4567</p>
+                                <p>E. admin@nemo.com</p>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- 푸터 영역 끝 -->
+
+        <script src="DataTables/datatables.min.js"></script>
+        <script src="js/adminGroup.js"></script>
+    </body>
 </html>

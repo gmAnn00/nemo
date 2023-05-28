@@ -1,126 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원정보 수정</title>
-    <link rel="stylesheet" href="css/reset.css" />
-    <script
-        src="https://kit.fontawesome.com/bc604c01cc.js"
-        crossorigin="anonymous"
-    ></script>
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="css/header.css" />
-    <script src="js/header.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원정보 수정</title>
+        <link rel="stylesheet" href="css/reset.css" />
+        <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
+        <script src="js/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="css/header.css" />
+        <script src="js/header.js"></script>
 
-    <link rel="stylesheet" href="css/modifyProfile.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/header.css">
-    
-</head>
-<body>
-    <!-- header 시작 -->
-    <!-- 사이드 메뉴시 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <header>
-      <h1 class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
-      </h1>
-    </header>
-    <button class="burger">
-      <span></span>
-    </button>
-    <div class="sidemenu">
-      <ul class="main_menu">
-        <li>
-          <a href="#">
-            <div class="profile">
-              <i class="fa-solid fa-circle-user"></i
-              ><span class="profile_name">사이다</span>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/header.css" />
+        <link rel="stylesheet" href="css/modifyProfile.css" />
+    </head>
+    <body>
+        <!-- header 시작 -->
+        <!-- 사이드 메뉴시 배경색 조정 -->
+        <div class="menu_bg"></div>
+        <header>
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+            </h1>
+        </header>
+        <button class="burger">
+            <span></span>
+        </button>
+        <div class="sidemenu">
+            <ul class="main_menu">
+                <li>
+                    <a href="#">
+                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                    </a>
+                </li>
+                <li><a href="#">소모임 만들기</a></li>
+                <li><a href="#">소모임 검색</a></li>
+                <li><a href="#">프로필</a></li>
+                <li><a href="#">내 일정</a></li>
+                <li><a href="#">내 소모임</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+            <div class="sidemenu_footer">
+                <h3>Contact details</h3>
+                <p>글 넣을 거 있으면 넣기</p>
             </div>
-          </a>
-        </li>
-        <li><a href="#">소모임 만들기</a></li>
-        <li><a href="#">소모임 검색</a></li>
-        <li><a href="#">프로필</a></li>
-        <li><a href="#">내 일정</a></li>
-        <li><a href="#">내 소모임</a></li>
-        <li><a href="#">고객센터</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-      <div class="sidemenu_footer">
-        <h3>Contact details</h3>
-        <p>글 넣을 거 있으면 넣기</p>
-      </div>
-    </div>
-    <!-- header 종료 -->
-
-    <!--1. all-->
-    <div class="all">
-
-        <!--2.-->
-        <div class="modify">
-            <h2 class="modify1">회원정보 수정</h2>
         </div>
+        <!-- header 종료 -->
 
-        <!--3. myImage-->
-        <div class="myImage">
-            <img src="images/dall.png" alt="profile" class="my">
-            <label class="imageM" for="hidden" id="file">이미지 수정</label>
-            <input id="hidden" type="file" style="display:none;">
-        </div>
+        <!--1. all-->
+        <div class="all">
+            <!--2.-->
+            <div class="modify">
+                <h2 class="modify1">회원정보 수정</h2>
+            </div>
 
+            <!--3. myImage-->
+            <div class="myImage">
+                <img src="images/dall.png" alt="profile" class="my" />
+                <label class="imageM" for="hidden" id="file">이미지 수정</label>
+                <input id="hidden" type="file" style="display: none" />
+            </div>
 
-        <!--4.-->
-        <div class="myMo">                   
-            <form action="#" id="modifyPro" name="modifyPro">
-
-                <div class="profileM">
-                    <!--<legend>회원정보 수정 폼</legend>--> <!--안보임-->
-                    <p>
-                        <label for="name">이름</label>
-                        <input type="text" id="name" name="name">
-                    </p>
-                    <p>
-                        <label for="id">아이디</label>
-                        <input type="text" id="id" name="id">
-                        <button href="#" class="idCheck">중복확인</button>
-                    </p>
-                    <p>
-                        <label for="password">비밀번호</label>
-                        <input type="password" id="password" name="password" >
-                    </p>
-                    <p>
-                        <label for="confirmPassword">비밀번호 확인</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword">
-                    </p>
-                    <p>
-                        <label for="birth">생년월일</label>
-                        <input type="text" id="birth" name="birth">
-                    </p>
-                    <p>
-                        <label for="tel">핸드폰번호</label>
-                        <input type="tel" id="tel" name="tel" maxlength="11" size="20">
-                    </p>
-                    <p>
-                        <label for="area">지역</label>
-                        <input type="text" id="area" name="area">
-                    </p>
-                    <p>
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" size="30">
-                        <button href="#" class="idCheck">중복확인</button>
-                    </p>
-                    <div class="btnJoinArea">
-                        <button type="submit" class="btnOk">수정</button>
-                        <button type="reset" class="btnCancel">취소</button>
+            <!--4.-->
+            <div class="myMo">
+                <form action="#" id="modifyPro" name="modifyPro">
+                    <div class="profileM">
+                        <!--<legend>회원정보 수정 폼</legend>-->
+                        <!--안보임-->
+                        <div>
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="name" />
+                        </div>
+                        <div>
+                            <label for="id">아이디</label>
+                            <input type="text" id="id" name="id" />
+                            <button href="#" class="idCheck">중복확인</button>
+                        </div>
+                        <div>
+                            <label for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" />
+                        </div>
+                        <div>
+                            <label for="confirmPassword">비밀번호 확인</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" />
+                        </div>
+                        <div>
+                            <label for="birth">생년월일</label>
+                            <input type="text" id="birth" name="birth" />
+                        </div>
+                        <div>
+                            <label for="tel">핸드폰번호</label>
+                            <input type="tel" id="tel" name="tel" maxlength="11" size="20" />
+                        </div>
+                        <div>
+                            <label for="area">지역</label>
+                            <input type="text" id="area" name="area" />
+                        </div>
+                        <div>
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" name="email" size="30" />
+                            <button href="#" class="idCheck">중복확인</button>
+                        </div>
+                        <div class="btnJoinArea">
+                            <button type="submit" class="btnOk">수정</button>
+                            <button type="reset" class="btnCancel">취소</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-
-    </div>
-
-</body>
+    </body>
 </html>

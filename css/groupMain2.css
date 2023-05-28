@@ -16,8 +16,9 @@
     padding: 15px 0;
     background-color: var(--grpMenuBackColor);
 }
-.header_except_body {
-    padding-top: 20px;
+.section2,
+.sc2_subsection {
+    width: 90%;
 }
 /*
 .grpMenuArea h2{
@@ -59,6 +60,7 @@
 }
 .recentDiv {
     margin-bottom: 50px;
+    width: 100%;
 }
 .mainTitle {
     position: relative;
