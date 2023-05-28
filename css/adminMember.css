@@ -1,4 +1,21 @@
 @charset "utf-8";
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.adminMemberTitle {
+  font-family: "yg-jalnan";
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  border-bottom: 1px solid black;
+}
+table {
+  margin-top: 40px;
+}
 html,
 body {
   width: 100%;
@@ -11,6 +28,7 @@ body {
   display: flex;
   padding-left: 40px;
   padding-right: 40px;
+  margin-bottom: 40px;
 }
 
 #wrap {

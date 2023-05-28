@@ -1,4 +1,46 @@
 @charset "utf-8";
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.adminGroupTitle {
+  font-family: "yg-jalnan";
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  border-bottom: 1px solid black;
+}
+input[type="text"] {
+  display: inline-block;
+  width: 300px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #fff;
+}
+select {
+  display: inline-block;
+  min-width: 46px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  vertical-align: top;
+  background-color: #fff;
+}
+.searchGroupArea {
+  margin-bottom: 30px;
+}
 html,
 body {
   width: 100%;
@@ -11,6 +53,7 @@ body {
   display: flex;
   padding-left: 40px;
   padding-right: 40px;
+  margin-bottom: 40px;
 }
 
 #wrap {
