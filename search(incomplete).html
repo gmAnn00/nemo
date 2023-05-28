@@ -1,239 +1,240 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/search(incomplete).css" />
-    <title>검색페이지</title>
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="js/header.js"></script>
-    <script
-      src="https://kit.fontawesome.com/f9a2702e84.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <!-- 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <!-- header 시작 -->
-    <header>
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-        </h1>
-    </header>
-    <button class="burger">
-        <span></span>
-    </button>
-    <div class="sidemenu">
-        <ul class="main_menu">
-            <li>
-                <a href="#">
-                    <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-                </a>
-            </li>
-            <li><a href="createGroup.html">소모임 만들기</a></li>
-            <li><a href="search.html">소모임 검색</a></li>
-            <li><a href="myPage.html">프로필</a></li>
-            <li><a href="mySchedule.html">내 일정</a></li>
-            <li><a href="myGroupList.html">내 소모임</a></li>
-            <li><a href="adminHelp.html">고객센터</a></li>
-            <li><a href="#">로그아웃</a></li>
-        </ul>
-        <div class="sidemenu_footer">
-            <h3>Contact details</h3>
-            <p>글 넣을 거 있으면 넣기</p>
-        </div>
-    </div>
-    <!-- header 종료 -->
-  <!--카테고리 영역-->
-      <div id="contentsArea">
-        <div class="categoriesArea">
-          <div class="nameSearch">
-            <div class="searchText1">
-              <h2>소모임 이름 검색</h2>
-            </div>
-            <div class="nameBtn">
-              <input type="text" class="searchText" />
-              <form action="#" method="get" class="searchBtn">
-                <button type="button">검색</button>
-              </form>
-            </div>
-          </div>
-      
-        <!--카테고리-->
-        <div class="categories01">
-          <div class="bar">
-            <!--대분류-->
-            <div class="bar01">
-              <select name="bigBar" class="barSel">
-                <option value="1">대분류1</option>
-                <option value="2">대분류2</option>
-                <option value="3">대분류3</option>
-                <option value="4">대분류4</option>
-                <option value="5">대분류5</option>
-              </select>
-            </div>
-            <!--소분류-->
-            <div class="bar02">
-              <select name="smallBar" class="barSel">
-                <option value="1">소분류1</option>
-                <option value="2">소분류2</option>
-                <option value="3">소분류3</option>
-                <option value="4">소분류4</option>
-                <option value="5">소분류5</option>
-              </select>
-            </div>
-             <!--지역-->
-            <div class="bar03">
-              <select name="areaBar" class="barSel">
-                <option value="1">지역1</option>
-                <option value="2">지역2</option>
-                <option value="3">지역3</option>
-                <option value="4">지역4</option>
-                <option value="5">지역5</option>
-              </select>
-            </div>
-            </div>
-            </div>
-      </div>
-      
-      <div class="result">
-        <div class="resultText"><h2>검색결과(개수)</h2></div>
-        <div class="resultBtn">
-          <button type="button">가입가능한 소모임만 표시</button>
-          <button type="button">이름순정렬</button>
-          <button type="button">찜순정렬</button>
-          <button type="button">사람많은순</button>
-        </div>
-      </div>
-      <div class="searchResult">
-        <div class="resultGroup">
-          <div class="group">
-            <div class="groupImg Gimg01"> </div>
-            <div class="SteamedImg">
-              <img src="images/heart.jpg" alt="" />
-            </div>
-            <div class="groupText"> 
-              <div class="groupText01"><span>소모임이름:일렉트로닉 뮤직LA</span></div>
-              <div class="groupText02"><span>대분류:음악</span><span>소분류:일렉트로닉</span></div>
-              <div class="groupText03"><span>지역:로스엔젤레스,켈리포니아</span></div>
-              <div class="groupText04"><span>소모임 소개글:우리의 사명은 로스앤젤레스 카운티에서 전자 음악 행사를 홍보하고 차기 DJ, 프로듀서, 
-                보컬리스트 및 음악 비즈니스 전문가를 위한 기회 네트워크를 만드는 것입니다. 
-                이벤트에 대한 아이디어가 있거나 LA, OC 또는 80인용 요트 이벤트에 대해 협력하고 싶은 경우 
-                support@electronicmusicla.com -- Electronic Music LA</span></div>
-              <div class="groupText05"><span>개설일:2023년 5월 21일</span></div>
-              <div class="groupText06"><span>찜갯수:30개</span></div>
-            </div>
-          </div>
-      
-          <div class="group">
-            <div class="groupImg Gimg02"> </div>
-            <div class="SteamedImg">
-              <img src="images/heart.jpg" alt="" />
-            </div>
-              
-            <div class="groupText">
-              <div class="groupText01"><span>소모임이름</span></div>
-              <div class="groupText02"><span>대분류</span></div>
-              <div class="groupText03"><span>소분류</span></div>
-              <div class="groupText04"><span>지역</span></div>
-              <div class="groupText05"><span>개설일</span></div>
-              <div class="groupText06"><span>찜갯수</span></div>
-            </div>
-          </div>
-          <div class="group">
-            <div class="groupImg Gimg03">
-            </div>
-            <div class="SteamedImg">
-              <img src="images/heart.jpg" alt="" />
-            </div>
-            <div class="groupText">
-              <div class="groupText01"><span>소모임이름</span></div>
-              <div class="groupText02"><span>대분류</span></div>
-              <div class="groupText03"><span>소분류</span></div>
-              <div class="groupText04"><span>지역</span></div>
-              <div class="groupText05"><span>개설일</span></div>
-              <div class="groupText06"><span>찜갯수</span></div>
-            </div>
-          </div>
-          <div class="group">
-            <div class="groupImg Gimg04">
-            </div>
-            <div class="SteamedImg">
-              <img src="images/heart.jpg" alt="" />
-            </div>
-            <div class="groupText">
-              <div class="groupText01"><span>소모임이름</span></div>
-              <div class="groupText02"><span>대분류</span></div>
-              <div class="groupText03"><span>소분류</span></div>
-              <div class="groupText04"><span>지역</span></div>
-              <div class="groupText05"><span>개설일</span></div>
-              <div class="groupText06"><span>찜갯수</span></div>
-            </div>
-          </div>
-          <div class="group">
-            <div class="groupImg Gimg05">
-            </div>
-            <div class="SteamedImg">
-              <img src="images/heart.jpg" alt="" />
-            </div>
-            <div class="groupText">
-              <div class="groupText01"><span>소모임이름</span></div>
-              <div class="groupText02"><span>대분류</span></div>
-              <div class="groupText03"><span>소분류</span></div>
-              <div class="groupText04"><span>지역</span></div>
-              <div class="groupText05"><span>개설일</span></div>
-              <div class="groupText06"><span>찜갯수</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="GroupMap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d395.2960818763124!2d126.98575285615492!3d37.56993589038084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e884abcbd9%3A0x153663d78acba97f!2z7J207KCg7JWE7Lm0642w66-47Lu07ZOo7YSw7ZWZ7JuQIOyiheuhnOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1683524555277!5m2!1sko!2skr"
-            frameborder="0" width="100%" height="100%">
-          </iframe>
-        </div>
-      </div>
-      <div class="PgaeBtn">
-        <span>1,2,3,4,5</span>
-      </div>
-    </div>
-    <!-- 푸터 영역 시작 -->
-    <footer id="footer">
-      <div id="footerInner">
-        <div class="footerContents">
-          <div class="footerLeft">
-            <ul>
-              <li><a href="#">동네모임네모</a></li>
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">이용약관</a></li>
-              <li><a href="#">개인정보 처리방침</a></li>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <link rel="stylesheet" href="css/header.css" />
+        <link rel="stylesheet" href="css/search(incomplete).css" />
+        <title>검색페이지</title>
+        <script src="js/jquery-3.6.4.min.js"></script>
+        <script src="js/header.js"></script>
+        <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- 배경색 조정 -->
+        <div class="menu_bg"></div>
+        <!-- header 시작 -->
+        <header>
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+            </h1>
+        </header>
+        <button class="burger">
+            <span></span>
+        </button>
+        <div class="sidemenu">
+            <ul class="main_menu">
+                <li>
+                    <a href="#">
+                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                    </a>
+                </li>
+                <li><a href="createGroup.html">소모임 만들기</a></li>
+                <li><a href="search.html">소모임 검색</a></li>
+                <li><a href="myPage.html">프로필</a></li>
+                <li><a href="mySchedule.html">내 일정</a></li>
+                <li><a href="myGroupList.html">내 소모임</a></li>
+                <li><a href="adminHelp.html">고객센터</a></li>
+                <li><a href="#">로그아웃</a></li>
             </ul>
-          </div>
-          <div class="footerRight">
-            <div class="sns">
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
+            <div class="sidemenu_footer">
+                <h3>Contact details</h3>
+                <p>글 넣을 거 있으면 넣기</p>
             </div>
-            <div class="address">
-              <address>
-                <p>Addr. 서울시 종로구 종로78</p>
-                <p>T. 02-123-4567</p>
-                <p>E. admin@nemo.com</p>
-              </address>
+        </div>
+        <!-- header 종료 -->
+        <!--카테고리 영역-->
+        <div id="contentsArea">
+            <div class="categoriesArea">
+                <div class="nameSearch">
+                    <div class="searchText1">
+                        <h2>소모임 이름 검색</h2>
+                    </div>
+                    <div class="nameBtn">
+                        <input type="text" class="searchText" />
+                        <form action="#" method="get" class="searchBtn">
+                            <button type="button">검색</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--카테고리-->
+                <div class="categories01">
+                    <div class="bar">
+                        <!--대분류-->
+                        <div class="bar01">
+                            <select name="bigBar" class="barSel">
+                                <option value="1">대분류1</option>
+                                <option value="2">대분류2</option>
+                                <option value="3">대분류3</option>
+                                <option value="4">대분류4</option>
+                                <option value="5">대분류5</option>
+                            </select>
+                        </div>
+                        <!--소분류-->
+                        <div class="bar02">
+                            <select name="smallBar" class="barSel">
+                                <option value="1">소분류1</option>
+                                <option value="2">소분류2</option>
+                                <option value="3">소분류3</option>
+                                <option value="4">소분류4</option>
+                                <option value="5">소분류5</option>
+                            </select>
+                        </div>
+                        <!--지역-->
+                        <div class="bar03">
+                            <select name="areaBar" class="barSel">
+                                <option value="1">지역1</option>
+                                <option value="2">지역2</option>
+                                <option value="3">지역3</option>
+                                <option value="4">지역4</option>
+                                <option value="5">지역5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="result">
+                <div class="resultText"><h2>검색결과(개수)</h2></div>
+                <div class="resultBtn">
+                    <button type="button">가입가능한 소모임만 표시</button>
+                    <button type="button">이름순정렬</button>
+                    <button type="button">찜순정렬</button>
+                    <button type="button">사람많은순</button>
+                </div>
+            </div>
+            <div class="searchResult">
+                <div class="resultGroup">
+                    <div class="group">
+                        <div class="groupImg Gimg01"></div>
+                        <div class="SteamedImg">
+                            <img src="images/heart.jpg" alt="" />
+                        </div>
+                        <div class="groupText">
+                            <div class="groupText01"><span>소모임이름:일렉트로닉 뮤직LA</span></div>
+                            <div class="groupText02"><span>대분류:음악</span><span>소분류:일렉트로닉</span></div>
+                            <div class="groupText03"><span>지역:로스엔젤레스,켈리포니아</span></div>
+                            <div class="groupText04">
+                                <span
+                                    >소모임 소개글:우리의 사명은 로스앤젤레스 카운티에서 전자 음악 행사를 홍보하고 차기 DJ, 프로듀서, 보컬리스트 및
+                                    음악 비즈니스 전문가를 위한 기회 네트워크를 만드는 것입니다. 이벤트에 대한 아이디어가 있거나 LA, OC 또는 80인용
+                                    요트 이벤트에 대해 협력하고 싶은 경우 support@electronicmusicla.com -- Electronic Music LA</span
+                                >
+                            </div>
+                            <div class="groupText05"><span>개설일:2023년 5월 21일</span></div>
+                            <div class="groupText06"><span>찜갯수:30개</span></div>
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <div class="groupImg Gimg02"></div>
+                        <div class="SteamedImg">
+                            <img src="images/heart.jpg" alt="" />
+                        </div>
+
+                        <div class="groupText">
+                            <div class="groupText01"><span>소모임이름</span></div>
+                            <div class="groupText02"><span>대분류</span></div>
+                            <div class="groupText03"><span>소분류</span></div>
+                            <div class="groupText04"><span>지역</span></div>
+                            <div class="groupText05"><span>개설일</span></div>
+                            <div class="groupText06"><span>찜갯수</span></div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="groupImg Gimg03"></div>
+                        <div class="SteamedImg">
+                            <img src="images/heart.jpg" alt="" />
+                        </div>
+                        <div class="groupText">
+                            <div class="groupText01"><span>소모임이름</span></div>
+                            <div class="groupText02"><span>대분류</span></div>
+                            <div class="groupText03"><span>소분류</span></div>
+                            <div class="groupText04"><span>지역</span></div>
+                            <div class="groupText05"><span>개설일</span></div>
+                            <div class="groupText06"><span>찜갯수</span></div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="groupImg Gimg04"></div>
+                        <div class="SteamedImg">
+                            <img src="images/heart.jpg" alt="" />
+                        </div>
+                        <div class="groupText">
+                            <div class="groupText01"><span>소모임이름</span></div>
+                            <div class="groupText02"><span>대분류</span></div>
+                            <div class="groupText03"><span>소분류</span></div>
+                            <div class="groupText04"><span>지역</span></div>
+                            <div class="groupText05"><span>개설일</span></div>
+                            <div class="groupText06"><span>찜갯수</span></div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="groupImg Gimg05"></div>
+                        <div class="SteamedImg">
+                            <img src="images/heart.jpg" alt="" />
+                        </div>
+                        <div class="groupText">
+                            <div class="groupText01"><span>소모임이름</span></div>
+                            <div class="groupText02"><span>대분류</span></div>
+                            <div class="groupText03"><span>소분류</span></div>
+                            <div class="groupText04"><span>지역</span></div>
+                            <div class="groupText05"><span>개설일</span></div>
+                            <div class="groupText06"><span>찜갯수</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="GroupMap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d395.2960818763124!2d126.98575285615492!3d37.56993589038084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e884abcbd9%3A0x153663d78acba97f!2z7J207KCg7JWE7Lm0642w66-47Lu07ZOo7YSw7ZWZ7JuQIOyiheuhnOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1683524555277!5m2!1sko!2skr"
+                        frameborder="0"
+                        width="100%"
+                        height="100%"
+                    >
+                    </iframe>
+                </div>
+            </div>
+            <div class="PgaeBtn">
+                <span>1,2,3,4,5</span>
+            </div>
         </div>
-        <div class="copyright">
-          <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-    <!-- 푸터 영역 끝 -->
-  </body>
+
+        <!-- 푸터 영역 시작 -->
+        <footer id="footer">
+            <div id="footerInner">
+                <div class="footerContents">
+                    <div class="footerLeft">
+                        <ul>
+                            <li><a href="#">동네모임네모</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보 처리방침</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerRight">
+                        <div class="sns">
+                            <img src="images/sns_blog.png" alt="" />
+                            <img src="images/sns_fb.png" alt="" />
+                            <img src="images/sns_instagram.png" alt="" />
+                            <img src="images/sns_youtube.png" alt="" />
+                        </div>
+                        <div class="address">
+                            <address>
+                                <p>Addr. 서울시 종로구 종로78</p>
+                                <p>T. 02-123-4567</p>
+                                <p>E. admin@nemo.com</p>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- 푸터 영역 끝 -->
+    </body>
 </html>

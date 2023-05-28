@@ -34,452 +34,472 @@ select,
 textarea,
 button,
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 fieldset,
 img {
-  border: 0;
+    border: 0;
 }
 
 dl,
 ul,
 ol,
 li {
-  list-style: none;
+    list-style: none;
 }
 @font-face {
-  font-family: "SansLight";
-  font-weight: 300;
-  src: url("font/gSans/GmarketSansLight.eot?#iefix") format("embedded-opentype"),
-    url("font/gSans/GmarketSansLight.woff2") format("woff2"),
-    url("font/gSans/GmarketSansLight.woff") format("woff"),
-    url("font/gSans/GmarketSansLight.ttf") format("truetype");
+    font-family: "SansLight";
+    font-weight: 300;
+    src: url("font/gSans/GmarketSansLight.eot?#iefix") format("embedded-opentype"), url("font/gSans/GmarketSansLight.woff2") format("woff2"),
+        url("font/gSans/GmarketSansLight.woff") format("woff"), url("font/gSans/GmarketSansLight.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "SansMedium";
-  font-weight: 500;
-  src: url("font/gSans/GmarketSansMedium.eot#iefix") format("embedded-opentype"),
-    url("font/gSans/GmarketSansMedium.woff2") format("woff2"),
-    url("font/gSans/GmarketSansMedium.woff") format("woff"),
-    url("font/gSans/GmarketSansMedium.ttf") format("truetype");
+    font-family: "SansMedium";
+    font-weight: 500;
+    src: url("font/gSans/GmarketSansMedium.eot#iefix") format("embedded-opentype"), url("font/gSans/GmarketSansMedium.woff2") format("woff2"),
+        url("font/gSans/GmarketSansMedium.woff") format("woff"), url("font/gSans/GmarketSansMedium.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "SansBold";
-  font-weight: 700;
-  src: url("font/gSans/GmarketSansBold.eot?#iefix") format("embedded-opentype"),
-    url("font/gSans/GmarketSansBold.woff2") format("woff2"),
-    url("font/gSans/GmarketSansBold.woff") format("woff"),
-    url("font/gSans/GmarketSansBold.ttf") format("truetype");
+    font-family: "SansBold";
+    font-weight: 700;
+    src: url("font/gSans/GmarketSansBold.eot?#iefix") format("embedded-opentype"), url("font/gSans/GmarketSansBold.woff2") format("woff2"),
+        url("font/gSans/GmarketSansBold.woff") format("woff"), url("font/gSans/GmarketSansBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "NeoLight";
-  font-weight: 300;
-  src: url("font/Neo/NanumSquareNeo-aLt.eot?#iefix") format("embedded-opentype"),
-    url("font/Neo/NanumSquareNeo-aLt.woff2") format("woff2"),
-    url("font/Neo/NanumSquareNeo-aLt.woff") format("woff"),
-    url("font/Neo/NanumSquareNeo-aLt.ttf") format("truetype");
+    font-family: "NeoLight";
+    font-weight: 300;
+    src: url("font/Neo/NanumSquareNeo-aLt.eot?#iefix") format("embedded-opentype"), url("font/Neo/NanumSquareNeo-aLt.woff2") format("woff2"),
+        url("font/Neo/NanumSquareNeo-aLt.woff") format("woff"), url("font/Neo/NanumSquareNeo-aLt.ttf") format("truetype");
 }
 @font-face {
-  font-family: "NeoRegular";
-  font-weight: 400;
-  src: url("font/Neo/NanumSquareNeo-bRg.eot?#iefix") format("embedded-opentype"),
-    url("font/Neo/NanumSquareNeo-bRg.woff2") format("woff2"),
-    url("font/Neo/NanumSquareNeo-bRg.woff") format("woff"),
-    url("font/Neo/NanumSquareNeo-bRg.ttf") format("truetype");
+    font-family: "NeoRegular";
+    font-weight: 400;
+    src: url("font/Neo/NanumSquareNeo-bRg.eot?#iefix") format("embedded-opentype"), url("font/Neo/NanumSquareNeo-bRg.woff2") format("woff2"),
+        url("font/Neo/NanumSquareNeo-bRg.woff") format("woff"), url("font/Neo/NanumSquareNeo-bRg.ttf") format("truetype");
 }
 @font-face {
-  font-family: "NeoBold";
-  font-weight: 700;
-  src: url("font/Neo/NanumSquareNeo-cBd.eot?#iefix") format("embedded-opentype"),
-    url("font/Neo/NanumSquareNeo-cBd.woff2") format("woff2"),
-    url("font/Neo/NanumSquareNeo-cBd.woff") format("woff"),
-    url("font/Neo/NanumSquareNeo-cBd.ttf") format("truetype");
+    font-family: "NeoBold";
+    font-weight: 700;
+    src: url("font/Neo/NanumSquareNeo-cBd.eot?#iefix") format("embedded-opentype"), url("font/Neo/NanumSquareNeo-cBd.woff2") format("woff2"),
+        url("font/Neo/NanumSquareNeo-cBd.woff") format("woff"), url("font/Neo/NanumSquareNeo-cBd.ttf") format("truetype");
 }
 @font-face {
-  font-family: "NeoExBold";
-  font-weight: 800;
-  src: url("font/Neo/NanumSquareNeo-dEb.eot?#iefix") format("embedded-opentype"),
-    url("font/Neo/NanumSquareNeo-dEb.woff2") format("woff2"),
-    url("font/Neo/NanumSquareNeo-dEb.woff") format("woff"),
-    url("font/Neo/NanumSquareNeo-dEb.ttf") format("truetype");
+    font-family: "NeoExBold";
+    font-weight: 800;
+    src: url("font/Neo/NanumSquareNeo-dEb.eot?#iefix") format("embedded-opentype"), url("font/Neo/NanumSquareNeo-dEb.woff2") format("woff2"),
+        url("font/Neo/NanumSquareNeo-dEb.woff") format("woff"), url("font/Neo/NanumSquareNeo-dEb.ttf") format("truetype");
 }
 @font-face {
-  font-family: "NeoExHeavy";
-  font-weight: 900;
-  src: url("font/Neo/NanumSquareNeo-eHv.eot?#iefix") format("embedded-opentype"),
-    url("font/Neo/NanumSquareNeo-eHv.woff2") format("woff2"),
-    url("font/Neo/NanumSquareNeo-eHv.woff") format("woff"),
-    url("font/Neo/NanumSquareNeo-eHv.ttf") format("truetype");
+    font-family: "NeoExHeavy";
+    font-weight: 900;
+    src: url("font/Neo/NanumSquareNeo-eHv.eot?#iefix") format("embedded-opentype"), url("font/Neo/NanumSquareNeo-eHv.woff2") format("woff2"),
+        url("font/Neo/NanumSquareNeo-eHv.woff") format("woff"), url("font/Neo/NanumSquareNeo-eHv.ttf") format("truetype");
 }
 
 input,
 select,
 textarea,
 button {
-  /* 임시 스타일 */
-  background-color: #fff;
+    /* 임시 스타일 */
+    background-color: #fff;
 }
 html,
 body {
-  width: 100%;
-  min-height: 100%;
+    width: 100%;
+    min-height: 100%;
 }
 body {
-  background: #fff;
-  font-family: "Roboto", sans-serif;
-  padding-top: 81px;
+    background: #fff;
+    font-family: "Roboto", sans-serif;
+    padding-top: 81px;
 }
 
 /* #header, */
 #contentsArea {
-  /* width: 1200px; */
-  margin: 0 auto;
-  box-sizing: border-box;
+    /* width: 1200px; */
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* 숨김 콘텐츠 */
 .hidden {
-  position: absolute;
-  left: -9999px;
+    position: absolute;
+    left: -9999px;
 }
 
 /* 공통 요소 */
 a {
-  text-decoration: none;
-  color: #000;
+    text-decoration: none;
+    color: #000;
 }
 a:visited {
-  color: #000;
+    color: #000;
 }
 
 .button {
-  display: inline-block;
-  min-width: 46px;
-  height: 36px;
-  padding: 0 12px;
-  line-height: 36px;
-  font-size: 13px;
-  border-radius: 6px;
-  box-sizing: border-box;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: top;
-  background-color: #ccc;
+    display: inline-block;
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    line-height: 36px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #ccc;
 }
 button.btn {
-  display: inline-block;
-  min-width: 46px;
-  height: 36px;
-  padding: 0 12px;
-  font-size: 13px;
-  border-radius: 6px;
-  box-sizing: border-box;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: top;
-  background-color: #ccc;
+    display: inline-block;
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #ccc;
+}
+input[type="text"] {
+    border: 1px soild #ccc;
+    border-radius: 5px;
 }
 /* 헤더 */
 html,
 body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 .burger {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 45px;
-  height: 30px;
-  background: none;
-  border: none;
-  outline: none;
-  z-index: 200;
-  cursor: pointer;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 30px;
+    background: none;
+    border: none;
+    outline: none;
+    z-index: 200;
+    cursor: pointer;
 }
 .burger span {
-  position: relative;
-  height: 4px;
-  width: 75%;
-  background: #faab50;
-  display: inline-block;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+    position: relative;
+    height: 4px;
+    width: 75%;
+    background: #faab50;
+    display: inline-block;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 .burger span:before {
-  content: "";
-  height: 4px;
-  width: 100%;
-  background: #faab50;
-  position: absolute;
-  top: -10px;
-  right: 0;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
+    content: "";
+    height: 4px;
+    width: 100%;
+    background: #faab50;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 .burger span:after {
-  content: "";
-  height: 4px;
-  width: 100%;
-  background: #faab50;
-  position: absolute;
-  bottom: -10px;
-  right: 0;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
+    content: "";
+    height: 4px;
+    width: 100%;
+    background: #faab50;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 .burger.open span {
-  background: white;
-  z-index: 1000;
+    background: white;
+    z-index: 1000;
 }
 .burger.open span:before {
-  opacity: 1;
-  transform: rotate(40deg);
-  width: 50%;
-  top: -6px;
-  background: white;
-  z-index: 1000;
+    opacity: 1;
+    transform: rotate(40deg);
+    width: 50%;
+    top: -6px;
+    background: white;
+    z-index: 1000;
 }
 .burger.open span:after {
-  opacity: 1;
-  transform: rotate(-40deg);
-  width: 50%;
-  bottom: -6px;
-  background: white;
-  z-index: 1000;
+    opacity: 1;
+    transform: rotate(-40deg);
+    width: 50%;
+    bottom: -6px;
+    background: white;
+    z-index: 1000;
 }
 .sidemenu {
-  background: #f1c368;
-  position: fixed;
-  right: 0;
-  width: 350px;
-  height: 100%;
-  transform: translateX(350px);
-  transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
-  top: 0;
-  z-index: 120;
+    background: #f1c368;
+    position: fixed;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    transform: translateX(350px);
+    transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
+    top: 0;
+    z-index: 120;
 }
 .sidemenu ul {
-  padding: 3rem;
+    padding: 3rem;
 }
 .sidemenu ul li {
-  display: block;
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
+    display: block;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
 }
 .sidemenu ul li i {
-  font-size: 16px;
+    font-size: 16px;
 }
 .sidemenu ul li a {
-  color: #fff;
-  font-weight: 300;
-  text-decoration: none;
-  font-size: 16px;
+    color: #fff;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: 16px;
 }
 .sidemenu ul li a:hover {
-  color: #fff;
+    color: #fff;
 }
 .sidemenu .sidemenu_footer {
-  background: #fb8600;
-  color: white;
-  height: 100%;
-  padding: 3rem;
-  transform: translateY(150px);
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
+    background: #fb8600;
+    color: white;
+    height: 100%;
+    padding: 3rem;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
 }
 .sidemenu .sidemenu_footer h3 {
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
 }
 .sidemenu .sidemenu_footer p {
-  font-weight: 300;
-  line-height: 1.4;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
+    font-weight: 300;
+    line-height: 1.4;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.04, 0.79, 0.34, 1.3);
 }
 .sidemenu.open {
-  transform: translateX(0);
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
-  border-radius: 5px 0;
+    transform: translateX(0);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px 0;
 }
 .sidemenu.open ul li:nth-child(1) {
-  margin-bottom: 3.125rem;
-  -webkit-animation: slideIn 0.3s 0.1s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.1s ease 1 forwards;
-  animation: slideIn 0.3s 0.1s ease 1 forwards;
+    margin-bottom: 3.125rem;
+    -webkit-animation: slideIn 0.3s 0.1s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.1s ease 1 forwards;
+    animation: slideIn 0.3s 0.1s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(2) {
-  -webkit-animation: slideIn 0.3s 0.2s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.2s ease 1 forwards;
-  animation: slideIn 0.3s 0.2s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.2s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.2s ease 1 forwards;
+    animation: slideIn 0.3s 0.2s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(3) {
-  -webkit-animation: slideIn 0.3s 0.3s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.3s ease 1 forwards;
-  animation: slideIn 0.3s 0.3s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.3s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.3s ease 1 forwards;
+    animation: slideIn 0.3s 0.3s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(4) {
-  -webkit-animation: slideIn 0.3s 0.4s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.4s ease 1 forwards;
-  animation: slideIn 0.3s 0.4s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.4s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.4s ease 1 forwards;
+    animation: slideIn 0.3s 0.4s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(5) {
-  -webkit-animation: slideIn 0.3s 0.5s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.5s ease 1 forwards;
-  animation: slideIn 0.3s 0.5s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.5s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.5s ease 1 forwards;
+    animation: slideIn 0.3s 0.5s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(6) {
-  -webkit-animation: slideIn 0.3s 0.6s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.6s ease 1 forwards;
-  animation: slideIn 0.3s 0.6s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.6s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.6s ease 1 forwards;
+    animation: slideIn 0.3s 0.6s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(7) {
-  -webkit-animation: slideIn 0.3s 0.7s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.7s ease 1 forwards;
-  animation: slideIn 0.3s 0.7s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.7s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.7s ease 1 forwards;
+    animation: slideIn 0.3s 0.7s ease 1 forwards;
 }
 .sidemenu.open ul li:nth-child(8) {
-  -webkit-animation: slideIn 0.3s 0.8s ease 1 forwards;
-  -moz-animation: slideIn 0.3s 0.8s ease 1 forwards;
-  animation: slideIn 0.3s 0.8s ease 1 forwards;
+    -webkit-animation: slideIn 0.3s 0.8s ease 1 forwards;
+    -moz-animation: slideIn 0.3s 0.8s ease 1 forwards;
+    animation: slideIn 0.3s 0.8s ease 1 forwards;
 }
 .sidemenu.open .sidemenu_footer {
-  transform: translateY(0px);
-  transition-delay: 0.3s;
-  opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0.3s;
+    opacity: 1;
 }
 .sidemenu.open .sidemenu_footer h3 {
-  transform: translateY(0px);
-  transition-delay: 0.5s;
-  opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0.5s;
+    opacity: 1;
 }
 .sidemenu.open .sidemenu_footer p {
-  transform: translateY(0px);
-  opacity: 1;
-  transition-delay: 0.7s;
+    transform: translateY(0px);
+    opacity: 1;
+    transition-delay: 0.7s;
 }
 @keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
 
 /* header 추가 수정 */
 header {
-  width: 100%;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  background-color: white;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    background-color: white;
 }
 
 .logo img {
-  width: 250px;
-  height: 95px;
+    width: 250px;
+    height: 95px;
 }
 .profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .fa-circle-user {
-  font-size: 100px !important;
+    font-size: 100px !important;
 }
 .profile_name {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: 3px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 .sidemenu.open ul li a {
-  transition: all 0.5s;
+    transition: all 0.5s;
 }
 .sidemenu.open ul li:hover a {
-  color: rgba(255, 255, 255, 0.25);
-  padding-left: 60px;
+    color: rgba(255, 255, 255, 0.25);
+    padding-left: 60px;
 }
 .menu_bg {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  z-index: 110;
-  display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    z-index: 110;
+    display: none;
 }
+
+/* section 공통 부분 시작 */
+.section2 {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.sc2_contents {
+    display: flex;
+    padding: 30px;
+}
+.sc2_subsection {
+    flex: 2.5;
+}
+.sc2_subsection_title {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.sc2_subsection_title_name {
+    font-size: 25px;
+    font-weight: 800;
+}
+.sc2_subcontents {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+/* section 공통 부분 종료 */
 /* 푸터 */
 #footer {
-  width: 100vw;
-  height: 250px;
-  background: #ccc;
+    width: 100vw;
+    height: 250px;
+    background: #ccc;
 }
 #footerInner {
-  margin: 0 auto;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 30px;
-  justify-content: center;
-  position: relative;
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    justify-content: center;
+    position: relative;
 }
 #footerInner::before {
-  width: 100%;
-  content: "";
-  border-top: 2px solid #000;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  margin-bottom: 30px;
+    width: 100%;
+    content: "";
+    border-top: 2px solid #000;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-bottom: 30px;
 }
 .footerContents {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .footerLeft {
-  width: 25%;
-  margin-left: 25%;
+    width: 25%;
+    margin-left: 25%;
 }
 .footerLeft ul li {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 .footerRight {
-  width: 30%;
-  margin-right: 10%;
-  margin-left: 10%;
-  margin-bottom: 10px;
+    width: 30%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10px;
 }
 .sns {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .sns img {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 address {
-  font-style: normal;
+    font-style: normal;
 }
 .copyright p {
-  text-align: center;
+    text-align: center;
 }

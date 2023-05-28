@@ -1,67 +1,64 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>네모</title>
-    <link rel="stylesheet" href="css/common.css">
-    <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-    <script src="js/header.js"></script>
-    <link rel="stylesheet" href="css/submenu.css">
-    <link rel="stylesheet" href="css/myGroupList.css">
-</head>
-<body>
-    
-    <!-- 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <!-- header 시작 -->
-    <header>
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-        </h1>
-    </header>
-    <button class="burger">
-        <span></span>
-    </button>
-    <div class="sidemenu">
-        <ul class="main_menu">
-            <li>
-                <a href="#">
-                    <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-                </a>
-            </li>
-            <li><a href="createGroup.html">소모임 만들기</a></li>
-            <li><a href="search.html">소모임 검색</a></li>
-            <li><a href="myPage.html">프로필</a></li>
-            <li><a href="mySchedule.html">내 일정</a></li>
-            <li><a href="myGroupList.html">내 소모임</a></li>
-            <li><a href="adminHelp.html">고객센터</a></li>
-            <li><a href="#">로그아웃</a></li>
-        </ul>
-        <div class="sidemenu_footer">
-            <h3>Contact details</h3>
-            <p>글 넣을 거 있으면 넣기</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>네모</title>
+        <link rel="stylesheet" href="css/common.css" />
+        <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
+        <script src="js/jquery-3.6.4.min.js"></script>
+        <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+        <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet" />
+        <script src="js/header.js"></script>
+        <link rel="stylesheet" href="css/submenu.css" />
+        <!-- nav 스타일 때문에 groupSetting.css 여기에 넣음 -->
+        <link rel="stylesheet" href="css/groupSetting.css" />
+        <link rel="stylesheet" href="css/myGroupList.css" />
+    </head>
+    <body>
+        <!-- 배경색 조정 -->
+        <div class="menu_bg"></div>
+        <!-- header 시작 -->
+        <header>
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+            </h1>
+        </header>
+        <button class="burger">
+            <span></span>
+        </button>
+        <div class="sidemenu">
+            <ul class="main_menu">
+                <li>
+                    <a href="#">
+                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                    </a>
+                </li>
+                <li><a href="createGroup.html">소모임 만들기</a></li>
+                <li><a href="search.html">소모임 검색</a></li>
+                <li><a href="myPage.html">프로필</a></li>
+                <li><a href="mySchedule.html">내 일정</a></li>
+                <li><a href="myGroupList.html">내 소모임</a></li>
+                <li><a href="adminHelp.html">고객센터</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+            <div class="sidemenu_footer">
+                <h3>Contact details</h3>
+                <p>글 넣을 거 있으면 넣기</p>
+            </div>
         </div>
-    </div>
-    <!-- header 종료 -->
+        <!-- header 종료 -->
 
-    <!-- 컨텐츠 시작 -->
-    <div id="wrapper">
+        <!-- 컨텐츠 시작 -->
         <div class="section2">
-
-            
-            <div class="sc2_subcontents">
-
+            <div class="sc2_contents">
                 <!-- 메뉴바 시작 -->
                 <div class="sc2_menu_contents">
                     <div class="sc2_menu">
                         <h2 class="sc2_menu_title">마이페이지</h2>
                         <ul class="sc2_menu_list">
                             <li>
-                                <a href="myPage.html">
+                                <a href="schedule.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>프로필</span></div>
                                         <i class="fa-solid fa-angle-right"></i>
@@ -69,7 +66,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="mySchedule.html">
+                                <a href="board.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>내 일정</span></div>
                                         <i class="fa-solid fa-angle-right"></i>
@@ -77,49 +74,56 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="myGroupList.html">
+                                <a href="myPageGroup.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>내 소모임</span></div>
-                                        <i class="fa-solid fa-minus"></i>
+                                        <i class="fa-solid fa-angle-right"></i>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="boardMy.html">
+                                <a href="groupSetting.html">
                                     <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name"><span>내 글 관리</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <div class="menu_submenu_name"><span>내가 쓴 글·댓글</span></div>
+                                        <i class="fa-solid fa-minus"></i>
                                     </div>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- 메뉴바 종료 -->    
-                
+                <!-- 메뉴바 종료 -->
+
                 <!-- 메인 컨텐츠 시작 -->
-                <div class="sc2_section">
-                    
-                    <!-- 컨텐츠 이름 시작 -->
-                    <div class="sc2_title">
-                        <span class="sc2_title_name">내 소모임</span>     
+                <div class="sc2_subsection">
+                    <div class="sc2_subsection_title">
+                        <h2 class="sc2_subsection_title_name">내 소모임</h2>
+                        <!-- nav 바 시작 -->
+                        <div class="nav_bar">
+                            <a href="index.html">
+                                <i class="fa-solid fa-house"></i>
+                            </a>
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>마이페이지</span>
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>내 소모임</span>
+                        </div>
+                        <!-- nav 바 종료 -->
                     </div>
-                    <!-- 컨텐츠 이름 종료 -->
-                    
-                    <div class="sc2_contents_box">
+
+                    <div class="sc2_subcontents">
                         <div class="sc2_contents">
                             <div class="sc2_contents_title">
                                 <div class="sc2_contents_title_name">
                                     <span>리더</span>
                                 </div>
                                 <div class="sc2_groups">
-
                                     <div class="sc2_groups_box">
                                         <div class="sc2_icon">
                                             <i class="fa-solid fa-pen"></i>
                                         </div>
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
@@ -129,7 +133,7 @@
                                             <i class="fa-solid fa-pen"></i>
                                         </div>
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
@@ -139,63 +143,58 @@
                                             <i class="fa-solid fa-pen"></i>
                                         </div>
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
-                        <div class="sc2_contents">
+                        <div class="sc2_contents sc2_subcontents">
                             <div class="sc2_contents_title">
                                 <div class="sc2_contents_title_name">
                                     <span>회원</span>
                                 </div>
 
                                 <div class="sc2_groups">
-
                                     <div class="sc2_groups_box">
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
 
                                     <div class="sc2_groups_box">
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
 
                                     <div class="sc2_groups_box">
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
-                        <div class="sc2_contents">
+                        <div class="sc2_contents sc2_subcontents">
                             <div class="sc2_contents_title">
-
                                 <div class="sc2_contents_title_name">
                                     <span>찜</span>
                                 </div>
 
                                 <div class="sc2_groups">
-
                                     <div class="sc2_groups_box">
                                         <div class="sc2_icon">
                                             <i class="fa-regular fa-circle-xmark"></i>
                                         </div>
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
@@ -205,7 +204,7 @@
                                             <i class="fa-regular fa-circle-xmark"></i>
                                         </div>
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
@@ -215,56 +214,53 @@
                                             <i class="fa-regular fa-circle-xmark"></i>
                                         </div>
                                         <div class="sc2_imgs_box">
-                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img"></div>
+                                            <div class="groups_img_box"><img src="images/sc1_title.jpeg" alt="title" class="sc_img" /></div>
                                             <span class="sc2_imgs_box_info">이젠 종로 학원</span>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- 메인 컨텐츠 종료 --> 
-
+                <!-- 메인 컨텐츠 종료 -->
             </div>
-        </div>    
-    </div>
-    <!-- 컨텐츠 종료 -->
-
-    <!-- 푸터 영역 시작 -->
-    <footer id="footer">
-        <div id="footerInner">
-          <div class="footerContents">
-            <div class="footerLeft">
-              <ul>
-                <li><a href="#">동네모임네모</a></li>
-                <li><a href="#">고객센터</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">개인정보 처리방침</a></li>
-              </ul>
-            </div>
-            <div class="footerRight">
-              <div class="sns">
-                <img src="images/sns_blog.png" alt="" />
-                <img src="images/sns_fb.png" alt="" />
-                <img src="images/sns_instagram.png" alt="" />
-                <img src="images/sns_youtube.png" alt="" />
-              </div>
-              <div class="address">
-                <address>
-                  <p>Addr. 서울시 종로구 종로78</p>
-                  <p>T. 02-123-4567</p>
-                  <p>E. admin@nemo.com</p>
-                </address>
-              </div>
-            </div>
-          </div>
-          <div class="copyright">
-            <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
-          </div>
         </div>
-      </footer>
-      <!-- 푸터 영역 끝 -->
-</body>
+        <!-- 컨텐츠 종료 -->
+
+        <!-- 푸터 영역 시작 -->
+        <footer id="footer">
+            <div id="footerInner">
+                <div class="footerContents">
+                    <div class="footerLeft">
+                        <ul>
+                            <li><a href="#">동네모임네모</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보 처리방침</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerRight">
+                        <div class="sns">
+                            <img src="images/sns_blog.png" alt="" />
+                            <img src="images/sns_fb.png" alt="" />
+                            <img src="images/sns_instagram.png" alt="" />
+                            <img src="images/sns_youtube.png" alt="" />
+                        </div>
+                        <div class="address">
+                            <address>
+                                <p>Addr. 서울시 종로구 종로78</p>
+                                <p>T. 02-123-4567</p>
+                                <p>E. admin@nemo.com</p>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- 푸터 영역 끝 -->
+    </body>
 </html>
