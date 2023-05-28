@@ -1,4 +1,44 @@
 @charset "utf-8";
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.adminQnATitle {
+  font-family: "yg-jalnan";
+  font-size: 40px;
+  font-weight: 800;
+}
+input[type="text"] {
+  display: inline-block;
+  width: 300px;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #fff;
+}
+select {
+  display: inline-block;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  background-color: #fff;
+}
+.qnaContainer {
+  margin-top: 20px;
+}
 html,
 body {
   width: 100%;
@@ -14,7 +54,7 @@ body {
   margin-bottom: 50px;
 }
 #wrap h2 {
-  border-bottom: 2px solid #111;
+  border-bottom: 1px solid #111;
   margin-bottom: 50px;
 }
 .searchContainer {

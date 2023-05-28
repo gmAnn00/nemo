@@ -1,10 +1,18 @@
 @charset "utf-8";
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   padding-top: 105px;
 }
 #contentsArea {
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
 }
 
 #wrap {
@@ -13,6 +21,14 @@ body {
 
 h2 {
   margin-bottom: 50px;
+}
+.title {
+  font-family: "yg-jalnan";
+  font-size: 40px;
+  font-weight: 800;
+  border-bottom: 1px solid black;
+  display: inline-block;
+  width: 85%;
 }
 div.myScheduleMenuAndCal {
   width: 1000px;
