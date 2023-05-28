@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아이디/비밀번호 찾기</title>
+    <title>아이디 찾기</title>
     <script src="js/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/findIdPass.css">
+    <link rel="stylesheet" href="css/findId.css">
     <link rel="stylesheet" href="css/header.css">
     <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
     <script src="js/header.js"></script>
@@ -52,18 +52,23 @@
         <ul class="tabs">
             <li class="tabId" data-tab="idTab"><a href="findId.html">아이디 찾기</a></li>
             <li class="tabPass" data-tab="passTab"><a href="findPass.html">비밀번호 재설정</a></li>
-
         </ul>
         
         <div id="idTab" class="tabContent current">
-            <h2>아이디 찾기</h2>
-            <p>아이디는 가입시 입력하신 이메일로 찾으실 수 있습니다.</p>
-            <form action="findIdComplete.html">
+            <p>회원가입시 사용하신 아이디는 ???? 입니다.</p>
+            <button type="button"><a href="login.html">로그인 화면으로 돌아가기</a></button>
+        </div>
+        <div id="passTab" class="tabContent"> 
+            <h2>비밀번호 재설정</h2>
+            <p>비밀번호는 아이디, 이름, 이메일을 입력하시면 재설정 하실 수 있습니다.</p>
+            <form action="findPassReset.html">
+                <label for="idInput"></label>
+                <input type="text" id="idInput" placeholder="아이디를 입력해주세요" required/>
                 <label for="nameInput"></label>
                 <input type="text" id="nameInput" placeholder="이름을 입력해주세요" required/>
                 <label for="emailInput"></label>
                 <input type="text" id="emailInput" placeholder="이메일을 입력해주세요" required/>
-                <button type="submit">아이디 찾기</button>
+                <button type="submit">비밀번호 재설정 하기</button>
             </form>
         </div>
     </div>

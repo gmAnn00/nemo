@@ -8,11 +8,21 @@
     display: none;
 }
 */
+:root {
+    --selectBorderColor: #f49a9a;
+    --optionBackColor : #f49a9a;
+    --optionFontColor: #fff;
+    --lineColor : #E66B62;
+    --reqColor : #E66B62;
+    
+}
+
 #contentsArea {
-    width: 1200px;
+
+    padding-top: 50px;
+    /*width: 1200px;*/
     margin: 0 auto;
     margin-bottom: 40px;
-    padding-top: 103px;
 }
 
 .innerCont {
@@ -65,7 +75,7 @@
     overflow: hidden;
 }
 .require::before {
-    color:#E66B62;
+    color:var(--reqColor);
     content: '*';
     position: relative;
     left: -10px;
@@ -82,7 +92,7 @@
     margin: 15px 0;
     padding: 0 0 10px 0;
     text-align: right;
-    border-bottom: 2px solid #E66B62;
+    border-bottom: 2px solid var(--lineColor);
 }
 
 .formTbl {
@@ -91,7 +101,7 @@
 
 }
 
-.formTbl tr:not(:nth-of-type(5)), .formTbl tr:not(:nth-of-type(7)) {
+.formTbl tr:not(:nth-of-type(5)), .formTbl tr:not(:nth-of-type(6)) {
     height: 50px;
 }
 
@@ -114,23 +124,45 @@
     width: 780px;
 }
 
+/* select box 설정*/
 
-.formTbl tr:nth-of-type(8) td{
+.selectBox {
+    width: 200px;
+    height: 28px;
+    border-radius: 4px;
+    border: 2px solid var(--selectBorderColor);
+}
+.selectBox .commonSelect {
+    width: inherit;
+    height: inherit;
+    background-color: transparent;
+    border: 0 none;
+    outline: 0 none;
+    padding: 0 5px;
+}
+.selectBox .commonSelect option {
+    background-color: var(--optionBackColor);
+    color: var(--optionFontColor);
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.formTbl tr:nth-of-type(7) td{
     padding: 0 50px;
 }
-.formTbl tr:nth-of-type(8) p{
+.formTbl tr:nth-of-type(7) p{
     text-align: right;
 }
-.formTbl tr:nth-of-type(9) th,tr:nth-of-type(9) td  {
-    border-top: 1px dashed #E66B62;
-    border-bottom: 1px dashed #E66B62; 
+.formTbl tr:nth-of-type(8) th,tr:nth-of-type(8) td  {
+    border-top: 1px dashed var(--lineColor);
+    border-bottom: 1px dashed var(--lineColor); 
 }
 
-.formTbl tr:nth-of-type(10) td {
+.formTbl tr:nth-of-type(9) td {
     padding: 0 10px;
 }
 
-.formTbl tr:nth-of-type(11) td{
+.formTbl tr:nth-of-type(10) td{
     text-align: center;
 }
 #grpDescription {

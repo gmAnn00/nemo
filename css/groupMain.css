@@ -1,12 +1,24 @@
 @charset "utf-8";
 
+
+:root {
+    --grpMenuBackColor:rgb(255, 249, 243);
+
+    --tblBorderBottom: #ccc ;
+
+    --tmpMemColor:rgb(248, 180, 200);
+    --btnActColor:#222;
+}
 .grpMenuArea {
     width: 100%;
     text-align: center;
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 15px 0;
-    background-color: rgb(255, 249, 243);
+    background-color: var(--grpMenuBackColor);
+}
+.header_except_body {
+    padding-top: 20px;
 }
 /*
 .grpMenuArea h2{
@@ -35,6 +47,8 @@
     height: 400px;
 }
 */
+
+
 
 #contentsArea,.contMainArea {
     /*width: 1200px;*/
@@ -76,7 +90,7 @@
 }
 .recentTbl tr td {
     padding: 8px 5px 8px 10px;
-    border-bottom: 1px dashed #ccc ;
+    border-bottom: 1px dashed var(--tblBorderBottom);
 }
 
 .recentScheduledTbl tr th:nth-of-type(1), .recentScheduledTbl tr td:nth-of-type(1),
@@ -122,7 +136,7 @@
     height: 250px;
     position: relative;
     padding-bottom: 10px;
-    background-color: rgb(255, 249, 243);
+    background-color: var(--grpMenuBackColor);
 
 }
 .animationSlide {
@@ -139,13 +153,13 @@
 .slideContent {
     display: inline-block;
     text-align: center;
-    padding: 0 8px;
+    /*padding: 0 8px;*/
 }
 .memImg {
     display: inline-block;
     width: 125px;
     height: 125px;
-    background-color: rgb(248, 180, 200);
+    background-color: var(--tmpMemColor);
     border-radius: 50%;
 }
 .memName {
@@ -159,7 +173,7 @@
 }
 .fa-solid.btnActive {
     cursor: pointer;
-    color: #222;
+    color: var(--btnActColor);
 } 
 .btnEventPrev {
     position: absolute;
@@ -173,11 +187,7 @@
     right: 20px;
 }
 
-.fa-chevron.btnActive {
-    cursor: pointer;
-    color: #222;
-}
 .btnActive {
     cursor: pointer;
-    color: #222;
+    color: var(--btnActColor);
 }

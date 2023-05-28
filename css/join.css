@@ -1,6 +1,9 @@
 h2, h3, h4 {
     text-align: center;
 }
+#loginForm {
+    padding-top: 115px;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -28,20 +31,23 @@ form input[id="id"], input[id="nickname"] {
 form .check {
     width: 100px;
     position: absolute;
-    top: 26px;
+    top: 27px;
     right: 0px;
-    padding: 9px;
+    padding: 10px;
 }
 form .findZipcode {
     width: 150px;
     position: absolute;
-    top: 26px;
+    top: 27px;
     left: 190px;
-    padding: 9px;
+    padding: 10px;
 }
 form input[id="zipcode"] {
     width: 150px;
     margin-bottom: 10px;
+}
+form input[id="birthdate"] {
+    width: 150px;
 }
 form .email {
     display: inline-block;

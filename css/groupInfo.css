@@ -10,9 +10,17 @@ body, div, h3, button, section, table, tr, td, th{
 }*/
 
 /* 메인 컨텐츠 영역*/
-.mainContent {
+
+/*.mainContent {
     width: 1200px;
     margin: 0 auto;
+}*/
+:root {
+    --heartColor:#f43965;
+}
+
+#contentsArea {
+    padding-top: 30px;
 }
 .mainInner {
     padding: 0 100px;
@@ -27,33 +35,75 @@ body, div, h3, button, section, table, tr, td, th{
     display: inline-block;
 }
 
+/*찜하트 영역*/
 .grpLikeBtn {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: 0;
     cursor: pointer;
+    text-align: center;
 }
 
 .grpLike {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin: 0 auto;
 }
 
+svg use {
+    fill: transparent;
+    stroke: #ccc;
+    stroke-width: 1.2;
+    transition: all 0.33s ease;
+}
+
+svg use:last-child {
+    fill: var(--heartColor);
+    stroke: var(--heartColor);
+    opacity: 0;
+    transform: scale(.33);
+    transform-origin: center;
+}
+
+.on svg use {
+    stroke: transparent;
+}
+
+.on svg use:last-child {
+    opacity: 1;
+    transform: none;
+    transition: all 0.5s cubic-bezier(.19,2.41,.45,.94);
+}
+
+
+svg {
+    width: 20px;
+    height: 20px;
+    overflow: visible!important;
+}
+
+.hide {
+    display: none;
+}
+
+
 /* 간략 정보 영역 */
 .shortInfoArea {
-    width: 800px;
+    /*width: 800px;*/
+    padding: 0 20px;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
 
 
 .shortInfoTbl {
     display: inline-block;
-    width: 800px;
+    /*width: 800px;*/
     height: 300px;
 }
 
+/* 소모임 사진 */
 .imgCrop {
     position: relative;
     display: inline-block;
@@ -73,7 +123,6 @@ body, div, h3, button, section, table, tr, td, th{
 
 .shortInfoTbl th {
     width: 150px;
-    
     text-align: center;
 
 }
@@ -90,8 +139,8 @@ body, div, h3, button, section, table, tr, td, th{
     letter-spacing: 2px;
 }
 
-
 /* 소모임 자세한 정보 영역 */
+
 .infoDetailArea {
     /*width: 1000px;*/
     padding: 50px 100px;
@@ -99,6 +148,7 @@ body, div, h3, button, section, table, tr, td, th{
 }
 
 .infoDetailArea section {
+    width: 100%;
     margin-bottom: 30px;
 }
 
@@ -118,6 +168,8 @@ body, div, h3, button, section, table, tr, td, th{
     padding: 0 10px;
 }
 .mapArea #map {
+    /*width: 78%;*/
+    height: 300px;
     border: 1px solid #ccc;
     background-color: #fff;
     text-align: center;
