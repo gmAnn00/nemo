@@ -46,6 +46,9 @@ form input[id="zipcode"] {
     width: 150px;
     margin-bottom: 10px;
 }
+form input[id="address"] {
+    margin-bottom: 10px;
+}
 form input[id="birthdate"] {
     width: 150px;
 }
