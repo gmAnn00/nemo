@@ -1,350 +1,316 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/index.css" />
-
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/header.js"></script>
-    <script
-      src="https://kit.fontawesome.com/f9a2702e84.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>메인페이지</title>
-  </head>
-  <script>
-    $(window).on("load", function () {
-      setFlowBanner1();
-    });
-    function setFlowBanner1() {
-      const $wrap = $(".flowBanner1");
-      const $list = $(".flowBanner1 .list01");
-      let wrapWidth = $wrap.width();
-      let listWidth = $list.width();
-      const speed = 50; //1초에 몇픽셀 이동하는지 설정
+    <script src="js/index.js"></script>
+    <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
+    <title>메인페이지</title> 
+</head>
 
-      //리스트 복제
-      let $clone = $list.clone();
-      $wrap.append($clone);
-      flowBannerAct();
+<body>
+  <!-- 배경색 조정 -->
+  <div class="menu_bg"></div>
 
-      //배너 실행 함수
-      function flowBannerAct() {
-        //무한 반복을 위해 리스트를 복제 후 배너에 추가
-        if (listWidth < wrapWidth) {
-          const listCount = Math.ceil((wrapWidth * 2) / listWidth);
-          for (let i = 2; i < listCount; i++) {
-            $clone = $clone.clone();
-            $wrap.append($clone);
-          }
-        }
-        $wrap.find(".list01").css({
-          animation: `${listWidth / speed}s linear infinite flowRolling1`,
-        });
-      }
-    }
-
-    $(window).on("load", function () {
-      setFlowBanner2();
-    });
-
-    <!-- flow2 scr영역 -->
-    function setFlowBanner2() {
-      const $wrap = $(".flowBanner2");
-      const $list = $(".flowBanner2 .list02");
-      let wrapWidth = $wrap.width();
-      let listWidth = $list.width();
-      const speed = 50; //1초에 몇픽셀 이동하는지 설정
-
-      //리스트 복제
-      let $clone = $list.clone();
-      $wrap.append($clone);
-      flowBannerAct();
-
-      //배너 실행 함수
-      function flowBannerAct() {
-        //무한 반복을 위해 리스트를 복제 후 배너에 추가
-        if (listWidth < wrapWidth) {
-          const listCount = Math.ceil((wrapWidth * 2) / listWidth);
-          for (let i = 2; i < listCount; i++) {
-            $clone = $clone.clone();
-            $wrap.append($clone);
-          }
-        }
-        $wrap.find(".list02").css({
-          animation: `${listWidth / speed}s linear infinite flowRolling2`,
-        });
-      }
-    }
-    $(function () {
-        const slideshowImages = document.querySelectorAll(".intro-slideshow img");
-
-        const nextImageDelay = 5000;
-        let currentImageCounter = 0; // setting a variable to keep track of the current image (slide)
-
-        // slideshowImages[currentImageCounter].style.display = "block";
-        slideshowImages[currentImageCounter].style.opacity = 1;
-
-        setInterval(nextImage, nextImageDelay);
-
-        function nextImage() {
-        // slideshowImages[currentImageCounter].style.display = "none";
-        slideshowImages[currentImageCounter].style.opacity = 0;
-
-        currentImageCounter = (currentImageCounter+1) % slideshowImages.length;
-
-        // slideshowImages[currentImageCounter].style.display = "block";
-        slideshowImages[currentImageCounter].style.opacity = 1;
-        }
-    });
-  $(document).ready(function() {
-    // 스크롤
-    $(window).scroll(function(){
-        var scroll = $(window).scrollTop();
-        if (scroll > 1) {
-            $('header').css('backgroundColor','white');
-        }
-        else{
-            $('header').css("backgroundColor" , "rgba(0,0,0,0)");  
-        }
-    })
-  });
-  </script>
-  <body>
-    <div class="menu_bg"></div>
-    <!-- header 시작 -->
-    <header>
-        <h1 class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-        </h1>
-    </header>
-    <button class="burger">
-        <span></span>
-    </button>
-    <div class="sidemenu">
-        <ul class="main_menu">
-            <li>
-                <a href="#">
-                    <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-                </a>
-            </li>
-            <li><a href="createGroup.html">소모임 만들기</a></li>
-            <li><a href="search.html">소모임 검색</a></li>
-            <li><a href="myPage.html">프로필</a></li>
-            <li><a href="mySchedule.html">내 일정</a></li>
-            <li><a href="myGroupList.html">내 소모임</a></li>
-            <li><a href="adminHelp.html">고객센터</a></li>
-            <li><a href="#">로그아웃</a></li>
-        </ul>
-        <div class="sidemenu_footer">
-            <h3>Contact details</h3>
-            <p>글 넣을 거 있으면 넣기</p>
-        </div>
-    </div>
-    <!-- header 종료 -->
-
-    <!--메인 이미지 영역-->
-    <div class="intro">
-      <div class="intro-slideshow">
-        <img src="images/main_bike2.jpg">
-        <img src="images/main_book.jpg">
-        <img src="images/main_music2.jpg">
-        <img src="images/main_pet.jpg">
-        <img src="images/main_culture.jpg.jpg">
+  <!-- header 시작 -->
+  <header>
+      <h1 class="logo">
+          <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+      </h1>
+  </header>
+  <button class="burger">
+      <span></span>
+  </button>
+  <div class="sidemenu">
+      <ul class="main_menu">
+          <li>
+              <a href="#">
+                  <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+              </a>
+          </li>
+          <li><a href="createGroup.html">소모임 만들기</a></li>
+          <li><a href="search.html">소모임 검색</a></li>
+          <li><a href="myPage.html">프로필</a></li>
+          <li><a href="mySchedule.html">내 일정</a></li>
+          <li><a href="myGroupList.html">내 소모임</a></li>
+          <li><a href="adminHelp.html">고객센터</a></li>
+          <li><a href="#">로그아웃</a></li>
+      </ul>
+      <div class="sidemenu_footer">
+          <h3>Contact details</h3>
+          <p>글 넣을 거 있으면 넣기</p>
       </div>
-      <div class="intro-header">
-        <h1>Coding Journey</h1>
-        <p>It's all about the journey</p>
+  </div>
+  <!-- header 종료 -->
+
+  <!--메인 이미지 영역-->
+  <div class="intro">
+    <div class="intro-slideshow">
+      <img src="images/main_bike2.jpg">
+      <img src="images/main_book.jpg">
+      <img src="images/main_music2.jpg">
+      <img src="images/main_pet.jpg">
+      <img src="images/main_culture.jpg.jpg">
+    </div>
+    <div class="intro-header">
+      <h1>네모</h1>
+      <p>우리동네 작은모임</p>
+    </div>
+  </div>
+
+  <!-- 카테고리 슬라이드 영역 시작 -->
+  <div class="categories">
+    <div class="categoriesText">
+      <h1 class="categories_title">소모임 카테고리</h1>
+    </div>
+    
+    <div class="flowBanner1">
+      <ul class="list01">
+        <li> 
+          <div class="imgBox sle1"><span class="box_text">문화,공연</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle2"><span class="box_text">음악,악기</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle3"><span class="box_text">사진,영상</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle4"><span class="box_text">아웃도어</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle5"><span class="box_text">스포츠</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle6"><span class="box_text">인문학,책</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle7"><span class="box_text">언어</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle8"><span class="box_text">공예</span></div>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="flowBanner2">
+      <ul class="list02">
+        <li> 
+          <div class="imgBox sle9"><span class="box_text">댄스</span></div> 
+        </li>
+        <li> 
+          <div class="imgBox sle10"><span class="box_text">봉사</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle11"><span class="box_text">사교</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle12"><span class="box_text">자동차</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle13"><span class="box_text">경기관람</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle14"><span class="box_text">게임</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle15"><span class="box_text">요리</span></div>
+        </li>
+        <li> 
+          <div class="imgBox sle16"><span class="box_text">반려동물</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 카테고리 슬라이드 영역 종료 -->
+
+  <div class="group">
+    
+    <!-- 관심사, 소모임 보여주는 영역 시작 -->
+    
+    <div class="smallGroup">
+      <div class="smallText">
+        <h3 class="smallText_title">관심사 소모임</h3>
+      </div>
+
+      <div class="smallPage">
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/222x125.webp" alt="">
+          </div>
+          <div class="recommendText1">
+            <span>Happy Hour Guitar</span>
+          </div>
+          <div class="recommendText2">
+            <span>강남구,기타동아리</span>
+          </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
+          </div>
+        </div>
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/222x125 (1).webp" alt="">
+          </div>
+          <div class="recommendText1">
+            <span>Music Chat and Social</span>
+          </div>
+          <div class="recommendText2">
+            <span>종로구,작사,작곡</span>
+          </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
+          </div>
+        </div>
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/222x125 (2).webp" alt="">
+          </div>
+          <div class="recommendText1">
+            <span>1/2 no limit Texas hold em</span>
+          </div>
+          <div class="recommendText2">
+            <span>이수역,게임동아리</span>
+          </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
+          </div>
+        </div>
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/222x125 (3).webp" alt="">
+          </div>
+          <div class="recommendText1">
+            <span>Friday Night Magic Draft</span>
+          </div>
+          <div class="recommendText2">
+            <span>동작역, 게임동아리</span>
+            </div>
+            <div class="recommend2">
+            <a href="#">자세히보기</a>
+          </div>
+        </div>
+
       </div>
     </div>
+    <!-- 관심사, 소모임 보여주는 영역 종료 -->
 
-      <!-- 카테고리 슬라이드 영역-->
-      <div class="categories">
-        <div class="categoriesText">
-          <h1 class="categories_title">소모임 카테고리</h1>
-        </div>
-        
-        <div class="flowBanner1">
-          <ul class="list01">
-            <li> <div class="imgBox sle1"><span class="box_text">문화,공연</span></div></li>
-            <li> <div class="imgBox sle2"><span class="box_text">음악,악기</span></div></li>
-            <li> <div class="imgBox sle3"><span class="box_text">사진,영상</span></div></li>
-            <li> <div class="imgBox sle4"><span class="box_text">아웃도어</span></div></li>
-            <li> <div class="imgBox sle5"><span class="box_text">스포츠</span></div></li>
-            <li> <div class="imgBox sle6"><span class="box_text">인문학,책</span></div></li>
-            <li> <div class="imgBox sle7"><span class="box_text">언어</span></div></li>
-            <li> <div class="imgBox sle8"><span class="box_text">공예</span></div></li>
-          </ul>
-        </div>
+    <!--가까운 소모임 영역 시작 -->
+    <div class="smallGroup">
+      <div class="smallText">
+        <h3 class="smallText_title">가까운 소모임</h3>
+      </div>
       
-        <div class="flowBanner2">
-          <ul class="list02">
-            <li> <div class="imgBox sle9"><span class="box_text">댄스</span></div> </li>
-            <li> <div class="imgBox sle10"><span class="box_text">봉사</span></div></li>
-            <li> <div class="imgBox sle11"><span class="box_text">사교</span></div></li>
-            <li> <div class="imgBox sle12"><span class="box_text">자동차</span></div></li>
-            <li> <div class="imgBox sle13"><span class="box_text">경기관람</span></div></li>
-            <li> <div class="imgBox sle14"><span class="box_text">게임</span></div></li>
-            <li> <div class="imgBox sle15"><span class="box_text">요리</span></div></li>
-            <li> <div class="imgBox sle16"><span class="box_text">반려동물</span></div></li>
-          </ul>
-        </div>
-      </div>
-    <div class="group">
-      <!-- 관심사, 소모임 보여주는 영역-->
-      <div class="group01">
-        <div class="smallGroup">
-          <div class="smallText">
-            <h3>관심사 소모임</h3>
+      <div class="smallPage">
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/free-icon-group-8847475.png" alt="">
           </div>
-          <div class="smallPage">
-            <div class="interest recommend">
-              <div class="groupImg img01"></div>
-              <div class="recommendText1">
-                <span>Happy Hour Guitar</span>
-              </div>
-              <div class="recommendText2">
-                <span>강남구,기타동아리</span>
-              </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
+          <div class="recommendText1">
+            <span>가까운 소모임1</span>
+          </div>
+          <div class="recommendText2">
+            <span>설명</span>
             </div>
-            <div class="interest recommend">
-              <div class="groupImg img02"></div>
-              <div class="recommendText1">
-                <span>Music Chat and Social</span>
-              </div>
-              <div class="recommendText2">
-                <span>종로구,작사,작곡</span>
-              </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
-            </div>
-            <div class="interest recommend">
-              <div class="groupImg img03"></div>
-              <div class="recommendText1">
-                <span>1/2 no limit Texas hold em</span>
-              </div>
-              <div class="recommendText2">
-               <span>이수역,게임동아리</span>
-              </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
-            </div>
-            <div class="interest recommend">
-              <div class="groupImg img04"></div>
-              <div class="recommendText1">
-                <span>Friday Night Magic Draft</span>
-              </div>
-              <div class="recommendText2">
-                <span>동작역, 게임동아리</span>
-               </div>
-               <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
-            </div>
-            </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
           </div>
         </div>
 
-        <!--가까운 소모임 영역-->
-        <div class="closeGroup">
-          <div class="closeText">
-            <h3>가까운 소모임</h3>
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/600_512595461.webp" alt="">
           </div>
-          <div class="closePage">
-            <div class="close recommend">
-              <div class="groupImg img05"></div>
-              <div class="recommendText1">
-                <span>가까운 소모임1</span>
-              </div>
-              <div class="recommendText2">
-                <span>설명</span>
-               </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
+          <div class="recommendText1">
+            <span>가까운 소모임2</span>
+          </div>
+          <div class="recommendText2">
+            <span>설명</span>
             </div>
-            <div class="close recommend">
-              <div class="groupImg img06"></div>
-              <div class="recommendText1">
-                <span>가까운 소모임2</span>
-              </div>
-              <div class="recommendText2">
-                <span>설명</span>
-               </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
-            </div>
-            <div class="close recommend">
-              <div class="groupImg img07"></div>
-              <div class="recommendText1">
-                <span>가까운 소모임2</span>
-                 </div>
-                <div class="recommendText2">
-                  <span>설명</span>
-                 </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
-            </div>
-            <div class="close recommend">
-              <div class="groupImg img08"></div>
-              <div class="recommendText1">
-                <span>가까운 소모임2</span>
-              </div>
-                <div class="recommendText2">
-                  <span>설명</span>
-                 </div>
-              <div class="recommend2">
-                <a href="#">자세히보기</a>
-              </div>
-            </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
           </div>
         </div>
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/dall.png" alt="">
+          </div>
+          <div class="recommendText1">
+            <span>가까운 소모임2</span>
+              </div>
+            <div class="recommendText2">
+              <span>설명</span>
+              </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
+          </div>
+        </div>
+
+        <div class="recommend">
+          <div class="groupImg">
+            <img src="images/free-icon-group-8847475.png" alt="">
+          </div>
+          <div class="recommendText1">
+            <span>가까운 소모임2</span>
+          </div>
+            <div class="recommendText2">
+              <span>설명</span>
+              </div>
+          <div class="recommend2">
+            <a href="#">자세히보기</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-    <!-- 푸터 영역 시작 -->
-    <footer id="footer">
-      <div id="footerInner">
-        <div class="footerContents">
-          <div class="footerLeft">
-            <ul>
-              <li><a href="#">동네모임네모</a></li>
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">이용약관</a></li>
-              <li><a href="#">개인정보 처리방침</a></li>
-            </ul>
-          </div>
-          <div class="footerRight">
-            <div class="sns">
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-            </div>
-            <div class="address">
-              <address>
-                <p>Addr. 서울시 종로구 종로78</p>
-                <p>T. 02-123-4567</p>
-                <p>E. admin@nemo.com</p>
-              </address>
-            </div>
-          </div>
+  <!--가까운 소모임 영역 종료 -->
+
+  <!-- 푸터 영역 시작 -->
+  <footer id="footer">
+    <div id="footerInner">
+      <div class="footerContents">
+        <div class="footerLeft">
+          <ul>
+            <li><a href="#">동네모임네모</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">개인정보 처리방침</a></li>
+          </ul>
         </div>
-        <div class="copyright">
-          <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+        <div class="footerRight">
+          <div class="sns">
+            <img src="images/temp.png" alt="" />
+            <img src="images/temp.png" alt="" />
+            <img src="images/temp.png" alt="" />
+            <img src="images/temp.png" alt="" />
+          </div>
+          <div class="address">
+            <address>
+              <p>Addr. 서울시 종로구 종로78</p>
+              <p>T. 02-123-4567</p>
+              <p>E. admin@nemo.com</p>
+            </address>
+          </div>
         </div>
       </div>
-    </footer>
-    <!-- 푸터 영역 끝 -->
-  </body>
+      <div class="copyright">
+        <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- 푸터 영역 끝 -->
+
+</body>
 </html>
