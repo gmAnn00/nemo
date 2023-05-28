@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/header.css" />
 
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/header.js"></script>
@@ -80,6 +79,39 @@
         });
       }
     }
+    $(function () {
+        const slideshowImages = document.querySelectorAll(".intro-slideshow img");
+
+        const nextImageDelay = 5000;
+        let currentImageCounter = 0; // setting a variable to keep track of the current image (slide)
+
+        // slideshowImages[currentImageCounter].style.display = "block";
+        slideshowImages[currentImageCounter].style.opacity = 1;
+
+        setInterval(nextImage, nextImageDelay);
+
+        function nextImage() {
+        // slideshowImages[currentImageCounter].style.display = "none";
+        slideshowImages[currentImageCounter].style.opacity = 0;
+
+        currentImageCounter = (currentImageCounter+1) % slideshowImages.length;
+
+        // slideshowImages[currentImageCounter].style.display = "block";
+        slideshowImages[currentImageCounter].style.opacity = 1;
+        }
+    });
+  $(document).ready(function() {
+    // 스크롤
+    $(window).scroll(function(){
+        var scroll = $(window).scrollTop();
+        if (scroll > 1) {
+            $('header').css('backgroundColor','white');
+        }
+        else{
+            $('header').css("backgroundColor" , "rgba(0,0,0,0)");  
+        }
+    })
+  });
   </script>
   <body>
     <div class="menu_bg"></div>
@@ -115,24 +147,26 @@
     <!-- header 종료 -->
 
     <!--메인 이미지 영역-->
-    <div id="contentsArea">
-      <div class="mainPage">
-        <div class="mainImg">
-          <img src="images/sc1_title.jpeg" alt="" />
-          <div class="mainImgBtn01">
-            <a href="#">소모임 만들기</a>
-          </div>
-          <div class="mainImgBtn02">
-            <a href="#">소모임 가입하기</a>
-          </div>
-        </div>
+    <div class="intro">
+      <div class="intro-slideshow">
+        <img src="images/main_bike2.jpg">
+        <img src="images/main_book.jpg">
+        <img src="images/main_music2.jpg">
+        <img src="images/main_pet.jpg">
+        <img src="images/main_culture.jpg.jpg">
       </div>
+      <div class="intro-header">
+        <h1>Coding Journey</h1>
+        <p>It's all about the journey</p>
+      </div>
+    </div>
 
       <!-- 카테고리 슬라이드 영역-->
       <div class="categories">
         <div class="categoriesText">
-          <h1>소모임 카테고리</h1>
+          <h1 class="categories_title">소모임 카테고리</h1>
         </div>
+        
         <div class="flowBanner1">
           <ul class="list01">
             <li> <div class="imgBox sle1"><span class="box_text">문화,공연</span></div></li>
@@ -145,6 +179,7 @@
             <li> <div class="imgBox sle8"><span class="box_text">공예</span></div></li>
           </ul>
         </div>
+      
         <div class="flowBanner2">
           <ul class="list02">
             <li> <div class="imgBox sle9"><span class="box_text">댄스</span></div> </li>
