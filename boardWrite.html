@@ -15,6 +15,11 @@
       src="https://kit.fontawesome.com/3d4603cd1d.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      type="text/javascript"
+      src="/smartEditor/js/HuskyEZCreator.js"
+      charset="utf-8"
+    ></script>
     <script src="js/header.js"></script>
   </head>
   <body>
@@ -173,10 +178,17 @@
               <!-- 네이버는 어떤 방법인지, 엔터치면 글쓰는 영역에 p태그가 늘어나게 하는데 어떻게 하는지 모르겠음; -->
               <div class="article">
                 <textarea
+                  class="form-control"
+                  name="contents"
+                  id="contents"
+                  style="width: 100%; height: 500px"
+                ></textarea>
+                <!--
+                <textarea
                   name="articleText"
                   id="articleText"
                   rows="10"
-                ></textarea>
+                ></textarea>-->
               </div>
               <!-- 등록 버튼 -->
               <div class="btnRegister">

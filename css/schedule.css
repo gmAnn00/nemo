@@ -228,41 +228,45 @@
   background-color: #f5f5f5;
 }
 
-/* --일정상세-- */
+/* -----일정조회/등록/상세보기 영역------ */
 /* 빈 일정 */
 .scheduleNone {
   border: 1px solid #ccc;
   margin: 1.25em 0;
+  padding: 20px;
   position: relative;
 }
 .scheduleNone h3 {
-  margin: 1em;
+  /* margin-bottom: 1em; */
 }
 .scheduleNone .topBtn {
   text-align: right;
-  padding: 0.9375em 1.25em;
-  /* position: absolute; 
-  top: 0.9375em;
-  right: 20px;*/
 }
 /* 일정 조회 */
 .scheduleDetailArea {
   position: relative;
 }
+.scheduleDetail {
+  padding: 20px;
+}
 .scheduleTitle p {
   text-align: left;
-  padding-left: 0.625em;
+  padding: 0.3125em;
+  width: 49.5em;
+  border: none;
+  background-color: #f5f5f5;
 }
 .scheduleDetail {
   border: 1px solid #ccc;
+  padding: 20px;
   position: relative;
 }
 /* 상세일정 등록하기*/
 .detailTop {
-  padding-left: 0.625em;
+  /* padding-left: 0.625em; */
 }
 .detailTop h3 {
-  margin: 1em;
+  margin-bottom: 1em;
 }
 .editBtn {
   padding: 15px 20px;
@@ -277,20 +281,24 @@
 
 /* 제목부분 */
 .scheduleTitle {
-  padding: 0.625em;
-  background-color: #f5f5f5;
-  margin-bottom: 0.9375em;
+  padding: 0.625em 0;
+  /* background-color: #f5f5f5; */
+  /* margin-bottom: 0.9375em; */
   text-align: center;
 }
 .scheduleTitleText {
+  text-align: left;
+  padding: 0.3125em;
+  margin-left: 10px;
+  width: 48.5em;
+  border: none;
+  background-color: #f5f5f5;
   resize: none;
-  width: 50em;
-  outline: 0;
 }
 /* 내용 지도 부분 */
 .contentLocationMap {
   margin: 0 auto;
-  padding: 0.625em;
+  padding: 0.625em 0;
   /* background-color: #f5f5f5; */
 }
 .content {
@@ -300,7 +308,7 @@
 .dateTime {
   display: block;
   margin-bottom: 0.625em;
-  margin-left: 0.875em;
+  /* margin-left: 0.875em; */
 }
 .dateTime input {
   margin-right: 0.625em;
@@ -320,10 +328,10 @@
 }
 .locationMap {
   width: 50em;
-  margin: 0.625em auto;
+  margin: 0.625em 0;
 }
 .locationMap h4 {
-  margin: 0.875em;
+  margin: 0.875em 0;
 }
 .map {
   width: 50em;
@@ -334,11 +342,11 @@
 }
 /* 참석자 부분 */
 .participant {
-  padding-left: 1.25em;
+  /* padding-left: 1.25em; */
   position: relative;
 }
 .participant h4 {
-  margin: 0.875em;
+  margin: 0.875em 0;
 }
 .partMember {
   display: flex;
@@ -367,4 +375,5 @@
   border: 1px solid #ccc;
   position: relative;
   margin-top: 1.25em;
+  padding: 15px;
 }
