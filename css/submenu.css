@@ -1,8 +1,4 @@
 @charset "utf-8";
-.sc2_subcontents {
-  display: flex;
-  padding: 30px;
-}
 .sc2_menu_contents {
   flex: 1;
 }
@@ -13,8 +9,8 @@
   top: 120px;
 }
 .sc2_menu_title {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 25px;
+  font-family: "NeoBold";
   margin-bottom: 20px;
 }
 .sc2_menu_list li {
