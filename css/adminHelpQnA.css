@@ -4,8 +4,10 @@ body {
   width: 100%;
   height: 100%;
 }
+body {
+  padding-top: 105px;
+}
 #contentsArea {
-  /* padding-top: 115px; */
   display: flex;
   padding-left: 40px;
   padding-right: 40px;

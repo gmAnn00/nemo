@@ -10,145 +10,90 @@
       src="https://kit.fontawesome.com/bc604c01cc.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/mySchedule.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/submenu.css" />
+    <link rel="stylesheet" href="css/mySchedule.css" />
   </head>
   <body>
-    <!-- 헤더 영역 시작 -->
+    <!-- 배경색 조정 -->
+    <div class="menu_bg"></div>
     <!-- header 시작 -->
     <header>
       <h1 class="logo">
         <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
       </h1>
-      <div class="menu_btn">
-        <a href="#">
-          <img
-            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+"
-          />
-        </a>
-      </div>
-      <div class="sidebar_menu">
-        <div class="close_btn">
-          <a href="#">
-            <img
-              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+"
-            />
-          </a>
-        </div>
-        <div class="profile">
-          <i class="fa-solid fa-circle-user"></i
-          ><span class="profile_name">사이다</span>
-        </div>
-        <ul class="menu_wrap">
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox">
-                <i class="fa-solid fa-user-plus"></i>
-              </div>
-              <div>소모임 만들기</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox">
-                <i class="fa-solid fa-person-chalkboard"></i>
-              </div>
-              <div>소모임 검색</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-              <div>프로필</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox">
-                <i class="fa-solid fa-calendar-days"></i>
-              </div>
-              <div>내 일정</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-              <div>내 소모임</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox">
-                <i class="fa-solid fa-circle-question"></i>
-              </div>
-              <div>고객센터</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-          <li>
-            <div class="icon_menu">
-              <div class="iconbox">
-                <i class="fa-solid fa-right-from-bracket"></i>
-              </div>
-              <div>로그아웃</div>
-            </div>
-            <i class="fa-solid fa-angle-right"></i>
-          </li>
-        </ul>
-      </div>
     </header>
+    <button class="burger">
+      <span></span>
+    </button>
+    <div class="sidemenu">
+      <ul class="main_menu">
+        <li>
+          <a href="#">
+            <div class="profile">
+              <i class="fa-solid fa-circle-user"></i
+              ><span class="profile_name">사이다</span>
+            </div>
+          </a>
+        </li>
+        <li><a href="createGroup.html">소모임 만들기</a></li>
+        <li><a href="search.html">소모임 검색</a></li>
+        <li><a href="myPage.html">프로필</a></li>
+        <li><a href="mySchedule.html">내 일정</a></li>
+        <li><a href="myGroupList.html">내 소모임</a></li>
+        <li><a href="adminHelp.html">고객센터</a></li>
+        <li><a href="#">로그아웃</a></li>
+      </ul>
+      <div class="sidemenu_footer">
+        <h3>Contact details</h3>
+        <p>글 넣을 거 있으면 넣기</p>
+      </div>
+    </div>
     <!-- header 종료 -->
-
-    <!-- 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <!-- 헤더 영역 시작 -->
 
     <!-- 콘텐츠 영역 시작 -->
     <div id="contentsArea">
       <!-- 메뉴바 시작 -->
       <div class="sc2_menu_contents">
         <div class="sc2_menu">
-          <h2 class="sc2_menu_title">마이페이지</h2>
+          <h2 class="sc2_menu_title">내 일정</h2>
           <ul class="sc2_menu_list">
             <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name"><span>프로필</span></div>
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </li>
-            <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name"><span>내 일정</span></div>
-                <i class="fa-solid fa-minus"></i>
-              </div>
-            </li>
-            <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name">
-                  <span>내 소모임</span>
+              <a href="schedule.html">
+                <div class="sc2_icon_menu">
+                  <div class="menu_submenu_name"><span>프로필</span></div>
+                  <i class="fa-solid fa-angle-right"></i>
                 </div>
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
+              </a>
             </li>
             <li>
-              <div class="sc2_icon_menu">
-                <div class="menu_submenu_name">
-                  <span>내가 쓴 글·댓글</span>
+              <a href="board.html">
+                <div class="sc2_icon_menu">
+                  <div class="menu_submenu_name"><span>내 일정</span></div>
+                  <i class="fa-solid fa-minus"></i>
                 </div>
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
+              </a>
+            </li>
+            <li>
+              <a href="myPageGroup.html">
+                <div class="sc2_icon_menu">
+                  <div class="menu_submenu_name"><span>내 소모임</span></div>
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="groupSetting.html">
+                <div class="sc2_icon_menu">
+                  <div class="menu_submenu_name">
+                    <span>내가 쓴 글·댓글</span>
+                  </div>
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </a>
             </li>
           </ul>
         </div>
-        <!-- <div class="secession">
-          <span>삭제하기</span>
-      </div> -->
       </div>
       <!-- 메뉴바 종료 -->
 
