@@ -159,7 +159,7 @@ function sample6_execDaumPostcode() {
             $("#sample6_postcode").css({
                 background: "#ccc"
             });
-            //document.getElementById("sample6_detailAddress").focus();
+            document.getElementById("sample6_detailAddress").focus();
             
 
         }
