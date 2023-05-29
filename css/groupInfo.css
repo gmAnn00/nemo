@@ -15,192 +15,188 @@ body, div, h3, button, section, table, tr, td, th{
     width: 1200px;
     margin: 0 auto;
 }*/
-:root {
-    --heartColor:#f43965;
-}
 
 #contentsArea {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 .mainInner {
-    padding: 0 100px;
+  /* padding: 0 100px; */
+  width: 1200px;
+  margin: 0 auto;
 }
 
 /* 소모임 이름 영역 */
 .nameArea {
-    margin-bottom: 20px;
-    text-align: left;
+  margin-bottom: 20px;
+  text-align: left;
 }
 .grpName {
-    display: inline-block;
+  display: inline-block;
+  padding-left: 20px;
 }
 
 /*찜하트 영역*/
 .grpLikeBtn {
-    width: 20px;
-    height: 20px;
-    border: 0;
-    cursor: pointer;
-    text-align: center;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  cursor: pointer;
+  text-align: center;
 }
 
 .grpLike {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin: 0 auto;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
 }
 
 svg use {
-    fill: transparent;
-    stroke: #ccc;
-    stroke-width: 1.2;
-    transition: all 0.33s ease;
+  fill: transparent;
+  stroke: #ccc;
+  stroke-width: 1.2;
+  transition: all 0.33s ease;
 }
 
 svg use:last-child {
-    fill: var(--heartColor);
-    stroke: var(--heartColor);
-    opacity: 0;
-    transform: scale(.33);
-    transform-origin: center;
+  fill: var(--heartColor);
+  stroke: var(--heartColor);
+  opacity: 0;
+  transform: scale(0.33);
+  transform-origin: center;
 }
 
 .on svg use {
-    stroke: transparent;
+  stroke: transparent;
 }
 
 .on svg use:last-child {
-    opacity: 1;
-    transform: none;
-    transition: all 0.5s cubic-bezier(.19,2.41,.45,.94);
+  opacity: 1;
+  transform: none;
+  transition: all 0.5s cubic-bezier(0.19, 2.41, 0.45, 0.94);
 }
 
-
 svg {
-    width: 20px;
-    height: 20px;
-    overflow: visible!important;
+  width: 20px;
+  height: 20px;
+  overflow: visible !important;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
-
 
 /* 간략 정보 영역 */
 .shortInfoArea {
-    /*width: 800px;*/
-    padding: 0 20px;
-    margin: 0 auto;
-    margin-bottom: 20px;
+  /*width: 800px;*/
+  padding: 0 20px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
-
 .shortInfoTbl {
-    display: inline-block;
-    /*width: 800px;*/
-    height: 300px;
+  display: inline-block;
+  /*width: 800px;*/
+  height: 300px;
 }
 
 /* 소모임 사진 */
 .imgCrop {
-    position: relative;
-    display: inline-block;
-    width: 500px;
-    height: 300px;
-    margin-right: 10px;
-    overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 500px;
+  height: 300px;
+  margin-right: 10px;
+  overflow: hidden;
 }
 
 .imgCrop img {
-    position: absolute;
-    top: 0;
-    left: -300px;
-    width: 1200px;
-    height: 400px;
+  position: absolute;
+  top: 0;
+  left: -300px;
+  width: 1200px;
+  height: 400px;
 }
 
 .shortInfoTbl th {
-    width: 150px;
-    text-align: center;
+  width: 150px;
+  text-align: center;
+}
+.shortInfoTbl tr:nth-child(2) > th,
+.shortInfoTbl tr:nth-child(3) > th,
+.shortInfoTbl tr:nth-child(6) > th {
+  letter-spacing: 3.5px;
+}
+.shortInfoTbl tr:nth-child(4) > th,
+.shortInfoTbl tr:nth-child(5) > th {
+  letter-spacing: 10px;
+}
 
-}
-.shortInfoTbl tr:nth-child(2)>th, .shortInfoTbl tr:nth-child(3)>th, .shortInfoTbl tr:nth-child(6)>th{
-    letter-spacing: 3.5px;
-}
-.shortInfoTbl tr:nth-child(4)>th, .shortInfoTbl tr:nth-child(5)>th{
-    letter-spacing: 10px;
-}
-
-.shortInfoTbl tr:not(:first-child)>td {
-    width: 140px;
-    padding-left: 10px;
-    letter-spacing: 2px;
+.shortInfoTbl tr:not(:first-child) > td {
+  width: 140px;
+  padding-left: 10px;
+  letter-spacing: 2px;
 }
 
 /* 소모임 자세한 정보 영역 */
 
 .infoDetailArea {
-    /*width: 1000px;*/
-    padding: 50px 100px;
-    background-color: rgb(255, 249, 243);
+  /*width: 1000px;*/
+  padding: 50px 100px;
+  background-color: rgb(255, 249, 243);
 }
 
 .infoDetailArea section {
-    width: 100%;
-    margin-bottom: 30px;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-.infoDetailArea section h3{
-    margin: 5px 0 10px 0;
-    letter-spacing: 10px;
+.infoDetailArea section h3 {
+  margin: 5px 0 10px 0;
+  letter-spacing: 10px;
 }
 
 .infoDetailArea section p {
-    margin-left: 10px;
-    text-indent: 5px;
+  margin-left: 10px;
+  text-indent: 5px;
 }
-
 
 /* 소모임 장소 영역*/
 .mapArea {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 .mapArea #map {
-    /*width: 78%;*/
-    height: 300px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    text-align: center;
-    line-height: 300px;
+  /*width: 78%;*/
+  height: 300px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  line-height: 300px;
 }
-
 
 /* 소모임 카테고리 영역 */
 .cateIcon {
-    display: inline-block;
-    width: 100px;
-    margin: 0 5px 0 10px;
-    letter-spacing: 5px;
-    padding: 5px 10px;
-    text-align: center;
-    background-color: rgb(135, 177, 255);
-    border-radius: 20px;
+  display: inline-block;
+  width: 100px;
+  margin: 0 5px 0 10px;
+  letter-spacing: 5px;
+  padding: 5px 10px;
+  text-align: center;
+  background-color: var(--sub-color);
+  border-radius: 20px;
 }
-
 
 /* 가입하기 버튼 영역 */
 .btnArea {
-    margin: 20px 0;
-    text-align: center;
+  margin: 20px 0;
+  text-align: center;
 }
-.joinBtn{
-    width: 100px;
-    height: 50px;
+.joinBtn {
+  width: 100px;
+  /*height: 50px;
     padding: 10px 15px;
     background-color: rgb(255, 210, 220);
     border: 1px solid #eee;
     border-radius: 2px;
-    cursor: pointer;
+    cursor: pointer; */
 }

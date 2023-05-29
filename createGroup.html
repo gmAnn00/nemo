@@ -6,7 +6,6 @@
     <title>NEMO</title>
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="css/jquery-ui.min.css" />
-    <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/createGroup.css" />
@@ -79,7 +78,7 @@
             <p></p>
           </div>
           <label for="file">
-            <div class="btnUpload btnComm">네모 프로필 사진 사진등록</div>
+            <div class="button btnComm">네모 프로필 사진 사진등록</div>
           </label>
           <input
             type="file"
@@ -89,7 +88,9 @@
             accept="image/gif, image/jpeg, image/png"
             onchange="readImage(this);"
           />
-          <div class="btnCancle btnComm" onClick="popupImgFileRm();">취소</div>
+          <div class="buttonCancle btnComm" onClick="popupImgFileRm();">
+            취소
+          </div>
         </div>
 
         <!-- 소모임 생성 정보 입력 영역 -->
@@ -259,7 +260,7 @@
                         name="checkConfirm"
                         id="checkConfirm"
                       />
-                      네모장승인제 (체크시 승인된 사람만 가입가능합니다.)
+                      네모장 승인제 (체크시 승인된 사람만 가입가능합니다.)
                     </label>
                   </td>
                 </tr>
@@ -277,14 +278,14 @@
                       type="submit"
                       name="createGrpBtn"
                       id="createGrpBtn"
-                      class="bottomBtn"
+                      class="button"
                       value="네모만들기"
                     />
                     <input
                       type="reset"
                       name="createCancleBtn"
                       id="createCancleBtn"
-                      class="bottomBtn"
+                      class="buttonCancle"
                       value="만들기취소"
                     />
                   </td>

@@ -5,9 +5,10 @@
   padding: 0 20px 0 20px;
 }
 .nameSearch {
-  width: 500px;
+  width: 600px;
   padding: 10px;
 }
+
 .searchText1 {
   margin-bottom: 20px;
 }
@@ -22,7 +23,26 @@
   z-index: 10;
   background: #fff;
 }
+.nameBtn {
+  position: relative;
+}
 
+.searchText {
+  width: 500px;
+  height: 25px;
+}
+.searchBtn {
+  display: inline-block;
+  margin-left: 12px;
+}
+.searchBtn button {
+  /* width: 50px;
+  height: 30px; */
+  position: absolute;
+  top: 0;
+}
+
+/* 카테고리 영역 */
 .categories01 {
   padding-top: 50px;
 }
@@ -47,26 +67,15 @@
 }
 
 .barSel {
-  width: 120px;
-  height: 30px;
-}
-.searchText {
-  width: 400px;
-  height: 30px;
-}
-.searchBtn {
-  display: inline-block;
-  margin-left: 12px;
-}
-.searchBtn button {
-  width: 50px;
-  height: 30px;
+  width: 150px;
+  height: 35px;
 }
 .result {
   width: 80%;
   display: flex;
   justify-content: center;
-  margin: 30px auto;
+  margin: 50px auto;
+  margin-bottom: 20px;
 }
 .resultText {
   margin-right: 100px;
@@ -88,8 +97,9 @@
   flex: 2;
   position: sticky;
   top: 200px;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
+  border: 2px solid var(--sub3-color);
 }
 .group {
   position: relative;
@@ -99,13 +109,13 @@
   margin: 20px 0;
 }
 .groupImg {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   margin: 15px;
   border-radius: 15px;
   background-repeat: no-repeat;
-    background-size: 200px 200px;
-    background-position: center;
+  background-size: 200px 200px;
+  background-position: center;
 }
 .Gimg01 {
   background-image: url(../images/600_512595461.webp);
@@ -126,11 +136,15 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  left: 170px;
+  left: 150px;
   bottom: 20px;
 }
 .groupText {
   width: 500px;
+}
+.groupText div {
+  width: 500px;
+  margin: 10px 0;
 }
 .groupText04 {
   overflow: hidden;
