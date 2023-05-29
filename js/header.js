@@ -10,4 +10,15 @@ $(function () {
         $('.burger').removeClass('open');
         
     });
+
+    // 스크롤
+    $(window).scroll(function(){
+        var scroll = $(window).scrollTop();
+        if (scroll > 1) {
+            $('header').css('backgroundColor','white');
+        }
+        else{
+            $('header').css("backgroundColor" , "rgba(0,0,0,0)");  
+        }
+      });
 });

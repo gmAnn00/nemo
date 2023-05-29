@@ -83,16 +83,6 @@ $(window).on("load", function () {
       }
     });
 $(document).ready(function() {
-    // 스크롤
-    $(window).scroll(function(){
-      var scroll = $(window).scrollTop();
-      if (scroll > 1) {
-          $('header').css('backgroundColor','white');
-      }
-      else{
-          $('header').css("backgroundColor" , "rgba(0,0,0,0)");  
-      }
-    })
 
     //마우스 컨트롤
     $(document).ready(function(){
