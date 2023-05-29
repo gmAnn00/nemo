@@ -1,49 +1,145 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>비밀번호 재설정</title>
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="js/findIdPass.js"></script>
+    <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/findIdPass.css">
+    <link rel="stylesheet" href="css/findIdPass.css" />
+    <script
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
     <script src="js/header.js"></script>
-</head>
-<body>
+    <script src="js/findIdPass.js"></script>
+  </head>
+  <body>
+    <!-- 배경색 조정 -->
+    <div class="menu_bg"></div>
+    <!-- header 시작 -->
+    <header>
+      <h1 class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+      </h1>
+    </header>
+    <button class="burger">
+      <span></span>
+    </button>
+    <div class="sidemenu">
+      <ul class="main_menu">
+        <li>
+          <a href="#">
+            <div class="profile">
+              <i class="fa-solid fa-circle-user"></i
+              ><span class="profile_name">사이다</span>
+            </div>
+          </a>
+        </li>
+        <li><a href="createGroup.html">소모임 만들기</a></li>
+        <li><a href="search.html">소모임 검색</a></li>
+        <li><a href="myPage.html">프로필</a></li>
+        <li><a href="mySchedule.html">내 일정</a></li>
+        <li><a href="myGroupList.html">내 소모임</a></li>
+        <li><a href="adminHelp.html">고객센터</a></li>
+        <li><a href="#">로그아웃</a></li>
+      </ul>
+      <div class="sidemenu_footer">
+        <h3>Contact details</h3>
+        <p>글 넣을 거 있으면 넣기</p>
+      </div>
+    </div>
+    <!-- header 종료 -->
+
     <!-- 아이디/비밀번호 찾기 영역 -->
     <div class="container">
-        <ul class="tabs">
-            <li class="tabId" data-tab="idTab"><a href="findIdPass.html">아이디 찾기</a></li>
-            <li class="tabPass" data-tab="passTab">비밀번호 재설정</li>
-        </ul>
-        
-        <div id="idTab" class="tabContent current">
-            <h2>아이디 찾기</h2>
-            <p>아이디는 가입시 입력하신 이메일로 찾으실 수 있습니다.</p>
-            <form action="findId.html">
-                <label for="nameInput"></label>
-                <input type="text" id="nameInput" placeholder="이름을 입력해주세요" required/>
-                <label for="emailInput"></label>
-                <input type="text" id="emailInput" placeholder="이메일을 입력해주세요" required/>
-                <button type="submit">아이디 찾기</button>
-            </form>
-        </div>
-        <div id="passTab" class="tabContent"> 
-            <h2>비밀번호 재설정</h2>
-            <p>비밀번호는 아이디, 이름, 이메일을 입력하시면 재설정 하실 수 있습니다.</p>
-            <form action="passReset.html">
-                <label for="password"></label>
-                <input type="text" id="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)" required />
-                <label for="passwordCheck"></label>
-                <input type="text" id="passwordCheck" placeholder="비밀번호 확인" required/>
-                <button type="submit">비밀번호 재설정 하기</button>
-            </form>
-        </div>
+      <ul class="tabs">
+        <li class="tabId" data-tab="idTab">
+          <a href="findIdPass.html">아이디 찾기</a>
+        </li>
+        <li class="tabPass" data-tab="passTab">비밀번호 재설정</li>
+      </ul>
+
+      <div id="idTab" class="tabContent current">
+        <h2>아이디 찾기</h2>
+        <p>아이디는 가입시 입력하신 이메일로 찾으실 수 있습니다.</p>
+        <form action="findId.html">
+          <label for="nameInput"></label>
+          <input
+            type="text"
+            id="nameInput"
+            placeholder="이름을 입력해주세요"
+            required
+          />
+          <label for="emailInput"></label>
+          <input
+            type="text"
+            id="emailInput"
+            placeholder="이메일을 입력해주세요"
+            required
+          />
+          <button type="submit">아이디 찾기</button>
+        </form>
+      </div>
+      <div id="passTab" class="tabContent">
+        <h2>비밀번호 재설정</h2>
+        <p>
+          비밀번호는 아이디, 이름, 이메일을 입력하시면 재설정 하실 수 있습니다.
+        </p>
+        <form action="passReset.html">
+          <label for="password"></label>
+          <input
+            type="text"
+            id="password"
+            placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)"
+            required
+          />
+          <label for="passwordCheck"></label>
+          <input
+            type="text"
+            id="passwordCheck"
+            placeholder="비밀번호 확인"
+            required
+          />
+          <button type="submit">비밀번호 재설정 하기</button>
+        </form>
+      </div>
     </div>
-</body>
+    <!-- 푸터 영역 시작 -->
+    <footer id="footer">
+      <div id="footerInner">
+        <div class="footerContents">
+          <div class="footerLeft">
+            <ul>
+              <li><a href="#">동네모임네모</a></li>
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보 처리방침</a></li>
+            </ul>
+          </div>
+          <div class="footerRight">
+            <div class="sns">
+              <img src="images/sns_blog.png" alt="" />
+              <img src="images/sns_fb.png" alt="" />
+              <img src="images/sns_instagram.png" alt="" />
+              <img src="images/sns_youtube.png" alt="" />
+            </div>
+            <div class="address">
+              <address>
+                <p>Addr. 서울시 종로구 종로78</p>
+                <p>T. 02-123-4567</p>
+                <p>E. admin@nemo.com</p>
+              </address>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 NEMO. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- 푸터 영역 끝 -->
+  </body>
 </html>

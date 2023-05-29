@@ -117,6 +117,15 @@ li {
     url("font/Neo/NanumSquareNeo-eHv.ttf") format("truetype");
 }
 
+:root {
+  /* color */
+  --main-color: #ffbb33;
+  --sub-color: #ffd480;
+  --sub1-color: #fff0d2;
+  --sub2-color: #ffe8b8;
+  --sub3-color: #fdf7ec;
+}
+
 input,
 select,
 textarea,
@@ -169,7 +178,7 @@ a:visited {
   font-weight: bold;
   text-align: center;
   vertical-align: top;
-  background-color: #ccc;
+  background-color: var(--main-color);
 }
 button.btn {
   display: inline-block;
@@ -182,7 +191,7 @@ button.btn {
   font-weight: bold;
   text-align: center;
   vertical-align: top;
-  background-color: #ccc;
+  background-color: var(--main-color);
 }
 /* 헤더 */
 html,
@@ -289,7 +298,8 @@ body::-webkit-scrollbar {
   color: #fff;
 }
 .sidemenu .sidemenu_footer {
-  background: #fb8600;
+  /* background: #fb8600; */
+  background: var(--main-color);
   color: white;
   height: 100%;
   padding: 3rem;
@@ -432,22 +442,22 @@ header {
 #footer {
   font-family: "NeoLight";
   width: 100vw;
-  height: 250px;
-  background: #ccc;
+  height: 200px;
+  background: var(--sub-color);
 }
 #footerInner {
   margin: 0 auto;
   width: 80%;
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
+  padding-top: 5px;
   justify-content: center;
   position: relative;
 }
 #footerInner::before {
   width: 100%;
   content: "";
-  border-top: 2px solid #000;
+  /* border-top: 2px solid #000; */
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
@@ -463,6 +473,8 @@ header {
   margin-left: 25%;
 }
 .footerLeft ul li {
+  display: flex;
+  flex-direction: row;
   margin-bottom: 12px;
 }
 .footerRight {
@@ -472,15 +484,19 @@ header {
   margin-bottom: 10px;
 }
 .sns {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .sns img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 address {
   font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
 }
 .copyright p {
   text-align: center;
+  font-size: 14px;
 }

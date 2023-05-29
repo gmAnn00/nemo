@@ -2,126 +2,87 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/search.css" />
-    <link rel="stylesheet" href="css/searchResult.css">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/searchResult.css" />
+    <script
+      src="https://kit.fontawesome.com/f9a2702e84.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/header.js"></script>
-    <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
     <title>검색페이지</title>
   </head>
   <body>
-
+    <!-- 배경색 조정 -->
+    <div class="menu_bg"></div>
+    <!-- header 시작 -->
     <header>
       <h1 class="logo">
-          <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+        <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
       </h1>
-      <div class="menu_btn">
-          <a href="#">       
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
+    </header>
+    <button class="burger">
+      <span></span>
+    </button>
+    <div class="sidemenu">
+      <ul class="main_menu">
+        <li>
+          <a href="#">
+            <div class="profile">
+              <i class="fa-solid fa-circle-user"></i
+              ><span class="profile_name">사이다</span>
+            </div>
           </a>
+        </li>
+        <li><a href="createGroup.html">소모임 만들기</a></li>
+        <li><a href="search.html">소모임 검색</a></li>
+        <li><a href="myPage.html">프로필</a></li>
+        <li><a href="mySchedule.html">내 일정</a></li>
+        <li><a href="myGroupList.html">내 소모임</a></li>
+        <li><a href="adminHelp.html">고객센터</a></li>
+        <li><a href="#">로그아웃</a></li>
+      </ul>
+      <div class="sidemenu_footer">
+        <h3>Contact details</h3>
+        <p>글 넣을 거 있으면 넣기</p>
       </div>
-      <div class="sidebar_menu">
-          <div class="close_btn">
-              <a href="#">       
-                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-              </a>
-          </div>
-          <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-          <ul class="menu_wrap">
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox">
-                          <i class="fa-solid fa-user-plus"></i>
-                      </div>
-                      <div>소모임 만들기</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox">
-                          <i class="fa-solid fa-person-chalkboard"></i>
-                      </div>
-                      <div>소모임 검색</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-circle-user"></i></div>
-                  <div>프로필</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-calendar-days"></i></div>
-                      <div>내 일정</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-user-group"></i></div>
-                      <div>내 소모임</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-circle-question"></i></div>
-                      <div>고객센터</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-              <li>
-                  <div class="icon_menu">
-                      <div class="iconbox"><i class="fa-solid fa-right-from-bracket"></i></div>
-                      <div>로그아웃</div>
-                  </div>
-                  <i class="fa-solid fa-angle-right"></i>
-              </li>
-          </ul>
-      </div>
-    
-  </header>
-  <div class="menu_bg">
-      </div>
+    </div>
+    <!-- header 종료 -->
+
     <div id="contentsArea">
       <!--카테고리 영역-->
       <div class="categoriesArea">
         <div class="categories01">
           <h3>카테고리</h3>
           <div class="bar">
-          <!--대분류-->
-          <div class="bar01">
-            <div class="barText"><span>대분류</span></div>
-            <select name="bigBar" class="barSel">
-              <option value="1">대분류1</option>
-              <option value="2">대분류2</option>
-              <option value="3">대분류3</option>
-              <option value="4">대분류4</option>
-              <option value="5">대분류5</option>
-            </select>
+            <!--대분류-->
+            <div class="bar01">
+              <div class="barText"><span>대분류</span></div>
+              <select name="bigBar" class="barSel">
+                <option value="1">대분류1</option>
+                <option value="2">대분류2</option>
+                <option value="3">대분류3</option>
+                <option value="4">대분류4</option>
+                <option value="5">대분류5</option>
+              </select>
+            </div>
+            <!--소분류-->
+            <div class="bar02">
+              <div class="barText"><span>소분류</span></div>
+              <select name="smallBar" class="barSel">
+                <option value="1">소분류1</option>
+                <option value="2">소분류2</option>
+                <option value="3">소분류3</option>
+                <option value="4">소분류4</option>
+                <option value="5">소분류5</option>
+              </select>
+            </div>
           </div>
-       <!--소분류-->
-          <div class="bar02">
-          <div class="barText"><span>소분류</span></div>
-        <select name="smallBar" class="barSel">
-              <option value="1">소분류1</option>
-              <option value="2">소분류2</option>
-              <option value="3">소분류3</option>
-              <option value="4">소분류4</option>
-              <option value="5">소분류5</option>
-            </select>
         </div>
-      </div>
-      </div>
         <div class="area">
           <h3>지역</h3>
           <div class="bar03">
@@ -138,16 +99,17 @@
       <div class="nameSearch">
         <h2>소모임 이름 검색</h2>
         <div class="nameBtn">
-        <input type="text" class="searchText" />
-        <form action="#" method="get" class="searchBtn">
-          <button type="button">검색</button>
-        </form>
-      </div>
+          <input type="text" class="searchText" />
+          <form action="#" method="get" class="searchBtn">
+            <button type="button">검색</button>
+          </form>
+        </div>
       </div>
       <div class="searchResult">
         <h2 class="resultH2">검색 결과를 알 수 없습니다</h2>
-        <button class="resultBtn" type="button"><a href="#">소모임 만들기</a></button>
-        
+        <button class="resultBtn" type="button">
+          <a href="#">소모임 만들기</a>
+        </button>
       </div>
       <div class="groupPage"><span> 1 2 3 4 5</span></div>
     </div>
@@ -166,10 +128,10 @@
           </div>
           <div class="footerRight">
             <div class="sns">
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
-              <img src="images/temp.png" alt="" />
+              <img src="images/sns_blog.png" alt="" />
+              <img src="images/sns_fb.png" alt="" />
+              <img src="images/sns_instagram.png" alt="" />
+              <img src="images/sns_youtube.png" alt="" />
             </div>
             <div class="address">
               <address>
@@ -181,7 +143,7 @@
           </div>
         </div>
         <div class="copyright">
-          <p>Copyright &copy; 2023 Nemo. All rights reserved.</p>
+          <p>&copy; 2023 NEMO. All rights reserved.</p>
         </div>
       </div>
     </footer>

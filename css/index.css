@@ -1,20 +1,12 @@
 @charset "utf-8";
-:root {
-  /* color */
-  --main-color: #ffbb33;
-  --sub-color: #ffd480;
-  --sub1-color: #fff0d2;
-  --sub2-color: #ffe8b8;
-  --sub3-color: #fdf7ec;
-}
 #contentsArea {
   width: 100%;
 }
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 body {
   font-family: "NeoRegular";
-  padding-top: 0!important;
+  padding-top: 0 !important;
 }
 
 .intro {
@@ -31,9 +23,9 @@ body {
   top: 0;
   left: 0;
   width: 100%; /* relative to nearest positioned ancestor and not nearest block-level ancestor - alternatively: width: 100vw; */
-  height: 100%; /* relative to nearest positioned ancestor and not nearest block-level ancestor - alternatively: height: 100vh; */ 
+  height: 100%; /* relative to nearest positioned ancestor and not nearest block-level ancestor - alternatively: height: 100vh; */
   object-fit: cover;
-  z-index:-1;
+  z-index: -1;
   /* filter: brightness(50%); */ /* 0% black, 100% original image, values > 100% are allowed for brighter than original image. */
   /* display: none; */
   opacity: 0;
@@ -46,7 +38,7 @@ body {
 .intro .intro-header {
   border-radius: 0.5rem;
   padding: 2rem 2.5rem;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-family: "NeoExBold";
 }
@@ -59,10 +51,18 @@ body {
 }
 
 @media (max-width: 700px) {
-  html { font-size: 12px; }
-  .intro-header { padding: 1.5rem 2rem; }
-  .intro h1 { font-size: 2.5rem; }
-  .intro p { font-size: 1.25rem; }
+  html {
+    font-size: 12px;
+  }
+  .intro-header {
+    padding: 1.5rem 2rem;
+  }
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+  .intro p {
+    font-size: 1.25rem;
+  }
 }
 .categories {
   width: 85%;
@@ -133,8 +133,8 @@ body {
 }
 .imgBox:hover {
   transform: translateY(-20px);
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-} 
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
 .sle1 {
   background-image: url(../images/icon_01garland.png);
   background-color: var(--main-color);
@@ -272,9 +272,9 @@ body {
   margin-bottom: 15px;
   font-size: 0.9em;
 }
-.recommend2 a {
+/* .recommend2 a {
   background-color: #bdbdbd;
   color: #fff;
   padding: 10px;
   border-radius: 15px;
-}
+} */
