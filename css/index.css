@@ -241,9 +241,26 @@ body {
 .card--1 .card__img, .card--1 .card__img--hover {
   background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 }
-
 .card--2 .card__img, .card--2 .card__img--hover {
-  background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-image: url('../images/test_image1.jpg');
+}
+.card--3 .card__img, .card--3 .card__img--hover {
+  background-image: url('../images/test_image2.jpg');
+}
+.card--4 .card__img, .card--4 .card__img--hover {
+  background-image: url('../images/test_image3.jpg');
+}
+.card--5 .card__img, .card--5 .card__img--hover {
+  background-image: url('../images/test_image4.jpg');
+}
+.card--6 .card__img, .card--6 .card__img--hover {
+  background-image: url('../images/test_image5.jpg');
+}
+.card--7 .card__img, .card--7 .card__img--hover {
+  background-image: url('../images/test_image6.jpg');
+}
+.card--8 .card__img, .card--8 .card__img--hover {
+  background-image: url('../images/test_image7.jpg');
 }
 
 .card__like {
