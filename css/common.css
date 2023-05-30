@@ -434,12 +434,17 @@ body::-webkit-scrollbar {
 /* header 추가 수정 */
 header {
   width: 100%;
+  height: 8vh;
   position: fixed;
   z-index: 100;
   top: 0;
   background-color: transparent;
 }
-
+.logo {
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+}
 .logo img {
   width: 180px;
   margin-left: 15px;
@@ -463,8 +468,8 @@ header {
   transition: all 0.5s;
 }
 .sidemenu.open ul li:hover a {
-  color: rgba(255, 255, 255, 0.25);
-  padding-left: 60px;
+  color: var(--main-color);
+  padding-left: 30px;
 }
 .menu_bg {
   width: 100%;
@@ -510,8 +515,7 @@ header {
 /* 푸터 */
 .footer_section {
   width: 100%;
-  height: 55vh;
-  /* background: #151414; */
+  height: 47vh;
   background: #404040;
 }
 .container {
@@ -554,14 +558,14 @@ header {
 }
 .footer_section2 {
   width: 100%;
+  height: 25vh;
   display: flex;
   align-items: flex-start;
   margin-top: 5vh;
+  justify-content: space-between;
 }
 .footer_section2_content {
-  flex: 1;
-  width: 100%;
-  position: relative;
+  width: 42%;
 }
 .footer_section2_content ul {
   width: 100%;
@@ -569,15 +573,10 @@ header {
   padding: 0;
 }
 .footer_logo {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .footer_logo img {
   max-width: 165px;
-}
-.footer_text {
-  position: absolute;
-  top: 13px;
-  left: 180px;
 }
 .footer_text p {
   margin-bottom: 14px;
@@ -592,6 +591,19 @@ header {
   font-weight: 700;
   font-family: "Poppins", sans-serif;
   margin-bottom: 20px;
+  position: relative;
+}
+.footer_social_icon span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  height: 2px;
+  width: 50px;
+  background: var(--main-color);
+}
+.footer_social_icon_box {
+  margin-top: 30px;
 }
 .footer_social_icon a {
   color: var(--sub3-color);
