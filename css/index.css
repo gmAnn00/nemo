@@ -328,6 +328,7 @@ body {
   padding: 0 4px;
 }
 .card__category:first-child {
+  padding-left: 0;
   border-right: #868686 1px solid;
 }
 .card__title {
