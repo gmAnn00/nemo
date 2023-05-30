@@ -138,7 +138,7 @@ body {
 }
 .sle1 {
   background-image: url(../images/icon_01garland.png);
-  background-color: var(--main-color);
+  background-color: var(--sub1-color);
 }
 .sle2 {
   background-image: url(../images/icon_02music.png);
@@ -162,7 +162,7 @@ body {
 }
 .sle7 {
   background-image: url(../images/icon_07foreign.png);
-  background-color: var(--main-color);
+  background-color: var(--sub1-color);
 }
 .sle8 {
   background-image: url(../images/icon_08craft.png);
@@ -186,7 +186,7 @@ body {
 }
 .sle13 {
   background-image: url(../images/icon_13stadium.png);
-  background-color: var(--main-color);
+  background-color: var(--sub1-color);
 }
 .sle14 {
   background-image: url(../images/icon_14game.png);
@@ -198,7 +198,7 @@ body {
 }
 .sle16 {
   background-image: url(../images/icon_16pet.png);
-  background-color: var(--main-color);
+  background-color: var(--sub1-color);
 }
 .box_text {
   position: absolute;
@@ -224,7 +224,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 100px 0;
+  margin: 70px 0;
 }
 .smallText_title {
   font-family: "NeoExBold";
@@ -378,3 +378,6 @@ body {
 .card:hover .card__info-hover {
   opacity: 1;
 } 
+.fa-location-dot {
+  color: var(--main-color);
+}
