@@ -1,87 +1,88 @@
 h2,
 h3,
 h4 {
-  text-align: center;
+    text-align: center;
 }
 #loginForm {
-  padding-top: 115px;
+    padding-top: 115px;
 }
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 450px;
 }
 form div {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  width: 450px;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 450px;
+    position: relative;
 }
 form label {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 form input {
-  padding: 10px;
+    padding: 10px;
 }
 form input[id="id"],
 input[id="nickname"] {
-  width: 70%;
+    width: 70%;
 }
 form .check {
-  width: 100px;
-  position: absolute;
-  top: 27px;
-  right: 0px;
-  padding: 10px;
+    width: 100px;
+    position: absolute;
+    top: 27px;
+    right: 0px;
+    padding: 10px;
 }
 form .findZipcode {
-  width: 150px;
-  position: absolute;
-  top: 27px;
-  left: 190px;
-  padding: 10px;
+    width: 150px;
+    position: absolute;
+    top: 27px;
+    left: 190px;
+    padding: 10px;
 }
 form input[id="zipcode"] {
-  width: 150px;
-  margin-bottom: 10px;
+    width: 150px;
+    margin-bottom: 10px;
 }
 form input[id="address"] {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 form input[id="birthdate"] {
-  width: 150px;
+    width: 150px;
 }
 form .email {
-  display: inline-block;
+    display: inline-block;
 }
 form .email label {
-  display: block;
+    display: block;
 }
 form .email input {
-  width: 120px;
+    width: 120px;
 }
 form .email select {
-  width: 130px;
-  padding: 10px;
+    width: 130px;
+    padding: 10px;
 }
 form .emailCheck,
 .submitCancel {
-  display: inline-block;
+    display: inline-block;
 }
 form input[type="checkbox"] {
-  display: inline-block;
+    display: inline-block;
 }
 form button[class="emailCheckBtn"] {
-  display: inline-block;
-  padding: 5px;
+    display: inline-block;
+    padding: 5px;
 }
 form .submitCancel {
-  text-align: center;
+    text-align: center;
 }
+/*
 form button[type="submit"],
 form button[class="cancel"] {
   padding: 10px 20px;
@@ -91,3 +92,4 @@ form button[class="cancel"] {
   color: #fff;
   cursor: pointer;
 }
+*/

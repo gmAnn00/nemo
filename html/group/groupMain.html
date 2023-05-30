@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NEMO</title>
+        <link rel="shortcut icon" href="../../images/favicon.png" />
+        <link rel="stylesheet" href="../../css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="../../css/normalize.css" />
+        <link rel="stylesheet" href="../../css/common.css" />
+        <link rel="stylesheet" href="../../css/groupSetting.css" />
+        <link rel="stylesheet" href="../../css/sectionTitle.css" />
+        <link rel="stylesheet" href="../../css/groupMain.css" />
+        <script src="../../js/jquery-3.6.4.min.js"></script>
+        <script src="../../js/jquery-ui.min.js"></script>
+        <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+        <script src="../../js/header.js"></script>
+        <script src="../../js/groupMain/groupMain.js"></script>
+    </head>
+    <body>
+        <!-- 사이드 메뉴시 배경색 조정 -->
+        <div class="menu_bg"></div>
+        <!-- header 시작 -->
+        <header>
+            <h1 class="logo">
+                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
+            </h1>
+        </header>
+        <button class="burger">
+            <span></span>
+        </button>
+        <div class="sidemenu">
+            <ul class="main_menu">
+                <li>
+                    <a href="#">
+                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                    </a>
+                </li>
+                <li><a href="#">소모임 만들기</a></li>
+                <li><a href="#">소모임 검색</a></li>
+                <li><a href="#">프로필</a></li>
+                <li><a href="#">내 일정</a></li>
+                <li><a href="#">내 소모임</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+            <div class="sidemenu_footer">
+                <h3>Contact details</h3>
+                <p>글 넣을 거 있으면 넣기</p>
+            </div>
+        </div>
+        <!-- header 종료 -->
+
+        <!-- 헤더 제외 body -->
+        <div class="header_except_body">
+            <!-- section1 시작 -->
+            <div class="section1">
+                <div class="group_containter">
+                    <div class="group_all">
+                        <div class="group_img">
+                            <img src="../../images/free-icon-group-8847475.png" alt="group_img" />
+                        </div>
+                        <div class="group_name">
+                            <span>이젠종로학원</span>
+                        </div>
+                        <div class="group_info">
+                            <div class="group_info_member">
+                                <span>멤버수 7</span>
+                            </div>
+                            <div class="group_info_follower">
+                                <span>팔로잉 10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- section1 종료 -->
+
+            <!-- 소모임 이름/메뉴 영역 -->
+            <div class="grpMenuArea">
+                <!-- <h2><a href="groupMain.html" title="">네모이름</a></h2> -->
+                <ul class="grpMenu">
+                    <li>
+                        <h3><a href="schedule.html">일정</a></h3>
+                    </li>
+                    <li>
+                        <h3><a href="board.html">게시판</a></h3>
+                    </li>
+                    <li>
+                        <h3><a href="myPageGroup.html">멤버</a></h3>
+                    </li>
+                </ul>
+                <!--
+            <div class="imgCrop">
+                <img src="images/tmp01.jpg" alt="" class="grpImg">
+            </div>
+            --></div>
+
+            <!-- main content 시작-->
+            <div id="#contentsArea">
+                <div class="contMainArea">
+                    <!-- 최근 일정 영역 시작-->
+                    <div class="recentSchedule recentDiv">
+                        <div class="mainTitle">
+                            <h3>최근 일정</h3>
+                            <a href="schedule.html"
+                                ><span class="more"><i class="fa-solid fa-plus"></i>더보기</span></a
+                            >
+                        </div>
+                        <table class="recentScheduledTbl recentTbl">
+                            <tr>
+                                <th>모임날짜</th>
+                                <th>모임제목</th>
+                                <th>모임장소</th>
+                            </tr>
+                            <tr>
+                                <td>2023-05-08</td>
+                                <td>
+                                    <a href=""
+                                        ><p>세번째모임 세번째모임 세번째모임 세번째모임 세번째모임 세번째모임 세번째모임 세번째모임 세번째모임</p></a
+                                    >
+                                </td>
+                                <td>홍대</td>
+                            </tr>
+                            <tr>
+                                <td>2020-05-02</td>
+                                <td>
+                                    <a href=""
+                                        ><p>두번째모임 두번째모임 두번째모임 두번째모임 두번째모임 두번째모임 두번째모임 두번째모임 두번째모임</p></a
+                                    >
+                                </td>
+                                <td>종각</td>
+                            </tr>
+                            <tr>
+                                <td>2023-04-29</td>
+                                <td>
+                                    <a href=""><p>첫번째모임</p></a>
+                                </td>
+                                <td>종각</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- 최신 글 영역 시작-->
+                    <div class="recentBoard recentDiv">
+                        <div class="mainTitle">
+                            <h3>최신 글</h3>
+                            <a href="board.html"
+                                ><span class="more"><i class="fa-solid fa-plus"></i>더보기</span></a
+                            >
+                        </div>
+                        <table class="recentBordTbl recentTbl">
+                            <tr>
+                                <th>글제목</th>
+                                <th>작성자</th>
+                                <th>날짜</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#"><p>안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다.</p></a>
+                                </td>
+                                <td>김네모</td>
+                                <td>2023-05-07</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#"><p>안녕하세요 반갑습니다.</p></a>
+                                </td>
+                                <td>이네모</td>
+                                <td>2023-05-06</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#"><p>안녕하세요 반갑습니다.</p></a>
+                                </td>
+                                <td>박네모</td>
+                                <td>2023-05-05</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- 멤버 영역 시작-->
+                    <div class="memberArea">
+                        <div class="mainTitle">
+                            <h3 class="nemoMemTitle">네모멤버</h3>
+                            <span>(<span class="currentNum">0</span>/<span class="maxNum">50</span>)</span>
+                        </div>
+                        <span class="btnEventPrev" title="이전보기"><i class="fa-solid fa-chevron fa-chevron-left"></i></span>
+                        <div class="animationSlide">
+                            <div class="sliderPanel">
+                                <!-- <p><center>이미지슬라이드영역~</center></p> -->
+                            </div>
+                            <!-- slide panel 종료-->
+                        </div>
+                        <!--animation-slide종료-->
+                        <span class="btnEventNext" title="다음보기"><i class="fa-solid fa-chevron fa-chevron-right"></i></span>
+                    </div>
+                </div>
+            </div>
+            <!-- main content 종료-->
+
+            <!-- 푸터 영역 시작 -->
+            <footer class="footer_section">
+                <div class="container">
+                    <div class="footer_section1">
+                        <div class="footer_section1_content">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Address</h4>
+                                <span>서울시 종로구 종로78</span>
+                            </div>
+                        </div>
+
+                        <div class="footer_section1_content">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>02-123-4567</span>
+                            </div>
+                        </div>
+
+                        <div class="footer_section1_content">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>admin@nemo.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_section2">
+                        <div class="footer_section2_content">
+                            <div class="footer_section2_content_title">
+                                <h3>NEMO Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">고객센터</a></li>
+                                <li><a href="#">이용약관</a></li>
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">저작권정책</a></li>
+                                <li><a href="#">개인정보 처리방침</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer_section2_content">
+                            <div class="footer_logo">
+                                <a href="../index.html"><img src="../../images/logo_white.png" class="img-fluid" alt="logo" /></a>
+                            </div>
+                            <div class="footer_text">
+                                <p>© 2023 NEMO</p>
+                            </div>
+                            <div class="footer_social_icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- 푸터 영역 끝 -->
+        </div>
+    </body>
+</html>

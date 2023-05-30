@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>비밀번호 재설정</title>
+        <link rel="shortcut icon" href="../images/favicon.png" />
+        <link rel="stylesheet" href="../css/normalize.css" />
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/findIdPass.css" />
+        <script src="../js/jquery-3.6.4.min.js"></script>
+        <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+        <script src="../js/header.js"></script>
+    </head>
+    <body>
+        <!-- 사이드 메뉴시 배경색 조정 -->
+        <div class="menu_bg"></div>
+        <!-- header 시작 -->
+        <header>
+            <h1 class="logo">
+                <a href="index.html"><img src="../images/logo.png" alt="logo" /></a>
+            </h1>
+        </header>
+        <button class="burger">
+            <span></span>
+        </button>
+        <div class="sidemenu">
+            <ul class="main_menu">
+                <li>
+                    <a href="#">
+                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
+                    </a>
+                </li>
+                <li><a href="#">소모임 만들기</a></li>
+                <li><a href="#">소모임 검색</a></li>
+                <li><a href="#">프로필</a></li>
+                <li><a href="#">내 일정</a></li>
+                <li><a href="#">내 소모임</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+            <div class="sidemenu_footer">
+                <h3>Contact details</h3>
+                <p>글 넣을 거 있으면 넣기</p>
+            </div>
+        </div>
+        <!-- header 종료 -->
+
+        <!-- 아이디/비밀번호 찾기 영역 -->
+        <div class="container">
+            <ul class="tabs">
+                <li class="tabId" data-tab="idTab">
+                    <a href="findId.html">아이디 찾기</a>
+                </li>
+                <li class="tabPass" data-tab="passTab">
+                    <a href="findPass.html">비밀번호 재설정</a>
+                </li>
+            </ul>
+
+            <div id="passTab" class="tabContent current">
+                <h2>비밀번호 재설정</h2>
+                <p>비밀번호는 아이디, 이름, 이메일을 입력하시면 재설정 하실 수 있습니다.</p>
+                <form action="login.html">
+                    <label for="password"></label>
+                    <input type="text" id="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~??자)" required />
+                    <label for="passwordCheck"></label>
+                    <input type="text" id="passwordCheck" placeholder="비밀번호 확인" required />
+                    <button type="submit" class="button">비밀번호 재설정 하기</button>
+                </form>
+            </div>
+        </div>
+        <!-- 아이디/비밀번호 찾기 영역 종료 -->
+
+        <!-- 푸터 영역 시작 -->
+        <footer class="footer_section">
+            <div class="container">
+                <div class="footer_section1">
+                    <div class="footer_section1_content">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="cta-text">
+                            <h4>Address</h4>
+                            <span>서울시 종로구 종로78</span>
+                        </div>
+                    </div>
+
+                    <div class="footer_section1_content">
+                        <i class="fas fa-phone"></i>
+                        <div class="cta-text">
+                            <h4>Call us</h4>
+                            <span>02-123-4567</span>
+                        </div>
+                    </div>
+
+                    <div class="footer_section1_content">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Mail us</h4>
+                            <span>admin@nemo.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer_section2">
+                    <div class="footer_section2_content">
+                        <div class="footer_section2_content_title">
+                            <h3>NEMO Links</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">저작권정책</a></li>
+                            <li><a href="#">개인정보 처리방침</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer_section2_content">
+                        <div class="footer_logo">
+                            <a href="index.html"><img src="../images/logo_white.png" class="img-fluid" alt="logo" /></a>
+                        </div>
+                        <div class="footer_text">
+                            <p>© 2023 NEMO</p>
+                        </div>
+                        <div class="footer_social_icon">
+                            <span>Follow us</span>
+                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- 푸터 영역 끝 -->
+    </body>
+</html>
