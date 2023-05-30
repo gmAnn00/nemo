@@ -71,6 +71,7 @@ body {
   margin-bottom: 0;
 }
 .categories_title {
+  display: none;
   font-family: "NeoExBold";
   font-size: 24px;
   margin: 1em 0;
@@ -135,7 +136,7 @@ body {
 .imgBox:hover {
   transform: translateY(-20px);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
+} 
 .sle1 {
   background-image: url(../images/icon_01garland.png);
   background-color: var(--sub1-color);
@@ -209,6 +210,93 @@ body {
   font-family: "NeoBold";
   font-size: 16px;
 }
+.group_jm {
+  display: flex;
+  width: 85%;
+  height: 60vh;
+  margin: 100px auto;
+  flex-direction: column;
+}
+.jm_text {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.jm_text h2 {
+  font-family: "NeoExBold";
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.jm_text span {
+  color: var(--main-color);
+}
+.jm_text p {
+  font-size: 18px;
+}
+.group_jm_boxes {
+  display: flex;
+  justify-content: space-between;
+  height: 40vh;
+  margin-top: 40px;
+}
+.group_jm_box {
+  position: relative;
+  width: 48%;
+  border-radius: 25px;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: var(--main-color);
+}
+.jm_box2 {
+  background-color: var(--sub-color);
+}
+.group_jm_text {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+.group_jm_text span {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #fff;
+}
+.group_jm_text p {
+  width: 70%;
+  font-family: "NeoExBold";
+  font-size: 27px;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: keep-all;
+  color: #fff;
+}
+.group_jm_img {
+  width: 70%;
+  position: absolute;
+  left: 40%;
+  top: 5%;
+}
+
+.group_btn {
+  display: block;
+  position: relative;
+  width: 80px;
+  padding: 0 25px;
+  border-radius: 30px;
+  margin-top: 35px;
+  font-size: 15px;
+  line-height: 52px;
+  color: #fff;
+  letter-spacing: -.3px;
+  background-color: rgba(255,255,255,.2);
+}
+.btn_more {
+  font-family: "NeoExBold";
+  margin-right: 20px;
+  transition: all .2s;
+}
+.group_btn:hover .btn_more{
+  margin-right: 25px;
+}
 .group {
   display: flex;
   flex-direction: column;
@@ -225,6 +313,9 @@ body {
   display: flex;
   flex-direction: column;
   margin: 70px 0;
+}
+.smallPage:last-child {
+  margin-bottom: 120px;
 }
 .smallText_title {
   font-family: "NeoExBold";
