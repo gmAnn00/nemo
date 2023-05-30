@@ -10,13 +10,23 @@ body {
 }
 
 .intro {
+  box-sizing: border-box;
   height: 100vh;
   position: relative;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
   letter-spacing: 0.1rem;
+  padding: 50px;
+  background-color: rgba(0,0,0,0.3);
+}
+.intro-header {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  white-space: pre-line;
+  word-break: keep-all;
 }
 .intro-slideshow img {
   position: absolute;
@@ -38,16 +48,20 @@ body {
 .intro .intro-header {
   border-radius: 0.5rem;
   padding: 2rem 2.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   color: #fff;
-  font-family: "NeoExBold";
+  
 }
 .intro h1 {
   font-size: 4rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 2.75rem;
+  line-height: 5rem;
+  font-family: "NeoExBold";
 }
 .intro p {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.875rem;
 }
 
 @media (max-width: 700px) {
