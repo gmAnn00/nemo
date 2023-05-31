@@ -530,7 +530,7 @@ header {
   align-items: center;
 }
 .footer_section1_content {
-  flex: 1;
+  margin: 0 auto;
   display: flex;
   position: relative;
 }
@@ -559,15 +559,15 @@ header {
   display: flex;
   align-items: flex-start;
   margin-top: 5vh;
-  justify-content: space-between;
+  justify-content: center;
 }
 .footer_section2_content {
   position: relative;
-  width: 36%;
+  width: 25%;
   height: 100%;
 }
 .footer_section2_content:first-child {
-  flex: 2;
+  width: 55%;
 }
 .footer_section2_content ul {
   width: 75%;
