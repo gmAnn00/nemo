@@ -1,16 +1,14 @@
 #contentsArea {
   margin: 0 auto;
-  /* width: 1200px; */
   display: flex;
   position: relative;
 }
 /* 게시글 등록 영역 */
-.boardWrite {
+/* .boardWrite {
   margin: 0 auto;
   width: 850px;
   padding: 30px;
-  /* border: 2px solid #ccc; */
-}
+} */
 .boardWriteArea {
   margin-left: 5px;
 }

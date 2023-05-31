@@ -491,6 +491,8 @@ header {
 }
 .sc2_subsection {
   flex: 2.5;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 .sc2_subsection_title {
   display: flex;

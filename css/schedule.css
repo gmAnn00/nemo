@@ -5,36 +5,34 @@
   display: block;
   clear: both;
 }
-::-webkit-scrollbar {
-  display: none;
-}
-#contentsArea {
+/* #contentsArea {
   margin: 0 auto;
-  /* width: 1200px; */
+  /* width: 1200px; 
   display: flex;
   position: relative;
-}
+} */
 
 /* 일정등록, 확인 영역 시작 */
 .schedule {
   width: 53.125em;
   margin: 0 auto;
-  padding: 30px;
+  /* padding: 30px; */
   /* border: 2px solid red; */
 }
 .calendarSchedule {
   margin-top: 30px;
-  width: 1000px;
+  display: flex;
 }
 .calendarSchedule > div {
-  float: left;
+  /* float: left; */
 }
 /* 달력부분 mySchedule.css----- */
 .scheduleCalendar {
   border: 1px solid #ccc;
+  flex: 1;
 }
 #myscheduleCalendarArea {
-  width: 25.9375em;
+  /* width: 25.9375em; */
   height: 28.125em;
   /* margin: 0 auto; */
 }
@@ -111,16 +109,17 @@
 /* 예정모임, 지난모임 일정 */
 .scheduleNP {
   /* border: 1px solid #ccc; */
-  width: 25.9375em;
+  /* width: 25.9375em; */
   height: 28.125em;
   margin-left: 0.9375em;
+  flex: 1;
 }
 .scheduleNP > div > strong {
   margin-left: 1.25em;
   line-height: 1.875em;
 }
 .scheduleNP table {
-  width: 28.125em;
+  width: 100%;
   height: 6.25em;
   text-align: center;
   font-size: 0.8125em;
@@ -139,7 +138,6 @@
   margin: 0.3125em auto;
   padding: 0.3125em;
   box-sizing: border-box;
-  width: 23.75em;
   height: 12.5em;
   background-color: #f5f5f5;
 }
@@ -152,7 +150,7 @@
   margin: 0.3125em auto;
   padding: 0.3125em;
   box-sizing: border-box;
-  width: 23.75em;
+  flex: 1;
   height: 8.4375em;
   background-color: #f5f5f5;
 }
@@ -178,7 +176,7 @@
 .scheduleTitle p {
   text-align: left;
   padding: 0.3125em;
-  width: 49.5em;
+  width: 100%;
   border: none;
   background-color: #f5f5f5;
 }
@@ -195,7 +193,7 @@
   margin-bottom: 1em;
 }
 .editBtn {
-  padding: 15px 20px;
+  padding: 15px 0px;
   text-align: right;
 }
 /* .btnDel {
@@ -204,16 +202,16 @@
 
 /* 제목부분 */
 .scheduleTitle {
+  overflow: hidden;
   padding: 0.625em 0;
   /* background-color: #f5f5f5; */
-  /* margin-bottom: 0.9375em; */
   text-align: center;
 }
 .scheduleTitleText {
   text-align: left;
   padding: 0.3125em;
   margin-left: 10px;
-  width: 48.5em;
+  width: 100%;
   border: none;
   background-color: #f5f5f5;
   resize: none;
@@ -250,14 +248,14 @@
   outline: 0;
 }
 .locationMap {
-  width: 50em;
+  width: 100%;
   margin: 0.625em 0;
 }
 .locationMap h4 {
   margin: 0.875em 0;
 }
 .map {
-  width: 50em;
+  width: 100%;
   height: 15em;
   margin: 0 auto;
   /* border: 1px solid #ccc; */
@@ -291,8 +289,8 @@
   /* float: right; */
   margin: 0.625em;
   position: absolute;
-  top: 0;
-  right: 10px;
+  top: -15px;
+  right: 0px;
 }
 .scheduleEdit {
   border: 1px solid #ccc;

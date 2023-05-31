@@ -8,8 +8,7 @@
 .boardView {
   margin: 0 auto;
   width: 62.5em;
-  padding: 30px;
-  /* border: 2px solid red; */
+  /* padding: 30px; */
 }
 /* 목록 버튼 오른쪽 정렬 */
 .articleToolBtns {
