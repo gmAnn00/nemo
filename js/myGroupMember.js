@@ -1,28 +1,4 @@
 $(function () {
-
- 
-  $(".dot").click(function () {
-      if($(".dot").hasClass('open')) {
-          $(this).removeClass('open');
-          $('.hidden_menu>ul').hide();
-      }
-      else {
-          $(this).addClass('open');
-          $('.hidden_menu>ul').show();
-      }   
-  });
- 
-
-  // dot 애니메이션
-  $('.dot').click(function() {
-      $(this).toggleClass('open');
-  });
-  $('.dot.open').click(function(){
-      $('.dot').removeClass('open');
-  });
-  
-
-
   // 탭
   (function($, document) {
   
@@ -38,4 +14,25 @@ $(function () {
         $('[data-tabs]').css('min-height', height + 40 + 'px');
     
       }(jQuery, document));
+});
+
+// $(document).ready(function() {
+//   $(".dot").click(function () {
+//       if($(".dot").hasClass('dot_active')) {
+//           $(this).removeClass('dot_active');
+//           $('.hidden_menu>ul').hide();
+//       }
+//       else {
+//           $(this).addClass('dot_active');
+//           $('.hidden_menu>ul').show();
+//       }   
+//   });
+// });
+
+// dot 애니메이션
+$(function () {
+  $('.dot').click(function() {
+      $(this).toggleClass('open');
+      $(this).siblings().toggle();
+  });
 });

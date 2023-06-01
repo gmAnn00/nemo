@@ -131,12 +131,14 @@
   align-items: flex-end;
   right: 5px;
   top: 5px;
+  z-index: 10;
 }
 .dot {
   position: relative;
   width: 20px;
   height: 40px;
   cursor: pointer;
+  margin-right: 10px;
 }
 .dot span {
   position: absolute;
@@ -195,14 +197,13 @@
 /* 리스트 */
  
 .hidden_menu {
-    display: block;
+    display: none;
     width: 75%;
-    border: 1px solid #ccc;
+    box-shadow: 0 0 0 1px #ccc inset;
     border-radius: 10px;
     margin-right: 10px;
 }
 .hidden_menu_bar {
-    /* display: none; */
     width: 100%;
     box-sizing: border-box;
 }
@@ -218,7 +219,11 @@
 .hidden_menu_bar li:last-child a {
     border-bottom: none;
 }
-
+.hidden_menu a:hover {
+  color: red;
+  transition: all 0.3s;
+  font-weight: bold;
+}
 
 
 /* 탭 부분 */
