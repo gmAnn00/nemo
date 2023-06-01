@@ -13,117 +13,11 @@
         <link rel="stylesheet" href="../../css/sectionTitle.css" />
         <link rel="stylesheet" href="../../css/myGroupMember.css" />
         <script src="../../js/jquery-3.6.4.min.js"></script>
-        <script src="../../js/myPageGroup.js"></script>
+        <script src="../../js/myGroupMember.js"></script>
         <script src="../../js/header.js"></script>
     </head>
-    <style>
-
-
- .profile {
-	 position: relative;
-	 background: var(--backgroundColor);
-	 color: var(--foregroundColor);
-	 box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
-	 border-radius: 10px;
-	 transition: 0.2s ease;
-}
- .profile_image img {
-	 width: 100%;
-	 height: 100%;
-	 object-fit: cover;
-}
-
- .profile-smallimg {
-	 width: 300px;
-	 border-radius: 10px;
-	 text-align: center;
-	 display: grid;
-	 grid-template-columns: 1fr;
-	 grid-gap: 10px;
-	 text-align: center;
-}
- .profile-smallimg .profile_image {
-	 margin-top: -40px;
-}
- .profile-smallimg .profile_image img {
-	 width: 120px;
-	 height: 120px;
-	 border-radius: 50%;
-	 border: 5px solid #fff;
-	 box-shadow: 0 0 0 7px orange;
-}
- .profile-smallimg .profile_info {
-	 margin: 10px 30px 15px;
-}
- .profile-smallimg .profile_cta a {
-	 border-radius: 0 0 10px 10px;
-}
-.profile_info {
-    display: flex;
-    flex-direction: column;
-    height: 10vh;
-    justify-content: space-between;
-}
-.profile_info_detail {
-    display: flex;
-    height: 5vh;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.profile_loc {
-    display: flex;
-}
-.profile_group_joinDate {
-    display: flex;
-}
-.profile_icon {
-    color: var(--main-color);
-    margin-right: 30px;
-    width: 16%;
-    border-right: 1px solid #ccc;
-    text-align: left;
-}
-
-.profile_btns {
-    display: flex;
-    height: 5vh;
-    /* margin-top: 25px; */
-    justify-content: space-between;
-    text-align: center;
-    align-items: center;
-    border-radius: 0 0 10px 10px;
-}
-.profile_button_box {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    border-right: 1px solid #ccc;
-    position: relative;
-}
-.profile_button_box:last-child {
-    border-right: 0;
-}
-.profile_button_box a {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.button_box1:hover {
-    background-image: linear-gradient(to top, var(--sub2-color) 1%, var(--sub3-color) 50%, #fff);
-    border-radius: 0 0 0 10px;
-} 
-
-.button_box2:hover {
-    background-image: linear-gradient(to top, var(--sub2-color) 1%, var(--sub3-color) 50%, #fff);
-    
-}
-.button_box3:hover {
-    background-image: linear-gradient(to top, var(--sub2-color) 1%, var(--sub3-color) 50%, #fff);
-    border-radius: 0 0 10px 0;
-}
-    </style>
+<script>
+</script>
     <body>
         <!-- 배경색 조정 -->
         <div class="menu_bg"></div>
@@ -190,7 +84,7 @@
         <!-- section1 종료 -->
 
         <!-- 컨텐츠 시작 -->
-        <div class="section2">
+        <div class="section2" style="height: 100vh;"> <!-- 고쳐야 됨 -->
             <div class="sc2_contents">
                 
                 <!-- 메뉴바 시작 -->
@@ -251,16 +145,19 @@
                             <span>멤버</span>
                         </div>
                         <!-- nav 바 종료 -->
+
                     </div>
 
                     <div class="sc2_subcontents">
-                        <div data-tabs class="tabs">
+                        <div class="tabs">
+                            <!-- tab1 시작 -->
                             <div class="tab">
                                 <input type="radio" name="tabgroup" id="tab-1" checked />
                                 <label for="tab-1">회원목록</label>
                                 <div class="tab__content">
                                     <div id="menu2" class="tabcont">
                                         <div class="sc2_member">
+                                            
                                             <div class="sc2_member_title">
                                                 <span class="sc2_member_title_name">5 members</span>
                                                 <div class="searchBox">
@@ -268,9 +165,22 @@
                                                     <input class="searchBox_Bar" type="text" placeholder="search" />
                                                 </div>
                                             </div>
+                                            
                                             <div class="profile_section">
                                                 
-                                                <section>
+                                                <div class="profile_box">
+                                                    <div class="dot_menu">
+                                                        <div class="dot">
+                                                            <span></span> 
+                                                        </div>
+                                                        <div class="hidden_menu">
+                                                            <ul class="hidden_menu_bar">
+                                                                <li><a href="#">신고</a></li>
+                                                                <li><a href="#">위임</a></li>
+                                                                <li><a href="#">추방</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                     <div class="profile profile-smallimg">
                                                         <div class="profile_image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/dog.png" alt="Doggo"/></div>
                                                         <div class="profile_info">
@@ -286,21 +196,22 @@
                                                                 </div>
                                                             </div>
                                                       </div>
-                                                      <div class="profile_btns">
-                                                            <div class="profile_button_box button_box1">
-                                                                <a href="#" class="profile_button">추방</a>
-                                                            </div>
-                                                            <div class="profile_button_box button_box2">
-                                                                <a href="#" class="profile_button">신고</a>
-                                                            </div>
-                                                            <div class="profile_button_box button_box3">
-                                                                <a href="#" class="profile_button">위임</a>
-                                                            </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile_box">
+                                                    <div class="dot_menu">
+                                                        <div class="dot">
+                                                            <span></span> 
+                                                        </div>
+                                                        <div class="hidden_menu">
+                                                            <ul class="hidden_menu_bar">
+                                                                <li><a href="#">신고</a></li>
+                                                                <li><a href="#">위임</a></li>
+                                                                <li><a href="#">추방</a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                </section>
-
-                                                <section>
                                                     <div class="profile profile-smallimg">
                                                         <div class="profile_image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/dog.png" alt="Doggo"/></div>
                                                         <div class="profile_info">
@@ -316,61 +227,26 @@
                                                                 </div>
                                                             </div>
                                                       </div>
-                                                      <div class="profile_btns">
-                                                            <div class="profile_button_box button_box1">
-                                                                <a href="#" class="profile_button">추방</a>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                </section>
+                                                </div>
 
-                                                <div class="profile_box">
-                                                    <div class="profile_img"></div>
-                                                    <div class="profile_info">
-                                                        <div class="profile_name">고구마</div>
-                                                        <div class="profile_date">2023년 1월 1일 가입</div>
-                                                    </div>
-                                                    <div class="profile_btns">
-                                                        <a href="#" role="button" class="button2">추방</a>
-                                                        <a href="#" role="button" class="buttonCancle">신고</a>
-                                                        <a href="#" role="button" class="button">위임</a>
-                                                    </div>
-                                                </div>
-                                                <div class="profile_box">
-                                                    <div class="profile_img"></div>
-                                                    <div class="profile_info">
-                                                        <div class="profile_name">고구마</div>
-                                                        <div class="profile_date">2023년 1월 1일 가입</div>
-                                                    </div>
-                                                    <div class="profile_btns">
-                                                        <a href="#" role="button" class="button2">추방</a>
-                                                        <a href="#" role="button" class="buttonCancle">신고</a>
-                                                        <a href="#" role="button" class="button">위임</a>
-                                                    </div>
-                                                </div>
-                                                <div class="profile_box">
-                                                    <div class="profile_img"></div>
-                                                    <div class="profile_info">
-                                                        <div class="profile_name">고구마</div>
-                                                        <div class="profile_date">2023년 1월 1일 가입</div>
-                                                    </div>
-                                                    <div class="profile_btns">
-                                                        <a href="#" role="button" class="buttonCancle">추방</a>
-                                                        <a href="#" role="button" class="button2">신고</a>
-                                                        <a href="#" role="button" class="button">위임</a>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- tab1 종료 -->
+
+                            <!-- tab2 시작 -->
                             <div class="tab">
                                 <input type="radio" name="tabgroup" id="tab-2" />
                                 <label for="tab-2">가입승인</label>
                                 <div class="tab__content">
                                     <div class="sc2_admin">
+                                        
                                         <div class="profile_section">
+                                            
                                             <div class="profile_box">
                                                 <div class="profile_img"></div>
                                                 <div class="profile_info">
@@ -382,6 +258,7 @@
                                                     <a href="#" role="button" class="buttonCancle">거절</a>
                                                 </div>
                                             </div>
+                                            
                                             <div class="profile_box">
                                                 <div class="profile_img"></div>
                                                 <div class="profile_info">
@@ -393,10 +270,14 @@
                                                     <a href="#" role="button" class="buttonCancle">거절</a>
                                                 </div>
                                             </div>
+
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
+                            <!-- tab2 종료 -->
+                            
                         </div>
                     </div>
                    
