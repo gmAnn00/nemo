@@ -10,12 +10,26 @@
 }
 .sc2_menu_title {
   font-size: 25px;
-  font-family: "NeoBold";
+  font-family: "NeoExBold";
   margin-bottom: 20px;
 }
 .sc2_menu_list li {
   line-height: 60px;
 }
+.menu_submenu_name span {
+  transition: all 0.3s;
+}
+.sc2_menu_list li:hover .menu_angle{
+  margin-right: 0.625rem;
+}
+.sc2_menu_list li:hover .menu_submenu_name span {
+  font-weight: 800;
+}
+.submenu_select {
+  font-weight: 800;
+  color: var(--main-color);
+}
+
 .sc2_iconbox {
   width: 25px;
 }
@@ -25,14 +39,13 @@
   align-items: center;
   border-bottom: 1px solid #ccc;
 }
-.menu_submenu_name {
-  margin-left: 10px;
-}
+
 .fa-minus {
-  margin-right: 10px;
+  margin-right: 1.25rem;
 }
-.fa-angle-right {
-  margin-right: 10px;
+.menu_angle {
+  margin-right: 1.25rem;
+  transition: all 0.3s;
 }
 
 .sc2_section_title {
