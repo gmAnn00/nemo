@@ -261,9 +261,11 @@
 }
 
 [type="radio"]:checked ~ label {
-  border-bottom: 2px solid #1d1d1d;
+  font-weight: bold;
+  border-bottom: .125rem solid #1d1d1d;
   color: #1d1d1d;
   z-index: 2;
+  padding-bottom: .3125rem;
 }
 
 [type="radio"]:checked ~ label ~ .tab__content {
