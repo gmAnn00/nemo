@@ -16,19 +16,6 @@ $(function () {
       }(jQuery, document));
 });
 
-// $(document).ready(function() {
-//   $(".dot").click(function () {
-//       if($(".dot").hasClass('dot_active')) {
-//           $(this).removeClass('dot_active');
-//           $('.hidden_menu>ul').hide();
-//       }
-//       else {
-//           $(this).addClass('dot_active');
-//           $('.hidden_menu>ul').show();
-//       }   
-//   });
-// });
-
 // dot 애니메이션
 $(function () {
   $('.dot').click(function() {
