@@ -11,11 +11,119 @@
         <link rel="stylesheet" href="../../css/common.css" />
         <link rel="stylesheet" href="../../css/submenu.css" />
         <link rel="stylesheet" href="../../css/sectionTitle.css" />
-        <link rel="stylesheet" href="../../css/myPageGroup.css" />
+        <link rel="stylesheet" href="../../css/myGroupMember.css" />
         <script src="../../js/jquery-3.6.4.min.js"></script>
         <script src="../../js/myPageGroup.js"></script>
         <script src="../../js/header.js"></script>
     </head>
+    <style>
+
+
+ .profile {
+	 position: relative;
+	 background: var(--backgroundColor);
+	 color: var(--foregroundColor);
+	 box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+	 border-radius: 10px;
+	 transition: 0.2s ease;
+}
+ .profile_image img {
+	 width: 100%;
+	 height: 100%;
+	 object-fit: cover;
+}
+
+ .profile-smallimg {
+	 width: 300px;
+	 border-radius: 10px;
+	 text-align: center;
+	 display: grid;
+	 grid-template-columns: 1fr;
+	 grid-gap: 10px;
+	 text-align: center;
+}
+ .profile-smallimg .profile_image {
+	 margin-top: -40px;
+}
+ .profile-smallimg .profile_image img {
+	 width: 120px;
+	 height: 120px;
+	 border-radius: 50%;
+	 border: 5px solid #fff;
+	 box-shadow: 0 0 0 7px orange;
+}
+ .profile-smallimg .profile_info {
+	 margin: 10px 30px 15px;
+}
+ .profile-smallimg .profile_cta a {
+	 border-radius: 0 0 10px 10px;
+}
+.profile_info {
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    justify-content: space-between;
+}
+.profile_info_detail {
+    display: flex;
+    height: 5vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.profile_loc {
+    display: flex;
+}
+.profile_group_joinDate {
+    display: flex;
+}
+.profile_icon {
+    color: var(--main-color);
+    margin-right: 30px;
+    width: 16%;
+    border-right: 1px solid #ccc;
+    text-align: left;
+}
+
+.profile_btns {
+    display: flex;
+    height: 5vh;
+    /* margin-top: 25px; */
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+}
+.profile_button_box {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    position: relative;
+}
+.profile_button_box:last-child {
+    border-right: 0;
+}
+.profile_button_box a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button_box1:hover {
+    background-image: linear-gradient(to top, var(--sub2-color) 1%, var(--sub3-color) 50%, #fff);
+    border-radius: 0 0 0 10px;
+} 
+
+.button_box2:hover {
+    background-image: linear-gradient(to top, var(--sub2-color) 1%, var(--sub3-color) 50%, #fff);
+    
+}
+.button_box3:hover {
+    background-image: linear-gradient(to top, var(--sub2-color) 1%, var(--sub3-color) 50%, #fff);
+    border-radius: 0 0 10px 0;
+}
+    </style>
     <body>
         <!-- 배경색 조정 -->
         <div class="menu_bg"></div>
@@ -81,9 +189,10 @@
         </div>
         <!-- section1 종료 -->
 
-        <!-- section2 시작 -->
+        <!-- 컨텐츠 시작 -->
         <div class="section2">
             <div class="sc2_contents">
+                
                 <!-- 메뉴바 시작 -->
                 <div class="sc2_menu_contents">
                     <div class="sc2_menu">
@@ -93,7 +202,7 @@
                                 <a href="schedule.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>일정</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
@@ -101,15 +210,15 @@
                                 <a href="board.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>게시판</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="myPageGroup.html">
                                     <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name"><span>멤버</span></div>
-                                        <i class="fa-solid fa-minus"></i>
+                                        <div class="menu_submenu_name submenu_select"><span>멤버</span></div>
+                                        <i class="fa-solid fa-minus submenu_select"></i>
                                     </div>
                                 </a>
                             </li>
@@ -117,7 +226,7 @@
                                 <a href="groupSetting.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>소모임관리</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
@@ -126,18 +235,19 @@
                 </div>
                 <!-- 메뉴바 종료 -->
 
-                <!-- 컨텐츠 시작 -->
+                <!-- 메인 컨텐츠 시작 -->
                 <div class="sc2_subsection">
                     <div class="sc2_subsection_title">
                         <h2 class="sc2_subsection_title_name">멤버</h2>
+                        
                         <!-- nav 바 시작 -->
                         <div class="nav_bar">
                             <a href="../index.html">
-                                <i class="fa-solid fa-house"></i>
+                                <i class="fa-solid fa-house nav_icon"></i>
                             </a>
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>나의 모임</span>
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>멤버</span>
                         </div>
                         <!-- nav 바 종료 -->
@@ -159,30 +269,61 @@
                                                 </div>
                                             </div>
                                             <div class="profile_section">
-                                                <div class="profile_box">
-                                                    <div class="profile_img"></div>
-                                                    <div class="profile_info">
-                                                        <div class="profile_name">고구마</div>
-                                                        <div class="profile_date">2023년 1월 1일 가입</div>
+                                                
+                                                <section>
+                                                    <div class="profile profile-smallimg">
+                                                        <div class="profile_image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/dog.png" alt="Doggo"/></div>
+                                                        <div class="profile_info">
+                                                            <h3>도지견</h3>
+                                                            <div class="profile_info_detail">
+                                                                <div class="profile_loc">
+                                                                    <i class="fa-solid fa-location-dot profile_icon"></i>
+                                                                    <span class="profile_loc_info">서울</span>
+                                                                </div>
+                                                                <div class="profile_group_joinDate">
+                                                                    <i class="fa-regular fa-calendar profile_icon"></i>
+                                                                    <span>2023년 1월 1일</span>
+                                                                </div>
+                                                            </div>
+                                                      </div>
+                                                      <div class="profile_btns">
+                                                            <div class="profile_button_box button_box1">
+                                                                <a href="#" class="profile_button">추방</a>
+                                                            </div>
+                                                            <div class="profile_button_box button_box2">
+                                                                <a href="#" class="profile_button">신고</a>
+                                                            </div>
+                                                            <div class="profile_button_box button_box3">
+                                                                <a href="#" class="profile_button">위임</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="profile_btns">
-                                                        <a href="#" role="button" class="button">추방</a>
-                                                        <a href="#" role="button" class="button">신고</a>
-                                                        <a href="#" role="button" class="button">위임</a>
+                                                </section>
+
+                                                <section>
+                                                    <div class="profile profile-smallimg">
+                                                        <div class="profile_image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/dog.png" alt="Doggo"/></div>
+                                                        <div class="profile_info">
+                                                            <h3>도지견</h3>
+                                                            <div class="profile_info_detail">
+                                                                <div class="profile_loc">
+                                                                    <i class="fa-solid fa-location-dot profile_icon"></i>
+                                                                    <span class="profile_loc_info">서울</span>
+                                                                </div>
+                                                                <div class="profile_group_joinDate">
+                                                                    <i class="fa-regular fa-calendar profile_icon"></i>
+                                                                    <span>2023년 1월 1일</span>
+                                                                </div>
+                                                            </div>
+                                                      </div>
+                                                      <div class="profile_btns">
+                                                            <div class="profile_button_box button_box1">
+                                                                <a href="#" class="profile_button">추방</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="profile_box">
-                                                    <div class="profile_img"></div>
-                                                    <div class="profile_info">
-                                                        <div class="profile_name">고구마</div>
-                                                        <div class="profile_date">2023년 1월 1일 가입</div>
-                                                    </div>
-                                                    <div class="profile_btns">
-                                                        <a href="#" role="button" class="button">추방</a>
-                                                        <a href="#" role="button" class="buttonCancle">신고</a>
-                                                        <a href="#" role="button" class="button">위임</a>
-                                                    </div>
-                                                </div>
+                                                </section>
+
                                                 <div class="profile_box">
                                                     <div class="profile_img"></div>
                                                     <div class="profile_info">
@@ -258,12 +399,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- #container -->
+                   
                 </div>
-                <!-- 컨텐츠 종료 -->
+                <!-- 메인 컨텐츠 종료 -->
             </div>
         </div>
-        <!-- section2 종료 -->
+        <!-- 컨텐츠 종료 -->
 
         <!-- 푸터 영역 시작 -->
         <footer class="footer_section">
