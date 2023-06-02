@@ -12,12 +12,11 @@
   margin-bottom: 12px;
 }
 .imageArea {
-  background-image: url("../images/야옹대가족.JPG");
-  background-size: 451px 343px;
+  background-image: url(../images/야옹대가족.JPG);
+  background-size: 450px 375px;
   background-repeat: no-repeat;
-  background-position-y: 80px;
-  width: 55%;
-  border-radius: 5px;
+  background-position-y: 50px;
+  width: 60%;
   position: relative;
 }
 .imageArea img {
@@ -26,12 +25,14 @@
   margin-top: 20px;
 }
 .imageArea .msg {
+  margin-left: 10px;
   color: #fff;
   font-weight: bold;
   font-size: 1.3em;
   position: relative;
   top: 150px;
   left: 10px;
+  line-height: 30px;
 }
 .imageArea .url {
   display: inline-block;
