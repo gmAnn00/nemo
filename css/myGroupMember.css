@@ -48,7 +48,8 @@
   margin-top: 100px;
 }
 .profile_box {
-  margin-right: 50px;
+  margin-right: 5rem;
+  margin-bottom: 6.25rem;
   position: relative;
 }
 
@@ -200,7 +201,6 @@
     display: none;
     width: 75%;
     box-shadow: 0 0 0 1px #ccc inset;
-    border-radius: 10px;
     margin-right: 10px;
 }
 .hidden_menu_bar {
