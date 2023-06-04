@@ -12,6 +12,7 @@
         <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
         <script src="../js/jquery-3.6.4.min.js"></script>
         <script src="../js/header.js"></script>
+        <script src="../js/search.js"></script>
     </head>
     <body>
         <!-- 배경색 조정 -->
@@ -66,23 +67,11 @@
                     <div class="bar">
                         <!--대분류-->
                         <div class="bar01">
-                            <select name="bigBar" class="barSel">
-                                <option value="1">대분류1</option>
-                                <option value="2">대분류2</option>
-                                <option value="3">대분류3</option>
-                                <option value="4">대분류4</option>
-                                <option value="5">대분류5</option>
-                            </select>
+                            <select name="bigCate" class="barSel"></select>
                         </div>
                         <!--소분류-->
                         <div class="bar02">
-                            <select name="smallBar" class="barSel">
-                                <option value="1">소분류1</option>
-                                <option value="2">소분류2</option>
-                                <option value="3">소분류3</option>
-                                <option value="4">소분류4</option>
-                                <option value="5">소분류5</option>
-                            </select>
+                            <select name="smallCate" class="barSel"></select>
                         </div>
                         <!--지역-->
                         <div class="bar03">
@@ -112,7 +101,26 @@
                     <div class="group">
                         <div class="groupImg Gimg01"></div>
                         <div class="SteamedImg">
-                            <img src="images/heart.jpg" alt="" />
+                            <button type="button" class="grpLikeBtn" title="네모찜하기">
+                                <span class="grpLike">
+                                    <svg viewBox="0 0 24 24">
+                                        <use xlink:href="#heart" />
+                                        <!-- filled heart -->
+                                        <use xlink:href="#heart" />
+                                        <!-- outline heart -->
+                                    </svg>
+                                    <!-- reference path for both outline, and filled, hearts -->
+                                    <svg class="hide" viewBox="0 0 24 24">
+                                        <defs>
+                                            <path
+                                                id="heart"
+                                                d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"
+                                            />
+                                        </defs>
+                                    </svg>
+                                </span>
+                                <span class="hidden">찜하기</span>
+                            </button>
                         </div>
                         <div class="groupText">
                             <div class="groupText01">
