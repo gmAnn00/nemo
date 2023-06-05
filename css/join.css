@@ -6,27 +6,35 @@
   background-color: var(--sub3-color);
   border-radius: 10px;
 }
+.progress-bar span {
+  padding-right: 150px;
+  color: #777;
+}
 
 .step {
   position: absolute;
   height: 100%;
   background-color: var(--sub3-color); /* Default color for incomplete steps */
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 50px 50px 0;
+  text-align: right;
+  height: 30px;
+  line-height: 30px;
 }
-
 .step-1 {
   background-color: var(--sub-color);
-  /* width: 100%; */
+  width: 33.33%;
 }
-
 .step-2 {
   background-color: var(--main-color);
   width: 66.66%;
 }
-
+.step-2 span {
+  font-weight: bold;
+  color: #402f0d;
+}
 .step-3 {
-  background-color: var(--sub-color);
-  width: 33.33%;
+  background-color: var(--sub3-color);
+  width: 100%;
 }
 
 /* 회원가입영역 */
@@ -68,11 +76,11 @@ form div {
 form label {
   margin-bottom: 5px;
   position: relative;
-  top: 36px;
+  top: 32px;
   left: -110px;
 }
 form input {
-  padding: 10px;
+  padding: 8px;
 }
 form input[id="id"],
 input[id="nickname"] {
@@ -81,14 +89,14 @@ input[id="nickname"] {
 form .check {
   width: 100px;
   position: absolute;
-  top: 27px;
+  top: 22px;
   right: 0px;
   /* padding: 10px; */
 }
 form .findZipcode {
   width: 150px;
   position: absolute;
-  top: 27px;
+  top: 22px;
   left: 190px;
   /* padding: 10px; */
 }
@@ -133,6 +141,8 @@ form .emailCheck {
 }
 form input[type="checkbox"] {
   display: inline-block;
+  position: relative;
+  top: 10px;
 }
 form button[class="emailCheckBtn"] {
   display: inline-block;
