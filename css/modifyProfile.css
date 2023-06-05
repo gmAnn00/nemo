@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*a 태그*/
 a:link {
-    color: #4f4f4f; /*파랑색을 약간 회색으로*/
+    /* color: #4f4f4f; 파랑색을 약간 회색으로 */
     text-decoration: none; /*밑줄 없애기*/
 }
 

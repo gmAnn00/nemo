@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="../../css/normalize.css" />
         <link rel="stylesheet" href="../../css/common.css" />
         <link rel="stylesheet" href="../../css/submenu.css" />
-        <!-- nav 스타일 때문에 groupSetting.css 여기에 넣음 -->
-        <link rel="stylesheet" href="../../css/groupSetting.css" />
         <link rel="stylesheet" href="../../css/myGroupList.css" />
         <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
         <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet" />
@@ -23,7 +21,7 @@
         <!-- header 시작 -->
         <header>
             <h1 class="logo">
-                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
+                <a href="../../html/index.html"><img src="../../images/logo.png" alt="logo" /></a>
             </h1>
         </header>
         <button class="burger">
@@ -63,7 +61,7 @@
                                 <a href="schedule.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>프로필</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
@@ -71,15 +69,16 @@
                                 <a href="board.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>내 일정</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="myPageGroup.html">
                                     <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name"><span>내 소모임</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <div class="menu_submenu_name submenu_select"><span>내 소모임</span></div>
+                                        <i class="fa-solid fa-minus submenu_select"></i>
+                                        
                                     </div>
                                 </a>
                             </li>
@@ -89,7 +88,7 @@
                                         <div class="menu_submenu_name">
                                             <span>내가 쓴 글·댓글</span>
                                         </div>
-                                        <i class="fa-solid fa-minus"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
@@ -102,147 +101,217 @@
                 <div class="sc2_subsection">
                     <div class="sc2_subsection_title">
                         <h2 class="sc2_subsection_title_name">내 소모임</h2>
+                        
                         <!-- nav 바 시작 -->
                         <div class="nav_bar">
                             <a href="index.html">
-                                <i class="fa-solid fa-house"></i>
+                                <i class="fa-solid fa-house nav_icon"></i>
                             </a>
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>마이페이지</span>
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>내 소모임</span>
                         </div>
                         <!-- nav 바 종료 -->
                     </div>
 
                     <div class="sc2_subcontents">
-                        <div class="sc2_contents">
+
+                        <!-- 리더 영역 시작 -->
+                        <div class="sc2_subcontent">
                             <div class="sc2_contents_title">
                                 <div class="sc2_contents_title_name">
                                     <span>리더</span>
                                 </div>
-                                <div class="sc2_groups">
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_icon">
-                                            <i class="fa-solid fa-pen"></i>
+                                <div class="cards">
+                                    <div class="card card--1">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
                                         </div>
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_icon">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </div>
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
-
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_icon">
-                                            <i class="fa-solid fa-pen"></i>
+                                    
+                                    
+                                    <div class="card card--2">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
                                         </div>
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
+                                    
+                                    <div class="card card--3">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
+                                        </div>
+                                    </div>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
+                        <!-- 리더 영역 종료 -->
 
-                        <div class="sc2_contents sc2_subcontents">
+                        <!-- 회원 영역 시작 -->
+                        <div class="sc2_subcontent">
                             <div class="sc2_contents_title">
                                 <div class="sc2_contents_title_name">
                                     <span>회원</span>
                                 </div>
-
-                                <div class="sc2_groups">
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                <div class="cards">
+                                    <div class="card card--1">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
-
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                    
+                                    
+                                    <div class="card card--2">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
-
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                    
+                                    <div class="card card--3">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
+                        <!-- 회원 영역 종료 -->
 
-                        <div class="sc2_contents sc2_subcontents">
+                        <!-- 찜 영역 시작 -->
+                        <div class="sc2_subcontent">
                             <div class="sc2_contents_title">
                                 <div class="sc2_contents_title_name">
                                     <span>찜</span>
                                 </div>
-
-                                <div class="sc2_groups">
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_icon">
-                                            <i class="fa-regular fa-circle-xmark"></i>
+                                <div class="cards">
+                                    <div class="card card--1">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
                                         </div>
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_icon">
-                                            <i class="fa-regular fa-circle-xmark"></i>
-                                        </div>
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
-
-                                    <div class="sc2_groups_box">
-                                        <div class="sc2_icon">
-                                            <i class="fa-regular fa-circle-xmark"></i>
+                                    
+                                    
+                                    <div class="card card--2">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
                                         </div>
-                                        <div class="sc2_imgs_box">
-                                            <div class="groups_img_box">
-                                                <img src="../../images/sc1_title.jpeg" alt="title" class="sc_img" />
-                                            </div>
-                                            <span class="sc2_imgs_box_info">이젠 종로 학원</span>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
                                         </div>
                                     </div>
+                                    
+                                    <div class="card card--3">
+                                        <div class="card__info-hover">
+                                            <span>바로가기</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                        <div class="card__img"></div>
+                                        <a href="#" class="card_link">
+                                            <div class="card__img--hover"></div>
+                                        </a>
+                                        <div class="card__info">
+                                            <span class="card__category">대분류</span>
+                                            <span class="card__category">소분류</span>
+                                            <h3 class="card__title">이젠종로학원</h3>
+                                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
+                                        </div>
+                                    </div>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
+                        <!-- 찜 영역 종료 -->
+
                     </div>
                 </div>
                 <!-- 메인 컨텐츠 종료 -->
@@ -296,16 +365,18 @@
 
                     <div class="footer_section2_content">
                         <div class="footer_logo">
-                            <a href="../index.html"><img src="../../images/logo_white.png" class="img-fluid" alt="logo" /></a>
+                            <a href="index.html"><img src="../../images/logo_white.png" class="img-fluid" alt="logo" /></a>
                         </div>
                         <div class="footer_text">
                             <p>© 2023 NEMO</p>
                         </div>
                         <div class="footer_social_icon">
                             <span>Follow us</span>
-                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                            <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            <div class="footer_social_icon_box">
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
