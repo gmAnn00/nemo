@@ -20,7 +20,7 @@
         <!-- header 시작 -->
         <header>
             <h1 class="logo">
-                <a href="../index.html"><img src="images/logo.png" alt="logo" /></a>
+                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
             </h1>
         </header>
         <button class="burger">
@@ -49,7 +49,7 @@
         <!-- header 종료 -->
 
         <!-- 콘텐츠 영역 시작 -->
-        <div id="section2">
+        <div class="section2">
             <div class="sc2_contents">
                 <!-- 메뉴바 시작 -->
                 <div class="sc2_menu_contents">
@@ -59,10 +59,8 @@
                             <li>
                                 <a href="adminGroup.html">
                                     <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name">
-                                            <span>소모임 관리</span>
-                                        </div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <div class="menu_submenu_name"><span>소모임 관리</span></div>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
@@ -70,17 +68,15 @@
                                 <a href="adminMember.html">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>회원 관리</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="adminHelpQnA.html">
                                     <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name">
-                                            <span>고객센터 Q&A</span>
-                                        </div>
-                                        <i class="fa-solid fa-minus"></i>
+                                        <div class="menu_submenu_name submenu_select"><span>고객센터 Q&A</span></div>
+                                        <i class="fa-solid fa-minus submenu_select"></i>
                                     </div>
                                 </a>
                             </li>
@@ -90,7 +86,7 @@
                                         <div class="menu_submenu_name">
                                             <span>고객센터 1:1 문의</span>
                                         </div>
-                                        <i class="fa-solid fa-angle-right"></i>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
                                 </a>
                             </li>
@@ -105,110 +101,115 @@
                         <!-- nav 바 시작 -->
                         <div class="nav_bar">
                             <a href="index.html">
-                                <i class="fa-solid fa-house"></i>
+                                <i class="fa-solid fa-house nav_icon"></i>
                             </a>
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>고객센터</span>
-                            <i class="fa-solid fa-angle-right"></i>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>Q&A</span>
                         </div>
                         <!-- nav 바 종료 -->
                     </div>
-                    <div class="searchContainer">
-                        <form action="#">
-                            <select name="searchKeyword" id="searchKeyword">
-                                <option value="title" selected>제목</option>
-                                <option value="content">내용</option>
-                                <option value="writer">작성자</option>
-                            </select>
-                            <input type="text" name="searchInput" />
-                            <button href="#" class="btn">검색</button>
-                        </form>
-                        <div class="boardListArea">
-                            <table class="boardList">
-                                <tr class="boardListHead">
-                                    <th>번호</th>
-                                    <th>말머리</th>
-                                    <th>제목</th>
-                                    <th>작성자</th>
-                                    <th>작성일</th>
-                                </tr>
-                                <tbody>
-                                    <tr>
-                                        <td>100010</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100009</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100008</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100007</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100006</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100005</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100004</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100003</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100002</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100001</td>
-                                        <td>자유</td>
-                                        <td>제목입니다</td>
-                                        <td>mornstar</td>
-                                        <td>23.05.06</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="pagenation">
-                                <span>&lt&lt</span><span>&lt</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span
-                                ><span>&gt</span><span>&gt&gt</span>
+                    
+                    <div class="sc2_subcontents">
+                        <div class="sc2_subcontent">
+                            <div class="searchContainer">
+                                <form action="#">
+                                    <select name="searchKeyword" id="searchKeyword">
+                                        <option value="title" selected>제목</option>
+                                        <option value="content">내용</option>
+                                        <option value="writer">작성자</option>
+                                    </select>
+                                    <input type="text" name="searchInput" />
+                                    <button href="#" class="btn">검색</button>
+                                </form>
+                                <div class="boardListArea">
+                                    <table class="boardList">
+                                        <tr class="boardListHead">
+                                            <th>번호</th>
+                                            <th>말머리</th>
+                                            <th>제목</th>
+                                            <th>작성자</th>
+                                            <th>작성일</th>
+                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>100010</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100009</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100008</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100007</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100006</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100005</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100004</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100003</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100002</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>100001</td>
+                                                <td>자유</td>
+                                                <td>제목입니다</td>
+                                                <td>mornstar</td>
+                                                <td>23.05.06</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pagenation">
+                                        <span>&lt&lt</span><span>&lt</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span
+                                        ><span>&gt</span><span>&gt&gt</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -270,9 +271,11 @@
                         </div>
                         <div class="footer_social_icon">
                             <span>Follow us</span>
-                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                            <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            <div class="footer_social_icon_box">
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
