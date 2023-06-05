@@ -19,7 +19,7 @@
         <!-- header 시작 -->
         <header>
             <h1 class="logo">
-                <a href="../index.html"><img src="images/logo.png" alt="logo" /></a>
+                <a href="../../html/index.html"><img src="../../images/logo.png" alt="logo" /></a>
             </h1>
         </header>
         <button class="burger">
@@ -51,96 +51,118 @@
         <div class="section2">
             <div class="sc2_contents">
                 <!-- 메뉴바 시작 -->
-                <div class="sc2_menu">
-                    <h2 class="sc2_menu_title">관리자</h2>
-                    <ul class="sc2_menu_list">
-                        <li>
-                            <a href="adminGroup.html">
-                                <div class="sc2_icon_menu">
-                                    <div class="menu_submenu_name"><span>소모임 관리</span></div>
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="adminMember.html">
-                                <div class="sc2_icon_menu">
-                                    <div class="menu_submenu_name"><span>회원 관리</span></div>
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="adminHelpQnA.html">
-                                <div class="sc2_icon_menu">
-                                    <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="adminHelp.html">
-                                <div class="sc2_icon_menu">
-                                    <div class="menu_submenu_name">
-                                        <span>고객센터 1:1 문의</span>
+                <div class="sc2_menu_contents">
+                    <div class="sc2_menu">
+                        <h2 class="sc2_menu_title">관리자</h2>
+                        <ul class="sc2_menu_list">
+                            <li>
+                                <a href="adminGroup.html">
+                                    <div class="sc2_icon_menu">
+                                        <div class="menu_submenu_name"><span>소모임 관리</span></div>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
                                     </div>
-                                    <i class="fa-solid fa-minus"></i>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="adminMember.html">
+                                    <div class="sc2_icon_menu">
+                                        <div class="menu_submenu_name"><span>회원 관리</span></div>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="adminHelpQnA.html">
+                                    <div class="sc2_icon_menu">
+                                        <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
+                                        <i class="fa-solid fa-angle-right menu_angle"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="adminHelp.html">
+                                    <div class="sc2_icon_menu">
+                                        <div class="menu_submenu_name submenu_select">
+                                            <span>고객센터 1:1 문의</span>
+                                        </div>
+                                        <i class="fa-solid fa-minus submenu_select"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- 메뉴바 종료 -->
 
-                <div id="chattingWindow">
-                    <h2 class="helpTitle">고객센터 1:1 문의</h2>
-                    <div class="chattingArea">
-                        <div class="MayIHelpYouArea">
-                            <img src="../../images/logo_only.png" alt="무엇을 도와드릴까요 프로필 이미지" />
-                            <p>무엇을 도와드릴까요?</p>
+                <div class="sc2_subsection">
+                    <div class="sc2_subsection_title">
+                        <h2 class="sc2_subsection_title_name">고객센터 1:1 문의</h2>
+                        
+                        <!-- nav 바 시작 -->
+                        <div class="nav_bar">
+                            <a href="../index.html">
+                                <i class="fa-solid fa-house nav_icon"></i>
+                            </a>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
+                            <span>관리자</span>
+                            <i class="fa-solid fa-angle-right nav_icon"></i>
+                            <span>고객센터 1:1 문의</span>
+                        </div>
+                        <!-- nav 바 종료 -->
+                    </div>
+
+                    <div class="sc2_subcontents">
+
+                        <div id="chattingWindow">
+                            <div class="chattingArea">
+                                <div class="MayIHelpYouArea">
+                                    <img src="../../images/logo_only.png" alt="무엇을 도와드릴까요 프로필 이미지" />
+                                    <p>무엇을 도와드릴까요?</p>
+                                </div>
+
+                                <div class="chattingMessageArea">
+                                    <div class="userMessageArea">
+                                        <p class="userMessage">회원가입은 어떻게 하나요?</p>
+                                        <img src="../../images/icon_prof.png" alt="유저 프로필" />
+                                    </div>
+                                    <div class="helpMessageArea">
+                                        <img src="../../images/logo_only.png" alt="고객센터 프로필" />
+                                        <p class="helpMessage">회원가입 하는 방법을 알려드리겠습니다.</p>
+                                    </div>
+                                </div>
+                                <div class="sendMessageArea">
+                                    <input type="text" id="messageInput" placeholder="문의사항을 입력해 주세요" />
+                                    <button type="button" id="sendMessage" class="sendMessage">
+                                        <!-- <img src="images/temp.png" alt="전송사진" /> -->
+                                    </button>
+                                    <input type="hidden" id="idSend" class="idSend" />
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="chattingMessageArea">
-                            <div class="userMessageArea">
-                                <p class="userMessage">회원가입은 어떻게 하나요?</p>
-                                <img src="../../images/icon_prof.png" alt="유저 프로필" />
+                        <!-- <div id="memberListWindow">
+                            <div class="memberSearch">
+                                <input type="text" />
                             </div>
-                            <div class="helpMessageArea">
-                                <img src="../../images/logo_only.png" alt="고객센터 프로필" />
-                                <p class="helpMessage">회원가입 하는 방법을 알려드리겠습니다.</p>
+                            <div class="memberList">
+                                <div class="memberContainer">
+                                    <img src="../../images/icon_prof.png" alt="회원 이미지" />
+                                    <span>회원1</span>
+                                </div>
+                                <div class="memberContainer">
+                                    <img src="../../images/icon_prof.png" alt="회원 이미지" />
+                                    <span>회원2</span>
+                                </div>
+                                <div class="memberContainer">
+                                    <img src="../../images/icon_prof.png" alt="회원 이미지" />
+                                    <span>회원3</span>
+                                </div>
+                                <div class="memberContainer">
+                                    <img src="../../images/icon_prof.png" alt="회원 이미지" />
+                                    <span>회원4</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sendMessageArea">
-                            <input type="text" id="messageInput" placeholder="문의사항을 입력해 주세요" />
-                            <button type="button" id="sendMessage" class="sendMessage">
-                                <!-- <img src="images/temp.png" alt="전송사진" /> -->
-                            </button>
-                            <input type="hidden" id="idSend" class="idSend" />
-                        </div>
-                    </div>
-                </div>
-
-                <div id="memberListWindow">
-                    <div class="memberSearch">
-                        <input type="text" />
-                    </div>
-                    <div class="memberList">
-                        <div class="memberContainer">
-                            <img src="../../images/icon_prof.png" alt="회원 이미지" />
-                            <span>회원1</span>
-                        </div>
-                        <div class="memberContainer">
-                            <img src="../../images/icon_prof.png" alt="회원 이미지" />
-                            <span>회원2</span>
-                        </div>
-                        <div class="memberContainer">
-                            <img src="../../images/icon_prof.png" alt="회원 이미지" />
-                            <span>회원3</span>
-                        </div>
-                        <div class="memberContainer">
-                            <img src="../../images/icon_prof.png" alt="회원 이미지" />
-                            <span>회원4</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -200,9 +222,11 @@
                         </div>
                         <div class="footer_social_icon">
                             <span>Follow us</span>
-                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                            <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            <div class="footer_social_icon_box">
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
