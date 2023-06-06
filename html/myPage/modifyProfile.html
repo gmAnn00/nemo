@@ -1,178 +1,385 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>회원정보 수정</title>
-        <link rel="shortcut icon" href="../../images/favicon.png" />
-        <link rel="stylesheet" href="../../css/reset.css" />
-        <link rel="stylesheet" href="../../css/normalize.css" />
-        <link rel="stylesheet" href="../../css/common.css" />
-        <link rel="stylesheet" href="../../css/modifyProfile.css" />
-        <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
-        <script src="../../js/jquery-3.6.4.min.js"></script>
-        <script src="../../js/header.js"></script>
-    </head>
-    <body>
-        <!-- header 시작 -->
-        <!-- 사이드 메뉴시 배경색 조정 -->
-        <div class="menu_bg"></div>
-        <header>
-            <h1 class="logo">
-                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
-            </h1>
-        </header>
-        <button class="burger">
-            <span></span>
-        </button>
-        <div class="sidemenu">
-            <ul class="main_menu">
-                <li>
-                    <a href="#">
-                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-                    </a>
-                </li>
-                <li><a href="#">소모임 만들기</a></li>
-                <li><a href="#">소모임 검색</a></li>
-                <li><a href="#">프로필</a></li>
-                <li><a href="#">내 일정</a></li>
-                <li><a href="#">내 소모임</a></li>
-                <li><a href="#">고객센터</a></li>
-                <li><a href="#">로그아웃</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원정보 수정</title>
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/submenu.css" />
+    <link rel="stylesheet" href="../../css/modifyProfile.css" />
+    <script
+      src="https://kit.fontawesome.com/bc604c01cc.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../js/jquery-3.6.4.min.js"></script>
+    <script src="../../js/header.js"></script>
+  </head>
+  <body>
+    <!-- header 시작 -->
+    <!-- 사이드 메뉴시 배경색 조정 -->
+    <div class="menu_bg"></div>
+    <header>
+      <h1 class="logo">
+        <a href="../index.html"
+          ><img src="../../images/logo.png" alt="logo"
+        /></a>
+      </h1>
+    </header>
+    <button class="burger">
+      <span></span>
+    </button>
+    <div class="sidemenu">
+      <ul class="main_menu">
+        <li>
+          <a href="#">
+            <div class="profile">
+              <i class="fa-solid fa-circle-user"></i
+              ><span class="profile_name">사이다</span>
+            </div>
+          </a>
+        </li>
+        <li><a href="#">소모임 만들기</a></li>
+        <li><a href="#">소모임 검색</a></li>
+        <li><a href="#">프로필</a></li>
+        <li><a href="#">내 일정</a></li>
+        <li><a href="#">내 소모임</a></li>
+        <li><a href="#">고객센터</a></li>
+        <li><a href="#">로그아웃</a></li>
+      </ul>
+      <div class="sidemenu_footer">
+        <h3>Contact details</h3>
+        <p>글 넣을 거 있으면 넣기</p>
+      </div>
+    </div>
+    <!-- header 종료 -->
+
+    <!--1. 전체 부분 -->
+    <div class="section2">
+      <div class="sc2_contents">
+        <!-- 메뉴바 시작 -->
+        <div class="sc2_menu_contents">
+          <div class="sc2_menu">
+            <h2 class="sc2_menu_title">프로필</h2>
+            <ul class="sc2_menu_list">
+              <li>
+                <a href="myProfile.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name submenu_select">
+                      <span>프로필</span>
+                    </div>
+                    <i class="fa-solid fa-minus submenu_select"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="mySchedule.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>내 일정</span></div>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="myGroupList.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name menu_angle">
+                      <span>내 소모임</span>
+                    </div>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="myboardList.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name">
+                      <span>내가 쓴 글·댓글</span>
+                    </div>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
+                  </div>
+                </a>
+              </li>
             </ul>
-            <div class="sidemenu_footer">
-                <h3>Contact details</h3>
-                <p>글 넣을 거 있으면 넣기</p>
-            </div>
+          </div>
         </div>
-        <!-- header 종료 -->
+        <!-- 메뉴바 종료 -->
 
-        <!--1. all-->
-        <div class="all">
-            <!--2.-->
-            <div class="modify">
-                <h2 class="modify1">회원정보 수정</h2>
+        <!--3. 컨텐츠부분-->
+        <div class="sc2_subsection">
+          <div class="sc2_subsection_title">
+            <h2 class="sc2_subsection_title_name">회원정보 수정</h2>
+            <!-- nav 바 시작 -->
+            <div class="nav_bar">
+              <a href="index.html">
+                <i class="fa-solid fa-house nav_icon"></i>
+              </a>
+              <i class="fa-solid fa-angle-right nav_icon"></i>
+              <span>나의 모임</span>
+              <i class="fa-solid fa-angle-right nav_icon"></i>
+              <span>소모임관리</span>
             </div>
+            <!-- nav 바 종료 -->
+          </div>
 
-            <!--3. myImage-->
-            <div class="myImage">
-                <img src="../../images/dall.png" alt="profile" class="my" />
-                <label class="imageM" for="hidden" id="file">이미지 수정</label>
-                <input id="hidden" type="file" style="display: none" />
-            </div>
+          <!--3. myImage-->
+          <div class="myImage">
+            <img src="../../images/dall.png" alt="profile" class="my" />
+            <label class="imageM" for="hidden" id="file">이미지 수정</label>
+            <input id="hidden" type="file" style="display: none" />
+          </div>
 
-            <!--4.-->
-            <div class="myMo">
-                <form action="#" id="modifyPro" name="modifyPro">
-                    <div class="profileM">
-                        <!--<legend>회원정보 수정 폼</legend>-->
-                        <!--안보임-->
-                        <div>
-                            <label for="name">이름</label>
-                            <input type="text" id="name" name="name" />
-                        </div>
-                        <div>
-                            <label for="id">아이디</label>
-                            <input type="text" id="id" name="id" />
-                            <button href="#" class="idCheck">중복확인</button>
-                        </div>
-                        <div>
-                            <label for="password">비밀번호</label>
-                            <input type="password" id="password" name="password" />
-                        </div>
-                        <div>
-                            <label for="confirmPassword">비밀번호 확인</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" />
-                        </div>
-                        <div>
-                            <label for="birth">생년월일</label>
-                            <input type="text" id="birth" name="birth" />
-                        </div>
-                        <div>
-                            <label for="tel">핸드폰번호</label>
-                            <input type="tel" id="tel" name="tel" maxlength="11" size="20" />
-                        </div>
-                        <div>
-                            <label for="area">지역</label>
-                            <input type="text" id="area" name="area" />
-                        </div>
-                        <div>
-                            <label for="email">이메일</label>
-                            <input type="email" id="email" name="email" size="30" />
-                            <button href="#" class="idCheck">중복확인</button>
-                        </div>
-                        <div class="btnJoinArea">
-                            <button type="submit" class="button">수정</button>
-                            <button type="reset" class="buttonCancle">취소</button>
-                        </div>
-                    </div>
-                </form>
+          <!--4.-->
+          <div class="myMo">
+            <!-- 회원가입 폼 + @ -->
+            <form id="frm" name="frm">
+              <div>
+                <label for="id">아이디</label>
+                <input
+                  type="text"
+                  id="id"
+                  name="id"
+                  placeholder=""
+                  required
+                  disabled
+                />
+                <input type="hidden" name="id" value="${member.id}" />
+              </div>
+              <div>
+                <label for="password">비밀번호</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 8~16자)"
+                  required
+                />
+              </div>
+              <div>
+                <label for="passwordCheck">비밀번호 확인</label>
+                <input
+                  type="password"
+                  id="passwordCheck"
+                  name="passwordCheck"
+                  placeholder="비밀번호 재입력"
+                  required
+                />
+              </div>
+              <div>
+                <label for="name">이름</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder=""
+                  required
+                  disabled
+                />
+                <input type="hidden" name="name" value="${member.name}" />
+              </div>
+              <div>
+                <label for="nickname">닉네임</label>
+                <button type="button" class="nicknameCheck check button">
+                  중복 확인
+                </button>
+                <input
+                  type="text"
+                  id="nickname"
+                  name="nickname"
+                  placeholder="닉네임을 입력해주세요"
+                  required
+                />
+              </div>
+              <div>
+                <label for="address">주소</label>
+                <button
+                  type="button"
+                  class="findZipcode button"
+                  id="findZipcode"
+                >
+                  우편번호 찾기
+                </button>
+                <input
+                  type="tel"
+                  id="zipcode"
+                  name="zipcode"
+                  maxlength="10"
+                  size="10"
+                  placeholder="우편 번호"
+                  required
+                />
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  maxlength="100"
+                  size="60"
+                  placeholder="주소"
+                  required
+                />
+                <input
+                  type="text"
+                  id="address_detail"
+                  name="address_datail"
+                  maxlength="100"
+                  size="60"
+                  placeholder="상세주소를 적어주세요"
+                  required
+                />
+              </div>
+              <script>
+                window.onload = function () {
+                  document
+                    .getElementById("findZipcode")
+                    .addEventListener("click", function () {
+                      new daum.Postcode({
+                        oncomplete: function (data) {
+                          document.getElementById("zipcode").value =
+                            data.zonecode; // 우편번호를 zipcode input 태그에 할당
+                          document.getElementById("address").value =
+                            data.address; // 주소를 address input 태그에 할당
+                          document.querySelector("input[name=address]").focus();
+                          // 입력된 값이 있는 input 박스 비활성화
+                          document.getElementById("zipcode").disabled = true;
+                          document.getElementById("address").disabled = true;
+                        },
+                      }).open();
+                    });
+                };
+              </script>
+              <div>
+                <label for="birthdate">생년월일</label>
+                <input
+                  type="date"
+                  id="birthdate"
+                  name="birthdate"
+                  min="1900-01-01"
+                  required
+                />
+              </div>
+              <div>
+                <label for="phone">전화번호</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="휴대폰 번호 입력 ('-'제외 11자리 입력)"
+                  required
+                />
+              </div>
+              <div class="email">
+                <label for="email">이메일주소</label>
+                <input type="text" id="email" name="email" />
+                <span>@</span>
+                <input type="text" id="emailDomain" name="emailDomain" />
+                <select name="domainList" id="domainList">
+                  <option value="self">직접입력</option>
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="daum.net">daum.net</option>
+                  <option value="hanmail.net">hanmail.net</option>
+                  <option value="yahoo.com">yahoo.com</option>
+                  <option value="nate.com">nate.com</option>
+                </select>
+              </div>
+              <div class="emailCheck">
+                <input type="checkbox" />
+                <button type="button" class="emailCheckBtn button">
+                  이메일 중복 확인
+                </button>
+              </div>
+
+              <div class="submitCancel">
+                <!-- <button type="submit" class="button">가입하기</button> -->
+                <a
+                  href="#"
+                  type="submit"
+                  role="button"
+                  class="button"
+                  onclick="fnJoin();"
+                  >수정하기</a
+                >
+                <!-- type을 버튼으로 바꾸고 action과 submit을 jsp 처리하기 -->
+                <a href="myProfile.html" role="button" class="buttonCancle"
+                  >수정취소</a
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 푸터 영역 시작 -->
+    <footer class="footer_section">
+      <div class="container">
+        <div class="footer_section1">
+          <div class="footer_section1_content">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="cta-text">
+              <h4>Address</h4>
+              <span>서울시 종로구 종로78</span>
             </div>
+          </div>
+
+          <div class="footer_section1_content">
+            <i class="fas fa-phone"></i>
+            <div class="cta-text">
+              <h4>Call us</h4>
+              <span>02-123-4567</span>
+            </div>
+          </div>
+
+          <div class="footer_section1_content">
+            <i class="far fa-envelope-open"></i>
+            <div class="cta-text">
+              <h4>Mail us</h4>
+              <span>admin@nemo.com</span>
+            </div>
+          </div>
         </div>
 
-        <!-- 푸터 영역 시작 -->
-        <footer class="footer_section">
-            <div class="container">
-                <div class="footer_section1">
-                    <div class="footer_section1_content">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="cta-text">
-                            <h4>Address</h4>
-                            <span>서울시 종로구 종로78</span>
-                        </div>
-                    </div>
-
-                    <div class="footer_section1_content">
-                        <i class="fas fa-phone"></i>
-                        <div class="cta-text">
-                            <h4>Call us</h4>
-                            <span>02-123-4567</span>
-                        </div>
-                    </div>
-
-                    <div class="footer_section1_content">
-                        <i class="far fa-envelope-open"></i>
-                        <div class="cta-text">
-                            <h4>Mail us</h4>
-                            <span>admin@nemo.com</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer_section2">
-                    <div class="footer_section2_content">
-                        <div class="footer_section2_content_title">
-                            <h3>NEMO Links</h3>
-                        </div>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">고객센터</a></li>
-                            <li><a href="#">이용약관</a></li>
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">저작권정책</a></li>
-                            <li><a href="#">개인정보 처리방침</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer_section2_content">
-                        <div class="footer_logo">
-                            <a href="index.html"><img src="../../images/logo_white.png" class="img-fluid" alt="logo" /></a>
-                        </div>
-                        <div class="footer_text">
-                            <p>© 2023 NEMO</p>
-                        </div>
-                        <div class="footer_social_icon">
-                            <span>Follow us</span>
-                            <div class="footer_social_icon_box">
-                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="footer_section2">
+          <div class="footer_section2_content">
+            <div class="footer_section2_content_title">
+              <h3>NEMO Links</h3>
             </div>
-        </footer>
-        <!-- 푸터 영역 끝 -->
-    </body>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">저작권정책</a></li>
+              <li><a href="#">개인정보 처리방침</a></li>
+            </ul>
+          </div>
+
+          <div class="footer_section2_content">
+            <div class="footer_logo">
+              <a href="index.html"
+                ><img
+                  src="../../images/logo_white.png"
+                  class="img-fluid"
+                  alt="logo"
+              /></a>
+            </div>
+            <div class="footer_text">
+              <p>© 2023 NEMO</p>
+            </div>
+            <div class="footer_social_icon">
+              <span>Follow us</span>
+              <div class="footer_social_icon_box">
+                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- 푸터 영역 끝 -->
+  </body>
 </html>

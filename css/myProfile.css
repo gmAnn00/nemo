@@ -1,10 +1,10 @@
 @charset "utf-8";
 /*전체 부분*/
-.all {
+/* .all {
   margin: 0 auto;
   width: 1000px;
   display: flex;
-}
+} */
 
 /*2번*/
 .menu {
@@ -49,7 +49,7 @@
 }
 /*4번*/
 .myProfile {
-  width: 600px;
+  width: 800px;
   display: flex;
   flex-wrap: wrap;
   margin-left: 30px;
@@ -57,7 +57,7 @@
 /*4-1*/
 .myProMo {
   margin: 10px 0;
-  width: 600px;
+  width: 800px;
   display: flex;
   justify-content: space-between;
 }
@@ -84,9 +84,9 @@
   margin: 0 20px 10px 80px;
 }
 .myHabi {
-  width: 700px;
-  margin-top: 50px;
-  border-bottom: 1px solid black;
+  width: 800px;
+  margin: 50px 0;
+  /* border-bottom: 1px solid black; */
 }
 .myHabiText {
   display: flex;
@@ -98,4 +98,15 @@
 .myHabiI li {
   display: inline-block;
   margin: 30px 20px;
+}
+.withdrawal {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+.withdrawal > h3 {
+  font-size: 1.2em;
+}
+.withdrawal .buttonCancle {
+  border: 1px solid #ff26a5;
 }
