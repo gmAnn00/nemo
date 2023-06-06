@@ -1,269 +1,282 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>게시글·댓글</title>
-        <link rel="shortcut icon" href="../../images/favicon.png" />
-        <link rel="stylesheet" href="../../css/normalize.css" />
-        <link rel="stylesheet" href="../../css/common.css" />
-        <link rel="stylesheet" href="../../css/submenu.css" />
-        <link rel="stylesheet" href="../../css/boardMy.css" />
-        <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
-        <script src="../../js/jquery-3.6.4.min.js"></script>
-        <script src="../../js/header.js"></script>
-        <script src="../../js/boardMy.js"></script>
-    </head>
-    <body>
-        <!-- 배경색 조정 -->
-        <div class="menu_bg"></div>
-        <!-- header 시작 -->
-        <header>
-            <h1 class="logo">
-                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
-            </h1>
-        </header>
-        <button class="burger">
-            <span></span>
-        </button>
-        <div class="sidemenu">
-            <ul class="main_menu">
-                <li>
-                    <a href="#">
-                        <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">사이다</span></div>
-                    </a>
-                </li>
-                <li><a href="createGroup.html">소모임 만들기</a></li>
-                <li><a href="search.html">소모임 검색</a></li>
-                <li><a href="myPage.html">프로필</a></li>
-                <li><a href="mySchedule.html">내 일정</a></li>
-                <li><a href="myGroupList.html">내 소모임</a></li>
-                <li><a href="adminHelp.html">고객센터</a></li>
-                <li><a href="#">로그아웃</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시글·댓글</title>
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/submenu.css" />
+    <link rel="stylesheet" href="../../css/boardMy.css" />
+    <script
+      src="https://kit.fontawesome.com/bc604c01cc.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../js/jquery-3.6.4.min.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/boardMy.js"></script>
+  </head>
+  <body>
+    <!-- 배경색 조정 -->
+    <div class="menu_bg"></div>
+    <!-- header 시작 -->
+    <header>
+      <h1 class="logo">
+        <a href="../index.html"
+          ><img src="../../images/logo.png" alt="logo"
+        /></a>
+      </h1>
+    </header>
+    <button class="burger">
+      <span></span>
+    </button>
+    <div class="sidemenu">
+      <ul class="main_menu">
+        <li>
+          <a href="#">
+            <div class="profile">
+              <i class="fa-solid fa-circle-user"></i
+              ><span class="profile_name">사이다</span>
+            </div>
+          </a>
+        </li>
+        <li><a href="createGroup.html">소모임 만들기</a></li>
+        <li><a href="search.html">소모임 검색</a></li>
+        <li><a href="myPage.html">프로필</a></li>
+        <li><a href="mySchedule.html">내 일정</a></li>
+        <li><a href="myGroupList.html">내 소모임</a></li>
+        <li><a href="adminHelp.html">고객센터</a></li>
+        <li><a href="#">로그아웃</a></li>
+      </ul>
+      <div class="sidemenu_footer">
+        <h3>Contact details</h3>
+        <p>글 넣을 거 있으면 넣기</p>
+      </div>
+    </div>
+    <!-- header 종료 -->
+
+    <!-- section2 시작 -->
+    <div class="section2">
+      <div class="sc2_contents">
+        <!-- 메뉴바 시작 -->
+        <div class="sc2_menu_contents">
+          <div class="sc2_menu">
+            <h2 class="sc2_menu_title">내가 쓴 글·댓글</h2>
+            <ul class="sc2_menu_list">
+              <li>
+                <a href="myPage.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>프로필</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="mySchedule.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>내 일정</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="myGroupList.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>내 소모임</span></div>
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href=" myBoardList.html">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name">
+                      <span>내가 쓴 글·댓글</span>
+                    </div>
+                    <i class="fa-solid fa-minus"></i>
+                  </div>
+                </a>
+              </li>
             </ul>
-            <div class="sidemenu_footer">
-                <h3>Contact details</h3>
-                <p>글 넣을 거 있으면 넣기</p>
-            </div>
+          </div>
         </div>
-        <!-- header 종료 -->
+        <!-- 메뉴바 종료 -->
 
-        <!-- section2 시작 -->
-        <div class="section2">
-            <div class="sc2_contents">
-                <!-- 메뉴바 시작 -->
-                <div class="sc2_menu_contents">
-                    <div class="sc2_menu">
-                        <h2 class="sc2_menu_title">내가 쓴 글·댓글</h2>
-                        <ul class="sc2_menu_list">
-                            <li>
-                                <a href="myPage.html">
-                                    <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name"><span>프로필</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mySchedule.html">
-                                    <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name"><span>내 일정</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="myGroupList.html">
-                                    <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name"><span>내 소모임</span></div>
-                                        <i class="fa-solid fa-angle-right"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="boardMy.html">
-                                    <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name">
-                                            <span>내가 쓴 글·댓글</span>
-                                        </div>
-                                        <i class="fa-solid fa-minus"></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 메뉴바 종료 -->
-
-                <!-- 컨텐츠 시작 -->
-                <div class="sc2_subsection">
-                    <div class="sc2_subsection_title">
-                        <h2 class="sc2_subsection_title_name">내가 쓴 글·댓글</h2>
-                        <!-- nav 바 시작 -->
-                        <div class="nav_bar">
-                            <a href="../index.html">
-                                <i class="fa-solid fa-house"></i>
-                            </a>
-                            <i class="fa-solid fa-angle-right"></i>
-                            <span>마이페이지</span>
-                            <i class="fa-solid fa-angle-right"></i>
-                            <span>내가 쓴 글·댓글</span>
-                        </div>
-                        <!-- nav 바 종료 -->
-                    </div>
-
-                    <div id="sc2_subcontents">
-                        <div data-tabs class="tabs">
-                            <div class="tab">
-                                <input type="radio" name="tabgroup" id="tab-1" checked />
-                                <label for="tab-1">작성글</label>
-                                <div class="tab__content">
-                                    <div id="menu2" class="tabcont">
-                                        <div class="board_section">
-                                            <table class="board_box">
-                                                <tr class="first">
-                                                    <th><input type="checkbox" class="check" /></th>
-                                                    <th>번호</th>
-                                                    <th>제목</th>
-                                                    <th>날짜</th>
-                                                    <th>삭제</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox" class="check" /></td>
-                                                    <td>0002</td>
-                                                    <td>소모임1 | 고양이는 야옹</td>
-                                                    <td>2023-04-30</td>
-                                                    <td><button>삭제</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox" class="check" /></td>
-                                                    <td>0001</td>
-                                                    <td>소모임2 | 강아지는 멍멍</td>
-                                                    <td>2023-04-30</td>
-                                                    <td><button>삭제</button></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab">
-                                <input type="radio" name="tabgroup" id="tab-2" />
-                                <label for="tab-2">작성댓글</label>
-                                <div class="tab__content">
-                                    <div id="menu2" class="tabcont">
-                                        <div class="rep_section">
-                                            <table class="rep_box">
-                                                <tr class="first">
-                                                    <th><input type="checkbox" class="check" /></th>
-                                                    <th>번호</th>
-                                                    <th>제목</th>
-                                                    <th>날짜</th>
-                                                    <th>삭제</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox" class="check" /></td>
-                                                    <td>0002</td>
-                                                    <td>소모임1 | 고양이는 야옹</td>
-                                                    <td>2023-04-30</td>
-                                                    <td><button>삭제</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                    <td colspan="2"></td>
-                                                    <td>ㄴ 귀엽네요ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
-                                                    <td colspan="2"></td>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                                <td colspan="2">
-                                                    <input type="checkbox" class="check" />
-                                                </td>
-                                                <td colspan="2">0001</td>
-                                                <td>소모임2 | 강아지는 멍멍</td>
-                                                <td colspan="2">2023-04-30</td>
-                                                <td colspan="2"><button>삭제</button></td>
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                    <td colspan="2"></td>
-                                                    <td>ㄴ 반갑습니다:D</td>
-                                                    <td colspan="2"></td>
-                                                    <td colspan="2"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- #container -->
-                </div>
-                <!-- 컨텐츠 종료 -->
+        <!-- 컨텐츠 시작 -->
+        <div class="sc2_subsection">
+          <div class="sc2_subsection_title">
+            <h2 class="sc2_subsection_title_name">내가 쓴 글·댓글</h2>
+            <!-- nav 바 시작 -->
+            <div class="nav_bar">
+              <a href="../index.html">
+                <i class="fa-solid fa-house"></i>
+              </a>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>마이페이지</span>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>내가 쓴 글·댓글</span>
             </div>
+            <!-- nav 바 종료 -->
+          </div>
+
+          <div id="sc2_subcontents">
+            <div data-tabs class="tabs">
+              <div class="tab">
+                <input type="radio" name="tabgroup" id="tab-1" checked />
+                <label for="tab-1">작성글</label>
+                <div class="tab__content">
+                  <div id="menu2" class="tabcont">
+                    <div class="board_section">
+                      <table class="board_box">
+                        <tr class="first">
+                          <th><input type="checkbox" class="check" /></th>
+                          <th>번호</th>
+                          <th>제목</th>
+                          <th>날짜</th>
+                          <th>삭제</th>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" class="check" /></td>
+                          <td>0002</td>
+                          <td>소모임1 | 고양이는 야옹</td>
+                          <td>2023-04-30</td>
+                          <td><button>삭제</button></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" class="check" /></td>
+                          <td>0001</td>
+                          <td>소모임2 | 강아지는 멍멍</td>
+                          <td>2023-04-30</td>
+                          <td><button>삭제</button></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab">
+                <input type="radio" name="tabgroup" id="tab-2" />
+                <label for="tab-2">작성댓글</label>
+                <div class="tab__content">
+                  <div id="menu2" class="tabcont">
+                    <div class="rep_section">
+                      <table class="rep_box">
+                        <tr class="first">
+                          <th><input type="checkbox" class="check" /></th>
+                          <th>번호</th>
+                          <th>제목</th>
+                          <th>날짜</th>
+                          <th>삭제</th>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" class="check" /></td>
+                          <td>0002</td>
+                          <td>소모임1 | 고양이는 야옹</td>
+                          <td>2023-04-30</td>
+                          <td><button>삭제</button></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"></td>
+                          <td colspan="2"></td>
+                          <td>ㄴ 귀엽네요ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
+                          <td colspan="2"></td>
+                          <td colspan="2"></td>
+                        </tr>
+                        <td colspan="2">
+                          <input type="checkbox" class="check" />
+                        </td>
+                        <td colspan="2">0001</td>
+                        <td>소모임2 | 강아지는 멍멍</td>
+                        <td colspan="2">2023-04-30</td>
+                        <td colspan="2"><button>삭제</button></td>
+                        <tr>
+                          <td colspan="2"></td>
+                          <td colspan="2"></td>
+                          <td>ㄴ 반갑습니다:D</td>
+                          <td colspan="2"></td>
+                          <td colspan="2"></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- #container -->
         </div>
-        <!-- section2 종료 -->
+        <!-- 컨텐츠 종료 -->
+      </div>
+    </div>
+    <!-- section2 종료 -->
 
-        <!-- 푸터 영역 시작 -->
-        <footer class="footer_section">
-            <div class="container">
-                <div class="footer_section1">
-                    <div class="footer_section1_content">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="cta-text">
-                            <h4>Address</h4>
-                            <span>서울시 종로구 종로78</span>
-                        </div>
-                    </div>
-
-                    <div class="footer_section1_content">
-                        <i class="fas fa-phone"></i>
-                        <div class="cta-text">
-                            <h4>Call us</h4>
-                            <span>02-123-4567</span>
-                        </div>
-                    </div>
-
-                    <div class="footer_section1_content">
-                        <i class="far fa-envelope-open"></i>
-                        <div class="cta-text">
-                            <h4>Mail us</h4>
-                            <span>admin@nemo.com</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer_section2">
-                    <div class="footer_section2_content">
-                        <div class="footer_section2_content_title">
-                            <h3>NEMO Links</h3>
-                        </div>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">고객센터</a></li>
-                            <li><a href="#">이용약관</a></li>
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">저작권정책</a></li>
-                            <li><a href="#">개인정보 처리방침</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer_section2_content">
-                        <div class="footer_logo">
-                            <a href="../../index.html"><img src="../images/logo_white.png" class="img-fluid" alt="logo" /></a>
-                        </div>
-                        <div class="footer_text">
-                            <p>© 2023 NEMO</p>
-                        </div>
-                        <div class="footer_social_icon">
-                            <span>Follow us</span>
-                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                            <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
-                        </div>
-                    </div>
-                </div>
+    <!-- 푸터 영역 시작 -->
+    <footer class="footer_section">
+      <div class="container">
+        <div class="footer_section1">
+          <div class="footer_section1_content">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="cta-text">
+              <h4>Address</h4>
+              <span>서울시 종로구 종로78</span>
             </div>
-        </footer>
-        <!-- 푸터 영역 끝 -->
-    </body>
+          </div>
+
+          <div class="footer_section1_content">
+            <i class="fas fa-phone"></i>
+            <div class="cta-text">
+              <h4>Call us</h4>
+              <span>02-123-4567</span>
+            </div>
+          </div>
+
+          <div class="footer_section1_content">
+            <i class="far fa-envelope-open"></i>
+            <div class="cta-text">
+              <h4>Mail us</h4>
+              <span>admin@nemo.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer_section2">
+          <div class="footer_section2_content">
+            <div class="footer_section2_content_title">
+              <h3>NEMO Links</h3>
+            </div>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">저작권정책</a></li>
+              <li><a href="#">개인정보 처리방침</a></li>
+            </ul>
+          </div>
+
+          <div class="footer_section2_content">
+            <div class="footer_logo">
+              <a href="../../index.html"
+                ><img
+                  src="../images/logo_white.png"
+                  class="img-fluid"
+                  alt="logo"
+              /></a>
+            </div>
+            <div class="footer_text">
+              <p>© 2023 NEMO</p>
+            </div>
+            <div class="footer_social_icon">
+              <span>Follow us</span>
+              <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+              <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+              <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- 푸터 영역 끝 -->
+  </body>
 </html>
