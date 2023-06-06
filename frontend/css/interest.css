@@ -3,13 +3,16 @@
   margin: 0 auto;
 }
 .contentsArea h2 {
-  margin-bottom: 30px;
   font-family: "NeoExBold";
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  /* border-bottom: 1px solid #ccc; */
 }
 .contentsArea h3 {
   margin-top: 50px;
   margin-bottom: 20px;
 }
+
 /* 회원가입 진행 단계 */
 .progress-bar {
   position: relative;
