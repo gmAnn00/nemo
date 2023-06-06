@@ -85,8 +85,8 @@
 }
 .myHabi {
   width: 700px;
-  margin-top: 50px;
-  border-bottom: 1px solid black;
+  margin: 50px 0;
+  /* border-bottom: 1px solid black; */
 }
 .myHabiText {
   display: flex;
