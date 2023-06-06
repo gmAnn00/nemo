@@ -1,0 +1,213 @@
+@charset "utf-8";
+
+:root {
+    --grpMenuBackColor: rgb(255, 249, 243);
+
+    --tblBorderBottom: #ccc;
+
+    --tmpMemColor: rgb(248, 180, 200);
+    --btnActColor: #222;
+}
+.grpMenuArea {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    background-color: var(--grpMenuBackColor);
+}
+/*
+.section2,
+.sc2_subsection {
+  width: 90%;
+}
+*/
+/*
+.grpMenuArea h2{
+    margin: 20px 0;
+}
+*/
+.grpMenu > li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 50px;
+}
+
+/*
+.imgCrop {
+    width: 1200px;
+    height: 300px;
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.imgCrop img {
+    width: 1200px;
+    height: 400px;
+}
+*/
+
+#contentsArea,
+.contMainArea {
+    /*width: 1200px;*/
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.contMainArea {
+    padding: 0 200px;
+    flex: 3;
+}
+.recentDiv {
+    margin-bottom: 50px;
+    /*width: 100%;*/
+}
+.mainTitle {
+    position: relative;
+    padding: 20px 30px;
+    margin: 10px 0;
+}
+
+/* 더보기 버튼 설정영역*/
+.more {
+    position: absolute;
+    font-size: 0.9em;
+    top: 25px;
+    right: 45px;
+}
+.fa-plus {
+    margin-right: 5px;
+}
+
+/* 최근일정, 최근 게시글 테이블 설정영역*/
+table {
+    width: 100%;
+}
+
+.recentTbl {
+    /*width: 100%;*/
+    box-sizing: border-box;
+}
+.recentTbl tr {
+    height: 30px;
+}
+.recentTbl tr td {
+    padding: 8px 5px 8px 10px;
+    border-bottom: 1px dashed var(--tblBorderBottom);
+}
+
+.recentScheduledTbl tr th:nth-of-type(1),
+.recentScheduledTbl tr td:nth-of-type(1),
+.recentBoard tr th:nth-of-type(3),
+.recentBoard tr td:nth-of-type(3) {
+    /*width: 200px;*/
+    width: 25%;
+    text-align: center;
+}
+/*
+.recentScheduledTbl tr th:nth-of-type(2),
+.recentScheduledTbl tr td:nth-of-type(2),
+.recentBoard tr th:nth-of-type(1),
+.recentBoard tr td:nth-of-type(1) {
+    width: 53.75%;
+}
+*/
+.recentScheduledTbl tr td:nth-of-type(2) p,
+.recentBoard tr td:nth-of-type(1) p {
+    /* width: 53.75%; */
+
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-indent: 5px;
+}
+.recentScheduledTbl tr th:nth-of-type(3),
+.recentScheduledTbl tr td:nth-of-type(3),
+.recentBoard tr th:nth-of-type(2),
+.recentBoard tr td:nth-of-type(2) {
+    /*width: 150px;*/
+    width: 18.75%;
+}
+
+/* 멤버 영역 시작*/
+.nemoMemTitle {
+    display: inline-block;
+    width: 100px;
+}
+
+.memberArea {
+    /*width: 800px;*/
+
+    height: 250px;
+    position: relative;
+    padding-bottom: 10px;
+    background-color: var(--grpMenuBackColor);
+}
+.animationSlide {
+    /*width: 700px;*/
+    width: 87.5%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.sliderPanel {
+    position: relative;
+    display: inline-block;
+    width: max-content;
+}
+.slideContent {
+    display: inline-block;
+    text-align: center;
+    /*padding: 0 8px;*/
+}
+.memImg {
+    display: inline-block;
+    width: 125px;
+    height: 125px;
+    background-color: var(--sub2-color);
+    border-radius: 50%;
+}
+.memName {
+    text-align: center;
+    display: inline-block;
+}
+
+.fa-chevron {
+    font-size: 40px;
+}
+.fa-solid.btnActive {
+    cursor: pointer;
+    color: var(--btnActColor);
+}
+.btnEventPrev {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+}
+.btnEventNext {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+}
+
+.btnActive {
+    cursor: pointer;
+    color: var(--btnActColor);
+}
+
+td {
+    text-align: center;
+}
+td a {
+    text-align: center;
+}
+td a:hover {
+    color: var(--main-color);
+}
+td a p {
+    text-align: center;
+}
