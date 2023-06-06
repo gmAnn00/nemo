@@ -35,8 +35,8 @@
 	                       	 <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">${nickname}</span></div>
 	                    	</a>
 	               		 </li>
-	              		 <li><a href="">소모임 만들기</a></li>
-	               		 <li><a href="">소모임 검색</a></li>
+	              		 <li><a href="${contextPath}/group/createGroup/form">소모임 만들기</a></li>
+	               		 <li><a href="${contextPath}/search">소모임 검색</a></li>
 	               		 <li><a href="">프로필</a></li>
 	               		 <li><a href="">내 일정</a></li>
 	               		 <li><a href="">내 소모임</a></li>
