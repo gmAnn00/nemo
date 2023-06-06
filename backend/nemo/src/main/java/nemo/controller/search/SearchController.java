@@ -30,8 +30,6 @@ public class SearchController extends HttpServlet {
 		String nextPage = "";
 		session=request.getSession();
 		
-		session.setAttribute("user_id", "딩딩이");
-		//session.removeAttribute("user_id");
 		nextPage="/search.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

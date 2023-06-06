@@ -45,24 +45,31 @@ $(function () {
     });
 
     $(".grpLike").on("click", function () {
-    	console.log("grpLike");
-        $.ajax({
-            type: "post",
-            async: true,
-            url: "http://127.0.0.1:8090/nemo/group/bookmark",
-            data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark },
-            success: function (data, textStatus) {
-            	console.log(isBookmark);
-            	isBookmark = !isBookmark;
-            	
-            },
-            error: function (data, textStatus, error) {
-            	console.log(data);
-            	console.log(textStatus);
-            	console.log(error);
-                alert("찜 추가/삭제 에러 발생");
-            },
-        });
+    	if(user_id === 'null' || user_id ===""){
+    		$(this).removeClass("on");
+    		alert("로그인 후 이용해주세요");
+    		location.href="${contextPath}/index";
+    		
+    	} else{
+    		$.ajax({
+                type: "post",
+                async: true,
+                url: "http://127.0.0.1:8090/nemo/group/bookmark",
+                data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark },
+                success: function (data, textStatus) {
+                	console.log(isBookmark);
+                	isBookmark = !isBookmark;
+                	
+                },
+                error: function (data, textStatus, error) {
+                	console.log(data);
+                	console.log(textStatus);
+                	console.log(error);
+                    alert("찜 추가/삭제 에러 발생");
+                },
+            });
+    	}
+        
     });
 });
 
