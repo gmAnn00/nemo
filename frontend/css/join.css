@@ -1,0 +1,153 @@
+/* 회원가입 진행 단계 */
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: var(--sub3-color);
+  border-radius: 10px;
+}
+.progress-bar span {
+  padding-right: 150px;
+  color: #777;
+}
+
+.step {
+  position: absolute;
+  height: 100%;
+  background-color: var(--sub3-color); /* Default color for incomplete steps */
+  border-radius: 0 50px 50px 0;
+  text-align: right;
+  height: 30px;
+  line-height: 30px;
+}
+.step-1 {
+  background-color: var(--sub-color);
+  width: 33.33%;
+}
+.step-2 {
+  background-color: var(--main-color);
+  width: 66.66%;
+}
+.step-2 span {
+  font-weight: bold;
+  color: #402f0d;
+}
+.step-3 {
+  background-color: var(--sub3-color);
+  width: 100%;
+}
+
+/* 회원가입영역 */
+h2,
+h3,
+h4 {
+  text-align: center;
+}
+h3 {
+  padding: 5px;
+  font-size: 16px;
+}
+#loginForm {
+  margin: 30px auto;
+  padding: 60px 50px 50px 100px;
+  width: 750px;
+  /* height: 1250px; */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 450px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 450px;
+  position: relative;
+  /* align-items: center; */
+}
+form label {
+  margin-bottom: 5px;
+  position: relative;
+  top: 32px;
+  left: -110px;
+}
+form input {
+  padding: 8px;
+}
+form input[id="id"],
+input[id="nickname"] {
+  width: 70%;
+}
+form .check {
+  width: 100px;
+  position: absolute;
+  top: 22px;
+  right: 0px;
+  /* padding: 10px; */
+}
+form .findZipcode {
+  width: 150px;
+  position: absolute;
+  top: 22px;
+  left: 190px;
+  /* padding: 10px; */
+}
+form input[id="zipcode"] {
+  width: 150px;
+  margin-bottom: 10px;
+}
+form input[id="address"] {
+  margin-bottom: 10px;
+}
+form input[id="birthdate"] {
+  width: 150px;
+}
+form .email {
+  display: inline-block;
+}
+form .email label {
+  display: block;
+}
+form .email input {
+  width: 120px;
+}
+form .email select {
+  width: 130px;
+  padding: 10px;
+}
+form .emailCheck {
+  display: inline-block;
+}
+.submitCancel {
+  display: flex;
+  flex-direction: row;
+}
+.submitCancel a {
+  /* display: inline-block; */
+  /* flex: 1; */
+  margin-top: 50px;
+}
+.submitCancel .button {
+  margin-right: 30px;
+  flex: 2;
+}
+form input[type="checkbox"] {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+form button[class="emailCheckBtn"] {
+  display: inline-block;
+  padding: 5px;
+}
+form .submitCancel {
+  text-align: center;
+}
