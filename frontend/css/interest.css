@@ -1,5 +1,5 @@
 .contentsArea {
-  width: 800px;
+  /* width: 800px; */
   margin: 0 auto;
 }
 .contentsArea h2 {
@@ -7,7 +7,7 @@
   font-family: "NeoExBold";
 }
 .contentsArea h3 {
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 /* 회원가입 진행 단계 */
@@ -33,25 +33,34 @@
   line-height: 30px;
 }
 .step-1 {
-  background-color: var(--sub-color);
+  background-color: var(--sub3-color);
   width: 33.33%;
 }
 .step-2 {
-  background-color: var(--main-color);
+  background-color: var(--sub-color);
   width: 66.66%;
 }
-.step-2 span {
+.step-3 {
+  background-color: var(--main-color);
+  width: 100%;
+}
+.step-3 span {
   font-weight: bold;
   color: #402f0d;
 }
-.step-3 {
-  background-color: var(--sub3-color);
-  width: 100%;
-}
 
 /* 관심사 영역 */
+.category {
+  width: 800px;
+  margin: 30px auto;
+  padding: 10px 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
 .largeCategory {
-  margin-top: 100px;
+  margin-top: 35px;
 }
 .btnInterest {
   padding: 10px;
