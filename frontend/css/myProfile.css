@@ -70,6 +70,10 @@
 .myIM {
   display: flex;
 }
+.myImage img {
+  border-radius: 50%;
+  border: 1px solid var(--main-color);
+}
 .myImage > label {
   display: block;
   text-align: center;
