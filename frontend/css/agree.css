@@ -70,7 +70,10 @@
 }
 .terms .allAg {
   position: relative;
-  top: 20px;
+  /* top: 20px; */
+}
+.allAg label {
+  margin-top: 20px;
 }
 .terms .btn {
   text-align: center;
