@@ -68,7 +68,7 @@
                 <a href="myPage.html">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>프로필</span></div>
-                    <i class="fa-solid fa-angle-right"></i>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
               </li>
@@ -76,7 +76,7 @@
                 <a href="mySchedule.html">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 일정</span></div>
-                    <i class="fa-solid fa-angle-right"></i>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
               </li>
@@ -84,17 +84,17 @@
                 <a href="myGroupList.html">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 소모임</span></div>
-                    <i class="fa-solid fa-angle-right"></i>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
               </li>
               <li>
                 <a href=" myBoardList.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name">
+                    <div class="menu_submenu_name submenu_select">
                       <span>내가 쓴 글·댓글</span>
                     </div>
-                    <i class="fa-solid fa-minus"></i>
+                    <i class="fa-solid fa-minus submenu_select"></i>
                   </div>
                 </a>
               </li>
@@ -110,94 +110,96 @@
             <!-- nav 바 시작 -->
             <div class="nav_bar">
               <a href="../index.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-house nav_icon"></i>
               </a>
-              <i class="fa-solid fa-angle-right"></i>
+              <i class="fa-solid fa-angle-right nav_icon"></i>
               <span>마이페이지</span>
-              <i class="fa-solid fa-angle-right"></i>
+              <i class="fa-solid fa-angle-right nav_icon"></i>
               <span>내가 쓴 글·댓글</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
 
-          <div id="sc2_subcontents">
-            <div data-tabs class="tabs">
-              <div class="tab">
-                <input type="radio" name="tabgroup" id="tab-1" checked />
-                <label for="tab-1">작성글</label>
-                <div class="tab__content">
-                  <div id="menu2" class="tabcont">
-                    <div class="board_section">
-                      <table class="board_box">
-                        <tr class="first">
-                          <th><input type="checkbox" class="check" /></th>
-                          <th>번호</th>
-                          <th>제목</th>
-                          <th>날짜</th>
-                          <th>삭제</th>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" class="check" /></td>
-                          <td>0002</td>
-                          <td>소모임1 | 고양이는 야옹</td>
-                          <td>2023-04-30</td>
-                          <td><button>삭제</button></td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" class="check" /></td>
-                          <td>0001</td>
-                          <td>소모임2 | 강아지는 멍멍</td>
-                          <td>2023-04-30</td>
-                          <td><button>삭제</button></td>
-                        </tr>
-                      </table>
+          <div class="sc2_subcontents">
+            <div class="sc2_subcontent">
+              <div data-tabs class="tabs">
+                <div class="tab">
+                  <input type="radio" name="tabgroup" id="tab-1" checked />
+                  <label for="tab-1">작성글</label>
+                  <div class="tab__content">
+                    <div id="menu2" class="tabcont">
+                      <div class="board_section">
+                        <table class="board_box">
+                          <tr class="first">
+                            <th><input type="checkbox" class="check" /></th>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                            <th>삭제</th>
+                          </tr>
+                          <tr>
+                            <td><input type="checkbox" class="check" /></td>
+                            <td>0002</td>
+                            <td>소모임1 | 고양이는 야옹</td>
+                            <td>2023-04-30</td>
+                            <td><button>삭제</button></td>
+                          </tr>
+                          <tr>
+                            <td><input type="checkbox" class="check" /></td>
+                            <td>0001</td>
+                            <td>소모임2 | 강아지는 멍멍</td>
+                            <td>2023-04-30</td>
+                            <td><button>삭제</button></td>
+                          </tr>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="tab">
-                <input type="radio" name="tabgroup" id="tab-2" />
-                <label for="tab-2">작성댓글</label>
-                <div class="tab__content">
-                  <div id="menu2" class="tabcont">
-                    <div class="rep_section">
-                      <table class="rep_box">
-                        <tr class="first">
-                          <th><input type="checkbox" class="check" /></th>
-                          <th>번호</th>
-                          <th>제목</th>
-                          <th>날짜</th>
-                          <th>삭제</th>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" class="check" /></td>
-                          <td>0002</td>
-                          <td>소모임1 | 고양이는 야옹</td>
-                          <td>2023-04-30</td>
-                          <td><button>삭제</button></td>
-                        </tr>
-                        <tr>
-                          <td colspan="2"></td>
-                          <td colspan="2"></td>
-                          <td>ㄴ 귀엽네요ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
-                          <td colspan="2"></td>
-                          <td colspan="2"></td>
-                        </tr>
-                        <td colspan="2">
-                          <input type="checkbox" class="check" />
-                        </td>
-                        <td colspan="2">0001</td>
-                        <td>소모임2 | 강아지는 멍멍</td>
-                        <td colspan="2">2023-04-30</td>
-                        <td colspan="2"><button>삭제</button></td>
-                        <tr>
-                          <td colspan="2"></td>
-                          <td colspan="2"></td>
-                          <td>ㄴ 반갑습니다:D</td>
-                          <td colspan="2"></td>
-                          <td colspan="2"></td>
-                        </tr>
-                      </table>
+                <div class="tab">
+                  <input type="radio" name="tabgroup" id="tab-2" />
+                  <label for="tab-2">작성댓글</label>
+                  <div class="tab__content">
+                    <div id="menu2" class="tabcont">
+                      <div class="rep_section">
+                        <table class="rep_box">
+                          <tr class="first">
+                            <th><input type="checkbox" class="check" /></th>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                            <th>삭제</th>
+                          </tr>
+                          <tr>
+                            <td><input type="checkbox" class="check" /></td>
+                            <td>0002</td>
+                            <td>소모임1 | 고양이는 야옹</td>
+                            <td>2023-04-30</td>
+                            <td><button>삭제</button></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2"></td>
+                            <td>ㄴ 귀엽네요ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
+                            <td colspan="2"></td>
+                            <td colspan="2"></td>
+                          </tr>
+                          <td colspan="2">
+                            <input type="checkbox" class="check" />
+                          </td>
+                          <td colspan="2">0001</td>
+                          <td>소모임2 | 강아지는 멍멍</td>
+                          <td colspan="2">2023-04-30</td>
+                          <td colspan="2"><button>삭제</button></td>
+                          <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2"></td>
+                            <td>ㄴ 반갑습니다:D</td>
+                            <td colspan="2"></td>
+                            <td colspan="2"></td>
+                          </tr>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -259,7 +261,7 @@
             <div class="footer_logo">
               <a href="../../index.html"
                 ><img
-                  src="../images/logo_white.png"
+                  src="../../images/logo_white.png"
                   class="img-fluid"
                   alt="logo"
               /></a>

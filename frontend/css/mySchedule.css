@@ -23,11 +23,6 @@ body {
   display: inline-block;
   width: 85%;
 }
-div.myScheduleMenuAndCal {
-  width: 1000px;
-  display: flex;
-}
-
 ul.myScheduleMenu {
   width: 150px;
   height: 300px;
@@ -36,26 +31,17 @@ ul.myScheduleMenu {
 
 div.myScheduleCalAndList {
   display: flex;
-  flex-direction: column;
 }
 
 #myScheduleCalendarArea {
-  width: 1000px;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  /* padding: 20px; */
+  flex: 1;
 }
 
 .calendarTable {
-  margin: 0 auto;
-  width: 600px;
-  /* border: 1px solid #ccc; */
   border-collapse: collapse;
   border-radius: 5px;
   border-style: hidden;
   box-shadow: 0 0 0 1px #404040;
-  /* padding: 10px; */
 }
 .calendarTable td {
   width: 80px;
@@ -107,11 +93,8 @@ div.myScheduleCalAndList {
 }
 
 div.myScheduleListArea {
-  margin: 0 auto;
-  width: 600px;
-  margin-top: 30px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
+  flex: 1;
+  width: 40%;
 }
 div.mySchedule {
   /* border: 1px solid red; */
