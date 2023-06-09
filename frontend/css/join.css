@@ -97,7 +97,7 @@ input[id="nickname"] {
   color: var(--blue-color);
 }
 .alertDanger {
-  color: var(--heartColor);
+  color: var(--heart-color);
 }
 
 /* 중복확인 */
