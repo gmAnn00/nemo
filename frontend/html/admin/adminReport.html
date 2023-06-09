@@ -8,11 +8,13 @@
         <link rel="stylesheet" href="../../css/normalize.css" />
         <link rel="stylesheet" href="../../css/common.css" />
         <link rel="stylesheet" href="../../css/submenu.css" />
+        <link rel="stylesheet" href="../../css/tabmenu.css" />
         <link href="../../DataTables/datatables.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="../../css/adminReport.css" />
         <script src="../../js/jquery-3.6.4.min.js"></script>
         <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
         <script src="../../js/header.js"></script>
+        <script src="../../js/tabmenu.js"></script>
     </head>
     <body>
         <!-- 배경색 조정 -->
@@ -123,299 +125,320 @@
 
                     <div class="sc2_subcontents">
                         <div class="sc2_subcontent">
-                            <div data-tabs class="tabs">
-                                <div class="tab">
-                                    <input type="radio" name="report" id="report_group" checked />
-                                    <label for="report_group">신고 소모임 목록</label>
-                                    <div class="list">
-                                        <table border="1" class="adminGroupTbl">
-                                            <thead>
-                                                <tr>
-                                                    <th>소모임 번호</th>
-                                                    <th>대분류</th>
-                                                    <th>소분류</th>
-                                                    <th>소모임 이름</th>
-                                                    <th>현재 인원</th>
-                                                    <th>최대 인원</th>
-                                                    <th>소모임장</th>
-                                                    <th>생성일</th>
-                                                    <th>신고횟수</th>
-                                                    <th>삭제 처리</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름1</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>1</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름2</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>2</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름3</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>3</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름4</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>4</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름5</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름5</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름5</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름5</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>9</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름5</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>10</td>
-                                                    <td>스포츠</td>
-                                                    <td>헬스</td>
-                                                    <td>소모임 이름5</td>
-                                                    <td>2</td>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">삭제 처리</button></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="groupTablePage"></div>
+                            
+                             <!-- tab menu 시작 -->
+                            <div class="tab_container">
+                                <div class="tab-slider--nav">
+                                    <ul class="tab-slider--tabs">
+                                        <li class="tab-slider--trigger active" rel="tab1"><span>신고 소모임 목록</span></li>
+                                        <li class="tab-slider--trigger" rel="tab2"><span>신고 회원 목록</span></li>
+                                    </ul>
                                 </div>
-                                <div class="tab">
-                                    <input type="radio" name="report" id="report_member" />
-                                    <label for="report_member">신고 회원 목록</label>
-                                    <div class="list">
-                                        <table border="1" class="adminMemberTbl">
-                                            <thead>
-                                                <tr>
-                                                    <th>회원번호</th>
-                                                    <th>아이디</th>
-                                                    <th>이름</th>
-                                                    <th>생년월일</th>
-                                                    <th>성별</th>
-                                                    <th>이메일</th>
-                                                    <th>휴대전화</th>
-                                                    <th>가입일</th>
-                                                    <th>신고횟수</th>
-                                                    <th>탈퇴처리</th>
-                                                </tr>
-                                            </thead>
+                                <div class="tab-slider--container">
+                                    
+                                    <!-- tab1 시작 -->
+                                    <div id="tab1" class="tab-slider--body">
+                                        <div class="tab_box">
 
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>1</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>2</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>3</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>4</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>9</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>10</td>
-                                                    <td>honggilddong</td>
-                                                    <td>홍길동</td>
-                                                    <td>2000/01/01</td>
-                                                    <td>M</td>
-                                                    <td>gildong@gmail.com</td>
-                                                    <td>01012345678</td>
-                                                    <td>2023/05/01</td>
-                                                    <td>5</td>
-                                                    <td><button class="btn">탈퇴처리</button></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                            <!-- 리스트 시작 -->
+                                            <div class="list">
+                                                <table border="1" class="adminGroupTbl">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>소모임 번호</th>
+                                                            <th>대분류</th>
+                                                            <th>소분류</th>
+                                                            <th>소모임 이름</th>
+                                                            <th>현재 인원</th>
+                                                            <th>최대 인원</th>
+                                                            <th>소모임장</th>
+                                                            <th>생성일</th>
+                                                            <th>신고횟수</th>
+                                                            <th>삭제 처리</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름1</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>1</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름2</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>2</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름3</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>3</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름4</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>4</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름5</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>6</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름5</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>7</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름5</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>8</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름5</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>9</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름5</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>10</td>
+                                                            <td>스포츠</td>
+                                                            <td>헬스</td>
+                                                            <td>소모임 이름5</td>
+                                                            <td>2</td>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">삭제 처리</button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <!-- tab1 종료 -->
+                                    <!-- <div class="groupTablePage"></div> -->
+                                
+                                    <!-- tab2 시작 -->
+                                    <div id="tab2" class="tab-slider--body">
+                                        <div class="tab_box">
+                                            <!-- 리스트 시작 -->
+                                            <div class="list">
+                                                <table border="1" class="adminMemberTbl">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>회원번호</th>
+                                                            <th>아이디</th>
+                                                            <th>이름</th>
+                                                            <th>생년월일</th>
+                                                            <th>성별</th>
+                                                            <th>이메일</th>
+                                                            <th>휴대전화</th>
+                                                            <th>가입일</th>
+                                                            <th>신고횟수</th>
+                                                            <th>탈퇴처리</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>1</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>2</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>3</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>4</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>6</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>7</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>8</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>9</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>10</td>
+                                                            <td>honggilddong</td>
+                                                            <td>홍길동</td>
+                                                            <td>2000/01/01</td>
+                                                            <td>M</td>
+                                                            <td>gildong@gmail.com</td>
+                                                            <td>01012345678</td>
+                                                            <td>2023/05/01</td>
+                                                            <td>5</td>
+                                                            <td><button class="btn">탈퇴처리</button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="groupTablePage"></div>
+                                    <!-- tab2 종료 -->
+                                    <!-- <div class="groupTablePage"></div> -->
                                 </div>
                             </div>
+                            <!-- tab menu 종료 -->
+
                         </div>
                     </div>
                 </div>
