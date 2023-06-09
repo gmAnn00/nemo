@@ -61,7 +61,7 @@ $(function () {
                 <!-- 소모임 생성 정보 입력 영역 -->
                 <div class="formArea">
                     <p><strong class="require">필수</strong>는 필수항목입니다</p>
-                    <form action="${contextPath}/group/createGroup/create" method="post" id="createGroup" name="createGroup">
+                    <form action="${contextPath}/group/createGroup/create" method="post" id="createGroup" name="createGroup" enctype="multipart/form-data">
                         <fieldset>
                             <legend class="hidden">네모 생성 정보 입력</legend>
                             <table class="formTbl">
