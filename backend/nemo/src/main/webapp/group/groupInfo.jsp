@@ -54,7 +54,7 @@ $(function () {
     		$.ajax({
                 type: "post",
                 async: true,
-                url: "http://127.0.0.1:8090/nemo/group/bookmark",
+                url: "${contextPath}/group/bookmark",
                 data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark },
                 success: function (data, textStatus) {
                 	console.log(isBookmark);
