@@ -63,17 +63,18 @@
     </div>
     <!-- header 종료 -->
 
-    <!-- 회원가입 영역 -->
+    <!-- 콘텐츠 영역 -->
     <div id="contentArea">
       <div class="progress-bar">
-        <div class="step step-1"></div>
-        <div class="step step-2"></div>
-        <div class="step step-3"></div>
+        <div class="step step-3"><span>3단계. 관심사 입력하기</span></div>
+        <div class="step step-2"><span>2단계. 회원가입하기</span></div>
+        <div class="step step-1"><span>1단계. 약관동의</span></div>
       </div>
+      <!-- 회원가입 영역 -->
       <div id="loginForm">
         <h2>회원가입</h2>
         <h3>회원이 되어 다양한 사람들과 만나보세요!</h3>
-        <h4>(모든 항목을 입력해주세요)</h4>
+        <!-- <h4>(모든 항목을 입력해주세요)</h4> -->
         <form id="frm" name="frm">
           <div>
             <label for="id">아이디</label>
@@ -88,7 +89,9 @@
               type="text"
               id="id"
               name="id"
-              placeholder="아이디 입력(?~15자)"
+              placeholder="아이디 입력(5~20자)"
+              minlength="5"
+              maxlength="20"
               required
             />
           </div>
@@ -98,7 +101,9 @@
               type="password"
               id="password"
               name="password"
-              placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 ?~20자)"
+              placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 8~20자)"
+              minlength="8"
+              maxlength="20"
               required
             />
           </div>
@@ -109,8 +114,16 @@
               id="passwordCheck"
               name="passwordCheck"
               placeholder="비밀번호 재입력"
+              minlength="8"
+              maxlength="20"
               required
             />
+          </div>
+          <div class="alert alertSuccess" id="alertSuccess">
+            비밀번호가 일치합니다.
+          </div>
+          <div class="alert alertDanger" id="alertDanger">
+            비밀번호가 일치하지않습니다.
           </div>
           <div>
             <label for="name">이름</label>
@@ -227,15 +240,10 @@
             </button>
           </div>
           <div class="submitCancel">
-            <!-- <button type="submit" class="button">가입하기</button> -->
-            <a
-              href="#"
-              type="submit"
-              role="button"
-              class="button"
-              onclick="fnJoin();"
+            <button type="submit" class="button">가입하기</button>
+            <!-- <a href="#" role="button" class="button" onclick="fnJoin();"
               >가입하기</a
-            >
+            > -->
             <!-- type을 버튼으로 바꾸고 action과 submit을 jsp 처리하기 -->
             <a href="index.html" role="button" class="buttonCancle">가입취소</a>
           </div>

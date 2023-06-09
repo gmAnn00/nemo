@@ -77,6 +77,7 @@ form label {
   position: relative;
   top: 32px;
   left: -110px;
+  width: 105px;
 }
 form input {
   padding: 8px;
@@ -85,6 +86,18 @@ form input {
 input[id="nickname"] {
   width: 70%;
 }
+/* 비밀번호 일치 */
+.alert {
+  font-size: 12px;
+}
+.alertSuccess {
+  color: var(--blue-color);
+}
+.alertDanger {
+  color: var(--heartColor);
+}
+
+/* 중복확인 */
 form .check {
   width: 100px;
   position: absolute;
