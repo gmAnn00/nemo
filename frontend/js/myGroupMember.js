@@ -1,19 +1,20 @@
 $(function () {
   // 탭
-  (function($, document) {
-  
-      // get tallest tab__content element
-      let height = -1;
-  
-        $('.tab__content').each(function() {
-            height = height > $(this).outerHeight() ? height : $(this).outerHeight();
-          $(this).css('position', 'absolute');
-        });
-      
-      // set height of tabs + top offset
-        $('[data-tabs]').css('min-height', height + 40 + 'px');
-    
-      }(jQuery, document));
+  $(".tab-slider--body").hide();
+  $(".tab-slider--body:first").show();
+
+  $(".tab-slider--nav li").click(function() {
+      $(".tab-slider--body").hide();
+      var activeTab = $(this).attr("rel");
+      $("#"+activeTab).fadeIn();
+      if($(this).attr("rel") == "tab2"){
+          $('.tab-slider--tabs').addClass('slide');
+      }else{
+          $('.tab-slider--tabs').removeClass('slide');
+      }
+      $(".tab-slider--nav li").removeClass("active");
+      $(this).addClass("active");
+  });
 });
 
 // dot 애니메이션
