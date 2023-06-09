@@ -12,67 +12,16 @@
 <head>
 <meta charset="UTF-8">
 <title>네모: 모임 소개</title>
-<link rel="shortcut icon" href="../images/favicon.png" />
-<link rel="stylesheet" href="../css/normalize.css" />
-<link rel="stylesheet" href="../css/common.css" />
-<link rel="stylesheet" href="../css/jquery-ui.min.css" />
-<link rel="stylesheet" href="../css/groupInfo.css" />
-<script src="../js/jquery-3.6.4.min.js"></script>
-<script src="../js/header.js"></script>
-<script src="../js/groupInfo.js"></script>
+<link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
+<link rel="stylesheet" href="${contextPath}/css/normalize.css" />
+<link rel="stylesheet" href="${contextPath}/css/common.css" />
+<link rel="stylesheet" href="${contextPath}/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="${contextPath}/css/groupInfo.css" />
+<script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+<script src="${contextPath}/js/header.js"></script>
+<script src="${contextPath}/js/groupInfo.js"></script>
 <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
 <script>
-$(function () {
-    let user_id = "${user_id}";
-    let group_id = new URL(location.href).searchParams;
-    group_id = group_id.get("group_id");
-    let isBookmark = "${isBookmark}";
-
-    $(".joinBtn").on("click", function () {
-        console.log(user_id);
-        //console.log(typeof user_id);
-        //console.log(group_id);
-        if (user_id === "null" || user_id === "") {
-            if (window.confirm("로그인 후 이용해주세요")) {
-                location.href = "/nemo/index";
-            } else {
-                location.href = "/nemo/index";
-            }
-        } else {
-            console.log("user_id" + user_id);
-            location.href = "/nemo/group/joinGroup?group_id=" + group_id;
-        }
-    });
-
-    $(".grpLike").on("click", function () {
-    	if(user_id === 'null' || user_id ===""){
-    		$(this).removeClass("on");
-    		alert("로그인 후 이용해주세요");
-    		location.href="${contextPath}/index";
-    		
-    	} else{
-    		$.ajax({
-                type: "post",
-                async: true,
-                url: "http://127.0.0.1:8090/nemo/group/bookmark",
-                data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark },
-                success: function (data, textStatus) {
-                	console.log(isBookmark);
-                	isBookmark = !isBookmark;
-                	
-                },
-                error: function (data, textStatus, error) {
-                	console.log(data);
-                	console.log(textStatus);
-                	console.log(error);
-                    alert("찜 추가/삭제 에러 발생");
-                },
-            });
-    	}
-        
-    });
-});
-
 </script>
 </head>
 <body>

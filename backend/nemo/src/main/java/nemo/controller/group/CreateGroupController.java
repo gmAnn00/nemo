@@ -1,6 +1,10 @@
 package nemo.controller.group;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +20,8 @@ import nemo.vo.group.GroupVO;
 
 @WebServlet("/group/createGroup/*")
 public class CreateGroupController extends HttpServlet {
+	static Path path = Paths.get("");
+	private static String GROUP_IMG_REPO = path.toAbsolutePath().toString();
 	HttpSession session;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +53,9 @@ public class CreateGroupController extends HttpServlet {
 			System.out.println(request.getParameter("app_st"));
 			CreateGroupService createGroupService = new CreateGroupService();
 			
+			Map<String, String>groupMap = upload(request, response);
+			
+			/*
 			String grp_name = request.getParameter("grp_name");
 			String grp_mng = user_id;
 			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
@@ -57,6 +66,19 @@ public class CreateGroupController extends HttpServlet {
 			int app_st = Integer.parseInt(request.getParameter("app_st"));
 			String main_name = request.getParameter("main_name");
 			String sub_name = request.getParameter("sub_name");
+			//String grp_mimg = 
+			//String grp_pimg = 
+			*/
+			String grp_name = groupMap.get("grp_name");
+			String grp_mng = user_id;
+			int mem_no = Integer.parseIntgroupMap.get("mem_no"));
+			String grp_zipcode = groupMap.get("grp_zipcode");
+			String grp_addr1 = groupMap.get("grp_addr1");
+			String grp_addr2 = groupMap.get("grp_addr2");
+			String grp_intro = groupMap.get("grp_intro");
+			int app_st = Integer.parseInt(groupMap.get("app_st"));
+			String main_name = groupMap.get("main_name");
+			String sub_name = groupMap.get("sub_name");
 			//String grp_mimg = 
 			//String grp_pimg = 
 			
@@ -71,7 +93,7 @@ public class CreateGroupController extends HttpServlet {
 			groupVO.setMain_name(main_name);
 			groupVO.setSub_name(sub_name);
 			
-
+			
 			int group_id = createGroupService.createGroup(groupVO); 
 			String nextPage="nemo/group/groupMain?group_id="+ Integer.toString(group_id);
 			//response.sendRedirect("/nemo/group/groupMain?group_id=1");
@@ -80,6 +102,17 @@ public class CreateGroupController extends HttpServlet {
 		}
 		
 	} // end of doHandle
+
+
+	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		Map<String, String> groupMap = new HashMap<String, String>();
+		
+		String encoding = "utf-8";
+		
+		
+		return groupMap;
+		
+	}
 	
 	
 
