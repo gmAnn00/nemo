@@ -43,20 +43,6 @@
 }
 
 /* 회원가입영역 */
-h3 {
-  padding: 5px;
-  font-size: 16px;
-}
-#loginForm {
-  margin: 30px auto;
-  padding: 60px 50px 50px 100px;
-  width: 750px;
-  /* height: 1250px; */
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
 form {
   display: flex;
   flex-direction: column;
@@ -110,13 +96,12 @@ form .findZipcode {
   position: absolute;
   top: 22px;
   left: 190px;
-  /* padding: 10px; */
 }
 form input[id="zipcode"] {
   width: 150px;
   margin-bottom: 10px;
 }
-form input[id="address"] {
+form input[id="user_addr1"] {
   margin-bottom: 10px;
 }
 form input[id="birthdate"] {
@@ -133,7 +118,9 @@ form .email input {
 }
 form .email select {
   width: 130px;
-  padding: 8px 7px 7px 7px;
+  padding: 7px;
+  position: relative;
+  top: 1px;
 }
 form .emailCheck {
   display: inline-block;

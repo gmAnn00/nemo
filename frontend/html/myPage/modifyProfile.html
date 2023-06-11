@@ -143,10 +143,10 @@
                 <input
                   type="text"
                   id="id"
-                  name="id"
+                  name="user_id"
                   placeholder=""
                   required
-                  disabled
+                  readonly
                 />
                 <input type="hidden" name="id" value="${member.id}" />
               </div>
@@ -185,10 +185,10 @@
                 <input
                   type="text"
                   id="name"
-                  name="name"
+                  name="user_name"
                   placeholder=""
                   required
-                  disabled
+                  readonly
                 />
                 <input type="hidden" name="name" value="${member.name}" />
               </div>
@@ -206,7 +206,7 @@
                 />
               </div>
               <div>
-                <label for="address">주소</label>
+                <label for="findZipcode">주소</label>
                 <button
                   type="button"
                   class="findZipcode button"
@@ -215,31 +215,32 @@
                   우편번호 찾기
                 </button>
                 <input
-                  type="tel"
+                  type="text"
                   id="zipcode"
                   name="zipcode"
-                  maxlength="10"
-                  size="10"
+                  maxlength="5"
+                  size="5"
                   placeholder="우편 번호"
+                  readonly
                   required
                 />
                 <input
                   type="text"
-                  id="address"
-                  name="address"
+                  id="user_addr1"
+                  name="user_addr1"
                   maxlength="100"
                   size="60"
                   placeholder="주소"
+                  readonly
                   required
                 />
                 <input
                   type="text"
-                  id="address_detail"
-                  name="address_datail"
+                  id="user_addr2"
+                  name="user_addr2"
                   maxlength="100"
                   size="60"
                   placeholder="상세주소를 적어주세요"
-                  required
                 />
               </div>
               <script>
@@ -251,12 +252,19 @@
                         oncomplete: function (data) {
                           document.getElementById("zipcode").value =
                             data.zonecode; // 우편번호를 zipcode input 태그에 할당
-                          document.getElementById("address").value =
-                            data.address; // 주소를 address input 태그에 할당
-                          document.querySelector("input[name=address]").focus();
+                          document.getElementById("user_addr1").value =
+                            data.address; // 주소를 user_addr1 input 태그에 할당
                           // 입력된 값이 있는 input 박스 비활성화
-                          document.getElementById("zipcode").disabled = true;
-                          document.getElementById("address").disabled = true;
+                          // document.getElementById("zipcode").disabled = true;
+                          // document.getElementById("user_addr1").disabled = true;
+
+                          $("#zipcode").css({
+                            background: "var(--sub3-color)",
+                          });
+                          $("#user_addr1").css({
+                            background: "var(--sub3-color)",
+                          });
+                          document.getElementById("user_addr2").focus();
                         },
                       }).open();
                     });
