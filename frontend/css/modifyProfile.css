@@ -128,10 +128,6 @@ form .emailCheck {
 .submitCancel {
   display: flex;
   flex-direction: row;
-}
-.submitCancel a {
-  /* display: inline-block; */
-  /* flex: 1; */
   margin-top: 50px;
 }
 .submitCancel .button {
