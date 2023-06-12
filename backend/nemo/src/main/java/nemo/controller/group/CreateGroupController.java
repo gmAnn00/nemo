@@ -71,7 +71,7 @@ public class CreateGroupController extends HttpServlet {
 			*/
 			String grp_name = groupMap.get("grp_name");
 			String grp_mng = user_id;
-			int mem_no = Integer.parseIntgroupMap.get("mem_no"));
+			int mem_no = Integer.parseInt(groupMap.get("mem_no"));
 			String grp_zipcode = groupMap.get("grp_zipcode");
 			String grp_addr1 = groupMap.get("grp_addr1");
 			String grp_addr2 = groupMap.get("grp_addr2");
