@@ -91,6 +91,7 @@
     margin-bottom: 40px;
 }
 .comments-section{
+    border-radius: 10px;
     box-shadow: 3px 3px 5px #ccc;
 }
 .comments-section .btn--blue {
