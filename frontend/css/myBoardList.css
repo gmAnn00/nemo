@@ -32,7 +32,6 @@
     font-size: 11px;
     margin-left: 10px;
     color: #a7a5a5;
-    border-bottom: 1px solid #ddd;
 }
 
 .comments-section .comment-content {
@@ -85,6 +84,15 @@
 .comment_title {
     border-bottom: 1px solid #ccc;
     padding: 10px;
+}
+.comment_group_title {
+    display: inline-block;
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+}
+.comment_board_title {
+    padding-left: 10px;
+    font-size: 14px;
 }
 .comment-post-reply{
     margin-left: 85px;
