@@ -69,6 +69,7 @@
 /*4-2*/
 .myIM {
   display: flex;
+  width: 150px;
 }
 .myImage {
   display: block;
