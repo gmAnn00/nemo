@@ -30,13 +30,18 @@ public class CreateGroupDAO {
 	public int createGroup(GroupVO groupVO) {
 		int grp_id = 0;
 		try {
+
 			conn = dataFactory.getConnection();
 			//String query = "insert into group_tbl(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_mimg, grp_pimg)"
 			//		+" values (seq_group_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			String query = "insert into group_tbl(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, grp_intro, app_st, main_name, sub_name, grp_img)"
-					+ " values(seq_group_id.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+//			String query = "insert into group_tbl"
+//					+" (grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, grp_intro, app_st, main_name, sub_name, grp_img, create_date)"
+//					+ " values(seq_group_id.nextval,?,?,?,?,?,?,?,?,?,?,?, sysdate)";
+			String query = "insert into group_tbl"
+					+ " values(seq_group_id.nextval,?,?,?,?,?,?,sysdate,?,?,?,?,?)";
+			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
-			
+
 			String grp_name = groupVO.getGrp_name();
 			String grp_mng = groupVO.getGrp_mng();
 			int mem_no = groupVO.getMem_no();
@@ -47,10 +52,7 @@ public class CreateGroupDAO {
 			int app_st = groupVO.getApp_st();
 			String main_name = groupVO.getMain_name();
 			String sub_name = groupVO.getSub_name();
-			
 			String grp_img = groupVO.getGrp_img();
-			//String group_pimg = groupVO.getGrp_pimg();
-			
 			
 			pstmt.setString(1, grp_name);
 			pstmt.setString(2, grp_mng);
@@ -64,15 +66,17 @@ public class CreateGroupDAO {
 			pstmt.setString(10, sub_name);
 			pstmt.setString(11, grp_img);
 			
-			pstmt.executeUpdate();
-			
+			int ret = pstmt.executeUpdate();
+
 			pstmt.close();
 			conn.close();
+
 			
 		} catch (Exception e) {
 			System.out.println("createGroup: 오류");
 			e.printStackTrace();
 		}
+		
 		
 		try {
 			conn = dataFactory.getConnection();

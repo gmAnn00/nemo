@@ -190,7 +190,7 @@ function fn_app_st() {
               </div>
               <div class="checkConfirm">
                 <label>가입설정</label>
-                <input type="checkbox" name="app_st" id="app_st" value="0" onclick="fn_app_s"/>
+                <input type="checkbox" name="app_st" id="app_st" value="0" onclick="fn_app_st()"/>
                 <label class="checkLabel" for="app_st">소모임장 승인제 (체크시 승인된 사람만 가입가능합니다.)</label>
 
                 <input type="checkbox" name="terms" id="terms" />
@@ -225,7 +225,7 @@ function fn_app_st() {
 	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 	
-	<script src="${contextPath}/js/createGroup.js?v=<%=System.currentTimeMillis() %>"></script>
+	<script src="${contextPath}/js/createGroup.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 </html>

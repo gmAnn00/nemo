@@ -138,10 +138,8 @@ input[id="groupNum"] {
 form input[type="checkbox"] {
   display: inline-block;
   position: relative;
-  left: -250px;
   top: 15px;
-  /* position: absolute;
-  top: 40px; */
+  width: 15px;
 }
 
 /* 주소입력 */
@@ -162,8 +160,13 @@ form input[id="grp_addr1"] {
 .checkConfirm {
   margin-bottom: 80px;
 }
-.checkConfirm span {
-  padding-left: 15px;
+.checkConfirm label.confirm {
+  padding-left: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
 .creatGrp {

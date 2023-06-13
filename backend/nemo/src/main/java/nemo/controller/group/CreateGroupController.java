@@ -133,9 +133,9 @@ public class CreateGroupController extends HttpServlet {
 				srcFile.delete();
 			}
 			
-			//String nextPage="/nemo/group/groupMain?group_id="+ Integer.toString(group_id);
+			String nextPage="/nemo/group/groupMain?group_id="+ Integer.toString(group_id);
 			//response.sendRedirect("/nemo/group/groupMain?group_id=1");
-			//response.sendRedirect(nextPage);
+			response.sendRedirect(nextPage);
 
 		}
 		

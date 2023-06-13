@@ -11,7 +11,7 @@
 .formArea {
   margin: 0 auto;
   padding: 0 50px;
-  border-top: 2px solid var(--main-color);
+  /*border-top: 2px solid var(--main-color);*/
   width: 800px;
 }
 
@@ -24,6 +24,8 @@
   text-align: center;
   margin-bottom: 30px;
   margin-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--main-color);
 }
 
 .imgCrop {
@@ -62,14 +64,14 @@ form {
   justify-content: center;
   margin: 0 auto;
 }
-form div:not(.buttonCancle, .button) {
+form div:not(.buttonCancle, .button, .imgButtonArea, .selectBox, .creatGrp) {
   display: flex;
   flex-direction: column;
   /* margin-bottom: 20px; */
   width: 500px;
   position: relative;
 }
-form label:not(.checkLabel, .imgLabel, .imgButtonArea){
+form label:not(.checkLabel, .imgLabel){
   margin-bottom: 5px;
   position: relative;
   top: 30px;
@@ -79,6 +81,7 @@ form label:not(.checkLabel, .imgLabel, .imgButtonArea){
 .imgButtonArea{
 	display:flex;
 	flex-direction: row;
+	justify-content: space-around;
 }
 .imgLabel{
 	display: inline-block;

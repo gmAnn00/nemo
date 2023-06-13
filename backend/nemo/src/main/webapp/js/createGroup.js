@@ -308,7 +308,7 @@ $(document).on("change", "select[name=main_name]", function () {
     $("select[name=sub_name] option").each(function (idx, item) {
         if ($(this).data("class") == mainVal || $(this).val == "") {
             $(this).show();
-            console.log(mainVal);
+            //console.log(mainVal);
         } else {
             $(this).hide();
         }
