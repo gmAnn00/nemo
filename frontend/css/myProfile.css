@@ -86,10 +86,11 @@
   border-radius: 50%;
   border: 1px solid var(--sub3-color);
   background: url(../images/dall.png) 35%;
-  line-height: 120px;
+  line-height: 180px;
   color: var(--sub3-color);
-  text-shadow: 1px 1px 1 #404040;
+  text-align: left;
   font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
 }
 .myImage label {
   display: inline-block;
