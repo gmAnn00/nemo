@@ -1,16 +1,18 @@
 package nemo.service.group;
 
+import nemo.dao.group.GroupMainDAO;
 import nemo.vo.group.GroupVO;
 
 public class GroupMainService {
+	GroupMainDAO groupMainDAO;
 	
 	public GroupMainService() {
-		// TODO Auto-generated constructor stub
+		groupMainDAO = new GroupMainDAO();
 	}
 
 	public GroupVO selectGroupById(int group_id) {
-		// TODO Auto-generated method stub
-		return null;
+		GroupVO groupVO = groupMainDAO.selectGroupById();
+		return groupVO;
 	}
 
 }

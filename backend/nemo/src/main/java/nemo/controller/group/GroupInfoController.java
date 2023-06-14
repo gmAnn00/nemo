@@ -74,7 +74,7 @@ public class GroupInfoController extends HttpServlet {
 		request.setAttribute("recentDate", recentDate);
 		request.setAttribute("app_st", app_st);
 
-		nextPage = "/group/groupInfo.jsp";
+		nextPage = "/views/group/groupInfo.jsp";
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
