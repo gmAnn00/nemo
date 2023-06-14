@@ -1,0 +1,154 @@
+@charset "utf-8";
+@font-face {
+    font-family: "yg-jalnan";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+#contentsArea {
+    padding-top: 115px;
+    width: 60%;
+    margin-bottom: 40px;
+}
+
+#contentsArea .chattingArea {
+    border: 1px solid #666;
+}
+
+div.MayIHelpYouArea {
+    height: 100px;
+    border: 1px solid #666;
+    text-align: center;
+    position: relative;
+    padding-left: 50px;
+    text-align: left;
+}
+
+div.MayIHelpYouArea img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+div.MayIHelpYouArea p {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translate(100px, -50%);
+    background: #484848;
+    padding: 10px 10px;
+    color: #fff;
+    border-radius: 10px;
+}
+div.MayIHelpYouArea p::after {
+    border-top: 15px solid #484848;
+    border-left: 15px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    left: -14px;
+}
+
+div.chattingMessageArea {
+    height: 400px;
+    text-align: center;
+    border: 1px solid #666;
+}
+
+div.userMessageArea {
+    border: 1px solid #666;
+    height: 100px;
+    position: relative;
+    padding-right: 50px;
+    text-align: right;
+}
+div.userMessageArea img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-100px, -50%);
+}
+
+div.userMessageArea p {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    transform: translate(-350px, -50%);
+    background: pink;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+div.userMessageArea p::after {
+    border-top: 15px solid pink;
+    border-left: 0px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    right: -14px;
+}
+
+div.helpMessageArea {
+    border: 1px solid #666;
+    height: 100px;
+    position: relative;
+    padding-left: 50px;
+    text-align: left;
+}
+div.helpMessageArea img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+div.helpMessageArea p {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translate(100px, -50%);
+    background: #484848;
+    padding: 10px 10px;
+    color: #fff;
+    border-radius: 10px;
+}
+div.helpMessageArea p::after {
+    border-top: 15px solid #484848;
+    border-left: 15px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    left: -14px;
+}
+
+div.sendMessageArea {
+    border: 1px solid #666;
+    text-align: center;
+    position: relative;
+    height: 50px;
+}
+
+div.sendMessageArea input {
+    width: 300px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-210px, -50%);
+}
+
+div.sendMessageArea button {
+    width: 40px;
+    height: 40px;
+    background-image: url("../images/temp.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    transform: translate(110px, -50%);
+}
