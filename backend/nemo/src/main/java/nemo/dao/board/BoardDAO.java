@@ -1,7 +1,5 @@
 package nemo.dao.board;
 
-import nemo.vo.common.*;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
