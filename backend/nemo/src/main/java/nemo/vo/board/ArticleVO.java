@@ -1,9 +1,9 @@
 package nemo.vo.board;
 
 import java.sql.Date;
+import java.util.List;
 
-public class BoardVO {
-	//필드
+public class ArticleVO {
 	private int article_no;
 	private String user_id;
 	private String nickname; 
@@ -15,22 +15,10 @@ public class BoardVO {
 	private int view_cnt;
 	private int com_cnt;
 	
-	public BoardVO() {
+	private List<CommentVO> comment;
+	
+	public ArticleVO() {
 
-	}
-
-	public BoardVO(int article_no, String user_id, String nickname, int grp_id, String title, String content, String brackets,
-			int view_cnt,int com_cnt) {
-
-		this.article_no = article_no;
-		this.user_id = user_id;
-		this.nickname=nickname;
-		this.grp_id = grp_id;
-		this.title = title;
-		this.content = content;
-		this.brackets = brackets;
-		this.view_cnt = view_cnt;
-		this.com_cnt = com_cnt;
 	}
 
 	public int getArticle_no() {
@@ -113,4 +101,12 @@ public class BoardVO {
 		this.com_cnt = com_cnt;
 	}
 
+	public List<CommentVO> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<CommentVO> comment) {
+		this.comment = comment;
+	}
+	
 }
