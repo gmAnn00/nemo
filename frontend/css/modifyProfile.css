@@ -1,20 +1,4 @@
 @charset "utf-8";
-/*a 태그*/
-a:link {
-  /* color: #4f4f4f; 파랑색을 약간 회색으로 */
-  text-decoration: none; /*밑줄 없애기*/
-}
-
-a:visited {
-  color: #8a8e91; /*방문시 보라색에서 회색*/
-  text-decoration: none;
-}
-
-/*1.전체 부분*/
-/* .all{
-    width: 1000px;
-    margin: 0 auto;
-} */
 
 /*2.제목부분*/
 .modify {
@@ -30,6 +14,20 @@ a:visited {
   width: 700px;
   text-align: center;
   margin: 0 auto;
+  padding-right: 70px;
+}
+.myImage img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--sub3-color);
+  background: url(../images/dall.png) 35%;
+  line-height: 120px;
+  color: var(--sub3-color);
+  text-shadow: 1px 1px 1 #404040;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 1px solid var(--sub2-color);
 }
 
 /*4번*/
@@ -53,73 +51,19 @@ a:visited {
   margin: 10px 0;
 }
 
-/* 회원가입 진행 단계 */
-.progress-bar {
-  position: relative;
-  width: 100%;
-  height: 20px;
-  background-color: var(--sub3-color);
-  border-radius: 10px;
-}
-.progress-bar span {
-  padding-right: 150px;
-  color: #777;
-}
-
-.step {
-  position: absolute;
-  height: 100%;
-  background-color: var(--sub3-color); /* Default color for incomplete steps */
-  border-radius: 0 50px 50px 0;
-  text-align: right;
-  height: 30px;
-  line-height: 30px;
-}
-.step-1 {
-  background-color: var(--sub-color);
-  width: 33.33%;
-}
-.step-2 {
-  background-color: var(--main-color);
-  width: 66.66%;
-}
-.step-2 span {
-  font-weight: bold;
-  color: #402f0d;
-}
-.step-3 {
-  background-color: var(--sub3-color);
-  width: 100%;
-}
-
 /* 회원가입영역 */
-h3 {
-  padding: 5px;
-  font-size: 16px;
-}
-#loginForm {
-  margin: 30px auto;
-  padding: 60px 50px 50px 100px;
-  width: 750px;
-  /* height: 1250px; */
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 450px;
 }
 form div {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 450px;
+  width: 435px;
   position: relative;
   /* align-items: center; */
 }
@@ -128,14 +72,27 @@ form label {
   position: relative;
   top: 32px;
   left: -110px;
+  width: 105px;
 }
 form input {
   padding: 8px;
 }
-form input[id="id"],
+/* form input[id="id"], */
 input[id="nickname"] {
   width: 70%;
 }
+/* 비밀번호 일치 */
+.alert {
+  font-size: 12px;
+}
+.alertSuccess {
+  color: var(--blue-color);
+}
+.alertDanger {
+  color: var(--heart-color);
+}
+
+/* 중복확인 */
 form .check {
   width: 100px;
   position: absolute;
@@ -148,13 +105,12 @@ form .findZipcode {
   position: absolute;
   top: 22px;
   left: 190px;
-  /* padding: 10px; */
 }
 form input[id="zipcode"] {
   width: 150px;
   margin-bottom: 10px;
 }
-form input[id="address"] {
+form input[id="user_addr1"] {
   margin-bottom: 10px;
 }
 form input[id="birthdate"] {
@@ -171,7 +127,9 @@ form .email input {
 }
 form .email select {
   width: 130px;
-  padding: 10px;
+  padding: 7px;
+  position: relative;
+  top: 1px;
 }
 form .emailCheck {
   display: inline-block;
@@ -179,10 +137,6 @@ form .emailCheck {
 .submitCancel {
   display: flex;
   flex-direction: row;
-}
-.submitCancel a {
-  /* display: inline-block; */
-  /* flex: 1; */
   margin-top: 50px;
 }
 .submitCancel .button {

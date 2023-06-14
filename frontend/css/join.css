@@ -80,14 +80,27 @@ form label {
   position: relative;
   top: 32px;
   left: -110px;
+  width: 105px;
 }
 form input {
   padding: 8px;
 }
-form input[id="id"],
+form input[id="user_id"],
 input[id="nickname"] {
   width: 70%;
 }
+/* 비밀번호 일치 */
+.alert {
+  font-size: 12px;
+}
+.alertSuccess {
+  color: var(--blue-color);
+}
+.alertDanger {
+  color: var(--heart-color);
+}
+
+/* 중복확인 */
 form .check {
   width: 100px;
   position: absolute;
@@ -99,14 +112,14 @@ form .findZipcode {
   width: 150px;
   position: absolute;
   top: 22px;
-  left: 190px;
+  left: 185px;
   /* padding: 10px; */
 }
 form input[id="zipcode"] {
   width: 150px;
   margin-bottom: 10px;
 }
-form input[id="address"] {
+form input[id="user_addr1"] {
   margin-bottom: 10px;
 }
 form input[id="birthdate"] {
@@ -123,7 +136,9 @@ form .email input {
 }
 form .email select {
   width: 130px;
-  padding: 10px;
+  padding: 7px;
+  position: relative;
+  top: 1px;
 }
 form .emailCheck {
   display: inline-block;
@@ -131,10 +146,6 @@ form .emailCheck {
 .submitCancel {
   display: flex;
   flex-direction: row;
-}
-.submitCancel a {
-  /* display: inline-block; */
-  /* flex: 1; */
   margin-top: 50px;
 }
 .submitCancel .button {
