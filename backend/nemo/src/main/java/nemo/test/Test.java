@@ -1,4 +1,4 @@
-package nemo.controller.common;
+package nemo.test;
 
 import java.io.IOException;
 
@@ -8,37 +8,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/index")
-public class IndexController extends HttpServlet {
-	HttpSession session;
-
+/**
+ * Servlet implementation class Test
+ */
+@WebServlet("/test")
+public class Test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
 	
 	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		String nextPage = "";
-		session=request.getSession();
+		request.setAttribute("REST_API_KEY", "c73306afc68803d77548f1b3dea5d5c2");
+		request.setAttribute("REDIRECT_URI", "http://127.0.0.1:8090/nemo/oauth");
 		
-		//session.setAttribute("user_id", "kim");
-		//session.setAttribute("nickname", "김철수닉네임");
-		session.setAttribute("user_id", "hong");
-		session.setAttribute("nickname", "홍길동닉네임");
-		//session.removeAttribute("user_id");
-		//session.removeAttribute("nickname");
-		nextPage="/views/index.jsp";
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/test/loginTest2.jsp");
 		dispatcher.forward(request, response);
+
 
 	}
 

@@ -12,13 +12,13 @@
 <head>
 <meta charset="UTF-8">
 <title>네모: 동네모임</title>
-<link rel="shortcut icon" href="./images/favicon.png" />
-<link rel="stylesheet" href="./css/normalize.css" />
-<link rel="stylesheet" href="./css/common.css" />
-<link rel="stylesheet" href="./css/search.css" />
-<script src="./js/jquery-3.6.4.min.js"></script>
-<script src="./js/header.js"></script>
-<script src="./js/search.js"></script>
+<link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
+<link rel="stylesheet" href="${contextPath}/css/normalize.css" />
+<link rel="stylesheet" href="${contextPath}/css/common.css" />
+<link rel="stylesheet" href="${contextPath}/css/search.css" />
+<script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+<script src="${contextPath}/js/header.js"></script>
+<script src="${contextPath}/js/search.js"></script>
 
 <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
 </head>

@@ -7,7 +7,7 @@ public class GroupVO {
 	private String grp_name;
 	private String grp_mng;
 	private int mem_no;
-	private int grp_zipcode;
+	private String grp_zipcode;
 	private String grp_addr1;
 	private String grp_addr2;
 	private Date create_date;
@@ -15,11 +15,10 @@ public class GroupVO {
 	private int app_st;
 	private String main_name;
 	private String sub_name;
-	private String grp_mimg;
-	private String grp_pimg;
+	private String grp_img;
 
 	public GroupVO() {
-
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getGrp_id() {
@@ -54,11 +53,11 @@ public class GroupVO {
 		this.mem_no = mem_no;
 	}
 
-	public int getGrp_zipcode() {
+	public String getGrp_zipcode() {
 		return grp_zipcode;
 	}
 
-	public void setGrp_zipcode(int grp_zipcode) {
+	public void setGrp_zipcode(String grp_zipcode) {
 		this.grp_zipcode = grp_zipcode;
 	}
 
@@ -118,20 +117,23 @@ public class GroupVO {
 		this.sub_name = sub_name;
 	}
 
-	public String getGrp_mimg() {
-		return grp_mimg;
+	public String getGrp_img() {
+		return grp_img;
 	}
 
-	public void setGrp_mimg(String grp_mimg) {
-		this.grp_mimg = grp_mimg;
+	public void setGrp_img(String grp_img) {
+		this.grp_img = grp_img;
 	}
 
-	public String getGrp_pimg() {
-		return grp_pimg;
+	@Override
+	public String toString() {
+		return "GroupVO [grp_id=" + grp_id + ", grp_name=" + grp_name + ", grp_mng=" + grp_mng + ", mem_no=" + mem_no
+				+ ", grp_zipcode=" + grp_zipcode + ", grp_addr1=" + grp_addr1 + ", grp_addr2=" + grp_addr2
+				+ ", create_date=" + create_date + ", grp_intro=" + grp_intro + ", app_st=" + app_st + ", main_name="
+				+ main_name + ", sub_name=" + sub_name + ", grp_img=" + grp_img + "]";
 	}
-
-	public void setGrp_pimg(String grp_pimg) {
-		this.grp_pimg = grp_pimg;
-	}
-
+	
+	
+	
+	
 }

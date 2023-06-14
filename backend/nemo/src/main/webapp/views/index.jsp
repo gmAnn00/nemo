@@ -12,13 +12,13 @@
 <head>
 <meta charset="UTF-8">
 <title>네모: 동네모임</title>
-<link rel="shortcut icon" href="./images/favicon.png" />
-<link rel="stylesheet" href="./css/normalize.css" />
-<link rel="stylesheet" href="./css/common.css" />
-<link rel="stylesheet" href="./css/index.css" />
-<script src="./js/jquery-3.6.4.min.js"></script>
-<script src="./js/header.js"></script>
-<script src="./js/index.js"></script>
+<link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
+<link rel="stylesheet" href="${contextPath}/css/normalize.css" />
+<link rel="stylesheet" href="${contextPath}/css/common.css" />
+<link rel="stylesheet" href="${contextPath}/css/index.css" />
+<script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+<script src="${contextPath}/js/header.js"></script>
+<script src="${contextPath}/js/index.js"></script>
 <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -27,11 +27,11 @@
 	<!--메인 이미지 영역-->
         <div class="intro">
             <div class="intro-slideshow">
-                <img src="./images/main_bike2.jpg" />
-                <img src="./images/main_book.jpg" />
-                <img src="./images/main_music2.jpg" />
-                <img src="./images/main_pet.jpg" />
-                <img src="./images/main_culture.jpg.jpg" />
+                <img src="${contextPath}/images/main_bike2.jpg" />
+                <img src="${contextPath}/images/main_book.jpg" />
+                <img src="${contextPath}/images/main_music2.jpg" />
+                <img src="${contextPath}/images/main_pet.jpg" />
+                <img src="${contextPath}/images/main_culture.jpg.jpg" />
             </div>
             <div class="intro-header">
                 <h1>새로운 경험과<br> 친구를 만나보세요</h1>
