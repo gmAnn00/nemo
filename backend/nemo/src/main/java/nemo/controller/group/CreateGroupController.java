@@ -63,7 +63,7 @@ public class CreateGroupController extends HttpServlet {
 		System.out.println(GROUP_IMG_REPO);
 		
 		if(action.equals("/form")) {
-			String nextPage = "/group/createGroupForm.jsp";
+			String nextPage = "/views/group/createGroupForm.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		}else if (action.equals("/create")) {

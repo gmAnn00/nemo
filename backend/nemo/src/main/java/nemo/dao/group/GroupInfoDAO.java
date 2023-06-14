@@ -189,9 +189,10 @@ public class GroupInfoDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, group_id);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			recentDate = rs.getDate("create_date");
 			
+			if(rs.next()) {
+				recentDate = rs.getDate("create_date");
+			}
 			rs.close();
 			pstmt.close();
 			conn.close();
