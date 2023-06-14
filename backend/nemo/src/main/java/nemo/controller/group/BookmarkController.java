@@ -1,8 +1,6 @@
-package nemo.controller.common;
+package nemo.controller.group;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,14 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/index")
-public class IndexController extends HttpServlet {
+import nemo.service.group.BookmarkService;
+
+/**
+ * Servlet implementation class Bookmark
+ */
+@WebServlet("/group/bookmark")
+public class BookmarkController extends HttpServlet {
 	HttpSession session;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
@@ -29,17 +31,13 @@ public class IndexController extends HttpServlet {
 		String nextPage = "";
 		session=request.getSession();
 		
-		//session.setAttribute("user_id", "kim");
-		//session.setAttribute("nickname", "김철수닉네임");
-		session.setAttribute("user_id", "hong");
-		session.setAttribute("nickname", "홍길동닉네임");
-		//session.removeAttribute("user_id");
-		//session.removeAttribute("nickname");
-		nextPage="/views/index.jsp";
+		String user_id = (String) request.getParameter("user_id");
+		int group_id = Integer.parseInt(request.getParameter("group_id"));
+		Boolean isBookmark = Boolean.parseBoolean(request.getParameter("isBookmark"));
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-		dispatcher.forward(request, response);
-
+		BookmarkService bookmarkService = new BookmarkService();
+		bookmarkService.toggleBookmark(user_id, group_id, isBookmark);
+		
 	}
 
 }

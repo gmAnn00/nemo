@@ -1,4 +1,4 @@
-package nemo.controller.common;
+package nemo.controller.search;
 
 import java.io.IOException;
 
@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/index")
-public class IndexController extends HttpServlet {
+
+@WebServlet("/search")
+public class SearchController extends HttpServlet {
 	HttpSession session;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,17 +30,9 @@ public class IndexController extends HttpServlet {
 		String nextPage = "";
 		session=request.getSession();
 		
-		//session.setAttribute("user_id", "kim");
-		//session.setAttribute("nickname", "김철수닉네임");
-		session.setAttribute("user_id", "hong");
-		session.setAttribute("nickname", "홍길동닉네임");
-		//session.removeAttribute("user_id");
-		//session.removeAttribute("nickname");
-		nextPage="/views/index.jsp";
+		nextPage="/views/search.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
-
 	}
-
 }
