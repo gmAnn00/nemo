@@ -91,14 +91,48 @@ table.boardList {
 }
 
 /* 말머리 뒤에 | 붙이기 */
-.boardList tr > td:nth-child(3)::before {
-  margin-right: 25px;
-  content: " | ";
+.boardList tr > td:nth-child(2)::after {
+
 }
 .boardList tr > td:nth-child(3) {
   width: 500px;
   text-align: left;
 }
+.titleArea {
+  display: inline-block;
+}
+.title {
+  display: -webkit-box;
+  max-width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+
+}
+.commentArea {
+  margin-left: 3px;
+  
+}
+.commentArea {
+  display: inline-block;
+  width: 5%;
+}
+.cmt {
+  font-size: 0.8em;
+  line-height: 16px;
+}
+.cmt::before {
+  content: "[";
+}
+
+.cmt::after{
+  content: "]";
+}
+
+
+
 
 .bottomBtn {
   text-align: right;
