@@ -24,7 +24,7 @@
 <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<jsp:include page="../header.jsp" flush="true"></jsp:include>
+	<!-- <jsp:include page="../header.jsp" flush="true"></jsp:include> -->
 	
 	<!-- section1 시작 -->
         <div class="section1">
@@ -218,6 +218,6 @@
             <!-- main content 종료-->
         </div>
 	
-	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
+	<!-- <jsp:include page="../footer.jsp" flush="true"></jsp:include>-->
 </body>
 </html>

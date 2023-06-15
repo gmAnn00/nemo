@@ -76,7 +76,7 @@ $(function () {
 </script>
 </head>
 <body>
-	<jsp:include page="../header.jsp" flush="true"></jsp:include>
+	<jsp:include page="../../header.jsp" flush="true"></jsp:include>
 	
 	<!-- main content 시작-->
         <div id="contentsArea" class="mainContent">
@@ -215,6 +215,6 @@ $(function () {
         </div>
         <!-- main content 끝-->
 	
-	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
+	<jsp:include page="../../footer.jsp" flush="true"></jsp:include>
 </body>
 </html>
