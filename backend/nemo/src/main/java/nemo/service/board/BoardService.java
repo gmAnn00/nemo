@@ -28,9 +28,8 @@ public class BoardService {
 
 			if(isMem) {
 				List<BoardVO> articlesList=boardDAO.selectGrpArticles(pagingMap, group_id); // 10개 끊은 자료를 갖고옴
-				
 				GroupVO groupVO=groupDAO.selectGroupById(group_id);
-				
+
 				// 총 글 개수를 넘겨 받을 것임 -> 페이징 처리를 하기 위해 총 글 개수 필요
 				int totArticles=boardDAO.selectToArticles(group_id);
 				articleMap.put("articlesList",articlesList);
@@ -49,6 +48,8 @@ public class BoardService {
 
 			if(isMem) {
 				BoardVO article = new BoardVO();
+				GroupVO groupVO=groupDAO.selectGroupById(grp_id);
+				
 				List<CommentVO> comments = new ArrayList<CommentVO>();
 				boolean isSame=boardDAO.isSameUser(user_id, article_no);
 				if(!isSame) {
@@ -60,7 +61,8 @@ public class BoardService {
 				viewArticle.put("article", article);
 				viewArticle.put("comments", comments);
 				viewArticle.put("isSame",isSame);
-				viewArticle.put("group_id", grp_id);
+				viewArticle.put("group", groupVO);
+				//viewArticle.put("group_id", grp_id);
 				
 			} 
 			return viewArticle;

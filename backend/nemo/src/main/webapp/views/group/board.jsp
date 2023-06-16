@@ -45,6 +45,7 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="${contextPath}/js/header.js"></script>
+    <script src="${contextPath}/js/board.js"></script>
   </head>
   <body>
     <!-- header 시작 -->
@@ -97,7 +98,7 @@
           </div>
           <div class="group_name">
             <a href="groupMain.html">
-              <span>${group.name}</span>
+              <span>${group.grp_name}</span>
             </a>
           </div>
           <div class="group_info">
@@ -188,12 +189,12 @@
 		  <div class="boardArea">
 	          <div class="search">
 	            <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
-	            <select name="" id="boardSearch">
+	            <select name="searchSelect" id="boardSearch">
 	              <option value="title">제목</option>
 	              <option value="content">내용</option>
 	              <option value="writer">작성자</option>
 	            </select>
-	            <input type="text" name="" id="" />
+	            <input type="text" name="keyword" id="keyword" />
 	            <a href="#" role="button" class="button" type="submit">검색</a>
 	          </div>
 	          
@@ -252,21 +253,21 @@
 					<c:if test="${totArticles != 0}">
 						<c:forEach var="page" begin="1" end="${endValue}" step="1">
 							<c:if test="${section>1 && page==1}">
-								<span class="paging prev"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section-1}&pageNum=10">&lt</a></span>
+								<span class="paging prev"><a href="${contextPath}/group/board?group_id=${group.grp_id}&section=${section-1}&pageNum=10">&lt</a></span>
 							</c:if>
 								
 							<c:choose>
 								<c:when test="${page==pageNum}">
-									<span class="paging currentPage"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging currentPage"><a href="${contextPath}/group/board?group_id=${group.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:when>
 								
 								<c:otherwise>
-									<span class="paging notCurrent"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging notCurrent"><a href="${contextPath}/group/board?group_id=${group.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:otherwise>
 							</c:choose>
 								
 							<c:if test="${page==10 and totArticles/100>section}">
-								<span class="paing next"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section+1}&pageNum=1">&gt</a></span>
+								<span class="paing next"><a href="${contextPath}/group/board?group_id=${group.grp_id}&section=${section+1}&pageNum=1">&gt</a></span>
 							</c:if>
 						</c:forEach>
 					</c:if>

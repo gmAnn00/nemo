@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -182,7 +183,7 @@ public class BoardDAO {
 			String query="SELECT LEVEL, c.comment_no, c.article_no, c.user_id, u.nickname, c.create_date, c.com_cont, c.parent_no";
 			query+=" FROM comment_tbl c, user_tbl u where u.user_id=c.user_id and c.article_no=?";
 			query+=" START WITH c.parent_no=0";
-			query+=" CONNECT BY PRIOR c.comment_no=c.parent_no ORDER SIBLINGS BY c.comment_no DESC";
+			query+=" CONNECT BY PRIOR c.comment_no=c.parent_no ORDER SIBLINGS BY c.comment_no";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, article_no);
@@ -193,8 +194,10 @@ public class BoardDAO {
 				int comment_no=rs.getInt("comment_no");
 				int _article_no=rs.getInt("article_no");
 				String user_id=rs.getString("user_id");
-				String nickname=rs.getString("ninckname");
-				Date create_date=rs.getDate("create_date");
+				String nickname=rs.getString("nickname");
+				//Date create_date=rs.getDate("create_date");
+				Timestamp create_date=rs.getTimestamp("create_date");
+				
 				String com_cont=rs.getString("com_cont");
 				int parent_no=rs.getInt("parent_no");
 				CommentVO comment=new CommentVO(level, comment_no, _article_no, user_id, nickname, create_date, com_cont, parent_no);

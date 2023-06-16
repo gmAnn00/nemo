@@ -1,6 +1,7 @@
 package nemo.vo.board;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class CommentVO {
 	private int level;
@@ -8,9 +9,11 @@ public class CommentVO {
 	private int article_no;
 	private String user_id;
 	private String nickname;
-	private Date create_date;
+	//private Date create_date;
 	private String com_cont; //댓글내용
 	private int parent_no;
+	private Timestamp create_date;
+	//private String create_date;
 	
 	public CommentVO() {
 
@@ -28,7 +31,7 @@ public class CommentVO {
 	
 
 	
-	public CommentVO(int level, int comment_no, int article_no, String user_id, String nickname, Date create_date,
+	public CommentVO(int level, int comment_no, int article_no, String user_id, String nickname, Timestamp create_date,
 			String com_cont, int parent_no) {
 		this.level = level;
 		this.comment_no = comment_no;
@@ -80,11 +83,11 @@ public class CommentVO {
 		this.nickname = nickname;
 	}
 
-	public Date getCreate_date() {
+	public Timestamp getCreate_date() {
 		return create_date;
 	}
 
-	public void setCreate_date(Date create_date) {
+	public void setCreate_date(Timestamp create_date) {
 		this.create_date = create_date;
 	}
 

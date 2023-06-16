@@ -53,6 +53,7 @@ public class BoardController extends HttpServlet {
 		String action=request.getPathInfo();	//요청명 가져오는 메소드 
 		System.out.println("요청 매핑이름: " + action); //요청명 출력
 		
+		
 		String nextPage=null;		
 		session=request.getSession();
 		
@@ -88,12 +89,13 @@ public class BoardController extends HttpServlet {
 				return;
 			}
 			
-		} else if(action.equals("/viewArticle")) {
+		} else if(action.equals("/viewArticle")) {	// 글 상세보기
 			System.out.println("왜 걸려 :" +action);
 			int article_no = Integer.parseInt(request.getParameter("article_no"));
 			Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
 			
-			if(!(articleViewMap.isEmpty())) {	
+			if(!(articleViewMap.isEmpty())) {
+				
 				request.setAttribute("articleViewMap", articleViewMap);
 				nextPage="/views/group/boardView.jsp";
 			}else {
