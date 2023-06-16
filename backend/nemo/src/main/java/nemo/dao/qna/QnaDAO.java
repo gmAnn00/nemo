@@ -93,7 +93,7 @@ public class QnaDAO {
 	}
 	
 	
-	//글 목록 조회 메서드
+	//한페이지 당 몇개씩 불러올 건지
 	public List<QnaVO> selectPagesQnas(int page) {
 		List<QnaVO> qnasList=new ArrayList<QnaVO>();
 		try {
@@ -147,7 +147,7 @@ public class QnaDAO {
 	}
 	
 
-	//글 목록 조회 메서드
+	//글 내용 보는 메서드
 	public QnaVO selectOneQna(int qna_id) {
 		QnaVO qnaVo = new QnaVO();
 		
