@@ -46,6 +46,8 @@ public class GroupMainController extends HttpServlet {
 		groupVO = groupMainService.selectGroupById(group_id);
 		request.setAttribute("groupVO", groupVO);
 		
+		
+		
 		nextPage = "/views/group/groupMain.jsp";
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

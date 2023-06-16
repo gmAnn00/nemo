@@ -95,6 +95,18 @@ public class CreateGroupDAO {
 			e.printStackTrace();
 		}
 		
+		try {
+			conn = dataFactory.getConnection();
+			String query = "insert into grpjoin_tbl values(?,?,sysdate)";
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, grp_id);
+			pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("createGroup: 오류");
+			e.printStackTrace();
+		}
+		
 		return grp_id;
 	} // class of
 

@@ -12,15 +12,15 @@
 <head>
 <meta charset="UTF-8">
 <title>네모: 모임 메인페이지</title>
-<link rel="shortcut icon" href="../images/favicon.png" />
-<link rel="stylesheet" href="../css/normalize.css" />
-<link rel="stylesheet" href="../css/common.css" />
-<link rel="stylesheet" href="../css/submenu.css" />
-<link rel="stylesheet" href="../css/sectionTitle.css" />
-<link rel="stylesheet" href="../css/groupMain2.css" />
-<link rel="stylesheet" href="../css/jquery-ui.min.css" />
-<script src="../js/jquery-3.6.4.min.js"></script>
-<script src="../js/header.js"></script>
+<link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
+<link rel="stylesheet" href="${contextPath}/css/normalize.css" />
+<link rel="stylesheet" href="${contextPath}/css/common.css" />
+<link rel="stylesheet" href="${contextPath}/css/submenu.css" />
+<link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
+<link rel="stylesheet" href="${contextPath}/css/groupMain2.css" />
+<link rel="stylesheet" href="${contextPath}/css/jquery-ui.min.css" />
+<script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+<script src="${contextPath}/js/header.js"></script>
 <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -31,10 +31,10 @@
             <div class="group_containter">
                 <div class="group_all">
                     <div class="group_img">
-                        <img src="../images/free-icon-group-8847475.png" alt="group_img" />
+                        <img src="${contextPath}/images/free-icon-group-8847475.png" alt="group_img" />
                     </div>
                     <div class="group_name">
-                        <a href="groupMain.html">
+                        <a href="#">
                             <span>이젠종로학원</span>
                         </a>
                     </div>
@@ -107,7 +107,7 @@
                         <h2 class="sc2_subsection_title_name"></h2>
                         <!-- nav 바 시작 -->
                         <div class="nav_bar">
-                            <a href="../../index.html">
+                            <a href="${contextPath}/index.html">
                                 <i class="fa-solid fa-house"></i>
                             </a>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
