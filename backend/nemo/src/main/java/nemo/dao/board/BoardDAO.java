@@ -43,8 +43,8 @@ public class BoardDAO {
 			
 			String query ="SELECT * FROM"
 					+ "	(SELECT ROWNUM AS recNUM, b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt"
-					+ "	FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? order by b.article_no desc)"
-					+ "WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+					+ "	FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? )"
+					+ "WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 order by article_no desc";
 			
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
@@ -117,7 +117,6 @@ public class BoardDAO {
 		}
 		return totCount;
 	}
-	
 	
 	//게시글 작성
 	
@@ -221,25 +220,77 @@ public class BoardDAO {
 	
 	//댓글 삭제
 	
-	//게시글 검색-제목
-	public List<BoardVO> selectByTitle(String in_title, int grp_id) {
-		List<BoardVO> articleList=new ArrayList<BoardVO>();
+	
+	//검색한 총 글 개수
+	public int searchTotArticles(int group_id, String filter, String keyword) {
+		int totCount=0;
 		
 		try {
 			conn=dataFactory.getConnection();
 			
-			String query="SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date,";
-			query+=" b.title, b.brackets, b.view_cnt, b.com_cnt FROM board_tbl b, user_tbl u";
-			query+=" where u.user_id=b.user_id and b.grp_id=? and b.title LIKE '%'||?||'%'";
+			String query = "SELECT COUNT(*) FROM board_tbl";
+			if(filter.equals("title")) {
+				query+=" WHERE grp_id=? AND title LIKE ?";
+			} else if(filter.equals("content")) {
+				query+=" WHERE grp_id=? AND content LIKE ?";
+				
+			}else if(filter.equals("writer")) {
+				query+=" b, user_tbl u WHERE u.user_id=b.user_id AND grp_id=? AND u.nickname LIKE ?";
+			}
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			pstmt.setString(2, "%"+keyword+"%");
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				totCount=rs.getInt(1);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		}catch (Exception e) {
+			System.out.println("검색한 총 글 개수 처리 중 에러");
+			e.printStackTrace();
+		}
+		
+		return totCount;
+	}
+
+	
+	//게시글 검색
+	public List<BoardVO> selectByKeyword(Map<String, Integer> pagingMap, int grp_id , String filter, String keyword) {
+		List<BoardVO> articleList=new ArrayList<BoardVO>();
+		int section=pagingMap.get("section");
+		int pageNum=pagingMap.get("pageNum");
+		
+		try {
+			conn=dataFactory.getConnection();
+			
+			String query ="SELECT * FROM"
+					+ "	(SELECT ROWNUM AS recNUM, b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt"
+					+ "	FROM board_tbl b, user_tbl u WHERE u.user_id=b.user_id AND b.grp_id=? AND";
+			if(filter.equals("title")){
+				query+=" b.title LIKE ? order by b.article_no desc)";
+			}else if(filter.equals("content")) {
+				query+=" b.content LIKE ? order by b.article_no desc)";
+			}else if(filter.equals("writer")) {
+				query+=" u.nickname LIKE ? order by b.article_no desc)";
+			}
+			query+=" WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, grp_id);
-			pstmt.setString(2, in_title);
+			pstmt.setString(2, "%"+keyword+"%");
+			pstmt.setInt(3, section);
+			pstmt.setInt(4, pageNum);
+			pstmt.setInt(5, section);
+			pstmt.setInt(6, pageNum);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				int article_no=rs.getInt("article_no");
 				String user_id=rs.getString("user_id");
-				String nickname=rs.getString("ninckname");
+				String nickname=rs.getString("nickname");
 				int group_id=rs.getInt("grp_id");
 				Date create_date=rs.getDate("create_date");
 				String title=rs.getString("title");
@@ -251,7 +302,7 @@ public class BoardDAO {
 				boardVO.setArticle_no(article_no);
 				boardVO.setUser_id(user_id);
 				boardVO.setNickname(nickname);
-				boardVO.setGrp_id(grp_id);
+				boardVO.setGrp_id(group_id);
 				boardVO.setCreate_date(create_date);
 				boardVO.setTitle(title);
 				//boardVO.setContent(content);
@@ -265,109 +316,13 @@ public class BoardDAO {
 			pstmt.close();
 			
 		} catch (Exception e) {
-			System.out.println("제목으로 게시글 검색중 에러");
+			System.out.println("게시글 키워드 검색중 에러 : " + filter + ", " + keyword);
 			e.printStackTrace();			
 		}
 		return articleList;
 	}
 	
-	
-	//게시글 검색-내용
-	public List<BoardVO> selectByContent(String in_cont, int grp_id) {
-		List<BoardVO> articleList=new ArrayList<BoardVO>();
-		
-		try {
-			conn=dataFactory.getConnection();
-			
-			String query="SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date,";
-			query+=" b.title, b.brackets, b.view_cnt, b.com_cnt FROM board_tbl b, user_tbl u";
-			query+=" where u.user_id=b.user_id and b.grp_id=? and b.cont LIKE '%'||?||'%'";
-			System.out.println(query);
-			pstmt=conn.prepareStatement(query);
-			pstmt.setInt(1, grp_id);
-			pstmt.setString(2, in_cont);
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()) {
-				int article_no=rs.getInt("article_no");
-				String user_id=rs.getString("user_id");
-				String nickname=rs.getString("ninckname");
-				int group_id=rs.getInt("grp_id");
-				Date create_date=rs.getDate("create_date");
-				String title=rs.getString("title");
-				String bracket=rs.getString("brackets");
-				int view_cnt=rs.getInt("view_cnt");
-				int com_cnt=rs.getInt("com_cnt");
-				BoardVO boardVO=new BoardVO();
-				boardVO.setArticle_no(article_no);
-				boardVO.setUser_id(user_id);
-				boardVO.setNickname(nickname);
-				boardVO.setGrp_id(grp_id);
-				boardVO.setCreate_date(create_date);
-				boardVO.setTitle(title);
-				boardVO.setBrackets(bracket);
-				boardVO.setView_cnt(view_cnt);
-				boardVO.setCom_cnt(com_cnt);
-				articleList.add(boardVO);
-			} // End Of While
-			rs.close();
-			conn.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println("제목으로 게시글 검색중 에러");
-			e.printStackTrace();			
-		}
-		return articleList;
-	}
-	
-	
-	//게시글 검색-작성자
-	public List<BoardVO> selectByNickName(String in_nick, int grp_id) {
-		List<BoardVO> articleList=new ArrayList<BoardVO>();
-		
-		try {
-			conn=dataFactory.getConnection();
-			
-			String query="SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date,";
-			query+=" b.title, b.brackets, b.view_cnt, b.com_cnt FROM board_tbl b, user_tbl u";
-			query+=" where u.user_id=b.user_id and b.grp_id=? and u.nickname LIKE '%'||?||'%'";
-			System.out.println(query);
-			pstmt=conn.prepareStatement(query);
-			pstmt.setInt(1, grp_id);
-			pstmt.setString(2, in_nick);
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()) {
-				int article_no=rs.getInt("article_no");
-				String user_id=rs.getString("user_id");
-				String nickname=rs.getString("ninckname");
-				int group_id=rs.getInt("grp_id");
-				Date create_date=rs.getDate("create_date");
-				String title=rs.getString("title");
-				String bracket=rs.getString("brackets");
-				int view_cnt=rs.getInt("view_cnt");
-				int com_cnt=rs.getInt("com_cnt");
-				BoardVO boardVO=new BoardVO();
-				boardVO.setArticle_no(article_no);
-				boardVO.setUser_id(user_id);
-				boardVO.setNickname(nickname);
-				boardVO.setGrp_id(grp_id);
-				boardVO.setCreate_date(create_date);
-				boardVO.setTitle(title);
-				boardVO.setBrackets(bracket);
-				boardVO.setView_cnt(view_cnt);
-				boardVO.setCom_cnt(com_cnt);
-				articleList.add(boardVO);
-			} // End Of While
-			rs.close();
-			conn.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println("제목으로 게시글 검색중 에러");
-			e.printStackTrace();			
-		}
-		return articleList;
-	}
+
 	
 	//게시글 상세조회한 사람과 글 작성자가 동일한지 체크하는 메소드
 	public boolean isSameUser(String user_id, int article_no) {

@@ -39,6 +39,32 @@ public class BoardService {
 				System.out.println("소모임"+articleMap.get("group_id"));
 			}
 			return articleMap;		
+		} // End of 게시글 목록
+		
+		//게시글 검색
+		public Map serchArticles(Map<String, Integer> pagingMap, int group_id, String user_id, String filter, String keyword) {
+			boolean isMem=boardDAO.isMember(user_id, group_id);
+			Map articleMap=new HashMap<>();
+			int totArticles=0;
+
+			if(isMem) {
+				
+				List<BoardVO> articlesList=new ArrayList<BoardVO>();
+				
+				articlesList=boardDAO.selectByKeyword(pagingMap, group_id, filter, keyword); // 10개 끊은 자료를 갖고옴
+				totArticles=boardDAO.searchTotArticles(group_id, filter, keyword);
+
+				GroupVO groupVO=groupDAO.selectGroupById(group_id);
+				
+				// 총 글 개수를 넘겨 받을 것임 -> 페이징 처리를 하기 위해 총 글 개수 필요
+				articleMap.put("articlesList",articlesList);
+				articleMap.put("totArticles", totArticles);
+				articleMap.put("group", groupVO);
+				
+				System.out.println("소모임 글 검색"+groupVO.getGrp_id());
+				System.out.println("검색 글개수4:"+totArticles);
+			}
+			return articleMap;	
 		}
 		
 		//게시글 상세보기 처리하는 서비스 메소드

@@ -222,7 +222,15 @@
 	            </div>
 	            <!-- 내용 영역 -->
 	            <div id="contentArea" class="contentArea">
-	              <p>내용 ${article.content}</p>
+	            	<div class="contentEditTool">
+		            	<c:if test="${isSame==true }">
+				            <a href="#" role="button" class="btnEdit btn">수정</a>
+				            <a href="#" role="button" class="btnDel btn">삭제</a>
+		              	</c:if>
+	            	</div>
+	            	<div class="content">
+	            		${article.content}
+	            	</div>
 	            </div>
 	            <!-- 댓글 영역 -->
 	            <div id="commentArea" class="commentArea">

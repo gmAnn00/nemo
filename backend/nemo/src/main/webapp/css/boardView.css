@@ -1,9 +1,22 @@
+/*게시글 조회 영역 상단*/
+.sc2_subsection_title {
+	border:none;
+}
 
-#contentsArea {
-  margin: 0 auto;
-  /* width: 1200px; */
-  display: flex;
-  position: relative;
+.writerInfo {
+	margin-left: 10px;
+
+}
+
+/* 게시글 내용 영역 */
+#contentArea {
+	position: relative;
+}
+.contentEditTool {
+	position: absolute;
+	padding: 10px;
+	right:0;
+	top:0;
 }
 
 /* 게시글 조회 부분 */
@@ -40,23 +53,27 @@
   position: relative;
 }
 .articleHeader div {
-  float: left;
+
 }
 .articleTitle {
-display:table-cell;
-vertical-align:middle;
+/*display:table-cell;
+vertical-align:middle;*/
+padding: 0 10px;
   margin: 15px 0 10px 0;
   line-height: 20px;
 }
 .titleHead {
-  width: 150px;
-  text-align: center;
+  /*width: 150px;
+  text-align: center;*/
+  margin: 5px 0;
 
 }
 .titleHead span {
 	display:inline-block;
 	vertical-align: middle;
-	font-size: 16px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffbb33;
 }
 .titleArea {
   width: 700px;
@@ -67,6 +84,12 @@ vertical-align:middle;
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
 .writerInfo {
   font-size: 13px;
+  margin: 10px 0;
+	padding: 0 10px;
+
+}
+.thumbArea {
+	display: inline-block;
 }
 .thumbArea img {
   border-radius: 50%;
@@ -180,7 +203,7 @@ vertical-align:middle;
 .commentInfo {
 	vertical-align: middle;
 }
-.commentDate {
+.commentDate, .comDate{
 	color: #999;
 	font-size: 11px;
 }

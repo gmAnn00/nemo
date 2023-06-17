@@ -60,6 +60,7 @@ $(document).ready(function() {
 		}
 	} );
     
+ //url 클립보드 복사
  function clip(){
 	var origUurl = '';
 	var textarea = document.createElement("textarea");

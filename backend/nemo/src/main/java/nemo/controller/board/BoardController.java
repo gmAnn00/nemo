@@ -76,6 +76,7 @@ public class BoardController extends HttpServlet {
 			// 글 리스트 뿐만 아니라 section과 page까지 담아 올려고 Map을 사용함
 			Map articleMap=boardService.listArticles(pagingMap, group_id, user_id);
 				
+	
 			if(!(articleMap.isEmpty())) {
 				articleMap.put("section", section);
 				articleMap.put("pageNum", pageNum);
@@ -89,8 +90,40 @@ public class BoardController extends HttpServlet {
 				return;
 			}
 			
-		} else if(action.equals("/viewArticle")) {	// 글 상세보기
-			System.out.println("왜 걸려 :" +action);
+		} else if(action.equals("/search")){
+			String filter=request.getParameter("filter");
+			String keyword=request.getParameter("keyword");
+			
+			String _section=request.getParameter("section");
+			String _pageNum=request.getParameter("pageNum");
+			
+			int section=Integer.parseInt((_section==null)? "1":_section);
+			int pageNum=Integer.parseInt((_pageNum==null)? "1":_pageNum);
+			
+			Map<String, Integer> pagingMap=new HashMap<String, Integer>();
+			pagingMap.put("section", section);
+			pagingMap.put("pageNum", pageNum);
+			
+			// 글 리스트 뿐만 아니라 section과 page까지 담아 올려고 Map을 사용함
+			Map articleMap=boardService.serchArticles(pagingMap, group_id, user_id, filter, keyword);
+			
+			if(!(articleMap.isEmpty())) {
+				articleMap.put("filter", filter);
+				articleMap.put("keyword", keyword);
+				articleMap.put("section", section);
+				articleMap.put("pageNum", pageNum);
+				
+				request.setAttribute("articleMap", articleMap);
+				nextPage="/views/group/board.jsp";
+
+			} else {
+				out.print("<script>alert('잘못된 접근입니다.'); location.href='/nemo/index'</script>");
+				return;
+			}
+			
+			
+		}else if(action.equals("/viewArticle")) {	// 글 상세보기
+			
 			int article_no = Integer.parseInt(request.getParameter("article_no"));
 			Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
 			
