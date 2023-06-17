@@ -10,6 +10,7 @@ public class QnaVO {
 	private String title;
 	private String content;
 	private Date create_date;
+	private int level;
 
 	
 	
@@ -19,7 +20,7 @@ public class QnaVO {
 
 
 
-	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date) {
+	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level) {
 		super();
 		this.qna_id = qna_id;
 		this.user_id = user_id;
@@ -28,6 +29,7 @@ public class QnaVO {
 		this.title = title;
 		this.content = content;
 		this.create_date = create_date;
+		this.level = level;
 	}
 
 
@@ -115,6 +117,16 @@ public class QnaVO {
 	}
 
 
+
+	public int getLevel() {
+		return level;
+	}
+
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	
 	
 }

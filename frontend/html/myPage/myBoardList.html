@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/submenu.css" />
     <link rel="stylesheet" href="../../css/myBoardList.css" />
-    <script
-      src="https://kit.fontawesome.com/bc604c01cc.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="../../css/tabmenu.css">
+    <script src="https://kit.fontawesome.com/bc604c01cc.js"crossorigin="anonymous"></script>
     <script src="../../js/jquery-3.6.4.min.js"></script>
     <script src="../../js/header.js"></script>
-    <script src="../../js/boardMy.js"></script>
+    <script src="../../js/tabmenu.js"></script>
   </head>
   <body>
     <!-- 배경색 조정 -->
@@ -107,6 +105,7 @@
         <div class="sc2_subsection">
           <div class="sc2_subsection_title">
             <h2 class="sc2_subsection_title_name">내가 쓴 글·댓글</h2>
+            
             <!-- nav 바 시작 -->
             <div class="nav_bar">
               <a href="../index.html">
@@ -118,95 +117,217 @@
               <span>내가 쓴 글·댓글</span>
             </div>
             <!-- nav 바 종료 -->
+          
           </div>
 
           <div class="sc2_subcontents">
-            <div class="sc2_subcontent">
-              <div data-tabs class="tabs">
-                <div class="tab">
-                  <input type="radio" name="tabgroup" id="tab-1" checked />
-                  <label for="tab-1">작성글</label>
-                  <div class="tab__content">
-                    <div id="menu2" class="tabcont">
-                      <div class="board_section">
-                        <table class="board_box">
-                          <tr class="first">
-                            <th><input type="checkbox" class="check" /></th>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                            <th>삭제</th>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" class="check" /></td>
-                            <td>0002</td>
-                            <td>소모임1 | 고양이는 야옹</td>
-                            <td>2023-04-30</td>
-                            <td><button>삭제</button></td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" class="check" /></td>
-                            <td>0001</td>
-                            <td>소모임2 | 강아지는 멍멍</td>
-                            <td>2023-04-30</td>
-                            <td><button>삭제</button></td>
-                          </tr>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab">
-                  <input type="radio" name="tabgroup" id="tab-2" />
-                  <label for="tab-2">작성댓글</label>
-                  <div class="tab__content">
-                    <div id="menu2" class="tabcont">
-                      <div class="rep_section">
-                        <table class="rep_box">
-                          <tr class="first">
-                            <th><input type="checkbox" class="check" /></th>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                            <th>삭제</th>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" class="check" /></td>
-                            <td>0002</td>
-                            <td>소모임1 | 고양이는 야옹</td>
-                            <td>2023-04-30</td>
-                            <td><button>삭제</button></td>
-                          </tr>
-                          <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2"></td>
-                            <td>ㄴ 귀엽네요ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</td>
-                            <td colspan="2"></td>
-                            <td colspan="2"></td>
-                          </tr>
-                          <td colspan="2">
-                            <input type="checkbox" class="check" />
-                          </td>
-                          <td colspan="2">0001</td>
-                          <td>소모임2 | 강아지는 멍멍</td>
-                          <td colspan="2">2023-04-30</td>
-                          <td colspan="2"><button>삭제</button></td>
-                          <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2"></td>
-                            <td>ㄴ 반갑습니다:D</td>
-                            <td colspan="2"></td>
-                            <td colspan="2"></td>
-                          </tr>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+             
+            <!-- tab menu 시작 -->
+            <div class="tab_container">
+              <div class="tab-slider--nav">
+                  <ul class="tab-slider--tabs">
+                      <li class="tab-slider--trigger active" rel="tab1"><span>작성글</span></li>
+                      <li class="tab-slider--trigger" rel="tab2"><span>작성댓글</span></li>
+                  </ul>
               </div>
-            </div>
+              <div class="tab-slider--container">
+                                    
+                <!-- tab1 시작 -->
+                <div id="tab1" class="tab-slider--body">
+                  <div class="tab_box">
+                    
+                    <!-- comment 시작 -->
+                    <div class="user-comment">
+                      <div class="comments-section">
+                        <div class="comment_box">
+                          <div class="comment_title">
+                            <div class="comment_textarea">
+                              <h3 class="comment_group_title">이젠종로학원</h3>
+                              <span class="comment_board_title">글 제목</span>
+                              <span class="comment-time">30 minutes ago</span>
+                            </div>
+                          </div>
+            
+                          <div class="comment-post">
+                            <div class="comment-img"><img src="../../images/profile-test.jpg"></div>
+                            <div class="comment-details">
+                              <div class="comment_details_titlebox">
+                                  <div class="comment_details_title">
+                                    <span class="comment-author" id="user">도지</span>
+                                  </div>
+                                  <div class="comment-like-unlike">
+                                    <span><i class="fa-solid fa-pen"></i></span>
+                                    <span><i class="fa-solid fa-xmark"></i></span>
+                                  </div>
+                              </div>
+                              <p class="comment-content">Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum. Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.</p> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- comment 종료 -->
+
+                    <!-- comment 시작 -->
+                    <div class="user-comment">
+                      <div class="comments-section">
+                        <div class="comment_box">
+                          <div class="comment_title">
+                            <div class="comment_textarea">
+                              <h3 class="comment_group_title">이젠종로학원</h3>
+                              <span class="comment_board_title">글 제목</span>
+                              <span class="comment-time">30 minutes ago</span>
+                            </div>
+                          </div>
+            
+                          <div class="comment-post">
+                            <div class="comment-img"><img src="../../images/profile-test.jpg"></div>
+                            <div class="comment-details">
+                              <div class="comment_details_titlebox">
+                                  <div class="comment_details_title">
+                                    <span class="comment-author" id="user">도지</span>
+                                  </div>
+                                  <div class="comment-like-unlike">
+                                    <span><i class="fa-solid fa-pen"></i></span>
+                                    <span><i class="fa-solid fa-xmark"></i></span>
+                                  </div>
+                              </div>
+                              <p class="comment-content">Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum. Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.</p> 
+                            </div>
+                          </div>
+                        </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- comment 종료 -->
+                  </div>
+                </div>     
+                <!-- tab1 종료 -->
+
+                <!-- tab2 시작 -->
+                <div id="tab2" class="tab-slider--body">
+                  <div class="tab_box">
+                    <!-- comment 시작 -->
+                    <div class="user-comment">
+                      <div class="comments-section">
+                        <div class="comment_box">
+                          <div class="comment_title">
+                            <div class="comment_textarea">
+                              <h3 class="comment_group_title">이젠종로학원</h3>
+                              <span class="comment_board_title">글 제목</span>
+                              <span class="comment-time">30 minutes ago</span>
+                            </div>
+                          </div>
+            
+                          <div class="comment-post">
+                            <div class="comment-img"><img src="../../images/profile-test.jpg"></div>
+                            <div class="comment-details">
+                              <div class="comment_details_titlebox">
+                                  <div class="comment_details_title">
+                                    <span class="comment-author" id="user">도지</span>
+                                  </div>
+                                  <div class="comment-like-unlike">
+                                    <span><i class="fa-solid fa-pen"></i></span>
+                                    <span><i class="fa-solid fa-xmark"></i></span>
+                                  </div>
+                              </div>
+                              <p class="comment-content">Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum. Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.</p> 
+                            </div>
+                          </div>
+            
+                          <div class="comment-post-reply">
+                              <div class="comment-img"><img src="../../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png"/></div>
+                              <div class="comment-details">
+                                  <div class="comment_details_titlebox">
+                                      <div class="comment_details_title">
+                                          <span class="comment-author" id="user">곽철이</span>
+                                          <span class="comment-time">10 minutes ago</span>
+                                      </div>
+                                      <div class="comment-like-unlike">
+                                          <span><i class="fa-solid fa-reply"></i></span>
+                                      </div>
+                                  </div>
+                                  <p class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                              </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- comment 종료 -->
+
+                    <!-- comment 시작 -->
+                    <div class="user-comment">
+                      <div class="comments-section">
+                        <div class="comment_box">
+                          <div class="comment_title">
+                            <div class="comment_textarea">
+                              <h3 class="comment_group_title">이젠종로학원</h3>
+                              <span class="comment_board_title">글 제목</span>
+                              <span class="comment-time">30 minutes ago</span>
+                            </div>
+                          </div>
+            
+                          <div class="comment-post">
+                            <div class="comment-img"><img src="../../images/profile-test.jpg"></div>
+                            <div class="comment-details">
+                              <div class="comment_details_titlebox">
+                                  <div class="comment_details_title">
+                                    <span class="comment-author" id="user">도지</span>
+                                  </div>
+                                  <div class="comment-like-unlike">
+                                    <span><i class="fa-solid fa-pen"></i></span>
+                                    <span><i class="fa-solid fa-xmark"></i></span>
+                                  </div>
+                              </div>
+                              <p class="comment-content">Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum. Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.</p> 
+                            </div>
+                          </div>
+            
+                          <div class="comment-post-reply">
+                              <div class="comment-img"><img src="../../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png"/></div>
+                              <div class="comment-details">
+                                  <div class="comment_details_titlebox">
+                                      <div class="comment_details_title">
+                                          <span class="comment-author" id="user">곽철이</span>
+                                          <span class="comment-time">10 minutes ago</span>
+                                      </div>
+                                      <div class="comment-like-unlike">
+                                          <span><i class="fa-solid fa-reply"></i></span>
+                                      </div>
+                                  </div>
+                                  <p class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                              </div>
+                          </div>
+
+                          <div class="comment-post-reply">
+                            <div class="comment-img"><img src="../../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png"/></div>
+                            <div class="comment-details">
+                                <div class="comment_details_titlebox">
+                                    <div class="comment_details_title">
+                                        <span class="comment-author" id="user">곽철이</span>
+                                        <span class="comment-time">10 minutes ago</span>
+                                    </div>
+                                    <div class="comment-like-unlike">
+                                        <span><i class="fa-solid fa-reply"></i></span>
+                                    </div>
+                                </div>
+                                <p class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum. Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at. </p>
+                            </div>
+                        </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- comment 종료 -->
+                    
+                  </div>
+                </div>  
+                <!-- tab2 종료 -->
+              </div>
+            </div>  
           </div>
-          <!-- #container -->
         </div>
         <!-- 컨텐츠 종료 -->
       </div>

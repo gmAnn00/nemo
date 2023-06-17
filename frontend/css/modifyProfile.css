@@ -17,8 +17,16 @@
   padding-right: 70px;
 }
 .myImage img {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 1px solid var(--sub2-color);
+  border: 1px solid var(--sub3-color);
+  background: url(../images/dall.png) 35%;
+  line-height: 180px;
+  color: var(--sub3-color);
+  text-align: left;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
 }
 
 /*4번*/
@@ -43,20 +51,6 @@
 }
 
 /* 회원가입영역 */
-h3 {
-  padding: 5px;
-  font-size: 16px;
-}
-#loginForm {
-  margin: 30px auto;
-  padding: 60px 50px 50px 100px;
-  width: 750px;
-  /* height: 1250px; */
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
 form {
   display: flex;
   flex-direction: column;
@@ -77,6 +71,7 @@ form label {
   position: relative;
   top: 32px;
   left: -110px;
+  width: 105px;
 }
 form input {
   padding: 8px;
@@ -85,6 +80,18 @@ form input {
 input[id="nickname"] {
   width: 70%;
 }
+/* 비밀번호 일치 */
+.alert {
+  font-size: 12px;
+}
+.alertSuccess {
+  color: var(--blue-color);
+}
+.alertDanger {
+  color: var(--heart-color);
+}
+
+/* 중복확인 */
 form .check {
   width: 100px;
   position: absolute;
@@ -97,13 +104,12 @@ form .findZipcode {
   position: absolute;
   top: 22px;
   left: 190px;
-  /* padding: 10px; */
 }
 form input[id="zipcode"] {
   width: 150px;
   margin-bottom: 10px;
 }
-form input[id="address"] {
+form input[id="user_addr1"] {
   margin-bottom: 10px;
 }
 form input[id="birthdate"] {
@@ -120,7 +126,9 @@ form .email input {
 }
 form .email select {
   width: 130px;
-  padding: 8px 7px 7px 7px;
+  padding: 7px;
+  position: relative;
+  top: 1px;
 }
 form .emailCheck {
   display: inline-block;
@@ -128,10 +136,6 @@ form .emailCheck {
 .submitCancel {
   display: flex;
   flex-direction: row;
-}
-.submitCancel a {
-  /* display: inline-block; */
-  /* flex: 1; */
   margin-top: 50px;
 }
 .submitCancel .button {

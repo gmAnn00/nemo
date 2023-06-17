@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import nemo.dao.qna.QnaDAO;
 import nemo.vo.qna.QnaVO;
 
-@WebServlet("/qna/*")
+@WebServlet("/qna")
 public class QnaController extends HttpServlet {
 	
 	QnaDAO qnaDao;
@@ -45,9 +46,12 @@ public class QnaController extends HttpServlet {
 		PrintWriter out;
 		HttpSession session;
 		String action=request.getPathInfo();
+		request.setAttribute("menuSelected", 2);
+		nextPage = "/views/qna/board.jsp";
 		System.out.println();
 		try {
-			
+			RequestDispatcher dispatcher =request.getRequestDispatcher(nextPage);
+			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

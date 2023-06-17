@@ -1,129 +1,122 @@
 @charset "utf-8";
-/*
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-#wrapper {
-    width: 100%;
-    height: 100%;
-}
-
-.fa-angle-right {
-    margin-left: 10px;
-}
-*/
-/* section 공통 부분 시작 */
-/*
-#container {
-    margin-top: 40px;
-}
-
-.section2 {
-    position: relative;
-    width: 100%;
-    height: auto;
-}
-.sc2_subcontents {
-    display: flex;
-    padding: 30px;
-}
-.sc2_section {
-    flex: 2.5;
-}
-.sc2_section_title {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    margin-top: 30px;
-}
-.sc2_section_title span {
-    font-size: 30px;
-    font-weight: 800;
-}
-.sc2_contents {
+.comment_box {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
-    margin-top: 20px;
+    padding: 0 20px;
 }
-*/
-/* section 공통 부분 종료 */
+.user-comment{
+    margin: 30px 0 50px 0;
+}
+.comments-section img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px orange
+}
 
-/* 게시판 부분 */
-.board_section {
-    text-align: center;
+.comments-section p {
+    line-height: 15px;
+    margin: 0 auto 5px;
+}
+
+.comments-section .comment-author {
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: #547ef8;
+    /* color: var(--main-color); */
+}
+
+.comments-section .comment-time {
+    font-size: 11px;
+    margin-left: 10px;
+    color: #a7a5a5;
+}
+
+.comments-section .comment-content {
+    font-size: 16px;
+    padding-bottom: 0px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    color: #888888;
+    white-space: pre-line;
+    word-break: keep-all;
+    margin-top: 5px;
+}
+
+.comments-section .comment-post-reply .comment-content,
+.comments-section .comment-post-reply .comment-author {
+    color: #888888; 
+}
+
+.comments-section textarea {
     width: 100%;
-    height: 100%;
-    align-items: center;
+    height: 80px;
+    border: 1px solid #ccccccad;
+    border-radius: 4px;
+    padding: 10px; 
 }
-.board_box {
-    margin-top: 20px;
-    width: 800px;
-    border: 1px solid black;
-    height: 270px;
-    margin: 20px 20px 20px 0;
-}
-
-/* 댓글 부분 */
-.rep_section {
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-}
-.rep_box {
-    position: relative;
-    left: -100px;
-    margin-top: 20px;
-    width: 800px;
-    border: 1px solid black;
-    height: 270px;
-    margin: 20px 20px 20px 0;
-}
-
-/* 탭 부분 */
-
-.tabs {
-    clear: both;
-    position: relative;
-}
-
-.tab {
-    float: left;
-    width: 100px;
-}
-
-.tab label {
-    margin-right: 20px;
-    position: relative;
-    top: 0;
+.comment-like-unlike span i{
+    font-size: 18px;
+    color: #547ef89e;
     cursor: pointer;
-    color: #333;
-    text-transform: uppercase;
+    width: 30px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
 }
-
-.tab [type="radio"] {
-    display: none;
+.comment-like-unlike span i:hover{
+    color: #547ef8;
+    transition: 0.3s ease-in-out;
 }
-
-.tab__content {
-    position: relative;
-    top: 40px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: opacity 0.2s cubic-bezier(0.42, 0, 0.34, 1.01);
-    opacity: 0;
+.comment-post, .comment-post-reply{
+    display: flex;
+    margin: 25px 0;
 }
-
-[type="radio"]:checked ~ label {
-    border-bottom: 2px solid #1d1d1d;
-    color: #1d1d1d;
-    z-index: 2;
+.comment-details{
+    margin-left: 25px;
 }
-
-[type="radio"]:checked ~ label ~ .tab__content {
-    z-index: 1;
-    opacity: 1;
+.comment_details_titlebox {
+    display: flex;
+    justify-content: space-between;
+}
+.comment_title {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+.comment_group_title {
+    display: inline-block;
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+}
+.comment_board_title {
+    padding-left: 10px;
+    font-size: 14px;
+}
+.comment-post-reply{
+    margin-left: 85px;
+    margin-bottom: 40px;
+}
+.comments-section{
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #ccc;
+}
+.comments-section .btn--blue {
+    -webkit-box-shadow: 0 3px 32px rgba(85, 126, 248, .54);
+    box-shadow: 0 3px 32px rgba(85, 126, 248, .54);
+    background-color: #557ef8;
+    padding: 0 40px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    border: none;
+    font-family: Catamaran;
+    font-weight: 400;
+    text-decoration:none;
+    margin-top:10px;
 }

@@ -56,7 +56,7 @@ public class QnaDAO {
 		List<QnaVO> qnasList=new ArrayList<QnaVO>();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
+			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, case when q.qna_id = q.parent_no THEN 0 ELSE 1 END as depth FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
@@ -71,6 +71,7 @@ public class QnaDAO {
 				String title=rs.getString("title");
 				String content=rs.getString("content");
 				Date create_date=rs.getDate("create_date");
+				int level = rs.getInt("depth");
 				
 				QnaVO qnaVO=new QnaVO();
 				qnaVO.setQna_id(qna_id);
@@ -80,6 +81,8 @@ public class QnaDAO {
 				qnaVO.setTitle(title);
 				qnaVO.setContent(content);
 				qnaVO.setCreate_date(create_date);
+				qnaVO.setLevel(level);
+//				qnaVO.setLevel(qna_id == parent_no ? 0 : 1);
 				qnasList.add(qnaVO);
 			}
 			rs.close();
@@ -99,7 +102,7 @@ public class QnaDAO {
 		try {
 			conn=dataFactory.getConnection();
 			String query=""
-					+ " SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date "
+					+ " SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, case when q.qna_id = q.parent_no THEN 0 ELSE 1 END as depth "
 					+ " FROM qna_tbl q "
 					+ " JOIN user_tbl u ON q.user_id = u.user_id "
 					+ " ORDER BY create_date DESC, qna_id DESC "
@@ -123,6 +126,7 @@ public class QnaDAO {
 				String title=rs.getString("title");
 				String content=rs.getString("content");
 				Date create_date=rs.getDate("create_date");
+				int level = rs.getInt("depth");
 				
 				QnaVO qnaVO=new QnaVO();
 				qnaVO.setQna_id(qna_id);
@@ -132,6 +136,8 @@ public class QnaDAO {
 				qnaVO.setTitle(title);
 				qnaVO.setContent(content);
 				qnaVO.setCreate_date(create_date);
+				qnaVO.setLevel(level);
+				//qnaVO.setLevel(qna_id == parent_no ? 0 : 1);
 				qnasList.add(qnaVO);
 				cnt++;
 			}
@@ -150,7 +156,15 @@ public class QnaDAO {
 	//글 내용 보는 메서드
 	public QnaVO selectOneQna(int qna_id) {
 		QnaVO qnaVo = new QnaVO();
-		
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			ResultSet rs=pstmt.executeQuery();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 		
 		

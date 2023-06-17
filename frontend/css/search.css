@@ -183,6 +183,7 @@
   line-height: 16px;
   margin-top: 50px;
   margin-bottom: 10px;
+  line-height: 20px;
 }
 .groupText05 {
   position: absolute;
@@ -229,8 +230,8 @@ svg use {
 }
 
 svg use:last-child {
-  fill: var(--heartColor);
-  stroke: var(--heartColor);
+  fill: var(--heart-color);
+  stroke: var(--heart-color);
   opacity: 0;
   transform: scale(0.33);
   transform-origin: center;

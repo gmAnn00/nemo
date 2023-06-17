@@ -302,6 +302,9 @@ body {
   letter-spacing: -0.3px;
   background-color: rgba(255, 255, 255, 0.2);
 }
+.group_btn a {
+  color: #fff;
+}
 .btn_more {
   font-family: "NeoExBold";
   margin-right: 20px;
