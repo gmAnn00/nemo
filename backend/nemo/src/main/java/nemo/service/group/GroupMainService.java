@@ -1,7 +1,10 @@
 package nemo.service.group;
 
+import java.util.List;
+
 import nemo.dao.group.GroupDAO;
 import nemo.dao.group.GroupMainDAO;
+import nemo.vo.board.BoardVO;
 import nemo.vo.group.GroupVO;
 
 public class GroupMainService {
@@ -16,6 +19,14 @@ public class GroupMainService {
 	public GroupVO selectGroupById(int group_id) {
 		GroupVO groupVO = groupDAO.selectGroupById(group_id);
 		return groupVO;
+	}
+
+	public int selectGroupNumById(int group_id) {
+		return groupDAO.selectGroupNumById(group_id);
+	}
+
+	public List<BoardVO> selectPreviewBoardById(int group_id) {
+		return groupMainDAO.selectPreviewBoardById(group_id);
 	}
 
 }

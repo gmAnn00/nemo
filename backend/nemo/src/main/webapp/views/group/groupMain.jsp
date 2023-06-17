@@ -31,25 +31,34 @@
             <div class="group_containter">
                 <div class="group_all">
                     <div class="group_img">
-                        <img src="${contextPath}/images/free-icon-group-8847475.png" alt="group_img" />
+                    <img src="${contextPath}/groupImageDownload?group_id=${param.group_id}&group_img=${groupVO.grp_img}" alt="group_img" />
+                    <!-- 
+                    	<c:if test="${groupVO.grp_img==null}">
+                    		<img src="${contextPath}/images/free-icon-group-8847475.png" alt="group_img" />
+                    	</c:if>
+                        <c:if test="${groupVO.grp_img != null}">
+                        	<img src="${contextPath}/groupImageDownload?group_id=${param.group_id}&group_img=${groupVO.grp_img}" alt="group_img" />
+                        </c:if>
+                        -->
+                        
                     </div>
                     <div class="group_name">
                         <a href="#">
-                            <span>이젠종로학원</span>
+                            <span>${groupVO.grp_name}</span>
                         </a>
                     </div>
                     <div class="group_info">
                         <div class="group_info_category">
-                            <div class="category_box group_info_category_box">sports</div>
-                            <div class="category_box group_info_category_box">game</div>
+                            <div class="category_box group_info_category_box">${groupVO.main_name}</div>
+                            <div class="category_box group_info_category_box">${groupVO.sub_name}</div>
                         </div>
                         <div class="group_info_member">
                             <div class="group_info_title"><span>멤버수</span></div>
-                            <div class="group_info_contents"><span>7</span></div>
+                            <div class="group_info_contents"><span>${groupNum}</span></div>
                         </div>
                         <div class="group_info_follower">
                             <div class="group_info_title"><span>개설일</span></div>
-                            <div class="group_info_contents"><span>2023. 05. 19.</span></div>
+                            <div class="group_info_contents"><span>${groupVO.create_date}</span></div>
                         </div>
                     </div>
                 </div>
@@ -66,7 +75,7 @@
                         <h2 class="sc2_menu_title">나의 모임</h2>
                         <ul class="sc2_menu_list">
                             <li>
-                                <a href="schedule.html">
+                                <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>일정</span></div>
                                         <i class="fa-solid fa-angle-right"></i>
@@ -74,7 +83,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="board.html">
+                                <a href="${contextPath}/group/board?group_id=${param.group_id}">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>게시판</span></div>
                                         <i class="fa-solid fa-angle-right"></i>
@@ -82,7 +91,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="myPageGroup.html">
+                                <a href="${contextPath}/group/member?group_id=${param.group_id}">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>멤버</span></div>
                                         <i class="fa-solid fa-angle-right"></i>
@@ -90,7 +99,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="groupSetting.html">
+                                <a href="${contextPath}/group/groupSetting?group_id=${param.group_id}">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>소모임관리</span></div>
                                         <i class="fa-solid fa-angle-right"></i>
@@ -107,11 +116,11 @@
                         <h2 class="sc2_subsection_title_name"></h2>
                         <!-- nav 바 시작 -->
                         <div class="nav_bar">
-                            <a href="${contextPath}/index.html">
+                            <a href="${contextPath}/index">
                                 <i class="fa-solid fa-house"></i>
                             </a>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
-                            <span>이젠종로학원</span>
+                            <span>${groupVO.grp_name}</span>
                         </div>
                         <!-- nav 바 종료 -->
                     </div>
@@ -119,7 +128,7 @@
                     <div class="recentSchedule recentDiv sc2_subsection">
                         <div class="mainTitle">
                             <h3>최근 일정</h3>
-                            <a href="schedule.html"
+                            <a href="${contextPath}/group/schedule?group_id=${param.group_id}"
                                 ><span class="more"><i class="fa-solid fa-plus"></i>더보기</span></a
                             >
                         </div>
@@ -157,7 +166,7 @@
                     <div class="recentBoard recentDiv sc2_subsection">
                         <div class="mainTitle">
                             <h3>최신 글</h3>
-                            <a href="board.html"
+                            <a href="${contextPath}/group/board?group_id=${param.group_id}"
                                 ><span class="more"><i class="fa-solid fa-plus"></i>더보기</span></a
                             >
                         </div>
@@ -200,7 +209,7 @@
                     <div class="memberArea sc2_subsection">
                         <div class="mainTitle">
                             <h3 class="nemoMemTitle">네모멤버</h3>
-                            <span>(<span class="currentNum">0</span>/<span class="maxNum">50</span>)</span>
+                            <span>(<span class="currentNum">${groupNum}</span>/<span class="maxNum">${groupVO.mem_no}</span>)</span>
                         </div>
                         <span class="btnEventPrev" title="이전보기"><i class="fa-solid fa-chevron fa-chevron-left"></i></span>
                         <div class="animationSlide">

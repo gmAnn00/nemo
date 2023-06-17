@@ -100,7 +100,10 @@ public class CreateGroupDAO {
 			String query = "insert into grpjoin_tbl values(?,?,sysdate)";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, grp_id);
+			pstmt.setString(2, groupVO.getGrp_mng());
 			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
 			
 		}catch (Exception e) {
 			System.out.println("createGroup: 오류");

@@ -344,8 +344,8 @@ function readImage(input) {
 }
 
 function popupImgFileRm() {
-  $("#file").val("");
-  document.getElementById("previewImage").src = "./images/tmp01.jpg";
+  $("#grp_img").val("");
+  document.getElementById("previewImage").src = "../../images/tmp01.jpg";
 }
 
 // input file에 change 이벤트 부여

@@ -2,6 +2,7 @@ package nemo.controller.group;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nemo.service.group.GroupMainService;
+import nemo.vo.board.BoardVO;
 import nemo.vo.group.GroupVO;
 
 /**
@@ -20,6 +22,12 @@ import nemo.vo.group.GroupVO;
 @WebServlet("/group/groupMain")
 public class GroupMainController extends HttpServlet {
 	HttpSession session;
+	GroupMainService groupMainService;
+	
+	@Override
+	public void init() throws ServletException {
+		groupMainService = new GroupMainService();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
@@ -41,12 +49,16 @@ public class GroupMainController extends HttpServlet {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		GroupVO groupVO = new GroupVO();
-		GroupMainService groupMainService = new GroupMainService();
 		
 		groupVO = groupMainService.selectGroupById(group_id);
 		request.setAttribute("groupVO", groupVO);
 		
+		int groupNum = groupMainService.selectGroupNumById(group_id);
+		request.setAttribute("groupNum", groupNum);
 		
+		List<BoardVO> boardsList = null;
+		boardsList = groupMainService.selectPreviewBoardById(group_id);
+		request.setAttribute("boardsList", boardsList);
 		
 		nextPage = "/views/group/groupMain.jsp";
 
