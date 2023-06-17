@@ -97,5 +97,17 @@ public class BoardService {
 			return viewArticle;
 			
 		}//End of viewArticle
+		
+		public void addArticle(BoardVO boardVO, String _brackets) {
+			if(_brackets.equals("notice")) {
+				_brackets="공지";
+			}else if(_brackets.equals("freeArticle")) {
+				_brackets="자유";
+			}else if(_brackets.equals("afterMeeting")) {
+				_brackets="후기";
+			}
+			boardVO.setBrackets(_brackets);
+			boardDAO.insertNewArticle(boardVO);
+		}
 
 }

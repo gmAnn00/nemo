@@ -15,7 +15,7 @@
 <c:set var="group" value="${articleMap.group }" />
 <c:set var="filter" value="${articleMap.filter }" />
 <c:set var="keyword" value="${articleMap.keyword}" />
-<c:set var="user_list" value="${articleMap.articleList.userVO}" />
+
 
 <c:choose>
 	<c:when test="${section >totArticles/100 }">
@@ -42,10 +42,7 @@
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
     <link rel="stylesheet" href="${contextPath}/css/board.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/board.js"></script>
@@ -140,7 +137,7 @@
                 </a>
               </li>
               <li>
-                <a href="board.html">
+                <a href="${contextPath}/group/board?group_id=${group.grp_id}">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select">
                       <span>게시판</span>
@@ -192,7 +189,8 @@
 		  <div class="boardArea">
 	          <div class="search">
 	            <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
-	            <form action="${contextPath}/group/board/search?group_id=${group.grp_id}" id="search" name="search" method="get">
+	            <!-- <form action="${contextPath}/group/board/search?group_id=${param.group_id}" id="search" name="search" method="get"> -->
+		          <form action="${contextPath}/group/board/search?group_id=${group.grp_id}" id="search" name="search" method="get">
 		            <input type="hidden" name="group_id" value="${group.grp_id}"/>
 		            <select name="filter" id="searchOption">
 		              <option value="title">제목</option>
@@ -265,7 +263,7 @@
 	            </table>
 	            
 	            <div class="bottomBtn">
-	              <a href="boardWrite.html" role="button" class="button">글쓰기</a>
+	              <a href="${contextPath}/group/board/write?group_id=${group.grp_id}" role="button" class="button">글쓰기</a>
 	            </div>
 	            
 	            <div class="pagenation">

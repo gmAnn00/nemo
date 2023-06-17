@@ -124,6 +124,34 @@ public class BoardDAO {
 	}
 	
 	//게시글 작성
+	public void insertNewArticle(BoardVO boardVO) {
+		try {
+			conn=dataFactory.getConnection();
+			String query="INSERT INTO board_tbl (article_no, user_id, grp_id, title, content, brackets)";
+			query+=" VALUES (seq_art_no.nextVAL, ?, ?, ?, ?, ?)";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			
+			String user_id=boardVO.getUser_id();
+			int grp_id=boardVO.getGrp_id();
+			String title=boardVO.getTitle();
+			String content=boardVO.getContent();
+			String brackets=boardVO.getBrackets();
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, grp_id);
+			pstmt.setString(3, title);
+			pstmt.setString(4, content);
+			pstmt.setString(5, brackets);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+			System.out.println("게시글 작성 중 에러");
+			e.printStackTrace();
+		}
+	}
 	
 	
 	//게시글 상세보기 

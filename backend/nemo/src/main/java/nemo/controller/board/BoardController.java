@@ -58,7 +58,7 @@ public class BoardController extends HttpServlet {
 		session=request.getSession();
 		
 		//String user_id=(String)session.getAttribute("user_id");
-		String user_id="hong";
+		String user_id="son";
 		int group_id = Integer.parseInt(request.getParameter("group_id"));
 		
 		//게시판 리스트 보기 
@@ -137,6 +137,29 @@ public class BoardController extends HttpServlet {
 				
 				return;
 			}
+			
+		} else if(action.equals("/write")) {
+			
+			nextPage="/views/group/boardWrite.jsp";
+		} else if(action.equals("/addArticle")) {
+			String _brackets=request.getParameter("brackets");
+			String title=request.getParameter("title");
+			String content=request.getParameter("content");
+			System.out.println(content);
+			
+			boardVO.setTitle(title);
+			//boardVO.setBrackets(brackets);
+			boardVO.setUser_id(user_id);
+			boardVO.setGrp_id(group_id);
+			boardVO.setContent(content);
+			boardService.addArticle(boardVO, _brackets);
+			
+			out.print("<script>alert('글이 등록되었습니다.')");
+			//response.sendRedirect("/nemo/group/groupMain?group_id=1");
+
+			nextPage="/nemo/group/board?group_id="+group_id;
+			response.sendRedirect(nextPage);
+			return;
 			
 		}
 		

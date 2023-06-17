@@ -20,7 +20,7 @@ public class CommentVO {
 	
 	
 	public CommentVO() {
-
+		userVO = new UserVO();
 	}
 
 	public CommentVO(int comment_no, int article_no, String user_id, String com_cont, int parent_no) {

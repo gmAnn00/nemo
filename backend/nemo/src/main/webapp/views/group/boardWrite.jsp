@@ -3,6 +3,7 @@
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="group" value="${param.group_id}" />
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -17,12 +18,10 @@
     <link rel="stylesheet" href="${contextPath}/css/boardWrite.css" />
     <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css"/>
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+	<script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
     <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardWrite.js"></script>
   </head>
@@ -115,7 +114,7 @@
                 </a>
               </li>
               <li>
-                <a href="board.html">
+                <a href="${contextPath}/group/board?group_id=${group}">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -166,34 +165,39 @@
 
           <!-- 글쓰기 영역 -->
           <div class="boardWriteArea">
-          
-            <form action="">
+         
+            <!-- <form action="/group/board/addArticle" method="post" name="articleForm" id="articleForm"> -->
+              <form action="${contextPath}/group/board/addArticle" method="post" name="articleForm" id="articleForm">
+              <input type="hidden" name="group_id" value="${group}"/>
               <!-- 제목 영역 -->
               <div class="articleWritingTitle">
                 <!-- 말머리 컨텐츠 확인 필요 -->
-                <!-- 네이버 카페는 말머리를 button으로 처리 -->
-                <select name="headTitle" id="headTitle" class="headTitle">
-                  <option value="">말머리선택</option>
-                  <option value="notice">공지사항</option>
-                  <option value="afterMeeting">모임후기</option>
-                  <option value="freeArticle">자유글</option>
-                </select>
+                <div class="headTitleArea">
+	                <select name="brackets" id="headTitle" class="headTitle">
+	                  <option value="">말머리</option>
+	                  <option value="notice">공지</option>
+	                  <option value="freeArticle">자유</option>
+	                  <option value="afterMeeting">후기</option>
+	                </select>
+                </div>
                 <!-- 제목 -->
-                <textarea name="writeTitle" id="writeTitle" class="writeTitle" rows="1" placeholder="제목을 입력해주세요"></textarea>
+                <div class="titleArea">
+                	<input type="text" name="title" id="writeTitle" class="writeTitle" placeholder="제목을 입력해주세요"></textarea>
+              	</div>
               </div>
               <!-- 글쓰는 영역 -->
               <div class="editorArea">
-                <textarea id="summernote">
-                </textarea>
+                <textarea id="summernote" name="content"></textarea>
               </div>
-
-            </form>
-
               <!-- 등록 버튼 -->
               <div class="btnRegister">
                 <a href="#" role="button" class="button">등록</a>
                 <a href="#" role="button" class="buttonCancle">취소</a>
               </div>
+
+            </form>
+
+
             </div>
           </div>
         </div>

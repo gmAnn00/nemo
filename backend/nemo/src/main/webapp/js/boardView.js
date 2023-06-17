@@ -58,7 +58,31 @@ $(document).ready(function() {
 				break;
 			} 
 		}
-	} );
+	});
+	
+    $(document).on('keyup', '.commentInboxText', function(){
+        let inputLength = $(this).val().length;
+        let parentSiblings=$(this).parent().siblings();
+        let btnRecom=parentSiblings.find('.btnSubmitRe');
+        if(inputLength>0){
+            btnRecom.addClass('active');
+        } else {
+            btnRecom.removeClass('active');
+        }
+
+        
+    });
+	
+	$(document).on('click','.btnSubmitRe', function(){
+        let parentSiblings=$(this).parent().siblings();
+        let textArea=parentSiblings.find('textarea');
+        if(!textArea.val()){
+            alert('값을 입력해주세요');
+        } else {
+            //ajax로 댓글 등록 하는거 처리하기~
+
+        }
+	});
     
  //url 클립보드 복사
  function clip(){

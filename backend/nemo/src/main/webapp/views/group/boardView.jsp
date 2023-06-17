@@ -28,10 +28,7 @@
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
     <link rel="stylesheet" href="${contextPath}/css/boardView.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+    
     <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardView.js"></script>
@@ -134,7 +131,7 @@
                 </a>
               </li>
               <li>
-                <a href="board.html">
+                <a href="${contextPath}/group/board?group_id=${group.grp_id}">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -202,11 +199,11 @@
 	              </div>
 	              <div class="writerInfo">
 	                <div class="thumbArea">
-	                  <img src="${contextPath}/images/icon_prof_wh.png" alt="프로필사진"/>
+	                  <img src="${contextPath}/${article.userVO.user_img}" alt="프로필사진"/>
 	                </div>
 	                <div class="profileArea">
 	                  <div class="profileInfo">
-	                    <p class="writerNick">${article.nickname }</p>
+	                    <p class="writerNick">${article.userVO.nickname}</p>
 	                    <p class="date comDate">${article.create_date }</p>
 	                  </div>
 	                 <!-- 
@@ -253,11 +250,11 @@
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
 					                                <a href="#" class="commentThumb">
-					                                    <img src="${contextPath}/images/icon_prof_wh.png" alt="프로필사진" />
+					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
 					                                </a>
 					                                <div class="commentNick">
 					                                    <span  class="commentNickInfo">
-					                                        <a href="#" role="button">${comment.nickname}</a>
+					                                        <a href="#" role="button">${comment.userVO.nickname}</a>
 					                                    </span>
 					                                </div>
 					                                <div class="commentText">
@@ -280,11 +277,11 @@
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
 					                                <a href="#" class="commentThumb">
-					                                    <img src="${contextPath}/images/icon_prof_wh.png" alt="프로필사진" />
+					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
 					                                </a>
 					                                <div class="commentNick">
 					                                    <span  class="commentNickInfo">
-					                                        <a href="#" role="button">${comment.nickname}</a>
+					                                        <a href="#" role="button">${comment.userVO.nickname}</a>
 					                                    </span>
 					                                </div>
 					                                <div class="commentText">
@@ -320,13 +317,13 @@
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-	              <a href="#" role="button" class="btnWrite btn">글쓰기</a>
-	              <!-- 
+	              <a href="${contextPath}/group/board/write?group_id=${group.grp_id}" role="button" class="btnWrite btn">글쓰기</a>
+	              
 	              <c:if test="${isSame==true }">
 		            <a href="#" role="button" class="btnEdit btn">수정</a>
 		            <a href="#" role="button" class="btnDel btn">삭제</a>
 	              </c:if>
-	               -->
+	              
 	            </div>
 	            <div class="rightArea">
 	              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
