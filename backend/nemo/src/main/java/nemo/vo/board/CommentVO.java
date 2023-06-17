@@ -3,44 +3,59 @@ package nemo.vo.board;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import nemo.vo.common.UserVO;
+
 public class CommentVO {
 	private int level;
 	private int comment_no;
 	private int article_no;
 	private String user_id;
-	private String nickname;
+	//private String nickname;
 	//private Date create_date;
 	private String com_cont; //댓글내용
 	private int parent_no;
 	private Timestamp create_date;
-	//private String create_date;
+	private UserVO userVO = new UserVO();
+	
+	
 	
 	public CommentVO() {
 
 	}
 
-	public CommentVO(int comment_no, int article_no, String user_id, String nickname, String com_cont, int parent_no) {
+	public CommentVO(int comment_no, int article_no, String user_id, String com_cont, int parent_no) {
 		super();
 		this.comment_no = comment_no;
 		this.article_no = article_no;
 		this.user_id = user_id;
-		this.nickname = nickname;
+		//this.nickname = nickname;
 		this.com_cont = com_cont;
 		this.parent_no = parent_no;
 	}
 	
 
 	
-	public CommentVO(int level, int comment_no, int article_no, String user_id, String nickname, Timestamp create_date,
+	public CommentVO(int level, int comment_no, int article_no, String user_id, Timestamp create_date,
 			String com_cont, int parent_no) {
 		this.level = level;
 		this.comment_no = comment_no;
 		this.article_no = article_no;
 		this.user_id = user_id;
-		this.nickname = nickname;
+		//this.nickname = nickname;
 		this.create_date = create_date;
 		this.com_cont = com_cont;
 		this.parent_no = parent_no;
+	}
+	
+	
+
+	public UserVO getUserVO() {
+		
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
 	}
 
 	public int getLevel() {
@@ -75,6 +90,7 @@ public class CommentVO {
 		this.user_id = user_id;
 	}
 
+	/*
 	public String getNickname() {
 		return nickname;
 	}
@@ -82,6 +98,7 @@ public class CommentVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	*/
 
 	public Timestamp getCreate_date() {
 		return create_date;

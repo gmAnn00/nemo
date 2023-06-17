@@ -15,6 +15,7 @@
 <c:set var="group" value="${articleMap.group }" />
 <c:set var="filter" value="${articleMap.filter }" />
 <c:set var="keyword" value="${articleMap.keyword}" />
+<c:set var="user_list" value="${articleMap.articleList.userVO}" />
 
 <c:choose>
 	<c:when test="${section >totArticles/100 }">
@@ -253,7 +254,7 @@
 						                   </div>
 					                    </div>
 				                  </td>
-				                  <td>${article.nickname}</td>
+				                  <td>${article.userVO.nickname}</td>
 				                  <td>${article.create_date}</td>
 				                  <td>${article.view_cnt}</td>
 				                </tr>

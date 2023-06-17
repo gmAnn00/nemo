@@ -35,17 +35,21 @@ public class BoardDAO {
 	//게시글 리스트(목록보기)
 	public List<BoardVO> selectGrpArticles(Map<String, Integer> pagingMap, int grp_id) {
 		List<BoardVO> articleList=new ArrayList<BoardVO>();
+		
 		int section=pagingMap.get("section");
 		int pageNum=pagingMap.get("pageNum");
 		
 		try {
 			conn=dataFactory.getConnection();
-			
+			/*
 			String query ="SELECT * FROM"
 					+ "	(SELECT ROWNUM AS recNUM, b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt"
 					+ "	FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? )"
 					+ "WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 order by article_no desc";
-			
+			*/
+			String query="SELECT * FROM (SELECT ROWNUM as recNum, a.* FROM (SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt";
+			query+=" FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? order by b.article_no desc) a )";
+			query+=" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, grp_id);
@@ -66,19 +70,20 @@ public class BoardDAO {
 				String brackets=rs.getString("brackets");
 				int view_cnt=rs.getInt("view_cnt");
 				int com_cnt=rs.getInt("com_cnt");
-				
+		
 				BoardVO boardVO=new BoardVO();
 				
 				boardVO.setArticle_no(article_no);
 				boardVO.setUser_id(user_id);
-				boardVO.setNickname(nickname);
+				//boardVO.setNickname(nickname);
 				boardVO.setGrp_id(group_id);
 				boardVO.setCreate_date(create_date);
 				boardVO.setTitle(title);
 				boardVO.setBrackets(brackets);
 				boardVO.setView_cnt(view_cnt);
 				boardVO.setCom_cnt(com_cnt);
-				
+				boardVO.getUserVO().setNickname(nickname);
+				System.out.println(boardVO.getUserVO().getNickname());
 				articleList.add(boardVO);
 			} // End Of While
 			
@@ -128,7 +133,7 @@ public class BoardDAO {
 		
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date,";
+			String query="SELECT b.article_no, b.user_id, u.nickname, u.user_img, b.grp_id, b.create_date,";
 			query+=" b.title,b.content, b.brackets, b.view_cnt, b.com_cnt FROM board_tbl b, user_tbl u";
 			query+=" where u.user_id=b.user_id and b.article_no=?";
 
@@ -143,6 +148,7 @@ public class BoardDAO {
 			int _article_no=rs.getInt("article_no");
 			String user_id=rs.getString("user_id");
 			String nickname=rs.getString("nickname");
+			String user_img=rs.getString("user_img");
 			int group_id=rs.getInt("grp_id");
 			Date create_date=rs.getDate("create_date");
 			String title=rs.getString("title");
@@ -153,7 +159,9 @@ public class BoardDAO {
 			
 			article.setArticle_no(_article_no);
 			article.setUser_id(user_id);
-			article.setNickname(nickname);
+			//article.setNickname(nickname);
+			article.getUserVO().setNickname(nickname);
+			article.getUserVO().setUser_img(user_img);
 			article.setGrp_id(group_id);
 			article.setCreate_date(create_date);
 			article.setTitle(title);
@@ -179,7 +187,7 @@ public class BoardDAO {
 		try {
 			conn=dataFactory.getConnection();
 			
-			String query="SELECT LEVEL, c.comment_no, c.article_no, c.user_id, u.nickname, c.create_date, c.com_cont, c.parent_no";
+			String query="SELECT LEVEL, c.comment_no, c.article_no, c.user_id, u.nickname, u.user_img, c.create_date, c.com_cont, c.parent_no";
 			query+=" FROM comment_tbl c, user_tbl u where u.user_id=c.user_id and c.article_no=?";
 			query+=" START WITH c.parent_no=0";
 			query+=" CONNECT BY PRIOR c.comment_no=c.parent_no ORDER SIBLINGS BY c.comment_no";
@@ -194,12 +202,25 @@ public class BoardDAO {
 				int _article_no=rs.getInt("article_no");
 				String user_id=rs.getString("user_id");
 				String nickname=rs.getString("nickname");
+				String user_img=rs.getString("user_img");
 				//Date create_date=rs.getDate("create_date");
 				Timestamp create_date=rs.getTimestamp("create_date");
-				
 				String com_cont=rs.getString("com_cont");
 				int parent_no=rs.getInt("parent_no");
-				CommentVO comment=new CommentVO(level, comment_no, _article_no, user_id, nickname, create_date, com_cont, parent_no);
+				//CommentVO comment=new CommentVO(level, comment_no, _article_no, user_id, nickname, create_date, com_cont, parent_no);
+				
+				CommentVO comment=new CommentVO();
+				comment.setLevel(level);
+				comment.setComment_no(comment_no);
+				comment.setArticle_no(_article_no);
+				comment.setUser_id(user_id);
+				comment.getUserVO().setNickname(nickname);
+				comment.getUserVO().setUser_img(user_img);
+				comment.setCreate_date(create_date);
+				comment.setCom_cont(com_cont);
+				comment.setParent_no(parent_no);;
+				
+				
 				commentList.add(comment);
 			} // End Of While
 			rs.close();
@@ -266,15 +287,19 @@ public class BoardDAO {
 		try {
 			conn=dataFactory.getConnection();
 			
+
+			/*
 			String query ="SELECT * FROM"
 					+ "	(SELECT ROWNUM AS recNUM, b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt"
-					+ "	FROM board_tbl b, user_tbl u WHERE u.user_id=b.user_id AND b.grp_id=? AND";
+					+ "	FROM board_tbl b, user_tbl u WHERE u.user_id=b.user_id AND b.grp_id=? AND";*/
+			String query="SELECT * FROM (SELECT ROWNUM as recNUM, a.* FROM (SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt";
+			query+=" FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? AND ";	
 			if(filter.equals("title")){
-				query+=" b.title LIKE ? order by b.article_no desc)";
+				query+=" b.title LIKE ? order by b.article_no desc) a)";
 			}else if(filter.equals("content")) {
-				query+=" b.content LIKE ? order by b.article_no desc)";
+				query+=" b.content LIKE ? order by b.article_no desc) a)";
 			}else if(filter.equals("writer")) {
-				query+=" u.nickname LIKE ? order by b.article_no desc)";
+				query+=" u.nickname LIKE ? order by b.article_no desc) a)";
 			}
 			query+=" WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
 
@@ -301,7 +326,8 @@ public class BoardDAO {
 				BoardVO boardVO=new BoardVO();
 				boardVO.setArticle_no(article_no);
 				boardVO.setUser_id(user_id);
-				boardVO.setNickname(nickname);
+				//boardVO.setNickname(nickname);
+				boardVO.getUserVO().setNickname(nickname);
 				boardVO.setGrp_id(group_id);
 				boardVO.setCreate_date(create_date);
 				boardVO.setTitle(title);

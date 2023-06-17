@@ -196,8 +196,9 @@
 	            <!-- 제목 영역 -->
 	            <div class="articleHeader">
 	              <div class="articleTitle">
-	                <div class="titleHead"><span>${article.brackets}</span></div>
-	                <div class="titleArea">${article.title}</div>
+	                <div class="titleHead"><span class="brackets">${article.brackets}</span></div>
+	                <div class="titleArea"><span class="title">${article.title}</span></div>
+	                <!-- <div class="titleArea">${article.title}</div>-->
 	              </div>
 	              <div class="writerInfo">
 	                <div class="thumbArea">
@@ -205,11 +206,14 @@
 	                </div>
 	                <div class="profileArea">
 	                  <div class="profileInfo">
-	                    <button class="writerNick">${article.nickname }</button>
+	                    <p class="writerNick">${article.nickname }</p>
+	                    <p class="date comDate">${article.create_date }</p>
 	                  </div>
+	                 <!-- 
 	                  <div class="articleInfo">
 	                    <p class="date comDate">${article.create_date }</p>
 	                  </div>
+	                  -->
 	                </div>
 	              </div>
 		              <div class="articleTool">

@@ -52,44 +52,55 @@
   overflow: hidden;
   position: relative;
 }
-.articleHeader div {
-
+.articleHeader{
+	display: grid;
 }
+
 .articleTitle {
-/*display:table-cell;
-vertical-align:middle;*/
-padding: 0 10px;
-  margin: 15px 0 10px 0;
+display:table-cell;
+vertical-align:middle;
+padding: 15px 15px;
+  /*margin: 15px 0 15px 0;*/
   line-height: 20px;
 }
 .titleHead {
   /*width: 150px;
   text-align: center;*/
+  width: 50px;
   margin: 5px 0;
-
+  display: inline-block;
+  vertical-align: middle;
+  float: left;
 }
-.titleHead span {
+.titleHead .brackets {
 	display:inline-block;
-	vertical-align: middle;
+	margin-right: 10px;
 	font-size: 12px;
 	font-weight: bold;
 	color: #ffbb33;
 }
+.title {
+
+	  font-size: 20px;
+
+}
 .titleArea {
-  width: 700px;
-  line-height: 20px;
-  font-size: 20px;
+	display: inline-block;
+  font-size: 20px;  
+  vertical-align: middle;
+  width: 94%;
 }
 
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
 .writerInfo {
   font-size: 13px;
-  margin: 10px 0;
+  margin: 0 0 10px;
 	padding: 0 10px;
 
 }
 .thumbArea {
 	display: inline-block;
+	float:left;
 }
 .thumbArea img {
   border-radius: 50%;
@@ -97,6 +108,8 @@ padding: 0 10px;
   background: #ccc;
 }
 .profileArea {
+	display:table-cell;
+	vertical-align: middle;
   padding: 0 10px;
   margin-bottom: 5px;
   width: 150px;
@@ -108,6 +121,10 @@ padding: 0 10px;
   border: none;
   background-color: transparent;
   font-weight: bold;
+  margin: 3px 0;
+}
+.profileArea .date {
+	margin: 3px 0;
 }
 .articleInfo .date {
   position: absolute;

@@ -37,6 +37,9 @@ public class BoardService {
 				//articleMap.put("group_id", group_id);
 				articleMap.put("group", groupVO);
 				System.out.println("소모임"+articleMap.get("group_id"));
+				//List<BoardVO> list = (List)articleMap.get("articlesList");
+				//BoardVO boardVO = list.get(0);
+				//System.out.println("닉네임"+ boardVO.getUserVO().getNickname());
 			}
 			return articleMap;		
 		} // End of 게시글 목록
