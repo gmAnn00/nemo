@@ -11,6 +11,7 @@ public class QnaVO {
 	private String content;
 	private Date create_date;
 	private int level;
+	private String imageFileName;
 
 	
 	
@@ -19,8 +20,7 @@ public class QnaVO {
 	}
 
 
-
-	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level) {
+	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String imageFileName) {
 		super();
 		this.qna_id = qna_id;
 		this.user_id = user_id;
@@ -30,8 +30,8 @@ public class QnaVO {
 		this.content = content;
 		this.create_date = create_date;
 		this.level = level;
+		this.imageFileName=imageFileName;
 	}
-
 
 
 	public int getQna_id() {
@@ -39,11 +39,9 @@ public class QnaVO {
 	}
 
 
-
 	public void setQna_id(int qna_id) {
 		this.qna_id = qna_id;
 	}
-
 
 
 	public String getUser_id() {
@@ -51,23 +49,19 @@ public class QnaVO {
 	}
 
 
-
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 
-	
-	
+
 	public String getNickname() {
 		return nickname;
 	}
-	
-	
-	
+
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
 
 
 	public int getParent_no() {
@@ -75,11 +69,9 @@ public class QnaVO {
 	}
 
 
-
 	public void setParent_no(int parent_no) {
 		this.parent_no = parent_no;
 	}
-
 
 
 	public String getTitle() {
@@ -87,11 +79,9 @@ public class QnaVO {
 	}
 
 
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 
 
 	public String getContent() {
@@ -99,11 +89,9 @@ public class QnaVO {
 	}
 
 
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 
 
 	public Date getCreate_date() {
@@ -111,11 +99,9 @@ public class QnaVO {
 	}
 
 
-
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-
 
 
 	public int getLevel() {
@@ -123,10 +109,20 @@ public class QnaVO {
 	}
 
 
-
 	public void setLevel(int level) {
 		this.level = level;
 	}
+
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+
 	
 	
 }

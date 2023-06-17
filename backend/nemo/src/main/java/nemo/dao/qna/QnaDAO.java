@@ -155,7 +155,7 @@ public class QnaDAO {
 
 	//글 내용 보는 메서드
 	public QnaVO selectOneQna(int qna_id) {
-		QnaVO qnaVo = new QnaVO();
+		QnaVO qnaVO = new QnaVO();
 		try {
 			conn=dataFactory.getConnection();
 			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
@@ -166,8 +166,7 @@ public class QnaDAO {
 			// TODO: handle exception
 		}
 		
-		
-		
-		return qnaVo;
+			
+		return qnaVO;
 	}
 }

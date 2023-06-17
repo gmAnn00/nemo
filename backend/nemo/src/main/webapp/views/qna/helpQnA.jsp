@@ -49,7 +49,7 @@
   <body>
     <!-- header 시작 -->
     <!-- 사이드 메뉴시 배경색 조정 -->
-    <div class="menu_bg"></div> 
+    <div class="menu_bg"></div>
     <header>
       <h1 class="logo">
         <a href="${contextPath}/index"
@@ -158,11 +158,11 @@
 				                  <td class="tdArticle">
 				                    <div class="titleArea">
 				                    	<div class="titleInner">
-					                      <a href="${contextPath}/group/board/viewArticle?group_id=${article.grp_id}&article_no=${article.article_no}" class="titleLink">
+					                      <a href="${contextPath}/view/qna/helpQnA?qna_id=${article.qna_id}&parent_no=${article.parent_no}" class="titleLink">
 					                        <span class="title">${article.title}</span>
 					                      </a>
 						                  <div class="commentArea">
-						                     <a href="${contextPath}/group/board/viewArticle?group_id=${article.grp_id}&article_no=${article.article_no}" class="cmtLink">
+						                     <a href="${contextPath}/view/qna/helpQnA?group_id=${article.grp_id}&article_no=${article.article_no}" class="cmtLink">
 						                      <span class="cmt">${article.com_cnt}</span>
 						                     </a>
 						                   </div>

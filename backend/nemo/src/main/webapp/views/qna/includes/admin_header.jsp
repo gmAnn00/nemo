@@ -43,12 +43,5 @@
       </div>
     </a>
   </li>
-  <li>
-    <a href="${contextPath}/groupSetting.html">
-      <div class="sc2_icon_menu">
-        <div class="menu_submenu_name <c:if test="menuSelected eq '1'">submenu_select</c:if>"><span>고객센터 1:1 문의</span></div>
-        <i class="fa-solid fa-angle-right menu_angle"></i>
-      </div>
-    </a>
-  </li>
+
 </ul>
