@@ -8,48 +8,6 @@
   padding: 20px;
 }
 
-/*3번*/
-.myImage {
-  padding-top: 30px;
-  width: 700px;
-  text-align: center;
-  margin: 0 auto;
-  padding-right: 70px;
-}
-.myImage img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 1px solid var(--sub3-color);
-  background: url(../images/dall.png) 35%;
-  line-height: 180px;
-  color: var(--sub3-color);
-  text-align: left;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px #404040;
-}
-
-/*4번*/
-.profileM {
-  overflow: hidden;
-  margin: 0 auto;
-  width: 600px;
-  text-align: center;
-  margin-top: 10px;
-}
-.profileM > p {
-  padding: 10px 0;
-}
-
-.profileM label {
-  float: left;
-  margin-left: 50px;
-  margin: 10px 0;
-}
-.profileM input {
-  margin: 10px 0;
-}
-
 /* 회원가입영역 */
 form {
   display: flex;
@@ -76,10 +34,33 @@ form label {
 form input {
   padding: 8px;
 }
-/* form input[id="id"], */
-input[id="nickname"] {
-  width: 70%;
+
+/*3번*/
+.myImage {
+  padding-top: 30px;
+  align-items: center;
+  margin: 0 auto;
+  padding-right: 70px;
 }
+.myImage img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--sub3-color);
+  background: url(../images/dall.png) 35%;
+  line-height: 180px;
+  text-align: left;
+  color: var(--sub3-color);
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
+}
+.myImage label {
+  position: relative;
+  left: 165px;
+  top: 10px;
+  cursor: pointer;
+}
+
 /* 비밀번호 일치 */
 .alert {
   font-size: 12px;
@@ -98,6 +79,10 @@ form .check {
   top: 22px;
   right: 0px;
   /* padding: 10px; */
+}
+.resultMsg {
+  margin: 0px;
+  padding-top: 5px;
 }
 form .findZipcode {
   width: 150px;

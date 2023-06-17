@@ -125,21 +125,21 @@
             <!-- nav 바 종료 -->
           </div>
 
-          <!--3. myImage-->
-          <div class="myImage">
-            <form action="">
+          <form id="frm" name="frm">
+            <!--3. myImage-->
+            <div class="myImage">
               <img src="../../images/dall.png" alt="프로필 사진" />
               <div>
-                <label class="imageM" for="hidden" id="file">이미지 수정</label>
+                <label class="imageM button" for="hidden" id="file"
+                  >이미지 수정</label
+                >
                 <input id="hidden" type="file" style="display: none" />
               </div>
-            </form>
-          </div>
+            </div>
 
-          <!--4.-->
-          <div class="myMo">
-            <!-- 회원가입 폼 + @ -->
-            <form id="frm" name="frm">
+            <!--4.-->
+            <div class="myMo">
+              <!-- 회원가입 폼 + @ -->
               <div>
                 <label for="id">아이디</label>
                 <input
@@ -313,9 +313,8 @@
                   이메일 중복 확인
                 </button>
               </div>
-
               <div class="submitCancel">
-                <button type="submit" class="button">가입하기</button>
+                <button type="submit" class="button">수정하기</button>
                 <!-- <a href="#" role="button" class="button" onclick="fnJoin();"
                   >수정하기</a
                 > -->
@@ -324,8 +323,8 @@
                   >수정취소</a
                 >
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

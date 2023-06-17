@@ -13,7 +13,7 @@ $(document).ready(function () {
   //비밀번호 확인
   $("#alertSuccess").hide();
   $("#alertDanger").hide();
-  $("input").keyup(function () {
+  $("#passwordCheck").keyup(function () {
     let password = $("#password").val();
     let passwordCheck = $("#passwordCheck").val();
     if (password != "" || passwordCheck != "") {
