@@ -136,17 +136,12 @@ td div {
 }
 /* 탈퇴 하기 */
 .withdrawal {
-  display: flex;
-  justify-content: space-between;
   width: 720px;
   font-size: 0.8em;
 }
 .withdrawal > h3 {
-  font-size: 1.1em;
+  font-size: 1em;
 }
-.withdrawal .buttonCancle {
-  border: 1px solid #ff26a5;
-  position: relative;
-  top: -3px;
-  font-size: 0.8em;
+.withdrawal .delMemberlink {
+  color: #ff26a5;
 }

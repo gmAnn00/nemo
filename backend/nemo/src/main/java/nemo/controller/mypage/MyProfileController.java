@@ -211,7 +211,13 @@ public class MyProfileController extends HttpServlet {
 					response.sendRedirect(nextPage);
 					
 					
-				} else if(action.equals("/delUser")) {
+				} else if(action.equals("/delUserForm")) {
+					nextPage= "/views/mypage/delUser.jsp";
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+					dispatcher.forward(request, response);
+					
+				} else if(action.equals("/delUser")) {				
 					//회원 탈퇴
 					user_id = (String)session.getAttribute("user_id");
 					System.out.println("user_id="+user_id);

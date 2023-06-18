@@ -224,11 +224,7 @@
 
             <!-- 탈퇴 -->
             <div class="withdrawal">
-              <h3>회원 탈퇴하기</h3>
-              <form action="${contextPath}/mypage/delUser" method="post">
-                비밀번호 확인 <input type="text" name="delpassword" />
-                <input type="submit" class="buttonCancle" value="탈퇴하기" />
-              </form>
+              <h3><a href="${contextPath}/mypage/delUserForm" class="delMemberlink">회원 탈퇴하기 &gt;</a></h3>
             </div>
           </div>
         </div>
