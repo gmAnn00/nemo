@@ -87,7 +87,6 @@
 
     <!-- section1 시작 -->
 
-
     <!-- 콘텐츠 영역 -->
     <div class="section2">
       <div class="sc2_contents">
@@ -140,7 +139,7 @@
 	                <th>제목</th>
 	                <th>작성자</th>
 	                <th>작성일</th>
-	                <th>조회</th>
+	                
 	              </tr>
 	              <tbody>
 	              	<c:choose>
@@ -154,24 +153,19 @@
 				                <tr>
 				                	<!--  <td>${totArticles-(section-1)*10-articleNum.index}</td>-->
 				                    <td>${(totArticles-(pageNum-1)*10-articleNum.index)-((section-1)*100)}</td>
-				                  <td>${article.brackets}</td>
 				                  <td class="tdArticle">
 				                    <div class="titleArea">
 				                    	<div class="titleInner">
-					                      <a href="${contextPath}/view/qna/helpQnA?qna_id=${article.qna_id}&parent_no=${article.parent_no}" class="titleLink">
+					                      <a href="${contextPath}/view/qna/helpQnA?qna_id=${article.qna_id}" class="titleLink">
 					                        <span class="title">${article.title}</span>
 					                      </a>
-						                  <div class="commentArea">
-						                     <a href="${contextPath}/view/qna/helpQnA?group_id=${article.grp_id}&article_no=${article.article_no}" class="cmtLink">
-						                      <span class="cmt">${article.com_cnt}</span>
-						                     </a>
-						                   </div>
+						                  
 					                    </div>
 				                    </div>
 				                  </td>
-				                  <td>${article.nickname}</td>
+				                  <td>${article.user_id}</td>
 				                  <td>${article.create_date}</td>
-				                  <td>${article.view_cnt}</td>
+				                  
 				                </tr>
 			            	</c:forEach>
 		                </c:when>
@@ -180,28 +174,28 @@
 	            </table>
 	            
 	            <div class="bottomBtn">
-	              <a href="boardWrite.html" role="button" class="button">글쓰기</a>
+	              <a href="QnAWrite.html" role="button" class="button">글쓰기</a>
 	            </div>
 	            
 	            <div class="pagenation">
 					<c:if test="${totArticles != 0}">
 						<c:forEach var="page" begin="1" end="${endValue}" step="1">
 							<c:if test="${section>1 && page==1}">
-								<span class="paging prev"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section-1}&pageNum=10">&lt</a></span>
+								<span class="paging prev"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section-1}&pageNum=10">&lt</a></span>
 							</c:if>
 								
 							<c:choose>
 								<c:when test="${page==pageNum}">
-									<span class="paging currentPage"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging currentPage"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:when>
 								
 								<c:otherwise>
-									<span class="paging notCurrent"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging notCurrent"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:otherwise>
 							</c:choose>
 								
 							<c:if test="${page==10 and totArticles/100>section}">
-								<span class="paing next"><a href="${contextPath}/group/board?group_id=${article.grp_id}&section=${section+1}&pageNum=1">&gt</a></span>
+								<span class="paing next"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section+1}&pageNum=1">&gt</a></span>
 							</c:if>
 						</c:forEach>
 					</c:if>

@@ -1,5 +1,8 @@
 package nemo.vo.qna;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Date;
 
 public class QnaVO {
@@ -115,13 +118,39 @@ public class QnaVO {
 
 
 	public String getImageFileName() {
+		try {
+			if(imageFileName != null && imageFileName.length() !=0 ) {
+				imageFileName = URLDecoder.decode(imageFileName,"utf-8");
+			}
+		} catch (Exception e) {
+			System.out.println("이미지 읽는 중 에러");
+		}
 		return imageFileName;
 	}
 
 
 	public void setImageFileName(String imageFileName) {
+		try {
+			if(imageFileName != null && imageFileName.length() !=0 ) {
+				this.imageFileName = URLEncoder.encode(imageFileName,"utf-8");
+			}else {
+				this.imageFileName=null;
+			}
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 저장 중 에러");
+		}
 		this.imageFileName = imageFileName;
 	}
+
+
+	@Override
+	public String toString() {
+		return "QnaVO [qna_id=" + qna_id + ", user_id=" + user_id + ", nickname=" + nickname + ", parent_no="
+				+ parent_no + ", title=" + title + ", content=" + content + ", create_date=" + create_date + ", level="
+				+ level + ", imageFileName=" + imageFileName + "]";
+	}
+	
+	
 
 	
 	
