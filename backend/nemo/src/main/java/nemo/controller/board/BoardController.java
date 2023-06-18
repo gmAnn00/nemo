@@ -92,7 +92,9 @@ public class BoardController extends HttpServlet {
 			
 		} else if(action.equals("/search")){
 			String filter=request.getParameter("filter");
+			System.out.println("필터"+filter);
 			String keyword=request.getParameter("keyword");
+			System.out.println("키워드"+keyword);
 			
 			String _section=request.getParameter("section");
 			String _pageNum=request.getParameter("pageNum");

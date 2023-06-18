@@ -187,22 +187,37 @@
 
 		  
 		  <div class="boardArea">
-	          <div class="search">
+		  	 <!-- <form action="${contextPath}/group/board/search?group_id=${param.group_id}" id="search" name="search" method="get"> -->
+		     <form action="${contextPath}/group/board/search?group_id=${group.grp_id}" id="search" name="search" method="get">
+	          	<div class="search">
 	            <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
-	            <!-- <form action="${contextPath}/group/board/search?group_id=${param.group_id}" id="search" name="search" method="get"> -->
-		          <form action="${contextPath}/group/board/search?group_id=${group.grp_id}" id="search" name="search" method="get">
 		            <input type="hidden" name="group_id" value="${group.grp_id}"/>
-		            <select name="filter" id="searchOption">
-		              <option value="title">제목</option>
-		              <option value="content">내용</option>
-		              <option value="writer">작성자</option>
-		            </select>
-		            <input type="text" name="keyword" id="keyword" onkeyup="if(window.event.keyCode==13){submitSearchForm()}"/>
-		            <a href="#" role="button" class="button searchBtn" type="submit" onclick="submitSearchForm()">검색</a>
-	         
-	            </form>
+		            <div class="selectArea">
+			            <select name="filter" id="searchOption">
+			              <option value="title">제목</option>
+			              <option value="content">내용</option>
+			              <option value="writer">작성자</option>
+			            </select>
+		            </div><div class="keywordArea">
+		            	<input type="text" name="keyword" id="keyword" onkeyup="if(window.event.keyCode==13){submitSearchForm()}"/>
+		            	<a href="#" role="button" class="button searchBtn" type="submit" onclick="submitSearchForm()">검색</a>
+	         		</div>
+	          	</div>
+	          </form>
+	          <div class="category">
+	          	<a href="${contextPath}/group/board?group_id=${group.grp_id}" class="titleLink">
+					<span class="title">전체</span>
+				</a>
+				<a href="${contextPath}/group/board/search?group_id=${group.grp_id}&filter=brackets&keyword=공지" class="titleLink">
+					<span class="title">공지</span>
+				</a>
+		        <a href="${contextPath}/group/board/search?group_id=${group.grp_id}&filter=brackets&keyword=자유" class="titleLink">
+					<span class="title">자유</span>
+				</a>
+		        <a href="${contextPath}/group/board/search?group_id=${group.grp_id}&filter=brackets&keyword=후기" class="titleLink">
+					<span class="title">후기</span>
+				</a>
 	          </div>
-	          
 	          <div class="boardListArea">
 	            <table class="boardList">
 	              <tr class="boardListHead">

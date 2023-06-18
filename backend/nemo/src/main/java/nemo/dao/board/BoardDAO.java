@@ -285,6 +285,8 @@ public class BoardDAO {
 				
 			}else if(filter.equals("writer")) {
 				query+=" b, user_tbl u WHERE u.user_id=b.user_id AND grp_id=? AND u.nickname LIKE ?";
+			}else if(filter.equals("brackets")) {
+				query+=" WHERE grp_id=? AND brackets LIKE ?";
 			}
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
@@ -323,13 +325,15 @@ public class BoardDAO {
 			String query="SELECT * FROM (SELECT ROWNUM as recNUM, a.* FROM (SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt";
 			query+=" FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? AND ";	
 			if(filter.equals("title")){
-				query+=" b.title LIKE ? order by b.article_no desc) a)";
+				query+=" b.title LIKE ?";
 			}else if(filter.equals("content")) {
-				query+=" b.content LIKE ? order by b.article_no desc) a)";
+				query+=" b.content LIKE ?";
 			}else if(filter.equals("writer")) {
-				query+=" u.nickname LIKE ? order by b.article_no desc) a)";
+				query+=" u.nickname LIKE ?";
+			}else if(filter.equals("brackets")) {
+				query+=" b.brackets LIKE ?";
 			}
-			query+=" WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+			query+=" order by b.article_no desc) a) WHERE recNUM BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
 
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);

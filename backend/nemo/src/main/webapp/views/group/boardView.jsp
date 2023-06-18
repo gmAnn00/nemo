@@ -171,7 +171,7 @@
               <i class="fa-solid fa-angle-right nav_icon"></i>
               <span>나의 모임</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>게시글 작성</span>
+              <span>게시판</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
