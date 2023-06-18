@@ -45,6 +45,7 @@
 		}
 	}
 </script>
+<%--
 <script type="text/javascript">
 //닉네임 중복체크
 function fn_nicknameCheck() {
@@ -129,7 +130,7 @@ function fn_emailCheck() {
 	  }
 	}		
 </script>
-
+ --%>
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -285,7 +286,7 @@ function fn_emailCheck() {
                   name="nickname"
                   placeholder="닉네임을 입력해주세요"
                   value="${userVO.nickname}"
-                  oninput="fn_nicknameCheck()"                  
+                  oninput="fn_nicknameCheck()"
                   required
                 />
                   <div id="resultMsgNick" class="resultMsg" display="none"></div>
@@ -421,5 +422,10 @@ function fn_emailCheck() {
     </div>
 	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
+	
+	<input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${userVO.user_id}"/>
+	<input type="hidden" id="nickname_hidden" name="user_id_hidden" value="${userVO.nickname}"/>
+	<input type="hidden" id="emailId_hidden" name="user_id_hidden" value="${emailId}"/>
+	<input type="hidden" id="emailDomain_hidden" name="user_id_hidden" value="${emailDomain}"/>
 </body>
 </html>
