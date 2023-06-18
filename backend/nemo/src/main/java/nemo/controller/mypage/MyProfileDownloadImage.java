@@ -32,11 +32,6 @@ public class MyProfileDownloadImage extends HttpServlet {
 	
 	private static String USER_IMG_REPO;
 	
-	@Override
-	public void init() throws ServletException {
-		
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}

@@ -82,7 +82,7 @@
             <h2 class="sc2_menu_title">프로필</h2>
             <ul class="sc2_menu_list">
               <li>
-                <a href="{contextPath}/mypage/">
+                <a href="${contextPath}/mypage/">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select">
                       <span>프로필</span>
@@ -92,7 +92,7 @@
                 </a>
               </li>
               <li>
-                <a href="{contextPath}/mypage/mySchedule">
+                <a href="${contextPath}/mypage/mySchedule">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 일정</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -100,7 +100,7 @@
                 </a>
               </li>
               <li>
-                <a href="{contextPath}/mypage/myGroupList">
+                <a href="${contextPath}/mypage/myGroupList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name menu_angle">
                       <span>내 소모임</span>
@@ -110,7 +110,7 @@
                 </a>
               </li>
               <li>
-                <a href="{contextPath}/mypage/myboardList">
+                <a href="${contextPath}/mypage/myboardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>

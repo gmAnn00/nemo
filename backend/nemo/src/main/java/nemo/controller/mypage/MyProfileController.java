@@ -34,7 +34,6 @@ public class MyProfileController extends HttpServlet {
 	private static String USER_IMG_REPO;
 	private static String USER_IMG_DEF;
 	
-	@Override
 	public void init() throws ServletException {
 		myProfService = new MyProfileService();
 		userVO = new UserVO();
@@ -234,7 +233,7 @@ public class MyProfileController extends HttpServlet {
 					nextPage="/nemo/index";
 					response.sendRedirect(nextPage);
 
-				} 
+				}
 //			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 //			dispatcher.forward(request, response);
 				

@@ -22,7 +22,6 @@ public class DuplicateController extends HttpServlet {
 	DuplicateService duplService;
 	UserVO userVO;
 	
-	@Override
 	public void init() throws ServletException {
 		duplService = new DuplicateService();
 		userVO = new UserVO();
