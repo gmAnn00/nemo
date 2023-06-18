@@ -2,6 +2,7 @@ package nemo.controller.group;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import nemo.service.group.GroupMainService;
 import nemo.vo.board.BoardVO;
 import nemo.vo.group.GroupVO;
+import nemo.vo.schedule.ScheduleVO;
 
 /**
  * Servlet implementation class GroupMainController
@@ -55,6 +57,11 @@ public class GroupMainController extends HttpServlet {
 		
 		int groupNum = groupMainService.selectGroupNumById(group_id);
 		request.setAttribute("groupNum", groupNum);
+		
+		List<ScheduleVO> schdulesList = null;
+		schdulesList = groupMainService.selectPrviewScheduleById(group_id);
+		request.setAttribute("schdulesList", schdulesList);
+		
 		
 		List<BoardVO> boardsList = null;
 		boardsList = groupMainService.selectPreviewBoardById(group_id);

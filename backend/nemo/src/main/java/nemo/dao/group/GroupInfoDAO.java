@@ -45,7 +45,7 @@ public class GroupInfoDAO {
 			groupVO.setGrp_name(rs.getString("grp_name"));
 			groupVO.setGrp_mng(rs.getString("grp_mng"));
 			groupVO.setMem_no(rs.getInt("mem_no"));
-			groupVO.setGrp_zipcode("grp_zipcode");
+			groupVO.setGrp_zipcode(rs.getString("grp_zipcode"));
 			groupVO.setGrp_addr1(rs.getString("grp_addr1"));
 			groupVO.setGrp_addr2(rs.getString("grp_addr2"));
 			groupVO.setCreate_date(rs.getDate("create_date"));

@@ -32,15 +32,6 @@
                 <div class="group_all">
                     <div class="group_img">
                     <img src="${contextPath}/groupImageDownload?group_id=${param.group_id}&group_img=${groupVO.grp_img}" alt="group_img" />
-                    <!-- 
-                    	<c:if test="${groupVO.grp_img==null}">
-                    		<img src="${contextPath}/images/free-icon-group-8847475.png" alt="group_img" />
-                    	</c:if>
-                        <c:if test="${groupVO.grp_img != null}">
-                        	<img src="${contextPath}/groupImageDownload?group_id=${param.group_id}&group_img=${groupVO.grp_img}" alt="group_img" />
-                        </c:if>
-                        -->
-                        
                     </div>
                     <div class="group_name">
                         <a href="#">
@@ -138,27 +129,22 @@
                                 <th>모임제목</th>
                                 <th>모임장소</th>
                             </tr>
-                            <tr>
-                                <td>2023-05-08</td>
-                                <td>
-                                    <a href=""><p>세번째모임</p></a>
-                                </td>
-                                <td>홍대</td>
-                            </tr>
-                            <tr>
-                                <td>2020-05-02</td>
-                                <td>
-                                    <a href=""><p>두번째모임</p></a>
-                                </td>
-                                <td>종각</td>
-                            </tr>
-                            <tr>
-                                <td>2023-04-29</td>
-                                <td>
-                                    <a href=""><p>첫번째모임</p></a>
-                                </td>
-                                <td>종각</td>
-                            </tr>
+                            <c:choose>
+                        		<c:when test="${schdulesList.isEmpty()}">
+                        			<tr>
+                        				<td colspan="3" align="center">등록된 일정이 없습니다.</td>
+                        			</tr>
+                        		</c:when>
+                        		<c:when test="${!schdulesList.isEmpty()}">
+                        			<c:forEach var="schedule" items="${schdulesList}">
+                        				<tr>
+                        					<td>${schedule.schedule}</td>
+                        					<td>${schedule.sche_title}</td>
+                        					<td>${schedule.location}</td>
+                        				</tr>
+                        			</c:forEach>
+                        		</c:when>
+                        	</c:choose>
                         </table>
                     </div>
 
@@ -171,37 +157,31 @@
                             >
                         </div>
                         <table class="recentBordTbl recentTbl">
-                            <tr>
+                        	<tr>
                                 <th>글제목</th>
                                 <th>작성자</th>
                                 <th>날짜</th>
                             </tr>
-                            <tr>
-                                <td>
-                                    <a href="#"
-                                        ><p>
-                                            안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다.안녕하세요 반갑습니다안녕하세요
-                                            반갑습니다
-                                        </p></a
-                                    >
-                                </td>
-                                <td>김네모</td>
-                                <td>2023-05-07</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#"><p>안녕하세요 반갑습니다.</p></a>
-                                </td>
-                                <td>이네모</td>
-                                <td>2023-05-06</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#"><p>안녕하세요 반갑습니다.</p></a>
-                                </td>
-                                <td>박네모</td>
-                                <td>2023-05-05</td>
-                            </tr>
+                           <c:choose>
+                        		<c:when test="${boardsList.isEmpty()}">
+                        			<tr>
+                        				<td colspan="3" align="center">등록된 글이 없습니다.</td>
+                        			</tr>
+                        		</c:when>
+                        		<c:when test="${!boardsList.isEmpty()}">
+                        			<c:forEach var="board" items="${boardsList}">
+                        				<tr>
+                        					<td>
+                        						<a href="${contextPath}/group/board/viewArticle?group_id=${param.group_id}&article_no=${board.article_no}">
+                        							<p>${board.title}</p>
+                        						</a>
+                        					</td>
+                        					<td>${board.user_id}</td>
+                        					<td>${board.create_date}</td>
+                        				</tr>
+                        			</c:forEach>
+                        		</c:when>
+                        	</c:choose>
                         </table>
                     </div>
 
