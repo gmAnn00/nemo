@@ -34,12 +34,9 @@
 }
 
 /*4-2*/
-.myIM {
+.myImage {
   display: flex;
   width: 150px;
-}
-.myImage {
-  display: block;
 }
 .myImage form {
   text-align: center;
