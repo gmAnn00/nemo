@@ -33,7 +33,7 @@ public class DuplicateDAO {
 		boolean result = false;
 		try {
 			conn=dataFactory.getConnection();
-			String query = "select decode(count(*), 1, 'true', 'false') as result from user_tbl where id=?";
+			String query = "select decode(count(*), 1, 'true', 'false') as result from user_tbl where user_id=?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, user_id);
 			ResultSet rs = pstmt.executeQuery();

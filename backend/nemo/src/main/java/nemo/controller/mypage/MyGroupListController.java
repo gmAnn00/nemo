@@ -1,6 +1,10 @@
 package nemo.controller.mypage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +22,10 @@ import nemo.vo.mypage.UserVO;
 public class MyGroupListController extends HttpServlet {
 	HttpSession session;
 	MyGroupService myGroupService;
-	GroupVO groupVO;
+
 
 	public void init() throws ServletException {
 		myGroupService = new MyGroupService();
-		groupVO = new GroupVO();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,17 +51,25 @@ public class MyGroupListController extends HttpServlet {
 		if (user_id != null) {
 			// 로그인 상태일때만 수행
 			try {
-				if (action == null || action.equals("/myGroupList")) {
-					//id로 검색할 것.
-					//groupVO = myGroupService.searchGroupById(user_id);
+				if (action == null || action.equals("/myGroup")) {
+					user_id = (String)session.getAttribute("user_id");
+					//내가 리더인 소모임	조회
+					//GroupVO mngGroupVO = new GroupVO();					
+					//mngGroupVO = myGroupService.getManagerGrpId(user_id);					
+					List<GroupVO> mngGroupList = new ArrayList<>();
+					mngGroupList = myGroupService.getManagerGrpId(user_id);
 					
-					//내가 만든 소모임 조회 GROUP_TBL에서 GRP_MNG=user_id 같으면
+					//일반 회원인 소모임 조회
+					//GroupVO userGroupVO = new GroupVO();
+					//userGroupVO = myGroupService.getUserGrpId(user_id);
+					List<GroupVO> userGroupList = new ArrayList<>();
+					userGroupList = myGroupService.getUserGrpId(user_id);
 					
-					//내가 가입한 소모임 조회 GRPJOIN_TBL
+					
 					
 					//찜한 소모임 조회 BOOKMARK_TBL
 					
-					//뿌려주기 위해 필요한 정보 : 대분류, 소분류, 모임이름, 지역 1  
+					//뿌려주기 위해 필요한 정보 : 소모임이미지, 대분류, 소분류, 모임이름, 지역 1  
 					//지역은 substring으로 oo시 oo구 까지만 나오게 할 수 있나..? 흠...
 					
 					
@@ -72,11 +83,15 @@ public class MyGroupListController extends HttpServlet {
 					//그룹 번호 매개변수로 같이 보내기
 					//nextPage="/views/group/groupInfo?" + 매개변수;
 					
+					
 				} else if(action.equals("/clickBookmark")) {
 					//북마크 찜, 해제
 					//이거는 바로 없애지 말고, 새로고침 할 때까지는 보이도록 만들자
 					
 				}
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+				dispatcher.forward(request, response);
 
 			} catch (Exception e) {
 				System.out.println("컨트롤러 요청 처리 중 에러 !");

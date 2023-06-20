@@ -1,18 +1,36 @@
 package nemo.service.mypage;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import nemo.dao.mypage.MyGroupDAO;
 import nemo.vo.group.GroupVO;
 
 public class MyGroupService {
 	
-	//내가 가입한 소모임 조회
-	public GroupVO searchGroupById(String user_id) {
-		//내가 만든 소모임(소모임장)
-		
-		//그냥 가입한 소모임
-		return null;
+	MyGroupDAO myGroupDAO;
+	GroupVO groupVO;
+	
+	public MyGroupService() {
+		myGroupDAO = new MyGroupDAO();
+		groupVO = new GroupVO();
 	}
-	/*소모임장인지 알아보는 메서드... 불린 변수로 true (소모임장), false(일반회원) 을 받아서
-	서로 다른 값을 리턴받을 수 있게 ... */
+	
+	//내가 리더인 소모임조회
+	public List<GroupVO> getManagerGrpId(String user_id) {		
+		//groupVO = myGroupDAO.getManagerGrpId(user_id);
+		List<GroupVO> mngGroupList = new ArrayList<>();
+		mngGroupList = myGroupDAO.getManagerGrpId(user_id);
+		return mngGroupList;
+	}
+	//일반회원인 소모임
+
+	public List<GroupVO> getUserGrpId(String user_id) {		
+		//groupVO = myGroupDAO.getUserGrpId(user_id);
+		List<GroupVO> userGroupList = new ArrayList<>();
+		userGroupList = myGroupDAO.getUserGrpId(user_id);
+		return userGroupList;
+	}
 	
 
 }

@@ -56,7 +56,7 @@ public class MyProfileController extends HttpServlet {
 		String user_id = (String)session.getAttribute("user_id");
 
 		USER_IMG_REPO = this.getClass().getResource("").getPath();
-		System.out.println(USER_IMG_REPO);
+		//System.out.println(USER_IMG_REPO);
 		USER_IMG_REPO = USER_IMG_REPO.substring(1, USER_IMG_REPO.indexOf(".metadata"));
 		USER_IMG_REPO = USER_IMG_REPO.replace("/", "\\");
 		USER_IMG_REPO += "nemo\\src\\main\\webapp\\userImages\\";
@@ -171,7 +171,18 @@ public class MyProfileController extends HttpServlet {
 						destDir.mkdir();
 						FileUtils.moveFileToDirectory(scrFile, destDir, true);
 						scrFile.delete();
+						//옛날 이미지 삭제
+						String originalFileName = (String)userProfileMap.get("originalFileName");
+						System.out.println("originalFileName" + originalFileName);
+						File oldFile = new File(USER_IMG_REPO + "\\" + originalFileName);
+						oldFile.delete();
 					}
+					String message;
+					message = "<script>";
+					message += "alert('이미지가 수정되었습니다.');";
+					message += "location.href='nemo/mypage/myprofile';";
+					message += "</script>";	
+					
 										
 					UserVO userVO = new UserVO(user_id, password, user_name, nickname, zipcode, user_addr1, user_addr2, phone, email, birthdate, user_img);
 					myProfService.modProfile(userVO);
@@ -193,14 +204,25 @@ public class MyProfileController extends HttpServlet {
 					}else {
 						user_img = userImageMap.get("user_img");
 					}
-					
+					String message;
+					System.out.println("user_img확인" + user_img);
+					//이미지가 있을 때 수정
 					if(user_img != null && user_img.length() != 0) {
 						File scrFile = new File(USER_IMG_REPO + "\\temp\\" + user_img);
 						File destDir = new File(USER_IMG_REPO + "\\" + user_id);
 						destDir.mkdir();
 						FileUtils.moveFileToDirectory(scrFile, destDir, true);
 						scrFile.delete();
+						//옛날 이미지 삭제
+						String originalFileName = (String)userImageMap.get("originalFileName");
+						System.out.println("originalFileName" + originalFileName);
+						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + originalFileName);
+						oldFile.delete();
 					}
+					message = "<script>";
+					message += "alert('이미지가 수정되었습니다.');";
+					message += "location.href='nemo/mypage/myprofile';";
+					message += "</script>";	
 					
 					UserVO userVO = new UserVO(user_id, user_img);
 					myProfService.modUserImg(userVO);
@@ -208,6 +230,7 @@ public class MyProfileController extends HttpServlet {
 					request.setAttribute("msg", "modImg");
 					nextPage= "/nemo/mypage/myprofile";
 					response.sendRedirect(nextPage);
+					response.sendRedirect(message);
 					
 					
 				} else if(action.equals("/delUserForm")) {
@@ -278,8 +301,8 @@ public class MyProfileController extends HttpServlet {
 					FileItem fileItem = (FileItem)items.get(i);
 					if(fileItem.isFormField()) {
 					//form에 관련된 것인지 => (글자 데이터)
-						System.out.println(fileItem.getFieldName() + "=" + 
-											fileItem.getString(encoding));					
+						//System.out.println(fileItem.getFieldName() + "=" + 
+						//					fileItem.getString(encoding));					
 						//파일 업로드할 이미지와 같이 전송된 새글 관련(제목, 내용) 매개변수를 Map(키, 값)으로 저장
 						userImageMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 						
@@ -291,12 +314,15 @@ public class MyProfileController extends HttpServlet {
 						System.out.println("매개변수이름 : " + fileItem.getFieldName());
 						System.out.println("파일(이미지)이름 : " + fileItem.getName());
 						System.out.println("파일(이미지)크기 : " + fileItem.getSize() + "bytes");
+						
+						
 						if(fileItem.getSize() > 0) {
 							int idx = fileItem.getName().lastIndexOf("\\");
 							if(idx == -1) {
 								//idx == -1 : 경로가 c:/ 로 / 처럼 표시될 때
 								idx = fileItem.getName().lastIndexOf("/");
 							}
+							
 							//fileName : 실제 첨부한 이미지 이름
 							String fileName = fileItem.getName().substring(idx + 1);
 							// DB에 이미지 fileName담기
@@ -305,7 +331,7 @@ public class MyProfileController extends HttpServlet {
 							//파일 처리(파일 경로 처리)
 							File uploadFile = new File(currnetDirPath + "\\temp\\" + fileName);
 							// 실제 저장
-							fileItem.write(uploadFile);								
+							fileItem.write(uploadFile);
 						}
 					}// else End
 				}			

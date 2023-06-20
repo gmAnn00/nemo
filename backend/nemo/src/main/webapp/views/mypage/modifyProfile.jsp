@@ -207,11 +207,11 @@ function fn_emailCheck() {
           	<!--3. myImage-->          
           	<div class="myImage">                         
              <c:choose>
-                <c:when test="${empty userVO}">
+                <c:when test="${empty userVO.user_img}">
                 	<img id="userImg" src="" alt=" 프로필 사진" />
                 </c:when>
-                <c:when test="${!empty userVO}">                                  
-                	<img id="userImg" src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${userVO.user_img}" alt=" 프로필 사진" />                  
+                <c:when test="${!empty userVO.user_img}">                                  
+                	<img id="userImg" name ="originalFileName" src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${userVO.user_img}" alt=" 프로필 사진" />                  
                 </c:when>
                 </c:choose>     
               <div>

@@ -20,6 +20,7 @@ form div {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  margin-left: 50px;
   width: 435px;
   position: relative;
   /* align-items: center; */
@@ -39,15 +40,13 @@ form input {
 .myImage {
   padding-top: 30px;
   align-items: center;
-  margin: 0 auto;
-  padding-right: 70px;
 }
 .myImage img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 1px solid var(--sub3-color);
-  background: url(../images/dall.png) 35%;
+  /*background: url(../images/dall.png) 35%;*/
   line-height: 180px;
   text-align: left;
   color: var(--sub3-color);
@@ -56,7 +55,7 @@ form input {
 }
 .myImage label {
   position: relative;
-  left: 165px;
+  left: 140px;
   top: 10px;
   cursor: pointer;
 }
