@@ -8,6 +8,7 @@ function showSubcategories(category) {
   var selectedCategory = document.getElementById(category);
   if (selectedCategory) {
     selectedCategory.style.display = "block";
+    smalltitle.style.display = "block";
   }
 }
 
