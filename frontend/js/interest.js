@@ -1,4 +1,4 @@
-
+function showSubcategories(category) {
   // 모든 소분류 숨기기
   var subCategories = document.getElementById("smallCate").children;
   for (var i = 0; i < subCategories.length; i++) {
@@ -56,6 +56,5 @@ function addMyInterest(value) {
     }
   }
 }
-
 
 
