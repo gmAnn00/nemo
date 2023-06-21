@@ -12,15 +12,15 @@
 <c:set var="article" value="${articleViewMap.article}" />
 <c:set var="comments" value="${articleViewMap.comments}" />
 <c:set var="isSame" value="${articleViewMap.isSame }" />
-<c:set var="group" value="${articleViewMap.group }" />
 <c:set var="referURL" value="${header.referer}" />
+<c:set var="group" value="${groupInfo}" />
 
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>게시글 조회</title>
+    <title>네모: 게시판</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
@@ -39,79 +39,13 @@
   </head>
   <body>
     <!-- header 시작 -->
-    <!-- 사이드 메뉴시 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <header>
-      <h1 class="logo">
-        <a href="${contextPath}/index"
-          ><img src="${contextPath}/images/logo.png" alt="logo"
-        /></a>
-      </h1>
-    </header>
-    <button class="burger">
-      <span></span>
-    </button>
-    <div class="sidemenu">
-      <ul class="main_menu">
-        <li>
-          <a href="#">
-            <div class="profile">
-              <i class="fa-solid fa-circle-user"></i
-              ><span class="profile_name">사이다</span>
-            </div>
-          </a>
-        </li>
-        <li><a href="#">소모임 만들기</a></li>
-        <li><a href="#">소모임 검색</a></li>
-        <li><a href="#">프로필</a></li>
-        <li><a href="#">내 일정</a></li>
-        <li><a href="#">내 소모임</a></li>
-        <li><a href="#">고객센터</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-      <div class="sidemenu_footer">
-        <h3>Contact details</h3>
-        <p>글 넣을 거 있으면 넣기</p>
-      </div>
-    </div>
+	<jsp:include page="../header.jsp" flush="true"></jsp:include>
     <!-- header 종료 -->
 
-    <!-- section1 시작 -->
-    <div class="section1">
-      <div class="group_containter">
-        <div class="group_all">
-          <div class="group_img">
-            <img
-              src="${contextPath}/images/free-icon-group-8847475.png"
-              alt="group_img"
-            />
-          </div>
-          <div class="group_name">
-            <a href="groupMain.html">
-              <span>${group.grp_name}</span>
-            </a>
-          </div>
-          <div class="group_info">
-            <div class="group_info_category">
-              <div class="category_box group_info_category_box">${group.main_name}</div>
-              <div class="category_box group_info_category_box">${group.sub_name}</div>
-            </div>
-            <div class="group_info_member">
-              <div class="group_info_title"><span>멤버수</span></div>
-              <div class="group_info_contents"><span>${group.mem_no}</span></div>
-            </div>
-            <div class="group_info_follower">
-              <div class="group_info_title"><span>개설일</span></div>
-              <div class="group_info_contents">
-                <span>${group.create_date}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- section1 종료 -->
-
+	<!-- section1 -->
+	<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
+	<!-- section1종료 -->
+	
     <!-- 콘텐츠 영역 -->
     <div class="section2">
       <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
@@ -131,7 +65,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/group/board?group_id=${group.grp_id}">
+                <a href="${contextPath}/group/board?group_id=${group.groupVO.grp_id}">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -165,7 +99,7 @@
             <h2 class="sc2_subsection_title_name">게시판</h2>
             <!-- nav 바 시작 -->
             <div class="nav_bar">
-              <a href="${contextPath}/index.html">
+              <a href="${contextPath}/index">
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>
@@ -224,9 +158,9 @@
 	            <!-- 내용 영역 -->
 	            <div id="contentArea" class="contentArea">
 	            	<div class="contentEditTool">
-		            	<c:if test="${isSame==true }">
+		            	<c:if test="${user_id==article.user_id}">
 				            <a href="#" role="button" class="btnEdit btn">수정</a>
-				            <a href="#" role="button" class="btnDel btn">삭제</a>
+				            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnDel btn">삭제</a>
 		              	</c:if>
 	            	</div>
 	            	<div class="content">
@@ -245,8 +179,10 @@
 					                        <li id="${comment.comment_no }" class="commentItem replyCommentItem commentLi">
 					                            <div class="commentbox">
 					                                <div class="commentTool">
-					                                    <span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
-					                                    <span class="comDel comToolBtn"><a href="#" role="button">삭제</a></span>
+					                                	<c:if test="${user_id==comment.user_id}">
+					                                    	<span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
+					                                    	<span class="comDel comToolBtn"><a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" role="button">삭제</a></span>
+					                                	</c:if>
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
 					                                <a href="#" class="commentThumb">
@@ -272,8 +208,10 @@
 					                        <li id="${comment.comment_no }" class="commentItem commentLi">
 					                            <div class="commentbox">
 					                                <div class="commentTool">
-					                                    <span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
-					                                    <span class="comDel comToolBtn"><a href="#" role="button">삭제</a></span>
+					                                	<c:if test="${user_id==comment.user_id}">
+					                                    	<span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
+					                                    	<span class="comDel comToolBtn"><a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" role="button">삭제</a></span>
+					                                	</c:if>
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
 					                                <a href="#" class="commentThumb">
@@ -317,11 +255,11 @@
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-	              <a href="${contextPath}/group/board/write?group_id=${group.grp_id}" role="button" class="btnWrite btn">글쓰기</a>
+	              <a href="${contextPath}/group/board/write?group_id=${group.groupVO.grp_id}" role="button" class="btnWrite btn">글쓰기</a>
 	              
-	              <c:if test="${isSame==true }">
+	              <c:if test="${user_id==article.user_id }">
 		            <a href="#" role="button" class="btnEdit btn">수정</a>
-		            <a href="#" role="button" class="btnDel btn">삭제</a>
+		            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article=article_no}" role="button" class="btnDel btn">삭제</a>
 	              </c:if>
 	              
 	            </div>

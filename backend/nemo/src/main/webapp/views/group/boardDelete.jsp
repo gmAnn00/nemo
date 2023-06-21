@@ -1,30 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    isELIgnored="false" %>
+    isELIgnored="false"
+    import="java.util.*, nemo.*"
+    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="group" value="${groupInfo}" />
+
+<% request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>네모: 게시판</title>
+    <title>게시판</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
-    <link rel="stylesheet" href="${contextPath}/css/boardWrite.css" />
-    <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css"/>
+    <link rel="stylesheet" href="${contextPath}/css/boardDelete.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-	<script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
-    <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
-    <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="${contextPath}/js/header.js"></script>
-    <script src="${contextPath}/js/boardWrite.js"></script>
   </head>
   <body>
     <!-- header 시작 -->
@@ -52,9 +54,11 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/group/board?group_id=${groupInfo.groupVO.grp_id}">
+                <a href="${contextPath}/group/board?group_id=${param.group_id}">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
+                    <div class="menu_submenu_name submenu_select">
+                      <span>게시판</span>
+                    </div>
                     <i class="fa-solid fa-minus submenu_select"></i>
                   </div>
                 </a>
@@ -80,16 +84,14 @@
         </div>
         <!-- 메뉴바 종료 -->
 
-        <!-- 게시판 글쓰기 영역 시작 -->
-        <div class="boardWrite sc2_subsection">
-
-          <!-- 메인 상단 타이틀 출력 부분-->
+        <!-- 게시판 컨텐츠 영역 시작 -->
+        <div class="board sc2_subsection">
           <div class="sc2_subsection_title">
             <h2 class="sc2_subsection_title_name">게시판</h2>
 
             <!-- nav 바 시작 -->
             <div class="nav_bar">
-              <a href="${contextPath}/index">
+              <a href="index.html">
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>
@@ -99,49 +101,42 @@
             </div>
             <!-- nav 바 종료 -->
           </div>
-          <!-- 메인 상단 타이틀 출력 부분 종료 -->
 
-          <!-- 글쓰기 영역 -->
-          <div class="boardWriteArea">
-         
-            <!-- <form action="/group/board/addArticle" method="post" name="articleForm" id="articleForm"> -->
-              <form action="${contextPath}/group/board/addArticle" method="post" name="articleForm" id="articleForm">
-              <input type="hidden" name="group_id" value="${group.groupVO.grp_id}"/>
-              <!-- 제목 영역 -->
-              <div class="articleWritingTitle">
-                <!-- 말머리 컨텐츠 확인 필요 -->
-                <div class="headTitleArea">
-	                <select name="brackets" id="headTitle" class="headTitle">
-	                  <option value="">말머리</option>
-	                  <c:if test="${user_id==group.groupVO.grp_mng}">
-	                  	<option value="notice">공지</option>
-	                  </c:if>
-	                  <option value="freeArticle">자유</option>
-	                  <option value="afterMeeting">후기</option>
-	                </select>
-                </div>
-                <!-- 제목 -->
-                <div class="titleArea">
-                	<input type="text" name="title" id="writeTitle" class="writeTitle" placeholder="제목을 입력해주세요"></textarea>
-              	</div>
-              </div>
-              <!-- 글쓰는 영역 -->
-              <div class="editorArea">
-                <textarea id="summernote" name="content"></textarea>
-              </div>
-              <!-- 등록 버튼 -->
-              <div class="btnRegister">
-                <a href="#" role="button" class="button">등록</a>
-                <a href="#" role="button" class="buttonCancle">취소</a>
-              </div>
+		  
+		  <div class="boardArea deleteArea">
+		 	<!-- 컨텐츠영역 -->
+		 	<div class="innerContent">
+		 		<div class="contentTitle">
+		 			<form action="${contextPath}/group/board/delete?group_id=${param.group_id}&article_no=${param.article_no}" method="post">
+		 				<c:if test="${deleteInfo eq 'deleteArticle'}">
+		 					<input type="hidden" name="number" value="${articleInfo.article_no}">
+		 					<input type="hidden" name="deleteInfo" value="deleteArticle" />
+				 			<p class="title">${articleInfo.title}</p>
+				 			<p class="msg">이 게시글을 삭제하시겠습니까?</p>
+		 				</c:if>
+		 				<c:if test="${deleteInfo eq 'deleteComment'}">
+		 					<input type="hidden" name="number" value="${commentInfo.comment_no}">
+		 					<input type="hidden" name="deleteInfo" value="deleteComment" />
+		 					<p class="comTitle">제목 : ${commentInfo.articleVO.title}</p>
+		 					<p calss="comment">ㄴ${commentInfo.com_cont}</p>
+		 					<p class="msg">이 댓글을 삭제하시겠습니까?</p>
+		 				</c:if>
+		 			<!-- 버튼영역 -->
+			 			<div class="btnArea">
+				  			<input type="submit" value="삭제" class="button">
+				  			<input type="reset" value="취소" class="buttonCancle">
+				  		</div>
+	          		<!-- 버튼영역 종류 -->
+	          		</form>
+		 		</div>	
+		 	
 
-            </form>
-
-
-            </div>
+          	</div>
           </div>
         </div>
-        <!-- 게시판 글쓰기 영역 끝 -->
+        <!-- 게시판 컨텐츠 영역 끝 -->
+        
+        
       </div>
     </div>
 
@@ -180,7 +175,7 @@
               <h3>NEMO Links</h3>
             </div>
             <ul>
-              <li><a href="${contextPath}/index">Home</a></li>
+              <li><a href="#">Home</a></li>
               <li><a href="#">고객센터</a></li>
               <li><a href="#">이용약관</a></li>
               <li><a href="#">공지사항</a></li>

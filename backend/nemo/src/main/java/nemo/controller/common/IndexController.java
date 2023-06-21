@@ -31,8 +31,8 @@ public class IndexController extends HttpServlet {
 		
 		//session.setAttribute("user_id", "kim");
 		//session.setAttribute("nickname", "김철수닉네임");
-		session.setAttribute("user_id", "hong");
-		session.setAttribute("nickname", "홍길동닉네임");
+		//session.setAttribute("user_id", "hong");
+		//session.setAttribute("nickname", "홍길동닉네임");
 		//session.removeAttribute("user_id");
 		//session.removeAttribute("nickname");
 		nextPage="/views/index.jsp";

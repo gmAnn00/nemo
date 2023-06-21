@@ -21,6 +21,7 @@ import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
+import nemo.vo.group.GroupVO;
 
 
 @WebServlet("/group/board/*")
@@ -28,12 +29,15 @@ public class BoardController extends HttpServlet {
 	BoardService boardService;
 	BoardVO boardVO;
 	CommentVO commentVO;
+	Map groupInfo;
 	HttpSession session;
 	
 	public void init(ServletConfig config) throws ServletException {
 		boardService=new BoardService();
 		boardVO=new BoardVO();
 		commentVO = new CommentVO();
+		groupInfo=new HashMap();
+		
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,10 +60,12 @@ public class BoardController extends HttpServlet {
 		
 		String nextPage=null;		
 		session=request.getSession();
-		
-		//String user_id=(String)session.getAttribute("user_id");
-		String user_id="son";
+		String user_id=(String)session.getAttribute("user_id");
+	
 		int group_id = Integer.parseInt(request.getParameter("group_id"));
+		groupInfo=boardService.getGroupInfo(group_id);
+		request.setAttribute("groupInfo", groupInfo);
+		
 		
 		//게시판 리스트 보기 
 		if(action==null || action.equals("")||action.equals("/board")) {
@@ -75,12 +81,11 @@ public class BoardController extends HttpServlet {
 			
 			// 글 리스트 뿐만 아니라 section과 page까지 담아 올려고 Map을 사용함
 			Map articleMap=boardService.listArticles(pagingMap, group_id, user_id);
-				
+			
 	
 			if(!(articleMap.isEmpty())) {
 				articleMap.put("section", section);
 				articleMap.put("pageNum", pageNum);
-				
 				request.setAttribute("articleMap", articleMap);
 				nextPage="/views/group/board.jsp";
 				//System.out.println("소모임"+articleMap.get("group_id"));
@@ -141,8 +146,12 @@ public class BoardController extends HttpServlet {
 			}
 			
 		} else if(action.equals("/write")) {
-			
+			//소모임장 값 넘겨줘야함
+			Map groupInfo=new HashMap();
+			groupInfo=boardService.getGroupInfo(group_id);
+			request.setAttribute("groupInfo", groupInfo);
 			nextPage="/views/group/boardWrite.jsp";
+			
 		} else if(action.equals("/addArticle")) {
 			String _brackets=request.getParameter("brackets");
 			String title=request.getParameter("title");
@@ -163,6 +172,61 @@ public class BoardController extends HttpServlet {
 			response.sendRedirect(nextPage);
 			return;
 			
+		} else if(action.equals("/deleteArticle")) {
+			String _article_no=request.getParameter("article_no");
+			int article_no=Integer.parseInt(_article_no);
+			BoardVO articleInfo=boardService.getArticleInfo(group_id, article_no, user_id);
+			if(articleInfo!=null) {
+				request.setAttribute("articleInfo", articleInfo);
+				request.setAttribute("deleteInfo", "deleteArticle");
+				nextPage="/views/group/boardDelete.jsp";
+				System.out.println(articleInfo.getArticle_no());
+			} else {
+				out.print("<script>alert('잘못된 접근입니다.'); location.href='/nemo/index'</script>");
+				return;
+			}
+			
+		} else if(action.equals("/deleteComment")) {
+			String _comment_no=request.getParameter("comment_no");
+			int comment_no=Integer.parseInt(_comment_no);
+			CommentVO commentInfo=boardService.getCommentInfo(group_id, comment_no,user_id);
+			if(commentInfo !=null) {
+				request.setAttribute("commentInfo", commentInfo);
+				request.setAttribute("deleteInfo", "deleteComment");
+				nextPage="/views/group/boardDelete.jsp";
+			} else {
+				out.print("<script>alert('잘못된 접근입니다.'); location.href='/nemo/index'</script>");
+				return;
+			}
+			
+		} else if(action.equals("/delete")) {
+			String msg=request.getParameter("deleteInfo");
+			int num=Integer.parseInt(request.getParameter("number"));
+	
+			if(msg.equals("deleteArticle")) {
+				// 사진 폴더 삭제하는 작업 해야함
+				boardService.deleteArticle(num);
+				
+				//number에는 article_no가 들어있음
+			} else if(msg.equals("deleteComment")) {
+				String article_no=request.getParameter("article_no");
+				int _article_no=Integer.parseInt(article_no);
+				boolean check = boardService.deleteComment(num,_article_no);
+				if(!check) {
+					out.print("<script>");
+					out.print("alert('삭제 되었습니다.');");
+					out.print("location.href='"+ request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+					out.print("</script>");
+					return;
+				} else {
+					System.out.println("자식 있어 컨트롤러");
+					out.print("<script>");
+					out.print("alert('댓글이 달린 댓글은 삭제할 수 없습니다.');");
+					out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+					out.print("</script>");
+					return;
+				}
+			}	
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

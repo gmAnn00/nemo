@@ -22,6 +22,7 @@ public class BoardDAO {
 	private DataSource dataFactory;
 	
 	public BoardDAO() {
+		
 		try {
 			Context ctx=new InitialContext();
 			Context envContext=(Context)ctx.lookup("java:/comp/env");
@@ -33,7 +34,7 @@ public class BoardDAO {
 	}
 	
 	//게시글 리스트(목록보기)
-	public List<BoardVO> selectGrpArticles(Map<String, Integer> pagingMap, int grp_id) {
+	public List<BoardVO> selectGrpArticles(Map<String, Integer> pagingMap, int _group_id) {
 		List<BoardVO> articleList=new ArrayList<BoardVO>();
 		
 		int section=pagingMap.get("section");
@@ -52,7 +53,7 @@ public class BoardDAO {
 			query+=" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
-			pstmt.setInt(1, grp_id);
+			pstmt.setInt(1, _group_id);
 			pstmt.setInt(2, section);
 			pstmt.setInt(3, pageNum);
 			pstmt.setInt(4, section);
@@ -121,6 +122,61 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return totCount;
+	}
+	
+	//공지사항리스트 메소드
+	public List<BoardVO> selectNoticeList(int _group_id) {
+		List<BoardVO> noticeList=new ArrayList<BoardVO>();
+		try {
+			conn=dataFactory.getConnection();
+
+			String query="SELECT * FROM (SELECT ROWNUM as recNum, a.*";
+			query+=" FROM (SELECT b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt";
+			query+=" FROM board_tbl b, user_tbl u where u.user_id=b.user_id and b.grp_id=? and b.brackets='공지'order by create_date desc) a )";
+			query+=" WHERE recNum BETWEEN 0 AND 3";
+
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, _group_id);
+			
+			ResultSet rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int article_no=rs.getInt("article_no");
+				String user_id=rs.getString("user_id");
+				String nickname=rs.getString("nickname");
+				int group_id=rs.getInt("grp_id");
+				Date create_date=rs.getDate("create_date");
+				String title=rs.getString("title");
+				String brackets=rs.getString("brackets");
+				int view_cnt=rs.getInt("view_cnt");
+				int com_cnt=rs.getInt("com_cnt");
+		
+				BoardVO boardVO=new BoardVO();
+				
+				boardVO.setArticle_no(article_no);
+				boardVO.setUser_id(user_id);
+				//boardVO.setNickname(nickname);
+				boardVO.setGrp_id(group_id);
+				boardVO.setCreate_date(create_date);
+				boardVO.setTitle(title);
+				boardVO.setBrackets(brackets);
+				boardVO.setView_cnt(view_cnt);
+				boardVO.setCom_cnt(com_cnt);
+				boardVO.getUserVO().setNickname(nickname);
+				System.out.println(boardVO.getUserVO().getNickname());
+				noticeList.add(boardVO);
+			} // End Of While
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("공지글 받아오는 중 에러");
+			e.printStackTrace();	
+		}
+		return noticeList;
 	}
 	
 	//게시글 작성
@@ -263,11 +319,85 @@ public class BoardDAO {
 		
 	}
 	
-	//게시글 삭제
+
 	
 	//댓글 작성
 	
+	//게시글 삭제
+	public void deleteArticle(int article_no) {
+		try {
+			conn=dataFactory.getConnection();
+		} catch (Exception e) {
+			System.out.println("게시글 삭제 중 에러");
+			
+		}
+	}
+	
 	//댓글 삭제
+	public void deleteComment(int comment_no) {
+		try {
+			conn=dataFactory.getConnection();
+			String query = "DELETE FROM comment_tbl WHERE comment_no IN";
+			query+=" (SELECT comment_no FROM comment_tbl";
+			query+=" START WITH comment_no=? CONNECT BY PRIOR comment_no=parent_no)";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, comment_no);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("게시글 삭제 중 에러");
+			e.printStackTrace();
+		}
+	}
+	
+	// 댓글에 자식이 있는지 확인하는 메소드
+	public boolean checkComChild(int comment_no) {
+		boolean check=false;
+		try {
+			conn=dataFactory.getConnection();
+			String query = "select count(*) as cnt from comment_tbl where parent_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, comment_no);
+			
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			int cnt=rs.getInt("cnt");
+			
+			if(cnt>0) {
+				check=true; //자식이 있음
+			}
+			System.out.println("자식이 있니?:"+check);
+		} catch (Exception e) {
+			System.out.println("댓글에 자식이 있는지 확인 하는 중 에러");
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+	
+	//댓글 개수 확인해서 업데이트하는 메소드
+	public void countComment(int account_no) {
+		try {
+			conn=dataFactory.getConnection();
+			String query = "UPDATE board_tbl SET com_cnt=";
+			query+="(select count(*) from comment_tbl where article_no=?)";
+			query+=" WHERE article_no=?";
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, account_no);
+			pstmt.setInt(2, account_no);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("댓글 개수 업데이트하는 중 에러");
+			e.printStackTrace();
+		}
+	}
 	
 	
 	//검색한 총 글 개수
@@ -316,8 +446,6 @@ public class BoardDAO {
 		
 		try {
 			conn=dataFactory.getConnection();
-			
-
 			/*
 			String query ="SELECT * FROM"
 					+ "	(SELECT ROWNUM AS recNUM, b.article_no, b.user_id, u.nickname, b.grp_id, b.create_date, b.title, b.brackets, b.view_cnt, b.com_cnt"
@@ -356,6 +484,7 @@ public class BoardDAO {
 				int view_cnt=rs.getInt("view_cnt");
 				int com_cnt=rs.getInt("com_cnt");
 				BoardVO boardVO=new BoardVO();
+				
 				boardVO.setArticle_no(article_no);
 				boardVO.setUser_id(user_id);
 				//boardVO.setNickname(nickname);
@@ -379,14 +508,52 @@ public class BoardDAO {
 		}
 		return articleList;
 	}
+
+	//comment_id로 코멘트 정보 받는 메소드
+	public CommentVO selectComment(int comment_no) {
+		CommentVO comment= new CommentVO();
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT c.comment_no, c.article_no, c.com_cont, a.title";
+			query+=" FROM comment_tbl c, board_tbl a ";
+			query+=" WHERE c.article_no=a.article_no AND c.comment_no=?";
+			
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, comment_no);
+			System.out.println(query);
+			
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			
+			int _comment_no=rs.getInt("comment_no");
+			int article_no=rs.getInt("article_no");
+			String com_cont=rs.getString("com_cont");
+			String title = rs.getString("title");
+			comment.getArticleVO().setTitle(title);
+			comment.setComment_no(_comment_no);
+			comment.setArticle_no(article_no);
+			comment.setCom_cont(com_cont);
+
+			rs.close();
+			conn.close();
+			pstmt.close();
+		
+		} catch (Exception e) {
+			System.out.println("댓글 정보 가져오는 중 에러 ");
+			e.printStackTrace();
+		}
+		
+		return comment;
+	}
 	
 
 	
-	//게시글 상세조회한 사람과 글 작성자가 동일한지 체크하는 메소드
+	//게시글 글 작성자와 액션한 사람이 동일한지 체크하는 메소드
 	public boolean isSameUser(String user_id, int article_no) {
 		boolean isSame=false;
 			try {
 				conn=dataFactory.getConnection();
+				
 				String query="SELECT * FROM board_tbl WHERE user_id=? and article_no=?";
 				System.out.println(query);
 				pstmt=conn.prepareStatement(query);
@@ -401,6 +568,7 @@ public class BoardDAO {
 					System.out.println("동일인 아님");
 				}
 				rs.close();
+				
 				pstmt.close();
 				conn.close();
 				
@@ -409,6 +577,37 @@ public class BoardDAO {
 			}
 		return isSame;
 	}
+	
+	//게시글 코멘트 작성한 사람과 액션한 사람이 동일한지 체크하는 메소드
+	public boolean isSameUserC(String user_id, int comment_no) {
+		boolean isSame=false;
+			try {
+				conn=dataFactory.getConnection();
+				
+				String query="SELECT * FROM comment_tbl WHERE user_id=? and comment_no=?";
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				pstmt.setInt(2, comment_no);
+				ResultSet rs=pstmt.executeQuery();
+				isSame=rs.next();
+				
+				if(isSame) {
+					System.out.println("동일인");
+				} else {
+					System.out.println("동일인 아님");
+				}
+				rs.close();
+				
+				pstmt.close();
+				conn.close();
+				
+			} catch (Exception e) {
+				System.out.println("작성자와 조회한 사람이 동일한지 체크 중 오류");
+			}
+		return isSame;
+	}
+	
 	
 	//글 조회시 조회수 증가시키는 메소드
 	public void addViewCnt(int article_no) {

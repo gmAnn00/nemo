@@ -1,6 +1,5 @@
 package nemo.vo.board;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import nemo.vo.common.UserVO;
@@ -15,20 +14,18 @@ public class CommentVO {
 	private String com_cont; //댓글내용
 	private int parent_no;
 	private Timestamp create_date;
-	private UserVO userVO = new UserVO();
-	
-	
+	private UserVO userVO;
+	private BoardVO articleVO;
 	
 	public CommentVO() {
+		articleVO = new BoardVO();
 		userVO = new UserVO();
 	}
 
 	public CommentVO(int comment_no, int article_no, String user_id, String com_cont, int parent_no) {
-		super();
 		this.comment_no = comment_no;
 		this.article_no = article_no;
 		this.user_id = user_id;
-		//this.nickname = nickname;
 		this.com_cont = com_cont;
 		this.parent_no = parent_no;
 	}
@@ -41,13 +38,18 @@ public class CommentVO {
 		this.comment_no = comment_no;
 		this.article_no = article_no;
 		this.user_id = user_id;
-		//this.nickname = nickname;
 		this.create_date = create_date;
 		this.com_cont = com_cont;
 		this.parent_no = parent_no;
 	}
 	
-	
+	public BoardVO getArticleVO() {
+		return articleVO;
+	}
+
+	public void setArticleVO(BoardVO articleVO) {
+		this.articleVO = articleVO;
+	}
 
 	public UserVO getUserVO() {
 		

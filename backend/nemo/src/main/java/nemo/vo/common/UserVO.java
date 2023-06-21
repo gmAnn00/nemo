@@ -115,10 +115,11 @@ public class UserVO {
 	public void setUser_img(String user_img) {
 		this.user_img = user_img;
 	}
-	public int getNumber() {
+
+	public int getAdmin() {
 		return admin;
 	}
-	public void setNumber(int admin) {
+	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
 	
