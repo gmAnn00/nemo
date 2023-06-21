@@ -174,7 +174,7 @@
 	            </table>
 	            
 	            <div class="bottomBtn">
-	              <a href="QnAWrite.html" role="button" class="button">글쓰기</a>
+	              <a href="href="${contextPath}/qna/QnAWrite.do" role="button" class="button">글쓰기</a>
 	            </div>
 	            
 	            <div class="pagenation">

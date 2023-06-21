@@ -73,41 +73,6 @@
     </div>
     <!-- header 종료 -->
 
-    <!-- section1 시작 -->
-    <div class="section1">
-      <div class="group_containter">
-        <div class="group_all">
-          <div class="group_img">
-            <img
-              src="${contextPath}/images/free-icon-group-8847475.png"
-              alt="group_img"
-            />
-          </div>
-          <div class="group_name">
-            <a href="groupMain.html">
-              <span>이젠종로학원</span>
-            </a>
-          </div>
-          <div class="group_info">
-            <div class="group_info_category">
-              <div class="category_box group_info_category_box">sports</div>
-              <div class="category_box group_info_category_box">game</div>
-            </div>
-            <div class="group_info_member">
-              <div class="group_info_title"><span>멤버수</span></div>
-              <div class="group_info_contents"><span>7</span></div>
-            </div>
-            <div class="group_info_follower">
-              <div class="group_info_title"><span>개설일</span></div>
-              <div class="group_info_contents">
-                <span>2023. 05. 19.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- section1 종료 -->
 
     <!-- 콘텐츠 영역 -->
     <div class="section2">
@@ -128,7 +93,7 @@
                 </a>
               </li>
               <li>
-                <a href="board.html">
+                <a href="helpQnA.html">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
