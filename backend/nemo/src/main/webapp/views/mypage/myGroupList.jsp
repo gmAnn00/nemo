@@ -87,7 +87,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
             <!-- nav 바 시작 -->
             <div class="nav_bar">
-              <a href="index.html">
+              <a href="${contextPath}/index">
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>

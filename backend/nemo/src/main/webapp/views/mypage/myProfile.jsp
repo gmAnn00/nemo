@@ -121,7 +121,7 @@
 					<h2 class="sc2_subsection_title_name">프로필</h2>
 					<!-- nav 바 시작 -->
 					<div class="nav_bar">
-						<a href="index.html"> <i class="fa-solid fa-house nav_icon"></i>
+						<a href="${contextPath}/index"> <i class="fa-solid fa-house nav_icon"></i>
 						</a> <i class="fa-solid fa-angle-right nav_icon"></i> <span>나의
 							모임</span> <i class="fa-solid fa-angle-right nav_icon"></i> <span>소모임관리</span>
 					</div>
