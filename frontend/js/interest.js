@@ -1,4 +1,4 @@
-function showSubcategories(category) {
+
   // 모든 소분류 숨기기
   var subCategories = document.getElementById("smallCate").children;
   for (var i = 0; i < subCategories.length; i++) {
@@ -8,7 +8,6 @@ function showSubcategories(category) {
   var selectedCategory = document.getElementById(category);
   if (selectedCategory) {
     selectedCategory.style.display = "block";
-    smalltitle.style.display = "block";
   }
 }
 
@@ -57,3 +56,6 @@ function addMyInterest(value) {
     }
   }
 }
+
+
+
