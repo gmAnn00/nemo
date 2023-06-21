@@ -59,18 +59,35 @@
   padding: 10px 50px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 .largeCategory {
   margin-top: 35px;
 }
+.myInterest h3 > span {
+  font-size: 14px;
+}
 .btnInterest {
-  padding: 10px;
+  padding: 2px;
   margin-bottom: 20px;
   margin-right: 5px;
   width: 150px;
+  height: 55px;
   background-color: var(--sub3-color);
+  border: none;
+  font-size: 0.9em;
+}
+.btnMyInterest {
+  font-size: 0.9em;
+  padding: 10px 20px 10px 8px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  width: 150px;
+  height: 55px;
+  background-color: var(--sub3-color);
+  background-image: url("../images/btn_del.png");
+  background-size: cover;
   border: none;
 }
 .saveInterest {

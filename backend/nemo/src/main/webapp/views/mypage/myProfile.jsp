@@ -133,7 +133,7 @@
 					<!--4-1-->
 					<div class="myProMo">
 						<h3>내정보 조회</h3>
-						<a href="${contextPath}/mypage/modProfile" role="button"
+						<a href="${contextPath}/mypage/modProfileForm" role="button"
 							class="button">수정</a>
 					</div>
 
@@ -193,7 +193,7 @@
 					<div class="myHabi">
 						<div class="myHabiText">
 							<h3>내 관심사</h3>
-							<a href="../interest.html" role="button" class="button">수정</a>
+							<a href="${contextPath}/mypage/interest/modInterestForm"" role="button" class="button">수정</a>
 							<!--  수정 버튼 누르면 관심사 바꿀 수 있게 -->
 						</div>
 

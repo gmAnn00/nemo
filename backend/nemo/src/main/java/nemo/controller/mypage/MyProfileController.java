@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
-import nemo.dao.mypage.MyProfileDAO;
+import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
 import nemo.vo.mypage.UserVO;
 
@@ -29,6 +29,7 @@ import nemo.vo.mypage.UserVO;
 public class MyProfileController extends HttpServlet {
 	HttpSession session;
 	MyProfileService myProfService;
+	MyInterestService myIntesInterestService;
 	UserVO userVO;
 	
 	private static String USER_IMG_REPO;
@@ -36,6 +37,7 @@ public class MyProfileController extends HttpServlet {
 	
 	public void init() throws ServletException {
 		myProfService = new MyProfileService();
+		myIntesInterestService = new MyInterestService();
 		userVO = new UserVO();
 	}
 
@@ -92,7 +94,7 @@ public class MyProfileController extends HttpServlet {
 					//System.out.println("controller 유저정보조회" + userVO);
 					
 					//관심사 담기(list로 담기)
-					List<String> interestList = myProfService.searchProInterestById(user_id);
+					List<String> interestList = myIntesInterestService.searchInterestById(user_id);
 					request.setAttribute("interestList", interestList);
 					
 					//프로필 조회 페이지로 이동
@@ -102,7 +104,7 @@ public class MyProfileController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 					
-				} else if(action.equals("/modProfile")) {
+				} else if(action.equals("/modProfileForm")) {
 					//회원정보 찾아서 수정화면으로 가기					
 					userVO = myProfService.searchProfileById(user_id);
 					
@@ -122,7 +124,7 @@ public class MyProfileController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 				
-				} else if(action.equals("/modify")) {
+				} else if(action.equals("/modProfileForm")) {
 					/*
 					user_id = request.getParameter("user_id");
 					String password = request.getParameter("password");
@@ -234,6 +236,7 @@ public class MyProfileController extends HttpServlet {
 					
 					
 				} else if(action.equals("/delUserForm")) {
+				
 					nextPage= "/views/mypage/delUser.jsp";
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

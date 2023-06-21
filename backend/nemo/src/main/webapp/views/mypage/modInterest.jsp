@@ -326,14 +326,22 @@
 	        <!--내 관심사-->
 	       
 	        <div class="myInterest" id="myInt">
-	         <h3>내 관심사<span>(최대 3개 선택가능)</span></h3>
-	          
+	         <h3>내 관심사<span>(최대 3개 선택가능)</span></h3>	
+	           <form action="${contextPath}/mypage/interest/modInterest" id="frm" name="frm" method="post">
+		         <c:forEach var="myinterest" items="${interestList}">
+		         	<button class="btnMyInterest">${myinterest}</button>	
+		         </c:forEach>
+		         <input type="text">
+	              </form>
 	        </div>
-	        
-	        <div class="saveInterest">
-	          <button type="submit" class="button" disabled>선택하기</button>
-	          <button type="button" class="buttonCancle">넘어가기</button>
+	      
+	        <div class="saveInterest">	        		 
+	          <button type="submit" class="button" disabled>수정하기</button>
+	          <a href="${contextPath}/mypage" role="button" class="buttonCancle"
+                  >수정취소</a
+                >
 	        </div>
+	       
 	      </div>
 	    </div>
       </div>

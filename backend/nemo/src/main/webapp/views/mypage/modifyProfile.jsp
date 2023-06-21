@@ -58,7 +58,7 @@
             <h2 class="sc2_menu_title">프로필</h2>
             <ul class="sc2_menu_list">
               <li>
-                <a href="${contextPath}/mypage/">
+                <a href="${contextPath}/mypage">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select">
                       <span>프로필</span>
@@ -117,7 +117,7 @@
             <!-- nav 바 종료 -->
           </div>
           
-		<form action="${contextPath}/mypage/modify" id="frm" name="frm" method="post" enctype="multipart/form-data">
+		<form action="${contextPath}/mypage/modProfile" id="frm" name="frm" method="post" enctype="multipart/form-data">
           	<!--3. myImage-->          
           	<div class="myImage">                         
              <c:choose>
@@ -325,7 +325,7 @@
                   >수정하기</a
                 > -->
                 <!-- type을 버튼으로 바꾸고 action과 submit을 jsp 처리하기 -->
-                <a href="myProfile.html" role="button" class="buttonCancle"
+                <a href="${contextPath}/mypage" role="button" class="buttonCancle"
                   >수정취소</a
                 >
               </div>
