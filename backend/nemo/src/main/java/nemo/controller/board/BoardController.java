@@ -19,14 +19,17 @@ import javax.servlet.http.HttpSession;
 
 import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;
+import nemo.service.board.CommentService;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
 import nemo.vo.group.GroupVO;
 
 
+
 @WebServlet("/group/board/*")
 public class BoardController extends HttpServlet {
 	BoardService boardService;
+	CommentService commentService;
 	BoardVO boardVO;
 	CommentVO commentVO;
 	Map groupInfo;
@@ -34,6 +37,7 @@ public class BoardController extends HttpServlet {
 	
 	public void init(ServletConfig config) throws ServletException {
 		boardService=new BoardService();
+		commentService=new CommentService();
 		boardVO=new BoardVO();
 		commentVO = new CommentVO();
 		groupInfo=new HashMap();
@@ -66,7 +70,6 @@ public class BoardController extends HttpServlet {
 		groupInfo=boardService.getGroupInfo(group_id);
 		request.setAttribute("groupInfo", groupInfo);
 		
-		
 		//게시판 리스트 보기 
 		if(action==null || action.equals("")||action.equals("/board")) {
 			
@@ -82,7 +85,6 @@ public class BoardController extends HttpServlet {
 			// 글 리스트 뿐만 아니라 section과 page까지 담아 올려고 Map을 사용함
 			Map articleMap=boardService.listArticles(pagingMap, group_id, user_id);
 			
-	
 			if(!(articleMap.isEmpty())) {
 				articleMap.put("section", section);
 				articleMap.put("pageNum", pageNum);
@@ -95,7 +97,7 @@ public class BoardController extends HttpServlet {
 				return;
 			}
 			
-		} else if(action.equals("/search")){
+		} else if(action.equals("/search")){ // 검색기능
 			String filter=request.getParameter("filter");
 			System.out.println("필터"+filter);
 			String keyword=request.getParameter("keyword");
@@ -122,7 +124,7 @@ public class BoardController extends HttpServlet {
 				
 				request.setAttribute("articleMap", articleMap);
 				nextPage="/views/group/board.jsp";
-
+				
 			} else {
 				out.print("<script>alert('잘못된 접근입니다.'); location.href='/nemo/index'</script>");
 				return;
@@ -145,14 +147,11 @@ public class BoardController extends HttpServlet {
 				return;
 			}
 			
-		} else if(action.equals("/write")) {
-			//소모임장 값 넘겨줘야함
-			Map groupInfo=new HashMap();
-			groupInfo=boardService.getGroupInfo(group_id);
-			request.setAttribute("groupInfo", groupInfo);
+		} else if(action.equals("/write")) { //글쓰는 페이지로이동 
+			
 			nextPage="/views/group/boardWrite.jsp";
 			
-		} else if(action.equals("/addArticle")) {
+		} else if(action.equals("/addArticle")) { 
 			String _brackets=request.getParameter("brackets");
 			String title=request.getParameter("title");
 			String content=request.getParameter("content");
@@ -167,12 +166,13 @@ public class BoardController extends HttpServlet {
 			
 			out.print("<script>alert('글이 등록되었습니다.')");
 			//response.sendRedirect("/nemo/group/groupMain?group_id=1");
-
+			
 			nextPage="/nemo/group/board?group_id="+group_id;
 			response.sendRedirect(nextPage);
 			return;
 			
-		} else if(action.equals("/deleteArticle")) {
+		} else if(action.equals("/deleteArticle")) { 
+			//게시글 정보를 가지고 게시글 삭제 페이지로
 			String _article_no=request.getParameter("article_no");
 			int article_no=Integer.parseInt(_article_no);
 			BoardVO articleInfo=boardService.getArticleInfo(group_id, article_no, user_id);
@@ -187,9 +187,11 @@ public class BoardController extends HttpServlet {
 			}
 			
 		} else if(action.equals("/deleteComment")) {
+			//댓글 정보를 가지고 댓글 삭제 페이지로
 			String _comment_no=request.getParameter("comment_no");
 			int comment_no=Integer.parseInt(_comment_no);
-			CommentVO commentInfo=boardService.getCommentInfo(group_id, comment_no,user_id);
+			//CommentVO commentInfo=boardService.getCommentInfo(group_id, comment_no,user_id);
+			CommentVO commentInfo=commentService.getCommentInfo(group_id, comment_no,user_id);
 			if(commentInfo !=null) {
 				request.setAttribute("commentInfo", commentInfo);
 				request.setAttribute("deleteInfo", "deleteComment");
@@ -199,19 +201,20 @@ public class BoardController extends HttpServlet {
 				return;
 			}
 			
-		} else if(action.equals("/delete")) {
+		} else if(action.equals("/delete")) { //실제 삭제
 			String msg=request.getParameter("deleteInfo");
 			int num=Integer.parseInt(request.getParameter("number"));
 	
-			if(msg.equals("deleteArticle")) {
+			if(msg.equals("deleteArticle")) { //게시글 삭제시
 				// 사진 폴더 삭제하는 작업 해야함
 				boardService.deleteArticle(num);
 				
 				//number에는 article_no가 들어있음
-			} else if(msg.equals("deleteComment")) {
+			} else if(msg.equals("deleteComment")) { // 댓글 삭제
 				String article_no=request.getParameter("article_no");
 				int _article_no=Integer.parseInt(article_no);
-				boolean check = boardService.deleteComment(num,_article_no);
+				//boolean check = boardService.deleteComment(num,_article_no);
+				boolean check=commentService.deleteComment(num, _article_no);
 				if(!check) {
 					out.print("<script>");
 					out.print("alert('삭제 되었습니다.');");
@@ -227,6 +230,18 @@ public class BoardController extends HttpServlet {
 					return;
 				}
 			}	
+		}else if(action.equals("/addComment")) {
+			System.out.println("여기오나");
+			String com_cont=request.getParameter("com_cont");
+			int article_no=Integer.parseInt(request.getParameter("article_no"));
+			int parent_no=Integer.parseInt(request.getParameter("parent_no"));
+			
+			System.out.println(article_no);
+			System.out.println(com_cont);
+			
+			commentService.addComment(user_id, group_id, article_no, com_cont,parent_no);
+			out.print("success");
+			return;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

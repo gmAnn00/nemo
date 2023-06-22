@@ -32,8 +32,8 @@
     <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardView.js"></script>
-	<script type="text/javascript">
-
+	<script type="text/javascript" charset="utf-8">
+		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
 
   </head>
@@ -169,6 +169,8 @@
 	            </div>
 	            <!-- 댓글 영역 -->
 	            <div id="commentArea" class="commentArea">
+	            	<input type="hidden" id="article_no" value="${article.article_no}">
+	            	<input type="hidden" id="group_id" value="${group.groupVO.grp_id}">
 	              	<p class="comment">댓글 <span>${article.com_cnt}</span></p>
 					<c:choose>
 					    <c:when test="${!empty comments }">
@@ -242,10 +244,10 @@
 	              <!-- 댓글 쓰기 -->
 	              <div class="commentWriter">
 	                <div class="commentInbox">
-	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1"></textarea>
+	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea"></textarea>
 	                </div>
 	                <div class="commentRegister">
-	                  <a href="#" role="button" class="button btnRegister">등록</a>
+	                  <a href="#" role="button" class="button btnRegister" id="regBtn" onclick="fn_regComment()">등록</a>
 	                </div>
 	              </div>
 	            </div>

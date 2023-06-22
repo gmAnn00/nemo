@@ -181,6 +181,7 @@
 						                <td class="tdArticle">
 					                    	<div class="titleArea">
 						                    	<div class="titleInner">
+						                    		${contextPath}
 									            	<a href="${contextPath}/group/board/viewArticle?group_id=${group.groupVO.grp_id}&article_no=${notice.article_no}" class="titleLink">
 									                	<span class="title">${notice.title}</span>
 									                 </a>

@@ -29,7 +29,6 @@ public class BoardVO {
 
 	public BoardVO() {
 		userVO = new UserVO();
-		System.out.println("여기 uservo");
 	}
 
 	public BoardVO(int article_no, String user_id, String nickname, int grp_id, String title, String content, String brackets,

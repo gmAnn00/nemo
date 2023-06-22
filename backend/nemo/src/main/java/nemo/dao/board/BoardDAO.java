@@ -265,7 +265,9 @@ public class BoardDAO {
 		return article;
 	}
 
-	//댓글 리스트 
+	/*
+	 * //댓글 리스트 
+
 	public List<CommentVO> selectComments(int article_no) {
 		List<CommentVO> commentList = new ArrayList<CommentVO>();
 		try {
@@ -318,10 +320,10 @@ public class BoardDAO {
 		return commentList;
 		
 	}
+		 */
 	
 
 	
-	//댓글 작성
 	
 	//게시글 삭제
 	public void deleteArticle(int article_no) {
@@ -332,7 +334,7 @@ public class BoardDAO {
 			
 		}
 	}
-	
+/*	
 	//댓글 삭제
 	public void deleteComment(int comment_no) {
 		try {
@@ -378,7 +380,7 @@ public class BoardDAO {
 		
 		return check;
 	}
-	
+	*/
 	//댓글 개수 확인해서 업데이트하는 메소드
 	public void countComment(int account_no) {
 		try {
@@ -508,7 +510,7 @@ public class BoardDAO {
 		}
 		return articleList;
 	}
-
+/*
 	//comment_id로 코멘트 정보 받는 메소드
 	public CommentVO selectComment(int comment_no) {
 		CommentVO comment= new CommentVO();
@@ -545,7 +547,7 @@ public class BoardDAO {
 		
 		return comment;
 	}
-	
+	*/
 
 	
 	//게시글 글 작성자와 액션한 사람이 동일한지 체크하는 메소드
@@ -577,7 +579,7 @@ public class BoardDAO {
 			}
 		return isSame;
 	}
-	
+/*	
 	//게시글 코멘트 작성한 사람과 액션한 사람이 동일한지 체크하는 메소드
 	public boolean isSameUserC(String user_id, int comment_no) {
 		boolean isSame=false;
@@ -608,7 +610,7 @@ public class BoardDAO {
 		return isSame;
 	}
 	
-	
+*/
 	//글 조회시 조회수 증가시키는 메소드
 	public void addViewCnt(int article_no) {
 		try {

@@ -1,8 +1,8 @@
 let itemArr=[];
-
+let ctx;
 $(document).ready(function() {
-
-// a href='#' 클릭 무시 스크립트
+	ctx = getContextPath();
+	// a href='#' 클릭 무시 스크립트
 	$('a[href="#"]').click(function(ignore) {
 	    ignore.preventDefault();
 	});
@@ -29,8 +29,9 @@ $(document).ready(function() {
 	        let parent=$(this).closest($('.commentItem'));
 	        let addInputBox='';
 	        addInputBox+='<li class="replyBox commentLi replyCommentItem"><div class="commentReWriter"><div class="commentReInbox">';
-	        addInputBox+='<textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1"></textarea></div>';
-	        addInputBox+='<div class="commentRegister"><a href="javascript:void(0);" role="button" class="buttonCancle btnSubmitRe btnReCom">등록</a>'
+	        addInputBox+='<textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea'+itemArr[index]+'"></textarea></div>';
+	        addInputBox+='<div class="commentRegister"><a href="javascript:void(0);" role="button" class="buttonCancle btnSubmitRe btnReCom" ';
+	        addInputBox+='id=regBtn'+itemArr[index]+' onclick="fn_regCommentChild('+itemArr[index]+')">등록</a>';
 	        addInputBox+='<a href="javascript:void(0);" role="button" class="buttonCancle btnRemoveRe btnReCom">취소</a></div></div></li>';
 	        $(parent).after(addInputBox);
 	        itemArr[index]++;
@@ -60,6 +61,7 @@ $(document).ready(function() {
 		}
 	});
 	
+
     $(document).on('keyup', '.commentInboxText', function(){
         let inputLength = $(this).val().length;
         let parentSiblings=$(this).parent().siblings();
@@ -72,17 +74,110 @@ $(document).ready(function() {
 
         
     });
-	
+	/*
 	$(document).on('click','.btnSubmitRe', function(){
         let parentSiblings=$(this).parent().siblings();
         let textArea=parentSiblings.find('textarea');
         if(!textArea.val()){
-            alert('값을 입력해주세요');
+            alert('내용을 입력해주세요');
         } else {
             //ajax로 댓글 등록 하는거 처리하기~
 
         }
-	});
+	});*/
+	
+	//댓글 등록 함수
+	function fn_regComment() {
+		let parentSiblings=$(this).parent().siblings();
+        //let textArea=parentSiblings.find('textarea');
+		let content=$('#textArea').val();
+		let article_no=$('#article_no').val();
+		let group_id=$('#group_id').val();
+
+		//console.log("fn_regComment()");
+		console.log(content+"article_no"+article_no);
+		console.log(ctx);
+		console.log(group_id);
+        if(!content){
+            alert('내용을 입력해주세요');
+        } else {
+            //ajax로 댓글 등록 하는거 처리하기~
+            let ctx =getContextPath();
+            url=ctx+"/group/board/addComment?group_id="+group_id;
+            console.log(url);
+            $.ajax({
+				url: url,
+				async: true,
+				data: {
+					"com_cont": content,
+					"article_no": article_no,
+					"parent_no": 0
+				},
+				type: "post",
+				success:function(result) {
+					if(result=="success") {
+						alert("댓글이 등록 되었습니다.");
+						
+					}
+					$('#textArea').val('')
+					
+				},
+				error: {
+					
+				}
+			});
+            
+
+        }	
+	}
+	
+	
+	//대댓 등록 함수
+	function fn_regCommentChild(count) {
+		let parentSiblings=$(this).parent().siblings();
+        //let textArea=parentSiblings.find('textarea');
+		let content=$('#textArea').val();
+		let article_no=$('#article_no').val();
+		let group_id=$('#group_id').val();
+		let parent_no;
+		//console.log("fn_regComment()");
+		console.log(content+"article_no"+article_no);
+		console.log(ctx);
+		console.log(group_id);
+        if(!content){
+            alert('내용을 입력해주세요');
+        } else {
+            //ajax로 댓글 등록 하는거 처리하기~
+            let ctx =getContextPath();
+            url=ctx+"/group/board/addComment?group_id="+group_id;
+            console.log(ctx);
+            
+            $.ajax({
+				url: url,
+				async: true,
+				data: {
+					"com_cont": content,
+					"article_no": article_no,
+					"parent_no": 0
+				},
+				type: "post",
+				success:function(result) {
+					if(result=="success") {
+						alert("댓글이 등록 되었습니다.")
+					}
+					$('#textArea').val('')
+					
+				},
+				error: {
+					
+				}
+			});
+            
+
+        }	
+	}
+	
+
     
  //url 클립보드 복사
  function clip(){
@@ -109,4 +204,9 @@ function backToList() {
 	let referrer = document.referrer;
 	location.href=referrer;
 	console.log(referrer);
+}
+
+
+function getContextPath() {
+    return sessionStorage.getItem("contextpath");
 }
