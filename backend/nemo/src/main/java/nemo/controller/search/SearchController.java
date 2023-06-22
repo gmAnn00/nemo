@@ -30,6 +30,12 @@ public class SearchController extends HttpServlet {
 		String nextPage = "";
 		session=request.getSession();
 		
+		String action = request.getPathInfo();
+		
+		if(action==null) {
+			
+		}
+		
 		nextPage="/views/search.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

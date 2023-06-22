@@ -150,7 +150,8 @@ table {
 }
 .animationSlide {
     /*width: 700px;*/
-    width: 87.5%;
+    /*width: 87.5%;*/
+    width: 870px;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -168,7 +169,14 @@ table {
     display: inline-block;
     width: 125px;
     height: 125px;
-    background-color: var(--sub2-color);
+    padding: 0 9px;
+    /*background-color: var(--sub2-color);*/
+    border-radius: 50%;
+}
+.memImg img{
+	display: inline-block;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
 }
 .memName {

@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="${contextPath}/css/jquery-ui.min.css" />
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
+<script src="${contextPath}/js/groupMain.js"></script>
 <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -195,6 +196,17 @@
                         <div class="animationSlide">
                             <div class="sliderPanel">
                                 <!-- <p><center>이미지슬라이드영역~</center></p> -->
+                                <c:forEach var="user" items="${usersList}">
+                                	<div class="slideContent">
+                                		<div class="memImg">
+                                			<img src="${contextPath}/userImageDownload?user_id=${user.user_id}&user_img=${user.user_img}" />
+                                		</div>
+                                		<br/>
+                                		<div class="memName">
+                                			<span>${user.nickname}</span>
+                                		</div>
+                                	</div>
+                                </c:forEach>
                             </div>
                             <!-- slide panel 종료-->
                         </div>
@@ -206,6 +218,7 @@
 
             <!-- main content 종료-->
         </div>
+        <input type="hidden" id="groupNum_hidden" name="groupNum_hidden" value="${groupNum}">
 	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 </body>

@@ -5,6 +5,7 @@ import java.util.List;
 import nemo.dao.group.GroupDAO;
 import nemo.dao.group.GroupMainDAO;
 import nemo.vo.board.BoardVO;
+import nemo.vo.board.user.UserVO;
 import nemo.vo.group.GroupVO;
 import nemo.vo.schedule.ScheduleVO;
 
@@ -32,6 +33,10 @@ public class GroupMainService {
 
 	public List<ScheduleVO> selectPrviewScheduleById(int group_id) {
 		return groupMainDAO.selectPreviewScheduleById(group_id);
+	}
+
+	public List<UserVO> selectMemberById(int group_id) {
+		return groupMainDAO.selectMemberById(group_id);
 	}
 
 }

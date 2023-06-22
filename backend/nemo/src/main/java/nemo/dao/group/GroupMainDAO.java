@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.board.BoardVO;
+import nemo.vo.board.user.UserVO;
 import nemo.vo.group.GroupVO;
 import nemo.vo.schedule.ScheduleVO;
 
@@ -58,7 +59,9 @@ public class GroupMainDAO {
 				
 				boardsList.add(boardVO);
 			}
-			
+			rs.close();
+			pstmt.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("GroupMainDAO: selectPreviewBoardById 오류");
@@ -96,7 +99,9 @@ public class GroupMainDAO {
 
 				schedulesList.add(scheduleVO);
 			}
-			
+			rs.close();
+			pstmt.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("GroupMainDAO: selectPreviewScheduleById 오류");
@@ -106,6 +111,64 @@ public class GroupMainDAO {
 		
 		return schedulesList;
 	} // end of selectPreviewScheduleById
+
+	// 소모임에서 멤버 불러오는 메소드
+	public List<UserVO> selectMemberById(int group_id) {
+		List<UserVO> usersList = new ArrayList<UserVO>();
+		
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select u.* from user_tbl u, grpjoin_tbl g where g.grp_id = ? and g.user_id = u.user_id";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				UserVO userVO = new UserVO();
+				
+				String user_id = rs.getString("user_id");
+				String password = rs.getString("password");
+				String user_name = rs.getString("user_name");
+				String nickname = rs.getString("nickname");
+				String zipcode = rs.getString("zipcode");
+				String user_addr1 = rs.getString("user_addr1");
+				String user_addr2 = rs.getString("user_addr2");
+				String phone = rs.getString("phone");
+				String email = rs.getString("email");
+				Date join_date = rs.getDate("join_date");
+				Date birthdate = rs.getDate("birthdate");
+				String user_img = rs.getString("user_img");
+				int admin = rs.getInt("admin");
+				
+				userVO.setUser_id(user_id);
+				userVO.setPassword(password);
+				userVO.setUser_name(user_name);
+				userVO.setNickname(nickname);
+				userVO.setZipcode(zipcode);
+				userVO.setUser_addr1(user_addr1);
+				userVO.setUser_addr2(user_addr2);
+				userVO.setPhone(phone);
+				userVO.setEmail(email);
+				userVO.setJoin_date(join_date);
+				userVO.setBirthdate(birthdate);
+				userVO.setUser_img(user_img);
+				userVO.setAdmin(admin);	
+				
+				usersList.add(userVO);
+				
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+			
+		} catch (Exception e) {
+			System.out.println("GroupMainDAO: selectMemberById 오류");
+			e.printStackTrace();
+		}
+		
+		return usersList;
+	} // end of selectMemberById
 
 	
 

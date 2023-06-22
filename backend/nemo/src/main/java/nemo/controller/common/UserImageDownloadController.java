@@ -1,4 +1,4 @@
-package nemo.controller.group;
+package nemo.controller.common;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/groupImageDownload")
-public class GroupImageDownloadController extends HttpServlet {
-	private static String GROUP_IMG_REPO;
 
+@WebServlet("/userImageDownload")
+public class UserImageDownloadController extends HttpServlet {
+	
+	private static String USER_IMG_REPO;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
@@ -23,25 +25,24 @@ public class GroupImageDownloadController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
-	
-	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("text/html;charset=utf-8");		
+
+		USER_IMG_REPO = this.getClass().getResource("").getPath();
+		USER_IMG_REPO = USER_IMG_REPO.substring(1, USER_IMG_REPO.indexOf(".metadata"));
+		USER_IMG_REPO = USER_IMG_REPO.replace("/", "\\");
+		USER_IMG_REPO += "nemo\\src\\main\\webapp\\userImages\\";
 		
-		GROUP_IMG_REPO = this.getClass().getResource("").getPath();
-		GROUP_IMG_REPO = GROUP_IMG_REPO.substring(1, GROUP_IMG_REPO.indexOf(".metadata"));
-		GROUP_IMG_REPO = GROUP_IMG_REPO.replace("/", "\\");
-		GROUP_IMG_REPO += "nemo\\src\\main\\webapp\\groupImages\\";
-		
-		String group_id = request.getParameter("group_id");
-		String group_img = request.getParameter("group_img");
+		String user_id = request.getParameter("user_id");
+		String user_img = request.getParameter("user_img");
 		
 		OutputStream outs = response.getOutputStream();
-		String path = GROUP_IMG_REPO + "\\" + group_id + "\\" + group_img;
+		String path = USER_IMG_REPO + "\\" + user_id + "\\" + user_img;
 		File imageFile = new File(path);
 		
 		response.setHeader("Cache-Control", "no-cache");
-		response.addHeader("Content-disposition", "attachment; fileName=" + group_img);
+		response.addHeader("Content-disposition", "attachment; fileName=" + user_img);
 		
 		FileInputStream fis = new FileInputStream(imageFile);
 		// 버퍼를 이용해 8kb씩 전송
@@ -59,7 +60,7 @@ public class GroupImageDownloadController extends HttpServlet {
 		fis.close();
 		outs.close();
 		
-		
-	}
-
+			
+	}// doHandle() End
+			
 }

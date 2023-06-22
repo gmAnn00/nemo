@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import nemo.service.group.GroupMainService;
 import nemo.vo.board.BoardVO;
+import nemo.vo.board.user.UserVO;
 import nemo.vo.group.GroupVO;
 import nemo.vo.schedule.ScheduleVO;
 
@@ -58,14 +59,20 @@ public class GroupMainController extends HttpServlet {
 		int groupNum = groupMainService.selectGroupNumById(group_id);
 		request.setAttribute("groupNum", groupNum);
 		
+		// 최근 일정 불러옴
 		List<ScheduleVO> schdulesList = null;
 		schdulesList = groupMainService.selectPrviewScheduleById(group_id);
 		request.setAttribute("schdulesList", schdulesList);
 		
-		
+		// 최근 게시글 불러옴
 		List<BoardVO> boardsList = null;
 		boardsList = groupMainService.selectPreviewBoardById(group_id);
 		request.setAttribute("boardsList", boardsList);
+		
+		// 소모임 멤버 불러옴
+		List<UserVO> usersList = null;
+		usersList = groupMainService.selectMemberById(group_id);
+		request.setAttribute("usersList", usersList);
 		
 		nextPage = "/views/group/groupMain.jsp";
 
