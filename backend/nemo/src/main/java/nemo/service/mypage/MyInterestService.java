@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nemo.dao.mypage.MyInterestDAO;
+import nemo.vo.mypage.InterestVO;
 import nemo.vo.mypage.UserVO;
 
 public class MyInterestService {
 	MyInterestDAO dao;
-	List<String> interestList;
+	List<InterestVO> interestList;
 	
 	public MyInterestService() {
 		dao = new MyInterestDAO();
@@ -17,8 +18,8 @@ public class MyInterestService {
 	
 	
 	//마이페이지 관심사 조회
-	public List<String> searchInterestById(String user_id) {
-		List<String> interestList = dao.searchInterestById(user_id);
+	public List<InterestVO> searchInterestById(String user_id) {
+		List<InterestVO> interestList = dao.searchInterestById(user_id);
 		return interestList;
 	}
 	

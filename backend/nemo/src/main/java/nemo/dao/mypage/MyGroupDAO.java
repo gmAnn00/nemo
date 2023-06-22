@@ -41,17 +41,18 @@ public class MyGroupDAO {
 		try {
 			conn = dataFactory.getConnection();
 
-			String queryMng = "select GRP_ID from GROUP_TBL where GRP_MNG = ? ";
-			System.out.println(queryMng);
+			String query = "select GRP_ID from GROUP_TBL where GRP_MNG = ? ";
+			System.out.println(query);
 			
-			pstmt = conn.prepareStatement(queryMng);
+			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, user_id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String managerGrpId = rs.getString("grp_id");
+				
+				//System.out.println(managerGrpId);
 				// 아래 세팅 메서드에서 세팅
-				mngGroupVO = setGroupVO(managerGrpId);
-				System.out.println(managerGrpId);
+				mngGroupVO = setGroupVO(managerGrpId);				
 				mngGroupList.add(mngGroupVO);
 			}
 			rs.close();
@@ -59,7 +60,7 @@ public class MyGroupDAO {
 			conn.close();
 
 		} catch (Exception e) {
-			System.out.println("DB 조회 중 에러!!");
+			System.out.println("GRPJOIN_TBL DB 조회 중 에러!!");
 			e.printStackTrace();
 		}
 
@@ -76,11 +77,11 @@ public class MyGroupDAO {
 			conn = dataFactory.getConnection();
 
 			// 일반회원인 소모임
-			String queryUser = "select GRP_ID from GRPJOIN_TBL where USER_ID = ? and GRP_ID NOT IN(select GRP_ID from GROUP_TBL where GRP_MNG = ?)";
+			String query = "select GRP_ID from GRPJOIN_TBL where USER_ID = ? and GRP_ID NOT IN(select GRP_ID from GROUP_TBL where GRP_MNG = ?)";
 			// ?에 user_id
-			System.out.println(queryUser);
+			System.out.println(query);
 
-			pstmt = conn.prepareStatement(queryUser);
+			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, user_id);
 			pstmt.setString(2, user_id);
 			ResultSet rs = pstmt.executeQuery();
@@ -95,14 +96,46 @@ public class MyGroupDAO {
 			conn.close();
 
 		} catch (Exception e) {
-			System.out.println("DB 조회 중 에러!!");
+			System.out.println("GRPJOIN_TBL DB 조회 중 에러!!");
 			e.printStackTrace();
 		}
 		return userGroupList;
 	}
 
 	// 찜한 소모임 조회 메서드
+		public List<GroupVO> getBookMarkGrpId(String user_id) {
+			GroupVO bookmarkGroupVO = new GroupVO();
+			List<GroupVO> bookmarkGroupList = new ArrayList<>();
 
+			try {
+				conn = dataFactory.getConnection();
+
+				// 북마크 조회
+				String query = "select GRP_ID from BOOKMARK_TBL where USER_ID = ?";
+				// ?에 user_id
+				System.out.println(query);
+
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, user_id);				
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					String bookmarkGrpId = rs.getString("grp_id");
+					// 아래 세팅 메서드에서 세팅
+					bookmarkGroupVO = setGroupVO(bookmarkGrpId);
+					bookmarkGroupList.add(bookmarkGroupVO);
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e) {
+				System.out.println("BOOKMARK_TBL DB 조회 중 에러!!");
+				e.printStackTrace();
+			}
+			return bookmarkGroupList;
+		}
+
+		
 	// 그룹정보 세팅 메서드
 	public GroupVO setGroupVO(String grpId) {
 		GroupVO groupVO = new GroupVO();
@@ -157,5 +190,5 @@ public class MyGroupDAO {
 		}
 		return groupVO;
 	}
-
+	
 }

@@ -204,8 +204,8 @@
 										<li>등록된 관심사가 없습니다.</li>
 									</c:when>
 									<c:when test="${!empty interestList}">
-										<c:forEach var="interest" items="${interestList}">
-											<li>${interest}</li>
+										<c:forEach var="interestVO" items="${interestList}">
+											<li>${interestVO.sub_name}</li>
 										</c:forEach>
 									</c:when>
 								</c:choose>

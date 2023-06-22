@@ -22,6 +22,7 @@ import org.apache.commons.io.FileUtils;
 
 import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
+import nemo.vo.mypage.InterestVO;
 import nemo.vo.mypage.UserVO;
 
 
@@ -94,7 +95,7 @@ public class MyProfileController extends HttpServlet {
 					//System.out.println("controller 유저정보조회" + userVO);
 					
 					//관심사 담기(list로 담기)
-					List<String> interestList = myIntesInterestService.searchInterestById(user_id);
+					List<InterestVO> interestList = myIntesInterestService.searchInterestById(user_id);
 					request.setAttribute("interestList", interestList);
 					
 					//프로필 조회 페이지로 이동

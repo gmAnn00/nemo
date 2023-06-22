@@ -54,40 +54,30 @@ public class MyGroupListController extends HttpServlet {
 				if (action == null || action.equals("/myGroup")) {
 					user_id = (String)session.getAttribute("user_id");
 					//내가 리더인 소모임	조회
-					//GroupVO mngGroupVO = new GroupVO();					
-					//mngGroupVO = myGroupService.getManagerGrpId(user_id);					
 					List<GroupVO> mngGroupList = new ArrayList<>();
-					mngGroupList = myGroupService.getManagerGrpId(user_id);
+					mngGroupList = myGroupService.getManagerGrpId(user_id);					
 					
 					//일반 회원인 소모임 조회
-					//GroupVO userGroupVO = new GroupVO();
-					//userGroupVO = myGroupService.getUserGrpId(user_id);
 					List<GroupVO> userGroupList = new ArrayList<>();
-					userGroupList = myGroupService.getUserGrpId(user_id);
-					
-					
+					userGroupList = myGroupService.getUserGrpId(user_id);										
 					
 					//찜한 소모임 조회 BOOKMARK_TBL
+					List<GroupVO> bookmarkGroupList = new ArrayList<>();
+					bookmarkGroupList  = myGroupService.getBookMarkGrpId(user_id);
 					
-					//뿌려주기 위해 필요한 정보 : 소모임이미지, 대분류, 소분류, 모임이름, 지역 1  
-					//지역은 substring으로 oo시 oo구 까지만 나오게 할 수 있나..? 흠...
 					
+					request.setAttribute("mngGroupList", mngGroupList);
+					request.setAttribute("userGroupList", userGroupList);
+					request.setAttribute("bookmarkGroupList", bookmarkGroupList);
 					
-					//request.setAttribute("userVO", userVO);
 					
 					nextPage="/views/mypage/myGroupList.jsp";
 					
-				} else if(action.equals("/goGroup")) {
-					//해당 그룹 소개페이지로 이동 ...
-					//클릭한 그룹 번호 가져오기
-					//그룹 번호 매개변수로 같이 보내기
-					//nextPage="/views/group/groupInfo?" + 매개변수;
-					
-					
-				} else if(action.equals("/clickBookmark")) {
+				} else if(action.equals("/isntBookmark")) {
 					//북마크 찜, 해제
-					//이거는 바로 없애지 말고, 새로고침 할 때까지는 보이도록 만들자
-					
+					//해제한 소모임도 바로 없애지 말고, 새로고침 할 때까지는 보이도록 만들자
+					//BookmarkDAO 사용 
+					//후순위 구현
 				}
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

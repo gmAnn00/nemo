@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" isELIgnored="false"%> <%@taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
@@ -111,36 +111,34 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                       <p>만든 소모임이 없습니다.</p>
                     </c:when>
                     <c:when test="${!empty mngGroupList}">
-                      <c:forEach
-                        var="mngGroup"
-                        items="${mngGroupList}"
-                        varStatus="loop"
-                      >
+                      <c:forEach var="mngGroup" items="${mngGroupList}" varStatus="loop">
+                      <c:set var="idx" value="${mngGroup.grp_addr1.indexOf(' ', mngGroup.grp_addr1.indexOf(' ') + 1)}" />
+                      <c:set var="locationM" value="${mngGroup.grp_addr1.substring(0, idx)}"/>
                         <div class="card card--1">
                           <div class="card__info-hover">
                             <span>바로가기</span>
                             <i class="fa-solid fa-arrow-right"></i>
                           </div>
                           <div class="card__img"></div>
-                          <a href="#" class="card_link">
+                          <a href="${contextPath}/group/groupMain?group_id=${mngGroup.grp_id}" class="card_link">
                             <div class="card__img--hover"></div>
                           </a>
                           <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"
-                              ><i class="fa-solid fa-location-dot"></i>
-                              <a href="#" class="card__author"
-                                >서울 종로구</a
-                              ></span
-                            >
+                            <span class="card__category">${mngGroup.main_name}</span>
+                            <span class="card__category">${mngGroup.sub_name}</span>
+                            <h3 class="card__title">${mngGroup.grp_name}</h3>
+                            
+                            <span class="card__by">
+                              <i class="fa-solid fa-location-dot"></i>
+                              <a href="#" class="card__author">${locationM}</a>
+                            </span>
                           </div>
                         </div>
                       </c:forEach>
                     </c:when>
+                    </c:choose>
                   </div>
-                </c:choose>
+                
               </div>
             </div>
             <!-- 리더 영역 종료 -->
@@ -157,36 +155,34 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     <c:when test="${empty userGroupList}">
                       <p>가입한 소모임이 없습니다.</p>
                     </c:when>
-                  <div class="cards">
+                  
                     <c:when test="${!empty userGroupList}">
-                      <c:forEach
-                        var="userGroup"
-                        items="${userGroupList}"
-                        varStatus="loop"
-                      >
+                      <c:forEach var="userGroup" items="${userGroupList}" varStatus="loop">
+                      <c:set var="idx" value="${userGroup.grp_addr1.indexOf(' ', userGroup.grp_addr1.indexOf(' ') + 1)}" />
+                      <c:set var="locationU" value="${userGroup.grp_addr1.substring(0, idx)}"/>
                         <div class="card card--1">
                           <div class="card__info-hover">
                             <span>바로가기</span>
                             <i class="fa-solid fa-arrow-right"></i>
                           </div>
                           <div class="card__img"></div>
-                          <a href="#" class="card_link">
+                          <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
                             <div class="card__img--hover"></div>
                           </a>
                           <div class="card__info">
-                            <span class="card__category">${userGroupList.main_name}</span>
-                            <span class="card__category">${userGroupList.sub_name}</span>
-                            <h3 class="card__title">${userGroupList.grp_name}</h3>
+                            <span class="card__category">${userGroup.main_name}</span>
+                            <span class="card__category">${userGroup.sub_name}</span>
+                            <h3 class="card__title">${userGroup.grp_name}</h3>
                             <span class="card__by"
                               ><i class="fa-solid fa-location-dot"></i>
-                              <a href="#" class="card__author">${userGroupList.grp_addr1}</a></span
-                            >
+                              <a href="#" class="card__author">${locationU}</a>
+                            </span>
                           </div>
                         </div>
                       </c:forEach>
                     </c:when>
-                  </div>
-                </c:choose>
+                    </c:choose>
+                  </div>               
               </div>
             </div>
             <!-- 회원 영역 종료 -->
@@ -198,65 +194,39 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <span>찜</span>
                 </div>
                 <div class="cards">
-                  <div class="card card--1">
-                    <div class="card__info-hover">
-                      <span>바로가기</span>
-                      <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                    <div class="card__img"></div>
-                    <a href="#" class="card_link">
-                      <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                      <span class="card__category">대분류</span>
-                      <span class="card__category">소분류</span>
-                      <h3 class="card__title">이젠종로학원</h3>
-                      <span class="card__by"
-                        ><i class="fa-solid fa-location-dot"></i>
-                        <a href="#" class="card__author">서울 종로구</a></span
-                      >
-                    </div>
-                  </div>
-
-                  <div class="card card--2">
-                    <div class="card__info-hover">
-                      <span>바로가기</span>
-                      <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                    <div class="card__img"></div>
-                    <a href="#" class="card_link">
-                      <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                      <span class="card__category">대분류</span>
-                      <span class="card__category">소분류</span>
-                      <h3 class="card__title">이젠종로학원</h3>
-                      <span class="card__by"
-                        ><i class="fa-solid fa-location-dot"></i>
-                        <a href="#" class="card__author">서울 종로구</a></span
-                      >
-                    </div>
-                  </div>
-
-                  <div class="card card--3">
-                    <div class="card__info-hover">
-                      <span>바로가기</span>
-                      <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                    <div class="card__img"></div>
-                    <a href="#" class="card_link">
-                      <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                      <span class="card__category">대분류</span>
-                      <span class="card__category">소분류</span>
-                      <h3 class="card__title">이젠종로학원</h3>
-                      <span class="card__by"
-                        ><i class="fa-solid fa-location-dot"></i>
-                        <a href="#" class="card__author">서울 종로구</a></span
-                      >
-                    </div>
-                  </div>
+                
+                  <c:choose>
+                    <c:when test="${empty bookmarkGroupList}">
+                      <p>찜한 소모임이 없습니다.</p>
+                    </c:when>
+                  
+                    <c:when test="${!empty bookmarkGroupList}">
+                      <c:forEach var="bookmarkGroup" items="${bookmarkGroupList}" varStatus="loop">
+                      <c:set var="idx" value="${bookmarkGroup.grp_addr1.indexOf(' ', bookmarkGroup.grp_addr1.indexOf(' ') + 1)}" />
+                      <c:set var="locationB" value="${bookmarkGroup.grp_addr1.substring(0, idx)}"/>
+		                  <div class="card card--1">
+		                    <div class="card__info-hover">
+		                      <span>바로가기</span>
+		                      <i class="fa-solid fa-arrow-right"></i>
+		                    </div>
+		                    <div class="card__img"></div>
+		                    <a href="${contextPath}/group/groupInfo?group_id=${bookmarkGroup.grp_id}" class="card_link">
+		                      <div class="card__img--hover"></div>
+		                    </a>
+		                    <div class="card__info">
+		                      <span class="card__category">${bookmarkGroup.main_name}</span>
+		                      <span class="card__category">${bookmarkGroup.sub_name}</span>
+		                      <h3 class="card__title">${bookmarkGroup.grp_name}</h3>
+		                      <span class="card__by"
+		                        ><i class="fa-solid fa-location-dot"></i>
+		                        <a href="#" class="card__author">${locationB}</a>
+		                      </span>
+		                    </div>
+		                  </div>
+						</c:forEach>
+                    </c:when>
+                  </c:choose>
+                   
                 </div>
               </div>
             </div>
