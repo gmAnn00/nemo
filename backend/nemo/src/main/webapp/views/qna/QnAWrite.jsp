@@ -43,7 +43,7 @@
 	}
 	//다른 액션으로 submit
 	function backToList(obj) {
-		obj.action="${contextPath}/bodrd/listArticles.do";
+		obj.action="${contextPath}/qna/helpQnA.do";
 		obj.submit();
 	}
 </script>
@@ -155,10 +155,8 @@
             <form action="">
               <!-- 제목 영역 -->
               <div class="articleWritingTitle">
-                <!-- 말머리 컨텐츠 확인 필요 -->
-                <!-- 네이버 카페는 말머리를 button으로 처리 -->
+
                 <select name="headTitle" id="headTitle" class="headTitle">
-                  <option value="">말머리선택</option>
                   <option value="notice">공지사항</option>
                   <option value="afterMeeting">문의사항</option>
                 </select>

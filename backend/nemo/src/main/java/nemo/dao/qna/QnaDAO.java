@@ -51,9 +51,9 @@ public class QnaDAO {
 			pstmt.setInt(3, section);
 			pstmt.setInt(4, pageNum);
 			ResultSet rs=pstmt.executeQuery();
-			System.out.println("1");
+
 			while(rs.next()) {
-				System.out.println("2");
+
 				int level=rs.getInt("LVL");
 				int qna_id=rs.getInt("qna_id");
 				int parent_no=rs.getInt("parent_no");
@@ -134,7 +134,7 @@ public class QnaDAO {
 				qnaVO.setContent(content);
 				qnaVO.setCreate_date(create_date);
 				qnaVO.setLevel(level);
-				//qnaVO.setLevel(qna_id == parent_no ? 0 : 1);
+				qnaVO.setLevel(qna_id == parent_no ? 0 : 1);
 				qnasList.add(qnaVO);
 			}
 			rs.close();
@@ -189,7 +189,7 @@ public class QnaDAO {
 				qnaVO.setContent(content);
 				qnaVO.setCreate_date(create_date);
 				qnaVO.setLevel(level);
-				//qnaVO.setLevel(qna_id == parent_no ? 0 : 1);
+				qnaVO.setLevel(qna_id == parent_no ? 0 : 1);
 				qnasList.add(qnaVO);
 				cnt++;
 			}

@@ -12,7 +12,7 @@
 <c:set var="totArticles" value="${articleMap.totArticles}" />
 <c:set var="section" value="${articleMap.section }" />
 <c:set var="pageNum" value="${articleMap.pageNum }" />
-<c:set var="group" value="${articleMap.group }" />
+<c:set var="qna" value="${articleMap.qna }" />
 
 <c:choose>
 	<c:when test="${section >totArticles/100 }">
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
-    <link rel="stylesheet" href="${contextPath}/css/board.css" />
+    <link rel="stylesheet" href="${contextPath}/css/helpQnA.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
     <script
       src="https://kit.fontawesome.com/3d4603cd1d.js"
@@ -135,11 +135,9 @@
 	            <table class="boardList">
 	              <tr class="boardListHead">
 	                <th>번호</th>
-
 	                <th>제목</th>
 	                <th>작성자</th>
-	                <th>작성일</th>
-	                
+	                <th>${pageNum}작성일</th>
 	              </tr>
 	              <tbody>
 	              	<c:choose>
@@ -151,13 +149,23 @@
 	              		<c:when test="${!empty articlesList}">
 	              			<c:forEach var="article" items="${articlesList}" varStatus="articleNum">
 				                <tr>
-				                	<!--  <td>${totArticles-(section-1)*10-articleNum.index}</td>-->
-				                    <td>${(totArticles-(pageNum-1)*10-articleNum.index)-((section-1)*100)}</td>
-				                  <td class="tdArticle">
+				                	<!-- <td>${totArticles-(pageNum-1)*10+articleNum.count}</td> -->
+				                	<!-- <td>${totArticles-(section-1)*10-articleNum.index}</td>  -->
+				                  <td>${(totArticles-(pageNum-1)*10-articleNum.index)-((section-1)*100)}</td>
+				                  <td>
 				                    <div class="titleArea">
 				                    	<div class="titleInner">
-					                      <a href="${contextPath}/view/qna/helpQnA?qna_id" class="titleLink">
-					                        <span class="title">${article.title}</span>
+					                        <c:choose>
+					                        	<c:when test="${article.level>1}">
+					                        		<c:forEach begin="1" end="${article.level-1}" step="1">
+									               		<span style="padding-left: 10px"></span>
+					                        		</c:forEach>
+					                        		└ [답변]<a href="${contextPath}/qna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
+					                        	</c:when>
+					                        	<c:otherwise>
+					                        		<a href="${contextPath}/qna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
+					                        	</c:otherwise>
+					                        </c:choose>
 					                      </a>
 						                  
 					                    </div>
@@ -174,7 +182,7 @@
 	            </table>
 	            
 	            <div class="bottomBtn">
-	              <a href="href="${contextPath}/qna/QnAWrite.do" role="button" class="button">글쓰기</a>
+	              <a href="${contextPath}/qna/QnAWrite.do" role="button" class="button">글쓰기</a>
 	            </div>
 	            
 	            <div class="pagenation">
