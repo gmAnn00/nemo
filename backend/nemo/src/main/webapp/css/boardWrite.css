@@ -47,6 +47,11 @@
   height: 500px;
   resize: none;
 }
+
+.qna_image {
+	padding-top: 10px;
+}
+
 /* 등록버튼 */
 .btnRegister {
   text-align: right;

@@ -85,6 +85,7 @@ public class QnaController extends HttpServlet {
 				Map articleMap=qnaService.helpQnA(pagingMap);
 				articleMap.put("section", section);
 				request.setAttribute("articleMap", articleMap);
+				
 				nextPage="/views/qna/helpQnA.jsp"; 
 			}else if(action.equals("/글쓰기 창.do")) {
 				nextPage="/viewBoard/글쓰기 창.jsp";

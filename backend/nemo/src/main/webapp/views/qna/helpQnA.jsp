@@ -156,7 +156,7 @@
 				                  <td class="tdArticle">
 				                    <div class="titleArea">
 				                    	<div class="titleInner">
-					                      <a href="${contextPath}/view/qna/helpQnA?qna_id=${article.qna_id}" class="titleLink">
+					                      <a href="${contextPath}/view/qna/helpQnA?qna_id" class="titleLink">
 					                        <span class="title">${article.title}</span>
 					                      </a>
 						                  
@@ -181,21 +181,21 @@
 					<c:if test="${totArticles != 0}">
 						<c:forEach var="page" begin="1" end="${endValue}" step="1">
 							<c:if test="${section>1 && page==1}">
-								<span class="paging prev"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section-1}&pageNum=10">&lt</a></span>
+								<span class="paging prev"><a href="${contextPath}/qna/helpQnA?section=${section-1}&pageNum=10">&lt</a></span>
 							</c:if>
 								
 							<c:choose>
 								<c:when test="${page==pageNum}">
-									<span class="paging currentPage"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging currentPage"><a href="${contextPath}/qna/helpQnA?section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:when>
 								
 								<c:otherwise>
-									<span class="paging notCurrent"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging notCurrent"><a href="${contextPath}/qna/helpQnA?section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:otherwise>
 							</c:choose>
 								
 							<c:if test="${page==10 and totArticles/100>section}">
-								<span class="paing next"><a href="${contextPath}/view/qna/helpQnA?qna_id=${article.grp_id}&section=${section+1}&pageNum=1">&gt</a></span>
+								<span class="paing next"><a href="${contextPath}/qna/helpQnA?section=${section+1}&pageNum=1">&gt</a></span>
 							</c:if>
 						</c:forEach>
 					</c:if>

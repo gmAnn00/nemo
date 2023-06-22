@@ -21,12 +21,39 @@
       src="https://kit.fontawesome.com/3d4603cd1d.js"
       crossorigin="anonymous"
     ></script>
+    
+    <!-- summernote
     <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
     <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+     -->
+
+     
+<script type="text/javascript">
+	//이미지 미리보기 구현
+	function readImage(input) {
+		if(input.files && input.files[0]) {
+			let reader=new FileReader();
+			reader.onload=function (event) {
+				$("#preview").attr('src',event.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}else {
+			$("#preview").attr('src','');
+		}
+	}
+	//다른 액션으로 submit
+	function backToList(obj) {
+		obj.action="${contextPath}/bodrd/listArticles.do";
+		obj.submit();
+	}
+</script>
+     
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardWrite.js"></script>
-  </head>
-  <body>
+ </head>
+ 
+ 
+ <body>
     <!-- header 시작 -->
     <!-- 사이드 메뉴시 배경색 조정 -->
     <div class="menu_bg"></div>
@@ -64,52 +91,18 @@
     </div>
     <!-- header 종료 -->
 
-    <!-- section1 시작 -->
-    <div class="section1">
-      <div class="group_containter">
-        <div class="group_all">
-          <div class="group_img">
-            <img
-              src="${contextPath}/images/free-icon-group-8847475.png"
-              alt="group_img"
-            />
-          </div>
-          <div class="group_name">
-            <a href="groupMain.html">
-              <span>이젠종로학원</span>
-            </a>
-          </div>
-          <div class="group_info">
-            <div class="group_info_category">
-              <div class="category_box group_info_category_box">sports</div>
-              <div class="category_box group_info_category_box">game</div>
-            </div>
-            <div class="group_info_member">
-              <div class="group_info_title"><span>멤버수</span></div>
-              <div class="group_info_contents"><span>7</span></div>
-            </div>
-            <div class="group_info_follower">
-              <div class="group_info_title"><span>개설일</span></div>
-              <div class="group_info_contents"><span>2023. 05. 19.</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- section1 종료 -->
-
     <!-- 콘텐츠 영역 -->
     <div class="section2">
       <div class="sc2_contents">
         <!-- 메뉴바 시작 -->
         <div class="sc2_menu_contents">
           <div class="sc2_menu">
-            <h2 class="sc2_menu_title">게시판</h2>
+            <h2 class="sc2_menu_title">Q&A</h2>
             <ul class="sc2_menu_list">
               <li>
                 <a href="${contextPath}/schedule.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>일정</span></div>
+                    <div class="menu_submenu_name"><span>소모임관리</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
@@ -117,23 +110,15 @@
               <li>
                 <a href="board.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
+                    <div class="menu_submenu_name submenu_select"><span>고객센터 Q&A</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
                   </div>
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/myGroupMember.html">
+                <a href="myGroupMember.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>멤버</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="${contextPath}/groupSetting.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>소모임관리</span></div>
+                    <div class="menu_submenu_name"><span>회원관리</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
@@ -148,7 +133,7 @@
 
           <!-- 메인 상단 타이틀 출력 부분-->
           <div class="sc2_subsection_title">
-            <h2 class="sc2_subsection_title_name">게시판</h2>
+            <h2 class="sc2_subsection_title_name">Q&A</h2>
 
             <!-- nav 바 시작 -->
             <div class="nav_bar">
@@ -175,16 +160,20 @@
                 <select name="headTitle" id="headTitle" class="headTitle">
                   <option value="">말머리선택</option>
                   <option value="notice">공지사항</option>
-                  <option value="afterMeeting">모임후기</option>
-                  <option value="freeArticle">자유글</option>
+                  <option value="afterMeeting">문의사항</option>
                 </select>
                 <!-- 제목 -->
                 <textarea name="writeTitle" id="writeTitle" class="writeTitle" rows="1" placeholder="제목을 입력해주세요"></textarea>
               </div>
               <!-- 글쓰는 영역 -->
-              <div class="editorArea">
-                <textarea id="summernote">
-                </textarea>
+              <div class="editorArea article">
+                <textarea  placeholder="내용을 입력해주세요"></textarea>
+              </div>
+              
+              <!-- 이미지 첨부 -->
+              <div class="qna_image">
+              	<input type="file" name="imageFileName" onchange="readImage(this)"><tr>
+              	<img id="preview" src="#" width="200" alt="">
               </div>
 
             </form>
