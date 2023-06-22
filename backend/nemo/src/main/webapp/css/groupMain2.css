@@ -151,7 +151,7 @@ table {
 .animationSlide {
     /*width: 700px;*/
     /*width: 87.5%;*/
-    width: 870px;
+    width: 892px;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -169,7 +169,7 @@ table {
     display: inline-block;
     width: 125px;
     height: 125px;
-    padding: 0 9px;
+    /*padding: 0 8px;*/
     /*background-color: var(--sub2-color);*/
     border-radius: 50%;
 }

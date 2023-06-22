@@ -38,5 +38,9 @@ public class GroupMainService {
 	public List<UserVO> selectMemberById(int group_id) {
 		return groupMainDAO.selectMemberById(group_id);
 	}
+	
+	public Boolean isMember(String user_id, int group_id) {
+		return groupDAO.isMember(user_id, group_id);
+	}
 
 }

@@ -45,8 +45,17 @@ $(function() {
 				data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark },
 				success: function(data, textStatus) {
 					console.log(isBookmark);
+					let newNum=0;
+					if(isBookmark){
+						newNum = Number($("#likeNum").text()) - 1;
+					}
+					else{
+						newNum = Number($("#likeNum").text()) + 1;
+					}
 					isBookmark = !isBookmark;
 					$(".grpLike").toggleClass("on");
+					
+					$("#likeNum").text(newNum);
 
 				},
 				error: function(data, textStatus, error) {

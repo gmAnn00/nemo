@@ -99,7 +99,7 @@ request.setCharacterEncoding("utf-8");
 					</tr>
 					<tr>
 						<th>찜한인원</th>
-						<td><span class="likeNum">${groupBookmarkNum}</span><span>명</span></td>
+						<td><span class="likeNum" id="likeNum">${groupBookmarkNum}</span><span>명</span></td>
 					</tr>
 					<tr>
 						<th>최근활동일</th>

@@ -7,7 +7,7 @@ $(function(){
 	let quotient=0;
 	let mod=0;
 	
-	$(".sliderPanel").css("width", (memNum*145));
+	$(".sliderPanel").css("width", (memNum*160));
 	
     memImageSlidePanel();
     console.log("ani width : "+aniSlidewidth);
@@ -46,10 +46,16 @@ function memImageSlidePanel() {
     aniSlidewidth=$('.animationSlide').width();
     
     console.log("aniSlidewidth="+aniSlidewidth);
-    viewNum=Math.floor(aniSlidewidth/125);
-    slidContpadding=Math.floor((aniSlidewidth-(viewNum*125))/(viewNum*2));
+    //viewNum=Math.floor(aniSlidewidth/125);
+    viewNum=6;
+    //slidContpadding=Math.floor((aniSlidewidth-(viewNum*125))/(viewNum*2));
+    let slidContpaddingNew = 10;
+    slidContpadding = 11;
     quotient = Math.floor(memNum/viewNum);
     mod=memNum%viewNum;
+    
+    $('.memImg').css('padding-left',slidContpaddingNew);
+    $('.memImg').css('padding-right',slidContpaddingNew);
     
     $('.currentNum').html(memNum);
     //$('.sliderPanel').css('width', (125+(slidContpadding*2))*memNum);
@@ -147,6 +153,24 @@ function memImgSlide(slideIndx) {
         });
         console.log('여긴가4');
     }
+}
+
+let user_id = $("#user_id_hidden").val();
+let isMember = $("#isMember_hidden").val();
+
+console.log(user_id);
+console.log(typeof user_id);
+
+console.log(isMember);
+console.log(typeof isMember);
+
+if(user_id == ""){
+	alert("로그인 후 이용할 수 있습니다.");
+	location.href="/nemo/index";
+}
+if(user_id != "" && isMember == "false"){
+	alert("소모임 가입 후 이용할 수 있습니다.");
+	location.href="/nemo/index";
 }
 
 });

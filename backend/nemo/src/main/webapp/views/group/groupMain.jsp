@@ -218,7 +218,9 @@
 
             <!-- main content 종료-->
         </div>
-        <input type="hidden" id="groupNum_hidden" name="groupNum_hidden" value="${groupNum}">
+        <input type="hidden" id="groupNum_hidden" name="groupNum_hidden" value="${groupNum}" />
+        <input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${user_id}" />
+        <input type="hidden" id="isMember_hidden" name="isMember_hidden" value="${isMember}" />
 	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 </body>

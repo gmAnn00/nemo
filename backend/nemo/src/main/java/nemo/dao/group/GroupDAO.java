@@ -94,4 +94,34 @@ public class GroupDAO {
 
 		return groupNum;
 	} // end of selectGroupNumById
+	
+	// user_id 가 group_id 의 멤버면 true, 멤버가 아니면 false 반환
+		public boolean isMember(String user_id, int group_id) {
+			int rsCnt = 0;
+			try {
+				conn = dataFactory.getConnection();
+				String query = "select count(*) as cnt from grpjoin_tbl where user_id = ? and grp_id=?";
+				System.out.println(query);
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				pstmt.setInt(2, group_id);
+				ResultSet rs = pstmt.executeQuery();
+
+				rs.next();
+				rsCnt = rs.getInt("cnt");
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e) {
+				System.out.println("isMember 중 오류");
+				e.printStackTrace();
+			}
+
+			if (rsCnt == 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} // end of isMember
 }

@@ -53,6 +53,9 @@ public class GroupMainController extends HttpServlet {
 		
 		GroupVO groupVO = new GroupVO();
 		
+		boolean isMember = groupMainService.isMember(user_id, group_id);
+		request.setAttribute("isMember", isMember);
+		
 		groupVO = groupMainService.selectGroupById(group_id);
 		request.setAttribute("groupVO", groupVO);
 		
