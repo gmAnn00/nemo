@@ -148,14 +148,14 @@
 								</c:when>
 								<c:when test="${!empty userVO.user_img}">
 									<img id="userImg"
-										name="originalFileName"
 										src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${userVO.user_img}"
 										alt=" 프로필 사진" />
 								</c:when>
 							</c:choose>
-							<label class="imageM button" for="hidden" id="file">수정 </label> <input
-								id="hidden" type="file" style="display: none" name="user_img"
+							<label class="imageM button" for="hidden" id="file">수정 </label>
+							<input id="hidden" type="file" style="display: none" name="user_img"
 								onchange="readImage(this)" />
+							<input type="hidden" name="originalFileName" value="${userVO.user_img}" />
 						</form>
 					</div>
 

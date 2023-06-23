@@ -1,4 +1,4 @@
-package nemo.controller.mypage;
+package nemo.controller.common;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,7 +28,7 @@ import nemo.vo.mypage.UserVO;
 
 
 @WebServlet("/userImageDownload")
-public class MyProfileDownloadImage extends HttpServlet {
+public class UserImageDownloadController extends HttpServlet {
 	
 	private static String USER_IMG_REPO;
 	

@@ -61,6 +61,10 @@ public class MyGroupListController extends HttpServlet {
 					List<GroupVO> userGroupList = new ArrayList<>();
 					userGroupList = myGroupService.getUserGrpId(user_id);										
 					
+					//가입 대기중인 소모임 조회
+					List<GroupVO> waitGroupList = new ArrayList<>();
+					waitGroupList = myGroupService.getWaitGrpId(user_id);
+					
 					//찜한 소모임 조회 BOOKMARK_TBL
 					List<GroupVO> bookmarkGroupList = new ArrayList<>();
 					bookmarkGroupList  = myGroupService.getBookMarkGrpId(user_id);
@@ -68,12 +72,13 @@ public class MyGroupListController extends HttpServlet {
 					
 					request.setAttribute("mngGroupList", mngGroupList);
 					request.setAttribute("userGroupList", userGroupList);
+					request.setAttribute("waitGroupList", waitGroupList);
 					request.setAttribute("bookmarkGroupList", bookmarkGroupList);
 					
 					
 					nextPage="/views/mypage/myGroupList.jsp";
 					
-				} else if(action.equals("/isntBookmark")) {
+				} else if(action.equals("/isntBookmark.do")) {
 					//북마크 찜, 해제
 					//해제한 소모임도 바로 없애지 말고, 새로고침 할 때까지는 보이도록 만들자
 					//BookmarkDAO 사용 

@@ -29,6 +29,13 @@ public class MyGroupService {
 		userGroupList = myGroupDAO.getUserGrpId(user_id);
 		return userGroupList;
 	}
+	
+	//가입 대기중인 소모임
+	public List<GroupVO> getWaitGrpId(String user_id) {
+		List<GroupVO> waitGroupList = new ArrayList<>();
+		waitGroupList = myGroupDAO.getWaitGrpId(user_id);
+		return waitGroupList;
+	}
 
 	//찜한 소모임
 	public List<GroupVO> getBookMarkGrpId(String user_id) {
@@ -36,6 +43,5 @@ public class MyGroupService {
 		bookmarkGroupList = myGroupDAO.getBookMarkGrpId(user_id);
 		return bookmarkGroupList;
 	}
-	
 
 }

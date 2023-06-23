@@ -121,7 +121,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                           </div>
                           <div class="card__img"></div>
                           <a href="${contextPath}/group/groupMain?group_id=${mngGroup.grp_id}" class="card_link">
-                            <div class="card__img--hover"></div>
+                            <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${mngGroup.grp_id}/${mngGroup.grp_img}')"></div>
                           </a>
                           <div class="card__info">
                             <span class="card__category">${mngGroup.main_name}</span>
@@ -167,7 +167,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                           </div>
                           <div class="card__img"></div>
                           <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
-                            <div class="card__img--hover"></div>
+                            <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${userGroup.grp_id}/${userGroup.grp_img}')"></div>
                           </a>
                           <div class="card__info">
                             <span class="card__category">${userGroup.main_name}</span>
@@ -176,6 +176,37 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                             <span class="card__by"
                               ><i class="fa-solid fa-location-dot"></i>
                               <a href="#" class="card__author">${locationU}</a>
+                            </span>
+                          </div>
+                        </div>
+                      </c:forEach>
+                    </c:when>
+                    </c:choose>
+                    
+                    <!-- 가입 대기중인 소모임 -->
+                    <c:choose>
+                    <c:when test="${!empty waitGroupList}">
+                      <c:forEach var="waitGroup" items="${waitGroupList}" varStatus="loop">
+                      <c:set var="idx" value="${waitGroup.grp_addr1.indexOf(' ', waitGroup.grp_addr1.indexOf(' ') + 1)}" />
+                      <c:set var="locationW" value="${waitGroup.grp_addr1.substring(0, idx)}"/>                      	
+                        <div class="card card--${waitGroup.grp_id}">
+                          <div class="card__info-hover">
+                            <span>바로가기</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                          </div>
+                          <div class="card__img"></div>                           
+                          <a href="${contextPath}/group/groupMain?group_id=${waitGroup.grp_id}" class="card_link">                          
+                            <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${waitGroup.grp_id}/${waitGroup.grp_img}')">
+                              <div class="wait_grp">가입 대기중</div>
+                            </div>
+                          </a>
+                          <div class="card__info">
+                            <span class="card__category">${waitGroup.main_name}</span>
+                            <span class="card__category">${waitGroup.sub_name}</span>
+                            <h3 class="card__title">${waitGroup.grp_name}</h3>
+                            <span class="card__by"
+                              ><i class="fa-solid fa-location-dot"></i>
+                              <a href="#" class="card__author">${locationW}</a>
                             </span>
                           </div>
                         </div>
@@ -211,7 +242,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 		                    </div>
 		                    <div class="card__img"></div>
 		                    <a href="${contextPath}/group/groupInfo?group_id=${bookmarkGroup.grp_id}" class="card_link">
-		                      <div class="card__img--hover"></div>
+		                      <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${bookmarkGroup.grp_id}/${bookmarkGroup.grp_img}')"></div>
 		                    </a>
 		                    <div class="card__info">
 		                      <span class="card__category">${bookmarkGroup.main_name}</span>
