@@ -10,7 +10,12 @@ $(document).ready(function() {
 	$('a[href="#"]').click(function(ignore) {
 	    ignore.preventDefault();
 	});
+	
+	
+	
     adjustHeight();
+    
+    
 	let ItemNum=$('.commentItem').length;
 	for(let i=0; i<ItemNum; i++) {
 		itemArr.push(0);
@@ -91,11 +96,7 @@ $(document).ready(function() {
         }
 	});*/
 	
-	//textarea 자동크기조절
-	function resize(obj) {
-  		obj.style.height = "auto";
-  		obj.style.height = obj.scrollHeight+"px";
-	}
+
 	
 	//댓글 등록 함수
 	function fn_regComment() {
@@ -231,7 +232,26 @@ $(document).ready(function() {
 		let comReplyId="#comReplyBtn"+cnt;
 		let modReplyId="#modReply"+cnt;
 		let group_id=$('#group_id').val();
-		let content=$(textAreaId).val();
+		
+		let ctx =getContextPath();
+            url=ctx+"/group/board/modCancle?group_id="+group_id;
+            console.log(url);
+            
+            $.ajax({
+				url: url,
+				async: true,
+				data: {
+					"comment_no": cnt
+				},
+				type: "post",
+				success:function(content) {
+					$(textAreaId).val(content);	
+					adjustHeight();
+				},
+				error: {
+					
+				}
+			});
 		
 		document.getElementById('viewTextArea'+cnt).disabled=true;
 		document.getElementById('viewTextArea'+cnt).style.border='none';
@@ -248,28 +268,6 @@ $(document).ready(function() {
 		$(comReplyId).css({
 			visibility:'visible'
 		});
-		
-		let ctx =getContextPath();
-            url=ctx+"/group/board/modCancle?group_id="+group_id;
-            console.log(url);
-            
-            $.ajax({
-				url: url,
-				async: true,
-				data: {
-					"comment_no": cnt
-				},
-				type: "post",
-				success:function(content) {
-					console.log(content);
-					$(textAreaId).val(content);	
-				},
-				error: {
-					
-				}
-			});
- 
-		
 		
 	}
 	
@@ -350,13 +348,19 @@ function backToList() {
 	console.log(referrer);
 }
 
+
+//textarea 자동크기조절
+function resize(obj) {
+  	obj.style.height = "auto";
+  	obj.style.height = obj.scrollHeight+"px";
+}
+
+//댓글 높이 초기화
 function adjustHeight() {
-  let textElement = $('textarea');
-  for(let i=0; i<textElement.length; i++) {
-		console.log(textElement[i].val);
-		textElement[i].style.height = 'auto';
-  		var textEleHeight = textElement.prop('scrollHeight');
-  		textElement.css('height', textEleHeight);
+  	let textarea=document.querySelectorAll('.viewTextArea');
+	for(let i=0; i<textarea.length; i++) {
+		textarea[i].style.height="auto";
+		textarea[i].style.height=textarea[i].scrollHeight+"px";
 	}
 }
 
