@@ -160,10 +160,10 @@
 					                        		<c:forEach begin="1" end="${article.level-1}" step="1">
 									               		<span style="padding-left: 10px"></span>
 					                        		</c:forEach>
-					                        		└ [답변]<a href="${contextPath}/qna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
+					                        		└ [답변]<a href="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
 					                        	</c:when>
 					                        	<c:otherwise>
-					                        		<a href="${contextPath}/qna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
+					                        		<a href="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
 					                        	</c:otherwise>
 					                        </c:choose>
 					                      </a>
@@ -182,28 +182,28 @@
 	            </table>
 	            
 	            <div class="bottomBtn">
-	              <a href="${contextPath}/qna/QnAWrite.do" role="button" class="button">글쓰기</a>
+	              <a href="${contextPath}/viewQna/QnAWrite.do" role="button" class="button">글쓰기</a>
 	            </div>
 	            
 	            <div class="pagenation">
 					<c:if test="${totArticles != 0}">
 						<c:forEach var="page" begin="1" end="${endValue}" step="1">
 							<c:if test="${section>1 && page==1}">
-								<span class="paging prev"><a href="${contextPath}/qna/helpQnA?section=${section-1}&pageNum=10">&lt</a></span>
+								<span class="paging prev"><a href="${contextPath}/viewQna?section=${section-1}&pageNum=10">&lt</a></span>
 							</c:if>
 								
 							<c:choose>
 								<c:when test="${page==pageNum}">
-									<span class="paging currentPage"><a href="${contextPath}/qna/helpQnA?section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging currentPage"><a href="${contextPath}/viewQna?section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:when>
 								
 								<c:otherwise>
-									<span class="paging notCurrent"><a href="${contextPath}/qna/helpQnA?section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
+									<span class="paging notCurrent"><a href="${contextPath}/viewQna?section=${section}&pageNum=${page}">${(section-1)*10+page}</a></span>
 								</c:otherwise>
 							</c:choose>
 								
 							<c:if test="${page==10 and totArticles/100>section}">
-								<span class="paing next"><a href="${contextPath}/qna/helpQnA?section=${section+1}&pageNum=1">&gt</a></span>
+								<span class="paing next"><a href="${contextPath}/viewQna?section=${section+1}&pageNum=1">&gt</a></span>
 							</c:if>
 						</c:forEach>
 					</c:if>

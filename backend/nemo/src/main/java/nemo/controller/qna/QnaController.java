@@ -26,7 +26,7 @@ import nemo.dao.qna.QnaDAO;
 import nemo.service.qna.QnaService;
 import nemo.vo.qna.QnaVO;
 
-@WebServlet("/qna/*")
+@WebServlet("/viewQna/*")
 public class QnaController extends HttpServlet {
 	QnaService qnaService;
 	QnaVO qnaVO;
@@ -62,7 +62,7 @@ public class QnaController extends HttpServlet {
 		HttpSession session;  //23-05-25
 		String action=request.getPathInfo();	//요청명을 가져옴.
 		request.setAttribute("menuSelected", 2);
-		nextPage = "/views/qna/helpQnA.jsp";
+		//nextPage = "/views/qna/helpQnA.jsp";
 		
 		QNA_IMG_REPO = this.getClass().getResource("").getPath();
 		QNA_IMG_REPO = QNA_IMG_REPO.substring(1, QNA_IMG_REPO.indexOf(".metadata"));
@@ -74,7 +74,7 @@ public class QnaController extends HttpServlet {
 			
 			
 			List<QnaVO> articlesList=new ArrayList<QnaVO>();
-			if (action == null || action.equals("/helpQnA")) {
+			if (action == null || action.equals("/viewQna")) {
 				String _section=request.getParameter("section");
 				String _pageNum=request.getParameter("pageNum");
 				int section=Integer.parseInt((_section == null)?"1":_section);
@@ -86,10 +86,10 @@ public class QnaController extends HttpServlet {
 				articleMap.put("section", section);
 				articleMap.put("pageNum", pageNum);
 				request.setAttribute("articleMap", articleMap);	
-				nextPage="/qna/QnAWrite.jsp"; 
-			}else if(action.equals("/글쓰기 창.do")) {
-				nextPage="/viewBoard/글쓰기 창.jsp";
-			}else if(action.equals("/추가하기.do")) {
+				nextPage="views/qna/helpQnA.jsp"; 
+			}else if(action.equals("/QnAwrite.do")) {
+				nextPage="/views/qna/QnAwrite.jsp";
+			}else if(action.equals("/addArticle.do")) {
 				int qna_id=0;
 				Map<String, String> articleMap=upload(request, response);
 				String title=articleMap.get("title");
@@ -112,7 +112,7 @@ public class QnaController extends HttpServlet {
 				out=response.getWriter();
 				out.print("<script>");
 				out.print("alert('새 글을 추가했습니다.');");
-				out.print("location.href='" +request.getContextPath() + "/board/listArticles.do';");
+				out.print("location.href='" +request.getContextPath() + "/viewQna/helpQnA.do';");
 				out.print("</script>");
 				return;
 			}else if(action.equals("/QnAView.do")) {
@@ -147,7 +147,7 @@ public class QnaController extends HttpServlet {
 				out=response.getWriter();
 				out.print("<script>");
 				out.print("alert('글을 수정했습니다.');");
-				out.print("location.href='" +request.getContextPath() + "/qna/QnAView.do?qna_id=" + qna_id + "';");
+				out.print("location.href='" +request.getContextPath() + "/viewQna/QnAView.do?qna_id=" + qna_id + "';");
 				out.print("</script>");
 				return;
 			//23-05-25
@@ -163,7 +163,7 @@ public class QnaController extends HttpServlet {
 				out=response.getWriter();
 				out.print("<script>");
 				out.print("alert('글을 삭제했습니다.');");
-				out.print("location.href='" +request.getContextPath() + "/qna/listArticles.do';");
+				out.print("location.href='" +request.getContextPath() + "/viewQna/helpQnA.do';");
 				out.print("</script>");
 				return;
 			}else if(action.equals("/replyForm.do")) {

@@ -152,7 +152,7 @@
           <!-- 글쓰기 영역 -->
           <div class="boardWriteArea">
           
-            <form action="">
+            <form action="${contextPath}/viewQna/addArticle.do" method="post" enctype="multipart/form-data">
               <!-- 제목 영역 -->
               <div class="articleWritingTitle">
 

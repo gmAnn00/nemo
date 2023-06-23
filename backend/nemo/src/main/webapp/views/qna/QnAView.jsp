@@ -82,12 +82,12 @@
         <!-- 메뉴바 시작 -->
         <div class="sc2_menu_contents">
           <div class="sc2_menu">
-            <h2 class="sc2_menu_title">게시판</h2>
+            <h2 class="sc2_menu_title">관리자</h2>
             <ul class="sc2_menu_list">
               <li>
                 <a href="../schedule.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>일정</span></div>
+                    <div class="menu_submenu_name"><span>소모임관리</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
@@ -95,7 +95,7 @@
               <li>
                 <a href="helpQnA.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
+                    <div class="menu_submenu_name submenu_select"><span>회원관리</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
                   </div>
                 </a>
@@ -103,15 +103,7 @@
               <li>
                 <a href="${contextPath}/myGroupMember.html">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>멤버</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="${contextPath}/groupSetting.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>소모임관리</span></div>
+                    <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
@@ -124,7 +116,7 @@
         <!-- 게시글 조회 영역 시작 -->
         <div class="boardView sc2_subsection">
           <div class="sc2_subsection_title">
-            <h2 class="sc2_subsection_title_name">게시판</h2>
+            <h2 class="sc2_subsection_title_name">Q&A</h2>
             <!-- nav 바 시작 -->
             <div class="nav_bar">
               <a href="${contextPath}/index.html">
@@ -182,66 +174,7 @@
 	            <div id="contentArea" class="contentArea">
 	              <p>내용 ${article.content}</p>
 	            </div>
-	            <!-- 댓글 영역 -->
-	            <div id="commentArea" class="commentArea">
-	              <p class="comment">댓글</p>
-	              <ul class="commentList">
-	                <li id="" class="commentItem">
-	                  <div class="commentbox">
-	                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-	                    <a href="#" class="commentThumb">
-	                      <img
-	                        src="${contextPath}/images/icon_prof_wh.png"
-	                        alt="프로필사진"
-	                      />
-	                    </a>
-	                    <div class="commentNick">
-	                      <a href="#" role="button" class="commentNickInfo"
-	                        >작성자닉네임</a
-	                      >
-	                    </div>
-	                    <div class="commentText">
-	                      <p>댓글 내용</p>
-	                    </div>
-	                    <div class="commentInfo">
-	                      <p class="commentDate">2023.05.07. 18:30</p>
-	                    </div>
-	                  </div>
-	                </li>
-	                <li id="" class="commentItem">
-	                  <div class="commentbox">
-	                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-	                    <a href="#" class="commentThumb">
-	                      <img
-	                        src="${contextPath}/images/icon_prof_wh.png"
-	                        alt="프로필사진"
-	                      />
-	                    </a>
-	                    <div class="commentNick">
-	                      <a href="#" role="button" class="commentNickInfo"
-	                        >작성자닉네임</a
-	                      >
-	                    </div>
-	                    <div class="commentText">
-	                      <p>댓글 내용</p>
-	                    </div>
-	                    <div class="commentInfo">
-	                      <p class="commentDate">2023.05.07. 18:30</p>
-	                    </div>
-	                  </div>
-	                </li>
-	              </ul>
-	              <!-- 댓글 쓰기 -->
-	              <div class="commentWriter">
-	                <div class="commentInbox">
-	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1"></textarea>
-	                </div>
-	                <div class="commentRegister">
-	                  <a href="#" role="button" class="button btnRegister">등록</a>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
+	            
 	          <!-- 글 아래쪽 버튼 영역 -->
 	          <div class="articleBottomBtns">
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
