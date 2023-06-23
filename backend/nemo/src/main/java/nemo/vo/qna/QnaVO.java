@@ -15,6 +15,7 @@ public class QnaVO {
 	private Date create_date;
 	private int level;
 	private String imageFileName;
+	private String qna_img;
 
 	
 	
@@ -23,7 +24,7 @@ public class QnaVO {
 	}
 
 
-	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String imageFileName) {
+	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String imageFileName, String qna_img) {
 		super();
 		this.qna_id = qna_id;
 		this.user_id = user_id;
@@ -34,6 +35,7 @@ public class QnaVO {
 		this.create_date = create_date;
 		this.level = level;
 		this.imageFileName=imageFileName;
+		this.qna_img=qna_img;
 	}
 
 
@@ -149,6 +151,18 @@ public class QnaVO {
 				+ parent_no + ", title=" + title + ", content=" + content + ", create_date=" + create_date + ", level="
 				+ level + ", imageFileName=" + imageFileName + "]";
 	}
+
+
+	public String getQna_img() {
+		return qna_img;
+	}
+
+
+	public void setQna_img(String qna_img) {
+		this.qna_img = qna_img;
+	}
+	
+	
 	
 	
 

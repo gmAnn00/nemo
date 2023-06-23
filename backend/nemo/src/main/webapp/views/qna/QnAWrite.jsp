@@ -97,33 +97,10 @@
         <!-- 메뉴바 시작 -->
         <div class="sc2_menu_contents">
           <div class="sc2_menu">
-            <h2 class="sc2_menu_title">Q&A</h2>
-            <ul class="sc2_menu_list">
-              <li>
-                <a href="${contextPath}/schedule.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>소모임관리</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="board.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name submenu_select"><span>고객센터 Q&A</span></div>
-                    <i class="fa-solid fa-minus submenu_select"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="myGroupMember.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>회원관리</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <h2 class="sc2_menu_title">관리자</h2>
+            <!-- include -->
+            <jsp:include page="/views/qna/includes/admin_header.jsp"/>
+            
           </div>
         </div>
         <!-- 메뉴바 종료 -->
@@ -178,8 +155,8 @@
 
               <!-- 등록 버튼 -->
               <div class="btnRegister">
-                <a href="#" role="button" class="button">등록</a>
-                <a href="#" role="button" class="buttonCancle">취소</a>
+                <a href="${contextPath}/viewQna/QnAView.do" role="button" class="button">등록</a>
+                <a href="${contextPath}/viewQna/helpQnA.do" role="button" class="buttonCancle">취소</a>
               </div>
             </div>
           </div>

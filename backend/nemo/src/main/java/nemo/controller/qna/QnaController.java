@@ -86,9 +86,9 @@ public class QnaController extends HttpServlet {
 				articleMap.put("section", section);
 				articleMap.put("pageNum", pageNum);
 				request.setAttribute("articleMap", articleMap);	
-				nextPage="views/qna/helpQnA.jsp"; 
-			}else if(action.equals("/QnAwrite.do")) {
-				nextPage="/views/qna/QnAwrite.jsp";
+				nextPage="/views/qna/helpQnA.jsp"; 
+			}else if(action.equals("/QnAWrite.do")) {
+				nextPage="/views/qna/QnAWrite.jsp";
 			}else if(action.equals("/addArticle.do")) {
 				int qna_id=0;
 				Map<String, String> articleMap=upload(request, response);
@@ -107,6 +107,7 @@ public class QnaController extends HttpServlet {
 					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + imageFileName);
 					File destDir=new File(QNA_IMG_REPO + "\\" + qna_id);
 					destDir.mkdirs();
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 					srcFile.delete();
 				}
 				out=response.getWriter();

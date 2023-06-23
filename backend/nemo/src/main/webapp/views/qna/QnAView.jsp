@@ -31,6 +31,66 @@
     ></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardView.js"></script>
+    
+    <script type="text/javascript">
+	//이미지 미리보기 구현
+	function readImage(input) {
+		if(input.files && input.files[0]) {
+			let reader=new FileReader();
+			reader.onload=function (event) {
+				$("#preview").attr('src',event.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	function fn_enable(obj) {
+		document.getElementById("id_title").disabled=false;
+		document.getElementById("id_content").disabled=false;
+		let imgName=document.getElementById("id_imgFile");
+		if(imgName != null) {
+			imgName.disabled=false;
+		}
+		document.getElementById("tr_button_modify").style.display="block";
+		document.getElementById("tr_button").style.display="none";
+	}
+	function toList(obj) {
+		obj.action="${contextPath}/viewQna/QnAView.do?articleNo=${article.articleNo}";
+		obj.submit();
+	}
+	function fn_modify_article(obj) {
+		obj.action="${contextPath}/viewQna/modArticle.do";
+		obj.submit();
+	}
+	//23-05-25
+	function fn_remove_article(url, qna_id) {
+		let d_form=document.createElement("form");  //동적으로 form태그를 생성
+		d_form.setAttribute("action",url);
+		d_form.setAttribute("method","post");
+		let qna_idInput=document.createElement("input");
+		qna_idInput.setAttribute("type","hidden");
+		qna_idInput.setAttribute("name","qna_id");
+		qna_idInput.setAttribute("value",qna_id);
+		d_form.appendChild(qna_idInput);
+		document.body.appendChild(d_form);
+		d_form.submit();
+	}
+	function backToList(obj) {  //리스트로 돌아가는 함수
+		obj.action="${contextPath}/viewQna/helpQnA.do";
+		obj.submit();
+	}
+	function fn_reply_form(url, parent_no) {  //답글쓰기 폼 구현
+		let r_form=document.createElement("form");
+		r_form.setAttribute("action",url);
+		r_form.setAttribute("method","post");
+		let parent_noInput=document.createElement("input");
+		parent_noInput.setAttribute("type","hidden");
+		parent_noInput.setAttribute("name","parent_no");
+		parent_noInput.setAttribute("value",parent_no);
+		r_form.appendChild(parentNoInput);
+		document.body.appendChild(r_form);
+		r_form.submit();
+	}
+	</script>
 
 
   </head>
