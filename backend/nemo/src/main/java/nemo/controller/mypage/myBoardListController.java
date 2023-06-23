@@ -27,7 +27,7 @@ import nemo.vo.mypage.UserVO;
 
 
 @WebServlet("/mypage/myBoardList/*")
-public class MyWritingController extends HttpServlet {
+public class myBoardListController extends HttpServlet {
 	HttpSession session;
 	MyProfileService myProfService;
 	MyInterestService myIntesInterestService;
