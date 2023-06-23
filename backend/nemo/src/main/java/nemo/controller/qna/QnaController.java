@@ -94,17 +94,17 @@ public class QnaController extends HttpServlet {
 				Map<String, String> articleMap=upload(request, response);
 				String title=articleMap.get("title");
 				String content=articleMap.get("content");
-				String imageFileName=articleMap.get("imageFileName");
+				String qna_img=articleMap.get("qna_img");
 				String nickname=articleMap.get("nicknQnAView");
 				qnaVO.setParent_no(0);
 				qnaVO.setNickname(nickname);
 				qnaVO.setTitle(title);
 				qnaVO.setContent(content);
-				qnaVO.setImageFileName(imageFileName);
+				qnaVO.setQna_img(qna_img);
 				qna_id=qnaService.addArticle(qnaVO);
 				//새글 추가시 이미지를 첨부한 경우에만수행
-				if(imageFileName != null && imageFileName.length() != 0) {
-					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + imageFileName);
+				if(qna_img != null && qna_img.length() != 0) {
+					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + qna_img);
 					File destDir=new File(QNA_IMG_REPO + "\\" + qna_id);
 					destDir.mkdirs();
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
@@ -127,18 +127,18 @@ public class QnaController extends HttpServlet {
 				String title=articleMap.get("title");
 				String nickname=articleMap.get("nickname");
 				String content=articleMap.get("content");
-				String imageFileName=articleMap.get("imageFileName");
+				String qna_img=articleMap.get("qna_img");
 				qnaVO.setQna_id(qna_id);
 				qnaVO.setParent_no(0);
 				qnaVO.setNickname(nickname);
 				qnaVO.setTitle(title);
 				qnaVO.setContent(content);
-				qnaVO.setImageFileName(imageFileName);
+				qnaVO.setQna_img(qna_img);
 				qnaService.modArticle(qnaVO);
 				//이미지를 새로 첨부한 경우에만 수행
-				if(imageFileName != null && imageFileName.length() != 0) {
+				if(qna_img != null && qna_img.length() != 0) {
 					String originalFileName=articleMap.get("originalFileName");
-					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + imageFileName);
+					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + qna_img);
 					File destDir=new File(QNA_IMG_REPO + "\\" + qna_id);
 					destDir.mkdirs();
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
@@ -181,15 +181,15 @@ public class QnaController extends HttpServlet {
 				Map<String, String> articleMap=upload(request, response);
 				String title=articleMap.get("title");
 				String content=articleMap.get("content");
-				String imageFileName=articleMap.get("imageFileName");
+				String qna_img=articleMap.get("qna_img");
 				qnaVO.setParent_no(parent_no);
 				//qnaVO.setId("young");관리자 부분
 				qnaVO.setTitle(title);
 				qnaVO.setContent(content);
-				qnaVO.setImageFileName(imageFileName);
+				qnaVO.setQna_img(qna_img);
 				int qna_id=qnaService.addReply(qnaVO);
-				if(imageFileName != null && imageFileName.length() != 0) {
-					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + imageFileName);
+				if(qna_img != null && qna_img.length() != 0) {
+					File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + qna_img);
 					File destDir=new File(QNA_IMG_REPO + "\\" + qna_id);
 					destDir.mkdirs();
 

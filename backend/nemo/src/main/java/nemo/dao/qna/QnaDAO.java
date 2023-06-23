@@ -221,16 +221,16 @@ public class QnaDAO {
 			int parent_no=rs.getInt("parent_no");
 			String title=rs.getString("title");
 			String content=rs.getString("content");
-			String imageFileName=URLDecoder.decode(rs.getString("imageFileName"),"utf-8");
-			if(imageFileName.equals("unll")) {
-				imageFileName=null;
+			String qna_img=URLDecoder.decode(rs.getString("qna_img"),"utf-8");
+			if(qna_img.equals("unll")) {
+				qna_img=null;
 			}
 			Date create_date=rs.getDate("create_date");
 			qnaVO.setQna_id(_qna_id);
 			qnaVO.setNickname(nickname);
 			qnaVO.setTitle(title);
 			qnaVO.setContent(content);
-			qnaVO.setImageFileName(imageFileName);
+			qnaVO.setQna_img(qna_img);
 			qnaVO.setCreate_date(create_date);
 			rs.close();
 			pstmt.close();
@@ -272,9 +272,9 @@ public class QnaDAO {
 			int parent_no=qnaVO.getParent_no();
 			String title=qnaVO.getTitle();
 			String content=qnaVO.getContent();
-			String imgeFileName=qnaVO.getImageFileName();
+			String imgeFileName=qnaVO.getQna_img();
 			String nickname=qnaVO.getNickname();
-			String query="insert into qna_tbl (qna_id, parent_no, title, content, imageFileName, nickname) values(?,?,?,?,?,?)";
+			String query="insert into qna_tbl (qna_id, parent_no, title, content, qna_img, nickname) values(?,?,?,?,?,?)";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, qna_id);
 			pstmt.setInt(2, parent_no);
@@ -297,19 +297,19 @@ public class QnaDAO {
 		int qna_id=qnaVO.getQna_id();
 		String title=qnaVO.getTitle();
 		String content=qnaVO.getContent();
-		String imageFileName=qnaVO.getImageFileName();
+		String qna_img=qnaVO.getQna_img();
 		try {
 			conn=dataFactory.getConnection();
 			String query="update qna_tbl set title=?, content=?";
-			if(imageFileName != null && imageFileName.length() != 0 ) {
-				query+=", imageFileName=?";
+			if(qna_img != null && qna_img.length() != 0 ) {
+				query+=", qna_img=?";
 			}
 			query+=" where qna_id?";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
-			if(imageFileName != null && imageFileName.length() != 0 ) {
-				pstmt.setString(3, imageFileName);
+			if(qna_img != null && qna_img.length() != 0 ) {
+				pstmt.setString(3, qna_img);
 				pstmt.setInt(4, qna_id);
 			}else {
 				pstmt.setInt(3, qna_id);

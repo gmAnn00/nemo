@@ -147,7 +147,7 @@
               
               <!-- 이미지 첨부 -->
               <div class="qna_image">
-              	<input type="file" name="imageFileName" onchange="readImage(this)"><tr>
+              	<input type="file" name="qna_img" onchange="readImage(this)"><tr>
               	<img id="preview" src="#" width="200" alt="">
               </div>
 
