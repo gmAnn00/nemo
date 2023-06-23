@@ -11,7 +11,7 @@
 .formArea {
   margin: 0 auto;
   padding: 0 50px;
-  /*border-top: 2px solid var(--main-color);*/
+  border-top: 2px solid var(--main-color);
   width: 800px;
 }
 
@@ -24,8 +24,6 @@
   text-align: center;
   margin-bottom: 30px;
   margin-top: 30px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid var(--main-color);
 }
 
 .imgCrop {
@@ -64,34 +62,22 @@ form {
   justify-content: center;
   margin: 0 auto;
 }
-form div:not(.buttonCancle, .button, .imgButtonArea, .selectBox, .creatGrp) {
+form div {
   display: flex;
   flex-direction: column;
   /* margin-bottom: 20px; */
   width: 500px;
   position: relative;
 }
-form label:not(.checkLabel, .imgLabel){
+form label {
   margin-bottom: 5px;
   position: relative;
   top: 30px;
   left: -110px;
   width: 105px;
 }
-.imgButtonArea{
-	display:flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-.imgLabel{
-	display: inline-block;
-	width: 200px;
-}
 form input {
   padding: 8px;
-}
-.checkLabel{
-	padding-left: 15px;
 }
 input[id="groupNum"] {
   width: 22%;
@@ -152,10 +138,8 @@ input[id="groupNum"] {
 form input[type="checkbox"] {
   display: inline-block;
   position: relative;
-  left: -250px;
   top: 15px;
-  /* position: absolute;
-  top: 40px; */
+  width: 15px;
 }
 
 /* 주소입력 */
@@ -176,8 +160,13 @@ form input[id="grp_addr1"] {
 .checkConfirm {
   margin-bottom: 80px;
 }
-.checkConfirm span {
-  padding-left: 15px;
+.checkConfirm label.confirm {
+  padding-left: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
 .creatGrp {

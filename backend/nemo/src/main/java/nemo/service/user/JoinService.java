@@ -1,7 +1,8 @@
-package nemo.service.member;
+package nemo.service.user;
 
-import nemo.dao.member.JoinDAO;
-import nemo.vo.member.UserVO;
+import nemo.dao.user.JoinDAO;
+import nemo.vo.common.UserVO;
+
 
 public class JoinService {
 	JoinDAO dao;

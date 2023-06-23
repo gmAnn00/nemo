@@ -1,4 +1,4 @@
-package nemo.controller.member;
+package nemo.controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nemo.service.member.JoinService;
-import nemo.vo.member.UserVO;
+import nemo.service.user.JoinService;
+import nemo.vo.common.UserVO;
+
 
 
 @WebServlet("/join/*")

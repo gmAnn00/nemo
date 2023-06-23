@@ -1,4 +1,4 @@
-package nemo.controller.member;
+package nemo.controller.user;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import nemo.service.member.LoginService;
-import nemo.vo.member.UserVO;
+import nemo.service.user.LoginService;
+import nemo.vo.common.UserVO;
 
 @WebServlet("/login/*")
 public class LoginController extends HttpServlet {
@@ -67,7 +67,7 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("nickname", userVO.getNickname());
 				session.setAttribute("user_img", userVO.getUser_img());
 				session.setAttribute("admin", userVO.getAdmin());
-				nextPage = "/nemo/index";
+				nextPage = "/index";
 				response.sendRedirect(nextPage);
 			}else {
 				// 회원이 아님 

@@ -2,7 +2,8 @@ package nemo.service.user;
 
 
 import nemo.dao.user.LoginDAO;
-import nemo.vo.user.UserVO;
+import nemo.vo.common.UserVO;
+
 
 public class LoginService {
 	LoginDAO dao;

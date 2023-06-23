@@ -1,4 +1,4 @@
-package nemo.dao.member;
+package nemo.dao.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.member.UserVO;
+import nemo.vo.common.UserVO;
+
+
 
 public class LoginDAO {
 	

@@ -3,21 +3,24 @@
     isELIgnored="false"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 <%
 	request.setCharacterEncoding("utf-8");
 %>
 <c:set var="article" value="${articleViewMap.article}" />
 <c:set var="comments" value="${articleViewMap.comments}" />
 <c:set var="isSame" value="${articleViewMap.isSame }" />
-<c:set var="group_id" value="${articleViewMap.group_id }" />
-    
+<c:set var="referURL" value="${header.referer}" />
+<c:set var="group" value="${groupInfo}" />
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>게시글 조회</title>
+    <title>네모: 게시판</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
@@ -25,90 +28,24 @@
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
     <link rel="stylesheet" href="${contextPath}/css/boardView.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+    
+    <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardView.js"></script>
-
+	<script type="text/javascript" charset="utf-8">
+		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
+	</script>
 
   </head>
   <body>
     <!-- header 시작 -->
-    <!-- 사이드 메뉴시 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <header>
-      <h1 class="logo">
-        <a href="${contextPath}/index.html"
-          ><img src="${contextPath}/images/logo.png" alt="logo"
-        /></a>
-      </h1>
-    </header>
-    <button class="burger">
-      <span></span>
-    </button>
-    <div class="sidemenu">
-      <ul class="main_menu">
-        <li>
-          <a href="#">
-            <div class="profile">
-              <i class="fa-solid fa-circle-user"></i
-              ><span class="profile_name">사이다</span>
-            </div>
-          </a>
-        </li>
-        <li><a href="#">소모임 만들기</a></li>
-        <li><a href="#">소모임 검색</a></li>
-        <li><a href="#">프로필</a></li>
-        <li><a href="#">내 일정</a></li>
-        <li><a href="#">내 소모임</a></li>
-        <li><a href="#">고객센터</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-      <div class="sidemenu_footer">
-        <h3>Contact details</h3>
-        <p>글 넣을 거 있으면 넣기</p>
-      </div>
-    </div>
+	<jsp:include page="../header.jsp" flush="true"></jsp:include>
     <!-- header 종료 -->
 
-    <!-- section1 시작 -->
-    <div class="section1">
-      <div class="group_containter">
-        <div class="group_all">
-          <div class="group_img">
-            <img
-              src="${contextPath}/images/free-icon-group-8847475.png"
-              alt="group_img"
-            />
-          </div>
-          <div class="group_name">
-            <a href="groupMain.html">
-              <span>이젠종로학원</span>
-            </a>
-          </div>
-          <div class="group_info">
-            <div class="group_info_category">
-              <div class="category_box group_info_category_box">sports</div>
-              <div class="category_box group_info_category_box">game</div>
-            </div>
-            <div class="group_info_member">
-              <div class="group_info_title"><span>멤버수</span></div>
-              <div class="group_info_contents"><span>7</span></div>
-            </div>
-            <div class="group_info_follower">
-              <div class="group_info_title"><span>개설일</span></div>
-              <div class="group_info_contents">
-                <span>2023. 05. 19.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- section1 종료 -->
-
+	<!-- section1 -->
+	<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
+	<!-- section1종료 -->
+	
     <!-- 콘텐츠 영역 -->
     <div class="section2">
       <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
@@ -128,7 +65,7 @@
                 </a>
               </li>
               <li>
-                <a href="board.html">
+                <a href="${contextPath}/group/board?group_id=${group.groupVO.grp_id}">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -162,47 +99,52 @@
             <h2 class="sc2_subsection_title_name">게시판</h2>
             <!-- nav 바 시작 -->
             <div class="nav_bar">
-              <a href="${contextPath}/index.html">
+              <a href="${contextPath}/index">
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>
               <span>나의 모임</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>게시글 작성</span>
+              <span>게시판</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
 
 			<div class="atricleArea">
-	          <!-- 글 위쪽 버튼 영역 -->
-	          <div class="articleToolBtns">
-	            <!-- 기능 구현에 따라 코딩 수정요 -->
+	          <!-- 글 위쪽 버튼 영역 
+	          <div class="articleToolBtns">-->
+	            <!-- 기능 구현에 따라 코딩 수정요 
 	            <c:if test="${isSame==true }">
 		            <a href="#" role="button" class="button btnEdit">수정</a>
 		            <a href="#" role="button" class="buttonCancle btnDel">삭제</a>
-	            </c:if>
+	            </c:if>-->
 	            <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
-	            <!--  <a href="javascript:history.back();" role="button" class="button2 btnList">목록</a>-->
-	            <a href="${contextPath}/group/board?group_id=${group_id}" role="button" class="button2 btnList">목록</a>
-	          </div>
+	            <!--  <a href="javascript:history.back();" role="button" class="button2 btnList">목록</a>${contextPath}/group/board?group_id=${group_id}-->
+	            <!--  <a role="button" class="button2 btnList" onclick="backToList()">목록</a>
+	            <a href="${referURL}" role="button" class="button2 btnList">목록</a>
+	          </div>-->
 	          <div class="articleContentBox">
 	            <!-- 제목 영역 -->
 	            <div class="articleHeader">
 	              <div class="articleTitle">
-	                <div class="titleHead"><span>${article.brackets}</span></div>
-	                <div class="titleArea">${article.title}</div>
+	                <div class="titleHead"><span class="brackets">${article.brackets}</span></div>
+	                <div class="titleArea"><span class="title">${article.title}</span></div>
+	                <!-- <div class="titleArea">${article.title}</div>-->
 	              </div>
 	              <div class="writerInfo">
 	                <div class="thumbArea">
-	                  <img src="${contextPath}/images/icon_prof_wh.png" alt="프로필사진"/>
+	                  <img src="${contextPath}/${article.userVO.user_img}" alt="프로필사진"/>
 	                </div>
 	                <div class="profileArea">
 	                  <div class="profileInfo">
-	                    <button class="writerNick">${article.nickname }</button>
+	                    <p class="writerNick">${article.userVO.nickname}</p>
+	                    <p class="date comDate">${article.create_date }</p>
 	                  </div>
+	                 <!-- 
 	                  <div class="articleInfo">
-	                    <p class="date">${article.create_date }</p>
+	                    <p class="date comDate">${article.create_date }</p>
 	                  </div>
+	                  -->
 	                </div>
 	              </div>
 		              <div class="articleTool">
@@ -215,64 +157,126 @@
 	            </div>
 	            <!-- 내용 영역 -->
 	            <div id="contentArea" class="contentArea">
-	              <p>내용 ${article.content}</p>
+	            	<div class="contentEditTool">
+		            	<c:if test="${user_id==article.user_id}">
+				            <a href="#" role="button" class="btnEdit btn">수정</a>
+				            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" 
+				            role="button" class="btnDel btn">삭제</a>
+		              	</c:if>
+	            	</div>
+	            	<div class="content">
+	            		${article.content}
+	            	</div>
 	            </div>
 	            <!-- 댓글 영역 -->
 	            <div id="commentArea" class="commentArea">
-	              <p class="comment">댓글</p>
-	              <ul class="commentList">
-	                <li id="" class="commentItem">
-	                  <div class="commentbox">
-	                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-	                    <a href="#" class="commentThumb">
-	                      <img
-	                        src="${contextPath}/images/icon_prof_wh.png"
-	                        alt="프로필사진"
-	                      />
-	                    </a>
-	                    <div class="commentNick">
-	                      <a href="#" role="button" class="commentNickInfo"
-	                        >작성자닉네임</a
-	                      >
-	                    </div>
-	                    <div class="commentText">
-	                      <p>댓글 내용</p>
-	                    </div>
-	                    <div class="commentInfo">
-	                      <p class="commentDate">2023.05.07. 18:30</p>
-	                    </div>
-	                  </div>
-	                </li>
-	                <li id="" class="commentItem">
-	                  <div class="commentbox">
-	                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-	                    <a href="#" class="commentThumb">
-	                      <img
-	                        src="${contextPath}/images/icon_prof_wh.png"
-	                        alt="프로필사진"
-	                      />
-	                    </a>
-	                    <div class="commentNick">
-	                      <a href="#" role="button" class="commentNickInfo"
-	                        >작성자닉네임</a
-	                      >
-	                    </div>
-	                    <div class="commentText">
-	                      <p>댓글 내용</p>
-	                    </div>
-	                    <div class="commentInfo">
-	                      <p class="commentDate">2023.05.07. 18:30</p>
-	                    </div>
-	                  </div>
-	                </li>
-	              </ul>
+	            	<input type="hidden" id="article_no" value="${article.article_no}">
+	            	<input type="hidden" id="group_id" value="${group.groupVO.grp_id}">
+	              	<p class="comment">댓글 <span>${article.com_cnt}</span></p>
+					<c:choose>
+					    <c:when test="${!empty comments }">
+					        <ul class="commentList">
+					            <c:forEach var="comment" items="${comments}" varStatus="cnt">
+					                <c:choose>
+					                    <c:when test="${comment.level>1 }">
+					                        <li id="${comment.comment_no }" class="commentItem replyCommentItem commentLi">
+					                            <div class="commentbox">
+					                                <div class="commentTool">
+					                                	<c:if test="${user_id==comment.user_id}">
+					                                    	<span class="comMod comToolBtn">
+					                                    		<a href="#" role="button" onclick="fn_enable(this,${comment.comment_no })" 
+					                                    		id="comModBtn${comment.comment_no}">수정</a>
+					                                    	</span>
+					                                    	<span class="comDel comToolBtn">
+					                                    		<a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" 
+					                                    		role="button" id="comDelBtn${comment.comment_no}">삭제</a>
+					                                    	</span>
+					                                	</c:if>
+					                                </div>
+					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+					                                <a href="#" class="commentThumb">
+					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
+					                                </a>
+					                                <div class="commentNick">
+					                                    <span  class="commentNickInfo">
+					                                        <a href="#" role="button">${comment.userVO.nickname}</a>
+					                                    </span>
+					                                </div>
+					                                <div class="commentText">
+					                                    <p><textarea class="viewTextArea" rows="1" id="viewTextArea${comment.comment_no}" 
+					                                    onkeydown="resize(this)" onkeyup="resize(this)" disabled >${comment.com_cont}</textarea></p>
+					                                </div>
+					                                <div class="commentInfo">
+					                                    <span class="commentDate comDate"><fmt:formatDate value="${comment.create_date}" pattern="yyyy-MM-dd HH:mm" /></span>
+					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn" id="comReplyBtn${cnt.count}">답글쓰기</a></span>
+					                                    <c:if test="${user_id==comment.user_id}">
+					                                    	<span class="comMod comToolBtn modReply" id="modReply${comment.comment_no}">
+					                                    		<a href="#" role="button" class="modReplyBtn" id="modReplyBtn${comment.comment_no}"
+					                                    		 onclick="fn_modComment(this, ${comment.comment_no})">수정하기</a>
+					                                    		 <a href="#" role="button" class="modReplyBtn" id="cancelMod${comment.comment_no}" 
+					                                    		onclick="fn_cancleMod(this, ${comment.comment_no})">취소</a>
+					                                    	</span>
+					                                    </c:if>
+					                                </div>
+					                            </div>
+					                        </li>
+					                    </c:when>
+					
+					                    <c:otherwise>
+					                        <li id="${comment.comment_no }" class="commentItem commentLi">
+					                            <div class="commentbox">
+					                                <div class="commentTool">
+					                                	<c:if test="${user_id==comment.user_id}">
+					                                    	<span class="comMod comToolBtn">
+					                                    		<a href="#" role="button" onclick="fn_enable(this,${comment.comment_no})" 
+					                                    		id="comModBtn${comment.comment_no}">수정</a></span>
+					                                    	<span class="comDel comToolBtn">
+					                                    		<a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" 
+					                                    		role="button"  id="comDelBtn${comment.comment_no}">삭제</a></span>
+					                                	</c:if>
+					                                </div>
+					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+					                                <a href="#" class="commentThumb">
+					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
+					                                </a>
+					                                <div class="commentNick">
+					                                    <span  class="commentNickInfo">
+					                                        <a href="#" role="button">${comment.userVO.nickname}</a>
+					                                    </span>
+					                                </div>
+					                                <div class="commentText">
+					                                    <p><textarea class="viewTextArea" rows="1" id="viewTextArea${comment.comment_no}" 
+					                                    onkeydown="resize(this)" onkeyup="resize(this)" disabled>${comment.com_cont}</textarea></p>
+					                                </div>
+					                                <div class="commentInfo">
+					                                    <span class="commentDate comDate"><fmt:formatDate value="${comment.create_date}" pattern="yyyy-MM-dd HH:mm" /></span>
+					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn" id="comReplyBtn${comment.comment_no}">답글쓰기</a></span>
+					                                    <c:if test="${user_id==comment.user_id}">
+					                                    	<span class="comMod comToolBtn modReply" id="modReply${comment.comment_no}">
+					                                    		<a href="#" role="button" class="modReplyBtn" id="modReplyBtn${comment.comment_no}" 
+					                                    		onclick="fn_modComment(this, ${comment.comment_no})">수정하기</a>
+					                                    		<a href="#" role="button" class="modReplyBtn" id="cancelMod${comment.comment_no}" 
+					                                    		onclick="fn_cancleMod(this, ${comment.comment_no})">취소</a>
+					                                    	</span>
+					                                	</c:if>
+					                                </div>
+					                            </div>
+					                        </li>
+					                        
+					                    </c:otherwise>
+					                </c:choose>
+					            </c:forEach>
+					        </ul>
+					    </c:when>
+					</c:choose>
+	              
 	              <!-- 댓글 쓰기 -->
 	              <div class="commentWriter">
 	                <div class="commentInbox">
-	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1"></textarea>
+	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea" onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
 	                </div>
 	                <div class="commentRegister">
-	                  <a href="#" role="button" class="button btnRegister">등록</a>
+	                  <a href="#" role="button" class="button btnRegister" id="regBtn" onclick="fn_regComment()">등록</a>
 	                </div>
 	              </div>
 	            </div>
@@ -282,12 +286,18 @@
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-	              <a href="#" role="button" class="button2">글쓰기</a>
+	              <a href="${contextPath}/group/board/write?group_id=${group.groupVO.grp_id}" role="button" class="btnWrite btn">글쓰기</a>
+	              
+	              <c:if test="${user_id==article.user_id }">
+		            <a href="#" role="button" class="btnEdit btn">수정</a>
+		            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article=article_no}" role="button" class="btnDel btn">삭제</a>
+	              </c:if>
+	              
 	            </div>
 	            <div class="rightArea">
 	              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-	              <a href="board.html" role="button" class="button2 btnList">목록</a>
-	              <a href="#boardView" role="button" class="button2 btnTop">Top</a>
+	              <a href="${referURL}" role="button" class="btnList btn">목록</a>
+	              <a href="#boardView" role="button" class="btn btnTop "><i class="fa-solid fa-caret-up"></i>TOP</a>
 	            </div>
 	          </div>
           </div>
