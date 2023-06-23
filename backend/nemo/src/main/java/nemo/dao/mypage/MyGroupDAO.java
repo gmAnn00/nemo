@@ -34,7 +34,7 @@ public class MyGroupDAO {
 	}
 
 	// 소모임장인 소모임 조회 메서드
-	public List<GroupVO> getManagerGrpId(String user_id) {
+	public List<GroupVO> getManagerGrp(String user_id) {
 		
 		List<GroupVO> mngGroupList = new ArrayList<>();
 		
@@ -100,7 +100,7 @@ public class MyGroupDAO {
 	}
 
 	// 일반회원 소모임 조회 메서드
-	public List<GroupVO> getUserGrpId(String user_id) {		
+	public List<GroupVO> getUserGrp(String user_id) {		
 		List<GroupVO> userGroupList = new ArrayList<>();
 
 		try {
@@ -119,8 +119,7 @@ public class MyGroupDAO {
 			pstmt.setString(2, user_id);
 			ResultSet rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				GroupVO groupVO = new GroupVO();
+			while(rs.next()) {				
 				
 				// ("")안의 값은 컬럼명과 같은지 꼭 확인
 				int grp_id = rs.getInt("grp_id");
@@ -137,19 +136,7 @@ public class MyGroupDAO {
 				String sub_name = rs.getString("sub_name");
 				String grp_img = rs.getString("grp_img");
 
-				groupVO.setGrp_id(grp_id);
-				groupVO.setGrp_name(grp_name);
-				groupVO.setGrp_mng(grp_mng);
-				groupVO.setMem_no(mem_no);
-				groupVO.setGrp_zipcode(grp_zipcode);
-				groupVO.setGrp_addr1(grp_addr1);
-				groupVO.setGrp_addr2(grp_addr2);
-				groupVO.setCreate_date(create_date);
-				groupVO.setGrp_intro(grp_intro);
-				groupVO.setApp_st(app_st);
-				groupVO.setMain_name(main_name);
-				groupVO.setSub_name(sub_name);
-				groupVO.setGrp_img(grp_img);
+				GroupVO groupVO = new GroupVO(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);
 				
 				//list에 세팅
 				userGroupList.add(groupVO);
@@ -166,7 +153,7 @@ public class MyGroupDAO {
 	}
 
 	//가입 대기중인 소모임 조회
-	public List<GroupVO> getWaitGrpId(String user_id) {		
+	public List<GroupVO> getWaitGrp(String user_id) {		
 		List<GroupVO> waitGroupList = new ArrayList<>();
 
 		try {
@@ -180,14 +167,27 @@ public class MyGroupDAO {
 
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, user_id);
-			//pstmt.setString(2, user_id);
+			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				GroupVO waitGroupVO = new GroupVO();
-				String userGrpId = rs.getString("grp_id");
-				// 아래 세팅 메서드에서 세팅
-				waitGroupVO = setGroupVO(userGrpId);
-				waitGroupList.add(waitGroupVO);
+				// ("")안의 값은 컬럼명과 같은지 꼭 확인
+				int grp_id = rs.getInt("grp_id");
+				String grp_name = rs.getString("grp_name");
+				String grp_mng = rs.getString("grp_mng");
+				int mem_no = rs.getInt("mem_no");
+				String grp_zipcode = rs.getString("grp_zipcode");
+				String grp_addr1 = rs.getString("grp_addr1");
+				String grp_addr2 = rs.getString("grp_addr2");
+				Date create_date = rs.getDate("create_date");
+				String grp_intro = rs.getString("grp_intro");
+				int app_st = rs.getInt("app_st");
+				String main_name = rs.getString("main_name");
+				String sub_name = rs.getString("sub_name");
+				String grp_img = rs.getString("grp_img");
+
+				GroupVO groupVO = new GroupVO(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);				
+				
+				waitGroupList.add(groupVO);
 			}
 			rs.close();
 			pstmt.close();
@@ -202,7 +202,7 @@ public class MyGroupDAO {
 		
 		
 	// 찜한 소모임 조회 메서드
-	public List<GroupVO> getBookMarkGrpId(String user_id) {		
+	public List<GroupVO> getBookMarkGrp(String user_id) {		
 		List<GroupVO> bookmarkGroupList = new ArrayList<>();
 
 		try {
@@ -218,12 +218,24 @@ public class MyGroupDAO {
 			pstmt.setString(1, user_id);				
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				GroupVO bookmarkGroupVO = new GroupVO();
-				
-				String bookmarkGrpId = rs.getString("grp_id");
-				// 아래 세팅 메서드에서 세팅
-				bookmarkGroupVO = setGroupVO(bookmarkGrpId);
-				bookmarkGroupList.add(bookmarkGroupVO);
+				// ("")안의 값은 컬럼명과 같은지 꼭 확인
+				int grp_id = rs.getInt("grp_id");
+				String grp_name = rs.getString("grp_name");
+				String grp_mng = rs.getString("grp_mng");
+				int mem_no = rs.getInt("mem_no");
+				String grp_zipcode = rs.getString("grp_zipcode");
+				String grp_addr1 = rs.getString("grp_addr1");
+				String grp_addr2 = rs.getString("grp_addr2");
+				Date create_date = rs.getDate("create_date");
+				String grp_intro = rs.getString("grp_intro");
+				int app_st = rs.getInt("app_st");
+				String main_name = rs.getString("main_name");
+				String sub_name = rs.getString("sub_name");
+				String grp_img = rs.getString("grp_img");
+
+				GroupVO groupVO = new GroupVO(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);				
+								
+				bookmarkGroupList.add(groupVO);
 			}
 			rs.close();
 			pstmt.close();
@@ -238,7 +250,8 @@ public class MyGroupDAO {
 
 		
 	// 그룹정보 세팅 메서드
-	public GroupVO setGroupVO(String grpId) {
+/*	
+ 	public GroupVO setGroupVO(String grpId) {
 		GroupVO groupVO = new GroupVO();
 		try {
 			conn = dataFactory.getConnection();
@@ -291,5 +304,5 @@ public class MyGroupDAO {
 		}
 		return groupVO;
 	}
-	
+	*/
 }

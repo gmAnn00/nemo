@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import nemo.service.group.GroupInfoService;
 import nemo.service.mypage.MyGroupService;
 import nemo.service.mypage.MyProfileService;
 import nemo.vo.group.GroupVO;
@@ -44,9 +45,12 @@ public class MyGroupListController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		session = request.getSession();
 		String nextPage = "";
-
 		String action = request.getPathInfo();
 		String user_id = (String) session.getAttribute("user_id");
+		
+		boolean isBookmark = false;
+		GroupInfoService groupInfoService = new GroupInfoService();
+
 
 		if (user_id != null) {
 			// 로그인 상태일때만 수행
@@ -55,35 +59,31 @@ public class MyGroupListController extends HttpServlet {
 					user_id = (String)session.getAttribute("user_id");
 					//내가 리더인 소모임	조회
 					List<GroupVO> mngGroupList = new ArrayList<>();
-					mngGroupList = myGroupService.getManagerGrpId(user_id);					
+					mngGroupList = myGroupService.getManagerGrp(user_id);					
 					
 					//일반 회원인 소모임 조회
 					List<GroupVO> userGroupList = new ArrayList<>();
-					userGroupList = myGroupService.getUserGrpId(user_id);										
+					userGroupList = myGroupService.getUserGrp(user_id);										
 					
 					//가입 대기중인 소모임 조회
 					List<GroupVO> waitGroupList = new ArrayList<>();
-					waitGroupList = myGroupService.getWaitGrpId(user_id);
+					waitGroupList = myGroupService.getWaitGrp(user_id);
 					
 					//찜한 소모임 조회 BOOKMARK_TBL
 					List<GroupVO> bookmarkGroupList = new ArrayList<>();
-					bookmarkGroupList  = myGroupService.getBookMarkGrpId(user_id);
+					bookmarkGroupList  = myGroupService.getBookMarkGrp(user_id);
 					
 					
 					request.setAttribute("mngGroupList", mngGroupList);
 					request.setAttribute("userGroupList", userGroupList);
 					request.setAttribute("waitGroupList", waitGroupList);
 					request.setAttribute("bookmarkGroupList", bookmarkGroupList);
+					request.setAttribute("isBookmark", true); //찜한 소모임용
 					
 					
 					nextPage="/views/mypage/myGroupList.jsp";
 					
-				} else if(action.equals("/isntBookmark.do")) {
-					//북마크 찜, 해제
-					//해제한 소모임도 바로 없애지 말고, 새로고침 할 때까지는 보이도록 만들자
-					//BookmarkDAO 사용 
-					//후순위 구현
-				}
+				} 
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 				dispatcher.forward(request, response);

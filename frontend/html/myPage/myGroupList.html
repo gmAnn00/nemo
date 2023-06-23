@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/bc604c01cc.js" crossorigin="anonymous"></script>
     <script src="../../js/jquery-3.6.4.min.js"></script>
     <script src="../../js/header.js"></script>
+    <script src="../..//js/groupInfo.js"></script>
   </head>
   <body>
     <!-- 배경색 조정 -->
@@ -298,6 +299,26 @@
                       <span class="card__category">소분류</span>
                       <h3 class="card__title">이젠종로학원</h3>
                       <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
+                      <button type="button" class="grpLikeBtn" title="네모찜하기">
+                        <span class="grpLike">
+                          <svg viewBox="0 0 24 24">
+                            <use xlink:href="#heart" />
+                            <!-- filled heart -->
+                            <use xlink:href="#heart" />
+                            <!-- outline heart -->
+                          </svg>
+                          <!-- reference path for both outline, and filled, hearts -->
+                          <svg class="hide" viewBox="0 0 24 24">
+                            <defs>
+                              <path
+                                id="heart"
+                                d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"
+                              />
+                            </defs>
+                          </svg>
+                        </span>
+                        <span class="hidden">찜하기</span>
+                      </button>
                     </div>
                   </div>
                 </div>

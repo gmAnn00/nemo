@@ -27,6 +27,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
     ></script>
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
     <script src="${contextPath}/js/header.js"></script>
+    <script src="${contextPath}/js/myGroupList.js"></script>
   </head>
   <body>
     <jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -132,7 +133,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                               <i class="fa-solid fa-location-dot"></i>
                               <a href="#" class="card__author">${locationM}</a>
                             </span>
-                          </div>
+                          </div>                        
                         </div>
                       </c:forEach>
                     </c:when>
@@ -234,8 +235,8 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                     <c:when test="${!empty bookmarkGroupList}">
                       <c:forEach var="bookmarkGroup" items="${bookmarkGroupList}" varStatus="loop">
                       <c:set var="idx" value="${bookmarkGroup.grp_addr1.indexOf(' ', bookmarkGroup.grp_addr1.indexOf(' ') + 1)}" />
-                      <c:set var="locationB" value="${bookmarkGroup.grp_addr1.substring(0, idx)}"/>
-		                  <div class="card card--1">
+                      <c:set var="locationB" value="${bookmarkGroup.grp_addr1.substring(0, idx)}"/>                      
+		                  <div class="card card--1">		                    
 		                    <div class="card__info-hover">
 		                      <span>바로가기</span>
 		                      <i class="fa-solid fa-arrow-right"></i>
@@ -251,8 +252,49 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 		                      <span class="card__by"
 		                        ><i class="fa-solid fa-location-dot"></i>
 		                        <a href="#" class="card__author">${locationB}</a>
+		                          <button type="button" class="grpLikeBtn" title="네모찜하기">
+			                          <c:if test="${isBookmark}">
+				
+										<span class="grpLike on"> <svg viewBox="0 0 24 24">
+				                                <use xlink:href="#heart" />
+				                                <!-- filled heart -->
+				                                <use xlink:href="#heart" />
+				                                <!-- outline heart -->
+				                            </svg> <!-- reference path for both outline, and filled, hearts -->
+											<svg class="hide" viewBox="0 0 24 24">
+				                                <defs>
+				                                    <path id="heart"
+													d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
+				                                </defs>
+				                            </svg>
+										</span>
+										<span class="hidden">찜하기</span>
+				
+									</c:if>
+									<c:if test="${!isBookmark}">
+				
+										<span class="grpLike"> <svg viewBox="0 0 24 24">
+				                                <use xlink:href="#heart" />
+				                                <!-- filled heart -->
+				                                <use xlink:href="#heart" />
+				                                <!-- outline heart -->
+				                            </svg> <!-- reference path for both outline, and filled, hearts -->
+											<svg class="hide" viewBox="0 0 24 24">
+				                                <defs>
+				                                    <path id="heart"
+													d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
+				                                </defs>
+				                            </svg>
+										</span>
+										<span class="hidden">찜하기</span>
+				
+									</c:if>
+			                      </button>
 		                      </span>
 		                    </div>
+		                    <input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${user_id}"/>
+                            <input type="hidden" id="grp_id_hidden" name="grp_id_hidden" value="${bookmarkGroup.grp_id}"/>
+						    <input type="hidden" id="isBookmark_hidden" name="isBookmark_hidden" value="${isBookmark}"/>
 		                  </div>
 						</c:forEach>
                     </c:when>

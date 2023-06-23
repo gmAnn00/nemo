@@ -256,7 +256,7 @@ public class MyProfileController extends HttpServlet {
 									
 					//알림창
 			        System.out.println(user_id + "회원 탈퇴");
-					request.setAttribute("msg", "deleted");
+					//request.setAttribute("msg", "deleted");
 					nextPage="/nemo/index";
 					response.sendRedirect(nextPage);
 
@@ -271,7 +271,7 @@ public class MyProfileController extends HttpServlet {
 			
 		} else {
 			//로그인 상태가 아니라면 index페이지로 이동하게 함
-			request.setAttribute("msg", "isnotlogin");
+			request.setAttribute("msg", "isnotlogOn");
 			nextPage="/nemo/index";
 			response.sendRedirect(nextPage);
 		}
