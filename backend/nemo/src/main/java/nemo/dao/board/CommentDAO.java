@@ -30,11 +30,13 @@ public class CommentDAO {
 	}
 	
 	//댓글 추가
-	public void insertNewComment(String user_id,int group_id, int article_no, String com_cont, int parent_no) {
+	public int insertNewComment(String user_id,int group_id, int article_no, String com_cont, int parent_no) {
+		int comment_no=0;
 		try {
 			conn=dataFactory.getConnection();
 			String query="INSERT INTO comment_tbl (comment_no, article_no, user_id, com_cont,parent_no, grp_id)";
 			query+=" VALUES (seq_comm_no.NEXTVAL,?,?,?,?,?)";
+			
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1,article_no);
@@ -44,13 +46,21 @@ public class CommentDAO {
 			pstmt.setInt(5, group_id);
 			pstmt.executeUpdate();
 			
-			System.out.println(com_cont);
+			query=" SELECT seq_comm_no.CURRVAL AS num FROM dual";
+			pstmt=conn.prepareStatement(query);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			comment_no=rs.getInt("num");
+			
+			rs.next();
 			pstmt.close();
 			conn.close();
 		}catch (Exception e) {
 			System.out.println("db 댓글 등록 중 에러 ");
 			e.printStackTrace();
 		}
+		System.out.println("댓글 등록 :"+comment_no);
+		return comment_no;
 	}
 	
 	//댓글 리스트 
@@ -106,7 +116,46 @@ public class CommentDAO {
 		return commentList;
 		
 	}
+	//댓글 수정
+	public void updateComment(int comment_no, String com_cont) {
+		try {
+			conn=dataFactory.getConnection();
+			String query="UPDATE comment_tbl SET com_cont=? WHERE comment_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, com_cont);
+			pstmt.setInt(2, comment_no);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+		}catch (Exception e) {
+			System.out.println("댓글 수정 중 에러");
+			e.printStackTrace();
+		}
+	}
 	
+	//댓글 수정 취소시 comment 내용 받아오기
+	public String selectCommentCont(int comment_no) {
+		String com_cont=null;
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT com_cont FROM comment_tbl WHERE comment_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, comment_no);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			com_cont=rs.getString("com_cont");
+			rs.close();
+			pstmt.close();
+			conn.close();
+		}catch (Exception e) {
+			System.out.println("댓글 수정 취소시 comment 받아 오는 중 에러");
+			e.printStackTrace();
+		}
+		return com_cont;
+	}
 	//댓글 삭제
 	public void deleteComment(int comment_no) {
 		try {
@@ -159,9 +208,9 @@ public class CommentDAO {
 		CommentVO comment= new CommentVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT c.comment_no, c.article_no, c.com_cont, a.title";
-			query+=" FROM comment_tbl c, board_tbl a ";
-			query+=" WHERE c.article_no=a.article_no AND c.comment_no=?";
+			String query="SELECT c.comment_no, c.article_no, u.nickname, c.com_cont, c.create_date, a.title, parent_no";
+			query+=" FROM comment_tbl c, board_tbl a, user_tbl u";
+			query+=" WHERE u.user_id=c.user_id AND c.article_no=a.article_no AND c.comment_no=?";
 			
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, comment_no);
@@ -172,11 +221,18 @@ public class CommentDAO {
 			
 			int _comment_no=rs.getInt("comment_no");
 			int article_no=rs.getInt("article_no");
+			String nickname=rs.getString("nickname");
 			String com_cont=rs.getString("com_cont");
+			Timestamp create_date=rs.getTimestamp("create_date");
 			String title = rs.getString("title");
-			comment.getArticleVO().setTitle(title);
+			int parent_no=rs.getInt("parent_no");
+			
 			comment.setComment_no(_comment_no);
 			comment.setArticle_no(article_no);
+			comment.getUserVO().setNickname(nickname);
+			comment.setParent_no(parent_no);
+			comment.setCreate_date(create_date);
+			comment.getArticleVO().setTitle(title);
 			comment.setCom_cont(com_cont);
 
 			rs.close();
@@ -189,6 +245,26 @@ public class CommentDAO {
 		}
 		
 		return comment;
+	}
+	
+	//댓글 개수 가져오는 메소드
+	public int getCommentCnt(int article_no) {
+		int com_cnt=0;
+		try {
+			conn=dataFactory.getConnection();
+			String query = "SELECT COUNT(*) as cnt FROM comment_tbl WHERE article_no=?";
+			System.out.println("query");
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, article_no);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			com_cnt=rs.getInt("cnt");
+			
+		}catch (Exception e) {
+			System.out.println("댓글 개수 가져오는 중 에러");
+			e.printStackTrace();
+		}
+		return com_cnt;
 	}
 	
 	//게시글 코멘트 작성한 사람과 액션한 사람이 동일한지 체크하는 메소드

@@ -231,7 +231,24 @@ margin: 15px 0 15px 0;
 .commentNick .commentNickInfo {
   font-weight: bold;
 }
+.viewTextArea {
+	width: 100%;
+	height:auto;
+  /*min-height: 70px;*/
+  padding: 10px 5px;
+  border: 0;
+  font-size: 13px;
+  resize: none;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 2px;
+  outline-color: #ffd480;
+	border: none;
+}
 .commentInfo {
+	position:relative;
 	vertical-align: middle;
 }
 .commentDate, .comDate{
@@ -242,6 +259,20 @@ margin: 15px 0 15px 0;
 	margin-left:10px;
 	color: #999;
 	font-size: 12px;
+}
+.modReply {
+	position:absolute;
+	right: 8px;
+	display:inline-block;
+	text-align: right;
+	font-weight: bold;
+	visibility: hidden;
+}
+.modReplyBtn{
+	margin:0 5px;
+}
+.modReplyBtn:hover{
+	color:#fb3;
 }
 
 /* 댓글에 답글 form*/
@@ -274,9 +305,9 @@ margin: 15px 0 15px 0;
 }
 .commentInboxText {
   width: 100%;
-  min-height: 70px;
+  /*min-height: 70px;*/
   margin-top: 5px;
-  padding: 5px 5px;
+  padding: 15px 5px;
   border: 0;
   font-size: 13px;
   resize: none;
@@ -293,6 +324,7 @@ margin: 15px 0 15px 0;
   margin-top:5px;
   padding-right:5px;
 }
+
 
 /* 아래쪽 버튼 영역 */
 .btn {

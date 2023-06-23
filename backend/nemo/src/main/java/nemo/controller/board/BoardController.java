@@ -231,6 +231,7 @@ public class BoardController extends HttpServlet {
 				}
 			}	
 		}else if(action.equals("/addComment")) {
+			Map commentInfo=new HashMap();
 			System.out.println("여기오나");
 			String com_cont=request.getParameter("com_cont");
 			int article_no=Integer.parseInt(request.getParameter("article_no"));
@@ -239,8 +240,21 @@ public class BoardController extends HttpServlet {
 			System.out.println(article_no);
 			System.out.println(com_cont);
 			
-			commentService.addComment(user_id, group_id, article_no, com_cont,parent_no);
+			commentInfo=commentService.addComment(user_id, group_id, article_no, com_cont,parent_no);
 			out.print("success");
+			
+			//return commentInfo;
+		}else if(action.equals("/modComment")) {
+			int comment_no=Integer.parseInt(request.getParameter("comment_no"));
+			String com_cont=request.getParameter("com_cont");
+			commentService.modComment(comment_no, com_cont);
+			out.print("success");
+			return;
+		}else if(action.equals("/modCancle")) {
+			int comment_no=Integer.parseInt(request.getParameter("comment_no"));
+			String com_cont=commentService.getCommentCont(comment_no);
+			System.out.println(com_cont);
+			out.print(com_cont);
 			return;
 		}
 		

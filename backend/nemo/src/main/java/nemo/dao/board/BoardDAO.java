@@ -382,7 +382,7 @@ public class BoardDAO {
 	}
 	*/
 	//댓글 개수 확인해서 업데이트하는 메소드
-	public void countComment(int account_no) {
+	public void updateCommentCnt(int account_no) {
 		try {
 			conn=dataFactory.getConnection();
 			String query = "UPDATE board_tbl SET com_cnt=";

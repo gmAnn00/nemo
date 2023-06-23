@@ -160,8 +160,7 @@
 	            	<div class="contentEditTool">
 		            	<c:if test="${user_id==article.user_id}">
 				            <a href="#" role="button" class="btnEdit btn">수정</a>
-				            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" 
-				            role="button" class="btnDel btn">삭제</a>
+				            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnDel btn">삭제</a>
 		              	</c:if>
 	            	</div>
 	            	<div class="content">
@@ -176,21 +175,15 @@
 					<c:choose>
 					    <c:when test="${!empty comments }">
 					        <ul class="commentList">
-					            <c:forEach var="comment" items="${comments}" varStatus="cnt">
+					            <c:forEach var="comment" items="${comments}">
 					                <c:choose>
 					                    <c:when test="${comment.level>1 }">
 					                        <li id="${comment.comment_no }" class="commentItem replyCommentItem commentLi">
 					                            <div class="commentbox">
 					                                <div class="commentTool">
 					                                	<c:if test="${user_id==comment.user_id}">
-					                                    	<span class="comMod comToolBtn">
-					                                    		<a href="#" role="button" onclick="fn_enable(this,${comment.comment_no })" 
-					                                    		id="comModBtn${comment.comment_no}">수정</a>
-					                                    	</span>
-					                                    	<span class="comDel comToolBtn">
-					                                    		<a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" 
-					                                    		role="button" id="comDelBtn${comment.comment_no}">삭제</a>
-					                                    	</span>
+					                                    	<span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
+					                                    	<span class="comDel comToolBtn"><a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" role="button">삭제</a></span>
 					                                	</c:if>
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
@@ -203,20 +196,11 @@
 					                                    </span>
 					                                </div>
 					                                <div class="commentText">
-					                                    <p><textarea class="viewTextArea" rows="1" id="viewTextArea${comment.comment_no}" 
-					                                    onkeydown="resize(this)" onkeyup="resize(this)" disabled >${comment.com_cont}</textarea></p>
+					                                    <p>${comment.com_cont}</p>
 					                                </div>
 					                                <div class="commentInfo">
 					                                    <span class="commentDate comDate"><fmt:formatDate value="${comment.create_date}" pattern="yyyy-MM-dd HH:mm" /></span>
-					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn" id="comReplyBtn${cnt.count}">답글쓰기</a></span>
-					                                    <c:if test="${user_id==comment.user_id}">
-					                                    	<span class="comMod comToolBtn modReply" id="modReply${comment.comment_no}">
-					                                    		<a href="#" role="button" class="modReplyBtn" id="modReplyBtn${comment.comment_no}"
-					                                    		 onclick="fn_modComment(this, ${comment.comment_no})">수정하기</a>
-					                                    		 <a href="#" role="button" class="modReplyBtn" id="cancelMod${comment.comment_no}" 
-					                                    		onclick="cancleMod(this, ${comment.comment_no})">취소</a>
-					                                    	</span>
-					                                    </c:if>
+					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn">답글쓰기</a></span>
 					                                </div>
 					                            </div>
 					                        </li>
@@ -227,12 +211,8 @@
 					                            <div class="commentbox">
 					                                <div class="commentTool">
 					                                	<c:if test="${user_id==comment.user_id}">
-					                                    	<span class="comMod comToolBtn">
-					                                    		<a href="#" role="button" onclick="fn_enable(this,${comment.comment_no})" 
-					                                    		id="comModBtn${comment.comment_no}">수정</a></span>
-					                                    	<span class="comDel comToolBtn">
-					                                    		<a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" 
-					                                    		role="button"  id="comDelBtn${comment.comment_no}">삭제</a></span>
+					                                    	<span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
+					                                    	<span class="comDel comToolBtn"><a href="${contextPath}/group/board/deleteComment?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}&comment_no=${comment.comment_no}" role="button">삭제</a></span>
 					                                	</c:if>
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
@@ -245,20 +225,11 @@
 					                                    </span>
 					                                </div>
 					                                <div class="commentText">
-					                                    <p><textarea class="viewTextArea" rows="1" id="viewTextArea${comment.comment_no}" 
-					                                    onkeydown="resize(this)" onkeyup="resize(this)" disabled>${comment.com_cont}</textarea></p>
+					                                    <p>${comment.com_cont}</p>
 					                                </div>
 					                                <div class="commentInfo">
 					                                    <span class="commentDate comDate"><fmt:formatDate value="${comment.create_date}" pattern="yyyy-MM-dd HH:mm" /></span>
-					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn" id="comReplyBtn${comment.comment_no}">답글쓰기</a></span>
-					                                    <c:if test="${user_id==comment.user_id}">
-					                                    	<span class="comMod comToolBtn modReply" id="modReply${comment.comment_no}">
-					                                    		<a href="#" role="button" class="modReplyBtn" id="modReplyBtn${comment.comment_no}" 
-					                                    		onclick="fn_modComment(this, ${comment.comment_no})">수정하기</a>
-					                                    		<a href="#" role="button" class="modReplyBtn" id="cancelMod${comment.comment_no}" 
-					                                    		onclick="fn_cancleMod(this, ${comment.comment_no})">취소</a>
-					                                    	</span>
-					                                	</c:if>
+					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn">답글쓰기</a></span>
 					                                </div>
 					                            </div>
 					                        </li>
@@ -273,7 +244,7 @@
 	              <!-- 댓글 쓰기 -->
 	              <div class="commentWriter">
 	                <div class="commentInbox">
-	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea" onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
+	                  <textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea"></textarea>
 	                </div>
 	                <div class="commentRegister">
 	                  <a href="#" role="button" class="button btnRegister" id="regBtn" onclick="fn_regComment()">등록</a>
