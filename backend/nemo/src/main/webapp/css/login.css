@@ -1,0 +1,136 @@
+#contentsArea {
+  width: 900px;
+  height: 600px;
+  padding: 40px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+}
+#contentsArea h2 {
+  font-size: 20px;
+  margin-top: 45px;
+  margin-bottom: 12px;
+}
+.imageArea {
+  background-image: url(../images/야옹대가족.JPG);
+  background-size: 450px 375px;
+  background-repeat: no-repeat;
+  background-position-y: 50px;
+  width: 60%;
+  position: relative;
+}
+.imageArea img {
+  width: 180px;
+  /* height: 60px; */
+  margin-top: 20px;
+}
+.imageArea .msg {
+  margin-left: 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3em;
+  position: relative;
+  top: 150px;
+  left: 10px;
+  line-height: 30px;
+}
+.imageArea .url {
+  display: inline-block;
+  position: relative;
+  top: 320px;
+  left: 100px;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+.imageArea span {
+  color: #000;
+}
+.loginArea {
+  width: 38%;
+}
+.loginArea .rememberCheck {
+  margin: 0 5px 20px 5px;
+  position: relative;
+  top: 3px;
+}
+.loginArea .keepLogin {
+  margin: 0 5px 20px 45px;
+  position: relative;
+  top: 3px;
+}
+.joinFind {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.joinFind a {
+  padding-left: 5px;
+  font-size: 12px;
+  color: #404040;
+  font-weight: bold;
+}
+.find {
+  margin-left: 70px;
+  margin-bottom: 15px;
+}
+#loginForm,
+h2 {
+  width: 80%;
+  margin: 0 auto;
+}
+#loginForm > input {
+  width: 100%;
+  height: 36px;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+#loginForm > #userName,
+#loginForm > #userPassword {
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid #ccc;
+  /* border-image: linear-gradient(to right, red 0%, orange 100%); */
+  border-image-slice: 1;
+  font-size: 14px;
+  outline: none;
+}
+#loginForm > input::placeholder {
+  color: #333;
+}
+#loginForm > input[type="submit"] {
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-clip: content-box;
+  background-color: var(--sub-color);
+}
+#loginForm > input[type="submit"]:hover {
+  background-color: var(--main-color);
+}
+#loginForm > label {
+  font-size: 0.8em;
+}
+#loginForm > input[type="button"] {
+  border: transparent;
+  color: #fff;
+}
+#loginForm > .naverLog {
+  /* background: #03c75a; */
+  border-radius: 5px;
+  border: none;
+}
+#loginForm > .kakaoLog {
+  /* background: #fee500; */
+  border-radius: 5px;
+  border: none;
+}
+#loginForm > .googleLog {
+  /* background: #ffffff; */
+  border-radius: 5px;
+  border: none;
+}

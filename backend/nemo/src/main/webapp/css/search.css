@@ -58,9 +58,23 @@
   */
 	
 }
-
+label{
+	cursor: pointer;
+	margin: 0 20px;
+}
+#joinAbleLabel{
+	border-color: #00a0e9;
+}
+.buttonSort:hover{
+	font-weight: bold;
+}
 .sortOn {
-	background: var(--sub-color);
+	/*background: var(--sub-color);*/
+	font-weight: bold;
+}
+.sortAble{
+	/*background: #8fd3f2;*/
+	font-weight: bold;
 }
 
 /* 카테고리 영역 */
@@ -298,4 +312,18 @@ svg {
 
 .hide {
 	display: none;
+}
+#noResultArea{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#gotoCreate, h4{
+	text-align: center;
+}
+#gotoCreateDiv{
+	text-align: center;
 }

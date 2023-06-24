@@ -184,7 +184,7 @@ public class CreateGroupController extends HttpServlet {
 					groupMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 				}else {
 					File defaultFile = new File(GROUP_DEF_IMG);
-					FileUtils.moveFileToDirectory(defaultFile, tempDirPath, true);
+					FileUtils.copyFileToDirectory(defaultFile, tempDirPath, false);
 					// 이미지일 때 이 안 실행
 					System.out.println("필드명: " + fileItem.getFieldName());
 					System.out.println("파일(이미지) 이름: " + fileItem.getName());

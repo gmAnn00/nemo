@@ -32,16 +32,11 @@ public class CreateGroupDAO {
 		try {
 
 			conn = dataFactory.getConnection();
-			//String query = "insert into group_tbl(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_mimg, grp_pimg)"
-			//		+" values (seq_group_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //			String query = "insert into group_tbl"
 //					+" (grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, grp_intro, app_st, main_name, sub_name, grp_img, create_date)"
 //					+ " values(seq_group_id.nextval,?,?,?,?,?,?,?,?,?,?,?, sysdate)";
-			String query = "insert into group_tbl"
-					+ " values(seq_group_id.nextval,?,?,?,?,?,?,sysdate,?,?,?,?,?)";
-			System.out.println(query);
-			pstmt = conn.prepareStatement(query);
-
+			String query;
+			
 			String grp_name = groupVO.getGrp_name();
 			String grp_mng = groupVO.getGrp_mng();
 			int mem_no = groupVO.getMem_no();
@@ -54,17 +49,46 @@ public class CreateGroupDAO {
 			String sub_name = groupVO.getSub_name();
 			String grp_img = groupVO.getGrp_img();
 			
-			pstmt.setString(1, grp_name);
-			pstmt.setString(2, grp_mng);
-			pstmt.setInt(3, mem_no);
-			pstmt.setString(4, grp_zipcode);
-			pstmt.setString(5, grp_addr1);
-			pstmt.setString(6, grp_addr2);
-			pstmt.setString(7, grp_intro);
-			pstmt.setInt(8, app_st);
-			pstmt.setString(9, main_name);
-			pstmt.setString(10, sub_name);
-			pstmt.setString(11, grp_img);
+			//System.out.println("grp_addr2"+grp_addr2);
+			
+			if(!grp_addr2.equals("")) {
+				//System.out.println("addr2 있음");
+				query = "insert into group_tbl"
+						+ " values(seq_group_id.nextval,?,?,?,?,?,?,sysdate,?,?,?,?,?)";
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, grp_name);
+				pstmt.setString(2, grp_mng);
+				pstmt.setInt(3, mem_no);
+				pstmt.setString(4, grp_zipcode);
+				pstmt.setString(5, grp_addr1);
+				pstmt.setString(6, grp_addr2);
+				pstmt.setString(7, grp_intro);
+				pstmt.setInt(8, app_st);
+				pstmt.setString(9, main_name);
+				pstmt.setString(10, sub_name);
+				pstmt.setString(11, grp_img);
+				
+			} else {
+				//System.out.println("addr2 없음");
+				query = "insert into group_tbl"
+						+" (grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_intro, app_st, main_name, sub_name, grp_img, create_date)"
+						+ " values(seq_group_id.nextval,?,?,?,?,?,?,?,?,?,?, sysdate)";
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, grp_name);
+				pstmt.setString(2, grp_mng);
+				pstmt.setInt(3, mem_no);
+				pstmt.setString(4, grp_zipcode);
+				pstmt.setString(5, grp_addr1);
+				pstmt.setString(6, grp_intro);
+				pstmt.setInt(7, app_st);
+				pstmt.setString(8, main_name);
+				pstmt.setString(9, sub_name);
+				pstmt.setString(10, grp_img);
+			}
+			
+			
 			
 			int ret = pstmt.executeUpdate();
 
