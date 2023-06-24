@@ -1,6 +1,10 @@
 package nemo.controller.group;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,12 +35,17 @@ public class BookmarkController extends HttpServlet {
 		String nextPage = "";
 		session=request.getSession();
 		
+		PrintWriter out = response.getWriter();
+		
 		String user_id = (String) request.getParameter("user_id");
 		int group_id = Integer.parseInt(request.getParameter("group_id"));
-		Boolean isBookmark = Boolean.parseBoolean(request.getParameter("isBookmark"));
 		
 		BookmarkService bookmarkService = new BookmarkService();
-		bookmarkService.toggleBookmark(user_id, group_id, isBookmark);
+		
+		
+		Boolean isBookmark = bookmarkService.toggleBookmark(user_id, group_id);
+		
+		out.print(isBookmark);
 		
 	}
 

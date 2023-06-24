@@ -3,7 +3,7 @@ $(function() {
 	cAreaTop = parseInt(cAreaTop);
 	console.log(cAreaTop);
 	$(".categoriesArea").css("top", cAreaTop + "px");
-
+	/*
 	$(".grpLike").on("click", function() {
 		// grpLike 클래스 클릭시 ♡♥ 토글됨
 		$(this).toggleClass("on");
@@ -15,7 +15,9 @@ $(function() {
 			checkOnOff = false;
 		}
 		console.log(checkOnOff);
+		
 	});
+	*/
 
 	const category = {
     "문화 · 공연 · 축제": ["뮤지컬 · 오페라", "공연 · 연극", "영화,", "전시회", "연기 · 공연제작", "문화재 탐방", "파티 · 페스티벌"],
@@ -109,7 +111,7 @@ $(function() {
 
 			const list = category[key];
 			for (let i = 0; i < list.length; i++) {
-				smallHtml += `<option value=${list[i]} data-class='${key}'>${list[i]}</option>`;
+				smallHtml += `<option value='${list[i]}' data-class='${key}'>${list[i]}</option>`;
 			}
 		}
 
@@ -216,14 +218,51 @@ $(function() {
 	if(main_name_hidden != "none"){
 		$("select[name=bigCate]").val(main_name_hidden).prop("selected", true);
 		
+	}else{
+		$("select[name=bigCate]").val("none").prop("selected", true);
 	}
 	
 	let sub_name_hidden = $("#sub_name_hidden").val();
 	if(sub_name_hidden != "none"){
 		$("select[name=smallCate]").val(sub_name_hidden).prop("selected", true);
+	}else{
+		$("select[name=smallCate]").val("none").prop("selected", true);
 	}
 	
 
 });
 
 let checkOnOff = false; //찜인지 아닌지 체크하는 변수
+
+function bookmarkClick(user_id, group_id){
+	
+	let hostIndex = location.href.indexOf(location.host) + location.host.length;
+	let contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
+	let url = contextPath + "/group/bookmark";
+	//console.log(contextPath);
+	
+	let isBookmark_hidden = $("#isBookmark"+group_id).val();
+	console.log("isBookmark_hidden=" ,isBookmark_hidden);
+	
+	$.ajax({
+		type: "post",
+		async: true,
+		url: url,
+		data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark_hidden },
+		success: function(data, textStatus) {
+			isBookmark = data;
+			let target = ".grpLike"+group_id;
+						
+			$(target).toggleClass("on");
+			
+			$("#isBookmark"+group_id).val(isBookmark);
+
+		},
+		error: function(data, textStatus, error) {
+			console.log(data);
+			console.log(textStatus);
+			console.log(error);
+			alert("찜 추가/삭제 에러 발생");
+		},
+	});
+}

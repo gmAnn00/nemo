@@ -7,20 +7,14 @@ $(function() {
 	let group_id = new URL(location.href).searchParams;
 	group_id = group_id.get("group_id");
 	console.log("group_id=" + group_id);
-	//let isBookmark = "${isBookmark}";
-	let isBookmark = $("#isBookmark_hidden").val();
-	console.log("isBookmark=" + isBookmark)
 
 	$(".joinBtn").on("click", function() {
 		console.log(user_id);
 		//console.log(typeof user_id);
 		//console.log(group_id);
 		if (user_id === "null" || user_id === "") {
-			if (window.confirm("로그인 후 이용해주세요")) {
-				location.href = "/nemo/index";
-			} else {
-				location.href = "/nemo/index";
-			}
+			alert("로그인 후 이용해주세요");
+			location.href="/nemo/loginForm";
 		} else {
 			console.log("user_id" + user_id);
 			location.href = "/nemo/group/joinGroup?group_id=" + group_id;
@@ -31,28 +25,30 @@ $(function() {
 		if (user_id === 'null' || user_id === "" || user_id == null) {
 			$(this).removeClass("on");
 			alert("로그인 후 이용해주세요");
-			location.href = "/nemo/index";
+			location.href = "/nemo/loginForm";
 
 		} else {
 			let hostIndex = location.href.indexOf(location.host) + location.host.length;
 			let contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
 			let url = contextPath + "/group/bookmark";
-			console.log(contextPath);
+			//console.log(contextPath);
 			$.ajax({
 				type: "post",
 				async: true,
 				url: url,
-				data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark },
+				data: { "user_id": user_id, "group_id": group_id},
 				success: function(data, textStatus) {
-					console.log(isBookmark);
 					let newNum=0;
-					if(isBookmark){
+					//console.log("data=", typeof data);
+					if(data=="false"){
+						//console.log("-1 : ", data);
 						newNum = Number($("#likeNum").text()) - 1;
 					}
 					else{
+						//console.log("+1 : ", data);
 						newNum = Number($("#likeNum").text()) + 1;
 					}
-					isBookmark = !isBookmark;
+
 					$(".grpLike").toggleClass("on");
 					
 					$("#likeNum").text(newNum);
