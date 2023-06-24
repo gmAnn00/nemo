@@ -262,7 +262,6 @@
 					                                </div>
 					                            </div>
 					                        </li>
-					                        
 					                    </c:otherwise>
 					                </c:choose>
 					            </c:forEach>

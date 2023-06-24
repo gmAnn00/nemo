@@ -246,7 +246,7 @@ public class BoardController extends HttpServlet {
 			System.out.println(com_cont);
 			
 			commentInfo=commentService.addComment(user_id, group_id, article_no, com_cont,parent_no);
-			comInfo=commentMapToJason(commentInfo);
+			comInfo=commentMapToJson(commentInfo);
 			comInfo.put("group_id", group_id);
 			String jsonInfo=comInfo.toJSONString();
 			out.print(jsonInfo);
@@ -272,20 +272,20 @@ public class BoardController extends HttpServlet {
 	}
 	
 	
-	private JSONObject commentMapToJason(Map commentInfo) {
+	private JSONObject commentMapToJson(Map commentInfo) {
 		JSONObject comInfo=new JSONObject();
+		CommentVO commentVO = (CommentVO)commentInfo.get("commentVO");
 		
-		System.out.println("ㅇㅕ기 서비스"+((CommentVO)commentInfo.get("commentVO")).getArticle_no());
-		System.out.println(commentInfo.get(commentVO.getComment_no()));
 		//String create_date=(String)commentInfo.get(commentVO.getCreate_date());
 		//String create_date=(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")).format(commentInfo.get(commentVO.getCreate_date()));
 		//System.out.println(create_date);
-		comInfo.put("comment_no", ((CommentVO)commentInfo.get("commentVO")).getComment_no());
-		comInfo.put("article_no", ((CommentVO)commentInfo.get("commentVO")).getArticle_no());
-		comInfo.put("nickname", ((CommentVO)commentInfo.get("commentVO")).getUserVO().getNickname());
-		comInfo.put("com_cont", ((CommentVO)commentInfo.get("commentVO")).getCom_cont());
-		//comInfo.put("create_date", create_date);
-		comInfo.put("user_img", ((CommentVO)commentInfo.get("commentVO")).getUserVO().getUser_img());
+		String create_date=(new SimpleDateFormat("yyyy-MM-dd HH:mm")).format(commentVO.getCreate_date());
+		comInfo.put("comment_no", commentVO.getComment_no());
+		comInfo.put("article_no", commentVO.getArticle_no());
+		comInfo.put("nickname", commentVO.getUserVO().getNickname());
+		comInfo.put("com_cont", commentVO.getCom_cont());
+		comInfo.put("create_date", create_date);
+		comInfo.put("user_img", commentVO.getUserVO().getUser_img());
 		comInfo.put("com_cnt", commentInfo.get("com_cnt")); //댓글수
 		
 		return comInfo;

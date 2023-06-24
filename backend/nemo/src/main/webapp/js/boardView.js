@@ -1,9 +1,6 @@
 let itemArr=[];
 let ctx;
 
-
-
-
 $(document).ready(function() {
 	ctx = getContextPath();
 	// a href='#' 클릭 무시 스크립트
@@ -11,18 +8,15 @@ $(document).ready(function() {
 	    ignore.preventDefault();
 	});
 	
-	
-	
+	$(document).on('click','a[href="#"]',function(ignore){
+		ignore.preventDefault();
+	});
     adjustHeight();
+    initItemArray();
     
-    
-	let ItemNum=$('.commentItem').length;
-	for(let i=0; i<ItemNum; i++) {
-		itemArr.push(0);
-	}
 
 	//답글 달기 눌렀을 떄 
-	$('.comReplyBtn').click(function(){
+	$(document).on('click','.comReplyBtn', function(){
 	    //let index=$(this).parent().index();
 	    //let index=$(this).parents($('.commentItem')).index();
 	    let ItemNum=$('.commentItem').length;
@@ -138,7 +132,7 @@ $(document).ready(function() {
 					appendItem+="<a href='"+ ctx +"/group/board/deleteComment?group_id="+group_id+"&article_no="+article_no+"&comment_no="+commentInfo.comment_no+"'"; 
 					appendItem+="role='button'  id='comDelBtn"+commentInfo.comment_no+"'>삭제</a></span></div>";
 					appendItem+="<a href='#' class='commentThumb'>";
-					appendItem+="<img src='${contextPath}/"+commentInfo.user_img+"' alt='프로필사진' /></a>";
+					appendItem+="<img src='"+ctx+"/"+commentInfo.user_img+"' alt='프로필사진' /></a>";
 					appendItem+="<div class='commentNick'><span  class='commentNickInfo'>";
 					appendItem+="<a href='#' role='button'>"+commentInfo.nickname+"</a></span></div><div class='commentText'>";
 					appendItem+="<p><textarea class='viewTextArea' rows='1' id='viewTextArea"+commentInfo.comment_no+"'";
@@ -151,6 +145,10 @@ $(document).ready(function() {
 					$('.commentList').append(appendItem);
 					$('.com_cnt').text(commentInfo.com_cnt);
 					alert("댓글이 등록 되었습니다.");
+					$('.commentInboxText').val('');
+					itemArr=[];
+					initItemArray();
+					
 				},
 				error: {
 					
@@ -286,6 +284,13 @@ $(document).ready(function() {
 			visibility:'visible'
 		});
 		
+	}
+	
+	function initItemArray() {
+		let ItemNum=$('.commentItem').length;
+		for(let i=0; i<ItemNum; i++) {
+			itemArr.push(0);
+		}
 	}
 	
 	//대댓 등록 함수
