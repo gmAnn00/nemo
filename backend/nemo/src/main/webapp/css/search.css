@@ -327,3 +327,11 @@ svg {
 #gotoCreateDiv{
 	text-align: center;
 }
+.group{
+	border: 3px solid transparent;
+	border-radius: 5px;
+}
+.group:hover{
+	border: 3px solid var(--main-color);
+	border-radius: 5px;
+}

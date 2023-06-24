@@ -45,6 +45,12 @@ public class GroupSearchDAO {
 			String sub_name = (String)searchMap.get("sub_name");
 			String joinAble = (String)searchMap.get("joinAble");
 			String sort = (String)searchMap.get("sort");
+			
+			System.out.println("DAO searchText=" + searchText);
+			System.out.println("DAO main_name=" + main_name);
+			System.out.println("DAO sub_name=" + sub_name);
+			System.out.println("DAO joinAble=" + joinAble);
+			System.out.println("DAO sort=" + sort);
 
 			String query = "SELECT * FROM group_tbl WHERE grp_name LIKE ?";
 			pstmt = conn.prepareStatement(query);
@@ -73,11 +79,13 @@ public class GroupSearchDAO {
 				int groupMemberNum = groupMemberNum(groupVO.getGrp_id());
 				int bookmarkNum = bookmarkNum(groupVO.getGrp_id());
 				boolean isBookmark = isBookmark(user_id, groupVO.getGrp_id());
+				boolean isFull = isFull(groupVO.getGrp_id());
 				
 				resultMap.put("isBookmark", isBookmark);
 				resultMap.put("groupVO", groupVO);
 				resultMap.put("groupMemberNum", groupMemberNum);
 				resultMap.put("bookmarkNum", bookmarkNum);
+				resultMap.put("isFull", isFull);
 				resultList.add(resultMap);
 				//System.out.println(groupVO.toString());
 				//System.out.println("groupMemberNum=" + groupMemberNum);
@@ -177,5 +185,57 @@ public class GroupSearchDAO {
 		
 		return result;
 	}
+	
+	// 소모임이 꽉 차있으면 true, 아니면 false 반환
+		public boolean isFull(int group_id) {
+			int groupNum = -1;
+			int maxNum = -2;
+			String query;
+
+			try {
+				conn = dataFactory.getConnection();
+				query = "select count(*) as cnt from grpjoin_tbl where grp_id=?";
+				System.out.println(query);
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, group_id);
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				groupNum = rs.getInt("cnt");
+
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e) {
+				System.out.println("isFull 중 오류");
+				e.printStackTrace();
+			}
+
+			try {
+				conn = dataFactory.getConnection();
+				query = "select mem_no from group_tbl where grp_id=?";
+				System.out.println(query);
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, group_id);
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				maxNum = rs.getInt("mem_no");
+
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e) {
+				System.out.println("isFull 중 오류");
+				e.printStackTrace();
+			}
+
+			if (groupNum == maxNum) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} // end of isFull
 
 }

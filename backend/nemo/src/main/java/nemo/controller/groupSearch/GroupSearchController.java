@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import nemo.service.groupSearch.GroupSearchService;
 
 
@@ -54,7 +56,7 @@ public class GroupSearchController extends HttpServlet {
 		String sort = request.getParameter("sort");
 		
 		System.out.println("searchText=" + searchText);
-		System.out.println("bigCate=" + main_name);
+		System.out.println("main_name=" + main_name);
 		System.out.println("sub_name=" + sub_name);
 		System.out.println("joinAble=" + joinAble);
 		System.out.println("sort=" + sort);
@@ -75,7 +77,13 @@ public class GroupSearchController extends HttpServlet {
 		
 		request.setAttribute("resultList", resultList);
 		
-		
+		if(resultList != null) {
+			Gson gson = new Gson();
+			String jsonResultList = gson.toJson(resultList);
+			request.setAttribute("jsonResultList", jsonResultList);
+			System.out.println(jsonResultList);
+		}
+
 		nextPage="/views/search.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

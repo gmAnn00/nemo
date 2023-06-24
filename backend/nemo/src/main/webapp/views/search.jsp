@@ -25,7 +25,7 @@ request.setCharacterEncoding("utf-8");
 </head>
 <body>
 	<jsp:include page="header.jsp" flush="true"></jsp:include>
-
+	
 	<!--카테고리 영역-->
 	<div id="contentsArea">
 		<div class="formArea">
@@ -54,8 +54,7 @@ request.setCharacterEncoding("utf-8");
 							</div>
 							<!--소분류-->
 							<div class="bar02">
-								<select name="smallCate" class="barSel"
-									onchange="this.form.submit()"></select>
+								<select name="smallCate" class="barSel"></select>
 							</div>
 							<!--지역-->
 							<div class="bar03">
@@ -77,16 +76,16 @@ request.setCharacterEncoding("utf-8");
 					</div>
 					<div class="resultBtn">
 						<input type="radio" class="hidden" name="joinAble" id="joinAble" />
-						<label for="joinAble" id="joinAbleLabel">가입가능한 소모임만 표시</label>
+						<label for="joinAble" id="joinAbleLabel" onclick="resultSort('none', 'joinAble')">가입가능한 소모임만 표시</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByName"value="sortByName" />
-						<label id="buttonName" for="sortByName" class="buttonSort">이름순정렬</label>
+						<label id="buttonName" for="sortByName" class="buttonSort" onclick="resultSort('sortByName', 'none')">이름순정렬</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByBookmark" value="sortByBookmark" />
-						<label id="buttonInterest" for="sortByBookmark" class="buttonSort">찜순정렬</label>
+						<label id="buttonInterest" for="sortByBookmark" class="buttonSort" onclick="resultSort('sortByBookmark', 'none')">찜순정렬</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByNumber" value="sortByNumber" />
-						<label id="buttonMember" for="sortByNumber" class="buttonSort">사람많은순</label>
+						<label id="buttonMember" for="sortByNumber" class="buttonSort" onclick="resultSort('sortByNumber', 'none')">사람많은순</label>
 					</div>
 				</div>
 			</form>
@@ -107,7 +106,6 @@ request.setCharacterEncoding("utf-8");
 				<c:if test="${!empty resultList}">
 					<c:forEach var="resultMap" items="${resultList}">
 						<c:set var="groupVO" value="${resultMap.groupVO}" />
-						<input type="hidden" id="isBookmark${groupVO.grp_id}" name="isBookmark${groupVO.grp_id}" value="${resultMap.isBookmark}" />
 						<div class="group">
 							<div class="groupImg Gimg01"
 								style="background-image: url('${contextPath}/groupImages/${groupVO.grp_id}/${groupVO.grp_img}')"></div>
@@ -191,6 +189,8 @@ request.setCharacterEncoding("utf-8");
 	<input type="hidden" id="main_name_hidden"
 		value="${searchMap.main_name}" />
 	<input type="hidden" id="sub_name_hidden" value="${searchMap.sub_name}" />
+	<input type="hidden" id="user_id_hidden" value="${user_id}" />
+	<input type="hidden" id="jsonResultList" value='${jsonResultList}' />
 
 	<jsp:include page="footer.jsp" flush="true"></jsp:include>
 </body>

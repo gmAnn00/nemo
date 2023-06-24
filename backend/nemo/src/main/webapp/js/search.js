@@ -2,7 +2,7 @@ $(function() {
 	cAreaTop = $("header").css("height");
 	cAreaTop = parseInt(cAreaTop);
 	console.log(cAreaTop);
-	$(".categoriesArea").css("top", cAreaTop + "px");
+	$(".formArea").css("top", cAreaTop + "px");
 	/*
 	$(".grpLike").on("click", function() {
 		// grpLike 클래스 클릭시 ♡♥ 토글됨
@@ -20,7 +20,7 @@ $(function() {
 	*/
 
 	const category = {
-    "문화 · 공연 · 축제": ["뮤지컬 · 오페라", "공연 · 연극", "영화,", "전시회", "연기 · 공연제작", "문화재 탐방", "파티 · 페스티벌"],
+    "문화 · 공연 · 축제": ["뮤지컬 · 오페라", "공연 · 연극", "영화", "전시회", "연기 · 공연제작", "문화재 탐방", "파티 · 페스티벌"],
     "음악 · 악기": [
         "노래 · 보컬",
         "기타 · 베이스",
@@ -99,7 +99,6 @@ $(function() {
     "게임 · 오락": ["보드게임", "온라인게임", "콘솔게임", "단체놀이", "타로카드", "마술", "바둑"],
     "요리 · 제조": ["한식", "중식", "일식", "베이킹 · 제과", "핸드드립", "소믈리에 · 와인", "주류제조 · 칵테일"],
     "반려동물": ["강아지", "고양이", "물고기", "파충류", "설치류 · 중치류"],
-    "기타" : ["기타"],
 };
 
 	function selectInit() {
@@ -119,7 +118,7 @@ $(function() {
 		$("select[name=smallCate]").html(smallHtml);
 
 		$("select[name=smallCate] option").each(function(idx, item) {
-			if ($(this).val == "") {
+			if ($(this).val == "none") {
 				return true;
 			}
 			$(this).hide();
@@ -141,16 +140,10 @@ $(function() {
 		$("select[name=smallCate]").val("");
 	});
 
-	// 가입가능한 소모임만 표시
-	$("#joinAbleLabel").on("click", function() {
-		$(this).toggleClass("sortAble");
-	});
-
 	// 정렬
 	$(".buttonSort").on("click", function() {
 		$(".buttonSort").not(this).removeClass("sortOn");
 		if ($(this).hasClass("sortOn")) {
-			console.log("hi");
 			$(this).removeClass("sortOn");
 		} else {
 			$(this).addClass("sortOn");
@@ -212,23 +205,6 @@ $(function() {
 	}else if(sort_hidden == "sortByNumber"){
 		$("#buttonMember").trigger("click");
 	}
-	
-	let main_name_hidden = $("#main_name_hidden").val();
-	console.log("main_name_hidden=", main_name_hidden);
-	if(main_name_hidden != "none"){
-		$("select[name=bigCate]").val(main_name_hidden).prop("selected", true);
-		
-	}else{
-		$("select[name=bigCate]").val("none").prop("selected", true);
-	}
-	
-	let sub_name_hidden = $("#sub_name_hidden").val();
-	if(sub_name_hidden != "none"){
-		$("select[name=smallCate]").val(sub_name_hidden).prop("selected", true);
-	}else{
-		$("select[name=smallCate]").val("none").prop("selected", true);
-	}
-	
 
 });
 
@@ -248,14 +224,10 @@ function bookmarkClick(user_id, group_id){
 		type: "post",
 		async: true,
 		url: url,
-		data: { "user_id": user_id, "group_id": group_id, "isBookmark": isBookmark_hidden },
+		data: { "user_id": user_id, "group_id": group_id},
 		success: function(data, textStatus) {
-			isBookmark = data;
-			let target = ".grpLike"+group_id;
-						
+			let target = ".grpLike"+group_id;		
 			$(target).toggleClass("on");
-			
-			$("#isBookmark"+group_id).val(isBookmark);
 
 		},
 		error: function(data, textStatus, error) {
@@ -265,4 +237,110 @@ function bookmarkClick(user_id, group_id){
 			alert("찜 추가/삭제 에러 발생");
 		},
 	});
+}
+
+function resultSort(sortCri, joinAble){
+	let strResultList = $("#jsonResultList").val();
+	//console.log("str=",strResultList);
+	let jsonResultList = JSON.parse(strResultList);
+	//console.log(jsonResultList);
+	//console.log(sortCri);
+	console.log($("#joinAbleLabel").hasClass("sortAble"));
+	
+	if(joinAble == "joinAble"){
+		// 가입가능한 소모임만 표시
+		$("#joinAbleLabel").toggleClass("sortAble");
+	}
+	
+	if($("#joinAbleLabel").hasClass("sortAble")){
+		
+		for(key in jsonResultList){
+			if(jsonResultList[key].isFull == true){
+				delete jsonResultList[key];
+			}
+		}
+	}
+	
+	if(sortCri == "sortByName"){
+		jsonResultList.sort(function(a,b){
+			if(a.groupVO.grp_name > b.groupVO.grp_name) return 1;
+			else if(a.groupVO.grp_name < b.groupVO.grp_name) return -1;
+			else return 0;
+		});
+	}else if(sortCri=="sortByBookmark"){
+		jsonResultList.sort(function(a,b){
+			return b.bookmarkNum - a.bookmarkNum;
+		});
+		
+		
+	}else if(sortCri=="sortByNumber"){
+		jsonResultList.sort(function(a,b){
+			return b.groupMemberNum - a.groupMemberNum;
+		});
+		
+	}
+	
+	//console.log(jsonResultList);
+	
+	$(".resultGroup").html("");
+	let sortResult = "";
+	let user_id_hidden = $("#user_id_hidden").val();
+	for(key in jsonResultList){
+		sortResult += `
+		<div class="group">
+			<div class="groupImg Gimg01"
+				style="background-image: url('/nemo/groupImages/${jsonResultList[key].groupVO.grp_id}/${jsonResultList[key].groupVO.grp_img}')"></div>
+			<div class="SteamedImg">
+				<button type="button" class="grpLikeBtn" title="네모찜하기">`;
+		if(jsonResultList[key].isBookmark == true){
+			sortResult += `<span class="grpLike grpLike${jsonResultList[key].groupVO.grp_id} on" onclick="bookmarkClick('${user_id_hidden}', '${jsonResultList[key].groupVO.grp_id}')"> <svg viewBox="0 0 24 24">`;
+		}else{
+			sortResult += `<span class="grpLike grpLike${jsonResultList[key].groupVO.grp_id} onclick="bookmarkClick('${user_id_hidden}', '${jsonResultList[key].groupVO.grp_id}')"> <svg viewBox="0 0 24 24">`;
+		}
+		
+			sortResult += `
+					<use xlink:href="#heart" />
+                            <use xlink:href="#heart" />
+                        </svg>
+							<svg class="hide" viewBox="0 0 24 24">
+                            <defs>
+                                <path id="heart"
+									d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
+                            </defs>
+                        </svg>
+					</span> <span class="hidden">찜하기</span>
+				</button>
+			</div>
+			<a
+				href="/nemo/group/groupInfo?group_id=${jsonResultList[key].groupVO.grp_id}">
+				<div class="groupText">
+					<div class="groupText01 gt">
+						<span>${jsonResultList[key].groupVO.main_name}</span> | <span>${jsonResultList[key].groupVO.sub_name}</span>
+					</div>
+					<div class="groupText02 gt">
+						<span>${jsonResultList[key].groupVO.grp_name}</span>
+					</div>
+					<div class="groupText03 gt">
+						<i class="fas fa-map-marker-alt"></i> <span>
+							${jsonResultList[key].groupVO.grp_addr1}</span>
+					</div>
+					<div class="groupText04 gt">
+						<i class="fa-solid fa-comment-dots"></i> <span>
+							${jsonResultList[key].groupVO.grp_intro}</span>
+					</div>
+					<div class="groupText05 gt">
+						<i class="fa-solid fa-user"></i> <span>${jsonResultList[key].groupMemberNum}명</span>
+					</div>
+					<div class="groupText06 gt">
+						<i class="fa-solid fa-heart"></i> <span>찜
+							${jsonResultList[key].bookmarkNum}</span>
+					</div>
+				</div>
+			</a>
+		</div>`;
+	}
+	
+	
+	$(".resultGroup").html(sortResult);
+
 }
