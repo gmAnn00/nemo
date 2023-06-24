@@ -140,15 +140,6 @@ $(function() {
 		$("select[name=smallCate]").val("");
 	});
 
-	// 정렬
-	$(".buttonSort").on("click", function() {
-		$(".buttonSort").not(this).removeClass("sortOn");
-		if ($(this).hasClass("sortOn")) {
-			$(this).removeClass("sortOn");
-		} else {
-			$(this).addClass("sortOn");
-		}
-	});
 
 	// 현재 위치 가져오기
 	navigator.geolocation.getCurrentPosition(getSuccess, getError);
@@ -199,11 +190,11 @@ $(function() {
 	
 	let sort_hidden = $("#sort_hidden").val();
 	if(sort_hidden == "sortByName"){
-		$("#buttonName").trigger("click");
+		$("#sortByNameLabel").trigger("click");
 	}else if(sort_hidden == "sortByBookmark"){
-		$("#buttonInterest").trigger("click");
+		$("#sortByNameLabel").trigger("click");
 	}else if(sort_hidden == "sortByNumber"){
-		$("#buttonMember").trigger("click");
+		$("#sortByNumberLabel").trigger("click");
 	}
 	
 	let main_name_hidden = $("#main_name_hidden").val();
@@ -267,19 +258,25 @@ function resultSort(sortCri, joinAble){
 		}
 	}
 	
-	if(sortCri == "sortByName"){
+	if(sortCri != "none"){
+		$(".buttonSort").removeClass("sortOn");
+		let target="#" + sortCri + "Label";
+		$(target).addClass("sortOn");
+	}
+	
+	if(($("#sortByNameLabel").hasClass("sortOn"))){
 		jsonResultList.sort(function(a,b){
 			if(a.groupVO.grp_name > b.groupVO.grp_name) return 1;
 			else if(a.groupVO.grp_name < b.groupVO.grp_name) return -1;
 			else return 0;
 		});
-	}else if(sortCri=="sortByBookmark"){
+	}else if(($("#sortByBookmarkLabel").hasClass("sortOn"))){
 		jsonResultList.sort(function(a,b){
 			return b.bookmarkNum - a.bookmarkNum;
 		});
 		
 		
-	}else if(sortCri=="sortByNumber"){
+	}else if(($("#sortByNumberLabel").hasClass("sortOn"))){
 		jsonResultList.sort(function(a,b){
 			return b.groupMemberNum - a.groupMemberNum;
 		});

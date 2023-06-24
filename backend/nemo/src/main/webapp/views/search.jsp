@@ -78,14 +78,14 @@ request.setCharacterEncoding("utf-8");
 						<input type="radio" class="hidden" name="joinAble" id="joinAble" />
 						<label for="joinAble" id="joinAbleLabel" onclick="resultSort('none', 'joinAble')">가입가능한 소모임만 표시</label>
 						
-						<input type="radio" class="hidden" name="sort" id="sortByName"value="sortByName" />
-						<label id="buttonName" for="sortByName" class="buttonSort" onclick="resultSort('sortByName', 'none')">이름순정렬</label>
+						<input type="radio" class="hidden" name="sort" id="sortByName" value="sortByName" />
+						<label id="sortByNameLabel" for="sortByName" class="buttonSort" onclick="resultSort('sortByName', 'none')">이름순정렬</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByBookmark" value="sortByBookmark" />
-						<label id="buttonInterest" for="sortByBookmark" class="buttonSort" onclick="resultSort('sortByBookmark', 'none')">찜순정렬</label>
+						<label id="sortByBookmarkLabel" for="sortByBookmark" class="buttonSort" onclick="resultSort('sortByBookmark', 'none')">찜순정렬</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByNumber" value="sortByNumber" />
-						<label id="buttonMember" for="sortByNumber" class="buttonSort" onclick="resultSort('sortByNumber', 'none')">사람많은순</label>
+						<label id="sortByNumberLabel" for="sortByNumber" class="buttonSort" onclick="resultSort('sortByNumber', 'none')">사람많은순</label>
 					</div>
 				</div>
 			</form>
