@@ -85,10 +85,7 @@ form label {
 form input {
   padding: 8px;
 }
-form input[id="user_id"],
-input[id="nickname"] {
-  width: 70%;
-}
+
 /* 비밀번호 일치 */
 .alert {
   font-size: 12px;
@@ -107,6 +104,10 @@ form .check {
   top: 22px;
   right: 0px;
   /* padding: 10px; */
+}
+.resultMsg {
+	margin: 0px;
+	padding-top: 5px;
 }
 form .findZipcode {
   width: 150px;
