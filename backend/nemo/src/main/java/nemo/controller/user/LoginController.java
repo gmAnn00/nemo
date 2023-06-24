@@ -83,7 +83,18 @@ public class LoginController extends HttpServlet {
 				//response.sendRedirect(nextPage);
 			}
 			
-		} 
+			//로그아웃 영역
+		}else if(action.equals("/logout")){
+			session = request.getSession(false);
+			
+			if(session !=null) {
+				session.invalidate();
+				nextPage = "/nemo/index";
+				response.sendRedirect(nextPage);
+				
+			}
+			
+		}
 		//RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		//dispatcher.forward(request, response);
 	}
