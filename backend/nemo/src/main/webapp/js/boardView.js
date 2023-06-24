@@ -30,11 +30,15 @@ $(document).ready(function() {
 	    if(itemArr[index]==0){
 	        //let parent=$(this).parents($('.commentItem'));
 	        let parent=$(this).closest($('.commentItem'));
+	        console.log(parent);
+	        let parentId=$(parent).attr('id');
+	        console.log(parentId);
 	        let addInputBox='';
+			removeReplyBox();
 	        addInputBox+='<li class="replyBox commentLi replyCommentItem"><div class="commentReWriter"><div class="commentReInbox">';
-	        addInputBox+='<textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea'+itemArr[index]+'" onkeydown="resize(this)" onkeyup="resize(this)"></textarea></div>';
+	        addInputBox+='<textarea placeholder="댓글을 남겨보세요" class="commentInboxText" rows="1" id="textArea'+index+'" onkeydown="resize(this)" onkeyup="resize(this)"></textarea></div>';
 	        addInputBox+='<div class="commentRegister"><a href="javascript:void(0);" role="button" class="buttonCancle btnSubmitRe btnReCom" ';
-	        addInputBox+='id=regBtn'+itemArr[index]+' onclick="fn_regCommentChild('+itemArr[index]+')">등록</a>';
+	        addInputBox+='id=regBtn'+index+' onclick="fn_regCommentChild('+index+","+parentId+')">등록</a>';
 	        addInputBox+='<a href="javascript:void(0);" role="button" class="buttonCancle btnRemoveRe btnReCom">취소</a></div></div></li>';
 	        $(parent).after(addInputBox);
 	        itemArr[index]++;
@@ -91,6 +95,12 @@ $(document).ready(function() {
 	});*/
 	
 
+	function removeReplyBox(){
+		$('.replyBox').remove();
+	    for(let i=0; i<itemArr.length; i++) {
+			itemArr[i]=0;
+		}
+	}
 	
 	//댓글 등록 함수
 	function fn_regComment() {
@@ -294,39 +304,58 @@ $(document).ready(function() {
 	}
 	
 	//대댓 등록 함수
-	function fn_regCommentChild(count) {
-		let parentSiblings=$(this).parent().siblings();
-        //let textArea=parentSiblings.find('textarea');
-		let content=$('#textArea').val();
+	function fn_regCommentChild(index, siblingId) {
+		//let parentSiblings=$(this).parent().siblings();
+		let content=$('#textArea'+index).val();
 		let article_no=$('#article_no').val();
 		let group_id=$('#group_id').val();
-		let parent_no;
-		//console.log("fn_regComment()");
-		console.log(content+"article_no"+article_no);
-		console.log(ctx);
-		console.log(group_id);
+		
+	    //let parentId=$(parent).attr('id');
+		console.log("부모id:"+siblingId);
+		
         if(!content){
             alert('내용을 입력해주세요');
         } else {
             //ajax로 댓글 등록 하는거 처리하기~
             let ctx =getContextPath();
-            url=ctx+"/group/board/addComment?group_id="+group_id;
-            console.log(ctx);
-            
+            url=ctx+"/group/board/addReply?group_id="+group_id;
+
             $.ajax({
 				url: url,
 				async: true,
 				data: {
 					"com_cont": content,
 					"article_no": article_no,
-					"parent_no": 0
+					"parent_no": siblingId
 				},
 				type: "post",
-				success:function(result) {
-					if(result=="success") {
-						alert("댓글이 등록 되었습니다.")
-					}
-					$('#textArea').val('')
+				success:function(data) {
+					let commentInfo=JSON.parse(data);
+					console.log(ctx);
+					removeReplyBox();
+					let appendItem="<li id='"+commentInfo.comment_no+"' class='commentItem replyCommentItem commentLi'>";
+					appendItem+="<div class='commentbox'><div class='commentTool'><span class='comMod comToolBtn'>";
+					appendItem+="<a href='#' role='button' onclick='fn_enable(this,"+commentInfo.comment_no+")'";
+					appendItem+="id='comModBtn"+commentInfo.comment_no+"'>수정</a></span>";
+					appendItem+="<span class='comDel comToolBtn'>";
+					appendItem+="<a href='"+ ctx +"/group/board/deleteComment?group_id="+group_id+"&article_no="+article_no+"&comment_no="+commentInfo.comment_no+"'"; 
+					appendItem+="role='button'  id='comDelBtn"+commentInfo.comment_no+"'>삭제</a></span></div>";
+					appendItem+="<a href='#' class='commentThumb'>";
+					appendItem+="<img src='"+ctx+"/"+commentInfo.user_img+"' alt='프로필사진' /></a>";
+					appendItem+="<div class='commentNick'><span  class='commentNickInfo'>";
+					appendItem+="<a href='#' role='button'>"+commentInfo.nickname+"</a></span></div><div class='commentText'>";
+					appendItem+="<p><textarea class='viewTextArea' rows='1' id='viewTextArea"+commentInfo.comment_no+"'";
+					appendItem+="onkeydown='resize(this)' onkeyup='resize(this)' disabled>"+commentInfo.com_cont+"</textarea></p>";
+					appendItem+="</div><div class='commentInfo'><span class='commentDate comDate'>"+commentInfo.create_date+"</span>"
+					appendItem+="<span class='replyCom'><a href='#' role='button' class='comReplyBtn' id='comReplyBtn"+commentInfo.comment_no+"'>답글쓰기</a></span>";
+					appendItem+="<span class='comMod comToolBtn modReply' id='modReply"+commentInfo.comment_no+"'>";
+					appendItem+="<a href='#' role='button' class='modReplyBtn' id='modReplyBtn"+commentInfo.comment_no+"'";
+					appendItem+="onclick='fn_cancleMod(this,"+commentInfo.comment_no+"'>취소</a></span></div></div></li>";
+					$('#'+commentInfo.appendLocation).after(appendItem);
+					$('.com_cnt').text(commentInfo.com_cnt);
+					alert("댓글이 등록 되었습니다.");
+					itemArr=[];
+					initItemArray();
 					
 				},
 				error: {

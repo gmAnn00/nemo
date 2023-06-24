@@ -64,6 +64,55 @@ public class CommentDAO {
 		return comment_no;
 	}
 	
+	public int getParentNo(int parent_no) {
+		int getParentNo=0;
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT parent_no FROM comment_tbl WHERE comment_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, parent_no);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			if(rs.getInt("parent_no")==0) {
+				getParentNo=parent_no;
+			}else {
+				getParentNo=rs.getInt("parent_no");
+			}
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("부모 번호 찾는 중 에러");
+		}
+		
+		return getParentNo;
+	}
+	
+	public int getMaxCommentNo(int parent_no) {
+		int maxCommentNo=0;
+		try {
+			conn=dataFactory.getConnection();
+			String query="select max(comment_no) as maxNum from comment_tbl where parent_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1,parent_no);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			maxCommentNo=rs.getInt("maxNum");
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return maxCommentNo;
+	}
+	
 	//댓글 리스트 
 	public List<CommentVO> selectComments(int article_no) {
 		List<CommentVO> commentList = new ArrayList<CommentVO>();

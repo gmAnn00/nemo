@@ -252,6 +252,22 @@ public class BoardController extends HttpServlet {
 			out.print(jsonInfo);
 			return;
 	
+		}else if(action.equals("/addReply")) {
+			JSONObject comInfo=new JSONObject();
+			
+			Map commentInfo=new HashMap();
+			
+			String com_cont=request.getParameter("com_cont");
+			int article_no=Integer.parseInt(request.getParameter("article_no"));
+			int parent_no=Integer.parseInt(request.getParameter("parent_no"));
+			commentInfo=commentService.addComment(user_id, group_id, article_no, com_cont, parent_no);
+			comInfo=commentMapToJson(commentInfo);
+			comInfo.put("group_id", group_id);
+			String jsonInfo=comInfo.toJSONString();
+			out.print(jsonInfo);
+			return;
+			
+			
 		}else if(action.equals("/modComment")) {
 			int comment_no=Integer.parseInt(request.getParameter("comment_no"));
 			String com_cont=request.getParameter("com_cont");
@@ -264,7 +280,7 @@ public class BoardController extends HttpServlet {
 			System.out.println(com_cont);
 			out.print(com_cont);
 			return;
-		}
+		} 
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);	
@@ -287,6 +303,8 @@ public class BoardController extends HttpServlet {
 		comInfo.put("create_date", create_date);
 		comInfo.put("user_img", commentVO.getUserVO().getUser_img());
 		comInfo.put("com_cnt", commentInfo.get("com_cnt")); //댓글수
+		System.out.println(commentInfo.get("appendLocation"));
+		comInfo.put("appendLocation", commentInfo.get("appendLocation"));
 		
 		return comInfo;
 	}
