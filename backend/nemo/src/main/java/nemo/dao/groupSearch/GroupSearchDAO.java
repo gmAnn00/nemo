@@ -53,9 +53,17 @@ public class GroupSearchDAO {
 			System.out.println("DAO sort=" + sort);
 
 			String query = "SELECT * FROM group_tbl WHERE grp_name LIKE ?";
+			if(!sub_name.equals("none")) {
+				System.out.println("sub_name");
+				query += "AND sub_name = ?";
+			}
 			pstmt = conn.prepareStatement(query);
 			String searchTexts = '%' + searchText + '%';
 			pstmt.setString(1, searchTexts);
+			if(!sub_name.equals("none")) {
+				System.out.println("sub_name");
+				pstmt.setString(2, sub_name);
+			}
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {

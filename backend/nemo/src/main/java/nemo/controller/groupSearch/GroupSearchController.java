@@ -50,8 +50,8 @@ public class GroupSearchController extends HttpServlet {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		String searchText = request.getParameter("searchText");
-		String main_name = request.getParameter("bigCate");
-		String sub_name = request.getParameter("smallCate");
+		String main_name = request.getParameter("bigCate") == null ? "none" : request.getParameter("bigCate");
+		String sub_name = request.getParameter("smallCate") == null ? "none" : request.getParameter("smallCate");
 		String joinAble = request.getParameter("joinAble");
 		String sort = request.getParameter("sort");
 		

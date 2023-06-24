@@ -205,7 +205,13 @@ $(function() {
 	}else if(sort_hidden == "sortByNumber"){
 		$("#buttonMember").trigger("click");
 	}
-
+	
+	let main_name_hidden = $("#main_name_hidden").val();
+	let sub_name_hidden = $("#sub_name_hidden").val();
+	
+	$("select[name=bigCate]").val(main_name_hidden).trigger("change");
+	//$("option[value="+main_name_hidden+"]").prop("selected", true);
+	$("option[value="+sub_name_hidden+"]").prop("selected", true);
 });
 
 let checkOnOff = false; //찜인지 아닌지 체크하는 변수
