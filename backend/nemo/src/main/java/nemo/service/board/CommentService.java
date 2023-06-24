@@ -17,7 +17,7 @@ public class CommentService {
 	}
 	//댓글 등록
 	public Map addComment(String user_id, int group_id, int article_no, String com_cont, int parent_no) {
-		Map commentIfo=new HashMap();
+		Map commentInfo=new HashMap();
 		CommentVO commentVO=new CommentVO();
 		int comment_no=commentDAO.insertNewComment(user_id, group_id, article_no,com_cont, parent_no);
 		
@@ -26,10 +26,12 @@ public class CommentService {
 		//댓글 개수 정보 가져오기
 		int comCnt=commentDAO.getCommentCnt(article_no);
 		
-		commentIfo.put("commentVO", commentVO);
-		commentIfo.put("com_cnt", comCnt);
+		commentInfo.put("commentVO", commentVO);
+		commentInfo.put("com_cnt", comCnt);
 		
-		return commentIfo;
+		System.out.println("ㅇㅕ기 서비스"+((CommentVO)commentInfo.get("commentVO")).getArticle_no());
+		
+		return commentInfo;
 	}
 	
 	//대댓 등록

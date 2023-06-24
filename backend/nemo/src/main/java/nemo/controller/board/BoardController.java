@@ -3,6 +3,7 @@ package nemo.controller.board;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
 
 import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;
@@ -231,6 +234,8 @@ public class BoardController extends HttpServlet {
 				}
 			}	
 		}else if(action.equals("/addComment")) {
+			JSONObject comInfo=new JSONObject();
+			
 			Map commentInfo=new HashMap();
 			System.out.println("여기오나");
 			String com_cont=request.getParameter("com_cont");
@@ -241,9 +246,12 @@ public class BoardController extends HttpServlet {
 			System.out.println(com_cont);
 			
 			commentInfo=commentService.addComment(user_id, group_id, article_no, com_cont,parent_no);
-			out.print("success");
-			
-			//return commentInfo;
+			comInfo=commentMapToJason(commentInfo);
+			comInfo.put("group_id", group_id);
+			String jsonInfo=comInfo.toJSONString();
+			out.print(jsonInfo);
+			return;
+	
 		}else if(action.equals("/modComment")) {
 			int comment_no=Integer.parseInt(request.getParameter("comment_no"));
 			String com_cont=request.getParameter("com_cont");
@@ -261,5 +269,25 @@ public class BoardController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);	
 		
+	}
+	
+	
+	private JSONObject commentMapToJason(Map commentInfo) {
+		JSONObject comInfo=new JSONObject();
+		
+		System.out.println("ㅇㅕ기 서비스"+((CommentVO)commentInfo.get("commentVO")).getArticle_no());
+		System.out.println(commentInfo.get(commentVO.getComment_no()));
+		//String create_date=(String)commentInfo.get(commentVO.getCreate_date());
+		//String create_date=(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")).format(commentInfo.get(commentVO.getCreate_date()));
+		//System.out.println(create_date);
+		comInfo.put("comment_no", ((CommentVO)commentInfo.get("commentVO")).getComment_no());
+		comInfo.put("article_no", ((CommentVO)commentInfo.get("commentVO")).getArticle_no());
+		comInfo.put("nickname", ((CommentVO)commentInfo.get("commentVO")).getUserVO().getNickname());
+		comInfo.put("com_cont", ((CommentVO)commentInfo.get("commentVO")).getCom_cont());
+		//comInfo.put("create_date", create_date);
+		comInfo.put("user_img", ((CommentVO)commentInfo.get("commentVO")).getUserVO().getUser_img());
+		comInfo.put("com_cnt", commentInfo.get("com_cnt")); //댓글수
+		
+		return comInfo;
 	}
 }

@@ -127,13 +127,30 @@ $(document).ready(function() {
 					"parent_no": 0
 				},
 				type: "post",
-				success:function(result) {
-					if(result=="success") {
-						alert("댓글이 등록 되었습니다.");
-						
-					}
-					$('#textArea').val('')
-					
+				success:function(data) {
+					let commentInfo=JSON.parse(data);
+					console.log(ctx);
+					let appendItem="<li id='"+commentInfo.comment_no+"' class='commentItem commentLi'>";
+					appendItem+="<div class='commentbox'><div class='commentTool'><span class='comMod comToolBtn'>";
+					appendItem+="<a href='#' role='button' onclick='fn_enable(this,"+commentInfo.comment_no+")'";
+					appendItem+="id='comModBtn"+commentInfo.comment_no+"'>수정</a></span>";
+					appendItem+="<span class='comDel comToolBtn'>";
+					appendItem+="<a href='"+ ctx +"/group/board/deleteComment?group_id="+group_id+"&article_no="+article_no+"&comment_no="+commentInfo.comment_no+"'"; 
+					appendItem+="role='button'  id='comDelBtn"+commentInfo.comment_no+"'>삭제</a></span></div>";
+					appendItem+="<a href='#' class='commentThumb'>";
+					appendItem+="<img src='${contextPath}/"+commentInfo.user_img+"' alt='프로필사진' /></a>";
+					appendItem+="<div class='commentNick'><span  class='commentNickInfo'>";
+					appendItem+="<a href='#' role='button'>"+commentInfo.nickname+"</a></span></div><div class='commentText'>";
+					appendItem+="<p><textarea class='viewTextArea' rows='1' id='viewTextArea"+commentInfo.comment_no+"'";
+					appendItem+="onkeydown='resize(this)' onkeyup='resize(this)' disabled>"+commentInfo.com_cont+"</textarea></p>";
+					appendItem+="</div><div class='commentInfo'><span class='commentDate comDate'>"+commentInfo.create_date+"</span>"
+					appendItem+="<span class='replyCom'><a href='#' role='button' class='comReplyBtn' id='comReplyBtn"+commentInfo.comment_no+"'>답글쓰기</a></span>";
+					appendItem+="<span class='comMod comToolBtn modReply' id='modReply"+commentInfo.comment_no+"'>";
+					appendItem+="<a href='#' role='button' class='modReplyBtn' id='modReplyBtn"+commentInfo.comment_no+"'";
+					appendItem+="onclick='fn_cancleMod(this,"+commentInfo.comment_no+"'>취소</a></span></div></div></li>";
+					$('.commentList').append(appendItem);
+					$('.com_cnt').text(commentInfo.com_cnt);
+					alert("댓글이 등록 되었습니다.");
 				},
 				error: {
 					
@@ -271,9 +288,6 @@ $(document).ready(function() {
 		
 	}
 	
-	
-	
-	
 	//대댓 등록 함수
 	function fn_regCommentChild(count) {
 		let parentSiblings=$(this).parent().siblings();
@@ -359,7 +373,7 @@ function resize(obj) {
 function adjustHeight() {
   	let textarea=document.querySelectorAll('.viewTextArea');
 	for(let i=0; i<textarea.length; i++) {
-		textarea[i].style.height="auto";
+		textarea[i].style.height="auto";   
 		textarea[i].style.height=textarea[i].scrollHeight+"px";
 	}
 }

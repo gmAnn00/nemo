@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.board.CommentVO;
+import nemo.vo.board.MyBoardVO;
 
 public class CommentDAO {
 	
@@ -201,14 +202,13 @@ public class CommentDAO {
 		
 		return check;
 	}
-	
 
 	//comment_id로 코멘트 정보 받는 메소드
 	public CommentVO selectComment(int comment_no) {
 		CommentVO comment= new CommentVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT c.comment_no, c.article_no, u.nickname, c.com_cont, c.create_date, a.title, parent_no";
+			String query="SELECT c.comment_no, c.article_no, u.nickname, c.com_cont, c.create_date, a.title, parent_no, u.user_img";
 			query+=" FROM comment_tbl c, board_tbl a, user_tbl u";
 			query+=" WHERE u.user_id=c.user_id AND c.article_no=a.article_no AND c.comment_no=?";
 			
@@ -222,6 +222,7 @@ public class CommentDAO {
 			int _comment_no=rs.getInt("comment_no");
 			int article_no=rs.getInt("article_no");
 			String nickname=rs.getString("nickname");
+			String user_img=rs.getString("user_img");
 			String com_cont=rs.getString("com_cont");
 			Timestamp create_date=rs.getTimestamp("create_date");
 			String title = rs.getString("title");
@@ -233,6 +234,7 @@ public class CommentDAO {
 			comment.setParent_no(parent_no);
 			comment.setCreate_date(create_date);
 			comment.getArticleVO().setTitle(title);
+			comment.getUserVO().setUser_img(user_img);
 			comment.setCom_cont(com_cont);
 
 			rs.close();

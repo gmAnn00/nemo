@@ -150,7 +150,7 @@
 		              <div class="articleTool">
 		                <!-- 네이버카페처럼 댓글 몇개있는지 보여주고 아래로 이동시킬지 -->
 		                <span class="viewCnt">조회수 ${article.view_cnt}</span>
-		                <span class="topComment"><a href="#commentArea">댓글 <strong class="num">${article.com_cnt}</strong></a></span>
+		                <span class="topComment"><a href="#commentArea">댓글 <strong class="num com_cnt">${article.com_cnt}</strong></a></span>
 		                <a class="buttonUrl" onclick="clip(); return false;">URL 복사</a>
 		              </div>
 	              </div>
@@ -172,7 +172,7 @@
 	            <div id="commentArea" class="commentArea">
 	            	<input type="hidden" id="article_no" value="${article.article_no}">
 	            	<input type="hidden" id="group_id" value="${group.groupVO.grp_id}">
-	              	<p class="comment">댓글 <span>${article.com_cnt}</span></p>
+	              	<p class="comment">댓글 <span class="com_cnt">${article.com_cnt}</span></p>
 					<c:choose>
 					    <c:when test="${!empty comments }">
 					        <ul class="commentList">
