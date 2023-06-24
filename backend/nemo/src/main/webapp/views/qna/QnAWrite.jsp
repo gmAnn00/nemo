@@ -142,7 +142,7 @@
               </div>
               <!-- 글쓰는 영역 -->
               <div class="editorArea article">
-                <textarea  placeholder="내용을 입력해주세요"></textarea>
+                <textarea  name="writeContent" placeholder="내용을 입력해주세요"></textarea>
               </div>
               
               <!-- 이미지 첨부 -->
@@ -151,13 +151,13 @@
               	<img id="preview" src="#" width="200" alt="">
               </div>
 
-            </form>
-
               <!-- 등록 버튼 -->
               <div class="btnRegister">
-                <a href="${contextPath}/viewQna/QnAView.do" role="button" class="button">등록</a>
+                <button role="button" class="button">등록</button>
                 <a href="${contextPath}/viewQna/helpQnA.do" role="button" class="buttonCancle">취소</a>
               </div>
+            </form>
+
             </div>
           </div>
         </div>

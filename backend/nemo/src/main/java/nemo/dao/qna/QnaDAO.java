@@ -210,7 +210,7 @@ public class QnaDAO {
 		QnaVO qnaVO = new QnaVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
+			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, qna_img FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
@@ -221,10 +221,12 @@ public class QnaDAO {
 			int parent_no=rs.getInt("parent_no");
 			String title=rs.getString("title");
 			String content=rs.getString("content");
-			String qna_img=URLDecoder.decode(rs.getString("qna_img"),"utf-8");
-			if(qna_img.equals("unll")) {
-				qna_img=null;
+			
+			String qna_img = null;
+			if (rs.getString("qna_img") != null) {
+				qna_img=URLDecoder.decode(rs.getString("qna_img"),"utf-8");
 			}
+			
 			Date create_date=rs.getDate("create_date");
 			qnaVO.setQna_id(_qna_id);
 			qnaVO.setNickname(nickname);
@@ -272,16 +274,16 @@ public class QnaDAO {
 			int parent_no=qnaVO.getParent_no();
 			String title=qnaVO.getTitle();
 			String content=qnaVO.getContent();
-			String imgeFileName=qnaVO.getQna_img();
-			String nickname=qnaVO.getNickname();
-			String query="insert into qna_tbl (qna_id, parent_no, title, content, qna_img, nickname) values(?,?,?,?,?,?)";
+			String qna_img=qnaVO.getQna_img();
+			String user_id=qnaVO.getUser_id();
+			String query="insert into qna_tbl (qna_id, parent_no, title, content, qna_img, user_id) values(?,?,?,?,?,?)";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, qna_id);
 			pstmt.setInt(2, parent_no);
 			pstmt.setString(3, title);
 			pstmt.setString(4, content);
-			pstmt.setString(5, imgeFileName);
-			pstmt.setString(6, nickname);
+			pstmt.setString(5, qna_img);
+			pstmt.setString(6, user_id);
 			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();

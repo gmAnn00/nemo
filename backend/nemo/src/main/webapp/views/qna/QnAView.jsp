@@ -17,7 +17,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>게시글 조회</title>
+    <title>Q&A 조회</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />

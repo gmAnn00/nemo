@@ -71,10 +71,9 @@ public class QnaController extends HttpServlet {
 		
 		System.out.println("요청이름 : " + action);
 		try {
-			
-			
 			List<QnaVO> articlesList=new ArrayList<QnaVO>();
 			if (action == null || action.equals("/viewQna")) {
+				// Q&A 리스트
 				String _section=request.getParameter("section");
 				String _pageNum=request.getParameter("pageNum");
 				int section=Integer.parseInt((_section == null)?"1":_section);
@@ -88,19 +87,39 @@ public class QnaController extends HttpServlet {
 				request.setAttribute("articleMap", articleMap);	
 				nextPage="/views/qna/helpQnA.jsp"; 
 			}else if(action.equals("/QnAWrite.do")) {
-				nextPage="/views/qna/QnAWrite.jsp";
+				// Q&A 작성
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("user_id", "1");
+				if (httpSession.getAttribute("user_id") != null) {
+					nextPage="/views/qna/QnAWrite.jsp";
+				}
+				else {
+					out=response.getWriter();
+					out.print("<script>");
+					out.print("alert('로그인이 필요한 페이지입니다.');");
+					out.print("location.href='" +request.getContextPath() + "/viewQna/viewQna';");
+					out.print("</script>");
+					return;
+				}
+			}else if(action.equals("/QnAView.do")) {
+				// Q&A 1건 조회
+				String qna_id=request.getParameter("qna_id");
+				qnaVO=qnaService.viewArticle(Integer.parseInt(qna_id));
+				request.setAttribute("article", qnaVO);
+				nextPage="/views/qna/QnAView.jsp";
 			}else if(action.equals("/addArticle.do")) {
+				HttpSession httpSession = request.getSession();
+				String user_id = (String)httpSession.getAttribute("user_id");
 				int qna_id=0;
 				Map<String, String> articleMap=upload(request, response);
-				String title=articleMap.get("title");
-				String content=articleMap.get("content");
+				String title=articleMap.get("writeTitle");
+				String content=articleMap.get("writeContent");
 				String qna_img=articleMap.get("qna_img");
-				String nickname=articleMap.get("nicknQnAView");
 				qnaVO.setParent_no(0);
-				qnaVO.setNickname(nickname);
 				qnaVO.setTitle(title);
 				qnaVO.setContent(content);
 				qnaVO.setQna_img(qna_img);
+				qnaVO.setUser_id(user_id);
 				qna_id=qnaService.addArticle(qnaVO);
 				//새글 추가시 이미지를 첨부한 경우에만수행
 				if(qna_img != null && qna_img.length() != 0) {
@@ -113,14 +132,9 @@ public class QnaController extends HttpServlet {
 				out=response.getWriter();
 				out.print("<script>");
 				out.print("alert('새 글을 추가했습니다.');");
-				out.print("location.href='" +request.getContextPath() + "/viewQna/helpQnA.do';");
+				out.print("location.href='" +request.getContextPath() + "/viewQna/viewQna';");
 				out.print("</script>");
 				return;
-			}else if(action.equals("/QnAView.do")) {
-				String qna_id=request.getParameter("qna_id");
-				qnaVO=qnaService.viewArticle(Integer.parseInt(qna_id));
-				request.setAttribute("article", qnaVO);
-				nextPage="/qna/QnAView.jsp";
 			}else if(action.equals("/modArticle.do")) {
 				Map<String, String> articleMap=upload(request, response);
 				int qna_id=Integer.parseInt(articleMap.get("qna_id"));
@@ -242,11 +256,11 @@ public class QnaController extends HttpServlet {
 						if(idx == -1) {
 							idx=fileItem.getName().lastIndexOf("/");
 						}
+						String fileName=fileItem.getName().substring(idx+1);
+						articleMap.put(fileItem.getFieldName(), fileName);
+						File uploadFile=new File(currentDirPath + "\\temp\\" + fileName);
+						fileItem.write(uploadFile);
 					}
-					String fileName=fileItem.getName().substring(idx+1);
-					articleMap.put(fileItem.getFieldName(), fileName);
-					File uploadFile=new File(currentDirPath + "\\temp\\" + fileName);
-					fileItem.write(uploadFile);
 				}
 			}
 		} catch (Exception e) {
