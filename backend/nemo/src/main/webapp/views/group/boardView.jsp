@@ -3,18 +3,15 @@
     isELIgnored="false"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
 <%
 	request.setCharacterEncoding("utf-8");
 %>
 <c:set var="article" value="${articleViewMap.article}" />
 <c:set var="comments" value="${articleViewMap.comments}" />
 <c:set var="isSame" value="${articleViewMap.isSame }" />
-<c:set var="group" value="${articleViewMap.group }" />
-<c:set var="referURL" value="${header.referer}" />
-
+<c:set var="group_id" value="${articleViewMap.group_id }" />
+    
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -28,13 +25,13 @@
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
     <link rel="stylesheet" href="${contextPath}/css/boardView.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    
-    <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3d4603cd1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardView.js"></script>
-	<script type="text/javascript">
 
-	</script>
 
   </head>
   <body>
@@ -43,7 +40,7 @@
     <div class="menu_bg"></div>
     <header>
       <h1 class="logo">
-        <a href="${contextPath}/index"
+        <a href="${contextPath}/index.html"
           ><img src="${contextPath}/images/logo.png" alt="logo"
         /></a>
       </h1>
@@ -88,22 +85,22 @@
           </div>
           <div class="group_name">
             <a href="groupMain.html">
-              <span>${group.grp_name}</span>
+              <span>이젠종로학원</span>
             </a>
           </div>
           <div class="group_info">
             <div class="group_info_category">
-              <div class="category_box group_info_category_box">${group.main_name}</div>
-              <div class="category_box group_info_category_box">${group.sub_name}</div>
+              <div class="category_box group_info_category_box">sports</div>
+              <div class="category_box group_info_category_box">game</div>
             </div>
             <div class="group_info_member">
               <div class="group_info_title"><span>멤버수</span></div>
-              <div class="group_info_contents"><span>${group.mem_no}</span></div>
+              <div class="group_info_contents"><span>7</span></div>
             </div>
             <div class="group_info_follower">
               <div class="group_info_title"><span>개설일</span></div>
               <div class="group_info_contents">
-                <span>${group.create_date}</span>
+                <span>2023. 05. 19.</span>
               </div>
             </div>
           </div>
@@ -131,7 +128,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/group/board?group_id=${group.grp_id}">
+                <a href="board.html">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -171,46 +168,41 @@
               <i class="fa-solid fa-angle-right nav_icon"></i>
               <span>나의 모임</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>게시판</span>
+              <span>게시글 작성</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
 
 			<div class="atricleArea">
-	          <!-- 글 위쪽 버튼 영역 
-	          <div class="articleToolBtns">-->
-	            <!-- 기능 구현에 따라 코딩 수정요 
+	          <!-- 글 위쪽 버튼 영역 -->
+	          <div class="articleToolBtns">
+	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <c:if test="${isSame==true }">
 		            <a href="#" role="button" class="button btnEdit">수정</a>
 		            <a href="#" role="button" class="buttonCancle btnDel">삭제</a>
-	            </c:if>-->
+	            </c:if>
 	            <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
-	            <!--  <a href="javascript:history.back();" role="button" class="button2 btnList">목록</a>${contextPath}/group/board?group_id=${group_id}-->
-	            <!--  <a role="button" class="button2 btnList" onclick="backToList()">목록</a>
-	            <a href="${referURL}" role="button" class="button2 btnList">목록</a>
-	          </div>-->
+	            <!--  <a href="javascript:history.back();" role="button" class="button2 btnList">목록</a>-->
+	            <a href="${contextPath}/group/board?group_id=${group_id}" role="button" class="button2 btnList">목록</a>
+	          </div>
 	          <div class="articleContentBox">
 	            <!-- 제목 영역 -->
 	            <div class="articleHeader">
 	              <div class="articleTitle">
-	                <div class="titleHead"><span class="brackets">${article.brackets}</span></div>
-	                <div class="titleArea"><span class="title">${article.title}</span></div>
-	                <!-- <div class="titleArea">${article.title}</div>-->
+	                <div class="titleHead"><span>${article.brackets}</span></div>
+	                <div class="titleArea">${article.title}</div>
 	              </div>
 	              <div class="writerInfo">
 	                <div class="thumbArea">
-	                  <img src="${contextPath}/${article.userVO.user_img}" alt="프로필사진"/>
+	                  <img src="${contextPath}/images/icon_prof_wh.png" alt="프로필사진"/>
 	                </div>
 	                <div class="profileArea">
 	                  <div class="profileInfo">
-	                    <p class="writerNick">${article.userVO.nickname}</p>
-	                    <p class="date comDate">${article.create_date }</p>
+	                    <button class="writerNick">${article.nickname }</button>
 	                  </div>
-	                 <!-- 
 	                  <div class="articleInfo">
-	                    <p class="date comDate">${article.create_date }</p>
+	                    <p class="date">${article.create_date }</p>
 	                  </div>
-	                  -->
 	                </div>
 	              </div>
 		              <div class="articleTool">
@@ -223,84 +215,57 @@
 	            </div>
 	            <!-- 내용 영역 -->
 	            <div id="contentArea" class="contentArea">
-	            	<div class="contentEditTool">
-		            	<c:if test="${isSame==true }">
-				            <a href="#" role="button" class="btnEdit btn">수정</a>
-				            <a href="#" role="button" class="btnDel btn">삭제</a>
-		              	</c:if>
-	            	</div>
-	            	<div class="content">
-	            		${article.content}
-	            	</div>
+	              <p>내용 ${article.content}</p>
 	            </div>
 	            <!-- 댓글 영역 -->
 	            <div id="commentArea" class="commentArea">
-	              	<p class="comment">댓글 <span>${article.com_cnt}</span></p>
-					<c:choose>
-					    <c:when test="${!empty comments }">
-					        <ul class="commentList">
-					            <c:forEach var="comment" items="${comments}">
-					                <c:choose>
-					                    <c:when test="${comment.level>1 }">
-					                        <li id="${comment.comment_no }" class="commentItem replyCommentItem commentLi">
-					                            <div class="commentbox">
-					                                <div class="commentTool">
-					                                    <span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
-					                                    <span class="comDel comToolBtn"><a href="#" role="button">삭제</a></span>
-					                                </div>
-					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-					                                <a href="#" class="commentThumb">
-					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
-					                                </a>
-					                                <div class="commentNick">
-					                                    <span  class="commentNickInfo">
-					                                        <a href="#" role="button">${comment.userVO.nickname}</a>
-					                                    </span>
-					                                </div>
-					                                <div class="commentText">
-					                                    <p>${comment.com_cont}</p>
-					                                </div>
-					                                <div class="commentInfo">
-					                                    <span class="commentDate comDate"><fmt:formatDate value="${comment.create_date}" pattern="yyyy-MM-dd HH:mm" /></span>
-					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn">답글쓰기</a></span>
-					                                </div>
-					                            </div>
-					                        </li>
-					                    </c:when>
-					
-					                    <c:otherwise>
-					                        <li id="${comment.comment_no }" class="commentItem commentLi">
-					                            <div class="commentbox">
-					                                <div class="commentTool">
-					                                    <span class="comMod comToolBtn"><a href="#" role="button">수정</a></span>
-					                                    <span class="comDel comToolBtn"><a href="#" role="button">삭제</a></span>
-					                                </div>
-					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
-					                                <a href="#" class="commentThumb">
-					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
-					                                </a>
-					                                <div class="commentNick">
-					                                    <span  class="commentNickInfo">
-					                                        <a href="#" role="button">${comment.userVO.nickname}</a>
-					                                    </span>
-					                                </div>
-					                                <div class="commentText">
-					                                    <p>${comment.com_cont}</p>
-					                                </div>
-					                                <div class="commentInfo">
-					                                    <span class="commentDate comDate"><fmt:formatDate value="${comment.create_date}" pattern="yyyy-MM-dd HH:mm" /></span>
-					                                    <span class="replyCom"><a href="#" role="button" class="comReplyBtn">답글쓰기</a></span>
-					                                </div>
-					                            </div>
-					                        </li>
-					                        
-					                    </c:otherwise>
-					                </c:choose>
-					            </c:forEach>
-					        </ul>
-					    </c:when>
-					</c:choose>
-	              
+	              <p class="comment">댓글</p>
+	              <ul class="commentList">
+	                <li id="" class="commentItem">
+	                  <div class="commentbox">
+	                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+	                    <a href="#" class="commentThumb">
+	                      <img
+	                        src="${contextPath}/images/icon_prof_wh.png"
+	                        alt="프로필사진"
+	                      />
+	                    </a>
+	                    <div class="commentNick">
+	                      <a href="#" role="button" class="commentNickInfo"
+	                        >작성자닉네임</a
+	                      >
+	                    </div>
+	                    <div class="commentText">
+	                      <p>댓글 내용</p>
+	                    </div>
+	                    <div class="commentInfo">
+	                      <p class="commentDate">2023.05.07. 18:30</p>
+	                    </div>
+	                  </div>
+	                </li>
+	                <li id="" class="commentItem">
+	                  <div class="commentbox">
+	                    <!-- 닉네임이랑 프로필 사진 같은 링크 -->
+	                    <a href="#" class="commentThumb">
+	                      <img
+	                        src="${contextPath}/images/icon_prof_wh.png"
+	                        alt="프로필사진"
+	                      />
+	                    </a>
+	                    <div class="commentNick">
+	                      <a href="#" role="button" class="commentNickInfo"
+	                        >작성자닉네임</a
+	                      >
+	                    </div>
+	                    <div class="commentText">
+	                      <p>댓글 내용</p>
+	                    </div>
+	                    <div class="commentInfo">
+	                      <p class="commentDate">2023.05.07. 18:30</p>
+	                    </div>
+	                  </div>
+	                </li>
+	              </ul>
 	              <!-- 댓글 쓰기 -->
 	              <div class="commentWriter">
 	                <div class="commentInbox">
@@ -317,18 +282,12 @@
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-	              <a href="${contextPath}/group/board/write?group_id=${group.grp_id}" role="button" class="btnWrite btn">글쓰기</a>
-	              
-	              <c:if test="${isSame==true }">
-		            <a href="#" role="button" class="btnEdit btn">수정</a>
-		            <a href="#" role="button" class="btnDel btn">삭제</a>
-	              </c:if>
-	              
+	              <a href="#" role="button" class="button2">글쓰기</a>
 	            </div>
 	            <div class="rightArea">
 	              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-	              <a href="${referURL}" role="button" class="btnList btn">목록</a>
-	              <a href="#boardView" role="button" class="btn btnTop "><i class="fa-solid fa-caret-up"></i>TOP</a>
+	              <a href="board.html" role="button" class="button2 btnList">목록</a>
+	              <a href="#boardView" role="button" class="button2 btnTop">Top</a>
 	            </div>
 	          </div>
           </div>
