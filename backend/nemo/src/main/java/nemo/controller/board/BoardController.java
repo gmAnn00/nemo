@@ -76,13 +76,13 @@ public class BoardController extends HttpServlet {
 		if(user_id==null) {
 			out.print("<script>");
 			out.print("alert('로그인 후 이용해주세요.');");
-			out.print("location.href='"+request.getContextPath()+"/login/loginForm'");
+			out.print("location.href='"+request.getContextPath()+"/login/loginForm';");
 			out.print("</script>");
 		}else if(!boardService.isAuthorized(user_id, group_id)) {
 			System.out.println("야 왜 안떠");
 			out.print("<script>");
 			out.print("alert('잘못된 접근 입니다.');");
-			out.print("location.href='"+request.getContextPath()+"/index'");
+			out.print("location.href='"+request.getContextPath()+"/index';");
 			out.print("</script>");
 		}else {		
 			try {
