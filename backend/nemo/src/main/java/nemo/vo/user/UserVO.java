@@ -10,7 +10,7 @@ public class UserVO {
 	private String zipcode;
 	private String user_addr1;
 	private String user_addr2;
-	private int phone;
+	private String phone;
 	private String email;
 	private Date join_date;
 	private Date birthdate;
@@ -77,11 +77,11 @@ public class UserVO {
 		this.user_addr2 = user_addr2;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
