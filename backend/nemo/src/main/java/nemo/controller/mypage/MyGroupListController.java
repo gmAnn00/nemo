@@ -78,7 +78,7 @@ public class MyGroupListController extends HttpServlet {
 					request.setAttribute("userGroupList", userGroupList);
 					request.setAttribute("waitGroupList", waitGroupList);
 					request.setAttribute("bookmarkGroupList", bookmarkGroupList);
-					request.setAttribute("isBookmark", true); //찜한 소모임용
+					request.setAttribute("isBookmark", true); //찜한 소모임 jsp ${isbookmark}용
 					
 					
 					nextPage="/views/mypage/myGroupList.jsp";

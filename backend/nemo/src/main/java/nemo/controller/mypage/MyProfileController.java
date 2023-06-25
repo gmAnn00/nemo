@@ -2,6 +2,7 @@ package nemo.controller.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,7 @@ public class MyProfileController extends HttpServlet {
 	MyProfileService myProfService;
 	MyInterestService myIntesInterestService;
 	UserVO userVO;
+	PrintWriter out;
 	
 	private static String USER_IMG_REPO;
 	private static String USER_IMG_DEF;
@@ -54,6 +56,8 @@ public class MyProfileController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");		
 		session=request.getSession();
 		String nextPage = "";
+		
+		out = response.getWriter();
 
 		String action = request.getPathInfo();				
 		String user_id = (String)session.getAttribute("user_id");
@@ -222,19 +226,28 @@ public class MyProfileController extends HttpServlet {
 						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + originalFileName);
 						oldFile.delete();
 					}
+				
+					UserVO userVO = new UserVO(user_id, user_img);
+					myProfService.modUserImg(userVO);					
+
+					nextPage= "/nemo/mypage/myprofile";
+					
+					//request.setAttribute("msg", "modImg");
+					/*
 					message = "<script>";
 					message += "alert('이미지가 수정되었습니다.');";
-					message += "location.href='nemo/mypage/myprofile';";
+					message += "location.href='" + nextPage + "';";
 					message += "</script>";	
-					
-					UserVO userVO = new UserVO(user_id, user_img);
-					myProfService.modUserImg(userVO);
-					
-					request.setAttribute("msg", "modImg");
-					nextPage= "/nemo/mypage/myprofile";
-					response.sendRedirect(nextPage);
 					response.sendRedirect(message);
+					*/
 					
+					//response.sendRedirect(nextPage);
+					
+			        out.print("<script>");
+			        out.print("alert('이미지가 수정되었습니다.');");
+			        out.print("location.href='" + nextPage + "';");
+			        out.print("</script>");
+			        
 					
 				} else if(action.equals("/delUserForm")) {
 				
@@ -245,6 +258,7 @@ public class MyProfileController extends HttpServlet {
 					
 				} else if(action.equals("/delUser")) {				
 					//회원 탈퇴
+					
 					user_id = (String)session.getAttribute("user_id");
 					System.out.println("user_id="+user_id);
 					//입력받은 비밀번호
@@ -257,8 +271,16 @@ public class MyProfileController extends HttpServlet {
 					//알림창
 			        System.out.println(user_id + "회원 탈퇴");
 					//request.setAttribute("msg", "deleted");
-					nextPage="/nemo/index";
-					response.sendRedirect(nextPage);
+			        
+			        nextPage="/nemo/index";
+			        
+			        out.print("<script>");
+			        out.print("alert('회원 탈퇴 되었습니다.');");
+			        out.print("location.href='" + nextPage + "';");
+			        out.print("</script>");
+			        
+					
+					//response.sendRedirect(nextPage);
 
 				}
 //			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

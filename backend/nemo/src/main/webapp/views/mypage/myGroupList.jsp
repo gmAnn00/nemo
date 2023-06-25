@@ -41,7 +41,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
             <h2 class="sc2_menu_title">마이페이지</h2>
             <ul class="sc2_menu_list">
               <li>
-                <a href="${contextPath}/mypage/">
+                <a href="${contextPath}/mypage">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>프로필</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -67,7 +67,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myboardList">
+                <a href="${contextPath}/mypage/myBoardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -252,10 +252,10 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 		                      <span class="card__by"
 		                        ><i class="fa-solid fa-location-dot"></i>
 		                        <a href="#" class="card__author">${locationB}</a>
-		                          <button type="button" class="grpLikeBtn" title="네모찜하기">
-			                          <c:if test="${isBookmark}">
+		                          <button type="button" class="grpLikeBtn" onchli title="네모찜하기">
+			                        <c:if test="${isBookmark}">
 				
-										<span class="grpLike on"> <svg viewBox="0 0 24 24">
+										<span class="grpLike grpLike${bookmarkGroup.grp_id} on" onclick="bookmarkClick('${user_id}', '${bookmarkGroup.grp_id}')"> <svg viewBox="0 0 24 24">
 				                                <use xlink:href="#heart" />
 				                                <!-- filled heart -->
 				                                <use xlink:href="#heart" />
@@ -269,11 +269,12 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 				                            </svg>
 										</span>
 										<span class="hidden">찜하기</span>
-				
+									
 									</c:if>
+									
 									<c:if test="${!isBookmark}">
 				
-										<span class="grpLike"> <svg viewBox="0 0 24 24">
+										<span class="groupLike grpLike${bookmarkGroup.grp_id}" onclick="bookmarkClick('${user_id}', '${bookmarkGroup.grp_id}')"> <svg viewBox="0 0 24 24">
 				                                <use xlink:href="#heart" />
 				                                <!-- filled heart -->
 				                                <use xlink:href="#heart" />
@@ -289,6 +290,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 										<span class="hidden">찜하기</span>
 				
 									</c:if>
+									
 			                      </button>
 		                      </span>
 		                    </div>

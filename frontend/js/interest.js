@@ -12,10 +12,14 @@ function showSubcategories(category) {
   }
 }
 
+// 관심사 선택 처리 영역
 var interestValues = []; // 중복 값 체크를 위한 배열
 function addMyInterest(value) {
   var interestList = document.getElementById("myInt");
   var buttonCount = interestList.getElementsByTagName("button").length;
+  var interestHiddenList = ocument.getElementById("myInt").appendChild;
+
+  //개수 체크
   if (buttonCount >= 3) {
     return;
   }
@@ -23,10 +27,31 @@ function addMyInterest(value) {
   if (interestValues.includes(value)) {
     return;
   }
+
+  /* 관심사 선택 부분 button 추가 */
   var newInterest = document.createElement("button");
   newInterest.textContent = value;
   newInterest.classList.add("btnMyInterest");
   interestList.appendChild(newInterest);
+  // 값 배열에 추가
+  interestValues.push(value);
+
+  // 클릭 이벤트 핸들러 추가
+  newInterest.addEventListener("click", function () {
+    // 중복 값 배열에서 제거
+    var index = interestValues.indexOf(value);
+    if (index > -1) {
+      interestValues.splice(index, 1);
+    }
+    interestList.removeChild(newInterest);
+  });
+
+  /* 관심사 선택 부분 input hidden 추가 삽입 */
+  var newInterestHidden = document.createElement("input");
+  newInterestHidden.setAttribute("type", "hidden");
+  newInterestHidden.setAttribute("name", "myInterest");
+  newInterestHidden.setAttribute("value", value);
+  interestHiddenList.appendChild(newInterestHidden);
   // 중복 값 배열에 추가
   interestValues.push(value);
 
@@ -40,6 +65,7 @@ function addMyInterest(value) {
     interestList.removeChild(newInterest);
   });
 
+  // 선택하기 버튼 영역
   var submitButton = document.querySelector("button[type='submit']");
   var myInt = document.getElementById("myInt");
 
@@ -49,6 +75,7 @@ function addMyInterest(value) {
     checkMyInt();
   });
 
+  // 선택하기 버튼 활성화/비활성화 함수
   function checkMyInt() {
     if (myInt.childElementCount > 0) {
       submitButton.disabled = false;

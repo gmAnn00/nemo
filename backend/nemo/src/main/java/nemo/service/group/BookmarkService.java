@@ -10,6 +10,7 @@ public class BookmarkService {
 	}
 
 	// 찜 추가/삭제
+	/*
 	public void toggleBookmark(String user_id, int group_id, Boolean isBookmark) {
 		if(isBookmark) {
 			bookmarkDAO.deleteBookmark(user_id, group_id);
@@ -18,6 +19,22 @@ public class BookmarkService {
 			bookmarkDAO.insertBookmark(user_id, group_id);
 		}
 
+	} */
+	// end of toggleBookmark
+	
+	// 찜 추가/삭제
+	public Boolean toggleBookmark(String user_id, int group_id) {
+		Boolean isBookmark = bookmarkDAO.isBookmark(user_id, group_id);
+		
+		if(isBookmark) {
+			bookmarkDAO.deleteBookmark(user_id, group_id);
+			
+		} else {
+			bookmarkDAO.insertBookmark(user_id, group_id);
+		}
+
+		return !isBookmark;
 	} // end of toggleBookmark
+
 
 }

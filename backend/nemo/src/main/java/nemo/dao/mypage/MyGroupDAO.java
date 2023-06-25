@@ -162,7 +162,11 @@ public class MyGroupDAO {
 			// 대기중인 소모임
 			//String query = "select GRP_ID from WAITLIST_TBL where USER_ID = ?";
 			// ?에 user_id
-			String query = "SELECT A.* FROM GROUP_TBL A INNER JOIN WAITLIST_TBL B ON A.GRP_ID = B.GRP_ID WHERE B.USER_ID = ? ";
+			//조인
+			//String query = "SELECT A.* FROM GROUP_TBL A INNER JOIN WAITLIST_TBL B ON A.GRP_ID = B.GRP_ID WHERE B.USER_ID = ? ";
+			//서브쿼리
+			//서브쿼리
+			String query = "SELECT * FROM GROUP_TBL A WHERE GRP_ID = (SELECT GRP_ID FROM WAITLIST_TBL B WHERE USER_ID = ? )";
 			System.out.println(query);
 
 			pstmt = conn.prepareStatement(query);
@@ -211,7 +215,10 @@ public class MyGroupDAO {
 			// 북마크 조회
 			//String query = "select GRP_ID from BOOKMARK_TBL where USER_ID = ?";
 			// ?에 user_id
-			String query = "SELECT A.* FROM GROUP_TBL A INNER JOIN WAITLIST_TBL B ON A.GRP_ID = B.GRP_ID WHERE B.USER_ID = ? ";
+			//조인
+			//String query = "SELECT A.* FROM GROUP_TBL A INNER JOIN BOOKMARK_TBL B ON A.GRP_ID = B.GRP_ID WHERE B.USER_ID = ? ";
+			//서브쿼리
+			String query = "SELECT * FROM GROUP_TBL A WHERE GRP_ID IN (SELECT GRP_ID FROM BOOKMARK_TBL B WHERE USER_ID = ? )";
 			System.out.println(query);
 
 			pstmt = conn.prepareStatement(query);

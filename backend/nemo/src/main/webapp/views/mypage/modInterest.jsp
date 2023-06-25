@@ -38,7 +38,7 @@
             <h2 class="sc2_menu_title">프로필</h2>
             <ul class="sc2_menu_list">
               <li>
-                <a href="${contextPath}/mypage/">
+                <a href="${contextPath}/mypage">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select">
                       <span>프로필</span>
@@ -66,7 +66,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myboardList">
+                <a href="${contextPath}/mypage/myBoardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -331,8 +331,7 @@
 		         	<button class="btnMyInterest">${InterestVO.sub_name}</button>	
 		         </c:forEach>
 		         <input type="text">
-	        </div>
-	        </form>
+	        </div>	        
 	      
 	        <div class="saveInterest">	        		 
 	          <button type="submit" class="button" disabled>수정하기</button>
@@ -340,7 +339,7 @@
                   >수정취소</a
                 >
 	        </div>
-	       
+	       </form>
 	      </div>
 	    </div>
       </div>

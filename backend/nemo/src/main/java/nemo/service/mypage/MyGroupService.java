@@ -9,11 +9,10 @@ import nemo.vo.group.GroupVO;
 public class MyGroupService {
 	
 	MyGroupDAO myGroupDAO;
-	GroupVO groupVO;
+	
 	
 	public MyGroupService() {
 		myGroupDAO = new MyGroupDAO();
-		groupVO = new GroupVO();
 	}
 	
 	//내가 리더인 소모임조회

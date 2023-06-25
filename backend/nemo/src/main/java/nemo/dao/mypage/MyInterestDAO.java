@@ -81,8 +81,8 @@ public class MyInterestDAO {
 			//System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, sub_name);
-			pstmt.setString(2, main_name);
+			//pstmt.setString(1, sub_name);
+			//pstmt.setString(2, main_name);
 			pstmt.setString(3, user_id);
 			ResultSet rs = pstmt.executeQuery();
 			interestList.clear();

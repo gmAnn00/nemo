@@ -86,7 +86,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myboardList">
+                <a href="${contextPath}/mypage/myBoardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -110,9 +110,9 @@
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>나의 모임</span>
+              <span>마이페이지</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>소모임관리</span>
+              <span>프로필</span>
             </div>
             <!-- nav 바 종료 -->
           </div>

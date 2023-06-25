@@ -3,6 +3,7 @@ package nemo.controller.mypage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,26 +21,22 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import nemo.service.mypage.MyBoardService;
 import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
 import nemo.vo.mypage.InterestVO;
+import nemo.vo.mypage.MyBoardVO;
 import nemo.vo.mypage.UserVO;
 
 
 @WebServlet("/mypage/myBoardList/*")
-public class myBoardListController extends HttpServlet {
+public class MyBoardListController extends HttpServlet {
 	HttpSession session;
-	MyProfileService myProfService;
-	MyInterestService myIntesInterestService;
-	UserVO userVO;
+	MyBoardService myBoardService;	
 	
-	private static String USER_IMG_REPO;
-	private static String USER_IMG_DEF;
 	
 	public void init() throws ServletException {
-		myProfService = new MyProfileService();
-		myIntesInterestService = new MyInterestService();
-		userVO = new UserVO();
+		myBoardService = new MyBoardService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,9 +46,10 @@ public class myBoardListController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
+	
 	public void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");		
+		response.setContentType("text/html;charset=utf-8");
 		session=request.getSession();
 		String nextPage = "";
 
@@ -67,20 +65,13 @@ public class myBoardListController extends HttpServlet {
 				if(action == null || action.equals("/myBoardList")) {
 				
 					user_id = (String)session.getAttribute("user_id");
-					/*
-					//id로 회원정보 찾는 메소드				
-					userVO = myProfService.searchProfileById(user_id);
 					
-					//회원정보 담기
-					request.setAttribute("userVO", userVO);
-					//System.out.println("controller 유저정보조회" + userVO);
-					
-					//관심사 담기(list로 담기)
-					List<InterestVO> interestList = myIntesInterestService.searchInterestById(user_id);
-					request.setAttribute("interestList", interestList);
-					*/
+					//id로 회원정보, 그룹 및 글정보 찾는 메소드
+					List<MyBoardVO> myBoardList = new ArrayList<>();
+					myBoardList = myBoardService.getMyArticleInfo(user_id);
 					
 					
+					request.setAttribute("myBoardList", myBoardList);
 					
 					
 					nextPage="/views/mypage/myBoardList.jsp";
@@ -102,10 +93,8 @@ public class myBoardListController extends HttpServlet {
 					String delpassword = (String)request.getParameter("delpassword");
 					System.out.println("delpwd=" + delpassword);
 					
-			        //UserVO userVO = new UserVO(user_id, delpassword);
-			        myProfService.delMember(user_id, delpassword);
 					*/
-					
+				
 					
 			        System.out.println(user_id + "글 삭제");
 					//request.setAttribute("msg", "deleted");
@@ -128,6 +117,11 @@ public class myBoardListController extends HttpServlet {
 			response.sendRedirect(nextPage);
 		}
 			
+	}
+
+	private void getMyArticleInfo(String user_id) {
+		// TODO Auto-generated method stub
+		
 	}// doHandle() End
 	
 }

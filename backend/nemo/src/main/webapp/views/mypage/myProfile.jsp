@@ -39,6 +39,7 @@
 		}
 	}
 </script>
+<%--
 <c:choose>
 	<c:when test='${msg == "modified"}'>
 		<script>
@@ -59,13 +60,11 @@
 			window.onload = function() {
 				alert("탈퇴되었습니다.")
 			}
-		<%-- 로그아웃 상태로 바뀌면 인덱스 페이지로 포워딩 을 여기서 하나?
-			<a href="${contextPath}/index.do"></a>
-			--%>
-			
+	
 		</script>
 	</c:when>
 </c:choose>
+ --%>
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -78,7 +77,7 @@
 				<div class="sc2_menu">
 					<h2 class="sc2_menu_title">프로필</h2>
 					<ul class="sc2_menu_list">
-						<li><a href="${contextPath}/mypage/">
+						<li><a href="${contextPath}/mypage">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name submenu_select">
 										<span>프로필</span>
@@ -102,7 +101,7 @@
 									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/myboardList">
+						<li><a href="${contextPath}/mypage/myBoardList">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name">
 										<span>내가 쓴 글·댓글</span>
@@ -121,10 +120,14 @@
 					<h2 class="sc2_subsection_title_name">프로필</h2>
 					<!-- nav 바 시작 -->
 					<div class="nav_bar">
-						<a href="${contextPath}/index"> <i class="fa-solid fa-house nav_icon"></i>
-						</a> <i class="fa-solid fa-angle-right nav_icon"></i> <span>나의
-							모임</span> <i class="fa-solid fa-angle-right nav_icon"></i> <span>소모임관리</span>
-					</div>
+					  <a href="${contextPath}/index">
+					  	<i class="fa-solid fa-house nav_icon"></i>
+					  </a>
+					  <i class="fa-solid fa-angle-right nav_icon"></i>
+		              <span>마이페이지</span>
+		              <i class="fa-solid fa-angle-right nav_icon"></i>
+		              <span>프로필</span>
+		            </div>
 					<!-- nav 바 종료 -->
 				</div>
 

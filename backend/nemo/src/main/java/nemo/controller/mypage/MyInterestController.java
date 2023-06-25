@@ -19,7 +19,7 @@ import nemo.vo.mypage.InterestVO;
 public class MyInterestController extends HttpServlet {
 	
 	HttpSession session;
-	MyInterestService myIntesInterestService;
+	MyInterestService myInterestService;
 	List<InterestVO> interestList = new ArrayList<>();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class MyInterestController extends HttpServlet {
 		if(action.equals("/modInterestForm")) {
 			//관심사 수정페이지로 이동
 			user_id = (String)session.getAttribute("user_id");
-			List<InterestVO> interestList = myIntesInterestService.searchInterestById(user_id);
+			List<InterestVO> interestList = myInterestService.searchInterestById(user_id);
 			request.setAttribute("interestList", interestList);
 			
 			nextPage= "/views/mypage/modInterest.jsp";
@@ -54,8 +54,9 @@ public class MyInterestController extends HttpServlet {
 			//넘겨준 interestList 이용
 			//List<String> interestList = new ArrayList<>();
 			
-			myIntesInterestService.modInterest(user_id, interestList);
-			nextPage="/nemo/mypage/myprofile";
+			myInterestService.modInterest(user_id, interestList);
+			
+			nextPage="/nemo/mypage/myprofile";			
 			response.sendRedirect(nextPage);
 			
 		}

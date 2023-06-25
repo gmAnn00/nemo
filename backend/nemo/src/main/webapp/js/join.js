@@ -28,34 +28,67 @@ $(document).ready(function() {
 				$("#submit").attr("disabled", "disabled");
 			}
 		}
-	}); //end of 비밀번호 확인
+	}); //end 비밀번호 확인
+
+});
 
 
-
-}); //end of document ready
-
-
-
-//아이디 중복체크
+//아이디 중복 체크
 function fn_IdCheck() {
-	//중복체크 메서드 안에 변수 선언 해주기	
-	let user_idVO = $("#user_id_hidden").val();
-	console.log("user_id=" + user_idVO);
-	
-	//나머지 코딩 
+	let user_idVO="";
+	if($("#user_id_hidden").val() != null){
+		user_idVO = $("#user_id_hidden").val();
+
+	}
+	console.log("user_idVO=" + user_idVO);
+
 	let user_id = $("#user_id").val();
 	
-	
-	
+	//입력 안했을 경우
+	if (user_id == "") {
+		$("#resultMsgId").show();
+		$("#resultMsgId").html("중복 체크할 아이디을 입력해주세요");
+		$("#resultMsgId").css("color", "#f43965");
+		return; //아래 내용 수행안하고 위로 돌아감
+
+	}
+
+	if (user_id == user_idVO) {
+		$("#resultMsgId").show();
+		$("#resultMsgId").html("지금 사용하고 있는 아이디입니다.");
+		$("#resultMsgId").css("color", "#3384ff");
+	} else {
+		$.ajax({
+			type: "post",
+			async: true,
+			// dataType: "text",
+			url: "http://localhost:8090/nemo/duplicate/id",
+			//왼쪽의 key에 오른쪽의 value값이 들어감
+			data: { "user_id": user_id },
+			success: function(data, textStatus) {
+				if (data == "usable") {
+					$("#resultMsgId").show();
+					$("#resultMsgId").html("사용할 수 있는 아이디입니다.");
+					$("#resultMsgId").css("color", "#3384ff");
+				} else {
+					$("#resultMsgId").show();
+					$("#resultMsgId").html("사용할 수 없는 아이디입니다.");
+					$("#resultMsgId").css("color", "#f43965");
+				}
+			},
+			error: function(data, textStatus, error) {
+				alert("에러가 발생했습니다.");
+			},
+		});
+	}
 }
 
-//닉네임 중복체크
+//닉네임 중복 체크
 function fn_nicknameCheck() {
 	let nicknameVO = $("#nickname_hidden").val();
 	console.log("nickname=" + nicknameVO);
 
 	let nickname = $("#nickname").val();
-
 	//입력 안했을 경우
 	if (nickname == "") {
 		$("#resultMsgNick").show();
@@ -73,7 +106,7 @@ function fn_nicknameCheck() {
 			type: "post",
 			async: true,
 			// dataType: "text",
-			url: "http://127.0.0.1:8090/nemo/duplicate/nickname",
+			url: "http://localhost:8090/nemo/duplicate/nickname",
 			//왼쪽의 key에 오른쪽의 value값이 들어감
 			data: { "nickname": nickname },
 			success: function(data, textStatus) {
@@ -100,19 +133,19 @@ function fn_emailCheck() {
 	console.log("emailId=" + emailIdVO);
 	let emailDomainVO = $("#emailDomain_hidden").val();
 	console.log("emailDomain=" + emailDomainVO);
-
+	
 	let emailId = $("#emailId").val();
 	let emailDomain = $("#emailDomain").val();
-
+	
 	//입력 안했을 경우
 	if (emailId == "" || emailDomain == "") {
 		$("#resultMsgEmail").show();
 		$("#resultMsgEmail").html("중복 체크할 이메일을 입력해주세요");
-		$("#resultMsgEmail").css("color", "red");
+		$("#resultMsgEmail").css("color", "#f43965");
 		return; //아래 내용 수행안하고 위로 돌아감
 	}
 
-	if ((emailId == emailIdVO && emailDomain == emailDomainVO)) {
+	if (emailId == emailIdVO && emailDomain == emailDomainVO) {
 		$("#resultMsgEmail").show();
 		$("#resultMsgEmail").html("지금 사용하고 있는 이메일입니다.");
 		$("#resultMsgEmail").css("color", "#3384ff");
@@ -121,7 +154,7 @@ function fn_emailCheck() {
 			type: "post",
 			async: true,
 			// dataType: "text",
-			url: "http://127.0.0.1:8090/nemo/duplicate/email",
+			url: "http://localhost:8090/nemo/duplicate/email",
 			//왼쪽의 key에 오른쪽의 value값이 들어감
 			data: { "emailId": emailId, "emailDomain": emailDomain },
 			success: function(data, textStatus) {
@@ -141,3 +174,5 @@ function fn_emailCheck() {
 		});
 	}
 }
+
+
