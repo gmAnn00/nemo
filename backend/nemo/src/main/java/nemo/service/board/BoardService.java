@@ -7,7 +7,9 @@ import java.util.Map;
 
 import nemo.dao.board.BoardDAO;
 import nemo.dao.board.CommentDAO;
+import nemo.dao.common.UserDAO;
 import nemo.dao.group.GroupInfoDAO;
+import nemo.dao.group.JoinGroupDAO;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
 import nemo.vo.group.GroupVO;
@@ -16,11 +18,13 @@ public class BoardService {
 	BoardDAO boardDAO;
 	GroupInfoDAO groupDAO;
 	CommentDAO commentDAO;
+	UserDAO userDAO;
 		
 	public BoardService() {
 		boardDAO=new BoardDAO();
 		commentDAO=new CommentDAO();
 		groupDAO=new GroupInfoDAO();
+		userDAO=new UserDAO();
 		
 	}
 	
@@ -29,7 +33,7 @@ public class BoardService {
 		boolean isMem=boardDAO.isMember(user_id, group_id);
 		Map articleMap=new HashMap<>();
 
-		if(isMem) {
+		//if(isMem||userDAO.checkAdmin(user_id)) {
 			List<BoardVO> articlesList=boardDAO.selectGrpArticles(pagingMap, group_id); // 10개 끊은 자료를 갖고옴
 			//GroupVO groupVO=groupDAO.selectGroupById(group_id);
 			//int currentMemNo=groupDAO.selectGroupNumById(group_id);
@@ -47,7 +51,7 @@ public class BoardService {
 			//articleMap.put("group", groupVO);
 			//articleMap.put("currentMemNo", currentMemNo);
 			
-		}
+		//}
 		return articleMap;		
 	} // End of 게시글 목록
 	
@@ -57,7 +61,7 @@ public class BoardService {
 		Map articleMap=new HashMap<>();
 		int totArticles=0;
 
-		if(isMem) {
+		//if(isMem||userDAO.checkAdmin(user_id)) {
 			
 			List<BoardVO> articlesList=new ArrayList<BoardVO>();
 			
@@ -73,7 +77,7 @@ public class BoardService {
 			
 			//System.out.println("소모임 글 검색"+groupVO.getGrp_id());
 			System.out.println("검색 글개수4:"+totArticles);
-		}
+		//}
 		return articleMap;	
 	}
 	
@@ -83,7 +87,7 @@ public class BoardService {
 		boolean isMem = boardDAO.isMember(user_id, grp_id);
 		Map viewArticle=new HashMap<>();
 
-		if(isMem) {
+		//if(isMem||userDAO.checkAdmin(user_id)) {
 			BoardVO article = new BoardVO();
 			//GroupVO groupVO=groupDAO.selectGroupById(grp_id);
 			
@@ -94,14 +98,13 @@ public class BoardService {
 			}
 			article=boardDAO.selectArticle(article_no);
 			comments=commentDAO.selectComments(article_no);
-			
 			viewArticle.put("article", article);
 			viewArticle.put("comments", comments);
 			//viewArticle.put("isSame",isSame);
 			//viewArticle.put("group", groupVO);
 			//viewArticle.put("group_id", grp_id);
 			
-		} 
+		//} 
 		return viewArticle;
 		
 	}//End of viewArticle
@@ -117,6 +120,7 @@ public class BoardService {
 			_brackets="후기";
 		}
 		boardVO.setBrackets(_brackets);
+		//멤버인지체크해야함;;
 		boardDAO.insertNewArticle(boardVO);
 	}//End of addArticle
 	
@@ -165,6 +169,22 @@ public class BoardService {
 	//컨텐츠 삭제하는 메소드
 	public void deleteArticle(int article_no) {
 		
+	}
+	
+	public boolean checkAdmin(String user_id) {
+		boolean isAdmin=false;
+		isAdmin=userDAO.checkAdmin(user_id);
+		return isAdmin;
+	} 
+	
+	public boolean isMember(String user_id, int group_id) {
+		boolean isMem=false;
+		isMem=boardDAO.isMember(user_id, group_id);
+		return isMem;
+	}
+
+	public boolean isAuthorized(String user_id,int group_id) {
+		return (boardDAO.isMember(user_id, group_id)||userDAO.checkAdmin(user_id));
 	}
 	
 	/*

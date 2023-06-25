@@ -92,7 +92,7 @@ public class CommentDAO {
 	}
 	
 	public int getMaxCommentNo(int parent_no) {
-		int maxCommentNo=0;
+		int maxCommentNo=parent_no;
 		try {
 			conn=dataFactory.getConnection();
 			String query="select max(comment_no) as maxNum from comment_tbl where parent_no=?";
@@ -101,7 +101,9 @@ public class CommentDAO {
 			pstmt.setInt(1,parent_no);
 			ResultSet rs=pstmt.executeQuery();
 			rs.next();
-			maxCommentNo=rs.getInt("maxNum");
+			if(rs.getInt("maxNum")!=0) {
+				maxCommentNo=rs.getInt("maxNum");
+			}			
 			
 			rs.close();
 			pstmt.close();

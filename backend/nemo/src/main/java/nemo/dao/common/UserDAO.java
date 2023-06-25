@@ -64,4 +64,28 @@ public class UserDAO {
 		
 		return userVO;
 	}
+	
+	public boolean checkAdmin(String user_id) {
+		boolean isAdmin=false;
+		try {
+			conn=dataFactory.getConnection();
+			String query = "SELECT admin FROM user_tbl WHERE user_id=?";
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, user_id);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			int admin=rs.getInt("admin");
+			if(admin==1) {
+				isAdmin=true;
+			}
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+		}catch (Exception e) {
+			System.out.println("admin 확인중 에러");
+			e.printStackTrace();
+		}
+		return isAdmin;
+	}
 }
