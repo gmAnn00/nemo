@@ -16,16 +16,14 @@ public class DuplicateDAO {
 	
 	public DuplicateDAO() {
 		try {
-			//커넥션 풀은 JNDI(Java Naming Directory Interface)를 이용
-			// JNDI : 필요한 자원을 키와 값의 쌍으로 저장 한 후, 키를 이용하여 값을 얻는 방식
+			//커넥션 풀 - JNDI(Java Naming Directory Interface)
 			Context ctx = new InitialContext();
 			Context envContext = (Context)ctx.lookup("java:/comp/env");
-			//Datasource : Servers - context.xml에 있는 resource 부분을 읽어옴
 			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");			
 		} catch (Exception e) {
-			//연결오류 메시지가 난다면 이 메시지가 뜨고 Servers프로젝트 - context.xml확인
+			//Servers - context.xml 확인
 			System.out.println("DB연결오류");
-		}
+		}		
 	}
 
 	//ID 중복 체크 메서드

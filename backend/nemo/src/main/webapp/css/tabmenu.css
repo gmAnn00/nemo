@@ -9,6 +9,7 @@
 .tab_box {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 .tab-slider--nav {
     width: 100%;

@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.mypage.InterestVO;
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 public class MyInterestDAO {
 	
@@ -24,14 +24,12 @@ public class MyInterestDAO {
 	
 	public MyInterestDAO() {
 		try {
-			//커넥션 풀은 JNDI(Java Naming Directory Interface)를 이용
-			// JNDI : 필요한 자원을 키와 값의 쌍으로 저장 한 후, 키를 이용하여 값을 얻는 방식
+			//커넥션 풀 - JNDI(Java Naming Directory Interface)
 			Context ctx = new InitialContext();
 			Context envContext = (Context)ctx.lookup("java:/comp/env");
-			//DataSource : Servers - context.xml에 있는 resource 부분을 읽어옴
 			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");			
 		} catch (Exception e) {
-			//연결오류 메시지가 난다면 이 메시지가 뜨고 Servers프로젝트 - context.xml확인
+			//Servers - context.xml 확인
 			System.out.println("DB연결오류");
 		}		
 	}
@@ -41,7 +39,7 @@ public class MyInterestDAO {
 		try {
 			conn = dataFactory.getConnection();
 			
-			String query = "select SUB_NAME from INTERESTS_TBL where user_id = ?";
+			String query = "SELECT SUB_NAME FROM INTERESTS_TBL WHERE USER_ID = ?";
 			//System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);
@@ -77,7 +75,7 @@ public class MyInterestDAO {
 			//String query = "delete from INTERESTS_TBL WHERE user_id = ?";
 			//반복문 돌면서 update 해주고..? 아니 다 삭제하면 create 가 되는거 아님? ㄷ;;
 			//일부만 수정하면... 수정한 부분만 알아서 그 걸 update해야하나..?			
-			String query = "update INTERESTS_TBL set SUB_NAME = ? , MAIN_NAME = ? WHERE user_id = ?";
+			String query = "UPDATE INTERESTS_TBL SET SUB_NAME = ? , MAIN_NAME = ? WHERE USER_ID = ?";
 			//System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);

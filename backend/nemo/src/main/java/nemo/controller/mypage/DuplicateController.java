@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import nemo.service.mypage.DuplicateService;
 import nemo.service.mypage.MyProfileService;
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 @WebServlet("/duplicate/*")
 public class DuplicateController extends HttpServlet {

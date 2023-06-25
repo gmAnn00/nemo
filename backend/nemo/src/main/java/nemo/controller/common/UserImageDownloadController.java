@@ -24,7 +24,7 @@ import org.apache.commons.io.FileUtils;
 
 import nemo.dao.mypage.MyProfileDAO;
 import nemo.service.mypage.MyProfileService;
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 
 @WebServlet("/userImageDownload")

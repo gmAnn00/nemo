@@ -38,7 +38,7 @@
 									<div class="menu_submenu_name">
 										<span>프로필</span>
 									</div>
-									<i class="fa-solid fa-minus menu_angle"></i>
+									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
 						<li><a href="${contextPath}/mypage/mySchedule">
@@ -59,10 +59,10 @@
 						</a></li>
 						<li><a href="${contextPath}/mypage/myboardList">
 								<div class="sc2_icon_menu">
-									<div class="menu_submenu_name menu_angle">
+									<div class="menu_submenu_name menu_angle submenu_select">
 										<span>내가 쓴 글·댓글</span>
 									</div>
-									<i class="fa-solid fa-angle-right submenu_select"></i>
+									<i class="fa-solid fa-minus submenu_select"></i>
 								</div>
 						</a></li>
 					</ul>
@@ -101,76 +101,52 @@
 	                <!-- tab1 시작 -->
 	                <div id="tab1" class="tab-slider--body">
 	                  <div class="tab_box">
-	                    <!-- comment 시작 -->
-	                    <div class="user-comment">
-	                      <div class="comments-section">
-	                        <div class="comment_box">
-	                          <div class="comment_title">
-	                            <div class="comment_textarea">
-	                              <h3 class="comment_group_title">이젠종로학원</h3>
-	                              <span class="comment_board_title">글 제목</span>
-	                              <span class="comment-time">30 minutes ago</span>
-	                            </div>
+	                    <!-- 글 시작 -->
+                        <c:choose>
+		                  <c:when test="${empty myArticleList}">
+		                    <p>작성된 글이 없습니다.</p>
+		                  </c:when>
+		                  <c:when test="${!empty myArticleList}">
+		                    <c:forEach var="myArticle" items="${myArticleList}" varStatus="loop">
+	                        	  
+		                    <div class="user-comment">
+		                      <div class="comments-section">	                                          
+	                        	<div class="comment_box">	                         
+		                          <div class="comment_title">
+		                            <div class="comment_textarea">
+		                              <h3 class="comment_group_title">${myArticle.groupVO.grp_name}</h3>
+		                              <span class="comment_board_title">${myArticle.boardVO.title}</span>
+		                            </div>
+		                          </div>
+		
+		                          <div class="comment-post">
+		                            <div class="comment-img"><img src="${contextPath}/userImages/${myArticle.userVO.user_id}/${myArticle.userVO.user_img}" /></div>
+		                            <div class="comment-details">
+		                              <div class="comment_details_titlebox">
+		                                <div class="comment_details_title">
+		                                  <span class="comment-author" id="user"> ${myArticle.userVO.nickname}</span>
+		                                  <span class="comment-time">${myArticle.boardVO.create_date}</span>
+		                                   <div class="comment-like-unlike">
+			                                  <span><a href="${contextPath}/group/board?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
+			                                  <span><a href="${contextPath}/mypage/myBoardList/delWriting?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
+			                                </div>
+		                                </div>
+		                               
+		                              </div>
+		                              <p class="comment-content">
+		                               	${myArticle.boardVO.content}
+		                              </p>
+		                            </div>
+		                          </div>
+		                         </div>
 	                          </div>
-	
-	                          <div class="comment-post">
-	                            <div class="comment-img"><img src="${contextPath}/images/profile-test.jpg" /></div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">도지</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-pen"></i></span>
-	                                  <span><i class="fa-solid fa-xmark"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">
-	                                Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum.
-	                                Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.
-	                              </p>
-	                            </div>
-	                          </div>
-	                        </div>
-	                      </div>
-	                    </div>
-	                    <!-- comment 종료 -->
-	
-	                    <!-- comment 시작 -->
-	                    <div class="user-comment">
-	                      <div class="comments-section">
-	                        <div class="comment_box">
-	                          <div class="comment_title">
-	                            <div class="comment_textarea">
-	                              <h3 class="comment_group_title">이젠종로학원</h3>
-	                              <span class="comment_board_title">글 제목</span>
-	                              <span class="comment-time">30 minutes ago</span>
-	                            </div>
-	                          </div>
-	
-	                          <div class="comment-post">
-	                            <div class="comment-img"><img src="${contextPath}/images/profile-test.jpg" /></div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">도지</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-pen"></i></span>
-	                                  <span><i class="fa-solid fa-xmark"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">
-	                                Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum.
-	                                Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.
-	                              </p>
-	                            </div>
-	                          </div>
-	                        </div>
-	                      </div>
-	                    </div>
-	                  </div>
-	                  <!-- comment 종료 -->
+                    		</div>
+                    		
+                            </c:forEach>
+                          </c:when>
+                        </c:choose>
+	                    <!-- 글 종료 -->
+	                  </div>	                  
 	                </div>
 	                <!-- tab1 종료 -->
 	
@@ -178,132 +154,51 @@
 	                <div id="tab2" class="tab-slider--body">
 	                  <div class="tab_box">
 	                    <!-- comment 시작 -->
-	                    <div class="user-comment">
-	                      <div class="comments-section">
-	                        <div class="comment_box">
-	                          <div class="comment_title">
-	                            <div class="comment_textarea">
-	                              <h3 class="comment_group_title">이젠종로학원</h3>
-	                              <span class="comment_board_title">글 제목</span>
-	                              <span class="comment-time">30 minutes ago</span>
-	                            </div>
+                        <c:choose>
+		                  <c:when test="${empty myCommentList}">
+		                    <p>작성된 댓글이 없습니다.</p>
+		                  </c:when>
+		                  <c:when test="${!empty myCommentList}">
+		                    <c:forEach var="myComment" items="${myCommentList}" varStatus="loop">
+                        
+		                    <div class="user-comment">
+		                      <div class="comments-section">	                                          
+	                        	<div class="comment_box">	                         
+		                          <div class="comment_title">
+		                            <div class="comment_textarea">
+		                              <h3 class="comment_group_title">${myComment.groupVO.grp_name}</h3>
+		                              <span class="comment_board_title">${myComment.boardVO.title}</span>
+		                            </div>
+		                          </div>
+		
+		                          <div class="comment-post">
+		                            <div class="comment-img"><img src="${contextPath}/userImages/${myComment.userVO.user_id}/${myComment.userVO.user_img}" /></div>
+		                            <div class="comment-details">
+		                              <div class="comment_details_titlebox">
+		                                <div class="comment_details_title">
+		                                  <span class="comment-author" id="user"> ${myComment.userVO.nickname}</span>
+		                                  <span class="comment-time">${myComment.boardVO.create_date}</span>
+		                                   <div class="comment-like-unlike">
+			                                  <span><a href="${contextPath}/group/board?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
+			                                  <span><a href="${contextPath}/mypage/myBoardList/delWriting?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
+			                                </div>
+		                                </div>
+		                               
+		                              </div>
+		                              <p class="comment-content">
+		                              	 ${myComment.commentVO.com_cont}
+		                              </p>
+		                            </div>
+		                          </div>
+		                         </div>
 	                          </div>
-	
-	                          <div class="comment-post">
-	                            <div class="comment-img"><img src="${contextPath}/images/profile-test.jpg" /></div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">도지</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-pen"></i></span>
-	                                  <span><i class="fa-solid fa-xmark"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">
-	                                Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum.
-	                                Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.
-	                              </p>
-	                            </div>
-	                          </div>
-	
-	                          <div class="comment-post-reply">
-	                            <div class="comment-img">
-	                              <img src="${contextPath}/images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png" />
-	                            </div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">곽철이</span>
-	                                  <span class="comment-time">10 minutes ago</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-reply"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	                            </div>
-	                          </div>
-	                        </div>
-	                      </div>
-	                    </div>
-	                    <!-- comment 종료 -->
-	
-	                    <!-- comment 시작 -->
-	                    <div class="user-comment">
-	                      <div class="comments-section">
-	                        <div class="comment_box">
-	                          <div class="comment_title">
-	                            <div class="comment_textarea">
-	                              <h3 class="comment_group_title">이젠종로학원</h3>
-	                              <span class="comment_board_title">글 제목</span>
-	                              <span class="comment-time">30 minutes ago</span>
-	                            </div>
-	                          </div>
-	
-	                          <div class="comment-post">
-	                            <div class="comment-img"><img src="${contextPath}/images/profile-test.jpg" /></div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">도지</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-pen"></i></span>
-	                                  <span><i class="fa-solid fa-xmark"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">
-	                                Maecenas eu maximus tellus, vel placerat massa. Nullam neque magna, hendrerit ac lacinia in, consequat nec ipsum.
-	                                Vivamus tincidunt fringilla diam et sagittis. Suspendisse tincidunt hendrerit nisi, sit amet aliquet enim ornare at.
-	                              </p>
-	                            </div>
-	                          </div>
-	
-	                          <div class="comment-post-reply">
-	                            <div class="comment-img">
-	                              <img src="${contextPath}/images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png" />
-	                            </div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">곽철이</span>
-	                                  <span class="comment-time">10 minutes ago</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-reply"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	                            </div>
-	                          </div>
-	
-	                          <div class="comment-post-reply">
-	                            <div class="comment-img">
-	                              <img src="${contextPath}/images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png" />
-	                            </div>
-	                            <div class="comment-details">
-	                              <div class="comment_details_titlebox">
-	                                <div class="comment_details_title">
-	                                  <span class="comment-author" id="user">곽철이</span>
-	                                  <span class="comment-time">10 minutes ago</span>
-	                                </div>
-	                                <div class="comment-like-unlike">
-	                                  <span><i class="fa-solid fa-reply"></i></span>
-	                                </div>
-	                              </div>
-	                              <p class="comment-content">
-	                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu maximus tellus, vel placerat massa. Nullam neque
-	                                magna, hendrerit ac lacinia in, consequat nec ipsum. Vivamus tincidunt fringilla diam et sagittis. Suspendisse
-	                                tincidunt hendrerit nisi, sit amet aliquet enim ornare at.
-	                              </p>
-	                            </div>
-	                          </div>
-	                        </div>
-	                      </div>
-	                    </div>
-	                    <!-- comment 종료 -->
+                    		</div>
+                    		
+		                    
+	                       </c:forEach>
+	                      </c:when>
+	                    </c:choose>
+	                    <!-- comment 종료 -->	                    
 	                  </div>
 	                </div>
 	                <!-- tab2 종료 -->

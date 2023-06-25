@@ -142,8 +142,9 @@
 }
 .card__category:first-child {
     padding-left: 0;
-    border-right: #868686 1px solid;
+    border-right: #404040 1px solid;
 }
+
 .card__title {
     margin-top: 5px;
     margin-bottom: 10px; 

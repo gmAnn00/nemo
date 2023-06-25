@@ -12,7 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 public class MyProfileDAO {
 	
@@ -22,14 +22,12 @@ public class MyProfileDAO {
 	
 	public MyProfileDAO() {
 		try {
-			//커넥션 풀은 JNDI(Java Naming Directory Interface)를 이용
-			// JNDI : 필요한 자원을 키와 값의 쌍으로 저장 한 후, 키를 이용하여 값을 얻는 방식
+			//커넥션 풀 - JNDI(Java Naming Directory Interface)
 			Context ctx = new InitialContext();
 			Context envContext = (Context)ctx.lookup("java:/comp/env");
-			//DataSource : Servers - context.xml에 있는 resource 부분을 읽어옴
 			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");			
 		} catch (Exception e) {
-			//연결오류 메시지가 난다면 이 메시지가 뜨고 Servers프로젝트 - context.xml확인
+			//Servers - context.xml 확인
 			System.out.println("DB연결오류");
 		}		
 	}
@@ -41,7 +39,7 @@ public class MyProfileDAO {
 		try {
 			conn = dataFactory.getConnection();		
 			
-			String query = "select * from user_tbl where user_id = ?";
+			String query = "SELECT * FROM USER_TBL WHERE USER_ID = ?";
 			System.out.println(query);			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, user_id);
@@ -99,7 +97,7 @@ public class MyProfileDAO {
 		try {
 			conn = dataFactory.getConnection();		
 			
-			String query = "select USER_IMG from USER_TBL where user_id = ?";
+			String query = "SELECT USER_IMG FROM USER_TBL WHERE USER_ID = ?";
 			System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);
@@ -125,7 +123,7 @@ public class MyProfileDAO {
 		try {
 			conn = dataFactory.getConnection();
 			
-			String query = "select SUB_NAME from INTERESTS_TBL where user_id = ?";
+			String query = "SELECT SUB_NAME FROM INTERESTS_TBL WHERE USER_ID = ?";
 			//System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);
@@ -176,12 +174,12 @@ public class MyProfileDAO {
 		    }catch (Exception e) {
 	        e.printStackTrace();
 			}
-		 // 확인 끝
+		 // Console 확인 끝
 		
 		try {
 			conn = dataFactory.getConnection();		
 			
-			String query = "UPDATE user_tbl SET password=?, user_name=?, nickname=?, zipcode=?, user_addr1=?, user_addr2=?, phone=?, email=?, birthdate=?, user_img=? WHERE user_id=?";
+			String query = "UPDATE USER_TBL SET PASSWORD=?, USER_NAME=?, NICKNAME=?, ZIPCODE=?, USER_ADDR1=?, USER_ADDR2=?, PHONE=?, EMAIL=?, BIRTHDATE=?, USER_IMG=? WHERE USER_ID=?";
 			System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);
@@ -215,7 +213,7 @@ public class MyProfileDAO {
 		try {
 			conn = dataFactory.getConnection();		
 			
-			String query = "UPDATE user_tbl SET user_img=? WHERE user_id=?";
+			String query = "UPDATE USER_TBL SET USER_IMG=? WHERE USER_ID=?";
 			System.out.println(query);		
 			
 			pstmt = conn.prepareStatement(query);			
@@ -238,7 +236,7 @@ public class MyProfileDAO {
 	 		//DB는 오류가 날 수 있으므로 항상 try-catch 사용
 	 		try {
 	 			conn = dataFactory.getConnection();
-				String query = "delete user_tbl where user_id=? and password=?";
+				String query = "DELETE USER_TBL WHERE USER_ID=? AND PASSWORD=?";
 				System.out.println(query);
 				pstmt = conn.prepareStatement(query);
 				

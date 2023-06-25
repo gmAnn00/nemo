@@ -17,7 +17,7 @@ import nemo.service.group.GroupInfoService;
 import nemo.service.mypage.MyGroupService;
 import nemo.service.mypage.MyProfileService;
 import nemo.vo.group.GroupVO;
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 @WebServlet("/mypage/myGroupList")
 public class MyGroupListController extends HttpServlet {

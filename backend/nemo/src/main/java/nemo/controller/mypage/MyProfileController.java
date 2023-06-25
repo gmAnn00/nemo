@@ -24,7 +24,7 @@ import org.apache.commons.io.FileUtils;
 import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
 import nemo.vo.mypage.InterestVO;
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 
 @WebServlet("/mypage/*")

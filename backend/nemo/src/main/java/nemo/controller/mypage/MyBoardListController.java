@@ -26,7 +26,7 @@ import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
 import nemo.vo.mypage.InterestVO;
 import nemo.vo.mypage.MyBoardVO;
-import nemo.vo.mypage.UserVO;
+import nemo.vo.user.UserVO;
 
 
 @WebServlet("/mypage/myBoardList/*")
@@ -65,13 +65,21 @@ public class MyBoardListController extends HttpServlet {
 				if(action == null || action.equals("/myBoardList")) {
 				
 					user_id = (String)session.getAttribute("user_id");
+					//System.out.println("user_id =" + user_id);
 					
-					//id로 회원정보, 그룹 및 글정보 찾는 메소드
-					List<MyBoardVO> myBoardList = new ArrayList<>();
-					myBoardList = myBoardService.getMyArticleInfo(user_id);
+					//내가 쓴 글정보 가져오는 메소드
+					List<MyBoardVO> myArticleList = new ArrayList<>();
+					myArticleList = myBoardService.getMyArticleInfo(user_id);
 					
+					//내가 쓴 댓글정보 가져오는 메소드
+					List<MyBoardVO> myCommentList = new ArrayList<MyBoardVO>();
+					myCommentList = myBoardService.getMyCommentInfo(user_id);
 					
-					request.setAttribute("myBoardList", myBoardList);
+					//System.out.println("myArticleList = " + myArticleList);
+					//System.out.println("myCommentList = " + myCommentList);
+					
+					request.setAttribute("myArticleList", myArticleList);
+					request.setAttribute("myCommentList", myCommentList);
 					
 					
 					nextPage="/views/mypage/myBoardList.jsp";
@@ -79,7 +87,7 @@ public class MyBoardListController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 					
-				} else if(action.equals("/delWriting")) {				
+				} else if(action.equals("/delWriting/*")) {				
 					//글 댓글 삭제
 					
 					
@@ -117,11 +125,6 @@ public class MyBoardListController extends HttpServlet {
 			response.sendRedirect(nextPage);
 		}
 			
-	}
-
-	private void getMyArticleInfo(String user_id) {
-		// TODO Auto-generated method stub
-		
 	}// doHandle() End
-	
+
 }

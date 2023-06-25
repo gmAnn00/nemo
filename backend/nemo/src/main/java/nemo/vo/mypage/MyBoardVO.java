@@ -3,15 +3,16 @@ package nemo.vo.mypage;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
 import nemo.vo.group.GroupVO;
+import nemo.vo.user.UserVO;
 
 public class MyBoardVO {
-	private UserVO userVO;
-	private GroupVO groupVO;
-	private BoardVO boardVO;
-	private CommentVO commentVO;
+	private UserVO userVO = new UserVO();
+	private GroupVO groupVO = new GroupVO();
+	private BoardVO boardVO = new BoardVO();
+	private CommentVO commentVO = new CommentVO();
 	
 	public MyBoardVO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public MyBoardVO(UserVO userVO, GroupVO groupVO, BoardVO boardVO) {

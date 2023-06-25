@@ -22,15 +22,14 @@ public class MyGroupDAO {
 
 	public MyGroupDAO() {
 		try {
-			// 커넥션 풀_ JNDI : 키와 값 방식
+			//커넥션 풀 - JNDI(Java Naming Directory Interface)
 			Context ctx = new InitialContext();
-			Context envContext = (Context) ctx.lookup("java:/comp/env");
-			// DataSource : Servers - context.xml에 있는 resource 부분을 읽어옴
-			dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+			Context envContext = (Context)ctx.lookup("java:/comp/env");
+			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");			
 		} catch (Exception e) {
-			// 연결오류 메시지가 난다면 이 메시지가 뜨고 Servers프로젝트 - context.xml확인
+			//Servers - context.xml 확인
 			System.out.println("DB연결오류");
-		}
+		}		
 	}
 
 	// 소모임장인 소모임 조회 메서드

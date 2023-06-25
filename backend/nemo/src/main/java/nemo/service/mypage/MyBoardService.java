@@ -13,11 +13,18 @@ public class MyBoardService {
 		myBoardDAO = new MyBoardDAO();
 	}
 	
-	//글정보 및 댓글정보를 가져오는 메서드
+	//글정보를 가져오는 메서드
 	public List<MyBoardVO> getMyArticleInfo(String user_id) {
-		List<MyBoardVO> myBoardList = new ArrayList<>();
-		
-		return myBoardList;
+		List<MyBoardVO> myArticleList = new ArrayList<>();
+		myArticleList = myBoardDAO.selectMyArticle(user_id);
+		return myArticleList;
 	}
+	//댓글정보를 가져오는 메서드
+	public List<MyBoardVO> getMyCommentInfo(String user_id) {
+		List<MyBoardVO> myCommentList = new ArrayList<MyBoardVO>();
+		myCommentList = myBoardDAO.selectMyComment(user_id);
+		return myCommentList;
+	}
+	
 
 }
