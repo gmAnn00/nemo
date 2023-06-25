@@ -1,6 +1,7 @@
 package nemo.controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,6 +40,7 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String action = request.getPathInfo();
+		
 		HttpSession session = request.getSession();
 		String nextPage = "";
 
@@ -62,6 +64,7 @@ public class LoginController extends HttpServlet {
 			Boolean result = loginService.isExisted(userVO);
 
 			if(result == true) {
+				
 				userVO = loginService.selectUserById(user_id);
 				session.setAttribute("user_id", userVO.getUser_id());
 				session.setAttribute("nickname", userVO.getNickname());
@@ -71,15 +74,27 @@ public class LoginController extends HttpServlet {
 				response.sendRedirect(nextPage);
 			}else {
 				// 회원이 아님 
+				PrintWriter out=response.getWriter();
 				System.out.println("로그인 실패");
+				out.print("<script>");
+				out.print("alert('회원정보가 없습니다.');");
+				out.print("location.href='" + request.getContextPath() + "/login/loginForm';");
+				out.print("</script>");
+				//response.sendRedirect(nextPage);
 			}
 			
+			//로그아웃 영역
+		}else if(action.equals("/logout")){
+			session = request.getSession(false);
 			
+			if(session !=null) {
+				session.invalidate();
+				nextPage = "/nemo/index";
+				response.sendRedirect(nextPage);
+				
+			}
 			
-			
-			
-
-		} 
+		}
 		//RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		//dispatcher.forward(request, response);
 	}

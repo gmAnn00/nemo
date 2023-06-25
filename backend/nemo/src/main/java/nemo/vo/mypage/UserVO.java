@@ -1,4 +1,4 @@
-package nemo.vo.user;
+package nemo.vo.mypage;
 
 import java.sql.Date;
 
@@ -10,16 +10,55 @@ public class UserVO {
 	private String zipcode;
 	private String user_addr1;
 	private String user_addr2;
-	private int phone;
+	private String phone;
 	private String email;
 	private Date join_date;
 	private Date birthdate;
 	private String user_img;
 	private int admin;
 	
-	public UserVO() {
-		System.out.println("UserVO 생성자 호출");
+	
+	public UserVO() {	
 	}
+
+	public UserVO(String user_id, String user_img) {		
+		this.user_id = user_id;
+		this.user_img = user_img;
+	}
+
+	public UserVO(String user_id, String password, String user_name, String nickname, String zipcode,
+			String user_addr1, String user_addr2, String phone, String email, Date birthdate, String user_img) {		
+		this.user_id = user_id;
+		this.password = password;
+		this.user_name = user_name;
+		this.nickname = nickname;
+		this.zipcode = zipcode;
+		this.user_addr1 = user_addr1;
+		this.user_addr2 = user_addr2;
+		this.phone = phone;
+		this.email = email;
+		this.birthdate = birthdate;
+		this.user_img = user_img;
+	}
+
+	public UserVO(String user_id, String password, String user_name, String nickname, String zipcode,
+			String user_addr1, String user_addr2, String phone, String email, Date join_date, Date birthdate,
+			String user_img, int admin) {
+		this.user_id = user_id;
+		this.password = password;
+		this.user_name = user_name;
+		this.nickname = nickname;
+		this.zipcode = zipcode;
+		this.user_addr1 = user_addr1;
+		this.user_addr2 = user_addr2;
+		this.phone = phone;
+		this.email = email;
+		this.join_date = join_date;
+		this.birthdate = birthdate;
+		this.user_img = user_img;
+		this.admin = admin;
+	}
+
 
 	public String getUser_id() {
 		return user_id;
@@ -77,11 +116,11 @@ public class UserVO {
 		this.user_addr2 = user_addr2;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -92,7 +131,7 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public Date getJoin_date() {
 		return join_date;
 	}
@@ -125,6 +164,5 @@ public class UserVO {
 		this.admin = admin;
 	}
 
-	
 	
 }

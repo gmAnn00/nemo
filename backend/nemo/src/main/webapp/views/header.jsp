@@ -32,7 +32,14 @@
             		<c:when test="${user_id != null}">
 	            		<li>
 	                    	<a href="#">
-	                       	 <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">${nickname}</span></div>
+	                       	 <div class="profile">
+	                       	 <!--
+	                       	 <i class="fa-solid fa-circle-user"></i>
+	                       	 -->
+	                       	 
+	                       	 <img src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${user_img}" alt="${user_id}" />
+	                       	 
+	                       	 <span class="profile_name">${nickname}</span></div>
 	                    	</a>
 	               		 </li>
 	              		 <li><a href="${contextPath}/group/createGroup/form">소모임 만들기</a></li>
@@ -41,13 +48,13 @@
 	               		 <li><a href="">내 일정</a></li>
 	               		 <li><a href="">내 소모임</a></li>
 	                	 <li><a href="">고객센터</a></li>
-	                	 <li><a href="${contextPath}/logout">로그아웃</a></li>
+	                	 <li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
             		<c:otherwise>
             			<li></li>
-            			<li><a href="${contextPath}/search">소모임 검색</a></li>
-            			<li><a href="${contextPath}/login">로그인</a></li>
-            			<li><a href="${contextPath}/join">회원가입</a></li>
+            			<li><a href="${contextPath}/groupSearch">소모임 검색</a></li>
+            			<li><a href="${contextPath}/login/loginForm">로그인</a></li>
+            			<li><a href="${contextPath}/join/agreeForm">회원가입</a></li>
             		</c:otherwise>
             	</c:choose>
             </ul>

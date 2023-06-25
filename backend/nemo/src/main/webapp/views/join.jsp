@@ -45,14 +45,8 @@
         <!-- <h4>(모든 항목을 입력해주세요)</h4> -->
         <form id="frm" name="frm" action="${contextPath}/join/join" method="post">
           <div>
-            <label for="id">아이디</label>
-            <button
-              type="button"
-              class="idCheck check button"
-              onclick="test();"
-            >
-              중복 확인
-            </button>
+            <label for="user_id">아이디</label>
+            
             <input
               type="text"
               id="user_id"
@@ -60,9 +54,13 @@
               placeholder="아이디 입력(5~20자)"
               minlength="5"
               maxlength="20"
+              oninput="fn_IdCheck()"
               required
             />
           </div>
+          
+          <div id="resultMsgId" class="resultMsg" display="none"></div>
+          
           <div>
             <label for="password">비밀번호</label>
             <input
@@ -94,27 +92,30 @@
             비밀번호가 일치하지않습니다.
           </div>
           <div>
-            <label for="name">이름</label>
+            <label for="user_name">이름</label>
             <input
               type="text"
               id="name"
-              name="name"
+              name="user_name"
               placeholder="이름을 입력해주세요"
               required
             />
           </div>
           <div>
             <label for="nickname">닉네임</label>
-            <button type="button" class="nicknameCheck check button">
-              중복 확인
-            </button>
+
             <input
               type="text"
               id="nickname"
               name="nickname"
               placeholder="닉네임을 입력해주세요"
+              oninput="fn_nicknameCheck()" 
               required
+              
             />
+            
+             <div id="resultMsgNick" class="resultMsg" display="none"></div>
+            
           </div>
           <div>
             <label for="findZipcode">주소</label>
@@ -195,9 +196,9 @@
           </div>
           <div class="email">
             <label for="email">이메일주소</label>
-            <input type="text" id="email" name="email" />
+            <input type="text" id="emailId" name="emailId" oninput="fn_emailCheck()" />
             <span>@</span>
-            <input type="text" id="emailDomain" name="emailDomain" />
+            <input type="text" id="emailDomain" name="emailDomain" oninput="fn_emailCheck()" />
             <select name="domainList" id="domainList">
               <option value="self">직접입력</option>
               <option value="gmail.com">gmail.com</option>
@@ -208,19 +209,21 @@
               <option value="nate.com">nate.com</option>
             </select>
           </div>
+          
           <div class="emailCheck">
-            <input type="checkbox" />
-            <button type="button" class="emailCheckBtn button">
-              이메일 중복 확인
-            </button>
+           	<div id="resultMsgEmail" class="resultMsg"></div>
+                   
+          <div id="resultMsgEmail" class="resultMsg" display="none"></div>
+          
           </div>
+          
           <div class="submitCancel">
             <button type="submit" class="button">가입하기</button>
             <!-- <a href="/views/interest.jsp" role="button" class="button" onclick="fnJoin();"
               >가입하기</a
             > -->
             <!-- type을 버튼으로 바꾸고 action과 submit을 jsp 처리하기 -->
-            <a href="index.jsp" role="button" class="buttonCancle">가입취소</a>
+            <a href="${contextPath}/index" role="button" class="buttonCancle">가입취소</a>
           </div>
         </form>
       </div>
@@ -228,7 +231,6 @@
     <!-- 회원가입 영역 종료 -->
 	
 	<jsp:include page="footer.jsp" flush="true"></jsp:include>
-   
-   
+      
 </body>
 </html>

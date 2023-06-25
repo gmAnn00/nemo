@@ -50,11 +50,11 @@ request.setCharacterEncoding("utf-8");
 						<div class="bar">
 							<!--대분류-->
 							<div class="bar01">
-								<select name="bigCate" class="barSel"></select>
+								<select name="bigCate" class="barSel" ></select>
 							</div>
 							<!--소분류-->
 							<div class="bar02">
-								<select name="smallCate" class="barSel"></select>
+								<select name="smallCate" class="barSel" ></select>
 							</div>
 							<!--지역-->
 							<div class="bar03">
