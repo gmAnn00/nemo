@@ -17,6 +17,7 @@
 <c:set var="group" value="${groupInfo}" />
 <c:set var="noticeList" value="${articleMap.noticeList}"/>
 
+
 <c:choose>
 	<c:when test="${section >totArticles/100 }">
 		<c:set var="endValue" value="${(totArticles mod 100)%10==0 ? (totArticles mod 100)/10 : (totArticles mod 100)/10 +1}"/>

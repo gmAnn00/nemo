@@ -2,6 +2,7 @@ let itemArr=[];
 let ctx;
 
 $(document).ready(function() {
+	
 	ctx = getContextPath();
 	// a href='#' 클릭 무시 스크립트
 	$('a[href="#"]').click(function(ignore) {
@@ -17,6 +18,13 @@ $(document).ready(function() {
 
 	//답글 달기 눌렀을 떄 
 	$(document).on('click','.comReplyBtn', function(){
+		console.log($('#isAdmin').val());
+		if($('#isAdmin').val()=='true') {
+			console.log('여기 나오냐');
+			alert('관지자는 댓글을 달 수 없습니다.');
+			return;	
+		}
+		console.log("여기는 나와??ㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇ");
 	    //let index=$(this).parent().index();
 	    //let index=$(this).parents($('.commentItem')).index();
 	    let ItemNum=$('.commentItem').length;
@@ -104,6 +112,11 @@ $(document).ready(function() {
 	
 	//댓글 등록 함수
 	function fn_regComment() {
+		if($('#isAdmin').val()=='true') {
+			console.log('여기 나오냐');
+			alert('관지자는 댓글을 달 수 없습니다.');
+			return;	
+		} else {
 		let parentSiblings=$(this).parent().siblings();
         //let textArea=parentSiblings.find('textarea');
 		let content=$('#textArea').val();
@@ -165,9 +178,8 @@ $(document).ready(function() {
 					
 				}
 			});
-            
-
         }	
+      }
 	}
 	
 	//수정버튼 누를때 textarea 활성화

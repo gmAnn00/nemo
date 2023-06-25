@@ -111,6 +111,7 @@
           </div>
 
 			<div class="atricleArea">
+			<input type="hidden" id="isAdmin" value="${isAdmin}"/>
 	          <!-- 글 위쪽 버튼 영역 
 	          <div class="articleToolBtns">-->
 	            <!-- 기능 구현에 따라 코딩 수정요 

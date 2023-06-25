@@ -68,10 +68,16 @@ public class BoardController extends HttpServlet {
 		String nextPage=null;		
 		session=request.getSession();
 		String user_id=(String)session.getAttribute("user_id");
-	
+		
 		int group_id = Integer.parseInt(request.getParameter("group_id"));
 		groupInfo=boardService.getGroupInfo(group_id);
 		request.setAttribute("groupInfo", groupInfo);
+	
+		if (boardService.checkAdmin(user_id)) {
+			request.setAttribute("isAdmin", "true");
+		} else {
+			request.setAttribute("isAdmin", "false");
+		}
 		
 		if(user_id==null) {
 			out.print("<script>");
@@ -231,6 +237,13 @@ public class BoardController extends HttpServlet {
 						}
 					}	
 				}else if(action.equals("/addComment")) {
+					boolean isAdmin=boardService.checkAdmin(user_id);
+					boolean isMem=boardService.isMember(user_id, group_id);
+					if(isAdmin) {
+						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
+						out.print("</script>");
+					}
 					JSONObject comInfo=new JSONObject();
 					
 					Map commentInfo=new HashMap();
@@ -250,6 +263,14 @@ public class BoardController extends HttpServlet {
 					return;
 			
 				}else if(action.equals("/addReply")) {
+					boolean isAdmin=boardService.checkAdmin(user_id);
+					boolean isMem=boardService.isMember(user_id, group_id);
+					if(isAdmin) {
+						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
+						out.print("</script>");
+					}
+					
 					JSONObject comInfo=new JSONObject();
 					
 					Map commentInfo=new HashMap();

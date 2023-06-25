@@ -62,8 +62,10 @@ $(document).ready(function() {
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 		callbacks: {
 			onImageUpload: function(files, editor, welEditable) {
+
+				//파일 다중 업로드 위해 반복문사용
 				for(var i=files.lenght-1; i>=0; i--) {
-					sendFile(files[i], this);
+					uploadSummerNoteImageFile(files[i],this);
 				}
 				
 			},
@@ -77,6 +79,33 @@ $(document).ready(function() {
 	
 	
 });
+
+function uploadSummerNoteImage(file,el) {
+		let ctx=getContextPath();
+		let data = new FormData();
+		data.append("file",file);
+			$.ajax({
+				url: ctx+'/summernote/summer_imgae.do',
+				type:'POST',
+				enctype:'multipart/form-data',
+				data: data,
+				contentType: false,
+				processData: false,
+				success :function(data) {
+					let json=JSON.parse(data);
+					$(el).summernote('editor.insertImage',son["url"]);
+						jsonArray.push(json["url"]);
+						jsonFn(jsonArray);
+				},
+				error:function(e) {
+					console.log(e);
+				}
+			});
+}
+
+function jsonFn(jsonArray) {
+	console.log(jsonArray);
+}
 
 //에디터 내용 텍스트 제거
 function f_SkipTags_html(input, allowed) {
@@ -112,11 +141,6 @@ function setContentsLength(str, index) {
 	}
 
 
-function sendFile(file, el) {
-	let form_data = new FormData();
-	form_data.append('file',file);
-	$.ajax({
-		date:form_data,
-		
-	});
+function getContextPath() {
+    return sessionStorage.getItem("contextpath");
 }
