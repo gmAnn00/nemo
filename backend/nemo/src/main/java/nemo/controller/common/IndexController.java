@@ -36,6 +36,7 @@ public class IndexController extends HttpServlet {
 		//session.removeAttribute("user_id");
 		//session.removeAttribute("nickname");
 		nextPage="/views/index.jsp";
+		System.out.println("index페이지");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);

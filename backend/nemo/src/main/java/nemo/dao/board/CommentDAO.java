@@ -223,7 +223,7 @@ public class CommentDAO {
 			conn.close();
 			
 		} catch (Exception e) {
-			System.out.println("게시글 삭제 중 에러");
+			System.out.println("댓글 삭제 중 에러");
 			e.printStackTrace();
 		}
 	}

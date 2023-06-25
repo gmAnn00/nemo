@@ -173,9 +173,9 @@
 	            	<input type="hidden" id="article_no" value="${article.article_no}">
 	            	<input type="hidden" id="group_id" value="${group.groupVO.grp_id}">
 	              	<p class="comment">댓글 <span class="com_cnt">${article.com_cnt}</span></p>
-					<c:choose>
-					    <c:when test="${!empty comments }">
-					        <ul class="commentList">
+	              	<ul class="commentList">
+						<c:choose>
+					    	<c:when test="${!empty comments }">
 					            <c:forEach var="comment" items="${comments}" varStatus="cnt">
 					                <c:choose>
 					                    <c:when test="${comment.level>1 }">
@@ -265,9 +265,9 @@
 					                    </c:otherwise>
 					                </c:choose>
 					            </c:forEach>
-					        </ul>
-					    </c:when>
-					</c:choose>
+					    	</c:when>
+						</c:choose>
+					</ul>
 	              
 	              <!-- 댓글 쓰기 -->
 	              <div class="commentWriter">

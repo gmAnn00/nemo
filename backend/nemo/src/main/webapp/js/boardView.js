@@ -152,6 +152,7 @@ $(document).ready(function() {
 					appendItem+="<span class='comMod comToolBtn modReply' id='modReply"+commentInfo.comment_no+"'>";
 					appendItem+="<a href='#' role='button' class='modReplyBtn' id='modReplyBtn"+commentInfo.comment_no+"'";
 					appendItem+="onclick='fn_cancleMod(this,"+commentInfo.comment_no+"'>취소</a></span></div></div></li>";
+					
 					$('.commentList').append(appendItem);
 					$('.com_cnt').text(commentInfo.com_cnt);
 					alert("댓글이 등록 되었습니다.");
