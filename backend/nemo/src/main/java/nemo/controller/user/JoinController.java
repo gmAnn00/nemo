@@ -70,8 +70,7 @@ public class JoinController extends HttpServlet {
 			String user_addr2 = request.getParameter("user_addr2");
 			Date birthdate = Date.valueOf(request.getParameter("birthdate"));
 			
-			String phoString = request.getParameter("phone");
-			int phone = Integer.parseInt(phoString);
+			String phone = request.getParameter("phone");
 			
 			String emailId = request.getParameter("emailId");
 			String emilDomain = request.getParameter("emailDomain");

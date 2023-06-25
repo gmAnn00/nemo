@@ -40,7 +40,7 @@ public class JoinDAO {
 			String user_addr1=userVO.getUser_addr1();
 			String user_addr2=userVO.getUser_addr2();
 			Date birthdate=userVO.getBirthdate();
-			int phone=userVO.getPhone();
+			String phone=userVO.getPhone();
 			String email=userVO.getEmail();
 			
 			String query = "insert into user_tbl (user_id, password, user_name, nickname, zipcode, user_addr1, user_addr2, birthdate, phone, email) values(?,?,?,?,?,?,?,?,?,?)";
@@ -55,7 +55,7 @@ public class JoinDAO {
 			pstmt.setString(6, user_addr1);
 			pstmt.setString(7, user_addr2);
 			pstmt.setDate(8, birthdate);
-			pstmt.setInt(9, phone);
+			pstmt.setString(9, phone);
 			pstmt.setString(10, email);
 			pstmt.executeUpdate(); //등록 실행 데이터를 저장한다.
 			pstmt.close();
