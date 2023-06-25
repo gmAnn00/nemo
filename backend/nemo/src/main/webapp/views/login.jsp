@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<jsp:include page="../header.jsp" flush="true"></jsp:include>
+<jsp:include page="./header.jsp" flush="true"></jsp:include>
 	
     <!-- 로그인 영역 -->
     <div id="contentsArea">
@@ -88,6 +88,6 @@
     </div>
     
 	
-	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
+	<jsp:include page="./footer.jsp" flush="true"></jsp:include>
 </body>
 </html>

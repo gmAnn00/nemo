@@ -99,8 +99,8 @@ public class MyProfileController extends HttpServlet {
 					//System.out.println("controller 유저정보조회" + userVO);
 					
 					//관심사 담기(list로 담기)
-					List<InterestVO> interestList = myIntesInterestService.searchInterestById(user_id);
-					request.setAttribute("interestList", interestList);
+					List<InterestVO> interestsList = myIntesInterestService.searchInterestById(user_id);
+					request.setAttribute("interestsList", interestsList);
 					
 					//프로필 조회 페이지로 이동
 					//nextPage="/WEB-INF/mypage/myProfile.jsp";

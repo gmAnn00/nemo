@@ -13,14 +13,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nemo.service.mypage.MyInterestService;
+import nemo.service.user.JoinService;
 import nemo.vo.mypage.InterestVO;
+import nemo.vo.user.InterestsVO;
+import nemo.vo.user.UserVO;
 
-@WebServlet("/mypage/interest")
+@WebServlet("/mypage/interest/*")
 public class MyInterestController extends HttpServlet {
 	
 	HttpSession session;
 	MyInterestService myInterestService;
-	List<InterestVO> interestList = new ArrayList<>();
+	UserVO userVO;
+	InterestsVO interestsVO;	
+
+	@Override
+	public void init() throws ServletException {
+		myInterestService = new MyInterestService();
+		userVO = new UserVO();
+		interestsVO = new  InterestsVO();
+	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
@@ -41,20 +52,36 @@ public class MyInterestController extends HttpServlet {
 		if(action.equals("/modInterestForm")) {
 			//관심사 수정페이지로 이동
 			user_id = (String)session.getAttribute("user_id");
-			List<InterestVO> interestList = myInterestService.searchInterestById(user_id);
-			request.setAttribute("interestList", interestList);
+			List<InterestVO> interestsList = myInterestService.searchInterestById(user_id);
 			
+			
+			request.setAttribute("interestsList", interestsList);			
 			nextPage= "/views/mypage/modInterest.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
-		} else if(action.equals("/modInterest")) {
+		} else if(action.equals("/modInterestsChoice")) {
 			//관심사 수정
-			//넘겨준 interestList 이용
-			//List<String> interestList = new ArrayList<>();
+			user_id = (String)session.getAttribute("user_id");			
+			int inputNum = Integer.parseInt(request.getParameter("inputNum"));			
+			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
 			
-			myInterestService.modInterest(user_id, interestList);
+			for(int i = 0; i<inputNum; i++) {
+				interestsVO = new InterestsVO();
+				String main_name = request.getParameter("main_name"+i);
+				String sub_name = request.getParameter("sub_name"+i);
+				
+				//System.out.println("main_name="+main_name);
+				//System.out.println("sub_name="+sub_name);
+				
+				interestsVO.setUser_id(user_id);
+				interestsVO.setMain_name(main_name);
+				interestsVO.setSub_name(sub_name);
+				interestsList.add(interestsVO);
+			}
+			
+			myInterestService.modInterests(user_id, interestsList);
 			
 			nextPage="/nemo/mypage/myprofile";			
 			response.sendRedirect(nextPage);

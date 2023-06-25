@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.mypage.InterestVO;
+import nemo.vo.user.InterestsVO;
 import nemo.vo.user.UserVO;
 
 public class MyInterestDAO {
@@ -20,7 +21,7 @@ public class MyInterestDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private DataSource dataFactory;
-	List<InterestVO> interestList = new ArrayList<>();
+	List<InterestVO> interestsList = new ArrayList<>();
 	
 	public MyInterestDAO() {
 		try {
@@ -45,14 +46,14 @@ public class MyInterestDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, user_id);
 			ResultSet rs = pstmt.executeQuery();
-			interestList.clear();
+			interestsList.clear();
 			
 			//몇개인지는 모르고, 최대 3개까지니까 while을 돌림
 			while(rs.next()) {				
 				String interest = rs.getString("SUB_NAME");
 				InterestVO interestVO = new InterestVO();
 				interestVO.setSub_name(interest);
-				interestList.add(interestVO);
+				interestsList.add(interestVO);
 			}			
 			rs.close();
 			pstmt.close();
@@ -62,41 +63,53 @@ public class MyInterestDAO {
 			System.out.println("관심사 조회 중 에러");
 			e.printStackTrace();
 		}
-		return interestList;
+		return interestsList;
 	}
 	
 	//관심사 수정 메서드
-	public void modInterest(String user_id, List interestList) {
-		try {
-			conn = dataFactory.getConnection();
-			//sub_name, main_name 이 다 필요한데
-			//InterestVO를 만들어야 할듯 그걸 list 에 담아
-			//흠; 다 삭제 한 후에...
-			//String query = "delete from INTERESTS_TBL WHERE user_id = ?";
-			//반복문 돌면서 update 해주고..? 아니 다 삭제하면 create 가 되는거 아님? ㄷ;;
-			//일부만 수정하면... 수정한 부분만 알아서 그 걸 update해야하나..?			
-			String query = "UPDATE INTERESTS_TBL SET SUB_NAME = ? , MAIN_NAME = ? WHERE USER_ID = ?";
-			//System.out.println(query);		
+	public void modInterests(String user_id, List<InterestsVO> interestsList) {
+		try {					
+			try {
+				// 다 삭제 한 후에...  다시 INSERT 해주기
+				//String query = "delete from INTERESTS_TBL WHERE user_id = ?";
+				conn=dataFactory.getConnection();
+				
+				String query = "DELETE interests_tbl WHERE user_id=?";
+				System.out.println(query);
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				System.out.println("관심사 수정을 위한 삭제 중 에러");
+				e.printStackTrace();
+			}
 			
-			pstmt = conn.prepareStatement(query);
-			//pstmt.setString(1, sub_name);
-			//pstmt.setString(2, main_name);
-			pstmt.setString(3, user_id);
-			ResultSet rs = pstmt.executeQuery();
-			interestList.clear();
-			
-			//한번에 가져와서
-			//몇개인지는 모르고, 최대 3개까지니까 while을 돌림
-			while(rs.next()) {
-				//컬럼 이름 확인해야 할 듯 (컬럼 없는듯?)
-				String interest = rs.getString("SUB_NAME");
-				InterestVO interestVO = new InterestVO();
-				interestList.add(interestVO);
-			}			
-			rs.close();
-			pstmt.close();
-			conn.close();		
-			
+			for(InterestsVO interestsVO : interestsList) {
+				conn=dataFactory.getConnection();
+				
+				user_id = interestsVO.getUser_id();
+				String main_name = interestsVO.getMain_name();
+				String sub_name = interestsVO.getSub_name();
+				
+				System.out.println("DAO main_name="+main_name);
+				System.out.println("DAO sub_name="+sub_name);
+				
+				String query = "INSERT INTO interests_tbl(user_id, main_name, sub_name) values(?, ?, ?)";
+				System.out.println(query);
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, main_name);
+				pstmt.setString(3, sub_name);
+				
+				pstmt.executeUpdate();
+				
+				pstmt.close();
+				conn.close();
+			}
 		} catch (Exception e) {
 			System.out.println("관심사 수정 중 에러");
 			e.printStackTrace();

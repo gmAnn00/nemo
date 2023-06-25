@@ -196,18 +196,18 @@
 					<div class="myHabi">
 						<div class="myHabiText">
 							<h3>내 관심사</h3>
-							<a href="${contextPath}/mypage/interest/modInterestForm"" role="button" class="button">수정</a>
+							<a href="${contextPath}/mypage/interest/modInterestForm" role="button" class="button">수정</a>
 							<!--  수정 버튼 누르면 관심사 바꿀 수 있게 -->
 						</div>
 
 						<div class="myHabiI">
 							<ul>
 								<c:choose>
-									<c:when test="${empty interestList}">
+									<c:when test="${empty interestsList}">
 										<li>등록된 관심사가 없습니다.</li>
 									</c:when>
-									<c:when test="${!empty interestList}">
-										<c:forEach var="interestVO" items="${interestList}">
+									<c:when test="${!empty interestsList}">
+										<c:forEach var="interestVO" items="${interestsList}">
 											<li>${interestVO.sub_name}</li>
 										</c:forEach>
 									</c:when>
