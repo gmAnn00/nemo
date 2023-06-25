@@ -16,10 +16,14 @@ public class GroupSearchService {
 
 	public List<Map> search(Map searchMap) {
 		List<Map> resultList = new ArrayList<>();
-
+		
 		resultList = searchDAO.search(searchMap);
 		
 		return resultList;
+	}
+
+	public int selectAllGroup() {
+		return searchDAO.selectAllGroup();
 	}
 
 }

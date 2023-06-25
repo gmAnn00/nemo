@@ -157,20 +157,23 @@ function memImgSlide(slideIndx) {
 
 let user_id = $("#user_id_hidden").val();
 let isMember = $("#isMember_hidden").val();
-
 console.log(user_id);
 console.log(typeof user_id);
 
 console.log(isMember);
 console.log(typeof isMember);
 
+let group_id = new URL(location.href).searchParams;
+group_id = group_id.get("group_id");
+console.log("group_id=" + group_id);
+
 if(user_id == ""){
 	alert("로그인 후 이용할 수 있습니다.");
-	location.href="/nemo/index";
+	location.href="/nemo/login/loginForm";
 }
 if(user_id != "" && isMember == "false"){
 	alert("소모임 가입 후 이용할 수 있습니다.");
-	location.href="/nemo/index";
+	location.href="/nemo/group/groupInfo?group_id="+group_id;
 }
 
 });

@@ -14,7 +14,7 @@ $(function() {
 		//console.log(group_id);
 		if (user_id === "null" || user_id === "") {
 			alert("로그인 후 이용해주세요");
-			location.href="/nemo/loginForm";
+			location.href="/nemo/login/loginForm";
 		} else {
 			console.log("user_id" + user_id);
 			location.href = "/nemo/group/joinGroup?group_id=" + group_id;
@@ -25,7 +25,7 @@ $(function() {
 		if (user_id === 'null' || user_id === "" || user_id == null) {
 			$(this).removeClass("on");
 			alert("로그인 후 이용해주세요");
-			location.href = "/nemo/loginForm";
+			location.href = "/nemo/login/loginForm";
 
 		} else {
 			let hostIndex = location.href.indexOf(location.host) + location.host.length;

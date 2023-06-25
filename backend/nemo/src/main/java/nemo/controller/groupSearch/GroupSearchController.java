@@ -48,6 +48,12 @@ public class GroupSearchController extends HttpServlet {
 		
 		String action = request.getPathInfo();
 		
+		String _section = request.getParameter("section");
+		String _pageNum = request.getParameter("pageNum");
+		
+		int section = Integer.parseInt((_section == null) ? "1" : _section);
+		int pageNum = Integer.parseInt((_section) == null ? "1" : _pageNum);
+		
 		String user_id = (String)session.getAttribute("user_id");
 		String searchText = request.getParameter("searchText");
 		String main_name = request.getParameter("bigCate") == null ? "none" : request.getParameter("bigCate");
@@ -68,6 +74,11 @@ public class GroupSearchController extends HttpServlet {
 		searchMap.put("sub_name", sub_name);
 		searchMap.put("joinAble", joinAble);
 		searchMap.put("sort", sort);
+		searchMap.put("section", section);
+		searchMap.put("pageNum", pageNum);
+		
+		int totGroup = searchService.selectAllGroup();
+		
 		request.setAttribute("searchMap", searchMap);
 		
 		List<Map> resultList = new ArrayList<Map>();

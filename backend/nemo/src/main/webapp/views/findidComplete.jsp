@@ -35,7 +35,7 @@
             </ul>
             
               <div id="idTab" class="tabContent current" >
-	                	<p>회원가입시 사용하신 아이디는${user_id} 입니다.</p>
+	                	<p>회원가입시 사용하신 아이디는 ${user_id_find} 입니다.</p>
 	                	
 	                <button type="button" class="button">
 	                    <a href="${contextPath}/login/loginForm">로그인 화면으로 돌아가기</a>

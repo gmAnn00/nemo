@@ -88,7 +88,7 @@ public class SearchController extends HttpServlet {
 			session = request.getSession();
 			String user_id = (String) session.getAttribute("user_id");
 			session.removeAttribute("user_id");// 세선정보 삭제
-			//request.setAttribute("user_id", user_id);
+			request.setAttribute("user_id_find", user_id);
 			
 			nextPage="/views/findidComplete.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

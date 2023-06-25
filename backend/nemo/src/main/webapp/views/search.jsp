@@ -31,20 +31,10 @@ request.setCharacterEncoding("utf-8");
 		<div class="formArea">
 			<form action="${contextPath}/groupSearch" method="get"
 				class="searchBtn">
+				<div class="searchText1">
+					<h2>소모임 이름 검색</h2>
+				</div>
 				<div class="categoriesArea">
-					<div class="nameSearch">
-						<div class="searchText1">
-							<h2>소모임 이름 검색</h2>
-						</div>
-
-						<div class="nameBtn">
-							<input type="text" class="searchText" name="searchText"
-								value="${searchMap.searchText}" />
-
-							<button type="submit" class="button">검색</button>
-						</div>
-					</div>
-
 					<!--카테고리-->
 					<div class="categories01">
 						<div class="bar">
@@ -68,6 +58,19 @@ request.setCharacterEncoding("utf-8");
 							</div>
 						</div>
 					</div>
+				
+					<div class="nameSearch">
+						
+
+						<div class="nameBtn">
+							<input type="text" class="searchText" name="searchText"
+								value="${searchMap.searchText}" />
+
+							<button type="submit" class="button">검색</button>
+						</div>
+					</div>
+
+					
 				</div>
 
 				<div class="result">
