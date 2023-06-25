@@ -95,7 +95,18 @@
 	display: inline-block;
 	margin: 0 5px;
 	font-weight: bold;
+	position: relative;
 }
+.bracketFilter {
+	position: absolute;
+    height: 2px;
+    background-color: #fb3;
+    width: 100%;
+    right: 0px;
+    bottom: -5px;
+    display:none;
+}
+
 .boardListArea {
 	margin:0 auto;
 	

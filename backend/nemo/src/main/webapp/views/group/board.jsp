@@ -146,13 +146,16 @@
 					<span class="title">전체</span>
 				</a>
 				<a href="${contextPath}/group/board/search?group_id=${group.groupVO.grp_id}&filter=brackets&keyword=공지" class="categoryLink">
-					<span class="title">공지</span>
+					<span class="title brackets">공지</span>
+					<div class="notice bracketFilter"></div>
 				</a>
 		        <a href="${contextPath}/group/board/search?group_id=${group.groupVO.grp_id}&filter=brackets&keyword=자유" class="categoryLink">
-					<span class="title">자유</span>
+					<span class="title brackets">자유	</span>
+					<div class="free bracketFilter"></div>
 				</a>
 		        <a href="${contextPath}/group/board/search?group_id=${group.groupVO.grp_id}&filter=brackets&keyword=후기" class="categoryLink">
-					<span class="title">후기</span>
+					<span class="title brackets">후기	</span>
+					<div class="review bracketFilter"></div>
 				</a>
 	          </div>
 	          <div class="boardListArea">
