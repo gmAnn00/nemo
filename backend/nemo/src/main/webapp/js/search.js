@@ -1,7 +1,7 @@
 $(function () {
     cAreaTop = $("header").css("height");
     cAreaTop = parseInt(cAreaTop);
-    console.log(cAreaTop);
+    //console.log(cAreaTop);
     $(".formArea").css("top", cAreaTop + "px");
     /*
 	$(".grpLike").on("click", function() {
@@ -132,7 +132,7 @@ $(function () {
         $("select[name=smallCate] option").each(function (idx, item) {
             if ($(this).data("class") == mainVal || $(this).val == "") {
                 $(this).show();
-                console.log(mainVal);
+                //console.log(mainVal);
             } else {
                 $(this).hide();
             }
@@ -150,8 +150,8 @@ $(function () {
         // 경도
         const lng = position.coords.longitude;
 
-        console.log("lat=" + lat);
-        console.log("lng=" + lng);
+        //console.log("lat=" + lat);
+        //console.log("lng=" + lng);
         // 위도 경도 오차(m)
         const accuracy = Math.floor(position.coords.accuracy);
 
@@ -184,16 +184,23 @@ $(function () {
     // 검색 후 필터 표시
     let joinAble_hidden = $("#joinAble_hidden").val();
     if (joinAble_hidden == "on") {
-        $("#joinAbleLabel").trigger("click");
+		$("#joinAble").attr("checked", true);
+        $("#joinAbleLabel").addClass("sortAble");
     }
 
     let sort_hidden = $("#sort_hidden").val();
     if (sort_hidden == "sortByName") {
-        $("#sortByNameLabel").trigger("click");
+		console.log(1);
+        $("#sortByName").attr("checked", true);
+        $("#sortByNameLabel").addClass("sortOn");
     } else if (sort_hidden == "sortByBookmark") {
-        $("#sortByNameLabel").trigger("click");
+		console.log(2);
+        $("#sortByBookmark").attr("checked", true);
+        $("#sortByBookmarkLabel").addClass("sortOn");
     } else if (sort_hidden == "sortByNumber") {
-        $("#sortByNumberLabel").trigger("click");
+		console.log(3);
+        $("#sortByNumber").attr("checked", true);
+        $("#sortByNumberLabel").addClass("sortOn");
     }
 
     let main_name_hidden = $("#main_name_hidden").val();
@@ -233,19 +240,22 @@ function bookmarkClick(user_id, group_id) {
     });
 }
 
-function resultSort(sortCri, joinAble) {
-    let strResultList = $("#jsonResultList").val();
+function resultJoinAble(joinAble) {
+    //let strResultList = $("#jsonResultList").val();
     //console.log("str=",strResultList);
-    let jsonResultList = JSON.parse(strResultList);
+    //let jsonResultList = JSON.parse(strResultList);
     //console.log(jsonResultList);
     //console.log(sortCri);
-    console.log($("#joinAbleLabel").hasClass("sortAble"));
-
-    if (joinAble == "joinAble") {
-        // 가입가능한 소모임만 표시
-        $("#joinAbleLabel").toggleClass("sortAble");
-    }
-
+    //console.log($("#joinAbleLabel").hasClass("sortAble"));
+    
+	$("#joinAbleLabel").toggleClass("sortAble");
+	if($("#joinAbleLabel").hasClass("sortAble")){
+		$("#joinAble").prop("checked", true);
+	}else{
+		$("#joinAble").prop("checked", false);
+	}
+    $("#searchForm").submit();
+	/*
     if ($("#joinAbleLabel").hasClass("sortAble")) {
         for (key in jsonResultList) {
             if (jsonResultList[key].isFull == true) {
@@ -254,12 +264,7 @@ function resultSort(sortCri, joinAble) {
         }
     }
 
-    if (sortCri != "none") {
-        $(".buttonSort").removeClass("sortOn");
-        let target = "#" + sortCri + "Label";
-        $(target).addClass("sortOn");
-    }
-
+	
     if ($("#sortByNameLabel").hasClass("sortOn")) {
         jsonResultList.sort(function (a, b) {
             if (a.groupVO.grp_name > b.groupVO.grp_name) return 1;
@@ -277,7 +282,7 @@ function resultSort(sortCri, joinAble) {
     }
 
     //console.log(jsonResultList);
-
+	
     $(".resultGroup").html("");
     let sortResult = "";
     let user_id_hidden = $("#user_id_hidden").val();
@@ -335,6 +340,19 @@ function resultSort(sortCri, joinAble) {
 			</a>
 		</div>`;
     }
-
+	
     $(".resultGroup").html(sortResult);
+    */
+}
+
+function sortSubmit(sortCri){
+	 $(".buttonSort").removeClass("sortOn");
+     let target = "#" + sortCri + "Label";
+     $(target).addClass("sortOn");
+     
+     let selectSort = "#" + sortCri;
+     $(selectSort).prop("checked", true);
+    
+    $("#searchForm").submit();
+    
 }

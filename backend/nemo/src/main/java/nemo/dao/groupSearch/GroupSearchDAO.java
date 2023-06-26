@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -34,6 +36,7 @@ public class GroupSearchDAO {
 
 	public List<Map> search(Map searchMap) {
 		List<Map> resultList = new ArrayList<Map>();
+		List<Map> resultListSlice = new ArrayList<Map>();
 		Map resultMap;
 
 		try {
@@ -45,25 +48,62 @@ public class GroupSearchDAO {
 			String sub_name = (String) searchMap.get("sub_name");
 			String joinAble = (String) searchMap.get("joinAble");
 			String sort = (String) searchMap.get("sort");
+			int section = (int)searchMap.get("section");
+			int pageNum = (int)searchMap.get("pageNum"); 
 
 			System.out.println("DAO searchText=" + searchText);
 			System.out.println("DAO main_name=" + main_name);
 			System.out.println("DAO sub_name=" + sub_name);
 			System.out.println("DAO joinAble=" + joinAble);
 			System.out.println("DAO sort=" + sort);
+			System.out.println("DAO section=" + section);
+			System.out.println("DAO pageNum=" + pageNum);
 
-			String query = "SELECT * FROM group_tbl WHERE grp_name LIKE ?";
-			if (!sub_name.equals("none")) {
-				System.out.println("sub_name");
-				query += "AND sub_name = ?";
-			}
-			pstmt = conn.prepareStatement(query);
-			String searchTexts = '%' + searchText + '%';
-			pstmt.setString(1, searchTexts);
-			if (!sub_name.equals("none")) {
-				System.out.println("sub_name");
+			String query = "";
+			if(sub_name.equals("none")) {
+				query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? order by grp_name asc";
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = "%" + searchText + "%";
+				pstmt.setString(1, searchTexts);
+			}else {
+				query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? AND sub_name = ? order by grp_name asc";
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = "%" + searchText + "%";
+				pstmt.setString(1, searchTexts);
 				pstmt.setString(2, sub_name);
 			}
+			
+			/*
+			if(sub_name.equals("none")) {
+				query += "SELECT * from"
+						+ " (SELECT ROWNUM as recNum, a.* FROM"
+						+ " (SELECT ROWNUM, g.*"
+						+ " FROM group_tbl g where grp_name LIKE ? ) a)"
+						+ " WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = '%' + searchText + '%';
+				pstmt.setString(1, searchTexts);
+				pstmt.setInt(2, section);
+				pstmt.setInt(3, pageNum);
+				pstmt.setInt(4, section);
+				pstmt.setInt(5, pageNum);
+				
+			}else {
+				query += "SELECT * from"
+						+ " (SELECT ROWNUM as recNum, a.* FROM"
+						+ " (SELECT ROWNUM, g.*"
+						+ " FROM group_tbl g where grp_name LIKE ? AND sub_name=?) a)"
+						+ " WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = '%' + searchText + '%';
+				pstmt.setString(1, searchTexts);
+				pstmt.setString(2, sub_name);
+				pstmt.setInt(3, section);
+				pstmt.setInt(4, pageNum);
+				pstmt.setInt(5, section);
+				pstmt.setInt(6, pageNum);
+			}
+			*/
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -103,13 +143,50 @@ public class GroupSearchDAO {
 			rs.close();
 			pstmt.close();
 			conn.close();
+			
+			if(sort.equals("sortByBookmark")) {
+				resultList.sort(
+						Comparator.comparing((Map map) -> (Integer)map.get("bookmarkNum")).reversed()
+						);
+			}else if(sort.equals("sortByNumber")) {
+				resultList.sort(
+						Comparator.comparing((Map map) -> (Integer)map.get("groupMemberNum")).reversed()
+						);
+			}
+			
+			if(joinAble.equals("on")) {
+				for(int i = resultList.size()-1; i>=0; i--) {
+					if((boolean)resultList.get(i).get("isFull") == true) {
+						resultList.remove(i);
+					}
+				}
+			}
+			
+			int total = resultList.size();
+			int start = (section-1)*100+(pageNum-1)*10;
+			// (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10
+			
+			int cnt = 10;
+			
+			if(section > total/100 && pageNum > (total/100)/10 + 1) {
+				// 마지막 섹션의 마지막 페이지일때
+				cnt = total%10;
+			}else {
+				cnt = 10;
+			}
+
+			System.out.println("resultList 개수="+resultList.size());
+			resultListSlice = resultList.stream().skip(start).limit(cnt).collect(Collectors.toList());
+			System.out.println("resultListSlice 개수=" + resultListSlice.size());
+			
 
 		} catch (Exception e) {
 			System.out.println("SearchDAO: search 오류");
 			e.printStackTrace();
 		}
 
-		return resultList;
+
+		return resultListSlice;
 
 	}
 
@@ -177,7 +254,7 @@ public class GroupSearchDAO {
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			result = Boolean.parseBoolean(rs.getString("result"));
-			System.out.println("result = " + result);
+			//System.out.println("result = " + result);
 
 			rs.close();
 			pstmt.close();
@@ -200,7 +277,7 @@ public class GroupSearchDAO {
 		try {
 			conn = dataFactory.getConnection();
 			query = "select count(*) as cnt from grpjoin_tbl where grp_id=?";
-			System.out.println(query);
+			//System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, group_id);
 			ResultSet rs = pstmt.executeQuery();
@@ -219,7 +296,7 @@ public class GroupSearchDAO {
 		try {
 			conn = dataFactory.getConnection();
 			query = "select mem_no from group_tbl where grp_id=?";
-			System.out.println(query);
+			//System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, group_id);
 			ResultSet rs = pstmt.executeQuery();
@@ -243,13 +320,60 @@ public class GroupSearchDAO {
 
 	} // end of isFull
 
-	public int selectAllGroup() {
+	public int findTotGroup(Map searchMap) {
 		int totGroup = 0;
 		
-		
-		
+		try {
+			conn = dataFactory.getConnection();
+
+			String user_id = (String) searchMap.get("user_id");
+			String searchText = (String) searchMap.get("searchText");
+			String main_name = (String) searchMap.get("main_name");
+			String sub_name = (String) searchMap.get("sub_name");
+			String joinAble = (String) searchMap.get("joinAble");
+			String sort = (String) searchMap.get("sort");
+			int section = (int)searchMap.get("section");
+			int pageNum = (int)searchMap.get("pageNum"); 
+
+			System.out.println("DAO searchText=" + searchText);
+			System.out.println("DAO main_name=" + main_name);
+			System.out.println("DAO sub_name=" + sub_name);
+			System.out.println("DAO joinAble=" + joinAble);
+			System.out.println("DAO sort=" + sort);
+			System.out.println("DAO section=" + section);
+			System.out.println("DAO pageNum=" + pageNum);
+			
+			String query = "SELECT count(*) FROM group_tbl WHERE grp_name LIKE ?";
+			if(sub_name.equals("none")) {
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = "%" + searchText + "%";
+				pstmt.setString(1, searchTexts);
+				
+			}else {
+				query += "AND sub_name=?";
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = "%" + searchText + "%";
+				pstmt.setString(1, searchTexts);
+				pstmt.setString(2, sub_name);
+
+			}
+			
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			totGroup = rs.getInt(1);
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+			
+		} catch (Exception e) {
+			System.out.println("findTotGroup 중 오류");
+			e.printStackTrace();
+		}
 		
 		return totGroup;
 	}
+
 
 }

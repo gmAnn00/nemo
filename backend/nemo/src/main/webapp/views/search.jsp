@@ -3,6 +3,19 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="totGroup" value="${searchMap.totGroup}" />
+<c:set var="section" value="${searchMap.section}"/>
+<c:set var="pageNum" value="${searchMap.pageNum}"/>
+
+<c:choose>
+	<c:when test="${section > totGroup/100}">
+		<c:set var="endValue" value="${(totGroup%100)%10 == 0 ? (totGroup % 100)/10 : (totGroup % 100)/10 + 1}"/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="endValue" value="10" />
+	</c:otherwise>
+</c:choose>
+
 <%
 request.setCharacterEncoding("utf-8");
 %>
@@ -25,12 +38,11 @@ request.setCharacterEncoding("utf-8");
 </head>
 <body>
 	<jsp:include page="header.jsp" flush="true"></jsp:include>
-	
 	<!--카테고리 영역-->
 	<div id="contentsArea">
 		<div class="formArea">
 			<form action="${contextPath}/groupSearch" method="get"
-				class="searchBtn">
+				class="searchBtn" id="searchForm">
 				<div class="searchText1">
 					<h2>소모임 이름 검색</h2>
 				</div>
@@ -78,17 +90,17 @@ request.setCharacterEncoding("utf-8");
 						<h3>검색결과(${fn:length(resultList)} 개)</h3>
 					</div>
 					<div class="resultBtn">
-						<input type="radio" class="hidden" name="joinAble" id="joinAble" />
-						<label for="joinAble" id="joinAbleLabel" onclick="resultSort('none', 'joinAble')">가입가능한 소모임만 표시</label>
+						<input type="checkbox" class="hidden" name="joinAble" id="joinAble"/>
+						<label for="joinAble" id="joinAbleLabel" onclick="resultJoinAble('joinAble')">가입가능한 소모임만 표시</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByName" value="sortByName" />
-						<label id="sortByNameLabel" for="sortByName" class="buttonSort" onclick="resultSort('sortByName', 'none')">이름순정렬</label>
+						<label id="sortByNameLabel" for="sortByName" class="buttonSort" onclick="sortSubmit('sortByName')">이름순정렬</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByBookmark" value="sortByBookmark" />
-						<label id="sortByBookmarkLabel" for="sortByBookmark" class="buttonSort" onclick="resultSort('sortByBookmark', 'none')">찜순정렬</label>
+						<label id="sortByBookmarkLabel" for="sortByBookmark" class="buttonSort" onclick="sortSubmit('sortByBookmark')">찜순정렬</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByNumber" value="sortByNumber" />
-						<label id="sortByNumberLabel" for="sortByNumber" class="buttonSort" onclick="resultSort('sortByNumber', 'none')">사람많은순</label>
+						<label id="sortByNumberLabel" for="sortByNumber" class="buttonSort" onclick="sortSubmit('sortByNumber')">사람많은순</label>
 					</div>
 				</div>
 			</form>
@@ -184,7 +196,26 @@ request.setCharacterEncoding("utf-8");
 			<div id="groupMap" class="GroupMap"></div>
 		</div>
 		<div class="PageBtn">
-			<span>1 2 3 4 5</span>
+			<c:if test="${totGroup != 0}"> <!-- 게시글이 있을 경우 -->
+				<c:forEach var="page" begin="1" end="${endValue}" step="1">
+					<c:if test="${section > 1 && page == 1}">
+						<a href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section-1}&pageNum=10&sort=${param.sort}">prev</a>
+					</c:if>
+					
+					<c:choose>
+						<c:when test="${page==pageNum}">
+							<a style='color:var(--main-color)' href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section}&pageNum=${page}&sort=${param.sort}">${(section-1)*10 + page}</a>
+						</c:when>
+						<c:otherwise>
+							<a href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section}&pageNum=${page}&sort=${param.sort}">${(section-1)*10 + page}</a>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:if test="${page == 10 and totGroup/100 > section}">
+						<a href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section+1}&pageNum=1&sort=${param.sort}">next</a>
+					</c:if>
+				</c:forEach>
+			</c:if>
 		</div>
 	</div>
 	<input type="hidden" id="joinAble_hidden" value="${searchMap.joinAble}" />
@@ -193,7 +224,7 @@ request.setCharacterEncoding("utf-8");
 		value="${searchMap.main_name}" />
 	<input type="hidden" id="sub_name_hidden" value="${searchMap.sub_name}" />
 	<input type="hidden" id="user_id_hidden" value="${user_id}" />
-	<input type="hidden" id="jsonResultList" value='${jsonResultList}' />
+	<!--  <input type="hidden" id="jsonResultList" value='${jsonResultList}' /> -->
 
 	<jsp:include page="footer.jsp" flush="true"></jsp:include>
 </body>
