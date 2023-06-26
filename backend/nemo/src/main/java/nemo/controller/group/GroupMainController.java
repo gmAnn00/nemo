@@ -55,7 +55,7 @@ public class GroupMainController extends HttpServlet {
 		
 		GroupVO groupVO = new GroupVO();
 		
-		// 로그인 페이지로 옮겨야 함
+		// 로그인 컨트롤러로 옮겨야 함
 		// 유저가 소모임장인 소모임의 그룹넘버 저장
 		List<String> grpMngList = groupMainService.grpMng(user_id);
 		session.setAttribute("grpMngList", grpMngList);

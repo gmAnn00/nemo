@@ -3,7 +3,6 @@
     isELIgnored="false"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="isMng" value="false" />
 <c:forEach var="elem" items="${grpMngList}" >
