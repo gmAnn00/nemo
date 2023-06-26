@@ -1,5 +1,7 @@
 package nemo.service.user;
 
+import java.util.List;
+
 import nemo.dao.user.JoinDAO;
 import nemo.vo.user.InterestsVO;
 import nemo.vo.user.UserVO;
@@ -15,7 +17,7 @@ public class JoinService {
 		dao.adduser(userVO);
 	}
 	//입력한 관심사 정보 받기
-	public void addChoice(InterestsVO interestsVO) {
-		dao.addChoice(interestsVO);
-	}
+		public void addChoice(List<InterestsVO> interestsList) {
+			dao.addChoice(interestsList);
+		}
 }
