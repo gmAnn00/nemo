@@ -35,13 +35,13 @@
 	                       	 <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">${nickname}</span></div>
 	                    	</a>
 	               		 </li>
-	              		 <li><a href="">소모임 만들기</a></li>
-	               		 <li><a href="">소모임 검색</a></li>
-	               		 <li><a href="">프로필</a></li>
-	               		 <li><a href="">내 일정</a></li>
-	               		 <li><a href="">내 소모임</a></li>
-	                	 <li><a href="">고객센터</a></li>
-	                	 <li><a href="${contextPath}/logout">로그아웃</a></li>
+	              		 <li><a href="${contextPath}/group/createGroup/form">소모임 만들기</a></li>
+	               		 <li><a href="${contextPath}/groupSearch">소모임 검색</a></li>
+	               		 <li><a href="${contextPath}/mypage">프로필</a></li>
+	               		 <li><a href="${contextPath}/mypage/mySchedule">내 일정</a></li>
+	               		 <li><a href="${contextPath}/mypage/mygrouplist">내 소모임</a></li>
+	                	 <li><a href="${contextPath}/mypage/help">고객센터</a></li>
+	                	 <li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
             		<c:otherwise>
             			<li></li>

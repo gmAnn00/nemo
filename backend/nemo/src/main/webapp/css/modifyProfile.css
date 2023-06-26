@@ -1,77 +1,27 @@
-/* 회원가입 진행 단계 */
-.progress-bar {
-  position: relative;
-  width: 100%;
-  height: 20px;
-  background-color: var(--sub3-color);
-  border-radius: 10px;
-}
-.progress-bar span {
-  padding-right: 150px;
-  color: #777;
-}
+@charset "utf-8";
 
-.step {
-  position: absolute;
-  height: 100%;
-  background-color: var(--sub3-color); /* Default color for incomplete steps */
-  border-radius: 0 50px 50px 0;
-  text-align: right;
-  height: 30px;
-  line-height: 30px;
-}
-.step-1 {
-  background-color: var(--sub-color);
-  width: 33.33%;
-}
-.step-2 {
-  background-color: var(--main-color);
-  width: 66.66%;
-}
-.step-2 span {
-  font-weight: bold;
-  color: #402f0d;
-}
-.step-3 {
-  background-color: var(--sub3-color);
+/*2.제목부분*/
+.modify {
+  margin: 0 auto;
+  border-bottom: 1px solid black;
   width: 100%;
+  padding: 20px;
 }
 
 /* 회원가입영역 */
-h2,
-h3,
-h4 {
-  text-align: center;
-}
-h3 {
-  padding: 5px;
-  font-size: 16px;
-  padding-bottom: 30px;
-  /* border-bottom: 1px solid #ccc; */
-}
-#loginForm {
-  margin: 30px auto;
-  padding: 60px 50px 50px 100px;
-  width: 750px;
-  /* height: 1250px; */
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 450px;
 }
 form div {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 450px;
+  margin-left: 50px;
+  width: 435px;
   position: relative;
   /* align-items: center; */
 }
@@ -85,10 +35,31 @@ form label {
 form input {
   padding: 8px;
 }
-form input[id="user_id"],
-input[id="nickname"] {
-  width: 70%;
+
+/*3번*/
+.myImage {
+  padding-top: 30px;
+  align-items: center;
 }
+.myImage img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--sub3-color);
+  /*background: url(../images/dall.png) 35%;*/
+  line-height: 180px;
+  text-align: left;
+  color: var(--sub3-color);
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
+}
+.myImage label {
+  position: relative;
+  left: 140px;
+  top: 10px;
+  cursor: pointer;
+}
+
 /* 비밀번호 일치 */
 .alert {
   font-size: 12px;
@@ -108,12 +79,15 @@ form .check {
   right: 0px;
   /* padding: 10px; */
 }
+.resultMsg {
+  margin: 0px;
+  padding-top: 5px;
+}
 form .findZipcode {
   width: 150px;
   position: absolute;
   top: 22px;
-  left: 185px;
-  /* padding: 10px; */
+  left: 190px;
 }
 form input[id="zipcode"] {
   width: 150px;

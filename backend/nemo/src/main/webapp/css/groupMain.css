@@ -1,12 +1,13 @@
 @charset "utf-8";
 
+
 :root {
-    --grpMenuBackColor: rgb(255, 249, 243);
+    --grpMenuBackColor:rgb(255, 249, 243);
 
-    --tblBorderBottom: #ccc;
+    --tblBorderBottom: #ccc ;
 
-    --tmpMemColor: rgb(248, 180, 200);
-    --btnActColor: #222;
+    --tmpMemColor:rgb(248, 180, 200);
+    --btnActColor:#222;
 }
 .grpMenuArea {
     width: 100%;
@@ -16,12 +17,9 @@
     padding: 15px 0;
     background-color: var(--grpMenuBackColor);
 }
-/*
-.section2,
-.sc2_subsection {
-  width: 90%;
+.header_except_body {
+    padding-top: 20px;
 }
-*/
 /*
 .grpMenuArea h2{
     margin: 20px 0;
@@ -31,6 +29,7 @@
     display: inline-block;
     list-style: none;
     margin: 0 50px;
+
 }
 
 /*
@@ -49,20 +48,20 @@
 }
 */
 
-#contentsArea,
-.contMainArea {
+
+
+#contentsArea,.contMainArea {
     /*width: 1200px;*/
     margin: 0 auto;
     box-sizing: border-box;
 }
 
+
 .contMainArea {
     padding: 0 200px;
-    flex: 3;
 }
 .recentDiv {
     margin-bottom: 50px;
-    /*width: 100%;*/
 }
 .mainTitle {
     position: relative;
@@ -74,7 +73,7 @@
 .more {
     position: absolute;
     font-size: 0.9em;
-    top: 25px;
+    top:25px;
     right: 45px;
 }
 .fa-plus {
@@ -82,15 +81,11 @@
 }
 
 /* 최근일정, 최근 게시글 테이블 설정영역*/
-table {
-    width: 100%;
-}
-
 .recentTbl {
-    /*width: 100%;*/
+    width: 100%;
     box-sizing: border-box;
 }
-.recentTbl tr {
+.recentTbl tr{
     height: 30px;
 }
 .recentTbl tr td {
@@ -98,25 +93,21 @@ table {
     border-bottom: 1px dashed var(--tblBorderBottom);
 }
 
-.recentScheduledTbl tr th:nth-of-type(1),
-.recentScheduledTbl tr td:nth-of-type(1),
-.recentBoard tr th:nth-of-type(3),
-.recentBoard tr td:nth-of-type(3) {
+.recentScheduledTbl tr th:nth-of-type(1), .recentScheduledTbl tr td:nth-of-type(1),
+.recentBoard tr th:nth-of-type(3), .recentBoard tr td:nth-of-type(3){
     /*width: 200px;*/
     width: 25%;
     text-align: center;
+
 }
-/*
-.recentScheduledTbl tr th:nth-of-type(2),
-.recentScheduledTbl tr td:nth-of-type(2),
-.recentBoard tr th:nth-of-type(1),
-.recentBoard tr td:nth-of-type(1) {
+.recentScheduledTbl tr th:nth-of-type(2), .recentScheduledTbl tr td:nth-of-type(2),
+.recentBoard tr th:nth-of-type(1), .recentBoard tr td:nth-of-type(1) {
+    /*width: 430px;*/
     width: 53.75%;
 }
-*/
-.recentScheduledTbl tr td:nth-of-type(2) p,
-.recentBoard tr td:nth-of-type(1) p {
-    /* width: 53.75%; */
+.recentScheduledTbl tr td:nth-of-type(2) p, .recentBoard tr td:nth-of-type(1) p{
+    /*width: 430px;*/
+    width: 53.75%;
 
     display: -webkit-box;
     text-overflow: ellipsis;
@@ -126,13 +117,12 @@ table {
     -webkit-box-orient: vertical;
     text-indent: 5px;
 }
-.recentScheduledTbl tr th:nth-of-type(3),
-.recentScheduledTbl tr td:nth-of-type(3),
-.recentBoard tr th:nth-of-type(2),
-.recentBoard tr td:nth-of-type(2) {
+.recentScheduledTbl tr th:nth-of-type(3), .recentScheduledTbl tr td:nth-of-type(3),
+.recentBoard tr th:nth-of-type(2), .recentBoard tr td:nth-of-type(2) {
     /*width: 150px;*/
     width: 18.75%;
 }
+
 
 /* 멤버 영역 시작*/
 .nemoMemTitle {
@@ -147,11 +137,11 @@ table {
     position: relative;
     padding-bottom: 10px;
     background-color: var(--grpMenuBackColor);
+
 }
 .animationSlide {
     /*width: 700px;*/
-    /*width: 87.5%;*/
-    width: 892px;
+    width: 87.5%;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -169,14 +159,7 @@ table {
     display: inline-block;
     width: 125px;
     height: 125px;
-    /*padding: 0 8px;*/
-    /*background-color: var(--sub2-color);*/
-    border-radius: 50%;
-}
-.memImg img{
-	display: inline-block;
-    width: 125px;
-    height: 125px;
+    background-color: var(--tmpMemColor);
     border-radius: 50%;
 }
 .memName {
@@ -184,38 +167,27 @@ table {
     display: inline-block;
 }
 
+
 .fa-chevron {
     font-size: 40px;
 }
 .fa-solid.btnActive {
     cursor: pointer;
     color: var(--btnActColor);
-}
+} 
 .btnEventPrev {
     position: absolute;
-    top: 120px;
+    top:120px;
     left: 20px;
+
 }
 .btnEventNext {
     position: absolute;
-    top: 120px;
+    top:120px;
     right: 20px;
 }
 
 .btnActive {
     cursor: pointer;
     color: var(--btnActColor);
-}
-
-td {
-    text-align: center;
-}
-td a {
-    text-align: center;
-}
-td a:hover {
-    color: var(--main-color);
-}
-td a p {
-    text-align: center;
 }
