@@ -278,12 +278,8 @@
         </div>
         
         <div class="saveInterest">
-          <button type="submit" class="button" disabled>선택하기</button>
-         
-         <a href="${contextPath}/login"> <button type="button" class="buttonCancle">넘어가기</button></a>
-           <!-- 
-           넘어가기
-            -->
+          <button type="submit" class="button" disabled>선택하기</button>         
+          <a href="${contextPath}/login"> <button type="button" class="buttonCancle">넘어가기</button></a>        
         </div>
       </div>
     </div>
