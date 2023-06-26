@@ -1,0 +1,84 @@
+:root {
+  /* color */
+  --main-color: #ffbb33;
+  --sub-color: #ffd480;
+  --sub1-color: #fff0d2;
+  --sub2-color: #ffe8b8;
+  --sub3-color: #fdf7ec;
+}
+.imgBox {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 120px 120px;
+  margin: 10px;
+  /* padding: 15px 0; */
+  /* background-color: #ccc; */
+  background-position: 50% 10%;
+  position: relative;
+}
+.sle1 {
+  background-image: url(../images/icon_01garland.png);
+  background-color: var(--main-color);
+}
+.sle2 {
+  background-image: url(../images/icon_02music.png);
+  background-color: var(--sub2-color);
+}
+.sle3 {
+  background-image: url(../images/icon_03photo.png);
+  background-color: var(--sub1-color);
+}
+.sle4 {
+  background-image: url(../images/icon_04outdoor.png);
+  background-color: var(--sub-color);
+}
+.sle5 {
+  background-image: url(../images/icon_05kick.png);
+  background-color: var(--sub2-color);
+}
+.sle6 {
+  background-image: url(../images/icon_06book.png);
+  background-color: var(--sub3-color);
+}
+.sle7 {
+  background-image: url(../images/icon_07foreign.png);
+  background-color: var(--main-color);
+}
+.sle8 {
+  background-image: url(../images/icon_08craft.png);
+  background-color: var(--sub2-color);
+}
+.sle9 {
+  background-image: url(../images/icon_09dance.png);
+  background-color: var(--sub1-color);
+}
+.sle10 {
+  background-image: url(../images/icon_10volunteer.png);
+  background-color: var(--sub-color);
+}
+.sle11 {
+  background-image: url(../images/icon_11people.png);
+  background-color: var(--sub3-color);
+}
+.sle12 {
+  background-image: url(../images/icon_12bike.png);
+  background-color: var(--sub2-color);
+}
+.sle13 {
+  background-image: url(../images/icon_13stadium.png);
+  background-color: var(--main-color);
+}
+.sle14 {
+  background-image: url(../images/icon_14game.png);
+  background-color: var(--sub2-color);
+}
+.sle15 {
+  background-image: url(../images/icon_15cook.png);
+  background-color: var(--sub3-color);
+}
+.sle16 {
+  background-image: url(../images/icon_16pet.png);
+  background-color: var(--main-color);
+}

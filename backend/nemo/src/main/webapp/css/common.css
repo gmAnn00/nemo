@@ -125,7 +125,7 @@ li {
   --sub2-color: #ffe8b8;
   --sub3-color: #fdf7ec;
   --dark-color: #404040;
-  --heartColor: #f43965;
+  --heart-color: #f43965;
 }
 
 input,
@@ -453,6 +453,11 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.profile img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
 }
 .fa-circle-user {
   font-size: 100px !important;

@@ -60,8 +60,8 @@ svg use {
 }
 
 svg use:last-child {
-  fill: var(--heartColor);
-  stroke: var(--heartColor);
+  fill: var(--heart-color);
+  stroke: var(--heart-color);
   opacity: 0;
   transform: scale(0.33);
   transform-origin: center;
@@ -173,7 +173,7 @@ svg {
   border: 1px solid #ccc;
   background-color: #fff;
   text-align: center;
-  line-height: 300px;
+  line-height: 25px;
 }
 
 /* 소모임 카테고리 영역 */
