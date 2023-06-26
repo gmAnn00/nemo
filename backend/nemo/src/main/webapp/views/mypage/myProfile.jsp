@@ -39,32 +39,6 @@
 		}
 	}
 </script>
-<%--
-<c:choose>
-	<c:when test='${msg == "modified"}'>
-		<script>
-			window.onload = function() {
-				alert("회원정보가 수정되었습니다.")
-			}
-		</script>
-	</c:when>
-	<c:when test='${msg == "modImg"}'>
-		<script>
-			window.onload = function() {
-				alert("프로필 이미지가 수정되었습니다.")
-			}
-		</script>
-	</c:when>
-	<c:when test='${msg =="deleted"}'>
-		<script>
-			window.onload = function() {
-				alert("탈퇴되었습니다.")
-			}
-	
-		</script>
-	</c:when>
-</c:choose>
- --%>
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -85,7 +59,7 @@
 									<i class="fa-solid fa-minus submenu_select"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/mySchedule">
+						<li><a href="${contextPath}/mypage/myschedule">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name">
 										<span>내 일정</span>
@@ -93,7 +67,7 @@
 									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/myGroupList">
+						<li><a href="${contextPath}/mypage/mygrouplist">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name menu_angle">
 										<span>내 소모임</span>
@@ -101,7 +75,7 @@
 									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/myBoardList">
+						<li><a href="${contextPath}/mypage/myboardlist">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name">
 										<span>내가 쓴 글·댓글</span>
@@ -136,14 +110,14 @@
 					<!--4-1-->
 					<div class="myProMo">
 						<h3>내정보 조회</h3>
-						<a href="${contextPath}/mypage/modProfileForm" role="button"
+						<a href="${contextPath}/mypage/modProfile-form" role="button"
 							class="button">수정</a>
 					</div>
 
 					<!--4-2-->
 					<div class="myImage">
 						<form id="userIMGform"
-							action="${contextPath}/mypage/userImgUpload" method="post"
+							action="${contextPath}/mypage/userimg-upload" method="post"
 							enctype="multipart/form-data">
 							<c:choose>
 								<c:when test="${empty userVO.user_img}">
@@ -196,7 +170,7 @@
 					<div class="myHabi">
 						<div class="myHabiText">
 							<h3>내 관심사</h3>
-							<a href="${contextPath}/mypage/interest/modInterestForm" role="button" class="button">수정</a>
+							<a href="${contextPath}/mypage/interest/modinterest-form" role="button" class="button">수정</a>
 							<!--  수정 버튼 누르면 관심사 바꿀 수 있게 -->
 						</div>
 

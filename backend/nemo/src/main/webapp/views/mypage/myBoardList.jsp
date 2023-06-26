@@ -41,7 +41,7 @@
 									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/mySchedule">
+						<li><a href="${contextPath}/mypage/myschedule">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name">
 										<span>내 일정</span>
@@ -49,7 +49,7 @@
 									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/myGroupList">
+						<li><a href="${contextPath}/mypage/mygrouplist">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name menu_angle">
 										<span>내 소모임</span>
@@ -57,7 +57,7 @@
 									<i class="fa-solid fa-angle-right menu_angle"></i>
 								</div>
 						</a></li>
-						<li><a href="${contextPath}/mypage/myboardList">
+						<li><a href="${contextPath}/mypage/myboardlist">
 								<div class="sc2_icon_menu">
 									<div class="menu_submenu_name menu_angle submenu_select">
 										<span>내가 쓴 글·댓글</span>

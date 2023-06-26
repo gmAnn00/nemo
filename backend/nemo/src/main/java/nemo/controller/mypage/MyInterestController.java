@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import nemo.service.mypage.MyInterestService;
 import nemo.service.user.JoinService;
-import nemo.vo.mypage.InterestVO;
 import nemo.vo.user.InterestsVO;
 import nemo.vo.user.UserVO;
 
@@ -49,31 +48,30 @@ public class MyInterestController extends HttpServlet {
 		String action = request.getPathInfo();				
 		String user_id = (String)session.getAttribute("user_id");
 		
-		if(action.equals("/modInterestForm")) {
+		if(action.equals("/modinterest-form")) {
 			//관심사 수정페이지로 이동
 			user_id = (String)session.getAttribute("user_id");
-			List<InterestVO> interestsList = myInterestService.searchInterestById(user_id);
-			
-			
+			List<InterestsVO> interestsList = myInterestService.searchInterestById(user_id);
+						
 			request.setAttribute("interestsList", interestsList);			
 			nextPage= "/views/mypage/modInterest.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
-		} else if(action.equals("/modInterestsChoice")) {
+		} else if(action.equals("/modinterest")) {
 			//관심사 수정
 			user_id = (String)session.getAttribute("user_id");			
 			int inputNum = Integer.parseInt(request.getParameter("inputNum"));			
 			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
-			
+			//System.out.println("inputNum = " + inputNum);
 			for(int i = 0; i<inputNum; i++) {
 				interestsVO = new InterestsVO();
 				String main_name = request.getParameter("main_name"+i);
 				String sub_name = request.getParameter("sub_name"+i);
 				
-				//System.out.println("main_name="+main_name);
-				//System.out.println("sub_name="+sub_name);
+				System.out.println("main_name="+main_name);
+				System.out.println("sub_name="+sub_name);
 				
 				interestsVO.setUser_id(user_id);
 				interestsVO.setMain_name(main_name);

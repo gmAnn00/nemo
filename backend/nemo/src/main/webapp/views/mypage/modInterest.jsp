@@ -24,7 +24,7 @@
 ></script>
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
-<script src="${contextPath}/js/interest.js"></script>
+<script src="${contextPath}/js/modinterest.js"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/mySchedule">
+                <a href="${contextPath}/mypage/myschedule">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 일정</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myGroupList">
+                <a href="${contextPath}/mypage/mygrouplist">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name menu_angle">
                       <span>내 소모임</span>
@@ -66,7 +66,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myBoardList">
+                <a href="${contextPath}/mypage/myboardlist">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -327,16 +327,16 @@
 	        </div>
 	        
 	        <!--내 관심사-->
-	        <form action="${contextPath}/mypage/interest/modInterestsChoice" id="frm" name="frm" method="post">
+	        <form action="${contextPath}/mypage/interest/modinterest" id="interestForm" name="interestForm" method="post">
 	        <div class="myInterest" id="myInt">
 	         <h3>내 관심사<span>(최대 3개 선택가능)</span></h3>
-		         <c:forEach var="interestChoice" items="${interestsList}">
-		         	<button class="btnMyInterest">${interestChoice.sub_name}</button>	
+		         <c:forEach var="interestChoice" items="${interestsList}">		         		
+		         <button type="button" class="small btnInterest btnMyInterest selectSmall" onclick="removeInterest(this)" data-class="${interestChoice.main_name}" value="${interestChoice.sub_name}">${interestChoice.sub_name}</button>
 		         </c:forEach>
 	        </div>	        
 	      
 	        <div class="saveInterest">	        		 
-	          <button type="submit" class="button" disabled>수정하기</button>
+	          <button type="submit" class="button" id="btnSubmit" disabled>수정하기</button>
 	          <a href="${contextPath}/mypage" role="button" class="buttonCancle"
                   >수정취소</a
                 >
