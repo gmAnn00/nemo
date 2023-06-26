@@ -2,6 +2,7 @@ package nemo.dao.group;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -67,6 +68,33 @@ public class BookmarkDAO {
 		
 		
 	} // end of deleteBookmark
+	
+	
+	public boolean isBookmark(String user_id, int group_id) {
+		boolean result = false;
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select decode(count(*) , 1, 'true', 'false') as result "
+			+ "from bookmark_tbl where user_id=? and grp_id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, group_id);
+			ResultSet rs= pstmt.executeQuery();
+			rs.next();
+			result = Boolean.parseBoolean(rs.getString("result"));
+			System.out.println("result = "+ result);
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("isInterest: 중 오류");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 	
 	

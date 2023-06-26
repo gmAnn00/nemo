@@ -3,6 +3,8 @@ package nemo.controller.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,13 +48,13 @@ public class JoinController extends HttpServlet {
 		
 		if(action.equals("/agreeForm")) { //약관동의
 			
-			nextPage = "/agree.jsp";
+			nextPage = "/views/join/agree.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
 		}else if(action.equals("/joinForm")) {
-			nextPage="/join.jsp";
+			nextPage="/views/join/join.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		}
@@ -66,10 +68,7 @@ public class JoinController extends HttpServlet {
 			String user_addr1 = request.getParameter("user_addr1");
 			String user_addr2 = request.getParameter("user_addr2");
 			Date birthdate = Date.valueOf(request.getParameter("birthdate"));
-			
-			String phoString = request.getParameter("phone");
-			int phone = Integer.parseInt(phoString);
-			
+			String phone = request.getParameter("phone");
 			String emailId = request.getParameter("emailId");
 			String emilDomain = request.getParameter("emailDomain");
 			String email = emailId + "@" + emilDomain;
@@ -104,7 +103,7 @@ public class JoinController extends HttpServlet {
 			//dispatcher.forward(request, response);
 			
 		}else if (action.equals("/interestsForm")) { //관심사이트
-			nextPage = "/interests.jsp";
+			nextPage = "/views/join/interests.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		
@@ -113,10 +112,27 @@ public class JoinController extends HttpServlet {
 			String user_id = (String)session.getAttribute("user_id_temp");
 			session.removeAttribute("user_id_temp");
 			
-			String main_name = request.getParameter("main_name");
-			String sub_name = request.getParameter("sub_name");
+			int inputNum = Integer.parseInt(request.getParameter("inputNum"));
 			
-			joinService.addChoice(interestsVO);
+			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
+			
+			for(int i = 0; i<inputNum; i++) {
+				interestsVO = new InterestsVO();
+				String main_name = request.getParameter("main_name"+i);
+				String sub_name = request.getParameter("sub_name"+i);
+				
+				//System.out.println("main_name="+main_name);
+				//System.out.println("sub_name="+sub_name);
+				
+				interestsVO.setUser_id(user_id);
+				interestsVO.setMain_name(main_name);
+				interestsVO.setSub_name(sub_name);
+				interestsList.add(interestsVO);
+			}
+			
+			
+			
+			joinService.addChoice(interestsList);
 			
 			request.setAttribute("msg", "addChoice");
 			

@@ -25,6 +25,7 @@ public class JoinGroupDAO {
 		}
 	}
 
+	// grpjoin_tbl 에 유저 추가
 	public boolean joinGroup(String user_id, int group_id) {
 		boolean member = isMember(user_id, group_id);
 		boolean full = isFull(group_id);
@@ -37,7 +38,7 @@ public class JoinGroupDAO {
 				pstmt.setString(1, user_id);
 				pstmt.setInt(2, group_id);
 				pstmt.executeUpdate();
-				
+
 				pstmt.close();
 				conn.close();
 				return true;
@@ -51,7 +52,55 @@ public class JoinGroupDAO {
 			return false;
 		}
 
+	}
 
+	// true 면 승인 후 가입 가능
+	public boolean isWait(int group_id) {
+		boolean wait = false;
+
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select decode(app_st, 0, 'false', 'true') as result from group_tbl where grp_id=?";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next();
+			wait = Boolean.parseBoolean(rs.getString("result"));
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+			System.out.println("isWait 중 오류");
+			e.printStackTrace();
+		}
+		return wait;
+	}
+
+	// 소모임 대기 테이블에 유저 추가
+	public boolean joinWaitList(String user_id, int group_id) {
+		boolean result = false;
+		try {
+			conn = dataFactory.getConnection();
+			String query = "INSERT INTO waitlist_tbl (user_id, grp_id) values(?,?)";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, group_id);
+			System.out.println(query);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			result = true;
+			
+		} catch (Exception e) {
+			System.out.println("joinWaitList 중 오류");
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	// user_id 가 group_id 의 멤버면 true, 멤버가 아니면 false 반환
@@ -68,6 +117,7 @@ public class JoinGroupDAO {
 
 			rs.next();
 			rsCnt = rs.getInt("cnt");
+			
 			rs.close();
 			pstmt.close();
 			conn.close();
@@ -108,21 +158,21 @@ public class JoinGroupDAO {
 			System.out.println("isFull 중 오류");
 			e.printStackTrace();
 		}
-		
+
 		try {
 			conn = dataFactory.getConnection();
 			query = "select mem_no from group_tbl where grp_id=?";
 			System.out.println(query);
-			pstmt=conn.prepareStatement(query);
+			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, group_id);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			maxNum = rs.getInt("mem_no");
-			
+
 			rs.close();
 			pstmt.close();
 			conn.close();
-			
+
 		} catch (Exception e) {
 			System.out.println("isFull 중 오류");
 			e.printStackTrace();

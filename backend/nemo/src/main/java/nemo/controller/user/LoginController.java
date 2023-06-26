@@ -48,7 +48,7 @@ public class LoginController extends HttpServlet {
 
 		if (action == null || action.equals("/loginForm")) {
 			
-			nextPage = "/login.jsp";
+			nextPage = "/views/login/login.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
@@ -93,6 +93,8 @@ public class LoginController extends HttpServlet {
 				response.sendRedirect(nextPage);
 				
 			}
+			//자동로그인 영역
+		}else if (action.equals("/keeplogin")) {
 			
 		}
 		//RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

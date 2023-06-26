@@ -46,7 +46,7 @@ public class SearchController extends HttpServlet {
 		//아이디 영역 메서드
 		if (action == null || action.equals("/findidForm")) {
 			
-			nextPage="/findid.jsp";
+			nextPage="/views/login/findid.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
@@ -73,7 +73,7 @@ public class SearchController extends HttpServlet {
 				System.out.println("아이디 찾기 성공");
 				out.print("<script>");
 				out.print("alert('아이디 찾기에 성공하셨습니다.');");
-				out.print("location.href='" + request.getContextPath() + "/search/idcompleteForm';");
+				out.print("location.href='" + request.getContextPath() + "//search/idcompleteForm';");
 				out.print("</script>");
 			} else {
 				//아이디를 찾지 못한경우
@@ -88,9 +88,9 @@ public class SearchController extends HttpServlet {
 			session = request.getSession();
 			String user_id = (String) session.getAttribute("user_id");
 			session.removeAttribute("user_id");// 세선정보 삭제
-			//request.setAttribute("user_id", user_id);
+			request.setAttribute("user_id_find", user_id);
 			
-			nextPage="/findidComplete.jsp";
+			nextPage="/views/login/findidComplete.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
@@ -98,7 +98,7 @@ public class SearchController extends HttpServlet {
 		
 		//비밀번호 영역 메서드
 		if(action == null || action.equals("/findpassForm")) {
-			nextPage="/findpass.jsp";
+			nextPage="/views/login/findpass.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		}else if (action.equals("/findpass")) {
@@ -136,7 +136,7 @@ public class SearchController extends HttpServlet {
 			
 			
 		}else if (action.equals("/passcompleteForm")) {
-			nextPage="/findPassReset.jsp";
+			nextPage="/views/login/findPassReset.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		}else if (action.equals("/findPassReset")) {
