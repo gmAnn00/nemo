@@ -3,6 +3,8 @@ package nemo.dao.group;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -124,4 +126,30 @@ public class GroupDAO {
 				return true;
 			}
 		} // end of isMember
+
+		
+		public List grpMng(String user_id) {
+			List grpMngList = new ArrayList<String>();
+			
+			try {
+				conn = dataFactory.getConnection();
+				String query = "select grp_id from group_tbl where grp_mng = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					System.out.println(rs.getString("grp_id"));
+					grpMngList.add(rs.getString("grp_id"));
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+				
+			} catch (Exception e) {
+				System.out.println("grpMng 중 오류");
+				e.printStackTrace();
+			}
+			
+			return grpMngList;
+		}
 }

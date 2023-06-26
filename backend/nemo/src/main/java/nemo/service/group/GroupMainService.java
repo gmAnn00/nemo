@@ -1,6 +1,7 @@
 package nemo.service.group;
 
 import java.util.List;
+import java.util.Map;
 
 import nemo.dao.group.GroupDAO;
 import nemo.dao.group.GroupMainDAO;
@@ -42,5 +43,12 @@ public class GroupMainService {
 	public Boolean isMember(String user_id, int group_id) {
 		return groupDAO.isMember(user_id, group_id);
 	}
+
+	public List<String> grpMng(String user_id) {
+		return groupDAO.grpMng(user_id);
+	}
+
+	
+	
 
 }
