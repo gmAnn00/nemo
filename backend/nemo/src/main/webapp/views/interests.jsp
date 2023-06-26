@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관심자창</title>
+<title>관심사 선택</title>
  <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
@@ -272,7 +272,7 @@
         </div>
         
         <!--내 관심사-->
-        <h3>내 관심사<span>(최대 3개 선택가능) 눌러서 제거가능</span></h3>
+        <h3>내 관심사<span>(최대 3개 선택가능)</span></h3>
         <div class="myInterest" id="myInt">
           
         </div>
