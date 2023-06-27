@@ -61,48 +61,37 @@ $(document).ready(function() {
 		 // 추가한 폰트사이즈
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 		callbacks: {
-				onImageUpload: function(files, editor, welEditable) {
-		            for (var i = files.length - 1; i >= 0; i--) {
-		            	sendFile(files[i], this);
-		            }
-		        }
-			}
+			onImageUpload: function(files, editor, welEditable) {
+                sendFile(files[0], editor, welEditable);
+            },/*
+			onImageUpload: function(files, editor, welEditable) {
+
+
+				//파일 다중 업로드 위해 반복문사용
+				for(var i=files.lenght-1; i>=0; i--) {
+					uploadSummerNoteImageFile(files[i],this);
+				}
+				
+			},*/
+			    onChange:function(contents, $editable){ //텍스트 글자수 및 이미지등록개수
+                setContentsLength(contents, 0);
+            }
 			
-		});
+		}
+		
+	});
+	
+	
 });
 
-	function sendFile(file, el) {
-		//let ctx=getContextPath();
-		var form_data = new FormData();
-		console.log('콜백오니');
-      	form_data.append('file', file);
-      	$.ajax({
-        	data: form_data,
-        	type: "POST",
-        	url: 'http://127.0.0.1:8090/nemo/snUploadImage',
-        	cache: false,
-        	contentType: false,
-        	enctype: 'multipart/form-data',
-        	processData: false,
-        	success: function(img_name) {
-				console.log("성공~");
-				
-				let img=JSON.parse(img_name);
-				console.log(img.url);
-          		$(el).summernote('editor.insertImage', img.url);
-        	}
-      	});
-    }
-	
 
-/*
+
 function uploadSummerNoteImage(file,el) {
 		let ctx=getContextPath();
 		let data = new FormData();
-		console.log(ctx+'/summernote/uploadImage');
 		data.append("file",file);
 			$.ajax({
-				url: ctx+'/summernote/uploadImage',
+				url: ctx+'/summernote/summer_imgae.do',
 				type:'POST',
 				enctype: 'multipart/form-data',
 				data: data,
@@ -118,7 +107,7 @@ function uploadSummerNoteImage(file,el) {
 					console.log(e);
 				}
 			});
-}*/
+}
 
 function jsonFn(jsonArray) {
 	console.log(jsonArray);

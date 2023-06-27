@@ -401,6 +401,27 @@ public class BoardDAO {
 		}
 	}
 	
+	//글 수정하는 메소드
+	public void updateArticle(BoardVO boardVO) {
+		try {
+			conn=dataFactory.getConnection();
+			String query="UPDATE board_tbl SET title=?, content=?, brackets=?";
+			query+=" WHERE article_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, boardVO.getTitle());
+			pstmt.setString(2, boardVO.getContent());
+			pstmt.setString(3, boardVO.getBrackets());
+			pstmt.setInt(4, boardVO.getArticle_no());
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("글 수정하는 중 에러");
+			e.printStackTrace();
+		}
+	}
+	
 	
 	//검색한 총 글 개수
 	public int searchTotArticles(int group_id, String filter, String keyword) {

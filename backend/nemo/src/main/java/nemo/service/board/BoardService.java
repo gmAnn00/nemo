@@ -120,7 +120,6 @@ public class BoardService {
 			_brackets="후기";
 		}
 		boardVO.setBrackets(_brackets);
-		//멤버인지체크해야함;;
 		boardDAO.insertNewArticle(boardVO);
 	}//End of addArticle
 	
@@ -171,6 +170,20 @@ public class BoardService {
 		
 	}
 	
+	//글 수정하는 메소드
+	public void modArticle(BoardVO boardVO, String _brackets) {	
+		if(_brackets.equals("notice")) {
+			_brackets="공지";
+		}else if(_brackets.equals("freeArticle")) {
+			_brackets="자유";
+		}else if(_brackets.equals("afterMeeting")) {
+			_brackets="후기";
+		}
+		boardVO.setBrackets(_brackets);
+		boardDAO.updateArticle(boardVO);
+	}//End of addArticle
+	
+	
 	public boolean checkAdmin(String user_id) {
 		boolean isAdmin=false;
 		isAdmin=userDAO.checkAdmin(user_id);
@@ -186,6 +199,7 @@ public class BoardService {
 	public boolean isAuthorized(String user_id,int group_id) {
 		return (boardDAO.isMember(user_id, group_id)||userDAO.checkAdmin(user_id));
 	}
+
 	
 	/*
 	//댓글 삭제

@@ -139,7 +139,6 @@ public class BoardController extends HttpServlet {
 					nextPage="/views/group/board.jsp";
 
 				}else if(action.equals("/viewArticle")) {	// 글 상세보기
-					
 					int article_no = Integer.parseInt(request.getParameter("article_no"));
 					Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
 					request.setAttribute("articleViewMap", articleViewMap);
@@ -147,7 +146,7 @@ public class BoardController extends HttpServlet {
 			
 				} else if(action.equals("/write")) { //글쓰는 페이지로이동 
 					boolean isAdmin=boardService.checkAdmin(user_id);
-					boolean isMem=boardService.isMember(user_id, group_id);
+					//boolean isMem=boardService.isMember(user_id, group_id);
 					if(isAdmin) {
 						out.print("<script>alert('관리자는 글을 작성할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
@@ -156,7 +155,7 @@ public class BoardController extends HttpServlet {
 						nextPage="/views/group/boardWrite.jsp";
 					}
 					
-				} else if(action.equals("/addArticle")) { 
+				} else if(action.equals("/addArticle")) { // 게시글 작성
 					boolean isAdmin=boardService.checkAdmin(user_id);
 					boolean isMem=boardService.isMember(user_id, group_id);
 					if(isAdmin) {
@@ -176,15 +175,14 @@ public class BoardController extends HttpServlet {
 						boardVO.setContent(content);
 						boardService.addArticle(boardVO, _brackets);
 						
-						out.print("<script>alert('글이 등록되었습니다.')");
-						//response.sendRedirect("/nemo/group/groupMain?group_id=1");
+						out.print("<script>alert('글이 등록되었습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
+						out.print("</script>");
 						
-						nextPage="/nemo/group/board?group_id="+group_id;
-						response.sendRedirect(nextPage);
+						//nextPage="/nemo/group/board?group_id="+group_id;
+						//response.sendRedirect(nextPage);
 						return;
 					}
-					
-					
 				} else if(action.equals("/deleteArticle")) { 
 					//게시글 정보를 가지고 게시글 삭제 페이지로
 					String _article_no=request.getParameter("article_no");
@@ -269,6 +267,7 @@ public class BoardController extends HttpServlet {
 						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
 						out.print("</script>");
+						return;
 					}
 					
 					JSONObject comInfo=new JSONObject();
@@ -298,8 +297,40 @@ public class BoardController extends HttpServlet {
 					System.out.println(com_cont);
 					out.print(com_cont);
 					return;
-				} 
-				
+				}else if(action.equals("/modArticle")) { // 글 수정 폼으로 보내기
+					boolean isAdmin=boardService.checkAdmin(user_id);
+					int article_no=Integer.parseInt(request.getParameter("article_no"));
+					if(isAdmin) {
+						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
+						out.print("</script>");
+						return;
+					} else {
+						//서비스에서 수정할 내용 찾아서 세팅해줘야함
+						Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
+						request.setAttribute("articleViewMap", articleViewMap);
+						nextPage="/views/group/modArticle.jsp";
+					}
+				} else if(action.equals("/updateArticle")) {
+					String _brackets=request.getParameter("brackets");
+					String title=request.getParameter("title");
+					String content=request.getParameter("content");
+					int article_no=Integer.parseInt(request.getParameter("article_no"));
+					System.out.println(content);
+					
+					boardVO.setTitle(title);
+					//boardVO.setBrackets(brackets);
+					boardVO.setUser_id(user_id);
+					boardVO.setGrp_id(group_id);
+					boardVO.setContent(content);
+					boardVO.setArticle_no(article_no);
+					boardService.modArticle(boardVO, _brackets);
+					
+					out.print("<script>alert('글이 수정되었습니다.');");
+					out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+					out.print("</script>");
+					return;
+				}
 				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 				dispatcher.forward(request, response);
 			} catch (Exception e) {
