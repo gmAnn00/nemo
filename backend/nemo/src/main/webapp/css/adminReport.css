@@ -1,0 +1,14 @@
+@charset "utf-8";
+table {
+    margin-top: 20px;
+    width: 100%;
+}
+.list {
+    position: static!important;
+}
+.dataTables_filter {
+    margin-bottom: 10px;
+}
+.tab_box {
+    display: block!important;
+}

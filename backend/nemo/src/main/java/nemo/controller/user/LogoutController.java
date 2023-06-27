@@ -1,4 +1,4 @@
-package nemo.controller.member;
+package nemo.controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,7 +29,7 @@ public class LogoutController extends HttpServlet {
 		
 		if(session !=null) {
 			session.invalidate();
-			nextPage = "/nemo/index";
+			nextPage = "/index";
 			response.sendRedirect(nextPage);
 			
 		}

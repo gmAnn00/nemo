@@ -1,0 +1,44 @@
+.login_container {
+  width: 800px;
+  margin: 115px auto;
+  border: 1px solid #ccc;
+}
+ul.tabs {
+  margin: 0px;
+  padding-left: 15px;
+  list-style: none;
+}
+ul.tabs li {
+  background: none;
+  color: #404040;
+  display: inline-block;
+  margin: 10px 5px;
+  cursor: pointer;
+}
+ul.tabs li.current {
+  background: #ededed;
+  color: #404040;
+}
+.tabId::after {
+  content: "|";
+  padding-left: 10px;
+}
+.tabContent {
+  display: none;
+  background: #ededed;
+  padding: 15px;
+}
+.tabContent h2,
+p {
+  text-align: center;
+  margin: 20px;
+}
+.tabContent.current {
+  display: inherit;
+}
+.tabContent button[type="button"] {
+  display: block;
+  margin: 0 auto;
+  width: 220px;
+  height: 40px;
+}

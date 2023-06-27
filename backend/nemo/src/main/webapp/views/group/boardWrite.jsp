@@ -3,12 +3,14 @@
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="group" value="${groupInfo}" />
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEMO</title>
+    <title>네모: 게시판</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
@@ -17,86 +19,21 @@
     <link rel="stylesheet" href="${contextPath}/css/boardWrite.css" />
     <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css"/>
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+	<script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
     <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardWrite.js"></script>
   </head>
   <body>
     <!-- header 시작 -->
-    <!-- 사이드 메뉴시 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <header>
-      <h1 class="logo">
-        <a href="${contextPath}/index.html"><img src="${contextPath}/images/logo.png" alt="logo"
-        /></a>
-      </h1>
-    </header>
-    <button class="burger">
-      <span></span>
-    </button>
-    <div class="sidemenu">
-      <ul class="main_menu">
-        <li>
-          <a href="#">
-            <div class="profile">
-              <i class="fa-solid fa-circle-user"></i
-              ><span class="profile_name">사이다</span>
-            </div>
-          </a>
-        </li>
-        <li><a href="#">소모임 만들기</a></li>
-        <li><a href="#">소모임 검색</a></li>
-        <li><a href="#">프로필</a></li>
-        <li><a href="#">내 일정</a></li>
-        <li><a href="#">내 소모임</a></li>
-        <li><a href="#">고객센터</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-      <div class="sidemenu_footer">
-        <h3>Contact details</h3>
-        <p>글 넣을 거 있으면 넣기</p>
-      </div>
-    </div>
+	<jsp:include page="../header.jsp" flush="true"></jsp:include>
     <!-- header 종료 -->
 
-    <!-- section1 시작 -->
-    <div class="section1">
-      <div class="group_containter">
-        <div class="group_all">
-          <div class="group_img">
-            <img
-              src="${contextPath}/images/free-icon-group-8847475.png"
-              alt="group_img"
-            />
-          </div>
-          <div class="group_name">
-            <a href="groupMain.html">
-              <span>이젠종로학원</span>
-            </a>
-          </div>
-          <div class="group_info">
-            <div class="group_info_category">
-              <div class="category_box group_info_category_box">sports</div>
-              <div class="category_box group_info_category_box">game</div>
-            </div>
-            <div class="group_info_member">
-              <div class="group_info_title"><span>멤버수</span></div>
-              <div class="group_info_contents"><span>7</span></div>
-            </div>
-            <div class="group_info_follower">
-              <div class="group_info_title"><span>개설일</span></div>
-              <div class="group_info_contents"><span>2023. 05. 19.</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- section1 종료 -->
+	<!-- section1 -->
+	<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
+	<!-- section1종료 -->
 
     <!-- 콘텐츠 영역 -->
     <div class="section2">
@@ -115,7 +52,7 @@
                 </a>
               </li>
               <li>
-                <a href="board.html">
+                <a href="${contextPath}/group/board?group_id=${groupInfo.groupVO.grp_id}">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -166,34 +103,41 @@
 
           <!-- 글쓰기 영역 -->
           <div class="boardWriteArea">
-          
-            <form action="">
+         
+            <!-- <form action="/group/board/addArticle" method="post" name="articleForm" id="articleForm"> -->
+              <form action="${contextPath}/group/board/addArticle" method="post" name="articleForm" id="articleForm">
+              <input type="hidden" name="group_id" value="${group.groupVO.grp_id}"/>
               <!-- 제목 영역 -->
               <div class="articleWritingTitle">
                 <!-- 말머리 컨텐츠 확인 필요 -->
-                <!-- 네이버 카페는 말머리를 button으로 처리 -->
-                <select name="headTitle" id="headTitle" class="headTitle">
-                  <option value="">말머리선택</option>
-                  <option value="notice">공지사항</option>
-                  <option value="afterMeeting">모임후기</option>
-                  <option value="freeArticle">자유글</option>
-                </select>
+                <div class="headTitleArea">
+	                <select name="brackets" id="headTitle" class="headTitle">
+	                  <option value="">말머리</option>
+	                  <c:if test="${user_id==group.groupVO.grp_mng}">
+	                  	<option value="notice">공지</option>
+	                  </c:if>
+	                  <option value="freeArticle">자유</option>
+	                  <option value="afterMeeting">후기</option>
+	                </select>
+                </div>
                 <!-- 제목 -->
-                <textarea name="writeTitle" id="writeTitle" class="writeTitle" rows="1" placeholder="제목을 입력해주세요"></textarea>
+                <div class="titleArea">
+                	<input type="text" name="title" id="writeTitle" class="writeTitle" placeholder="제목을 입력해주세요"></textarea>
+              	</div>
               </div>
               <!-- 글쓰는 영역 -->
               <div class="editorArea">
-                <textarea id="summernote">
-                </textarea>
+                <textarea id="summernote" name="content"></textarea>
               </div>
-
-            </form>
-
               <!-- 등록 버튼 -->
               <div class="btnRegister">
                 <a href="#" role="button" class="button">등록</a>
                 <a href="#" role="button" class="buttonCancle">취소</a>
               </div>
+
+            </form>
+
+
             </div>
           </div>
         </div>
