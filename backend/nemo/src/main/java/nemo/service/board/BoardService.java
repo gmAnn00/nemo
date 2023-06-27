@@ -171,7 +171,7 @@ public class BoardService {
 	
 	//컨텐츠 삭제하는 메소드
 	public void deleteArticle(int article_no) {
-		
+		boardDAO.deleteArticle(article_no);
 	}
 	
 	//글 수정하는 메소드

@@ -346,6 +346,13 @@ public class BoardDAO {
 	public void deleteArticle(int article_no) {
 		try {
 			conn=dataFactory.getConnection();
+			String query="DELETE FROM board_tbl WHERE article_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, article_no);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
 		} catch (Exception e) {
 			System.out.println("게시글 삭제 중 에러");
 			
