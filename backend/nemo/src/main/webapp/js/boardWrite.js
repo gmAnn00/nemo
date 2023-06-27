@@ -79,7 +79,7 @@ $(document).ready(function() {
       	$.ajax({
         	data: form_data,
         	type: "POST",
-        	url: 'http://127.0.0.1:8090/nemo/snUploadImage',
+        	url: '/nemo/snUploadImage',
         	cache: false,
         	contentType: false,
         	enctype: 'multipart/form-data',

@@ -50,7 +50,7 @@ public class SummerNoteUploadImage extends HttpServlet {
 		BOARD_IMG_TEMP=this.getClass().getResource("").getPath();
 		BOARD_IMG_TEMP=BOARD_IMG_TEMP.substring(1,BOARD_IMG_TEMP.indexOf(".metadata"));
 		BOARD_IMG_TEMP=BOARD_IMG_TEMP.replace("/", "\\");
-		BOARD_IMG_TEMP+="nemo\\src\\webapp\\boardImages\\temp\\";
+		BOARD_IMG_TEMP+="nemo\\src\\main\\webapp\\boardImages\\temp\\";
 			
 		Part part = request.getPart("file");
 		//System.out.println(part.getHeader("content-disposition"));
@@ -69,10 +69,6 @@ public class SummerNoteUploadImage extends HttpServlet {
 			jsonValue.put("url","/nemo/summernoteImage/getImage.do?savedFileName="+savedFileName);
 			String jsonString=jsonValue.toJSONString();
 			out.print(jsonString);
-			//return;
-			//json.addProperty("url","/summernoteImage/getImage.do?savedFileName="+savedFileName);
-			//json.addProperty("responseCode", "success");
-			//out.print(BOARD_IMG_TEMP+savedFileName);
 
 		}catch (IOException e) {
 			FileUtils.deleteQuietly(targetFile);

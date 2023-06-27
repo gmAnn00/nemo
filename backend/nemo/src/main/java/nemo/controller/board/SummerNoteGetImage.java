@@ -36,7 +36,7 @@ public class SummerNoteGetImage extends HttpServlet {
 			String DIR=this.getClass().getResource("").getPath();
 			DIR=DIR.substring(1,DIR.indexOf(".metadata"));
 			DIR=DIR.replace("/", "\\");
-			DIR+="nemo\\src\\webapp\\boardImages\\temp\\";
+			DIR+="nemo\\src\\main\\webapp\\boardImages\\temp\\";
 			filePath=DIR+savedFileName;
 			getImage(filePath, response);
 		}
