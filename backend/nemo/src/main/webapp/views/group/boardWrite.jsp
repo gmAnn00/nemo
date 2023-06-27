@@ -132,12 +132,10 @@
               <!-- 등록 버튼 -->
               <div class="btnRegister">
                 <a href="#" role="button" class="button">등록</a>
-                <a href="#" role="button" class="buttonCancle">취소</a>
+                <a href="#" role="button" class="buttonCancle" onclick="fn_cancel(${group.groupVO.grp_id})">취소</a>
               </div>
 
             </form>
-
-
             </div>
           </div>
         </div>

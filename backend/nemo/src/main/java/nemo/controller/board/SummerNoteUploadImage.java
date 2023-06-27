@@ -66,8 +66,11 @@ public class SummerNoteUploadImage extends HttpServlet {
 			InputStream fileStream=part.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);
 			
-			jsonValue.put("url","/nemo/summernoteImage/getImage.do?savedFileName="+savedFileName);
-			String jsonString=jsonValue.toJSONString();
+			json.addProperty("url","/nemo/summernoteImage/getReviewImage.do?savedFileName="+savedFileName);
+			//json.addProperty("responseCode", "success");
+			//jsonValue.put("url","/nemo/summernoteImage/getImage.do?savedFileName="+savedFileName);
+			//String jsonString=jsonValue.toJSONString();
+			String jsonString=json.toString();
 			out.print(jsonString);
 
 		}catch (IOException e) {
@@ -75,9 +78,11 @@ public class SummerNoteUploadImage extends HttpServlet {
 			//json.addProperty("responseCode", "error");
 			e.printStackTrace();
 		}
-		//String jsonValue=json.toString();
+		//String jsonV=json.toString(); //gson방법
 		//System.out.println(jsonValue);
-		//return jsonValue;
+		//String jsonString=jsonValue.toJSONString();
+		//return jsonV;	//gson방법
+		//return jsonString;
 }
 	
 	 private String getFilename(Part part) {

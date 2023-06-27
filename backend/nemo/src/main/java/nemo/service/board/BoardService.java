@@ -123,6 +123,10 @@ public class BoardService {
 		boardDAO.insertNewArticle(boardVO);
 	}//End of addArticle
 	
+	public int getNewArticleNo() {
+		return boardDAO.getNewArticleNo();
+	}
+	
 	//한개의 게시글 정보를 받아오는 서비스
 	public BoardVO getArticleInfo(int group_id, int article_no, String user_id) {
 		//Map articleInfo=new HashMap();

@@ -19,25 +19,41 @@ import com.google.gson.JsonObject;
 
 @WebServlet("/summernoteImage/*")
 public class SummerNoteGetImage extends HttpServlet {
-
+	private static String ARTICLE_IMG_DIR;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getImg(request, response);
-
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getImg(request, response);
 	}
 	public void getImg(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+		
 		String action=request.getPathInfo();
-		System.out.println("ddddd");
-		if(action.equals("/getImage.do")) {
+		
+		if(action.equals("/getReviewImage.do")) {
+			System.out.println("getReviewImage");
 			String savedFileName=request.getParameter("savedFileName");
 			String filePath;
-			String DIR=this.getClass().getResource("").getPath();
-			DIR=DIR.substring(1,DIR.indexOf(".metadata"));
-			DIR=DIR.replace("/", "\\");
-			DIR+="nemo\\src\\main\\webapp\\boardImages\\temp\\";
-			filePath=DIR+savedFileName;
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages\\temp\\";
+			filePath=ARTICLE_IMG_DIR+savedFileName;
+			getImage(filePath, response);
+			
+		} else if(action.equals("/getImage.do")) {
+			System.out.println("getImage");
+			int article_no=Integer.parseInt(request.getParameter("article_no"));
+			String savedFileName=request.getParameter("savedFileName");
+			System.out.println(article_no);
+			System.out.println(savedFileName);
+			String filePath;
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages\\"+article_no+"\\";
+			filePath=ARTICLE_IMG_DIR+savedFileName;
 			getImage(filePath, response);
 		}
 	}
@@ -69,6 +85,9 @@ public class SummerNoteGetImage extends HttpServlet {
 
 		response.getOutputStream().flush();
 		response.getOutputStream().close();
+		bStream.close();
+		in.close();
+		fis.close();
 	}
 
 }
