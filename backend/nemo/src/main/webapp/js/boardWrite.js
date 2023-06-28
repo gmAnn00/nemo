@@ -70,12 +70,20 @@ $(document).ready(function() {
 		 // 추가한 폰트사이즈
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 		callbacks: {
+				//이미지 업로드 콜백
 				onImageUpload: function(files, editor, welEditable) {
 		            for (var i = files.length - 1; i >= 0; i--) {
 		            	//sendFile(files[i], this);
 		            	uploadSummerNoteImage(files[i], this);
 		            }
-		        }
+		        }, //end of onImageUpload 콜백 
+		        //onMediaDelete: function ($target, editor, $editable) {
+				//	let deletedImageUrl=$target
+				//		.attr('src')
+				//		.split('/')
+				//		.pop()
+				//		deleteImageFile(deletedImageUrl)
+				//} //end of onMediaDelete 콜백
 			}
 			
 		});

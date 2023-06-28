@@ -22,7 +22,7 @@
 	<script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
     <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> -->
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/boardWrite.js"></script>
   </head>
