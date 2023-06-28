@@ -158,6 +158,7 @@ public class GroupSearchDAO {
 			pstmt.close();
 			conn.close();
 			
+			// 찜순, 이름순 정렬
 			if(sort.equals("sortByBookmark")) {
 				resultList.sort(
 						Comparator.comparing((Map map) -> (Integer)map.get("bookmarkNum")).reversed()
@@ -168,6 +169,7 @@ public class GroupSearchDAO {
 						);
 			}
 			
+			// 가입가능 필터
 			if(joinAble.equals("on")) {
 				for(int i = resultList.size()-1; i>=0; i--) {
 					if((boolean)resultList.get(i).get("isFull") == true) {
@@ -176,6 +178,7 @@ public class GroupSearchDAO {
 				}
 			}
 			
+			// 거리 필터
 			if(areaBar != -1 && userLat != null && userLng != null) {
 				double userLatdbl = Double.parseDouble(userLat);
 				double userLngdbl = Double.parseDouble(userLng);
