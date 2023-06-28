@@ -59,12 +59,21 @@ public class GroupSearchController extends HttpServlet {
 		String sub_name = request.getParameter("smallCate") == null ? "none" : request.getParameter("smallCate");
 		String joinAble = request.getParameter("joinAble") == null ? "none" : request.getParameter("joinAble");
 		String sort = request.getParameter("sort") == null ? "sortByName" : request.getParameter("sort");
+		int areaBar = request.getParameter("areaBar") == null ? -1 : Integer.parseInt(request.getParameter("areaBar"));
+		String userLat = request.getParameter("userLat");
+		String userLng = request.getParameter("userLng");
+		
+		//System.out.println(request.getParameter("userLat"));
+		//System.out.println(request.getParameter("userLng"));
 		
 		System.out.println("searchText=" + searchText);
 		System.out.println("main_name=" + main_name);
 		System.out.println("sub_name=" + sub_name);
 		System.out.println("joinAble=" + joinAble);
 		System.out.println("sort=" + sort);
+		System.out.println("areaBar=" + areaBar);
+		System.out.println("userLat=" + userLat);
+		System.out.println("userLng=" + userLng);
 		
 		Map searchMap = new HashMap();
 		searchMap.put("user_id", user_id);
@@ -73,6 +82,9 @@ public class GroupSearchController extends HttpServlet {
 		searchMap.put("sub_name", sub_name);
 		searchMap.put("joinAble", joinAble);
 		searchMap.put("sort", sort);
+		searchMap.put("areaBar", areaBar);
+		searchMap.put("userLat", userLat);
+		searchMap.put("userLng", userLng);
 		searchMap.put("section", section);
 		searchMap.put("pageNum", pageNum);
 		

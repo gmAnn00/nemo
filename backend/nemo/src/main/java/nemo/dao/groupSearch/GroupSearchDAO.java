@@ -1,5 +1,6 @@
 package nemo.dao.groupSearch;
 
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+
 import nemo.vo.group.GroupVO;
+import nemo.vo.group.KaKaoGeoRes;
 
 public class GroupSearchDAO {
 	private Connection conn;
@@ -48,6 +56,9 @@ public class GroupSearchDAO {
 			String sub_name = (String) searchMap.get("sub_name");
 			String joinAble = (String) searchMap.get("joinAble");
 			String sort = (String) searchMap.get("sort");
+			int areaBar = (Integer) searchMap.get("areaBar");
+			String userLat = (String) searchMap.get("userLat");
+			String userLng = (String) searchMap.get("userLng");
 			int section = (int)searchMap.get("section");
 			int pageNum = (int)searchMap.get("pageNum"); 
 
@@ -56,6 +67,9 @@ public class GroupSearchDAO {
 			System.out.println("DAO sub_name=" + sub_name);
 			System.out.println("DAO joinAble=" + joinAble);
 			System.out.println("DAO sort=" + sort);
+			System.out.println("DAO areaBar=" + areaBar);
+			System.out.println("DAO userLat=" + userLat);
+			System.out.println("DAO userLng=" + userLng);
 			System.out.println("DAO section=" + section);
 			System.out.println("DAO pageNum=" + pageNum);
 
@@ -162,10 +176,61 @@ public class GroupSearchDAO {
 				}
 			}
 			
+			if(areaBar != -1 && userLat != null && userLng != null) {
+				double userLatdbl = Double.parseDouble(userLat);
+				double userLngdbl = Double.parseDouble(userLng);
+				
+				String APIKey = "KakaoAK c73306afc68803d77548f1b3dea5d5c2";    
+
+				HashMap<String, Object> map = new HashMap<>(); //결과를 담을 map
+
+				for(int i = resultList.size()-1; i>=0; i--) {
+					try {
+						GroupVO groupVO = (GroupVO) resultList.get(i).get("groupVO");
+						String address = groupVO.getGrp_addr1();
+						String apiURL = "https://dapi.kakao.com/v2/local/search/address.json?query=" 
+			                    + URLEncoder.encode(address, "UTF-8");
+						
+						HttpResponse<JsonNode> response = Unirest.get(apiURL).header("Authorization", APIKey).asJson();
+						ObjectMapper objectMapper = new ObjectMapper();
+						objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+						
+						KaKaoGeoRes bodyJson = objectMapper.readValue(response.getBody().toString(), KaKaoGeoRes.class);
+					
+						double lat = bodyJson.getDocuments().get(0).getY();
+						double lng = bodyJson.getDocuments().get(0).getX();
+						
+						System.out.println("lat = " + lat);
+						System.out.println("lng = " + lng);
+						
+						double dLat = Math.toRadians(userLatdbl - lat);
+						double dLng = Math.toRadians(userLngdbl - lng);
+						
+						double temp1 = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(Math.toRadians(lat))*
+								Math.cos(Math.toRadians(userLatdbl/2))*Math.sin(dLng/2)*Math.sin(dLng/2);
+						double temp2 = 2 * Math.atan2(Math.sqrt(temp1), Math.sqrt(1-temp1));
+						double dist = 6371 * temp2 * 1000;
+						System.out.println("dist="+ dist);
+						
+						if(dist > areaBar*1000) {
+							resultList.remove(i);
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					
+				} // end of for
+				
+				
+				
+			} // end of if(areaBar != -1 && userLat != null && userLng != null)
+			
+			
+			// 페이징 처리
 			int total = resultList.size();
 			int start = (section-1)*100+(pageNum-1)*10;
-			// (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10
-			
 			int cnt = 10;
 			
 			if(section > total/100 && pageNum > (total/100)/10 + 1) {
@@ -377,3 +442,4 @@ public class GroupSearchDAO {
 
 
 }
+

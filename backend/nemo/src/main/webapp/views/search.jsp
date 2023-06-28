@@ -43,6 +43,8 @@ request.setCharacterEncoding("utf-8");
 		<div class="formArea">
 			<form action="${contextPath}/groupSearch" method="get"
 				class="searchBtn" id="searchForm">
+				<input type="hidden" id="userLat" name="userLat" />
+				<input type="hidden" id="userLng" name="userLng" />
 				<div class="searchText1">
 					<h2>소모임 이름 검색</h2>
 				</div>
@@ -61,11 +63,10 @@ request.setCharacterEncoding("utf-8");
 							<!--지역-->
 							<div class="bar03">
 								<select name="areaBar" class="barSel">
-									<option value="1">지역1</option>
-									<option value="2">지역2</option>
-									<option value="3">지역3</option>
-									<option value="4">지역4</option>
-									<option value="5">지역5</option>
+									<option value="-1">무제한</option>
+									<option value="5">5km 이내</option>
+									<option value="10">10km 이내</option>
+									<option value="20">20km 이내</option>
 								</select>
 							</div>
 						</div>
@@ -87,11 +88,11 @@ request.setCharacterEncoding("utf-8");
 
 				<div class="result">
 					<div class="resultText">
-						<h3>검색결과(${fn:length(resultList)} 개)</h3>
+						<h3>검색결과(${totGroup} 개)</h3>
 					</div>
 					<div class="resultBtn">
 						<input type="checkbox" class="hidden" name="joinAble" id="joinAble"/>
-						<label for="joinAble" id="joinAbleLabel" onclick="resultJoinAble('joinAble')">가입가능한 소모임만 표시</label>
+						<label for="joinAble" id="joinAbleLabel" class="joinAbleLabel" onclick="resultJoinAble('joinAble')">가입가능한 소모임만 표시</label>
 						
 						<input type="radio" class="hidden" name="sort" id="sortByName" value="sortByName" />
 						<label id="sortByNameLabel" for="sortByName" class="buttonSort" onclick="sortSubmit('sortByName')">이름순정렬</label>
@@ -224,6 +225,7 @@ request.setCharacterEncoding("utf-8");
 		value="${searchMap.main_name}" />
 	<input type="hidden" id="sub_name_hidden" value="${searchMap.sub_name}" />
 	<input type="hidden" id="user_id_hidden" value="${user_id}" />
+	<input type="hidden" id="areaBar_hidden" value="${searchMap.areaBar}" />
 	<!--  <input type="hidden" id="jsonResultList" value='${jsonResultList}' /> -->
 
 	<jsp:include page="footer.jsp" flush="true"></jsp:include>

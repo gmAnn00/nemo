@@ -149,9 +149,15 @@ $(function () {
         const lat = position.coords.latitude;
         // 경도
         const lng = position.coords.longitude;
-
+		
+		$("#userLat").val(lat);
+		$("#userLng").val(lng);
+		
         //console.log("lat=" + lat);
         //console.log("lng=" + lng);
+        
+        console.log($("#userLat").val());
+        console.log($("#userLng").val());
         // 위도 경도 오차(m)
         const accuracy = Math.floor(position.coords.accuracy);
 
@@ -205,10 +211,13 @@ $(function () {
 
     let main_name_hidden = $("#main_name_hidden").val();
     let sub_name_hidden = $("#sub_name_hidden").val();
+    let areaBar_hidden = $("#areaBar_hidden").val();
 
     $("select[name=bigCate]").val(main_name_hidden).trigger("change");
     //$("option[value="+main_name_hidden+"]").prop("selected", true);
     $("option[value=" + sub_name_hidden + "]").prop("selected", true);
+    $("select[name=areaBar]").val(areaBar_hidden).trigger("change");
+    //$("option[value=" + areaBar + "]").prop("selected", true);
 });
 
 let checkOnOff = false; //찜인지 아닌지 체크하는 변수
