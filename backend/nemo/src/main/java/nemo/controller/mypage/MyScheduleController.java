@@ -24,7 +24,7 @@ import nemo.vo.group.ScheduleVO;
 import nemo.vo.user.InterestsVO;
 
 
-@WebServlet("/mypage/myschedule/*")
+@WebServlet("/mypage/mySchedule/*")
 public class MyScheduleController extends HttpServlet {
 	HttpSession session;
 	PrintWriter out;
@@ -64,7 +64,7 @@ public class MyScheduleController extends HttpServlet {
 			//로그인 상태일때만 수행
 			try {	
 				//일정 조회	
-				if(action == null || action.equals("/myschedule")) {
+				if(action == null || action.equals("/mySchedule")) {
 					user_id = (String)session.getAttribute("user_id");
 					List<Map> scheduleList = new ArrayList();												
 					scheduleList = myScheduleService.selectSchedule(user_id);

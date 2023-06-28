@@ -1,5 +1,7 @@
 package nemo.dao.mypage;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -101,9 +103,13 @@ public class MyBoardDAO {
 				int article_no = rs.getInt("article_no");
 				String title = rs.getString("title");
 				String com_cont = rs.getString("com_cont");
-				Date create_date = rs.getDate("create_date");
+				//Date create_date = rs.getDate("create_date");
+				Timestamp create_dateT = rs.getTimestamp("create_date");
 				String user_img = rs.getString("user_img");
 				String nickname = rs.getString("nickname");
+				
+				SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
+				String create_date = date.format(create_dateT);
 				
 				MyBoardVO myComment = new MyBoardVO();
 				myComment.getGroupVO().setGrp_id(grp_id);
@@ -111,7 +117,8 @@ public class MyBoardDAO {
 				myComment.getBoardVO().setArticle_no(article_no);
 				myComment.getBoardVO().setTitle(title);
 				myComment.getCommentVO().setCom_cont(com_cont);
-				myComment.getCommentVO().setCreate_date(create_date);
+				//myComment.getCommentVO().setCreate_date(create_date);
+				myComment.setCreate_date(create_date);
 				myComment.getUserVO().setUser_id(user_id);
 				myComment.getUserVO().setUser_img(user_img);
 				myComment.getUserVO().setNickname(nickname);

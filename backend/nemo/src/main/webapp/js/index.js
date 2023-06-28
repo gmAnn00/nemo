@@ -85,6 +85,7 @@ $(window).on("load", function () {
 $(document).ready(function() {
 
     //마우스 컨트롤
+    /*
     $(document).ready(function(){
         // $fn.scrollSpeed(step, speed, easing);
         jQuery.scrollSpeed(200, 800);
@@ -187,5 +188,5 @@ $(document).ready(function() {
     };
 
     })(jQuery);   
-
+	*/
 });

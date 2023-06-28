@@ -48,7 +48,7 @@ public class MyInterestController extends HttpServlet {
 		String action = request.getPathInfo();				
 		String user_id = (String)session.getAttribute("user_id");
 		
-		if(action.equals("/modinterest-form")) {
+		if(action.equals("/modInterestForm")) {
 			//관심사 수정페이지로 이동
 			user_id = (String)session.getAttribute("user_id");
 			List<InterestsVO> interestsList = myInterestService.searchInterestById(user_id);
@@ -59,7 +59,7 @@ public class MyInterestController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
-		} else if(action.equals("/modinterest")) {
+		} else if(action.equals("/modInterest")) {
 			//관심사 수정
 			user_id = (String)session.getAttribute("user_id");			
 			int inputNum = Integer.parseInt(request.getParameter("inputNum"));			

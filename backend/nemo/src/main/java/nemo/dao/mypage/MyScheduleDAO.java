@@ -41,7 +41,7 @@ public class MyScheduleDAO {
 		try {
 			conn=dataFactory.getConnection();
 
-			String query = "SELECT g.grp_id, g.grp_name, a.schedule, s.sche_title, s.sche_cont, s.location";
+			String query = "SELECT g.grp_id, g.grp_name, g.grp_img, a.schedule, s.sche_title, s.sche_cont, s.location";
 			query += " FROM attend_tbl a, group_tbl g, schedule_tbl s, user_tbl u";
 			query += " WHERE u.user_id=? AND u.user_id=a.user_id AND g.grp_id=a.grp_id AND a.grp_id=s.grp_id AND a.schedule=s.schedule";
 			System.out.println(query);
@@ -52,11 +52,13 @@ public class MyScheduleDAO {
 			while(rs.next()) {				
 				//user_id = rs.getString("user_id");
 				Timestamp schedule = rs.getTimestamp("schedule");				
-				int grp_id = rs.getInt("grp_id");				
+				int grp_id = rs.getInt("grp_id");
+				String grp_name = rs.getString("grp_name");
+				String grp_img = rs.getString("grp_img");	
 				String sche_title = rs.getString("sche_title");
 				String sche_cont = rs.getString("sche_cont");
 				String location = rs.getString("location");
-				String grp_name = rs.getString("grp_name");
+				
 				
 				ScheduleVO scheduleVO =  new ScheduleVO();	
 				scheduleVO.setUser_id(user_id);
@@ -72,13 +74,14 @@ public class MyScheduleDAO {
 
 			 	String scheduleDate = date.format(schedule);
 			 	String scheduleTime = time.format(schedule);
-			 	System.out.println(scheduleDate);
-			 	System.out.println(scheduleTime);			 	
+			 	//System.out.println(scheduleDate);
+			 	//System.out.println(scheduleTime);			 	
 			 	
-
+			 	//Map에 put
 				Map scheduleMap = new HashMap();
 				scheduleMap.put("scheduleVO", scheduleVO);
 				scheduleMap.put("grp_name", grp_name);
+				scheduleMap.put("grp_img", grp_img);
 				scheduleMap.put("scheduleDate", scheduleDate);
 				scheduleMap.put("scheduleTime", scheduleTime);
 				

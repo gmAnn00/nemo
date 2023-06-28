@@ -85,7 +85,7 @@ public class MyProfileController extends HttpServlet {
 			//로그인 상태일때만 수행
 			try {			
 				//조회	
-				if(action == null || action.equals("/myprofile")) {
+				if(action == null || action.equals("/myProfile")) {
 					user_id = (String)session.getAttribute("user_id");		
 					//id로 회원정보 찾는 메소드				
 					userVO = myProfService.searchProfileById(user_id);
@@ -105,7 +105,7 @@ public class MyProfileController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 					
-				} else if(action.equals("/modProfile-form")) {
+				} else if(action.equals("/modProfileForm")) {
 					//회원정보 찾아서 수정화면으로 가기					
 					userVO = myProfService.searchProfileById(user_id);
 					
@@ -125,7 +125,7 @@ public class MyProfileController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 				
-				} else if(action.equals("/modprofile")) {
+				} else if(action.equals("/modProfile")) {
 					/*
 					user_id = request.getParameter("user_id");
 					String password = request.getParameter("password");
@@ -195,7 +195,7 @@ public class MyProfileController extends HttpServlet {
 					//response.sendRedirect(nextPage);
 					
 						
-				} else if(action.equals("/userimg-upload")) {
+				} else if(action.equals("/userImgUpload")) {
 					//프로필 이미지 수정
 					//System.out.println("프로필 이미지 수정 " + user_id);
 					Map<String, String>userImageMap = upload(request, response);
@@ -226,7 +226,7 @@ public class MyProfileController extends HttpServlet {
 					UserVO userVO = new UserVO(user_id, user_img);
 					myProfService.modUserImg(userVO);					
 
-					nextPage= "/nemo/mypage/myprofile";
+					nextPage= "/nemo/mypage/myProfile";
 					
 					//request.setAttribute("msg", "modImg");
 					/*
@@ -245,14 +245,14 @@ public class MyProfileController extends HttpServlet {
 			        out.print("</script>");
 			        
 					
-				} else if(action.equals("/deluser-form")) {
+				} else if(action.equals("/delUserForm")) {
 				
 					nextPage= "/views/mypage/delUser.jsp";
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 					
-				} else if(action.equals("/deluser")) {				
+				} else if(action.equals("/delUser")) {				
 					//회원 탈퇴
 					
 					user_id = (String)session.getAttribute("user_id");

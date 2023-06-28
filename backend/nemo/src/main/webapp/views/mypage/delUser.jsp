@@ -47,7 +47,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myschedule">
+                <a href="${contextPath}/mypage/mySchedule">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 일정</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -55,7 +55,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/mygrouplist">
+                <a href="${contextPath}/mypage/myGroupList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name menu_angle">
                       <span>내 소모임</span>
@@ -65,7 +65,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myboardlist">
+                <a href="${contextPath}/mypage/myBoardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -100,7 +100,7 @@
           <div class="withdrawal">
             <h3>정말로 네모를 <span>탈퇴</span>하시겠습니까?</h3>
             <h4>탈퇴하시려면 비밀번호를 입력하고 탈퇴하기를 눌러주세요</h4>
-            <form action="${contextPath}/mypage/deluser" method="post">
+            <form action="${contextPath}/mypage/delUser" method="post">
               비밀번호 확인 <input type="text" name="delpassword" />
               <input type="submit" class="buttonCancle" value="탈퇴하기" />
             </form>

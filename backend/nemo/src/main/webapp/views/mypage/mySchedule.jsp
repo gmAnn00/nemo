@@ -47,7 +47,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myschedule">
+                <a href="${contextPath}/mypage/mySchedule">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>내 일정</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -55,7 +55,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/mygrouplist">
+                <a href="${contextPath}/mypage/myGroupList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 소모임</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -63,7 +63,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myboardlist">
+                <a href="${contextPath}/mypage/myBoardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -99,6 +99,7 @@
               <div class="myScheduleCalAndList">
                 <div id="myScheduleCalendarArea"></div>
                 <div class="myScheduleListArea">
+                  <h3>다가오는 일정</h3>
                 
                   <c:choose>
                     <c:when test="${empty scheduleList}">
@@ -108,15 +109,15 @@
                       <c:forEach var="mySchedule" items="${scheduleList}" varStatus="loop">
                       
 	                  <div class="mySchedule">
-	                    <p class="myScheduleDate">${mySchedule.scheduleDate}</p>
+	                    <p class="myScheduleDate">${mySchedule.scheduleDate}<span> ${mySchedule.scheduleTime}</span></p>
 	                    <div class="myScheduleImgContent">
-	                      <div class="groupImg"></div>
-	                      <!-- <img src="images/books.jpg" alt="소모임 사진" /> -->
+	                      <div class="groupImg">
+	                        <img src="${contextPath}/groupImages/${mySchedule.scheduleVO.grp_id}/${mySchedule.grp_img}" alt="소모임 사진" />
+	                      </div>	                      
 	                      <div class="myScheduleContent">
 	                        <p class="myScheduleGroupName">${mySchedule.grp_name}</p>
-	                        <p class="contents">
-	                          ${mySchedule.scheduleVO.sche_title} | ${mySchedule.scheduleTime} | ${mySchedule.scheduleVO.location}
-	                        </p>
+	                        <p class="contents">${mySchedule.scheduleVO.sche_title}</p>
+	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${mySchedule.scheduleVO.location}</p>
 	                      </div>
 	                    </div>
 	                  </div>                                   

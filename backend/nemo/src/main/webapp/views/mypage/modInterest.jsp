@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myschedule">
+                <a href="${contextPath}/mypage/mySchedule">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>내 일정</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/mygrouplist">
+                <a href="${contextPath}/mypage/myGroupList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name menu_angle">
                       <span>내 소모임</span>
@@ -66,7 +66,7 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/mypage/myboardlist">
+                <a href="${contextPath}/mypage/myBoardList">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name">
                       <span>내가 쓴 글·댓글</span>
@@ -327,7 +327,7 @@
 	        </div>
 	        
 	        <!--내 관심사-->
-	        <form action="${contextPath}/mypage/interest/modinterest" id="interestForm" name="interestForm" method="post">
+	        <form action="${contextPath}/mypage/interest/modInterest" id="interestForm" name="interestForm" method="post">
 	        <div class="myInterest" id="myInt">
 	         <h3>내 관심사<span>(최대 3개 선택가능)</span></h3>
 		         <c:forEach var="interestChoice" items="${interestsList}">		         		
