@@ -56,6 +56,9 @@ public class GroupMemberController extends HttpServlet {
 			groupVO = groupMainService.selectGroupById(group_id);
 			request.setAttribute("groupVO", groupVO);
 			
+			int groupNum = groupMainService.selectGroupNumById(group_id);
+			request.setAttribute("groupNum", groupNum);
+			
 			// 소모임 멤버 불러옴
 			List<UserVO> usersList = null;
 			usersList = groupMemberService.selectMemberById(group_id);
