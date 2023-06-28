@@ -41,7 +41,7 @@ public class MyBoardDAO {
 			
 			String query = "SELECT g.grp_id, g.grp_name, b.article_no, b.title, b.content, b.create_date, u.user_img, u.nickname";
 			query += " FROM group_tbl g, board_tbl b, user_tbl u";
-			query += " WHERE b.user_id=? and b.grp_id=g.grp_id and b.user_id=u.user_id";
+			query += " WHERE b.user_id=? and b.user_id=u.user_id and b.grp_id=g.grp_id";
 			System.out.println(query);
 			
 			pstmt = conn.prepareStatement(query);

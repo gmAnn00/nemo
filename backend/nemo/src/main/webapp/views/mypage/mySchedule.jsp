@@ -99,32 +99,32 @@
               <div class="myScheduleCalAndList">
                 <div id="myScheduleCalendarArea"></div>
                 <div class="myScheduleListArea">
-                  <div class="mySchedule">
-                    <p class="myScheduleDate">2023년 4월 25일</p>
-                    <div class="myScheduleImgContent">
-                      <div class="groupImg"></div>
-                      <!-- <img src="images/books.jpg" alt="소모임 사진" /> -->
-                      <div class="myScheduleContent">
-                        <p class="myScheduleGroupName">이젠 종로 학원</p>
-                        <p class="contents">
-                          와이어프레임 짜기 | 오후 3시 30분 | 서울시 종로구
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mySchedule">
-                    <p class="myScheduleDate">2023년 4월 27일</p>
-                    <div class="myScheduleImgContent">
-                      <!-- <img src="images/salmon.jpg" alt="소모임 사진" /> -->
-                      <div class="groupImg"></div>
-                      <div class="myScheduleContent">
-                        <p class="myScheduleGroupName">맛집 탐방 모임</p>
-                        <p class="contents">
-                          인스타 맛집 탐방 | 오후 1시 30분 | 서울시 강남구
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                
+                  <c:choose>
+                    <c:when test="${empty scheduleList}">
+                      <p>등록된 일정이 없습니다.</p>
+                    </c:when>
+                    <c:when test="${!empty scheduleList}">
+                      <c:forEach var="mySchedule" items="${scheduleList}" varStatus="loop">
+                      
+	                  <div class="mySchedule">
+	                    <p class="myScheduleDate">${mySchedule.scheduleDate}</p>
+	                    <div class="myScheduleImgContent">
+	                      <div class="groupImg"></div>
+	                      <!-- <img src="images/books.jpg" alt="소모임 사진" /> -->
+	                      <div class="myScheduleContent">
+	                        <p class="myScheduleGroupName">${mySchedule.grp_name}</p>
+	                        <p class="contents">
+	                          ${mySchedule.scheduleVO.sche_title} | ${mySchedule.scheduleTime} | ${mySchedule.scheduleVO.location}
+	                        </p>
+	                      </div>
+	                    </div>
+	                  </div>                                   
+                  
+                  	  </c:forEach>
+                    </c:when>
+                  </c:choose>
+                  
                 </div>
               </div>
               

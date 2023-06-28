@@ -6,11 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import nemo.dao.board.BoardDAO;
-import nemo.vo.board.ArticleVO;
+import nemo.dao.group.GroupInfoDAO;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
-import nemo.vo.group.*;
-import nemo.dao.group.*;
+import nemo.vo.group.GroupVO;
 public class BoardService {
 	BoardDAO boardDAO;
 	GroupInfoDAO groupDAO;

@@ -117,7 +117,7 @@
             <!-- nav 바 종료 -->
           </div>
           
-		<form action="${contextPath}/mypage/modProfile" id="frm" name="frm" method="post" enctype="multipart/form-data">
+		<form action="${contextPath}/mypage/modprofile" id="frm" name="frm" method="post" enctype="multipart/form-data">
           	<!--3. myImage-->          
           	<div class="myImage">                         
              <c:choose>

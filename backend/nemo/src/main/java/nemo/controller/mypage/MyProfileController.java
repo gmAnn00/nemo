@@ -288,10 +288,15 @@ public class MyProfileController extends HttpServlet {
 			}
 			
 		} else {
-			//로그인 상태가 아니라면 index페이지로 이동하게 함
-			request.setAttribute("msg", "isnotlogOn");
+			//로그인 상태가 아니라면 index페이지로 이동하게 함			
 			nextPage="/nemo/index";
-			response.sendRedirect(nextPage);
+			  
+	        out.print("<script>");
+	        out.print("alert('로그인 상태가 아닙니다.');");
+	        out.print("location.href='" + nextPage + "';");
+	        out.print("</script>");
+	        
+			//response.sendRedirect(nextPage);
 		}
 			
 	}// doHandle() End
