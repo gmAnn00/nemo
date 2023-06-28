@@ -29,6 +29,7 @@ import nemo.vo.group.GroupVO;
 @WebServlet("/group/createGroup/*")
 public class CreateGroupController extends HttpServlet {
 	private static String GROUP_IMG_REPO;
+	private static String GROUP_DEF_IMG;
 	HttpSession session;
 	
 	public void init(ServletConfig config) throws ServletException {
@@ -53,6 +54,11 @@ public class CreateGroupController extends HttpServlet {
 		GROUP_IMG_REPO = GROUP_IMG_REPO.substring(1, GROUP_IMG_REPO.indexOf(".metadata"));
 		GROUP_IMG_REPO = GROUP_IMG_REPO.replace("/", "\\");
 		GROUP_IMG_REPO += "nemo\\src\\main\\webapp\\groupImages\\";
+		
+		GROUP_DEF_IMG = this.getClass().getResource("").getPath();
+		GROUP_DEF_IMG = GROUP_DEF_IMG.substring(1, GROUP_DEF_IMG.indexOf(".metadata"));
+		GROUP_DEF_IMG = GROUP_DEF_IMG.replace("/", "\\");
+		GROUP_DEF_IMG += "nemo\\src\\main\\webapp\\images\\free-icon-group-8847475.png";
 		
 		GroupVO groupVO = new GroupVO();
 		String user_id = "";
@@ -101,8 +107,13 @@ public class CreateGroupController extends HttpServlet {
 			}
 			String main_name = groupMap.get("main_name");
 			String sub_name = groupMap.get("sub_name");
-			String grp_img = groupMap.get("grp_img");
-
+			String grp_img =null;
+			if(groupMap.get("grp_img")==null) {
+				grp_img="free-icon-group-8847475.png";
+			}else {
+				grp_img = groupMap.get("grp_img");
+			}
+			
 			groupVO.setGrp_name(grp_name);
 			groupVO.setGrp_mng(grp_mng);
 			groupVO.setMem_no(mem_no);
@@ -117,11 +128,11 @@ public class CreateGroupController extends HttpServlet {
 			
 			System.out.println(groupVO.toString());
 			
-			
 			int group_id = createGroupService.createGroup(groupVO); 
 			
 			// 새 글 등록시 이미지를 첨부할 경우 if문 내부를 수행
 			if(grp_img != null && grp_img.length() != 0) {
+
 				File srcFile = new File(GROUP_IMG_REPO + "\\temp\\" + grp_img);
 				File destDir = new File(GROUP_IMG_REPO + "\\" + group_id);
 				// (ARTICLE_IMG_REPO + "\\" + articleNo) 경로에 폴더를 만든다
@@ -129,6 +140,7 @@ public class CreateGroupController extends HttpServlet {
 				// temp에 있던 이미지를 destDir 폴더로 이동시킨다.
 				// false: 안옮김, true: 옮김
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+
 				// temp의 이미지 삭제
 				srcFile.delete();
 			}
@@ -148,6 +160,7 @@ public class CreateGroupController extends HttpServlet {
 		String encoding = "utf-8";
 		
 		File currentDirPath = new File(GROUP_IMG_REPO);
+		File tempDirPath = new File(GROUP_IMG_REPO+"\\temp");
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setRepository(currentDirPath);
 		factory.setSizeThreshold(1024*1024);
@@ -170,6 +183,8 @@ public class CreateGroupController extends HttpServlet {
 				
 					groupMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 				}else {
+					File defaultFile = new File(GROUP_DEF_IMG);
+					FileUtils.copyFileToDirectory(defaultFile, tempDirPath, false);
 					// 이미지일 때 이 안 실행
 					System.out.println("필드명: " + fileItem.getFieldName());
 					System.out.println("파일(이미지) 이름: " + fileItem.getName());

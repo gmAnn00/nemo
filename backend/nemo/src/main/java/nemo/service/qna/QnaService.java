@@ -16,9 +16,9 @@ public class QnaService {
 	
 	
 	//페이징 부분  >> DAO에서 추가 안함
-	public Map helpQnA(Map<String, Integer> paginMap) {
+	public Map helpQnA(Map<String, Integer> paginMap, String user_id, boolean isAdmin) {
 		Map atricleMap =new HashMap<>();
-		List<QnaVO> articlesList = qnaDAO.selectQnas(paginMap);
+		List<QnaVO> articlesList = qnaDAO.selectQnas(paginMap, user_id, isAdmin);
 		int totArticles=qnaDAO.selectToArticles();
 		atricleMap.put("articlesList", articlesList);
 		atricleMap.put("totArticles", totArticles);

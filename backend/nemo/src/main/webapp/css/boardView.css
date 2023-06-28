@@ -7,27 +7,17 @@
 /* 게시글 조회 부분 */
 .boardView {
   margin: 0 auto;
+  width: 62.5em;
   /* padding: 30px; */
-}
-
-.atricleArea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 0 auto;
 }
 /* 목록 버튼 오른쪽 정렬 */
 .articleToolBtns {
   overflow: hidden;
   margin-bottom: 10px;
   margin-top: 10px;
-  padding: 5px 10px;
 }
 .articleToolBtns a:last-child {
   float: right;
-}
-.articleContentBox {
-
 }
 /* 제목 영역 */
 .articleHeader {
@@ -40,20 +30,13 @@
   float: left;
 }
 .articleTitle {
-display:table-cell;
-vertical-align:middle;
   margin: 15px 0 10px 0;
-  line-height: 20px;
 }
 .titleHead {
   width: 150px;
   text-align: center;
-
-}
-.titleHead span {
-	display:inline-block;
-	vertical-align: middle;
-	font-size: 16px;
+  line-height: 13px;
+  font-size: 13px;
 }
 .titleArea {
   width: 700px;
@@ -95,24 +78,24 @@ vertical-align:middle;
   right: 25px;
   font-size: 13px;
 }
-.topComment, .viewCnt {
-	margin-right:5px;
+.moreArea {
+  position: absolute;
+  right: -20px;
+  top: 0;
 }
-
-.buttonUrl {
-	cursor: pointer;
+.moreArea img {
+  width: 15px;
 }
-
 
 /* 내용 영역 */
 .contentArea {
-
-  padding: 30px 10px;
+  height: 300px;
+  padding: 10px;
 }
 
 /* 댓글 영역 */
 .commentArea {
-  border-top: 3px solid #ccc;
+  border-top: 5px solid #ccc;
 }
 .comment {
   font-weight: bold;
@@ -157,7 +140,7 @@ vertical-align:middle;
 /* 댓글 쓰기 */
 .commentWriter {
   margin: 12px 0 20px 0;
-  padding: 16px 18px;
+  padding: 16px 10px 10px 18px;
   border: 2px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
@@ -170,9 +153,9 @@ vertical-align:middle;
 }
 .commentInboxText {
   width: 100%;
-  min-height: 50px;
+  min-height: 17px;
   margin-top: 5px;
-  padding: 5px 5px;
+  padding-right: 1px;
   border: 0;
   font-size: 13px;
   resize: none;
@@ -180,14 +163,10 @@ vertical-align:middle;
   overflow-wrap: break-word;
   box-sizing: border-box;
   background: transparent;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  outline-color: #ffd480;
+  outline: 0;
 }
 .commentRegister {
   float: right;
-  margin-top:5px;
-  padding-right:5px;
 }
 
 /* 아래쪽 버튼 영역 */

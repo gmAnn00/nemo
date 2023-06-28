@@ -11,7 +11,8 @@
   <li>
     <a href="${contextPath}/schedule.html">
       <div class="sc2_icon_menu">
-        <div class="menu_submenu_name <c:if test="${menuSelected eq 0}">submenu_select</c:if>"><span>소모임 관리</span></div>
+        <div class="menu_submenu_name <c:if test="${menuSelected eq 0}">submenu_select</c:if>">
+        	<span>소모임 관리</span></div>
         <c:choose>
 			<c:when test="${menuSelected eq 0}"><i class="fa-solid fa-minus submenu_select"></i></c:when>
 			<c:otherwise><i class="fa-solid fa-angle-right menu_angle"></i></c:otherwise>
@@ -32,12 +33,27 @@
       </div>
     </a>
   </li>
+  
+    <li>
+    <a href="${contextPath}/groupSetting.html">
+      <div class="sc2_icon_menu">
+        <div class="menu_submenu_name <c:if test="${menuSelected eq 2}">submenu_select</c:if>">
+        	<span>신고관리</span></div>
+        <c:choose>
+			<c:when test="${menuSelected eq 2}"><i class="fa-solid fa-minus submenu_select"></i></c:when>
+			<c:otherwise><i class="fa-solid fa-angle-right menu_angle"></i></c:otherwise>
+		</c:choose>
+      </div>
+    </a>
+  </li>
+  
   <li>
     <a href="${contextPath}/myGroupMember.html">
       <div class="sc2_icon_menu">
-        <div class="menu_submenu_name <c:if test="${menuSelected eq 2}">submenu_select</c:if>"><span>고객센터 Q&A</span></div>
+        <div class="menu_submenu_name <c:if test="${menuSelected eq 3}">submenu_select</c:if>">
+        	<span>고객센터 Q&A</span></div>
         <c:choose>
-			<c:when test="${menuSelected eq 2}"><i class="fa-solid fa-minus submenu_select"></i></c:when>
+			<c:when test="${menuSelected eq 3}"><i class="fa-solid fa-minus submenu_select"></i></c:when>
 			<c:otherwise><i class="fa-solid fa-angle-right menu_angle"></i></c:otherwise>
 		</c:choose>
       </div>

@@ -42,9 +42,9 @@
 }
 
 /*  글쓰기 */
-.article textarea {
+.article > .writeContent {
   width: 835px;
-  height: 500px;
+  height: 300px;
   resize: none;
 }
 /* 등록버튼 */

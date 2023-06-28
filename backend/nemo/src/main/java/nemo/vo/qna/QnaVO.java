@@ -14,7 +14,6 @@ public class QnaVO {
 	private String content;
 	private Date create_date;
 	private int level;
-	private String imageFileName;
 	private String qna_img;
 
 	
@@ -24,7 +23,7 @@ public class QnaVO {
 	}
 
 
-	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String imageFileName, String qna_img) {
+	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String qna_img) {
 		super();
 		this.qna_id = qna_id;
 		this.user_id = user_id;
@@ -34,7 +33,6 @@ public class QnaVO {
 		this.content = content;
 		this.create_date = create_date;
 		this.level = level;
-		this.imageFileName=imageFileName;
 		this.qna_img=qna_img;
 	}
 
@@ -119,29 +117,29 @@ public class QnaVO {
 	}
 
 
-	public String getImageFileName() {
-		try {
-			if(imageFileName != null && imageFileName.length() !=0 ) {
-				imageFileName = URLDecoder.decode(imageFileName,"utf-8");
+	public String getQna_img() {
+		/*try {
+			if(qna_img != null && qna_img.length() !=0 ) {
+				qna_img = URLDecoder.decode(qna_img,"utf-8");
 			}
 		} catch (Exception e) {
 			System.out.println("이미지 읽는 중 에러");
-		}
-		return imageFileName;
+		}*/
+		return qna_img;
 	}
 
 
-	public void setImageFileName(String imageFileName) {
-		try {
-			if(imageFileName != null && imageFileName.length() !=0 ) {
-				this.imageFileName = URLEncoder.encode(imageFileName,"utf-8");
+	public void setQna_img(String qna_img) {
+		/*try {
+			if(qna_img != null && qna_img.length() !=0 ) {
+				this.qna_img = URLEncoder.encode(qna_img,"utf-8");
 			}else {
-				this.imageFileName=null;
+				this.qna_img=null;
 			}
 		} catch (UnsupportedEncodingException e) {
 			System.out.println("이미지 저장 중 에러");
-		}
-		this.imageFileName = imageFileName;
+		}*/
+		this.qna_img = qna_img;
 	}
 
 
@@ -149,18 +147,11 @@ public class QnaVO {
 	public String toString() {
 		return "QnaVO [qna_id=" + qna_id + ", user_id=" + user_id + ", nickname=" + nickname + ", parent_no="
 				+ parent_no + ", title=" + title + ", content=" + content + ", create_date=" + create_date + ", level="
-				+ level + ", imageFileName=" + imageFileName + "]";
+				+ level + ", qna_img=" + qna_img + "]";
 	}
 
 
-	public String getQna_img() {
-		return qna_img;
-	}
 
-
-	public void setQna_img(String qna_img) {
-		this.qna_img = qna_img;
-	}
 	
 	
 	

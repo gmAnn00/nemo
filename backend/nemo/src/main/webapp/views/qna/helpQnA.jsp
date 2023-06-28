@@ -90,10 +90,12 @@
     <!-- 콘텐츠 영역 -->
     <div class="section2">
       <div class="sc2_contents">
+      
         <!-- 메뉴바 시작 -->
         <div class="sc2_menu_contents">
           <div class="sc2_menu">
             <h2 class="sc2_menu_title">관리자</h2>
+            
             <!-- include -->
             <jsp:include page="/views/qna/includes/admin_header.jsp"/>
           </div>

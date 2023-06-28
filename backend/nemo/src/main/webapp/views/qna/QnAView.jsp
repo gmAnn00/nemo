@@ -7,10 +7,11 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<c:set var="article" value="${articleViewMap.article}" />
+<c:set var="article" value="${article}" />
+<c:set var="admin" value="${admin}" />
 <c:set var="comments" value="${articleViewMap.comments}" />
 <c:set var="isSame" value="${articleViewMap.isSame }" />
-<c:set var="group_id" value="${articleViewMap.group_id }" />
+<c:set var="qna_id" value="${articleViewMap.qna_id }" />
     
 <!DOCTYPE html>
 <html lang="ko">
@@ -54,7 +55,7 @@
 		document.getElementById("tr_button").style.display="none";
 	}
 	function toList(obj) {
-		obj.action="${contextPath}/viewQna/QnAView.do?articleNo=${article.articleNo}";
+		obj.action="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}";
 		obj.submit();
 	}
 	function fn_modify_article(obj) {
@@ -145,7 +146,7 @@
             <h2 class="sc2_menu_title">관리자</h2>
             <ul class="sc2_menu_list">
               <li>
-                <a href="../schedule.html">
+                <a href="#">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>소모임관리</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -153,7 +154,7 @@
                 </a>
               </li>
               <li>
-                <a href="helpQnA.html">
+                <a href="#">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name submenu_select"><span>회원관리</span></div>
                     <i class="fa-solid fa-minus submenu_select"></i>
@@ -161,7 +162,15 @@
                 </a>
               </li>
               <li>
-                <a href="${contextPath}/myGroupMember.html">
+                <a href="#">
+                  <div class="sc2_icon_menu">
+                    <div class="menu_submenu_name"><span>신고관리</span></div>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="${contextPath}/viewQna/helpQnA.do">
                   <div class="sc2_icon_menu">
                     <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -194,19 +203,22 @@
 	          <!-- 글 위쪽 버튼 영역 -->
 	          <div class="articleToolBtns">
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
-	            <c:if test="${isSame==true }">
+	            <c:if test="${admin eq 0 }">
 		            <a href="#" role="button" class="button btnEdit">수정</a>
 		            <a href="#" role="button" class="buttonCancle btnDel">삭제</a>
 	            </c:if>
+	            <c:if test="${admin eq 1 }">
+		            <a href="#" role="button" class="button btnEdit">답글</a>
+	            </c:if>
 	            <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
 	            <!--  <a href="javascript:history.back();" role="button" class="button2 btnList">목록</a>-->
-	            <a href="${contextPath}/group/board?group_id=${group_id}" role="button" class="button2 btnList">목록</a>
+	            <a href="${contextPath}/qna/helpQnA?qna_id=${qna_id}" role="button" class="button2 btnList">목록</a>
 	          </div>
 	          <div class="articleContentBox">
 	            <!-- 제목 영역 -->
 	            <div class="articleHeader">
 	              <div class="articleTitle">
-	                <div class="titleHead"><span>${article.brackets}</span></div>
+	                <div class="titleHead"><span></span></div>
 	                <div class="titleArea">${article.title}</div>
 	              </div>
 	              <div class="writerInfo">
@@ -222,25 +234,35 @@
 	                  </div>
 	                </div>
 	              </div>
-		              <div class="articleTool">
-		                <!-- 네이버카페처럼 댓글 몇개있는지 보여주고 아래로 이동시킬지 -->
-		                <span class="viewCnt">조회수 ${article.view_cnt}</span>
-		                <span class="topComment"><a href="#commentArea">댓글 <strong class="num">${article.com_cnt}</strong></a></span>
-		                <a class="buttonUrl" onclick="clip(); return false;">URL 복사</a>
-		              </div>
 	              </div>
 	            </div>
 	            <!-- 내용 영역 -->
 	            <div id="contentArea" class="contentArea">
 	              <p>내용 ${article.content}</p>
 	            </div>
+	            <!-- 이미지 부분? -->
+	            <c:out value="${contextPath }/qnaImages/${article.qna_id}/${article.qna_img}"/>
+	            <c:if test="${not empty article.qna_img}">
+	            	<div>
+	            		<input type="hidden" name="originalFileName" value="${article.qna_img}">
+	            		<img src="${contextPath}/qnaImagesDownload?qna_id=${param.qna_id}&qna_img=${qnaVO.qna_img}" alt="">
+	            		<!--<img src="${contextPath}/qnaImages/${article.qna_id}/${article.qna_img}">-->
+	            		<!-- <img id="preview" src="${contextPath}/download.do?qna_id=${aricle.qna_id}&qna_id=${article.qna_id}">-->
+	            	</div>
+	            </c:if>
 	            
 	          <!-- 글 아래쪽 버튼 영역 -->
 	          <div class="articleBottomBtns">
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-	              <a href="#" role="button" class="button2">글쓰기</a>
+		            <c:if test="${admin eq 0 }">
+			            <a href="#" role="button" class="button btnEdit">수정</a>
+			            <a href="#" role="button" class="buttonCancle btnDel">삭제</a>
+		            </c:if>
+		            <c:if test="${admin eq 1 }">
+			            <a href="#" role="button" class="button btnEdit">답글</a>
+		            </c:if>
 	            </div>
 	            <div class="rightArea">
 	              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->

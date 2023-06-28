@@ -33,27 +33,46 @@ public class QnaDAO {
 	}
 	
 	//페이징 부분
-	public List<QnaVO> selectQnas(Map<String, Integer> pagingMap) {
+	public List<QnaVO> selectQnas(Map<String, Integer> pagingMap, String param_user_id, boolean isAdmin) {
 		List<QnaVO> articlesList=new ArrayList<QnaVO>();
 		int section=pagingMap.get("section");
 		int pageNum=pagingMap.get("pageNum");
 		try {
+			ResultSet rs = null;
 			conn=dataFactory.getConnection();
-			String query="SELECT * FROM(SELECT ROWNUM AS recNum, LVL, qna_id," +
-			" parent_no, title, user_id, create_date FROM (SELECT LEVEL AS LVL, qna_id," +
-			" parent_no, title, user_id, create_date FROM qna_tbl START WITH parent_no=0" +
-			" CONNECT BY PRIOR qna_id=parent_no ORDER SIBLINGS BY qna_id DESC))" +
-			" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10"; 
-			System.out.println(query);
-			pstmt=conn.prepareStatement(query);
-			pstmt.setInt(1, section);
-			pstmt.setInt(2, pageNum);
-			pstmt.setInt(3, section);
-			pstmt.setInt(4, pageNum);
-			ResultSet rs=pstmt.executeQuery();
-
+			if (isAdmin) {
+				// 관리자모드로 Q&A 리스트를 조회 했을 때
+				String query="SELECT * FROM(SELECT ROWNUM AS recNum, LVL, qna_id," +
+						" parent_no, title, user_id, create_date FROM (SELECT LEVEL AS LVL, qna_id," +
+						" parent_no, title, user_id, create_date FROM qna_tbl START WITH parent_no=0" +
+						" CONNECT BY PRIOR qna_id=parent_no ORDER SIBLINGS BY qna_id DESC))" +
+						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10"; 
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setInt(1, section);
+				pstmt.setInt(2, pageNum);
+				pstmt.setInt(3, section);
+				pstmt.setInt(4, pageNum);
+			}
+			else {
+				// 일반유저가 Q&A 리스트를 조회 했을 때
+				String query="SELECT * FROM(SELECT ROWNUM AS recNum, LVL, qna_id," +
+						" parent_no, title, user_id, create_date FROM (SELECT LEVEL AS LVL, qna_id," +
+						" parent_no, title, user_id, create_date FROM qna_tbl WHERE user_id = ? START WITH parent_no=0" +
+						" CONNECT BY PRIOR qna_id=parent_no ORDER SIBLINGS BY qna_id DESC))" +
+						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10"; 
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, param_user_id);
+				pstmt.setInt(2, section);
+				pstmt.setInt(3, pageNum);
+				pstmt.setInt(4, section);
+				pstmt.setInt(5, pageNum);
+			}
+			rs=pstmt.executeQuery();
+			System.out.println("dddddddd");
+			
 			while(rs.next()) {
-
 				int level=rs.getInt("LVL");
 				int qna_id=rs.getInt("qna_id");
 				int parent_no=rs.getInt("parent_no");
@@ -69,6 +88,7 @@ public class QnaDAO {
 				//qnaVO.setNickname(nickname);
 				qnaVO.setUser_id(user_id);
 				qnaVO.setCreate_date(create_datersDate);
+				System.out.println(level);
 				System.out.println("qnaVO="+qnaVO.toString()); 
 				articlesList.add(qnaVO);
 			}
@@ -204,15 +224,47 @@ public class QnaDAO {
 		return qnasList;
 	}
 	
+	//새글 추가하는 메서드
+	public int insertNewArticle(QnaVO qnaVO) {
+		int qna_id=getNewArticleNo();
+		try {
+			conn=dataFactory.getConnection();
+			int parent_no=qnaVO.getParent_no();
+			String title=qnaVO.getTitle();
+			String content=qnaVO.getContent();
+			String qna_img=qnaVO.getQna_img();
+			String user_id=qnaVO.getUser_id();
+			String query="insert into qna_tbl (qna_id, parent_no, title, content, qna_img, user_id) values(?,?,?,?,?,?)";
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, qna_id);
+			pstmt.setInt(2, parent_no);
+			pstmt.setString(3, title);
+			pstmt.setString(4, content);
+			pstmt.setString(5, qna_img);
+			pstmt.setString(6, user_id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("새글 추가중 에러");
+			e.printStackTrace();
+		}
+		return qna_id;
+	}
 
 	//글 내용 보는 메서드
 	public QnaVO selectArticle(int qna_id) {
 		QnaVO qnaVO = new QnaVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, qna_img FROM qna_tbl q JOIN user_tbl u ON q.user_id = u.user_id ORDER BY create_date DESC";
+			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, qna_img " + 
+						" FROM qna_tbl q " +
+						" JOIN user_tbl u ON q.user_id = u.user_id " + 
+						" WHERE q.qna_id = ? " +
+						" ORDER BY create_date DESC";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, qna_id);
 			ResultSet rs=pstmt.executeQuery();
 			rs.next();
 			int _qna_id=rs.getInt("qna_id");
@@ -221,7 +273,7 @@ public class QnaDAO {
 			int parent_no=rs.getInt("parent_no");
 			String title=rs.getString("title");
 			String content=rs.getString("content");
-			
+			// 좀 당황스러운데
 			String qna_img = null;
 			if (rs.getString("qna_img") != null) {
 				qna_img=URLDecoder.decode(rs.getString("qna_img"),"utf-8");
@@ -266,33 +318,7 @@ public class QnaDAO {
 		return _qna_id;
 	}
 	
-	//새글 추가하는 메서드
-	public int insertNewArticle(QnaVO qnaVO) {
-		int qna_id=getNewArticleNo();
-		try {
-			conn=dataFactory.getConnection();
-			int parent_no=qnaVO.getParent_no();
-			String title=qnaVO.getTitle();
-			String content=qnaVO.getContent();
-			String qna_img=qnaVO.getQna_img();
-			String user_id=qnaVO.getUser_id();
-			String query="insert into qna_tbl (qna_id, parent_no, title, content, qna_img, user_id) values(?,?,?,?,?,?)";
-			pstmt=conn.prepareStatement(query);
-			pstmt.setInt(1, qna_id);
-			pstmt.setInt(2, parent_no);
-			pstmt.setString(3, title);
-			pstmt.setString(4, content);
-			pstmt.setString(5, qna_img);
-			pstmt.setString(6, user_id);
-			pstmt.executeUpdate();
-			pstmt.close();
-			conn.close();
-		} catch (Exception e) {
-			System.out.println("새글 추가중 에러");
-			e.printStackTrace();
-		}
-		return qna_id;
-	}
+
 	
 	//글 수정하기 메서드
 	public void updateArticle(QnaVO qnaVO) {

@@ -1,0 +1,16 @@
+@charset "utf-8";
+.searchResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 160px;
+}
+.resultNo {
+  margin: 50px 0 20px 0;
+}
+.resultBtn {
+  width: 200px;
+  /* height: 50px; */
+  margin: 10px 0;
+}

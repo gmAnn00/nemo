@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
@@ -21,11 +22,6 @@
       src="https://kit.fontawesome.com/3d4603cd1d.js"
       crossorigin="anonymous"
     ></script>
-    
-    <!-- summernote
-    <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
-    <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
-     -->
 
      
 <script type="text/javascript">
@@ -142,12 +138,12 @@
               </div>
               <!-- 글쓰는 영역 -->
               <div class="editorArea article">
-                <textarea  name="writeContent" placeholder="내용을 입력해주세요"></textarea>
-              </div>
+                <textarea class="writeContent" name="writeContent" placeholder="내용을 입력해주세요"></textarea>
+              </div><br>
               
               <!-- 이미지 첨부 -->
               <div class="qna_image">
-              	<input type="file" name="qna_img" onchange="readImage(this)"><tr>
+              	<input type="file" name="qna_img" onchange="readImage(this)">
               	<img id="preview" src="#" width="200" alt="">
               </div>
 
