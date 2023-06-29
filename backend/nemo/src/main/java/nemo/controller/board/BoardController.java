@@ -10,7 +10,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
+import javax.lang.model.element.Element;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -19,9 +25,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.Document;
 
 import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 
 import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;
@@ -170,21 +179,23 @@ public class BoardController extends HttpServlet {
 						String title=request.getParameter("title");
 						String content=request.getParameter("content");
 						int article_no=boardService.getNewArticleNo();
+						List fileNameList=getImageFileName(content);
 						Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
-						if(isImgExist) {
+						
+                        if(isImgExist) {
+                            String[] imgName=request.getParameterValues("imageName");
+                            List<String> getFileList=null;	//jaon으로 push한 배열 담는 리스트
+                            if(imgName.length!=0) {
+                            	getFileList=new ArrayList<String>();
+                                for(int i=0; i<imgName.length; i++) {
+                                    System.out.println(imgName[i]);
+                                    getFileList.add(imgName[i]);
+                                }
+                            } 
 							System.out.println("들어는 와?여기루? isImg이거 ");
-							String[] imgName=request.getParameterValues("imageName");
-							List<String> fileList=null;
-							if(imgName.length!=0) {
-								fileList=new ArrayList<String>();
-								for(int i=0; i<imgName.length; i++) {
-									System.out.println(imgName[i]);
-									fileList.add(imgName[i]);
-								}
-								System.out.println("moveImage는 안가?");
-								moveImageDir(fileList, article_no);
-								content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+article_no+"&");
-							}
+							System.out.println("moveImage는 안가?");
+							moveImageDir(fileNameList, getFileList, article_no);
+							content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+article_no+"&");
 						}
 						boardVO.setArticle_no(article_no);
 						boardVO.setTitle(title);
@@ -390,7 +401,7 @@ public class BoardController extends HttpServlet {
 	}
 	
 	//이미지 폴더 이동 하는 메소드 
-	private void moveImageDir(List<String> fileList, int article_no) {
+	private void moveImageDir(List<String> fileNameList, List<String> getFileList, int article_no) {
 	//articleno로 폴더 생성
 	//tmp에서 articleno폴더로 이동
 		try {
@@ -399,15 +410,29 @@ public class BoardController extends HttpServlet {
 			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
 			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages";
 			
-			if(fileList!=null && fileList.size()!=0) {
-				
-				for(String imgName:fileList) {
+			//dumy파일 지우기 
+			if(getFileList.size()>fileNameList.size()) {
+				for(String item:fileNameList) {
+					getFileList.remove(item);
+				}
+				if(getFileList!=null && getFileList.size()!=0) {
+					for(String dumy:getFileList) {
+						System.out.println("더미파일지우기"+dumy);
+						File srcFile=new File(ARTICLE_IMG_DIR+"\\temp\\"+dumy);
+						srcFile.delete();
+					}
+				}
+			}
+
+			if(fileNameList!=null && fileNameList.size()!=0) {
+				for(String imgName:fileNameList) {
 					File srcFile=new File(ARTICLE_IMG_DIR+"\\temp\\"+imgName);
 					File destDir=new File(ARTICLE_IMG_DIR+"\\"+article_no);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 					srcFile.delete();
 				}	
 			}
+			
 		} catch (Exception e) {
 			System.out.println("이미지 파일 복사하는 중 에러");
 			e.printStackTrace();
@@ -460,6 +485,23 @@ public class BoardController extends HttpServlet {
 			System.out.println("폴더 삭제 중 에러");
 			e.printStackTrace();
 		}
+	}
+	
+	
+	//content에서 이미지이름 추출하는 메소드
+	private List getImageFileName(String content) {
+		
+		System.out.println("이미지 추출");
+		List fileName=new ArrayList();
+		Pattern pattern=Pattern.compile("<img[^>]*src=[\\\"']?([^>\\\"']+)[\\\"']?[^>]*>");
+		Matcher matcher=pattern.matcher(content);
+		while(matcher.find()) {
+			String[] array = matcher.group(1).split("=");
+			fileName.add(array[1]);
+			System.out.println("추출 됐나"+array[1]);
+		}
+		
+		return fileName;
 	}
 	
 	private JSONObject commentMapToJson(Map commentInfo) {

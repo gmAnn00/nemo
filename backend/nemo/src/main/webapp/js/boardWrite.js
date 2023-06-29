@@ -25,7 +25,8 @@ $(document).ready(function() {
 			console.log("content");
 			 $('textarea[name="content"]').val($('#summernote').summernote('code'));
 			console.log($('textarea[name="content"]').val($('#summernote').summernote('code')));
-			if(jsonArray.length>0) {
+			
+			if(jsonArray.length>0) { //
 				for(var i=0; i<jsonArray.length; i++) {
 					var str=jsonArray[i];
 					var result=str.toString().split('=');
@@ -76,16 +77,22 @@ $(document).ready(function() {
 		            	//sendFile(files[i], this);
 		            	uploadSummerNoteImage(files[i], this);
 		            }
-		        }, //end of onImageUpload 콜백 
-		        //onMediaDelete: function ($target, editor, $editable) {
-				//	let deletedImageUrl=$target
-				//		.attr('src')
-				//		.split('/')
-				//		.pop()
+		        }, onMediaDelete : function(target) {
+                    console.log();
+                    //deleteFile(target[0].src);
+                }
+		        
+		        //end of onImageUpload 콜백 
+		       /* onMediaDelete: function ($target, editor, $editable) {
+					let deletedImageUrl=$target
+						.attr('src')
+						.split('/')
+						.pop();
+						console.log(deletedImageUrl);
 				//		deleteImageFile(deletedImageUrl)
-				//} //end of onMediaDelete 콜백
+				} //end of onMediaDelete 콜백
+			}*/
 			}
-			
 		});
 });
 /*
