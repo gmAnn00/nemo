@@ -179,7 +179,8 @@ public class BoardController extends HttpServlet {
 						String title=request.getParameter("title");
 						String content=request.getParameter("content");
 						int article_no=boardService.getNewArticleNo();
-						List fileNameList=getImageFileName(content);
+						List<String> fileNameList=getImageFileNameNew(content);
+						System.out.println("크기 : "+fileNameList.size());
 						Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
 						
                         if(isImgExist) {
@@ -371,15 +372,33 @@ public class BoardController extends HttpServlet {
 					String title=request.getParameter("title");
 					String content=request.getParameter("content");
 					int article_no=Integer.parseInt(request.getParameter("article_no"));
+					
 					if(isAdmin) {
 						out.print("<script>alert('관리자는 수정할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
 						out.print("</script>");
 					} else {
-						List fileNameList=getImageFileName(content);
-						Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
+						//content에 review이미지가 있는지 확인 해얗마
+						List<String> fileNameListNew=getImageFileNameNew(content);	//수정으로 추가 된 이미지 파일 이름 
+						List<String> alreadyExsitfileNameList=getImageFileNameExist(content, article_no);	//컨텐트에 있는 기존에 있는 이미지 파일 이름 
+						List<String> dirExistFileList=dirFileList(article_no);	//폴더에 이미 있는 파일 이름
+						for(String item:fileNameListNew) {
+							System.out.println("수정으로 추가된 이미지 파일이름: " + item);
+						}
+						for(String item:alreadyExsitfileNameList) {
+							System.out.println("컨텐트에 추가 : " + item);
+						}
+						for(String item:dirExistFileList) {
+							System.out.println("폴더에 있는애: " + item);
+						}
+						removeDumy(alreadyExsitfileNameList,dirExistFileList, article_no);
 						
-                        if(isImgExist) {
+						if(fileNameListNew==null&&alreadyExsitfileNameList==null) { //이미지 파일 이름이 없으면 폴더 삭제
+							removeDir(article_no); 
+						}
+			
+						Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));            
+						if(isImgExist) {
                             String[] imgName=request.getParameterValues("imageName");
                             List<String> getFileList=null;	//jaon으로 push한 배열 담는 리스트
                             if(imgName.length!=0) {
@@ -389,15 +408,17 @@ public class BoardController extends HttpServlet {
                                     getFileList.add(imgName[i]);
                                 }
                             } 
-							moveImageDir(fileNameList, getFileList, article_no);
+							moveImageDir(fileNameListNew, getFileList, article_no);	//템프에 있는거 옮김
 							content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+article_no+"&");
 						}
+						
+
 						boardVO.setArticle_no(article_no);
 						boardVO.setTitle(title);
 						boardVO.setUser_id(user_id);
 						boardVO.setGrp_id(group_id);
 						boardVO.setContent(content);
-						boardService.addArticle(boardVO, _brackets);
+						boardService.modArticle(boardVO, _brackets);
 						
 						out.print("<script>alert('글이 수정되었습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
@@ -439,7 +460,7 @@ public class BoardController extends HttpServlet {
 		
 	}
 	
-	//이미지 폴더 이동 하는 메소드 
+	//temp 에서 이미지 폴더 이동 하는 메소드 
 	private void moveImageDir(List<String> fileNameList, List<String> getFileList, int article_no) {
 	//articleno로 폴더 생성
 	//tmp에서 articleno폴더로 이동
@@ -455,7 +476,7 @@ public class BoardController extends HttpServlet {
 			}
 			if(getFileList!=null && getFileList.size()!=0) {
 				for(String dumy:getFileList) {
-					System.out.println("더미파일지우기"+dumy);
+					System.out.println("더미파일지우기 뉴파일:"+dumy);
 					File srcFile=new File(ARTICLE_IMG_DIR+"\\temp\\"+dumy);
 					srcFile.delete();
 				}
@@ -471,9 +492,62 @@ public class BoardController extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("이미지 파일 복사하는 중 에러");
+			System.out.println("temp에서 이미지 파일 복사하는 중 에러");
 			e.printStackTrace();
 		}
+	}
+	
+	private void removeDumy(List<String> newfileNameList, List<String> oldFileList, int article_no) {
+		try {
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages\\"+article_no+"\\";
+			
+			for(String old:oldFileList) {
+				System.out.println("기존 파일: "+old);
+			}
+			//dumy파일 지우기 
+			for(String item:newfileNameList) {
+				oldFileList.remove(item);
+				System.out.println("새로 입력받은거 : "+item);
+			}
+			for(String old:oldFileList) {
+				System.out.println("기존 파일(remove후): "+old);
+			}
+			if(oldFileList!=null && oldFileList.size()!=0) {
+				for(String dumy:oldFileList) {
+					System.out.println("더미파일지우기 기존 파일:"+dumy);
+					File srcFile=new File(ARTICLE_IMG_DIR+dumy);
+					srcFile.delete();
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("게시글폴더에서 기존 이미지 파일 지우는 중 에러");
+			e.printStackTrace();
+		}
+	}
+	
+	//게시글 폴더에서 파일 리스트 받아오기
+	private List dirFileList(int article_no) {
+		List fileList=new ArrayList();
+		try {
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages\\"+article_no;
+			
+			File dir=new File(ARTICLE_IMG_DIR);
+			String[] fileNameArr=dir.list();
+			for(String fileName:fileNameArr) {
+				fileList.add(fileName);
+			}
+		} catch (Exception e) {
+			System.out.println("게시글 폴더에서 파일 리스트 받아 오는 중 에러");
+			e.printStackTrace();
+		}
+		return fileList;
 	}
 	
 	//글 등록 취소시 temp폴더에서 img 삭제
@@ -496,7 +570,7 @@ public class BoardController extends HttpServlet {
 		}
 	}
 
-	//이미지 폴더 삭제하는 메소드
+	//글 삭제 시 이미지 폴더 삭제하는 메소드
 	private void removeDir(int article_no) {
 		try {
 			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
@@ -524,6 +598,7 @@ public class BoardController extends HttpServlet {
 		}
 	}
 	
+	/*
 	
 	//content에서 이미지이름 추출하는 메소드
 	private List getImageFileName(String content) {
@@ -539,7 +614,45 @@ public class BoardController extends HttpServlet {
 		}
 		
 		return fileName;
+	}*/
+	
+	//content에서 이미지이름 추출하는 메소드
+	private List getImageFileNameNew(String content) {
+		
+		System.out.println("new 이미지 추출");
+		List fileName=new ArrayList();
+		Pattern pattern=Pattern.compile("<img[^>]*src=[\\\"']?([^>\\\"']+)[\\\"']?[^>]*>");
+		Matcher matcher=pattern.matcher(content);
+		while(matcher.find()) {
+			String[] array = matcher.group(1).split("getReviewImage\\.do\\?savedFileName=");
+			if(array.length>1) {
+				fileName.add(array[1]);	
+			}
+			
+		}
+		
+		return fileName;
 	}
+	
+	//content에서 이미지이름 추출하는 메소드
+	private List getImageFileNameExist(String content, int article_no) {
+		
+		System.out.println("old 이미지 추출");
+		List fileName=new ArrayList();
+		Pattern pattern=Pattern.compile("<img[^>]*src=[\\\"']?([^>\\\"']+)[\\\"']?[^>]*>");
+		Matcher matcher=pattern.matcher(content);
+		while(matcher.find()) {
+			String[] array = matcher.group(1).split("getImage\\.do\\?article\\_no="+article_no+"&amp\\;savedFileName=");
+			System.out.println("aaa:"+array[0]);
+			if(array.length>1) {
+				fileName.add(array[1]);	
+				System.out.println("추출 됐나 old: "+array[1]);
+			}
+		}
+		
+		return fileName;
+	}
+	
 	
 	private JSONObject commentMapToJson(Map commentInfo) {
 		JSONObject comInfo=new JSONObject();
