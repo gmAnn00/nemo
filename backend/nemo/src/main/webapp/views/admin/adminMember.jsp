@@ -55,8 +55,10 @@
         <!-- header 시작 -->
         <header>
             <h1 class="logo">
-                <a href="../index.html"><img src="${contextPath}/images/logo.png" alt="logo" /></a>
-            </h1>
+        <a href="${contextPath}/index"
+          ><img src="${contextPath}/images/logo.png" alt="logo"
+        /></a>
+      </h1>
         </header>
         <button class="burger">
             <span></span>
