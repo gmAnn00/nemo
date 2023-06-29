@@ -237,6 +237,13 @@ function bookmarkClick(user_id, group_id) {
 
     let isBookmark_hidden = $("#isBookmark" + group_id).val();
     console.log("isBookmark_hidden=", isBookmark_hidden);
+    
+    if (user_id === 'null' || user_id === "" || user_id == null) {
+			$(this).removeClass("on");
+			alert("로그인 후 이용해주세요");
+			location.href = "/nemo/login/loginForm";
+			return;
+	}
 
     $.ajax({
         type: "post",
