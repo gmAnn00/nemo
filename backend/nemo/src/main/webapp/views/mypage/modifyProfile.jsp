@@ -130,7 +130,7 @@
                 </c:choose>     
               <div>
                 <label class="imageM button" for="hidden" id="file">이미지 수정</label>
-                <input id="hidden" name="user_img" type="file" style="display: none" onchange="readImage(this)"/>
+                <input type="file" id="hidden" name="user_img" style="display: none" onchange="readImage(this)"/>
                 <input type="hidden" name="originalFileName" value="${userVO.user_img}" />
               </div>           
           	</div>

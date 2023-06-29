@@ -39,32 +39,6 @@
 		}
 	}
 </script>
-<%--
-<c:choose>
-	<c:when test='${msg == "modified"}'>
-		<script>
-			window.onload = function() {
-				alert("회원정보가 수정되었습니다.")
-			}
-		</script>
-	</c:when>
-	<c:when test='${msg == "modImg"}'>
-		<script>
-			window.onload = function() {
-				alert("프로필 이미지가 수정되었습니다.")
-			}
-		</script>
-	</c:when>
-	<c:when test='${msg =="deleted"}'>
-		<script>
-			window.onload = function() {
-				alert("탈퇴되었습니다.")
-			}
-	
-		</script>
-	</c:when>
-</c:choose>
- --%>
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -141,58 +115,60 @@
 					</div>
 
 					<!--4-2-->
-					<div class="myImage">
-						<form id="userIMGform"
-							action="${contextPath}/mypage/userImgUpload" method="post"
-							enctype="multipart/form-data">
-							<c:choose>
-								<c:when test="${empty userVO.user_img}">
-									<img id="userImg" src="" alt=" 프로필 사진" />
-								</c:when>
-								<c:when test="${!empty userVO.user_img}">
-									<img id="userImg"
-										src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${userVO.user_img}"
-										alt=" 프로필 사진" />
-								</c:when>
-							</c:choose>
-							<label class="imageM button" for="hidden" id="file">수정 </label>
-							<input id="hidden" type="file" style="display: none" name="user_img"
-								onchange="readImage(this)" />
-							<input type="hidden" name="originalFileName" value="${userVO.user_img}" />
-						</form>
+					<div class="myInfo">
+						<div class="myImage">
+							<form id="userIMGform"
+								action="${contextPath}/mypage/userImgUpload" method="post"
+								enctype="multipart/form-data">
+								<c:choose>
+									<c:when test="${empty userVO.user_img}">
+										<img id="userImg" src="" alt=" 프로필 사진" />
+									</c:when>
+									<c:when test="${!empty userVO.user_img}">
+										<img id="userImg"
+											src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${userVO.user_img}"
+											alt=" 프로필 사진" />
+									</c:when>
+								</c:choose>
+								<label class="imageM button" for="hidden" id="file">수정 </label>
+								<input id="hidden" type="file" style="display: none" name="user_img"
+									onchange="readImage(this)" />
+								<input type="hidden" name="originalFileName" value="${userVO.user_img}" />
+							</form>
+						</div>
+	
+						<!--4-3-->
+						<div class="myModi">
+							<table class="profileModi">
+								<thead>
+									<tr>
+										<th>이름</th>
+										<th>닉네임</th>
+										<th>지역</th>
+										<th>핸드폰 번호</th>
+										<th>이메일</th>
+										<th>생년월일</th>
+									</tr>
+								</thead>
+								<c:choose>
+									<%-- Controller에 request.setAttribute("여기있는 이름") 가져오기--%>
+									<c:when test="${!empty userVO}">
+										<tbody>
+											<tr>
+												<td><div>${userVO.user_name}</div></td>
+												<td><div>${userVO.nickname}</div></td>
+												<td><div>${userVO.user_addr1}</div></td>
+												<td><div>${userVO.phone}</div></td>
+												<td><div>${userVO.email}</div></td>
+												<td><div>${userVO.birthdate}</div></td>
+											</tr>
+										</tbody>
+									</c:when>
+								</c:choose>
+							</table>
+						</div>
 					</div>
-
-					<!--4-3-->
-					<div class="myModi">
-						<table class="profileModi">
-							<thead>
-								<tr>
-									<th>이름</th>
-									<th>닉네임</th>
-									<th>지역</th>
-									<th>핸드폰 번호</th>
-									<th>이메일</th>
-									<th>생년월일</th>
-								</tr>
-							</thead>
-							<c:choose>
-								<%-- Controller에 request.setAttribute("여기있는 이름") 가져오기--%>
-								<c:when test="${!empty userVO}">
-									<tbody>
-										<tr>
-											<td><div>${userVO.user_name}</div></td>
-											<td><div>${userVO.nickname}</div></td>
-											<td><div>${userVO.user_addr1}</div></td>
-											<td><div>${userVO.phone}</div></td>
-											<td><div>${userVO.email}</div></td>
-											<td><div>${userVO.birthdate}</div></td>
-										</tr>
-									</tbody>
-								</c:when>
-							</c:choose>
-						</table>
-					</div>
-
+	
 					<div class="myHabi">
 						<div class="myHabiText">
 							<h3>내 관심사</h3>

@@ -134,7 +134,7 @@
                         <p>좋아하는 취미생활을 주변사람들과 같이 함께 시작해보세요</p>
                     </div>
                     <div class="group_btn">
-                        <span class="btn_more">더보기</span>
+                        <span class="btn_more"><a href="${contextPath}//group/createGroup/form">더보기</a></span>
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
                     <img class="group_jm_img jm_img1" src="./images/—Pngtree—people make puzzles concept team_5356575.png" alt="bg">
@@ -146,7 +146,7 @@
                         <p>새로운 아이디어를 공유하고 서로의 경험을 나누어 보세요</p>
                     </div>
                     <div class="group_btn">
-                        <span class="btn_more">더보기</span>
+                        <span class="btn_more"><a href="${contextPath}/groupSearch">더보기</a></span>
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
                     <img class="group_jm_img jm_img2" src="./images/—Pngtree—best friends happy taking selfie_5435706.png" alt="bg">

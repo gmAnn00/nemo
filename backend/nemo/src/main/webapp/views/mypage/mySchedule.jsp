@@ -11,55 +11,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>내 일정</title>
 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
 <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
 <link rel="stylesheet" href="${contextPath}/css/common.css" />
 <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
-<link rel="stylesheet" href="${contextPath}/css/delUser.css" />
+<link rel="stylesheet" href="${contextPath}/css/mySchedule.css" />
+
 <script
   src="https://kit.fontawesome.com/bc604c01cc.js"
   crossorigin="anonymous"
 ></script>
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
+<script src="${contextPath}/js/mySchedule.js"></script>
 
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
 	
-	 <!--1. 전체 부분-->
+    <!-- 콘텐츠 영역 시작 -->
     <div class="section2">
       <div class="sc2_contents">
         <!-- 메뉴바 시작 -->
         <div class="sc2_menu_contents">
           <div class="sc2_menu">
-            <h2 class="sc2_menu_title">프로필</h2>
+            <h2 class="sc2_menu_title">내 일정</h2>
             <ul class="sc2_menu_list">
               <li>
                 <a href="${contextPath}/mypage">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name submenu_select">
-                      <span>프로필</span>
-                    </div>
-                    <i class="fa-solid fa-minus submenu_select"></i>
+                    <div class="menu_submenu_name"><span>프로필</span></div>
+                    <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
               </li>
               <li>
                 <a href="${contextPath}/mypage/mySchedule">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>내 일정</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
+                    <div class="menu_submenu_name submenu_select"><span>내 일정</span></div>
+                    <i class="fa-solid fa-minus submenu_select"></i>
                   </div>
                 </a>
               </li>
               <li>
                 <a href="${contextPath}/mypage/myGroupList">
                   <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name menu_angle">
-                      <span>내 소모임</span>
-                    </div>
+                    <div class="menu_submenu_name"><span>내 소모임</span></div>
                     <i class="fa-solid fa-angle-right menu_angle"></i>
                   </div>
                 </a>
@@ -79,10 +77,9 @@
         </div>
         <!-- 메뉴바 종료 -->
 
-        <!--3. 컨텐츠부분-->
         <div class="sc2_subsection">
           <div class="sc2_subsection_title">
-            <h2 class="sc2_subsection_title_name">회원 탈퇴하기</h2>
+            <h2 class="sc2_subsection_title_name">내 일정</h2>
             <!-- nav 바 시작 -->
             <div class="nav_bar">
               <a href="${contextPath}/index">
@@ -91,24 +88,54 @@
               <i class="fa-solid fa-angle-right nav_icon"></i>
               <span>마이페이지</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>회원탈퇴</span>
+              <span>내 일정</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
 
-          <!-- 탈퇴 -->
-          <div class="withdrawal">
-            <h3>정말로 네모를 <span>탈퇴</span>하시겠습니까?</h3>
-            <h4>탈퇴하시려면 비밀번호를 입력하고 탈퇴하기를 눌러주세요</h4>
-            <form action="${contextPath}/mypage/delUser" method="post">
-              비밀번호 확인 <input type="text" name="delpassword" />
-              <input type="submit" class="buttonCancle" value="탈퇴하기" />
-            </form>
+          <div class="sc2_subcontents">
+            <div class="sc2_subcontent">
+              
+              <div class="myScheduleCalAndList">
+                <div id="myScheduleCalendarArea"></div>
+                <div class="myScheduleListArea">
+                  <h3>다가오는 일정</h3>
+                
+                  <c:choose>
+                    <c:when test="${empty scheduleList}">
+                      <p>등록된 일정이 없습니다.</p>
+                    </c:when>
+                    <c:when test="${!empty scheduleList}">
+                      <c:forEach var="mySchedule" items="${scheduleList}" varStatus="loop">
+                      
+	                  <div class="mySchedule">
+	                    <p class="myScheduleDate">${mySchedule.scheduleDate}<span> ${mySchedule.scheduleTime}</span></p>
+	                    <div class="myScheduleImgContent">
+	                      <div class="groupImg">
+	                        <img src="${contextPath}/groupImages/${mySchedule.scheduleVO.grp_id}/${mySchedule.grp_img}" alt="소모임 사진" />
+	                      </div>	                      
+	                      <div class="myScheduleContent">
+	                        <p class="myScheduleGroupName">${mySchedule.grp_name}</p>
+	                        <p class="contents">${mySchedule.scheduleVO.sche_title}</p>
+	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${mySchedule.scheduleVO.location}</p>
+	                      </div>
+	                    </div>
+	                  </div>                                   
+                  
+                  	  </c:forEach>
+                    </c:when>
+                  </c:choose>
+                  
+                </div>
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+    <!-- 콘텐츠 영역 종료-->	
+	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 </body>
 </html>

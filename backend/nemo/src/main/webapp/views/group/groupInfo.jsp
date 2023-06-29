@@ -16,13 +16,12 @@ request.setCharacterEncoding("utf-8");
 <link rel="stylesheet" href="${contextPath}/css/jquery-ui.min.css" />
 <link rel="stylesheet" href="${contextPath}/css/groupInfo.css" />
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea6bda86230b8415e663eb00385b3b43&libraries=services"></script>
 <script src="${contextPath}/js/header.js"></script>
 <script src="${contextPath}/js/groupInfo.js"></script>
 <script src="https://kit.fontawesome.com/f9a2702e84.js"
 	crossorigin="anonymous"></script>
-<script>
-	
-</script>
+
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -100,7 +99,7 @@ request.setCharacterEncoding("utf-8");
 					</tr>
 					<tr>
 						<th>찜한인원</th>
-						<td><span class="likeNum">${groupBookmarkNum}</span><span>명</span></td>
+						<td><span class="likeNum" id="likeNum">${groupBookmarkNum}</span><span>명</span></td>
 					</tr>
 					<tr>
 						<th>최근활동일</th>
@@ -128,8 +127,7 @@ request.setCharacterEncoding("utf-8");
 					<!-- 지도영역 부분 -->
 					<div class="mapArea">
 						<div id="map">
-							<!-- style="width:780px;height:300px;" -->
-							지도 API 출력되는 영역
+							
 						</div>
 					</div>
 				</section>
@@ -164,7 +162,7 @@ request.setCharacterEncoding("utf-8");
 
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 	<input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${user_id}"/>
-	<input type="hidden" id="isBookmark_hidden" name="isBookmark_hidden" value="${isBookmark}"/>
+	<input type="hidden" id="grp_addr1_hidden" name="grp_addr1_hidden" value="${groupVO.grp_addr1}" />
 	
 </body>
 </html>
