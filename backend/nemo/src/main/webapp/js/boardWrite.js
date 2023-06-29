@@ -19,8 +19,9 @@ $(document).ready(function() {
 			alert('말머리를 선택해주세요');
 		}else if(!writeTitle) {
 			alert('제목을 입력해주세요');
-		}else if(summernote.length<=0){
-			alert('내용을 입력해주세요');			
+		}else if($('#summernote').summernote('isEmpty')){
+			//summernote.length<=0){
+			alert('d내용을 입력해주세요');			
 		} else {
 			console.log("content");
 			 $('textarea[name="content"]').val($('#summernote').summernote('code'));

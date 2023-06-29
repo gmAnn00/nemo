@@ -192,8 +192,6 @@ public class BoardController extends HttpServlet {
                                     getFileList.add(imgName[i]);
                                 }
                             } 
-							System.out.println("들어는 와?여기루? isImg이거 ");
-							System.out.println("moveImage는 안가?");
 							moveImageDir(fileNameList, getFileList, article_no);
 							content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+article_no+"&");
 						}
@@ -323,16 +321,14 @@ public class BoardController extends HttpServlet {
 					boolean isAdmin=boardService.checkAdmin(user_id);
 					boolean isMem=boardService.isMember(user_id, group_id);
 					if(isAdmin) {
-						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
+						out.print("<script>alert('관리자는 댓글을 작성 할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
 						out.print("</script>");
 						return;
 					}
 					
 					JSONObject comInfo=new JSONObject();
-					
 					Map commentInfo=new HashMap();
-					
 					String com_cont=request.getParameter("com_cont");
 					int article_no=Integer.parseInt(request.getParameter("article_no"));
 					int parent_no=Integer.parseInt(request.getParameter("parent_no"));
@@ -342,7 +338,6 @@ public class BoardController extends HttpServlet {
 					String jsonInfo=comInfo.toJSONString();
 					out.print(jsonInfo);
 					return;
-					
 					
 				}else if(action.equals("/modComment")) {
 					int comment_no=Integer.parseInt(request.getParameter("comment_no"));
@@ -360,35 +355,79 @@ public class BoardController extends HttpServlet {
 					boolean isAdmin=boardService.checkAdmin(user_id);
 					int article_no=Integer.parseInt(request.getParameter("article_no"));
 					if(isAdmin) {
-						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
+						out.print("<script>alert('관리자는 글을 수정 할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
 						out.print("</script>");
 						return;
 					} else {
-						//서비스에서 수정할 내용 찾아서 세팅해줘야함
 						Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
 						request.setAttribute("articleViewMap", articleViewMap);
 						nextPage="/views/group/modArticle.jsp";
 					}
-				} else if(action.equals("/updateArticle")) {
+				} else if(action.equals("/updateArticle")) { // 수정하기 
+					boolean isAdmin=boardService.checkAdmin(user_id);
+					boolean isMem=boardService.isMember(user_id, group_id);
 					String _brackets=request.getParameter("brackets");
 					String title=request.getParameter("title");
 					String content=request.getParameter("content");
 					int article_no=Integer.parseInt(request.getParameter("article_no"));
-					System.out.println(content);
+					if(isAdmin) {
+						out.print("<script>alert('관리자는 수정할 수 없습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+						out.print("</script>");
+					} else {
+						List fileNameList=getImageFileName(content);
+						Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
+						
+                        if(isImgExist) {
+                            String[] imgName=request.getParameterValues("imageName");
+                            List<String> getFileList=null;	//jaon으로 push한 배열 담는 리스트
+                            if(imgName.length!=0) {
+                            	getFileList=new ArrayList<String>();
+                                for(int i=0; i<imgName.length; i++) {
+                                    System.out.println(imgName[i]);
+                                    getFileList.add(imgName[i]);
+                                }
+                            } 
+							moveImageDir(fileNameList, getFileList, article_no);
+							content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+article_no+"&");
+						}
+						boardVO.setArticle_no(article_no);
+						boardVO.setTitle(title);
+						boardVO.setUser_id(user_id);
+						boardVO.setGrp_id(group_id);
+						boardVO.setContent(content);
+						boardService.addArticle(boardVO, _brackets);
+						
+						out.print("<script>alert('글이 수정되었습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+						out.print("</script>");
+						
+						//nextPage="/nemo/group/board?group_id="+group_id;
+						//response.sendRedirect(nextPage);
+						return;
+					}
+				} else if(action.equals("/updateArticleCancel")) { // 수정 취소 
+					int article_no = Integer.parseInt(request.getParameter("article_no"));
+					Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
+					request.setAttribute("articleViewMap", articleViewMap);
+					Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
 					
-					boardVO.setTitle(title);
-					//boardVO.setBrackets(brackets);
-					boardVO.setUser_id(user_id);
-					boardVO.setGrp_id(group_id);
-					boardVO.setContent(content);
-					boardVO.setArticle_no(article_no);
-					boardService.modArticle(boardVO, _brackets);
-					
-					out.print("<script>alert('글이 수정되었습니다.');");
-					out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
-					out.print("</script>");
-					return;
+					System.out.println("수정취소"+isImgExist);
+					if(isImgExist) {
+						System.out.println("등록취소이미지 있음");
+						String[] imgName=imgName=request.getParameterValues("imageName");
+						List<String> fileList=null;
+						if(imgName.length!=0 || imgName!=null) {
+							fileList=new ArrayList<String>();
+							for(int i=0; i<imgName.length; i++) {
+								System.out.println(imgName[i]);
+								fileList.add(imgName[i]);
+							}
+							deleteTempImg(fileList);
+						}
+					}
+					nextPage="/views/group/boardView.jsp";
 				}
 				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 				dispatcher.forward(request, response);
@@ -411,16 +450,14 @@ public class BoardController extends HttpServlet {
 			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages";
 			
 			//dumy파일 지우기 
-			if(getFileList.size()>fileNameList.size()) {
-				for(String item:fileNameList) {
-					getFileList.remove(item);
-				}
-				if(getFileList!=null && getFileList.size()!=0) {
-					for(String dumy:getFileList) {
-						System.out.println("더미파일지우기"+dumy);
-						File srcFile=new File(ARTICLE_IMG_DIR+"\\temp\\"+dumy);
-						srcFile.delete();
-					}
+			for(String item:fileNameList) {
+				getFileList.remove(item);
+			}
+			if(getFileList!=null && getFileList.size()!=0) {
+				for(String dumy:getFileList) {
+					System.out.println("더미파일지우기"+dumy);
+					File srcFile=new File(ARTICLE_IMG_DIR+"\\temp\\"+dumy);
+					srcFile.delete();
 				}
 			}
 

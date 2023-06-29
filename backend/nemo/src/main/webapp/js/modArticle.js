@@ -1,3 +1,5 @@
+let jsonArray=[];
+
 $(document).ready(function() {
 	
 	// a href='#' 클릭 무시 스크립트
@@ -17,22 +19,31 @@ $(document).ready(function() {
 			alert('말머리를 선택해주세요');
 		}else if(!writeTitle) {
 			alert('제목을 입력해주세요');
-		}else if(summernote.length<=0){
-			alert('내용을 입력해주세요');			
+		}else if($('#summernote').summernote('isEmpty')){
+			//summernote.length<=0){
+			alert('d내용을 입력해주세요');			
 		} else {
 			console.log("content");
 			 $('textarea[name="content"]').val($('#summernote').summernote('code'));
 			console.log($('textarea[name="content"]').val($('#summernote').summernote('code')));
+			
+			if(jsonArray.length>0) { //
+				for(var i=0; i<jsonArray.length; i++) {
+					var str=jsonArray[i];
+					var result=str.toString().split('=');
+					let img="<input type='hidden' name='imageName' value='"+result[1]+"'>";
+					console.log(img);
+					$('#articleForm').append(img);
+				}
+				$('#articleForm').append('<input type="hidden" name="isImgExist" value="true">');
+			} else {
+				$('#articleForm').append('<input type="hidden" name="isImgExist" value="false">');
+			}
 			$('#articleForm').submit();
 
 		}
-			console.log("말머리"+headTitle);
-			console.log("제목"+writeTitle);
-			console.log("tedg:  "+ summernote.length);
 
 	});
-	
-
 	
 	//여기 아래 부분
 	$('#summernote').summernote({
@@ -61,45 +72,75 @@ $(document).ready(function() {
 		 // 추가한 폰트사이즈
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 		callbacks: {
-			onImageUpload: function(files, editor, welEditable) {
-                sendFile(files[0], editor, welEditable);
-            },/*
-			onImageUpload: function(files, editor, welEditable) {
-
-
-				//파일 다중 업로드 위해 반복문사용
-				for(var i=files.lenght-1; i>=0; i--) {
-					uploadSummerNoteImageFile(files[i],this);
-				}
-				
-			},*/
-			    onChange:function(contents, $editable){ //텍스트 글자수 및 이미지등록개수
-                setContentsLength(contents, 0);
-            }
-			
-		}
-		
-	});
-	
-	
+				//이미지 업로드 콜백
+				onImageUpload: function(files, editor, welEditable) {
+		            for (var i = files.length - 1; i >= 0; i--) {
+		            	//sendFile(files[i], this);
+		            	uploadSummerNoteImage(files[i], this);
+		            }
+		        }, onMediaDelete : function(target) {
+                    console.log();
+                    //deleteFile(target[0].src);
+                }
+		        
+		        //end of onImageUpload 콜백 
+		       /* onMediaDelete: function ($target, editor, $editable) {
+					let deletedImageUrl=$target
+						.attr('src')
+						.split('/')
+						.pop();
+						console.log(deletedImageUrl);
+				//		deleteImageFile(deletedImageUrl)
+				} //end of onMediaDelete 콜백
+			}*/
+			}
+		});
+    	$('#summernote').summernote('code');
+    
 });
-
-
-
+/*
+	function sendFile(file, el) {
+		//let ctx=getContextPath();
+		var form_data = new FormData();
+		console.log('콜백오니');
+      	form_data.append('file', file);
+      	$.ajax({
+        	data: form_data,
+        	type: "POST",
+        	url: '/nemo/snUploadImage',
+        	cache: false,
+        	contentType: false,
+        	enctype: 'multipart/form-data',
+        	processData: false,
+        	success: function(img_name) {
+				console.log("성공~");
+				
+				let img=JSON.parse(img_name);
+				console.log(img.url);
+          		$(el).summernote('editor.insertImage', img.url);
+        	}
+      	});
+    }
+*/	
 function uploadSummerNoteImage(file,el) {
+		console.log('업로드 펑션 콜백오니');
 		let ctx=getContextPath();
 		let data = new FormData();
+		console.log(ctx+'/summernote/uploadImage');
 		data.append("file",file);
 			$.ajax({
-				url: ctx+'/summernote/summer_imgae.do',
+				data:data,
+				url: '/nemo/snUploadImage',
 				type:'POST',
-				enctype: 'multipart/form-data',
-				data: data,
-				contentType: false,
-				processData: false,
+        		cache: false,
+        		contentType: false,
+        		enctype: 'multipart/form-data',
+        		processData: false,
 				success :function(data) {
+					console.log("~성공");
 					let json=JSON.parse(data);
-					$(el).summernote('editor.insertImage',son["url"]);
+					
+					$(el).summernote('editor.insertImage',json["url"]);
 						jsonArray.push(json["url"]);
 						jsonFn(jsonArray);
 				},
@@ -108,6 +149,45 @@ function uploadSummerNoteImage(file,el) {
 				}
 			});
 }
+
+	function fn_cancel(group_id){
+		console.log('여긴오니???????????????');
+		let cancelForm=document.createElement('form');
+		cancelForm.name='cancelForm';
+		cancelForm.method='post';
+		cancelForm.action="cancelAddArticle?group_id="+group_id;
+		console.log(jsonArray.length);
+		if(jsonArray.length>0) {
+			for(var i=0; i<jsonArray.length; i++) {
+				var str=jsonArray[i];
+				var result=str.toString().split('=');
+				//let img="<input type='hidden' name='imageName' value='"+result[1]+"'>";
+				var input = document.createElement('input');
+				input.setAttribute("name","imageName");
+				input.setAttribute("type","hidden");
+				input.setAttribute("value",result[1]);
+				console.log(input);
+				cancelForm.appendChild(input)
+			}
+			console.log("여기는 ture 입니다.");
+			let msg=document.createElement('input');
+			msg.setAttribute('type','hidden');
+			msg.setAttribute('name','isImgExist');
+			msg.setAttribute('value','true');
+			//'<input type="hidden" name="isImgExist" value="true">';
+			cancelForm.appendChild(msg);
+		} else {
+			console.log("여기는 false입니다.");
+			let msg=document.createElement('input');
+			msg.setAttribute('type','hidden');
+			msg.setAttribute('name','isImgExist');
+			msg.setAttribute('value','false');
+			cancelForm.appendChild(msg);
+		}
+
+		document.body.appendChild(cancelForm);
+		cancelForm.submit();
+	};
 
 function jsonFn(jsonArray) {
 	console.log(jsonArray);
