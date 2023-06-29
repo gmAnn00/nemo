@@ -13,7 +13,7 @@ public class ScheduleVO {
 	
 	//생성자
 	public ScheduleVO() {
-		System.out.println("scheduleVO 생성자 호출");
+		
 	}
 
 	public ScheduleVO(Timestamp schedule, String grp_id, String user_id, String sche_title, String sche_cont,

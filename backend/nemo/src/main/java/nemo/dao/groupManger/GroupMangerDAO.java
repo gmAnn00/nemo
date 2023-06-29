@@ -37,7 +37,6 @@ public class GroupMangerDAO {
 	//현재 들어온 그룹보기
 	public List<GroupVO> groupShow(int grp_id) {
 		List<GroupVO> groupList = new ArrayList<>();
-		
 		try {
 			conn = dataFactory.getConnection();
 			

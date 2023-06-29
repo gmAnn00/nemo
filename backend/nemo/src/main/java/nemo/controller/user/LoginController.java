@@ -18,13 +18,13 @@ import nemo.vo.user.UserVO;
 public class LoginController extends HttpServlet {
 	LoginService loginService;
 	UserVO userVO;
-
+	    
 	@Override
 	public void init() throws ServletException {
 		loginService = new LoginService();
 		userVO = new UserVO();
+		
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doHandle(request, response);
@@ -70,10 +70,12 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("nickname", userVO.getNickname());
 				session.setAttribute("user_img", userVO.getUser_img());
 				session.setAttribute("admin", userVO.getAdmin());
+			
 				nextPage = "/nemo/index";
 				response.sendRedirect(nextPage);
+				
 			}else {
-				// 회원이 아님 
+			// 회원이 아님 
 				PrintWriter out=response.getWriter();
 				System.out.println("로그인 실패");
 				out.print("<script>");
@@ -87,16 +89,19 @@ public class LoginController extends HttpServlet {
 		}else if(action.equals("/logout")){
 			session = request.getSession(false);
 			
-			if(session !=null) {
+			if(session != null) {
 				session.invalidate();
 				nextPage = "/nemo/index";
 				response.sendRedirect(nextPage);
 				
 			}
-			//자동로그인 영역
-		}else if (action.equals("/keeplogin")) {
-			
+			//자동 로그인 영역
 		}
+			
+		
+		
+		
+		
 		//RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		//dispatcher.forward(request, response);
 	}

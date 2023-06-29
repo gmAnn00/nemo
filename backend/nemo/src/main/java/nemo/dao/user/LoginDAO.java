@@ -3,6 +3,7 @@ package nemo.dao.user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -84,7 +85,12 @@ public class LoginDAO {
 		
 		return userVO;
 	} // end of selectUserById
-	
-	
+
+	//자동로그인 메서드
+	 public UserVO getUserById(String user_id) {
+		String query="select user_id from user_tbl";
+		return null;
+		 // 데이터베이스에서 아이디에 해당하는 사용자 정보를 조회하는 로직 작성
+	 }
 
 }

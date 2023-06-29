@@ -67,7 +67,7 @@ public class MyGroupDAO {
 				String sub_name = rs.getString("sub_name");
 				String grp_img = rs.getString("grp_img");
 				
-				GroupVO groupVO = new GroupVO (grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);
+				GroupVO groupVO = new GroupVO(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);
 //				groupVO.setGrp_id(grp_id);
 //				groupVO.setGrp_name(grp_name);
 //				groupVO.setGrp_mng(grp_mng);
@@ -135,7 +135,7 @@ public class MyGroupDAO {
 				String sub_name = rs.getString("sub_name");
 				String grp_img = rs.getString("grp_img");
 
-				GroupVO groupVO = new GroupVO (grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);
+				GroupVO groupVO = new GroupVO(grp_id, grp_name, grp_mng, mem_no, grp_zipcode, grp_addr1, grp_addr2, create_date, grp_intro, app_st, main_name, sub_name, grp_img);
 				
 				//list에 세팅
 				userGroupList.add(groupVO);

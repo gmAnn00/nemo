@@ -7,8 +7,10 @@ import nemo.vo.user.UserVO;
 public class LoginService {
 	LoginDAO dao;
 	
+	
 	public LoginService() {
-		dao = new LoginDAO();
+		dao = new LoginDAO();	
+	
 	}
 	
 	// 회원 여부 확인 메소드(로그인 메소드)
@@ -20,5 +22,6 @@ public class LoginService {
 	public UserVO selectUserById(String user_id) {
 		return dao.selectUserById(user_id);
 	}
+	//자동로그인 메서드
 	
 }

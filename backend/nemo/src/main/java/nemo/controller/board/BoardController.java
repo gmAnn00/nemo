@@ -1,6 +1,8 @@
 
 package nemo.controller.board;
 
+import java.io.Console;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 
 import nemo.dao.board.BoardDAO;
@@ -31,6 +34,7 @@ import nemo.vo.group.GroupVO;
 
 @WebServlet("/group/board/*")
 public class BoardController extends HttpServlet {
+	private static String ARTICLE_IMG_DIR;
 	BoardService boardService;
 	CommentService commentService;
 	BoardVO boardVO;
@@ -139,7 +143,6 @@ public class BoardController extends HttpServlet {
 					nextPage="/views/group/board.jsp";
 
 				}else if(action.equals("/viewArticle")) {	// 글 상세보기
-					
 					int article_no = Integer.parseInt(request.getParameter("article_no"));
 					Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
 					request.setAttribute("articleViewMap", articleViewMap);
@@ -147,7 +150,6 @@ public class BoardController extends HttpServlet {
 			
 				} else if(action.equals("/write")) { //글쓰는 페이지로이동 
 					boolean isAdmin=boardService.checkAdmin(user_id);
-					boolean isMem=boardService.isMember(user_id, group_id);
 					if(isAdmin) {
 						out.print("<script>alert('관리자는 글을 작성할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
@@ -156,7 +158,7 @@ public class BoardController extends HttpServlet {
 						nextPage="/views/group/boardWrite.jsp";
 					}
 					
-				} else if(action.equals("/addArticle")) { 
+				} else if(action.equals("/addArticle")) { // 게시글 작성
 					boolean isAdmin=boardService.checkAdmin(user_id);
 					boolean isMem=boardService.isMember(user_id, group_id);
 					if(isAdmin) {
@@ -167,23 +169,61 @@ public class BoardController extends HttpServlet {
 						String _brackets=request.getParameter("brackets");
 						String title=request.getParameter("title");
 						String content=request.getParameter("content");
-						System.out.println(content);
-						
+						int article_no=boardService.getNewArticleNo();
+						Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
+						if(isImgExist) {
+							System.out.println("들어는 와?여기루? isImg이거 ");
+							String[] imgName=request.getParameterValues("imageName");
+							List<String> fileList=null;
+							if(imgName.length!=0) {
+								fileList=new ArrayList<String>();
+								for(int i=0; i<imgName.length; i++) {
+									System.out.println(imgName[i]);
+									fileList.add(imgName[i]);
+								}
+								System.out.println("moveImage는 안가?");
+								moveImageDir(fileList, article_no);
+								content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+article_no+"&");
+							}
+						}
+						boardVO.setArticle_no(article_no);
 						boardVO.setTitle(title);
-						//boardVO.setBrackets(brackets);
 						boardVO.setUser_id(user_id);
 						boardVO.setGrp_id(group_id);
 						boardVO.setContent(content);
 						boardService.addArticle(boardVO, _brackets);
 						
-						out.print("<script>alert('글이 등록되었습니다.')");
-						//response.sendRedirect("/nemo/group/groupMain?group_id=1");
+						out.print("<script>alert('글이 등록되었습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+						out.print("</script>");
 						
-						nextPage="/nemo/group/board?group_id="+group_id;
-						response.sendRedirect(nextPage);
+						//nextPage="/nemo/group/board?group_id="+group_id;
+						//response.sendRedirect(nextPage);
 						return;
 					}
+				}else if(action.equals("/cancelAddArticle")) { //글 작성 취소시 등록된 이미지 삭제
+					System.out.println("등록취소여기오냐?");
 					
+					Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
+					System.out.println("등록취소"+isImgExist);
+					
+					if(isImgExist) {
+						System.out.println("등록취소이미지 있음");
+						String[] imgName=imgName=request.getParameterValues("imageName");
+						List<String> fileList=null;
+						if(imgName.length!=0 || imgName!=null) {
+							fileList=new ArrayList<String>();
+							for(int i=0; i<imgName.length; i++) {
+								System.out.println(imgName[i]);
+								fileList.add(imgName[i]);
+							}
+							deleteTempImg(fileList);
+						}
+					}
+					out.print("<script>");
+					out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
+					out.print("</script>");
+					return;
 					
 				} else if(action.equals("/deleteArticle")) { 
 					//게시글 정보를 가지고 게시글 삭제 페이지로
@@ -207,20 +247,27 @@ public class BoardController extends HttpServlet {
 					
 				} else if(action.equals("/delete")) { //실제 삭제
 					String msg=request.getParameter("deleteInfo");
+					int article_no=Integer.parseInt(request.getParameter("article_no"));
 					int num=Integer.parseInt(request.getParameter("number"));
 					boolean isMem=boardService.isMember(user_id, group_id);
 
 					if(msg.equals("deleteArticle")) { //게시글 삭제시
 						// 사진 폴더 삭제하는 작업 해야함
-						boardService.deleteArticle(num);
-						
+						//boardService.deleteArticle(num);
+						boardService.deleteArticle(article_no);
+						removeDir(article_no);
 						//number에는 article_no가 들어있음
-					} else if(msg.equals("deleteComment")) { // 댓글 삭제
-						String article_no=request.getParameter("article_no");
-						int _article_no=Integer.parseInt(article_no);
-						//boolean check = boardService.deleteComment(num,_article_no);
-						boolean check=commentService.deleteComment(num, _article_no);
+						out.print("<script>");
+						out.print("alert('삭제 되었습니다.');");
+						out.print("location.href='"+ request.getContextPath()+"/group/board?group_id="+group_id+"';");
+						out.print("</script>");
+						return;
 						
+					} else if(msg.equals("deleteComment")) { // 댓글 삭제
+						//String article_no=request.getParameter("article_no");
+						//int _article_no=Integer.parseInt(article_no);
+						//boolean check=commentService.deleteComment(num, _article_no);
+						boolean check=commentService.deleteComment(num, article_no);
 						if(!check) {
 							out.print("<script>");
 							out.print("alert('삭제 되었습니다.');");
@@ -247,7 +294,6 @@ public class BoardController extends HttpServlet {
 					JSONObject comInfo=new JSONObject();
 					
 					Map commentInfo=new HashMap();
-					System.out.println("여기오나");
 					String com_cont=request.getParameter("com_cont");
 					int article_no=Integer.parseInt(request.getParameter("article_no"));
 					int parent_no=Integer.parseInt(request.getParameter("parent_no"));
@@ -269,6 +315,7 @@ public class BoardController extends HttpServlet {
 						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
 						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
 						out.print("</script>");
+						return;
 					}
 					
 					JSONObject comInfo=new JSONObject();
@@ -298,8 +345,40 @@ public class BoardController extends HttpServlet {
 					System.out.println(com_cont);
 					out.print(com_cont);
 					return;
-				} 
-				
+				}else if(action.equals("/modArticle")) { // 글 수정 폼으로 보내기
+					boolean isAdmin=boardService.checkAdmin(user_id);
+					int article_no=Integer.parseInt(request.getParameter("article_no"));
+					if(isAdmin) {
+						out.print("<script>alert('관리자는 댓글을 작성할 수 없습니다.');");
+						out.print("location.href='"+request.getContextPath()+"/group/board?group_id="+group_id+"';");
+						out.print("</script>");
+						return;
+					} else {
+						//서비스에서 수정할 내용 찾아서 세팅해줘야함
+						Map articleViewMap=boardService.viewArticle(group_id, article_no, user_id);
+						request.setAttribute("articleViewMap", articleViewMap);
+						nextPage="/views/group/modArticle.jsp";
+					}
+				} else if(action.equals("/updateArticle")) {
+					String _brackets=request.getParameter("brackets");
+					String title=request.getParameter("title");
+					String content=request.getParameter("content");
+					int article_no=Integer.parseInt(request.getParameter("article_no"));
+					System.out.println(content);
+					
+					boardVO.setTitle(title);
+					//boardVO.setBrackets(brackets);
+					boardVO.setUser_id(user_id);
+					boardVO.setGrp_id(group_id);
+					boardVO.setContent(content);
+					boardVO.setArticle_no(article_no);
+					boardService.modArticle(boardVO, _brackets);
+					
+					out.print("<script>alert('글이 수정되었습니다.');");
+					out.print("location.href='"+request.getContextPath()+"/group/board/viewArticle?group_id="+group_id+"&article_no="+article_no+"';");
+					out.print("</script>");
+					return;
+				}
 				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 				dispatcher.forward(request, response);
 			} catch (Exception e) {
@@ -309,8 +388,79 @@ public class BoardController extends HttpServlet {
 		} 
 		
 	}
-
 	
+	//이미지 폴더 이동 하는 메소드 
+	private void moveImageDir(List<String> fileList, int article_no) {
+	//articleno로 폴더 생성
+	//tmp에서 articleno폴더로 이동
+		try {
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages";
+			
+			if(fileList!=null && fileList.size()!=0) {
+				
+				for(String imgName:fileList) {
+					File srcFile=new File(ARTICLE_IMG_DIR+"\\temp\\"+imgName);
+					File destDir=new File(ARTICLE_IMG_DIR+"\\"+article_no);
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+					srcFile.delete();
+				}	
+			}
+		} catch (Exception e) {
+			System.out.println("이미지 파일 복사하는 중 에러");
+			e.printStackTrace();
+		}
+	}
+	
+	//글 등록 취소시 temp폴더에서 img 삭제
+	private void deleteTempImg(List<String> fileList) {
+		try {
+			System.out.println("등록취소시 이미지 삭제 하는 메소드");
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages\\temp\\";
+			if(fileList!=null && fileList.size()!=0) {
+				for(String imgName:fileList) {
+					File srcFile=new File(ARTICLE_IMG_DIR+imgName);
+					srcFile.delete();
+				}
+			}
+		}catch (Exception e) {
+			System.out.println("글 등록 취소시 temp 폴더에서 이미지 삭제 중 에러");
+			e.printStackTrace();
+		}
+	}
+
+	//이미지 폴더 삭제하는 메소드
+	private void removeDir(int article_no) {
+		try {
+			ARTICLE_IMG_DIR=this.getClass().getResource("").getPath();
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.substring(1,ARTICLE_IMG_DIR.indexOf(".metadata"));
+			ARTICLE_IMG_DIR=ARTICLE_IMG_DIR.replace("/", "\\");
+			ARTICLE_IMG_DIR+="nemo\\src\\main\\webapp\\boardImages\\";
+			File file=new File(ARTICLE_IMG_DIR+article_no);
+			
+			if(!file.exists()) {
+				System.out.println("폴더 없음");
+				return;
+			}
+			if(file.isDirectory()) { //폴더이면
+				File[] files=file.listFiles();
+				if(files!=null && files.length>0) {
+					for(int i=0; i<files.length; i++) {
+						files[i].delete();
+					}
+				}
+				file.delete();
+			}
+		}catch (Exception e) {
+			System.out.println("폴더 삭제 중 에러");
+			e.printStackTrace();
+		}
+	}
 	
 	private JSONObject commentMapToJson(Map commentInfo) {
 		JSONObject comInfo=new JSONObject();

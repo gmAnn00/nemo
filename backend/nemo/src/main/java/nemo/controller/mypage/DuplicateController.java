@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nemo.service.mypage.DuplicateService;
+import nemo.service.mypage.MyProfileService;
 import nemo.vo.user.UserVO;
 
 @WebServlet("/duplicate/*")
@@ -21,7 +22,6 @@ public class DuplicateController extends HttpServlet {
 	DuplicateService duplService;
 	UserVO userVO;
 	
-	@Override
 	public void init() throws ServletException {
 		duplService = new DuplicateService();
 		userVO = new UserVO();

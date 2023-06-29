@@ -1,12 +1,8 @@
 package nemo.controller.mypage;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,17 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileUtils;
-
 import nemo.service.mypage.MyBoardService;
-import nemo.service.mypage.MyInterestService;
-import nemo.service.mypage.MyProfileService;
-import nemo.vo.mypage.InterestVO;
 import nemo.vo.mypage.MyBoardVO;
-import nemo.vo.user.UserVO;
 
 
 @WebServlet("/mypage/myBoardList/*")

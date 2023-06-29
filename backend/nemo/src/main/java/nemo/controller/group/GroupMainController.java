@@ -2,7 +2,10 @@ package nemo.controller.group;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,9 +17,9 @@ import javax.servlet.http.HttpSession;
 
 import nemo.service.group.GroupMainService;
 import nemo.vo.board.BoardVO;
+import nemo.vo.user.UserVO;
 import nemo.vo.group.GroupVO;
 import nemo.vo.schedule.ScheduleVO;
-import nemo.vo.user.UserVO;
 
 /**
  * Servlet implementation class GroupMainController
@@ -51,6 +54,11 @@ public class GroupMainController extends HttpServlet {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		GroupVO groupVO = new GroupVO();
+		
+		// 로그인 컨트롤러로 옮겨야 함
+		// 유저가 소모임장인 소모임의 그룹넘버 저장
+		List<String> grpMngList = groupMainService.grpMng(user_id);
+		session.setAttribute("grpMngList", grpMngList);
 		
 		boolean isMember = groupMainService.isMember(user_id, group_id);
 		request.setAttribute("isMember", isMember);

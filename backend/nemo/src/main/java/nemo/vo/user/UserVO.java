@@ -59,6 +59,7 @@ public class UserVO {
 		this.admin = admin;
 	}
 
+	
 
 	public String getUser_id() {
 		return user_id;

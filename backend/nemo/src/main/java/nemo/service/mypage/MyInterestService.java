@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nemo.dao.mypage.MyInterestDAO;
-import nemo.vo.mypage.InterestVO;
-import nemo.vo.user.InterestsVO;
+import nemo.vo.user.InterestVO;
 import nemo.vo.user.UserVO;
 
 public class MyInterestService {
@@ -25,7 +24,8 @@ public class MyInterestService {
 	}
 	
 	//관심사 수정
-	public void modInterests(String user_id, List<InterestsVO> interestsList) {
-		myInterestDAO.modInterests(user_id, interestsList);
+	public void modInterests(String user_id, List<InterestVO> interestsList) {
+		myInterestDAO.delInterests(user_id);
+		myInterestDAO.modInterests(interestsList);
 	}
 }

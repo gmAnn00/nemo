@@ -13,8 +13,9 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.board.BoardVO;
-import nemo.vo.schedule.ScheduleVO;
 import nemo.vo.user.UserVO;
+import nemo.vo.group.GroupVO;
+import nemo.vo.schedule.ScheduleVO;
 
 public class GroupMainDAO {
 	private Connection conn;

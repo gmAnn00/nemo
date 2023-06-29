@@ -1,11 +1,11 @@
 package nemo.vo.board;
 
-import nemo.vo.group.GroupVO;
 import nemo.vo.user.UserVO;
+import nemo.vo.group.GroupVO;
 
 public class MyBoardVO {
 
-	private BoardVO boardVO = new BoardVO();
+	private BoardVO boardVO;
 	private GroupVO groupVO;
 	private UserVO  userVO;
 	private CommentVO commentVO;

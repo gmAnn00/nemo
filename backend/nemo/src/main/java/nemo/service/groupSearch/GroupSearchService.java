@@ -22,8 +22,9 @@ public class GroupSearchService {
 		return resultList;
 	}
 
-	public int selectAllGroup() {
-		return searchDAO.selectAllGroup();
+	public int findTotGroup(Map searchMap) {
+		return searchDAO.findTotGroup(searchMap);
 	}
+
 
 }

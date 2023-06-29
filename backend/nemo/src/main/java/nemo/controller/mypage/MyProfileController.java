@@ -23,7 +23,7 @@ import org.apache.commons.io.FileUtils;
 
 import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
-import nemo.vo.mypage.InterestVO;
+import nemo.vo.user.InterestVO;
 import nemo.vo.user.UserVO;
 
 
@@ -73,10 +73,6 @@ public class MyProfileController extends HttpServlet {
 		USER_IMG_DEF = USER_IMG_DEF.replace("/", "\\");
 		USER_IMG_DEF += "nemo\\src\\main\\webapp\\images\\dall.png";
 		
-
-		
-		
-		//MyProfileDAO proDAO = new MyProfileDAO();		
 		
 		//session.setAttribute("user_id", "kim");
 		//session.setAttribute("nickname", "김철수닉넴");
@@ -89,7 +85,7 @@ public class MyProfileController extends HttpServlet {
 			//로그인 상태일때만 수행
 			try {			
 				//조회	
-				if(action == null || action.equals("/myprofile")) {
+				if(action == null || action.equals("/myProfile")) {
 					user_id = (String)session.getAttribute("user_id");		
 					//id로 회원정보 찾는 메소드				
 					userVO = myProfService.searchProfileById(user_id);
@@ -129,7 +125,7 @@ public class MyProfileController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 				
-				} else if(action.equals("/modProfileForm")) {
+				} else if(action.equals("/modProfile")) {
 					/*
 					user_id = request.getParameter("user_id");
 					String password = request.getParameter("password");
@@ -184,12 +180,6 @@ public class MyProfileController extends HttpServlet {
 						File oldFile = new File(USER_IMG_REPO + "\\" + originalFileName);
 						oldFile.delete();
 					}
-					String message;
-					message = "<script>";
-					message += "alert('이미지가 수정되었습니다.');";
-					message += "location.href='nemo/mypage/myprofile';";
-					message += "</script>";	
-					
 										
 					UserVO userVO = new UserVO(user_id, password, user_name, nickname, zipcode, user_addr1, user_addr2, phone, email, birthdate, user_img);
 					myProfService.modProfile(userVO);
@@ -197,8 +187,14 @@ public class MyProfileController extends HttpServlet {
 					
 					request.setAttribute("msg", "modified");
 					nextPage="/nemo/mypage/myprofile";
-					response.sendRedirect(nextPage);
 					
+					out.print("<script>");
+			        out.print("alert('회원정보가 수정되었습니다.');");
+			        out.print("location.href='" + nextPage + "';");
+			        out.print("</script>");
+					//response.sendRedirect(nextPage);
+					
+						
 				} else if(action.equals("/userImgUpload")) {
 					//프로필 이미지 수정
 					//System.out.println("프로필 이미지 수정 " + user_id);
@@ -230,7 +226,7 @@ public class MyProfileController extends HttpServlet {
 					UserVO userVO = new UserVO(user_id, user_img);
 					myProfService.modUserImg(userVO);					
 
-					nextPage= "/nemo/mypage/myprofile";
+					nextPage= "/nemo/mypage/myProfile";
 					
 					//request.setAttribute("msg", "modImg");
 					/*
@@ -244,7 +240,7 @@ public class MyProfileController extends HttpServlet {
 					//response.sendRedirect(nextPage);
 					
 			        out.print("<script>");
-			        out.print("alert('이미지가 수정되었습니다.');");
+			        out.print("alert('프로필 이미지가 수정되었습니다.');");
 			        out.print("location.href='" + nextPage + "';");
 			        out.print("</script>");
 			        
@@ -275,7 +271,7 @@ public class MyProfileController extends HttpServlet {
 			        nextPage="/nemo/index";
 			        
 			        out.print("<script>");
-			        out.print("alert('회원 탈퇴 되었습니다.');");
+			        out.print("alert('네모를 탈퇴하였습니다.');");
 			        out.print("location.href='" + nextPage + "';");
 			        out.print("</script>");
 			        
@@ -292,10 +288,15 @@ public class MyProfileController extends HttpServlet {
 			}
 			
 		} else {
-			//로그인 상태가 아니라면 index페이지로 이동하게 함
-			request.setAttribute("msg", "isnotlogOn");
+			//로그인 상태가 아니라면 index페이지로 이동하게 함			
 			nextPage="/nemo/index";
-			response.sendRedirect(nextPage);
+			  
+	        out.print("<script>");
+	        out.print("alert('로그인 상태가 아닙니다.');");
+	        out.print("location.href='" + nextPage + "';");
+	        out.print("</script>");
+	        
+			//response.sendRedirect(nextPage);
 		}
 			
 	}// doHandle() End

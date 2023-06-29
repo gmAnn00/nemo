@@ -84,7 +84,6 @@ public class BoardDAO {
 				boardVO.setView_cnt(view_cnt);
 				boardVO.setCom_cnt(com_cnt);
 				boardVO.getUserVO().setNickname(nickname);
-				System.out.println(boardVO.getUserVO().getNickname());
 				articleList.add(boardVO);
 			} // End Of While
 			
@@ -184,20 +183,22 @@ public class BoardDAO {
 		try {
 			conn=dataFactory.getConnection();
 			String query="INSERT INTO board_tbl (article_no, user_id, grp_id, title, content, brackets)";
-			query+=" VALUES (seq_art_no.nextVAL, ?, ?, ?, ?, ?)";
+			query+=" VALUES (?, ?, ?, ?, ?, ?)";
 			System.out.println(query);
 			pstmt=conn.prepareStatement(query);
 			
+			int article_no=boardVO.getArticle_no();
 			String user_id=boardVO.getUser_id();
 			int grp_id=boardVO.getGrp_id();
 			String title=boardVO.getTitle();
 			String content=boardVO.getContent();
 			String brackets=boardVO.getBrackets();
-			pstmt.setString(1, user_id);
-			pstmt.setInt(2, grp_id);
-			pstmt.setString(3, title);
-			pstmt.setString(4, content);
-			pstmt.setString(5, brackets);
+			pstmt.setInt(1, article_no);
+			pstmt.setString(2, user_id);
+			pstmt.setInt(3, grp_id);
+			pstmt.setString(4, title);
+			pstmt.setString(5, content);
+			pstmt.setString(6, brackets);
 			pstmt.executeUpdate();
 			
 			pstmt.close();
@@ -209,6 +210,22 @@ public class BoardDAO {
 		}
 	}
 	
+	public int getNewArticleNo() {
+		int article_no=0;
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT seq_art_no.nextVAL AS article_no FROM DUAL";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			article_no=rs.getInt("article_no");
+		} catch (Exception e) {
+			System.out.println("새 글 번호 받아 오는 중 에러");
+			e.printStackTrace();
+		}
+		return article_no;
+	}
 	
 	//게시글 상세보기 
 	public BoardVO selectArticle(int article_no) {
@@ -329,6 +346,13 @@ public class BoardDAO {
 	public void deleteArticle(int article_no) {
 		try {
 			conn=dataFactory.getConnection();
+			String query="DELETE FROM board_tbl WHERE article_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, article_no);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
 		} catch (Exception e) {
 			System.out.println("게시글 삭제 중 에러");
 			
@@ -397,6 +421,27 @@ public class BoardDAO {
 			
 		} catch (Exception e) {
 			System.out.println("댓글 개수 업데이트하는 중 에러");
+			e.printStackTrace();
+		}
+	}
+	
+	//글 수정하는 메소드
+	public void updateArticle(BoardVO boardVO) {
+		try {
+			conn=dataFactory.getConnection();
+			String query="UPDATE board_tbl SET title=?, content=?, brackets=?";
+			query+=" WHERE article_no=?";
+			System.out.println(query);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, boardVO.getTitle());
+			pstmt.setString(2, boardVO.getContent());
+			pstmt.setString(3, boardVO.getBrackets());
+			pstmt.setInt(4, boardVO.getArticle_no());
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("글 수정하는 중 에러");
 			e.printStackTrace();
 		}
 	}

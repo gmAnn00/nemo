@@ -14,8 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import nemo.service.mypage.MyInterestService;
 import nemo.service.user.JoinService;
-import nemo.vo.mypage.InterestVO;
-import nemo.vo.user.InterestsVO;
+import nemo.vo.user.InterestVO;
 import nemo.vo.user.UserVO;
 
 @WebServlet("/mypage/interest/*")
@@ -24,13 +23,13 @@ public class MyInterestController extends HttpServlet {
 	HttpSession session;
 	MyInterestService myInterestService;
 	UserVO userVO;
-	InterestsVO interestsVO;	
+	InterestVO interestsVO;	
 
 	@Override
 	public void init() throws ServletException {
 		myInterestService = new MyInterestService();
 		userVO = new UserVO();
-		interestsVO = new  InterestsVO();
+		interestsVO = new  InterestVO();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,27 +52,26 @@ public class MyInterestController extends HttpServlet {
 			//관심사 수정페이지로 이동
 			user_id = (String)session.getAttribute("user_id");
 			List<InterestVO> interestsList = myInterestService.searchInterestById(user_id);
-			
-			
+						
 			request.setAttribute("interestsList", interestsList);			
 			nextPage= "/views/mypage/modInterest.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 			
-		} else if(action.equals("/modInterestsChoice")) {
+		} else if(action.equals("/modInterest")) {
 			//관심사 수정
 			user_id = (String)session.getAttribute("user_id");			
 			int inputNum = Integer.parseInt(request.getParameter("inputNum"));			
-			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
-			
+			List<InterestVO> interestsList = new ArrayList<InterestVO>();
+			//System.out.println("inputNum = " + inputNum);
 			for(int i = 0; i<inputNum; i++) {
-				interestsVO = new InterestsVO();
+				interestsVO = new InterestVO();
 				String main_name = request.getParameter("main_name"+i);
 				String sub_name = request.getParameter("sub_name"+i);
 				
-				//System.out.println("main_name="+main_name);
-				//System.out.println("sub_name="+sub_name);
+				System.out.println("main_name="+main_name);
+				System.out.println("sub_name="+sub_name);
 				
 				interestsVO.setUser_id(user_id);
 				interestsVO.setMain_name(main_name);

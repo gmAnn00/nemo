@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nemo.service.user.JoinService;
-import nemo.vo.user.InterestsVO;
+import nemo.vo.user.InterestVO;
 import nemo.vo.user.UserVO;
 
 
 @WebServlet("/join/*")
 public class JoinController extends HttpServlet {
 	UserVO userVO;
-	InterestsVO interestsVO;
+	InterestVO interestVO;
 	JoinService joinService;
 	
 	@Override
@@ -96,14 +96,14 @@ public class JoinController extends HttpServlet {
 			
 			out.print("<script>");
 			out.print("alert('회원가입에 성공하셨습니다.');");
-			out.print("location.href='" + request.getContextPath() + "/join/interestsForm';");
+			out.print("location.href='" + request.getContextPath() + "/join/interestForm';");
 			out.print("</script>");
 			
 			//RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			//dispatcher.forward(request, response);
 			
-		}else if (action.equals("/interestsForm")) { //관심사이트
-			nextPage = "/views/join/interests.jsp";
+		}else if (action.equals("/interestForm")) { //관심사이트
+			nextPage = "/views/join/interest.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		
@@ -114,20 +114,20 @@ public class JoinController extends HttpServlet {
 			
 			int inputNum = Integer.parseInt(request.getParameter("inputNum"));
 			
-			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
+			List<InterestVO> interestsList = new ArrayList<InterestVO>();
 			
 			for(int i = 0; i<inputNum; i++) {
-				interestsVO = new InterestsVO();
+				interestVO = new InterestVO();
 				String main_name = request.getParameter("main_name"+i);
 				String sub_name = request.getParameter("sub_name"+i);
 				
 				//System.out.println("main_name="+main_name);
 				//System.out.println("sub_name="+sub_name);
 				
-				interestsVO.setUser_id(user_id);
-				interestsVO.setMain_name(main_name);
-				interestsVO.setSub_name(sub_name);
-				interestsList.add(interestsVO);
+				interestVO.setUser_id(user_id);
+				interestVO.setMain_name(main_name);
+				interestVO.setSub_name(sub_name);
+				interestsList.add(interestVO);
 			}
 			
 			

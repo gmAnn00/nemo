@@ -10,7 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.user.InterestsVO;
+import nemo.vo.user.InterestVO;
 import nemo.vo.user.UserVO;
 
 public class JoinDAO {
@@ -67,19 +67,19 @@ public class JoinDAO {
 	
 	}
 	//관심사 체크 메서드
-		public void addChoice(List<InterestsVO> interestsList) {
+		public void addChoice(List<InterestVO> interestList) {
 			try {
-				for(InterestsVO interestsVO : interestsList) {
+				for(InterestVO interestVO : interestList) {
 					conn=dataFactory.getConnection();
 					
-					String user_id = interestsVO.getUser_id();
-					String main_name = interestsVO.getMain_name();
-					String sub_name = interestsVO.getSub_name();
+					String user_id = interestVO.getUser_id();
+					String main_name = interestVO.getMain_name();
+					String sub_name = interestVO.getSub_name();
 					
 					System.out.println("DAO main_name="+main_name);
 					System.out.println("DAO sub_name="+sub_name);
 					
-					String query = "INSERT INTO interests_tbl(user_id, main_name, sub_name) values(?, ?, ?)";
+					String query = "INSERT INTO interest_tbl(user_id, main_name, sub_name) values(?, ?, ?)";
 					System.out.println(query);
 					
 					pstmt = conn.prepareStatement(query);
