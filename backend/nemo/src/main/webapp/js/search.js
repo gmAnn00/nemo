@@ -103,7 +103,7 @@ $(function () {
 
     function selectInit() {
         let mainHtml = "<option value='none'>대분류</option>";
-        let smallHtml = "<option value='none'>소분류</option>";
+        let smallHtml = "<option value='none' data-class='none'>소분류</option>";
 
         for (const key in category) {
             mainHtml += `<option value="${key}">${key}</option>`;
@@ -128,6 +128,7 @@ $(function () {
     selectInit();
 
     $(document).on("change", "select[name=bigCate]", function () {
+		$("select[name=smallCate]").val('none');
         const mainVal = $(this).val();
         $("select[name=smallCate] option").each(function (idx, item) {
             if ($(this).data("class") == mainVal || $(this).val == "") {
@@ -137,7 +138,7 @@ $(function () {
                 $(this).hide();
             }
         });
-        $("select[name=smallCate]").val("");
+        //$("select[name=smallCate]").val("");
     });
 
     // 현재 위치 가져오기
@@ -213,9 +214,15 @@ $(function () {
     let sub_name_hidden = $("#sub_name_hidden").val();
     let areaBar_hidden = $("#areaBar_hidden").val();
 
-    $("select[name=bigCate]").val(main_name_hidden).trigger("change");
+	if(main_name_hidden != "none"){
+		 $("select[name=bigCate]").val(main_name_hidden).trigger("change");
+	}
+	if(sub_name_hidden != "none"){
+		 $("option[value=" + sub_name_hidden + "]").prop("selected", true);
+	}
+    //$("select[value]"+main_name_hidden +"]").prop("selected", true);
     //$("option[value="+main_name_hidden+"]").prop("selected", true);
-    $("option[value=" + sub_name_hidden + "]").prop("selected", true);
+   
     $("select[name=areaBar]").val(areaBar_hidden).trigger("change");
     //$("option[value=" + areaBar + "]").prop("selected", true);
 });

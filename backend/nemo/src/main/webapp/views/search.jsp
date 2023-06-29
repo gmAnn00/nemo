@@ -200,20 +200,20 @@ request.setCharacterEncoding("utf-8");
 			<c:if test="${totGroup != 0}"> <!-- 게시글이 있을 경우 -->
 				<c:forEach var="page" begin="1" end="${endValue}" step="1">
 					<c:if test="${section > 1 && page == 1}">
-						<a href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section-1}&pageNum=10&sort=${param.sort}">prev</a>
+						<a href="${contextPath}/groupSearch?userLat=${param.userLat}&userLng=${param.userLng}&userbigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=${param.areaBar}&searchText=${param.searchText}&section=${section-1}&pageNum=10&sort=${param.sort}">prev</a>
 					</c:if>
 					
 					<c:choose>
 						<c:when test="${page==pageNum}">
-							<a style='color:var(--main-color)' href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section}&pageNum=${page}&sort=${param.sort}">${(section-1)*10 + page}</a>
+							<a style='color:var(--main-color)' href="${contextPath}/groupSearch?userLat=${param.userLat}&userLng=${param.userLng}&bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=${param.areaBar}&searchText=${param.searchText}&section=${section}&pageNum=${page}&sort=${param.sort}">${(section-1)*10 + page}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section}&pageNum=${page}&sort=${param.sort}">${(section-1)*10 + page}</a>
+							<a href="${contextPath}/groupSearch?userLat=${param.userLat}&userLng=${param.userLng}&bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=${param.areaBar}&searchText=${param.searchText}&section=${section}&pageNum=${page}&sort=${param.sort}">${(section-1)*10 + page}</a>
 						</c:otherwise>
 					</c:choose>
 					
 					<c:if test="${page == 10 and totGroup/100 > section}">
-						<a href="${contextPath}/groupSearch?bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=1&searchText=${param.searchText}&section=${section+1}&pageNum=1&sort=${param.sort}">next</a>
+						<a href="${contextPath}/groupSearch?userLat=${param.userLat}&userLng=${param.userLng}&bigCate=${param.bigCate}&smallCate=${param.smallCate}&areaBar=${param.areaBar}&searchText=${param.searchText}&section=${section+1}&pageNum=1&sort=${param.sort}">next</a>
 					</c:if>
 				</c:forEach>
 			</c:if>

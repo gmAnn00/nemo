@@ -60,8 +60,10 @@ public class GroupSearchController extends HttpServlet {
 		String joinAble = request.getParameter("joinAble") == null ? "none" : request.getParameter("joinAble");
 		String sort = request.getParameter("sort") == null ? "sortByName" : request.getParameter("sort");
 		int areaBar = request.getParameter("areaBar") == null ? -1 : Integer.parseInt(request.getParameter("areaBar"));
-		String userLat = request.getParameter("userLat");
-		String userLng = request.getParameter("userLng");
+		String userLat = request.getParameter("userLat") == null ? "none" : request.getParameter("userLat");
+		String userLng = request.getParameter("userLng") == null ? "none" : request.getParameter("userLng");
+		
+		//System.out.println(request.getParameter("smallCate").getClass().getName());
 		
 		//System.out.println(request.getParameter("userLat"));
 		//System.out.println(request.getParameter("userLng"));

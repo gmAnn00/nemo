@@ -41,6 +41,7 @@ public class IndexController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String nextPage = "";
 		session=request.getSession();
+		System.out.println("hi");
 		
 		String user_id = (String) session.getAttribute("user_id");
 		
