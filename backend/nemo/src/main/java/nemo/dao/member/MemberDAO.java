@@ -31,10 +31,15 @@ public class MemberDAO {
 	
 	//회원목록
 	public List<MemberVO> listMembers() {
-		List<MemberVO> memberList= new ArrayList();
+		List<MemberVO> memberList= new ArrayList<MemberVO>();
 		try {
 			conn=dataFactory.getConnection();
-			String query="select * from membertbl order by join_date desc";
+			String query="select u.*, A.report_cnt " + 
+					" from user_tbl u " +
+					" left outer join (select accused_id, count(*) as report_cnt " +
+					" from mreport_tbl " + 
+					" group by accused_id " + 
+					" ) A on A.accused_id = u.user_id";
 			pstmt=conn.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -44,8 +49,10 @@ public class MemberDAO {
 				String email=rs.getString("email");
 				String phone=rs.getString("phone");
 				Date join_date=rs.getDate("join_date");
-				//String user_name=rs.getString("user_name");신고횟수
+				int report_cnt = rs.getInt("report_cnt");
+				//String accused_id=rs.getString("accused_id");
 				MemberVO memVo=new MemberVO(user_id, user_name, birthdate, email, phone, join_date);
+				memVo.setReport_cnt(report_cnt);
 				memberList.add(memVo);
 			}
 			rs.close();

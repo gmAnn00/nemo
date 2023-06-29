@@ -70,7 +70,6 @@ public class QnaDAO {
 				pstmt.setInt(5, pageNum);
 			}
 			rs=pstmt.executeQuery();
-			System.out.println("dddddddd");
 			
 			while(rs.next()) {
 				int level=rs.getInt("LVL");

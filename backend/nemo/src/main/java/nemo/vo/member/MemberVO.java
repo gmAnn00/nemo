@@ -18,6 +18,7 @@ public class MemberVO {
 	private Date birthdate;
 	private String user_img;
 	private int admin;
+	private int report_cnt;
 	
 	//신고 갯수
 	private String accused_id;
@@ -172,6 +173,42 @@ public class MemberVO {
 
 	public void setAdmin(int admin) {
 		this.admin = admin;
+	}
+
+
+
+	public int getReport_cnt() {
+		return report_cnt;
+	}
+
+
+
+	public void setReport_cnt(int report_cnt) {
+		this.report_cnt = report_cnt;
+	}
+
+
+
+	public String getAccused_id() {
+		return accused_id;
+	}
+
+
+
+	public void setAccused_id(String accused_id) {
+		this.accused_id = accused_id;
+	}
+
+
+
+	public Map<String, Integer> getMreport_tbl() {
+		return mreport_tbl;
+	}
+
+
+
+	public void setMreport_tbl(Map<String, Integer> mreport_tbl) {
+		this.mreport_tbl = mreport_tbl;
 	}
 	
 	

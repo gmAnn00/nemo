@@ -8,6 +8,12 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+<c:set var="articlesList" value="${articleMap.articlesList}" />
+<c:set var="totArticles" value="${articleMap.totArticles}" />
+<c:set var="section" value="${articleMap.section }" />
+<c:set var="pageNum" value="${articleMap.pageNum }" />
+<c:set var="qna" value="${articleMap.qna }" />
+
 <% request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>
@@ -16,28 +22,21 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>관리자-회원 관리 페이지</title>
-        <link rel="shortcut icon" href="../../images/favicon.png" />
-        <link rel="stylesheet" href="../../css/normalize.css" />
-        <link rel="stylesheet" href="../../css/common.css" />
-        <link rel="stylesheet" href="../../css/submenu.css" />
-        <link href="../../DataTables/datatables.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="../../css/adminMember.css" />
-        <script src="../../js/jquery-3.6.4.min.js"></script>
+        <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
+        <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
+        <link rel="stylesheet" href="${contextPath}/css/common.css" />
+        <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
+        <link href="${contextPath}/DataTables/datatables.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="${contextPath}/css/adminMember.css" />
+        <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
         <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
-        <script src="../../js/header.js"></script>
+        <script src="${contextPath}/js/header.js"></script>
     </head>
     <c:choose>
 		<c:when test='${msg == "addMember"}'>
 		<script>
 			window.onload=function () {
 				alert("회원을 등록 하셨습니다.");
-			}
-		</script>
-		</c:when>
-		<c:when test="${msg == 'modified'}">
-		<script>
-			window.onload=function () {
-				alert("회원 정보를 수정 하였습니다.");
 			}
 		</script>
 		</c:when>
@@ -56,7 +55,7 @@
         <!-- header 시작 -->
         <header>
             <h1 class="logo">
-                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
+                <a href="../index.html"><img src="${contextPath}/images/logo.png" alt="logo" /></a>
             </h1>
         </header>
         <button class="burger">
@@ -127,16 +126,6 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="adminHelp.html">
-                                    <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name">
-                                            <span>고객센터 1:1 문의</span>
-                                        </div>
-                                        <i class="fa-solid fa-angle-right menu_angle"></i>
-                                    </div>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -174,7 +163,6 @@
                                     <table border="1" class="adminMemberTbl">
                                         <thead>
                                             <tr>
-                                                <th>회원번호</th>
                                                 <th>아이디</th>
                                                 <th>이름</th>
                                                 <th>생년월일</th>
@@ -186,143 +174,32 @@
                                             </tr>
                                         </thead>
                                         
-                                        <c:choose>
-			<c:when test="${empty membersList}">
-			<tr>
-				<td colspan="5" align="center">
-					등록된 회원이 없습니다.
-				</td>	
-			</tr>
-			</c:when>
-			<c:when test="${!empty membersList}">
-			<c:forEach var="member" items="${membersList}">
-				<tr align="center">
-					<td>${member.id}</td>
-					<td>${member.user_id}</td>
-					<td>${member.user_name}</td>
-					<td>${member.birthdate}</td>
-					<td>${member.email}</td>
-					<td>${member.phone}</td>
-					<td>${member.join_date}</td>
-					<td>${member.id}"></td>
-					<td><a href="${contextPath}/member/delMember.do?id=${member.id}">탈퇴처리</a></td>
-				</tr>
-			</c:forEach>
-			</c:when>
-			</c:choose>
+										<c:choose>
+												<c:when test="${empty membersList}">
+												<tr>
+													<td colspan="9" align="center">
+														등록된 회원이 없습니다.
+													</td>	
+												</tr>
+												</c:when>
+											<c:when test="${!empty membersList}">
+											<c:forEach var="member" items="${membersList}">
+												<tr align="center">
+													<td>${member.user_id}</td>
+													<td>${member.user_name}</td>
+													<td>${member.birthdate}</td>
+													<td>${member.email}</td>
+													<td>${member.phone}</td>
+													<td>${member.join_date}</td>
+													<td>${member.report_cnt}</td>
+													<td><a class="button" href="${contextPath}/member/delMember.do?user_id=${member.user_id}">탈퇴처리</a></td>
+													
+												</tr>
+											</c:forEach>
+											</c:when>
+										</c:choose>
 
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>1</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>2</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>3</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>4</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>5</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>5</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>5</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>5</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>5</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>honggilddong</td>
-                                                <td>홍길동</td>
-                                                <td>2000/01/01</td>
-                                                <td>gildong@gmail.com</td>
-                                                <td>01012345678</td>
-                                                <td>2023/05/01</td>
-                                                <td>5</td>
-                                                <td><button class="btn">탈퇴처리</button></td>
-                                            </tr>
-                                        </tbody>
+           
                                     </table>
                                 </div>
                                 <!-- <div class="memberTablePage"></div> -->
@@ -399,9 +276,9 @@
         </footer>
         <!-- 푸터 영역 끝 -->
 
-        <script src="../../js/jquery-3.6.4.min.js"></script>
+        <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 
-        <script src="../../DataTables/datatables.min.js"></script>
-        <script src="../../js/adminMember.js"></script>
+        <script src="${contextPath}/DataTables/datatables.min.js"></script>
+        <script src="${contextPath}/js/adminMember.js"></script>
     </body>
 </html>
