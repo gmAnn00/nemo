@@ -171,7 +171,7 @@ public class IndexDAO {
 			
 			for(InterestsVO interests : interestsList) {
 				String query = "select * from "
-						+ "(select * from group_tbl where main_name = ? OR sub_name = ? order by dbms_random.value "
+						+ "(select * from group_tbl where main_name = ? OR sub_name = ? order by dbms_random.value) "
 						+ "where rownum <= 4";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, interests.getMain_name());
@@ -280,8 +280,15 @@ public class IndexDAO {
 					
 					KaKaoGeoRes bodyJson = objectMapper.readValue(response.getBody().toString(), KaKaoGeoRes.class);
 				
-					double lat = bodyJson.getDocuments().get(0).getY();
-					double lng = bodyJson.getDocuments().get(0).getX();
+					double lat = 0.0;
+					double lng = 0.0;
+					
+					if(bodyJson.getDocuments().size() > 0) {
+						System.out.println("bodyJson="+bodyJson.getDocuments().size());
+						lat = bodyJson.getDocuments().get(0).getY();
+						lng = bodyJson.getDocuments().get(0).getX();
+					}
+					
 					
 					System.out.println("lat = " + lat);
 					System.out.println("lng = " + lng);
