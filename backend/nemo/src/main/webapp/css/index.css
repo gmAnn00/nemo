@@ -269,7 +269,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-.group_jm_text span {
+.group_jm_text span{
   margin-bottom: 10px;
   font-size: 18px;
   color: #fff;
@@ -302,6 +302,9 @@ body {
   color: #fff;
   letter-spacing: -.3px;
   background-color: rgba(255,255,255,.2);
+}
+.group_btn a{
+	color: #fff;
 }
 .btn_more {
   font-family: "NeoExBold";
