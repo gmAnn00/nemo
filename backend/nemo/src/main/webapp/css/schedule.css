@@ -171,7 +171,6 @@
 /* 일정 조회 */
 .scheduleDetailArea {
   position: relative;
-  
   display: none;
 }
 .scheduleTitle p {
