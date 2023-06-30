@@ -91,6 +91,11 @@ div.myScheduleCalAndList {
 .calendarTable .red {
   color: rgb(231, 75, 75);
 }
+/* 일정 있는 날 표시 */
+.scheduleDate {
+	color: red;
+}
+
 
 div.myScheduleListArea {
   flex: 1;

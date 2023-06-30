@@ -57,7 +57,7 @@ $(document).ready(function () {
         "<button type='button' class='today btn'>오늘</button>" +
         "<button type='button' class='next btn'>다음 달 ></button>" +
         "</caption>" +
-        "<thead  class='calWeek'>" +
+        "<thead class='calWeek'>" +
         "<th class='red'>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class='blue'>토</th>" +
         "</thead>" +
         "<tbody id='setDate'>" +

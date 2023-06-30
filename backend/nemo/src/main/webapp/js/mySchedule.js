@@ -8,9 +8,12 @@ $(document).ready(function() {
 	    date = new Date();
 	  }
 	  let nowDate = date;
+	  
+	  let year = 0;
+	  let month = 0;
 	  if ($(target).length > 0) {
-	    let year = nowDate.getFullYear();
-	    let month = nowDate.getMonth() + 1;
+	    year = nowDate.getFullYear();
+	    month = nowDate.getMonth() + 1;
 	    $(target).empty().append(assembly(year, month));
 	  } else {
 	    console.error("calendar Target is empty");
@@ -28,7 +31,7 @@ $(document).ready(function() {
 	    tag += "<td></td>";
 	    cnt++;
 	  }
-	
+	/*
 	  // 날짜 채우기
 	  for (let i = 1; i <= thisLastDay.getDate(); i++) {
 	    if (cnt % 7 == 0) {
@@ -40,7 +43,67 @@ $(document).ready(function() {
 	      tag += "</tr>";
 	    }
 	  }
+	*/
+	//이번달 일정 있는 날/없는 날 구분해서 채우기 아작스
+	let ajaxYear = year % 100;
+	let ajaxMonth = month;
+	if(ajaxMonth< 10){
+		ajaxMonth = "0" + month;
+	}
+	//console.log("typeof ajaxYear=", typeof ajaxYear);
+	//console.log("typeof ajaxMonth=", typeof ajaxMonth);
 	
+	$.ajax({
+        type: "get",
+        async: true,
+        url: "/nemo/mypage/mySchedule/ajaxSchedule?year=" + ajaxYear + "&month=" + ajaxMonth,
+  		//data: { "jsonInfo": jsonInfo },
+        success: function (data, textStatus) {
+
+			let jsonInfo = JSON.parse(data);
+			console.log(data);
+			for(let i = 0; i <= thisLastDay.getDate(); i++ ){
+			 console.log(jsonInfo.schedules[i].day);
+				//형변환
+				let day = Number(jsonInfo.schedules[i].day);
+				if( i == day ){
+					 if (cnt % 7 == 0) {
+				      tag += "<tr>";
+				    }
+				    tag += "<td>" + i + "<div class='displayReserveContainer scheduleDate'></div></td>";
+				    cnt++;
+				    if (cnt % 7 == 0) {
+				      tag += "</tr>";
+				    }						
+					
+				} else {
+					 // 날짜 채우기
+				 // for (let i = 1; i <= thisLastDay.getDate(); i++) {
+				    if (cnt % 7 == 0) {
+				      tag += "<tr>";
+				    }
+				    tag += "<td>" + i + "<div class='displayReserveContainer'></div></td>";
+				    cnt++;
+				    if (cnt % 7 == 0) {
+				      tag += "</tr>";
+				    }
+				//  }
+				
+				} //else End
+			}			
+
+        },
+        error: function (data, textStatus, error) {
+        	//console.log(data);
+        	//console.log(textStatus);
+        	//console.log(error);
+            //alert("찜 추가/삭제 에러 발생");
+        },
+    });
+	
+        
+      
+    
 	  $(target).find("#setDate").append(tag);
 	  calMoveEvtFn();
 	
@@ -160,4 +223,7 @@ $(document).ready(function() {
 	  passedDay(nowDate);
 	  */
 	} // end of calendarMaker
+	
+	
+    
 });
