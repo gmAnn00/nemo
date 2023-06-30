@@ -7,9 +7,8 @@ import java.util.Map;
 
 import nemo.dao.board.BoardDAO;
 import nemo.dao.board.CommentDAO;
-import nemo.dao.user.UserDAO;
 import nemo.dao.group.GroupInfoDAO;
-import nemo.dao.group.JoinGroupDAO;
+import nemo.dao.user.UserDAO;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
 import nemo.vo.group.GroupVO;
@@ -158,7 +157,7 @@ public class BoardService {
 	}
 	*/
 	//그룹 정보 요청하는 서비스
-	public Map getGroupInfo(int group_id) {
+	/*public Map getGroupInfo(int group_id) {
 		Map groupInfo=new HashMap();
 		GroupVO groupVO=new GroupVO();
 		groupVO=groupDAO.selectGroupById(group_id);
@@ -167,7 +166,7 @@ public class BoardService {
 		groupInfo.put("groupVO", groupVO);
 		groupInfo.put("currentMemNo", currentMemNo);
 		return groupInfo;
-	}
+	}*/
 	
 	//컨텐츠 삭제하는 메소드
 	public void deleteArticle(int article_no) {

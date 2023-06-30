@@ -1,6 +1,8 @@
 package nemo.service.group;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import nemo.dao.group.GroupDAO;
 import nemo.dao.group.GroupInfoDAO;
@@ -58,5 +60,14 @@ public class GroupInfoService {
 	}
 	
 	// 승인 여부 구함
-
+	public Map getGroupInfo(int group_id) {
+		Map groupInfo=new HashMap();
+		GroupVO groupVO=new GroupVO();
+		groupVO=groupDAO.selectGroupById(group_id);
+		int currentMemNo=groupDAO.selectGroupNumById(group_id);
+		System.out.println(groupVO.getGrp_mng());
+		groupInfo.put("groupVO", groupVO);
+		groupInfo.put("currentMemNo", currentMemNo);
+		return groupInfo;
+	}
 }

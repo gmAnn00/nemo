@@ -1,14 +1,13 @@
 package nemo.service.group;
 
 import java.util.List;
-import java.util.Map;
 
 import nemo.dao.group.GroupDAO;
 import nemo.dao.group.GroupMainDAO;
 import nemo.vo.board.BoardVO;
-import nemo.vo.user.UserVO;
 import nemo.vo.group.GroupVO;
-import nemo.vo.schedule.ScheduleVO;
+import nemo.vo.group.ScheduleVO;
+import nemo.vo.user.UserVO;
 
 public class GroupMainService {
 	GroupMainDAO groupMainDAO;

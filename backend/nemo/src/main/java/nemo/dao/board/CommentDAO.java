@@ -259,7 +259,7 @@ public class CommentDAO {
 		CommentVO comment= new CommentVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT c.comment_no, c.article_no, u.nickname, c.com_cont, c.create_date, a.title, parent_no, u.user_img";
+			String query="SELECT c.comment_no, c.article_no, u.nickname, c.com_cont, c.create_date, a.title, parent_no, c.user_id, u.user_img";
 			query+=" FROM comment_tbl c, board_tbl a, user_tbl u";
 			query+=" WHERE u.user_id=c.user_id AND c.article_no=a.article_no AND c.comment_no=?";
 			
@@ -275,6 +275,7 @@ public class CommentDAO {
 			String nickname=rs.getString("nickname");
 			String user_img=rs.getString("user_img");
 			String com_cont=rs.getString("com_cont");
+			String user_id=rs.getString("user_id");
 			Timestamp create_date=rs.getTimestamp("create_date");
 			String title = rs.getString("title");
 			int parent_no=rs.getInt("parent_no");
@@ -287,6 +288,7 @@ public class CommentDAO {
 			comment.getArticleVO().setTitle(title);
 			comment.getUserVO().setUser_img(user_img);
 			comment.setCom_cont(com_cont);
+			comment.setUser_id(user_id);
 
 			rs.close();
 			conn.close();

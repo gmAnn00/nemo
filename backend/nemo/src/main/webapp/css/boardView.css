@@ -1,23 +1,50 @@
-#contentsArea {
-  margin: 0 auto;
-  /* width: 1200px; */
-  display: flex;
-  position: relative;
+@charset "utf-8";
+/*게시글 조회 영역 상단*/
+.sc2_subsection_title {
+	border:none;
 }
+
+.writerInfo {
+	margin-left: 10px;
+
+}
+
+/* 게시글 내용 영역 */
+#contentArea {
+	position: relative;
+}
+.contentEditTool {
+	position: absolute;
+	padding: 10px;
+	right:0;
+	top:0;
+}
+
 /* 게시글 조회 부분 */
 .boardView {
   margin: 0 auto;
-  width: 62.5em;
   /* padding: 30px; */
+}
+
+.atricleArea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 auto;
 }
 /* 목록 버튼 오른쪽 정렬 */
 .articleToolBtns {
   overflow: hidden;
   margin-bottom: 10px;
   margin-top: 10px;
+  padding: 5px 10px;
 }
 .articleToolBtns a:last-child {
   float: right;
+  cursor: pointer;
+}
+.articleContentBox {
+
 }
 /* 제목 영역 */
 .articleHeader {
@@ -26,34 +53,69 @@
   overflow: hidden;
   position: relative;
 }
-.articleHeader div {
-  float: left;
+.articleHeader{
+	display: grid;
 }
+
 .articleTitle {
-  margin: 15px 0 10px 0;
+/*
+display:table-cell;
+vertical-align:middle;
+line-height: 20px;
+margin: 15px 0 15px 0;
+*/
+	padding: 15px 15px;
+	display:flex;
+  
 }
 .titleHead {
-  width: 150px;
-  text-align: center;
-  line-height: 13px;
-  font-size: 13px;
+  /*width: 150px;
+  text-align: center;*/
+  width: 50px;
+  margin: 5px 0;
+  display: inline-block;
+  vertical-align: middle;
+  float: left;
+}
+.titleHead .brackets {
+	display:inline-block;
+	margin-right: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffbb33;
+}
+.title {
+
+	  font-size: 20px;
+
 }
 .titleArea {
-  width: 700px;
-  line-height: 20px;
-  font-size: 20px;
+	display: inline-block;
+  font-size: 20px;  
+  vertical-align: middle;
+  /*width: 94%;*/
 }
 
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
 .writerInfo {
   font-size: 13px;
+  margin: 0 0 10px;
+	padding: 0 10px;
+
+}
+.thumbArea {
+	display: inline-block;
+	float:left;
 }
 .thumbArea img {
   border-radius: 50%;
   width: 40px;
+  height: 40px;
   background: #ccc;
 }
 .profileArea {
+	display:table-cell;
+	vertical-align: middle;
   padding: 0 10px;
   margin-bottom: 5px;
   width: 150px;
@@ -65,6 +127,10 @@
   border: none;
   background-color: transparent;
   font-weight: bold;
+  margin: 3px 0;
+}
+.profileArea .date {
+	margin: 3px 0;
 }
 .articleInfo .date {
   position: absolute;
@@ -78,71 +144,159 @@
   right: 25px;
   font-size: 13px;
 }
-.moreArea {
-  position: absolute;
-  right: -20px;
-  top: 0;
+.topComment, .viewCnt {
+	margin-right:5px;
 }
-.moreArea img {
-  width: 15px;
+
+.buttonUrl {
+	cursor: pointer;
 }
+
 
 /* 내용 영역 */
 .contentArea {
-  height: 300px;
-  padding: 10px;
+
+  padding: 30px 10px;
 }
 
 /* 댓글 영역 */
 .commentArea {
-  border-top: 5px solid #ccc;
+  border-top: 3px solid #ccc;
 }
 .comment {
   font-weight: bold;
-  margin: 10px;
+  margin: 15px 10px;
 }
+.comment span {
+	display:inline-block;
+	margin-left: 5px;
+}
+
 .commentList {
   margin: 0;
   padding: 0;
   font-size: 13px;
 }
-.commentItem {
-  list-style: none;
-  padding: 12px 23px 10px 0;
-  border-top: 1px solid #ccc;
+
+.commentItem{
+	list-style: none;	
+	border-top: 1px solid #ccc;
+	padding: 12px 23px 10px 0;
 }
+
 .commentItem:first-child {
   border-top: 0;
+}
+.replyCommentItem {
+	margin-left:50px;
 }
 .commentbox {
   position: relative;
   padding-left: 60px;
 }
-.commentbox div {
-  margin: 5px;
+.commentTool {
+	position: absolute;
+	top:0;
+	right:0;
+}
+.btnSubmitRe {
+	color: #999;
+	cursor:default;
+}
+.btnSubmitRe.active{
+	color:#000;
+	cursor:pointer;
+}
+
+
+.commentTool .comToolBtn a:hover, .replyCom a:hover,
+.btnRemoveRe:hover, .btnSubmitRe.active:hover{
+	color:#fb3;
+}
+.comDel {
+	margin-left:5px;
+}
+.commentbox div:not(:first-child) {
+  margin: 10px 5px;
 }
 /* 프로필 사진 */
 .commentThumb img {
   width: 40px;
+  height:40px;
   border-radius: 50%;
   position: absolute;
   top: 0;
   left: 10px;
   background-color: #ccc;
 }
-.commentThumb .commentNick {
+
+.commentNick .commentNickInfo {
   font-weight: bold;
 }
+.viewTextArea {
+	width: 100%;
+	height:auto;
+  /*min-height: 70px;*/
+  padding: 10px 5px;
+  border: 0;
+  font-size: 13px;
+  resize: none;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 2px;
+  outline-color: #ffd480;
+	border: none;
+}
 .commentInfo {
-  color: #999;
+	position:relative;
+	vertical-align: middle;
+}
+.commentDate, .comDate{
+	color: #999;
+	font-size: 11px;
+}
+.replyCom {
+	margin-left:10px;
+	color: #999;
+	font-size: 12px;
+}
+.modReply {
+	position:absolute;
+	right: 8px;
+	display:inline-block;
+	text-align: right;
+	font-weight: bold;
+	visibility: hidden;
+}
+.modReplyBtn{
+	margin:0 5px;
+}
+.modReplyBtn:hover{
+	color:#fb3;
+}
+
+/* 댓글에 답글 form*/
+.commentReWriter {
+  margin: 12px 0 20px 0;
+  padding: 15px 18px 10px 18px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+.btnReCom {
+	border:none;
 }
 
 /* 댓글 쓰기 */
 .commentWriter {
   margin: 12px 0 20px 0;
-  padding: 16px 10px 10px 18px;
+  padding: 16px 18px;
   border: 2px solid #ccc;
-  border-radius: 6px;
+  border-radius: 5px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -153,9 +307,9 @@
 }
 .commentInboxText {
   width: 100%;
-  min-height: 17px;
+  /*min-height: 70px;*/
   margin-top: 5px;
-  padding-right: 1px;
+  padding: 15px 5px;
   border: 0;
   font-size: 13px;
   resize: none;
@@ -163,13 +317,32 @@
   overflow-wrap: break-word;
   box-sizing: border-box;
   background: transparent;
-  outline: 0;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline-color: #ffd480;
 }
 .commentRegister {
   float: right;
+  margin-top:5px;
+  padding-right:5px;
 }
 
+
 /* 아래쪽 버튼 영역 */
+.btn {
+  display: inline-block;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+  margin: 0 10px;
+
+}
+.btn:not(.btnTop):hover{
+	color:#ffbb33;
+}
+
 .articleBottomBtns {
   overflow: hidden;
 }
@@ -178,4 +351,12 @@
 }
 .articleBottomBtns .rightArea {
   float: right;
+}
+
+.fa-caret-up {
+	font-size:15px;
+	line-height:15px;
+	margin-right:8px;
+	vertical-align: middle;
+	color:#ffbb33;
 }

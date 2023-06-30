@@ -12,7 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.user.InterestVO;
+import nemo.vo.user.InterestsVO;
 import nemo.vo.user.UserVO;
 
 public class MyInterestDAO {
@@ -20,7 +20,7 @@ public class MyInterestDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private DataSource dataFactory;
-	List<InterestVO> interestsList = new ArrayList<>();
+	List<InterestsVO> interestsList = new ArrayList<>();
 	
 	public MyInterestDAO() {
 		try {
@@ -35,7 +35,7 @@ public class MyInterestDAO {
 	}
 	
 	//마이페이지 관심사 조회
-	public List<InterestVO> searchInterestById(String user_id) {
+	public List<InterestsVO> searchInterestById(String user_id) {
 		try {
 			conn = dataFactory.getConnection();
 			
@@ -51,7 +51,7 @@ public class MyInterestDAO {
 			while(rs.next()) {				
 				String main_name = rs.getString("MAIN_NAME");
 				String sub_name = rs.getString("SUB_NAME");
-				InterestVO interestVO = new InterestVO();
+				InterestsVO interestVO = new InterestsVO();
 				interestVO.setMain_name(main_name);
 				interestVO.setSub_name(sub_name);
 				interestsList.add(interestVO);
@@ -88,9 +88,9 @@ public class MyInterestDAO {
 	}
 	
 	//관심사 수정 메서드	
-	public void modInterests(List<InterestVO> interestsList) {
+	public void modInterests(List<InterestsVO> interestsList) {
 		try {					
-			for(InterestVO interestsVO : interestsList) {
+			for(InterestsVO interestsVO : interestsList) {
 				conn=dataFactory.getConnection();
 				
 				String user_id = interestsVO.getUser_id();

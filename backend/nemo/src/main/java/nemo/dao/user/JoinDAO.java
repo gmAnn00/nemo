@@ -79,7 +79,7 @@ public class JoinDAO {
 					System.out.println("DAO main_name="+main_name);
 					System.out.println("DAO sub_name="+sub_name);
 					
-					String query = "INSERT INTO interest_tbl(user_id, main_name, sub_name) values(?, ?, ?)";
+					String query = "INSERT INTO interests_tbl(user_id, main_name, sub_name) values(?, ?, ?)";
 					System.out.println(query);
 					
 					pstmt = conn.prepareStatement(query);

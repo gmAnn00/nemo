@@ -118,7 +118,7 @@ public class MyBoardDAO {
 				myComment.getBoardVO().setTitle(title);
 				myComment.getCommentVO().setCom_cont(com_cont);
 				//myComment.getCommentVO().setCreate_date(create_date);
-				//myComment.set(create_date);
+				myComment.setCreate_date(create_date);
 				myComment.getUserVO().setUser_id(user_id);
 				myComment.getUserVO().setUser_img(user_img);
 				myComment.getUserVO().setNickname(nickname);

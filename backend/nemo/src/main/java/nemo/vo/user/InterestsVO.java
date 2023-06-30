@@ -6,7 +6,7 @@ public class InterestsVO {
 	private String sub_name;
 	
 	public InterestsVO() {
-		System.out.println("InterestsVO 생성자 호출");
+		//System.out.println("InterestsVO 생성자 호출");
 }
 
 	public String getUser_id() {

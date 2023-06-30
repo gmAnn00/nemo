@@ -23,7 +23,7 @@ import org.apache.commons.io.FileUtils;
 
 import nemo.service.mypage.MyInterestService;
 import nemo.service.mypage.MyProfileService;
-import nemo.vo.user.InterestVO;
+import nemo.vo.user.InterestsVO;
 import nemo.vo.user.UserVO;
 
 
@@ -95,7 +95,7 @@ public class MyProfileController extends HttpServlet {
 					//System.out.println("controller 유저정보조회" + userVO);
 					
 					//관심사 담기(list로 담기)
-					List<InterestVO> interestsList = myIntesInterestService.searchInterestById(user_id);
+					List<InterestsVO> interestsList = myIntesInterestService.searchInterestById(user_id);
 					request.setAttribute("interestsList", interestsList);
 					
 					//프로필 조회 페이지로 이동
@@ -152,8 +152,11 @@ public class MyProfileController extends HttpServlet {
 					String user_addr2 = userProfileMap.get("user_addr2");
 					String phone = userProfileMap.get("phone");				
 					Date birthdate = Date.valueOf(userProfileMap.get("birthdate"));
+					String originalFileName = (String)userProfileMap.get("originalFileName");
 					String user_img = null;
-					if(userProfileMap.get("user_img")==null) {
+					
+					System.out.println("originalFileName" + originalFileName);
+					if(userProfileMap.get("user_img") == null && originalFileName == null) {
 						user_img="dall.png";
 					}else {
 						user_img = userProfileMap.get("user_img");
@@ -167,26 +170,31 @@ public class MyProfileController extends HttpServlet {
 					//dString user_img = userProfileMap.get("user_img");					
 					
 					System.out.println("생년월일 잘 받았나?" + birthdate);
-					
+					//유저 이미지를 교체했을 때
 					if(user_img != null && user_img.length() != 0) {
 						File scrFile = new File(USER_IMG_REPO + "\\temp\\" + user_img);
 						File destDir = new File(USER_IMG_REPO + "\\" + user_id);
 						destDir.mkdir();
 						FileUtils.moveFileToDirectory(scrFile, destDir, true);
 						scrFile.delete();
-						//옛날 이미지 삭제
-						String originalFileName = (String)userProfileMap.get("originalFileName");
-						System.out.println("originalFileName" + originalFileName);
-						File oldFile = new File(USER_IMG_REPO + "\\" + originalFileName);
+						//기존 이미지 삭제
+						originalFileName = (String)userProfileMap.get("originalFileName");
+						//System.out.println("originalFileName" + originalFileName);						
+						File oldFile = new File(USER_IMG_REPO + "\\" + user_id  + "\\" + originalFileName);
 						oldFile.delete();
+						
+					} else if(user_img == null || user_img.length() == 0 && originalFileName != null ) {
+					//유저이미지가 이미 있고, 교체하지 않았을 때
+						System.out.println("유저 이미지를 교체하지 않았습니다.");
+						user_img = originalFileName;
 					}
-										
+					
 					UserVO userVO = new UserVO(user_id, password, user_name, nickname, zipcode, user_addr1, user_addr2, phone, email, birthdate, user_img);
 					myProfService.modProfile(userVO);
 									
 					
 					request.setAttribute("msg", "modified");
-					nextPage="/nemo/mypage/myprofile";
+					nextPage="/nemo/mypage/myProfile";
 					
 					out.print("<script>");
 			        out.print("alert('회원정보가 수정되었습니다.');");
@@ -202,21 +210,21 @@ public class MyProfileController extends HttpServlet {
 					
 					String user_img = userImageMap.get("user_img");
 					
-					if(userImageMap.get("user_img") == null) {
+					if(user_img == null ) {
 						user_img="dall.png";
 					}else {
 						user_img = userImageMap.get("user_img");
 					}
-					String message;
+					
 					System.out.println("user_img확인" + user_img);
 					//이미지가 있을 때 수정
-					if(user_img != null && user_img.length() != 0) {
+					if(user_img != null && user_img.length() != 0 ) {
 						File scrFile = new File(USER_IMG_REPO + "\\temp\\" + user_img);
 						File destDir = new File(USER_IMG_REPO + "\\" + user_id);
 						destDir.mkdir();
 						FileUtils.moveFileToDirectory(scrFile, destDir, true);
 						scrFile.delete();
-						//옛날 이미지 삭제
+						//기존 이미지 삭제
 						String originalFileName = (String)userImageMap.get("originalFileName");
 						System.out.println("originalFileName" + originalFileName);
 						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + originalFileName);
@@ -230,6 +238,7 @@ public class MyProfileController extends HttpServlet {
 					
 					//request.setAttribute("msg", "modImg");
 					/*
+					String message;
 					message = "<script>";
 					message += "alert('이미지가 수정되었습니다.');";
 					message += "location.href='" + nextPage + "';";
@@ -245,6 +254,30 @@ public class MyProfileController extends HttpServlet {
 			        out.print("</script>");
 			        
 					
+				}else if(action.equals("/userImgDelete")) {
+					//프로필 이미지 삭제					
+					String user_img = null;
+					Map<String, String>userImageMap = upload(request, response);					
+										
+					if(user_img == null) {
+						user_img="dall.png";
+						//기존 이미지 삭제
+						String originalFileName = (String)userImageMap.get("originalFileName");
+						System.out.println("originalFileName" + originalFileName);
+						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + originalFileName);
+						oldFile.delete();					
+					}				
+				
+					UserVO userVO = new UserVO(user_id, user_img);
+					myProfService.modUserImg(userVO);					
+
+					nextPage= "/nemo/mypage/myProfile";
+					
+			        out.print("<script>");
+			        out.print("alert('프로필 이미지가 삭제되었습니다.');");
+			        out.print("location.href='" + nextPage + "';");
+			        out.print("</script>");
+			        
 				} else if(action.equals("/delUserForm")) {
 				
 					nextPage= "/views/mypage/delUser.jsp";

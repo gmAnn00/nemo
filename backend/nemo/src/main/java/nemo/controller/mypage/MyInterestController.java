@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import nemo.service.mypage.MyInterestService;
 import nemo.service.user.JoinService;
-import nemo.vo.user.InterestVO;
+import nemo.vo.user.InterestsVO;
 import nemo.vo.user.UserVO;
 
 @WebServlet("/mypage/interest/*")
@@ -23,13 +23,13 @@ public class MyInterestController extends HttpServlet {
 	HttpSession session;
 	MyInterestService myInterestService;
 	UserVO userVO;
-	InterestVO interestsVO;	
+	InterestsVO interestsVO;	
 
 	@Override
 	public void init() throws ServletException {
 		myInterestService = new MyInterestService();
 		userVO = new UserVO();
-		interestsVO = new  InterestVO();
+		interestsVO = new  InterestsVO();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,7 +51,7 @@ public class MyInterestController extends HttpServlet {
 		if(action.equals("/modInterestForm")) {
 			//관심사 수정페이지로 이동
 			user_id = (String)session.getAttribute("user_id");
-			List<InterestVO> interestsList = myInterestService.searchInterestById(user_id);
+			List<InterestsVO> interestsList = myInterestService.searchInterestById(user_id);
 						
 			request.setAttribute("interestsList", interestsList);			
 			nextPage= "/views/mypage/modInterest.jsp";
@@ -63,10 +63,10 @@ public class MyInterestController extends HttpServlet {
 			//관심사 수정
 			user_id = (String)session.getAttribute("user_id");			
 			int inputNum = Integer.parseInt(request.getParameter("inputNum"));			
-			List<InterestVO> interestsList = new ArrayList<InterestVO>();
+			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
 			//System.out.println("inputNum = " + inputNum);
 			for(int i = 0; i<inputNum; i++) {
-				interestsVO = new InterestVO();
+				interestsVO = new InterestsVO();
 				String main_name = request.getParameter("main_name"+i);
 				String sub_name = request.getParameter("sub_name"+i);
 				
@@ -81,7 +81,7 @@ public class MyInterestController extends HttpServlet {
 			
 			myInterestService.modInterests(user_id, interestsList);
 			
-			nextPage="/nemo/mypage/myprofile";			
+			nextPage="/nemo/mypage/myProfile";			
 			response.sendRedirect(nextPage);
 			
 		}

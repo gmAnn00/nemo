@@ -2,14 +2,14 @@ $(document).ready(function() {
 	$("#domainList").on("change", function() {
 		var emailDomain = $("#emailDomain");
 		if ($(this).val() == "self") {
-			emailDomain.val('');
+			emailDomain.val("");
 			emailDomain.prop("readonly", false);
 		} else {
 			emailDomain.val($(this).val());
 			emailDomain.prop("readonly", true);
 		}
-
 	});
+
 
 	//비밀번호 확인
 	$("#alertSuccess").hide();
@@ -28,7 +28,7 @@ $(document).ready(function() {
 				$("#submit").attr("disabled", "disabled");
 			}
 		}
-	}); //end 비밀번호
+	}); //end 비밀번호 확인
 
 });
 
@@ -93,7 +93,7 @@ function fn_nicknameCheck() {
 	if (nickname == "") {
 		$("#resultMsgNick").show();
 		$("#resultMsgNick").html("중복 체크할 닉네임을 입력해주세요");
-		$("#resultMsgNick").css("color", "red");
+		$("#resultMsgNick").css("color", "#f43965");
 		return; //아래 내용 수행안하고 위로 돌아감
 	}
 
@@ -141,7 +141,7 @@ function fn_emailCheck() {
 	if (emailId == "" || emailDomain == "") {
 		$("#resultMsgEmail").show();
 		$("#resultMsgEmail").html("중복 체크할 이메일을 입력해주세요");
-		$("#resultMsgEmail").css("color", "red");
+		$("#resultMsgEmail").css("color", "#f43965");
 		return; //아래 내용 수행안하고 위로 돌아감
 	}
 
@@ -174,6 +174,5 @@ function fn_emailCheck() {
 		});
 	}
 }
-
 
 

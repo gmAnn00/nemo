@@ -37,6 +37,7 @@
   width: 150px;
   height: 55px;
   background-color: var(--sub3-color);
+  border-radius: 5px;
   border: none;
   font-size: 0.9em;
 }
@@ -58,6 +59,7 @@
 }
 .selectLarge, .selectSmall{
   background-color: var(--main-color);
+  color: #ffffff;
 }
 /* .saveInterest button{
     display: inline-block;

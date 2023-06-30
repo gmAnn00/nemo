@@ -155,7 +155,8 @@ $(document).ready(function() {
 					appendItem+="<a href='"+ ctx +"/group/board/deleteComment?group_id="+group_id+"&article_no="+article_no+"&comment_no="+commentInfo.comment_no+"'"; 
 					appendItem+="role='button'  id='comDelBtn"+commentInfo.comment_no+"'>삭제</a></span></div>";
 					appendItem+="<a href='#' class='commentThumb'>";
-					appendItem+="<img src='"+ctx+"/"+commentInfo.user_img+"' alt='프로필사진' /></a>";
+					//<img src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${comment.userVO.user_img}" alt="프로필사진"/>
+					appendItem+="<img src='"+ctx+"/userImageDownload?user_id="+commentInfo.user_id+"&user_img="+commentInfo.user_img+"' alt='프로필사진' /></a>";
 					appendItem+="<div class='commentNick'><span  class='commentNickInfo'>";
 					appendItem+="<a href='#' role='button'>"+commentInfo.nickname+"</a></span></div><div class='commentText'>";
 					appendItem+="<p><textarea class='viewTextArea' rows='1' id='viewTextArea"+commentInfo.comment_no+"'";
@@ -354,7 +355,8 @@ $(document).ready(function() {
 					appendItem+="<a href='"+ ctx +"/group/board/deleteComment?group_id="+group_id+"&article_no="+article_no+"&comment_no="+commentInfo.comment_no+"'"; 
 					appendItem+="role='button'  id='comDelBtn"+commentInfo.comment_no+"'>삭제</a></span></div>";
 					appendItem+="<a href='#' class='commentThumb'>";
-					appendItem+="<img src='"+ctx+"/"+commentInfo.user_img+"' alt='프로필사진' /></a>";
+					//<img src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${comment.userVO.user_img}" alt="프로필사진"/>
+					appendItem+="<img src='"+ctx+"/userImageDownload?user_id="+commentInfo.user_id+"&user_img="+commentInfo.user_img+"' alt='프로필사진' /></a>";
 					appendItem+="<div class='commentNick'><span  class='commentNickInfo'>";
 					appendItem+="<a href='#' role='button'>"+commentInfo.nickname+"</a></span></div><div class='commentText'>";
 					appendItem+="<p><textarea class='viewTextArea' rows='1' id='viewTextArea"+commentInfo.comment_no+"'";
