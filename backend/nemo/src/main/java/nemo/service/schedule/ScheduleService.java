@@ -1,8 +1,8 @@
-package nemo.service.schedule;
+package nemo.service.group;
 
 
-import nemo.dao.schedule.ScheduleDAO;
-import nemo.vo.schedule.ScheduleVO;
+import nemo.dao.group.ScheduleDAO;
+import nemo.vo.group.ScheduleVO;
 
 public class ScheduleService {
 	ScheduleDAO scheduleDAO;
@@ -12,8 +12,8 @@ public class ScheduleService {
 		scheduleDAO  = new ScheduleDAO();
 	}
 	
-	public void addSchedule(ScheduleVO scheduleVO) {
-		scheduleDAO.createSchedule(scheduleVO);
+	public boolean addSchedule(ScheduleVO scheduleVO) {
+		return scheduleDAO.createSchedule(scheduleVO);
 	}
 	/*
 	public boolean schCompare(ScheduleVO scheduleVO) {
