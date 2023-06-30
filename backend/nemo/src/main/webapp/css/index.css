@@ -19,7 +19,7 @@ body {
   /* text-align: center; */
   letter-spacing: 0.1rem;
   padding: 50px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .intro-header {
   display: flex;
@@ -50,7 +50,6 @@ body {
   padding: 2rem 2.5rem;
   /* background-color: rgba(0, 0, 0, 0.5); */
   color: #fff;
-  
 }
 .intro h1 {
   font-size: 4rem;
@@ -138,7 +137,7 @@ body {
 .imgBox {
   width: 170px;
   height: 170px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-repeat: no-repeat;
   background-size: 120px 120px;
   margin: 10px;
@@ -150,7 +149,7 @@ body {
 .imgBox:hover {
   transform: translateY(-20px);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-} 
+}
 .sle1 {
   background-image: url(../images/icon_01garland.png);
   background-color: var(--sub1-color);
@@ -300,15 +299,18 @@ body {
   font-size: 15px;
   line-height: 52px;
   color: #fff;
-  letter-spacing: -.3px;
-  background-color: rgba(255,255,255,.2);
+  letter-spacing: -0.3px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.group_btn a {
+  color: #fff;
 }
 .btn_more {
   font-family: "NeoExBold";
   margin-right: 20px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
-.group_btn:hover .btn_more{
+.group_btn:hover .btn_more {
   margin-right: 25px;
 }
 .group {
@@ -343,29 +345,37 @@ body {
   justify-content: space-between;
 }
 
-.card--1 .card__img, .card--1 .card__img--hover {
-  background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+.card--1 .card__img,
+.card--1 .card__img--hover {
+  background-image: url("https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
 }
-.card--2 .card__img, .card--2 .card__img--hover {
-  background-image: url('../images/test_image1.jpg');
+.card--2 .card__img,
+.card--2 .card__img--hover {
+  background-image: url("../images/test_image1.jpg");
 }
-.card--3 .card__img, .card--3 .card__img--hover {
-  background-image: url('../images/test_image2.jpg');
+.card--3 .card__img,
+.card--3 .card__img--hover {
+  background-image: url("../images/test_image2.jpg");
 }
-.card--4 .card__img, .card--4 .card__img--hover {
-  background-image: url('../images/test_image3.jpg');
+.card--4 .card__img,
+.card--4 .card__img--hover {
+  background-image: url("../images/test_image3.jpg");
 }
-.card--5 .card__img, .card--5 .card__img--hover {
-  background-image: url('../images/test_image4.jpg');
+.card--5 .card__img,
+.card--5 .card__img--hover {
+  background-image: url("../images/test_image4.jpg");
 }
-.card--6 .card__img, .card--6 .card__img--hover {
-  background-image: url('../images/test_image5.jpg');
+.card--6 .card__img,
+.card--6 .card__img--hover {
+  background-image: url("../images/test_image5.jpg");
 }
-.card--7 .card__img, .card--7 .card__img--hover {
-  background-image: url('../images/test_image6.jpg');
+.card--7 .card__img,
+.card--7 .card__img--hover {
+  background-image: url("../images/test_image6.jpg");
 }
-.card--8 .card__img, .card--8 .card__img--hover {
-  background-image: url('../images/test_image7.jpg');
+.card--8 .card__img,
+.card--8 .card__img--hover {
+  background-image: url("../images/test_image7.jpg");
 }
 
 .card__like {
@@ -375,11 +385,11 @@ body {
 .card__clock {
   width: 15px;
   vertical-align: middle;
-  fill: #AD7D52;
+  fill: #ad7d52;
 }
 .card__time {
   font-size: 12px;
-  color: #AD7D52;
+  color: #ad7d52;
   vertical-align: middle;
   margin-left: 5px;
 }
@@ -407,7 +417,7 @@ body {
   top: 0;
   box-sizing: border-box;
   text-align: right;
-} 
+}
 
 .card__img--hover {
   transition: 0.2s all ease-out;
@@ -422,16 +432,16 @@ body {
   top: 0;
 }
 .card {
-  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
   background-color: #fff;
   width: 22%;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 .card:hover {
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
   transform: scale(1.05, 1.05);
 }
 
@@ -456,7 +466,7 @@ body {
 }
 .card__title {
   margin-top: 5px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .card__by {
@@ -482,7 +492,7 @@ body {
 
 .card:hover .card__info-hover {
   opacity: 1;
-} 
+}
 .fa-location-dot {
   color: var(--main-color);
 }

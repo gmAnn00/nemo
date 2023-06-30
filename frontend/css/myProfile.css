@@ -1,4 +1,40 @@
 @charset "utf-8";
+<<<<<<< HEAD
+=======
+/*전체 부분*/
+/* .all {
+  margin: 0 auto;
+  width: 1000px;
+  display: flex;
+} */
+
+/*2번*/
+/* .menu {
+  height: 170px;
+  margin: 80px 60px 0 50px;
+  display: inline-block;
+  padding: 5px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #ccc;
+  border-radius: 10px;
+  width: 200px;
+  float: left;
+}
+
+.menu i {
+  margin-right: 10px;
+}
+.menu li:first-child {
+  text-align: center;
+  padding: 0;
+  border: 0px solid #6f6f6f;
+}
+.menu li {
+  line-height: 30px;
+  padding-left: 40px;
+} */
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 
 /*3번*/
 .contentBox {
@@ -16,7 +52,11 @@
 }
 /*4번*/
 .myProfile {
+<<<<<<< HEAD
   width: 750px;
+=======
+  width: 900px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   display: flex;
   flex-wrap: wrap;
   margin-left: 30px;
@@ -24,7 +64,11 @@
 /*4-1*/
 .myProMo {
   margin: 30px 0 10px 0;
+<<<<<<< HEAD
   width: 720px;
+=======
+  width: 800px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   display: flex;
   justify-content: space-between;
 }
@@ -63,7 +107,10 @@
   display: inline-block;
   flex: 0.5;
   margin-top: 10px;
+<<<<<<< HEAD
   cursor: pointer;
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }
 
 /*4-3*/
@@ -138,7 +185,11 @@ td div {
 .withdrawal {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
   width: 720px;
+=======
+  width: 800px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   font-size: 0.8em;
 }
 .withdrawal > h3 {

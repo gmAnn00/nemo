@@ -43,7 +43,11 @@
         <h2>회원가입</h2>
         <h3>회원이 되어 다양한 사람들과 만나보세요!</h3>
         <!-- <h4>(모든 항목을 입력해주세요)</h4> -->
+<<<<<<< HEAD
         <form id="frm" name="frm" action="${contextPath}/join/join" method="post">
+=======
+        <form id="frm" name="frm" action="${contextPath}/member/addMember.do" method="post">
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
           <div>
             <label for="user_id">아이디</label>
             

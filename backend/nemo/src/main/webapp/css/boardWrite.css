@@ -42,9 +42,15 @@
 }
 
 /*  글쓰기 */
+<<<<<<< HEAD
 .article textarea {
   width: 835px;
   height: 500px;
+=======
+.article > .writeContent {
+  width: 835px;
+  height: 300px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   resize: none;
 }
 /* 등록버튼 */

@@ -48,7 +48,11 @@ public class LoginController extends HttpServlet {
 
 		if (action == null || action.equals("/loginForm")) {
 			
+<<<<<<< HEAD
 			nextPage = "/views/login.jsp";
+=======
+			nextPage = "views/login.jsp";
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);

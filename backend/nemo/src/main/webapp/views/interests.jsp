@@ -9,7 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>관심사 선택</title>
+=======
+<title>관심자창</title>
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
  <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
@@ -272,14 +276,27 @@
         </div>
         
         <!--내 관심사-->
+<<<<<<< HEAD
         <h3>내 관심사<span>(최대 3개 선택가능)</span></h3>
+=======
+        <h3>내 관심사<span>(최대 3개 선택가능) 눌러서 제거가능</span></h3>
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
         <div class="myInterest" id="myInt">
           
         </div>
         
         <div class="saveInterest">
+<<<<<<< HEAD
           <button type="submit" class="button" disabled>선택하기</button>         
           <a href="${contextPath}/login"> <button type="button" class="buttonCancle">넘어가기</button></a>        
+=======
+          <button type="submit" class="button" disabled>선택하기</button>
+         
+         <a href="${contextPath}/login"> <button type="button" class="buttonCancle">넘어가기</button></a>
+           <!-- 
+           넘어가기
+            -->
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
         </div>
       </div>
     </div>
@@ -287,4 +304,8 @@
  	</form>
  	<jsp:include page="footer.jsp" flush="true"></jsp:include>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d

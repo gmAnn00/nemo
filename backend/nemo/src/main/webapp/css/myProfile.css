@@ -34,10 +34,20 @@
 }
 
 /*4-2*/
+<<<<<<< HEAD
 .myImage {
   display: flex;
   width: 150px;
 }
+=======
+.myIM {
+  display: flex;
+  width: 150px;
+}
+.myImage {
+  display: block;
+}
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 .myImage form {
   text-align: center;
   margin-left: 10px;
@@ -49,7 +59,11 @@
   height: 120px;
   border-radius: 50%;
   border: 1px solid var(--sub3-color);
+<<<<<<< HEAD
   /*background: url(../images/dall.png) 35%;*/
+=======
+  background: url(../images/dall.png) 35%;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   line-height: 180px;
   color: var(--sub3-color);
   text-align: left;
@@ -133,12 +147,27 @@ td div {
 }
 /* 탈퇴 하기 */
 .withdrawal {
+<<<<<<< HEAD
+=======
+  display: flex;
+  justify-content: space-between;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   width: 720px;
   font-size: 0.8em;
 }
 .withdrawal > h3 {
+<<<<<<< HEAD
   font-size: 1em;
 }
 .withdrawal .delMemberlink {
   color: #ff26a5;
+=======
+  font-size: 1.1em;
+}
+.withdrawal .buttonCancle {
+  border: 1px solid #ff26a5;
+  position: relative;
+  top: -3px;
+  font-size: 0.8em;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }

@@ -8,6 +8,51 @@
   padding: 20px;
 }
 
+<<<<<<< HEAD
+=======
+/*3번*/
+.myImage {
+  padding-top: 30px;
+  width: 700px;
+  text-align: center;
+  margin: 0 auto;
+  padding-right: 70px;
+}
+.myImage img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--sub3-color);
+  background: url(../images/dall.png) 35%;
+  line-height: 180px;
+  color: var(--sub3-color);
+  text-align: left;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
+}
+
+/*4번*/
+.profileM {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 600px;
+  text-align: center;
+  margin-top: 10px;
+}
+.profileM > p {
+  padding: 10px 0;
+}
+
+.profileM label {
+  float: left;
+  margin-left: 50px;
+  margin: 10px 0;
+}
+.profileM input {
+  margin: 10px 0;
+}
+
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 /* 회원가입영역 */
 form {
   display: flex;
@@ -42,6 +87,7 @@ form input {
   margin: 0 auto;
   padding-right: 70px;
 }
+<<<<<<< HEAD
 .myImage img {
   width: 120px;
   height: 120px;
@@ -61,6 +107,8 @@ form input {
   cursor: pointer;
 }
 
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 /* 비밀번호 일치 */
 .alert {
   font-size: 12px;

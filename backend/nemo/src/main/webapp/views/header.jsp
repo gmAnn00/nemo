@@ -43,6 +43,23 @@
 	                	 <li><a href="">고객센터</a></li>
 	                	 <li><a href="${contextPath}/logout">로그아웃</a></li>
             		</c:when>
+<<<<<<< HEAD
+=======
+            		
+            		<c:when test="${user_id == 'admin'}">
+	            		<li>
+	                    	<a href="#">
+	                       	 <div class="profile"><i class="fa-solid fa-circle-user"></i><span class="profile_name">${nickname}</span></div>
+	                    	</a>
+	               		 </li>
+	              		 <li><a href="">소모임 관리</a></li>
+	               		 <li><a href="">회원관리</a></li>
+	               		 <li><a href="">신고관리</a></li>
+	               		 <li><a href="">고객센터 Q&A</a></li>
+	                	 <li><a href="${contextPath}/logout">로그아웃</a></li>
+            		</c:when>
+            		
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
             		<c:otherwise>
             			<li></li>
             			<li><a href="${contextPath}/search">소모임 검색</a></li>

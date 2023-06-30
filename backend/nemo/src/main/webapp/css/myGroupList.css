@@ -14,7 +14,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 .card--1 .card__img, .card--1 .card__img--hover {
     background-image: url('https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 }
@@ -39,7 +42,11 @@
 .card--8 .card__img, .card--8 .card__img--hover {
     background-image: url('../images/test_image7.jpg');
 }
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 .card__like {
     width: 18px;
 }
@@ -93,6 +100,7 @@
     border-top-right-radius: 12px;
     top: 0;
 }
+<<<<<<< HEAD
 
 
 /* 가입 대기중 */
@@ -108,6 +116,8 @@
   line-height: 250px;
 }
 
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 .card {
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
     background-color: #fff;
@@ -130,7 +140,10 @@
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
     padding: 16px 24px 24px 24px;
+<<<<<<< HEAD
     position: relative;
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }
 
 .card__category {
@@ -142,9 +155,14 @@
 }
 .card__category:first-child {
     padding-left: 0;
+<<<<<<< HEAD
     border-right: #404040 1px solid;
 }
 
+=======
+    border-right: #868686 1px solid;
+}
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 .card__title {
     margin-top: 5px;
     margin-bottom: 10px; 
@@ -182,6 +200,7 @@
 .fa-location-dot {
     color: var(--main-color);
 }
+<<<<<<< HEAD
   
   
 /* 찜하트 영역 */
@@ -239,4 +258,6 @@ svg {
 .hide {
   display: none;
 }
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   

@@ -57,6 +57,7 @@
     border-radius: 4px;
     padding: 10px; 
 }
+<<<<<<< HEAD
 .comment-like-unlike {
 	display: inline-block;
 	margin-left: 10px;
@@ -66,6 +67,13 @@
     color: #547ef89e;
     cursor: pointer;
     width: 20px;
+=======
+.comment-like-unlike span i{
+    font-size: 18px;
+    color: #547ef89e;
+    cursor: pointer;
+    width: 30px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
     height: 25px;
     text-align: center;
     line-height: 25px;

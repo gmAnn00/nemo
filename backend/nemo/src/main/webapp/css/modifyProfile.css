@@ -20,7 +20,10 @@ form div {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+<<<<<<< HEAD
   margin-left: 50px;
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   width: 435px;
   position: relative;
   /* align-items: center; */
@@ -40,13 +43,22 @@ form input {
 .myImage {
   padding-top: 30px;
   align-items: center;
+<<<<<<< HEAD
+=======
+  margin: 0 auto;
+  padding-right: 70px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }
 .myImage img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 1px solid var(--sub3-color);
+<<<<<<< HEAD
   /*background: url(../images/dall.png) 35%;*/
+=======
+  background: url(../images/dall.png) 35%;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   line-height: 180px;
   text-align: left;
   color: var(--sub3-color);
@@ -55,7 +67,11 @@ form input {
 }
 .myImage label {
   position: relative;
+<<<<<<< HEAD
   left: 140px;
+=======
+  left: 165px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   top: 10px;
   cursor: pointer;
 }

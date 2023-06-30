@@ -11,7 +11,11 @@
 .formArea {
   margin: 0 auto;
   padding: 0 50px;
+<<<<<<< HEAD
   /*border-top: 2px solid var(--main-color);*/
+=======
+  border-top: 2px solid var(--main-color);
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   width: 800px;
 }
 
@@ -24,8 +28,11 @@
   text-align: center;
   margin-bottom: 30px;
   margin-top: 30px;
+<<<<<<< HEAD
   padding-bottom: 30px;
   border-bottom: 2px solid var(--main-color);
+=======
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }
 
 .imgCrop {
@@ -64,20 +71,29 @@ form {
   justify-content: center;
   margin: 0 auto;
 }
+<<<<<<< HEAD
 form div:not(.buttonCancle, .button, .imgButtonArea, .selectBox, .creatGrp) {
+=======
+form div {
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   display: flex;
   flex-direction: column;
   /* margin-bottom: 20px; */
   width: 500px;
   position: relative;
 }
+<<<<<<< HEAD
 form label:not(.checkLabel, .imgLabel){
+=======
+form label {
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
   margin-bottom: 5px;
   position: relative;
   top: 30px;
   left: -110px;
   width: 105px;
 }
+<<<<<<< HEAD
 .imgButtonArea{
 	display:flex;
 	flex-direction: row;
@@ -93,6 +109,11 @@ form input {
 .checkLabel{
 	padding-left: 15px;
 }
+=======
+form input {
+  padding: 8px;
+}
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 input[id="groupNum"] {
   width: 22%;
 }
@@ -152,10 +173,15 @@ input[id="groupNum"] {
 form input[type="checkbox"] {
   display: inline-block;
   position: relative;
+<<<<<<< HEAD
   left: -250px;
   top: 15px;
   /* position: absolute;
   top: 40px; */
+=======
+  top: 15px;
+  width: 15px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }
 
 /* 주소입력 */
@@ -176,8 +202,18 @@ form input[id="grp_addr1"] {
 .checkConfirm {
   margin-bottom: 80px;
 }
+<<<<<<< HEAD
 .checkConfirm span {
   padding-left: 15px;
+=======
+.checkConfirm label.confirm {
+  padding-left: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }
 
 .creatGrp {

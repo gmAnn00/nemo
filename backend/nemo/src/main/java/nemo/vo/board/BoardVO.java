@@ -2,11 +2,20 @@ package nemo.vo.board;
 
 import java.sql.Date;
 
+<<<<<<< HEAD
+=======
+import nemo.vo.common.UserVO;
+
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 public class BoardVO {
 	//필드
 	private int article_no;
 	private String user_id;
+<<<<<<< HEAD
 	private String nickname; 
+=======
+	//private String nickname; 
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 	private int grp_id;
 	private Date create_date;
 	private String title;
@@ -14,9 +23,25 @@ public class BoardVO {
 	private String brackets;
 	private int view_cnt;
 	private int com_cnt;
+<<<<<<< HEAD
 	
 	public BoardVO() {
 
+=======
+	private UserVO userVO;
+	
+	
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+
+	public BoardVO() {
+		userVO = new UserVO();
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 	}
 
 	public BoardVO(int article_no, String user_id, String nickname, int grp_id, String title, String content, String brackets,
@@ -24,7 +49,11 @@ public class BoardVO {
 
 		this.article_no = article_no;
 		this.user_id = user_id;
+<<<<<<< HEAD
 		this.nickname=nickname;
+=======
+		//this.nickname=nickname;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 		this.grp_id = grp_id;
 		this.title = title;
 		this.content = content;
@@ -49,13 +78,21 @@ public class BoardVO {
 		this.user_id = user_id;
 	}
 
+<<<<<<< HEAD
+=======
+	/*
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 	public String getNickname() {
 		return nickname;
 	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+<<<<<<< HEAD
 	}
+=======
+	}*/
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 
 	public int getGrp_id() {
 		return grp_id;

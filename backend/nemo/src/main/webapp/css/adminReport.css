@@ -1,7 +1,20 @@
 @charset "utf-8";
 table {
     margin-top: 20px;
+<<<<<<< HEAD
 }
 .list {
     position: static!important;
+=======
+    width: 100%;
+}
+.list {
+    position: static!important;
+}
+.dataTables_filter {
+    margin-bottom: 10px;
+}
+.tab_box {
+    display: block!important;
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
 }

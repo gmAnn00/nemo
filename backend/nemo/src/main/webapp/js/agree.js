@@ -4,7 +4,11 @@ window.onload = function() {
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
     const button = document.querySelector("button[type='submit']");
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         let isAgreed = false;
@@ -14,11 +18,19 @@ window.onload = function() {
         }
         if (isAgreed) {
             button.removeAttribute("disabled");
+<<<<<<< HEAD
             window.location.href = "";
         }
         });
     });
 */
+=======
+            window.location.href = "join.html";
+        }
+        });
+    });
+
+>>>>>>> 2062e277dc0f7c50a22a1237656803c42da8557d
     allAgree.addEventListener("change", function(event) {
     checkboxes.forEach(function(checkbox) {
         checkbox.checked = event.target.checked;
