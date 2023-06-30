@@ -1,4 +1,4 @@
-package nemo.dao.schedule;
+package nemo.dao.group;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.schedule.ScheduleVO;
+import nemo.vo.group.ScheduleVO;
 
 public class ScheduleDAO {
 	private Connection conn;	//라이브러리에 커넥션풀과 DB가 있어야한다.
@@ -39,11 +39,10 @@ public class ScheduleDAO {
 	}
 	
 	//새 일정 추가하기
-	public ScheduleVO createSchedule(ScheduleVO scheduleVO) {
+	/*public ScheduleVO createSchedule(ScheduleVO scheduleVO) {
 		try {
 			conn = dataFactory.getConnection();
 			Timestamp schedule = scheduleVO.getSchedule();
-			
 			int grp_id = scheduleVO.getGrp_id();
 			String user_id = scheduleVO.getUser_id();
 			String sche_title = scheduleVO.getSche_title();
@@ -65,6 +64,52 @@ public class ScheduleDAO {
 			e.printStackTrace();
 		}
 		return scheduleVO;
+	}*/
+	
+	//새일정 추가하기 1개이상 불가
+	public boolean createSchedule(ScheduleVO scheduleVO) {
+	    try {
+	        conn = dataFactory.getConnection();
+	        Timestamp schedule = scheduleVO.getSchedule();
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        String scheduleString = dateFormat.format(schedule);
+	        
+	        int grp_id = scheduleVO.getGrp_id();
+	        String user_id = scheduleVO.getUser_id();
+	        String sche_title = scheduleVO.getSche_title();
+	        String sche_cont = scheduleVO.getSche_cont();
+	        String location = scheduleVO.getLocation();
+
+	        String checkQuery = "SELECT COUNT(*) FROM schedule_tbl WHERE TO_CHAR(schedule, 'YYYY-MM-DD') = ?";
+	        pstmt = conn.prepareStatement(checkQuery);
+	        pstmt.setString(1, scheduleString);
+	        ResultSet rs = pstmt.executeQuery();
+	        rs.next();
+	        int existingCount = rs.getInt(1);
+	        pstmt.close();
+
+	        if (existingCount > 0) {
+	            conn.close();
+	            return false;
+	        }
+
+	        // 일정 추가 쿼리
+	        String insertQuery = "INSERT INTO schedule_tbl (schedule, grp_id, user_id, sche_title, sche_cont, location) VALUES (?, ?, ?, ?, ?, ?)";
+	        pstmt = conn.prepareStatement(insertQuery);
+	        pstmt.setTimestamp(1, schedule);
+	        pstmt.setInt(2, grp_id);
+	        pstmt.setString(3, user_id);
+	        pstmt.setString(4, sche_title);
+	        pstmt.setString(5, sche_cont);
+	        pstmt.setString(6, location);
+	        pstmt.executeUpdate();
+	        pstmt.close();
+	        conn.close();
+	    } catch (Exception e) {
+	        System.out.println("새 일정 추가하기 중 오류");
+	        e.printStackTrace();
+	    }
+	    return true;
 	}
 	
 	//날짜 선택시 선택한 날짜를 가져오는 메소드
