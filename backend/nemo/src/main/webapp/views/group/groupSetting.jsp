@@ -204,7 +204,7 @@
 						                       	   
 						                        </select>
 						                        
-						                     	<input type="hidden" name="mainHtml" id="mainHtml" value="${group.grp_img}">
+						                     	
 						                      </div>
 						                    </td>
 						                    <td>
