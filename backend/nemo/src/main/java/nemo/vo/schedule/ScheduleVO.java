@@ -1,4 +1,4 @@
-package nemo.vo.schedule;
+package nemo.vo.group;
 
 import java.sql.Timestamp;
 
