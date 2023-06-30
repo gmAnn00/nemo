@@ -81,7 +81,7 @@ public class MyInterestController extends HttpServlet {
 			
 			myInterestService.modInterests(user_id, interestsList);
 			
-			nextPage="/nemo/mypage/myprofile";			
+			nextPage="/nemo/mypage/myProfile";			
 			response.sendRedirect(nextPage);
 			
 		}

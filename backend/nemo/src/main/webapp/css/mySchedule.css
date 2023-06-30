@@ -93,7 +93,12 @@ div.myScheduleCalAndList {
 }
 /* 일정 있는 날 표시 */
 .scheduleDate {
-	color: red;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: red;
+	margin: 0 auto;
+	margin-bottom: 3px;
 }
 
 
@@ -108,6 +113,9 @@ div.myScheduleListArea h3 {
     margin-left: 15px;
     padding: 5px;    
     border-bottom: 1px solid #909090;
+}
+div.myScheduleListArea p {
+	padding-left: 20px;
 }
 div.mySchedule {
   /* border: 1px solid red; */

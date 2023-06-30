@@ -2,8 +2,12 @@
     pageEncoding="UTF-8"
     isELIgnored="false"
 %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd hh:mm" var="today" />
+
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -102,12 +106,48 @@
                   <h3>다가오는 일정</h3>
                 
                   <c:choose>
+                    <c:when test="${empty commingScheduleList}">
+                      <p>등록된 일정이 없습니다.</p>
+                    </c:when>
+                    <c:when test="${!empty commingScheduleList}">                                       
+                      <c:forEach var="comMySchedule" items="${commingScheduleList}">
+                      <fmt:formatDate value="${comMySchedule.date}" pattern="yyyy-MM-dd hh:mm" var="date"/>
+                     <c:if test = "${today<=date}" >
+                                            
+	                  <div class="mySchedule">
+	                    <p class="myScheduleDate">${comMySchedule.scheduleDate}<span> ${comMySchedule.scheduleTime}</span></p>
+	                    <div class="myScheduleImgContent">
+	                      <div class="groupImg">
+	                        <img src="${contextPath}/groupImages/${comMySchedule.scheduleVO.grp_id}/${comMySchedule.grp_img}" alt="소모임 사진" />
+	                      </div>	                      
+	                      <div class="myScheduleContent">
+	                        <p class="myScheduleGroupName">${comMySchedule.grp_name}</p>
+	                        <p class="contents">${comMySchedule.scheduleVO.sche_title}</p>
+	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${comMySchedule.scheduleVO.location}</p>
+	                      </div>
+	                    </div>
+	                  </div>    
+	                                                 
+                  	  </c:if>    	 
+                  	  </c:forEach>
+                    </c:when>
+                  </c:choose>
+                  
+                </div>
+                
+              </div>
+              
+              <div class="thisMonthMyScheduleList">
+               <h3>이 달의 일정</h3>
+               
+                 <c:choose>
                     <c:when test="${empty scheduleList}">
                       <p>등록된 일정이 없습니다.</p>
                     </c:when>
-                    <c:when test="${!empty scheduleList}">
-                      <c:forEach var="mySchedule" items="${scheduleList}" varStatus="loop">
-                      
+                    <c:when test="${!empty scheduleList}">                                       
+                      <c:forEach var="mySchedule" items="${scheduleList}">
+                      <fmt:formatDate value="${mySchedule.date}" pattern="yyyy-MM-dd hh:mm" var="date"/>                    
+                                            
 	                  <div class="mySchedule">
 	                    <p class="myScheduleDate">${mySchedule.scheduleDate}<span> ${mySchedule.scheduleTime}</span></p>
 	                    <div class="myScheduleImgContent">
@@ -120,13 +160,11 @@
 	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${mySchedule.scheduleVO.location}</p>
 	                      </div>
 	                    </div>
-	                  </div>                                   
-                  
+	                  </div>    
+	                                                 
                   	  </c:forEach>
                     </c:when>
                   </c:choose>
-                  
-                </div>
               </div>
               
             </div>
