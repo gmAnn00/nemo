@@ -1,11 +1,11 @@
-package nemo.controller.schedule;
+package nemo.controller.group;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -16,12 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import nemo.dao.schedule.ScheduleDAO;
-import nemo.service.schedule.ScheduleService;
-import nemo.vo.schedule.ScheduleVO;
+import nemo.dao.group.ScheduleDAO;
+import nemo.service.group.ScheduleService;
+import nemo.vo.group.ScheduleVO;
 
 @WebServlet("/group/schedule/*")
 public class ScheduleController extends HttpServlet {
@@ -53,54 +52,8 @@ public class ScheduleController extends HttpServlet {
         String grp_id = request.getParameter("group_id");
         String action = request.getPathInfo();
         System.out.println("요청 매핑이름: " + action);
-		if(action == null || action.equals("/schCompare")) {	//일정 페이지에서 달력의 날짜를 눌렀을때 
-			
-			try {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				String selScheDate = (String)request.getParameter("selScheDate");
-				
-				
-				//System.out.println("받은 날짜 : " + selScheDate);
-			    //Date selDate = dateFormat.parse(selScheDate);
-			    		//Date.valueOf(selScheDate);
-			    		//dateFormat.parse(selScheDate);
-			    
-			    System.out.println("누른 날짜 : " + selScheDate);
-			    scheduleVO = scheduleService.schCompare(7, selScheDate);
-			    System.out.println(scheduleVO.getSche_title());
-			    System.out.println(scheduleVO.getSchedule());
-			    System.out.println(scheduleVO.getSche_cont());
-			    System.out.println(scheduleVO.getLocation());
-			    
-			    
-			    //제이슨객체 생성
-		        JSONObject scheduleObject = new JSONObject();
-		        
-		        scheduleObject.put("sche_title", scheduleVO.getSche_title());
-		        scheduleObject.put("schedule", scheduleVO.getSchedule() != null ? dateFormat.format(scheduleVO.getSchedule()) : null);  // 포맷팅된 날짜를 JSON 문자열로 변환하여 추가
-		        scheduleObject.put("sche_cont", scheduleVO.getSche_cont());
-		        scheduleObject.put("location", scheduleVO.getLocation());
-		        
-		        
-		        
-		        String ScheduleInfo = scheduleObject.toJSONString();	//JSON객체를 문자열로 변환
-				out.print(ScheduleInfo);	//out.print가 문자열로 클라이언트에게 보내주기때문에 문자열로 변환된 문자를 클라이언트에게 보내줌 
-		        // JSON 응답을 설정
-			    
-			    
-			    /* if문에서 isExistSchedule이 true면 
-			    	서비스에 가서 스케줄 정보를 받아오고
-			    	받아온 정보를 jsonobject에 put 하고 리턴
-			    	else(isExiztSchedlue이 false일때) 는 그냥 isExistSchedule만 넘겨주기 
-			    */
-			    
-			} catch (Exception e) {
-				System.out.println("날짜 매칭중 오류");
-		        e.printStackTrace();
-			}
-			
-			
-		}else if(action.equals("/schedule")) {	//일정 페이지로 이동
+       
+		if(action==null || action.equals("/schedule")) {	//일정 페이지로 이동
 			//List<ScheduleVO> scheduleList = dao.listSchedule();
 			//request.setAttribute("scheduleList", scheduleList);	//셋팅한 값으로 jsp에서사용
 			int group_id = Integer.parseInt(request.getParameter("group_id")); 
@@ -108,7 +61,46 @@ public class ScheduleController extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);	//컨트롤러에서 포워딩해줌
 			dispatcher.forward(request, response);
-		}/*else if (action.equals("/addSchedule")) {	//일정 추가 부분
+		}else if(action.equals("/schCompare")) {	//일정 페이지에서 달력의 날짜를 눌렀을때 
+			try {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String selScheDate = (String)request.getParameter("selScheDate");
+				
+				SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+				
+				//System.out.println("받은 날짜 : " + selScheDate);
+			    //Date selDate = dateFormat.parse(selScheDate);
+			    		//Date.valueOf(selScheDate);
+			    		//dateFormat.parse(selScheDate);
+			    System.out.println("누른 날짜 : " + selScheDate);
+			    scheduleVO = scheduleService.schCompare(7, selScheDate);
+			    System.out.println(scheduleVO.getSche_title());
+			    System.out.println(scheduleVO.getSchedule());
+			    System.out.println(scheduleVO.getSche_cont());
+			    System.out.println(scheduleVO.getLocation());
+			    
+			    //제이슨객체 생성
+		        JSONObject scheduleObject = new JSONObject();
+		        
+		        scheduleObject.put("sche_title", scheduleVO.getSche_title());
+		        scheduleObject.put("schedule", scheduleVO.getSchedule() != null ? dateFormat.format(scheduleVO.getSchedule()) : null);  // 포맷팅된 날짜를 JSON 문자열로 변환하여 추가
+		        scheduleObject.put("sche_time", scheduleVO.getSchedule() != null ? timeFormat.format(scheduleVO.getSchedule()) : null);
+		        scheduleObject.put("sche_cont", scheduleVO.getSche_cont());
+		        scheduleObject.put("location", scheduleVO.getLocation());
+		        String ScheduleInfo = scheduleObject.toJSONString();	//JSON객체를 문자열로 변환
+				out.print(ScheduleInfo);	//out.print가 문자열로 클라이언트에게 보내주기때문에 문자열로 변환된 문자를 클라이언트에게 보내줌 
+		        // JSON 응답을 설정
+			    
+			    /* if문에서 isExistSchedule이 true면 
+			    	서비스에 가서 스케줄 정보를 받아오고
+			    	받아온 정보를 jsonobject에 put 하고 리턴
+			    	else(isExiztSchedlue이 false일때) 는 그냥 isExistSchedule만 넘겨주기 
+			    */
+			} catch (Exception e) {
+				System.out.println("날짜 매칭중 오류");
+		        e.printStackTrace();
+			}
+		}else if (action.equals("/addSchedule")) {	//일정 추가 부분
 			//Map<String, String> scheduleMap = createSchedule(request, response);
 			int group_id = Integer.parseInt(request.getParameter("group_id"));
 			
@@ -132,39 +124,36 @@ public class ScheduleController extends HttpServlet {
 			    scheduleVO.setSche_title(sche_title);
 			    scheduleVO.setSche_cont(sche_cont);
 			    scheduleVO.setLocation(location);
-			    
-				scheduleService.addSchedule(scheduleVO);
-		    } catch (ParseException e) {
-		        System.out.println("날짜 형식 파싱 처리중 오류");
+			    boolean scheduleResult = scheduleService.addSchedule(scheduleVO);
+				if(scheduleResult) {
+					System.out.println("result=" + scheduleResult);
+					out.print("<script>");
+					out.print("alert('일정을 추가했습니다.');");
+					out.print("location.href='/nemo/group/schedule?group_id=" + Integer.toString(group_id) + "';");
+					out.print("</script>");
+				}else {
+					System.out.println("result=" + scheduleResult);
+					out.print("<script>");
+					out.print("alert('일정이 이미 존재합니다.');");
+					out.print("location.href='/nemo/group/schedule?group_id=" + Integer.toString(group_id) + "';");
+					out.print("</script>");
+				}
+			} catch (ParseException e) {
+		        System.out.println("일정 생성 중 오류");
 		        e.printStackTrace();
 		    }
-		    nextPage = "/nemo/group/schedule?group_id=" + Integer.toString(group_id);			// 슬래쉬는 반드시해줘야 인식한다.
-			response.sendRedirect(nextPage);
-		    
-			
-		}*//*else if (action.equals("/schCompare")) {
-			int group_id = Integer.parseInt(request.getParameter("group_id"));
-			String selectedScheduleDate = request.getParameter("selectedScheduleDate");
-			String msg = "";
-			
-			ScheduleService scheduleService = new ScheduleService();
-			scheduleVO = new ScheduleVO();
-			scheduleVO.setGrp_id("7");
-			scheduleVO.setUser_id(user_id);
-			ScheduleVO scheduleVO2 = scheduleService.selectScheduletbl(scheduleVO);
-			Timestamp schedule = scheduleVO2.getSchedule();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-			String scheduleStr = dateFormat.format(schedule);
-			if(selectedScheduleDate.equals(scheduleStr)) {
-				msg = "1";
-			} else {
-				msg = "-1";
-			}
-			nextPage = "/nemo/group/schedule?group_id=" + Integer.toString(group_id) + "?msg=" + msg;			// 슬래쉬는 반드시해줘야 인식한다.
-			response.sendRedirect(nextPage);
+		    //nextPage = "/nemo/group/schedule?group_id=" + Integer.toString(group_id);			// 슬래쉬는 반드시해줘야 인식한다.
+			//response.sendRedirect(nextPage);
+		}/*else if (action.equals("/modSchedule")) {
+			String =request.getParameter("id");
+			String pwd=request.getParameter("pwd");
+			String name=request.getParameter("name");
+			String email=request.getParameter("email");
+			MemberVO memVo=new MemberVO(id, pwd, name, email);
+			dao.modMember(memVo);
+			request.setAttribute("msg", "modified");	//추가, 수정, 삭제등 작업완료를 확인해보기위해
+			nextPage="/member/listMembers.do";
 		}*/
-		//RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);	//컨트롤러에서 포워딩해줌
-		//dispatcher.forward(request, response);
 	}
 }
 		//로그인 정보 확인
