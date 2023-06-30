@@ -12,7 +12,7 @@
 <c:set var="totArticles" value="${articleMap.totArticles}" />
 <c:set var="section" value="${articleMap.section }" />
 <c:set var="pageNum" value="${articleMap.pageNum }" />
-<c:set var="qna" value="${articleMap.qna }" />
+
 
 <% request.setCharacterEncoding("utf-8"); %>
 
@@ -178,27 +178,27 @@
                                         
 										<c:choose>
 												<c:when test="${empty membersList}">
-												<tr>
-													<td colspan="9" align="center">
-														등록된 회원이 없습니다.
-													</td>	
-												</tr>
+													<tr>
+														<td colspan="9" align="center">
+															등록된 회원이 없습니다.
+														</td>	
+													</tr>
 												</c:when>
-											<c:when test="${!empty membersList}">
-											<c:forEach var="member" items="${membersList}">
-												<tr align="center">
-													<td>${member.user_id}</td>
-													<td>${member.user_name}</td>
-													<td>${member.birthdate}</td>
-													<td>${member.email}</td>
-													<td>${member.phone}</td>
-													<td>${member.join_date}</td>
-													<td>${member.report_cnt}</td>
-													<td><a class="button" href="${contextPath}/member/delMember.do?user_id=${member.user_id}">탈퇴처리</a></td>
-													
-												</tr>
-											</c:forEach>
-											</c:when>
+												<c:when test="${!empty membersList}">
+													<c:forEach var="member" items="${membersList}">
+														<tr align="center">
+															<td>${member.user_id}</td>
+															<td>${member.user_name}</td>
+															<td>${member.birthdate}</td>
+															<td>${member.email}</td>
+															<td>${member.phone}</td>
+															<td>${member.join_date}</td>
+															<td>${member.report_cnt}</td>
+															<td><a class="button" href="${contextPath}/member/delMember.do?user_id=${member.user_id}">탈퇴처리</a></td>
+															
+														</tr>
+													</c:forEach>
+												</c:when>
 										</c:choose>
 
            
@@ -259,7 +259,7 @@
 
                     <div class="footer_section2_content">
                         <div class="footer_logo">
-                            <a href="index.html"><img src="../../images/logo_white.png" class="img-fluid" alt="logo" /></a>
+                            <a href="index.html"><img src="${contextPath}/images/logo_white.png" class="img-fluid" alt="logo" /></a>
                         </div>
                         <div class="footer_text">
                             <p>© 2023 NEMO</p>

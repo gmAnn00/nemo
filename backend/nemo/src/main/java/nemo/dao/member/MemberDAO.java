@@ -50,7 +50,6 @@ public class MemberDAO {
 				String phone=rs.getString("phone");
 				Date join_date=rs.getDate("join_date");
 				int report_cnt = rs.getInt("report_cnt");
-				//String accused_id=rs.getString("accused_id");
 				MemberVO memVo=new MemberVO(user_id, user_name, birthdate, email, phone, join_date);
 				memVo.setReport_cnt(report_cnt);
 				memberList.add(memVo);

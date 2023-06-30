@@ -19,9 +19,40 @@ public class GroupVO {
 	private String main_name;
 	private String sub_name;
 	private String grp_img;
+	private String report_cnt;
+
+	
+	
+	
+
+
+	public void setReport_cnt(String report_cnt) {
+		this.report_cnt = report_cnt;
+	}
 
 	public GroupVO() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public GroupVO(int grp_id, String grp_name, String grp_mng, int mem_no, String grp_zipcode, String grp_addr1,
+			String grp_addr2, Date create_date, String grp_intro, int app_st, String main_name, String sub_name,
+			String grp_img, String report_cnt) {
+		super();
+		this.grp_id = grp_id;
+		this.grp_name = grp_name;
+		this.grp_mng = grp_mng;
+		this.mem_no = mem_no;
+		this.grp_zipcode = grp_zipcode;
+		this.grp_addr1 = grp_addr1;
+		this.grp_addr2 = grp_addr2;
+		this.create_date = create_date;
+		this.grp_intro = grp_intro;
+		this.app_st = app_st;
+		this.main_name = main_name;
+		this.sub_name = sub_name;
+		this.grp_img = grp_img;
+		this.report_cnt = report_cnt;
 	}
 
 	public int getGrp_id() {
@@ -143,15 +174,22 @@ public class GroupVO {
 		}
 	}
 
+	public void setReport_cnt(int report_cnt) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public String getReport_cnt() {
+		return report_cnt;
+	}
+	
+
 	@Override
 	public String toString() {
 		return "GroupVO [grp_id=" + grp_id + ", grp_name=" + grp_name + ", grp_mng=" + grp_mng + ", mem_no=" + mem_no
 				+ ", grp_zipcode=" + grp_zipcode + ", grp_addr1=" + grp_addr1 + ", grp_addr2=" + grp_addr2
 				+ ", create_date=" + create_date + ", grp_intro=" + grp_intro + ", app_st=" + app_st + ", main_name="
 				+ main_name + ", sub_name=" + sub_name + ", grp_img=" + grp_img + "]";
-	}
-	
-	
-	
+	}	
 	
 }

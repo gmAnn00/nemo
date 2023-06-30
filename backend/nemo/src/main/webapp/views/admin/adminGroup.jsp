@@ -12,17 +12,16 @@
 <c:set var="totArticles" value="${articleMap.totArticles}" />
 <c:set var="section" value="${articleMap.section }" />
 <c:set var="pageNum" value="${articleMap.pageNum }" />
-<c:set var="qna" value="${articleMap.qna }" />
+
 
 <% request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>관리자-소모임 관리 페이지</title>
-        <link rel="shortcut icon" href="images/favicon.png" />
+        <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />
         <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
@@ -34,17 +33,17 @@
     </head>
     
         <c:choose>
-		<c:when test='${msg == "addMember"}'>
+		<c:when test='${msg == "addGroup"}'>
 		<script>
 			window.onload=function () {
-				alert("회원을 등록 하셨습니다.");
+				alert("소모임을 등록 하셨습니다.");
 			}
 		</script>
 		</c:when>
 		<c:when test="${msg == 'deleted'}">
 		<script>
 			window.onload=function () {
-				alert("회원 정보를 삭제 하였습니다.");
+				alert("소모임 정보를 삭제 하였습니다.");
 			}
 		</script>
 		</c:when>
@@ -184,131 +183,37 @@
                                             <th>삭제 처리</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름1</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>1</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름2</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>2</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름3</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>3</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름4</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>4</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름5</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>5</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름5</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>5</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름5</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>5</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름5</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>5</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름5</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>5</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td>스포츠</td>
-                                            <td>헬스</td>
-                                            <td>소모임 이름5</td>
-                                            <td>2</td>
-                                            <td>10</td>
-                                            <td>honggilddong</td>
-                                            <td>2023/05/01</td>
-                                            <td>5</td>
-                                            <td><button class="btn">삭제 처리</button></td>
-                                        </tr>
-                                    </tbody>
+                                    
+                                    <c:choose>
+                                    	<c:when test="${empty groupsList}">
+                                    		<tr>
+                                    			<td colspan="10" align="center">
+                                    				등록된 소모임이 없습니다.
+                                    			</td>
+                                    		</tr>
+                                    	</c:when>
+                                    	
+                                    	<c:when test="${!empty groupsList}">
+                                    	 	<c:forEach var="group" items="${groupsList}">
+                                    	 		<tr align="center">
+                                    	 			<td>${group.grp_id}</td>
+                                    	 			<td>${group.main_name}</td>
+                                    	 			<td>${group.sub_name}</td>
+                                    	 			<td>${group.grp_name}</td>
+                                    	 			<td>${group.mem_no}</td>
+                                    	 			<td>${group.mem_no}</td>
+                                    	 			<td>${group.grp_mng}</td>
+                                    	 			<td>${group.create_date}</td>
+                                    	 			<td>${group.report_cnt}</td>
+                                    	 			<td><a class="button" href="${contextPath}/admingroup/delGroup.do?grp_id=${group.grp_id}">삭제 처리</a></td>
+                                    	 		</tr>
+                                    	 	</c:forEach>
+                                    	</c:when>
+                                    </c:choose>
+                                    
                                 </table>
                             </div>
-                            <div class="groupTablePage"></div>
+                            <!--<div class="groupTablePage"></div>  -->
                         </div>
                     </div>    
                 </div>
@@ -362,7 +267,7 @@
 
                     <div class="footer_section2_content">
                         <div class="footer_logo">
-                            <a href="index.html"><img src="../../images/logo_white.png" class="img-fluid" alt="logo" /></a>
+                            <a href="index.html"><img src="${contextPath}/images/logo_white.png" class="img-fluid" alt="logo" /></a>
                         </div>
                         <div class="footer_text">
                             <p>© 2023 NEMO</p>
@@ -380,6 +285,8 @@
             </div>
         </footer>
         <!-- 푸터 영역 끝 -->
+        
+        <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 
         <script src="${contextPath}/DataTables/datatables.min.js"></script>
         <script src="${contextPath}/js/adminGroup.js"></script>
