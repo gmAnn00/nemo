@@ -1,5 +1,8 @@
 package nemo.vo.group;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Date;
 
 public class GroupVO {
@@ -20,8 +23,6 @@ public class GroupVO {
 	public GroupVO() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	public GroupVO(int grp_id, String grp_name, String grp_mng, int mem_no, String grp_zipcode, String grp_addr1,
 			String grp_addr2, Date create_date, String grp_intro, int app_st, String main_name, String sub_name,
@@ -41,8 +42,6 @@ public class GroupVO {
 		this.sub_name = sub_name;
 		this.grp_img = grp_img;
 	}
-
-
 
 	public int getGrp_id() {
 		return grp_id;
@@ -141,11 +140,26 @@ public class GroupVO {
 	}
 
 	public String getGrp_img() {
+		try {
+			if (grp_img != null && grp_img.length() != 0) {
+				grp_img = URLDecoder.decode(grp_img, "utf-8");
+			}
+		} catch (Exception e) {
+			System.out.println("이미지 가져오는 중 에러");
+		}
 		return grp_img;
 	}
 
 	public void setGrp_img(String grp_img) {
-		this.grp_img = grp_img;
+		try {
+			if (grp_img != null && grp_img.length() != 0) {
+				this.grp_img = URLEncoder.encode(grp_img, "utf-8");
+			} else {
+				this.grp_img = null;
+			}
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 저장 중 에러");
+		}
 	}
 
 	@Override

@@ -63,17 +63,17 @@ public class GroupMangerController extends HttpServlet{
 		System.out.println(login_id);
 		
 		//jsp에서 컨트롤러로 넘어올 때 받을 grp_id값
-		int grp_id = Integer.parseInt(request.getParameter("grp_id"));
-		System.out.println(grp_id);
+		int group_id = Integer.parseInt(request.getParameter("group_id"));
+		System.out.println(group_id);
 		
 		System.out.println("요청 매핑이름: " + action); 
 		try {
 			
 			if(action==null||action.equals("/myGroupMember")) {
 				
-				List<GroupVO> groupList=groupMangerService.groupShow(grp_id);
-				List<UserVO> userList=groupMangerService.userShow(grp_id);
-				List<UserVO> approveUserList=groupMangerService.approveMemberShow(grp_id);
+				List<GroupVO> groupList=groupMangerService.groupShow(group_id);
+				List<UserVO> userList=groupMangerService.userShow(group_id);
+				List<UserVO> approveUserList=groupMangerService.approveMemberShow(group_id);
 				
 				request.setAttribute("groupList", groupList);
 				request.setAttribute("userList", userList);
@@ -88,13 +88,13 @@ public class GroupMangerController extends HttpServlet{
 				
 				String user_id=request.getParameter("user_id");
 				userVO.setUser_id(user_id);
-				groupMangerService.mandateGroupManager(userVO, grp_id);
+				groupMangerService.mandateGroupManager(userVO, group_id);
 				out = response.getWriter();
 				out.print("<script>");
 				out.print("alert('매니저를 위임했습니다');");
 					//location 포워딩 
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?grp_id="+grp_id+"';");
+						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 		        
@@ -103,13 +103,13 @@ public class GroupMangerController extends HttpServlet{
 			else if(action.equals("/exile.do")) {
 				String user_id=request.getParameter("user_id");
 				userVO.setUser_id(user_id);
-				groupMangerService.exileGroupMember(userVO, grp_id);
+				groupMangerService.exileGroupMember(userVO, group_id);
 				out = response.getWriter();
 				out.print("<script>");
 				out.print("alert('멤버를 추방했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?grp_id="+grp_id+"';");
+						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 				
@@ -126,7 +126,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('가입을 승인했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?grp_id="+grp_id+"';");
+						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 		        
@@ -136,13 +136,13 @@ public class GroupMangerController extends HttpServlet{
 			else if(action.equals("/reject.do")) {
 				String user_id=request.getParameter("user_id");
 				userVO.setUser_id(user_id);
-				groupMangerService.rejectUser(userVO, grp_id);
+				groupMangerService.rejectUser(userVO, group_id);
 				out = response.getWriter();
 				out.print("<script>");
 				out.print("alert('가입 승인을 거절했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?grp_id="+grp_id+"';");
+						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 				

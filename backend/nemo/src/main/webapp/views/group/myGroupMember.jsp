@@ -34,7 +34,7 @@
         <!-- header 시작 -->
         <header>
             <h1 class="logo">
-                <a href="../index.html"><img src="../../images/logo.png" alt="logo" /></a>
+                <a href="${contextPath}/index.html"><img src="${contextPath}/images/logo.png" alt="logo" /></a>
             </h1>
         </header>
         <button class="burger">
@@ -63,40 +63,38 @@
         <!-- header 종료 -->
         <div id="wrapper">
             <!-- section1 시작 -->
-            <div class="section1">
-                
-                	<c:forEach var="group" items="${groupList}">
-                		<div class="group_containter">
-		                    <div class="group_all">
-		                        <div class="group_img">
-		                            <img src="../../images/free-icon-group-8847475.png" alt="group_img" />
-		                        </div>
-		                        <div class="group_name">
-		                            <a href="groupMain.html">
-		                                <span>${group.grp_name}</span>
-		                            </a>
-		                        </div>
-		                        <div class="group_info">
-		                            <div class="group_info_category">
-		                                <div class="category_box group_info_category_box">${group.main_name}</div>
-		                                <div class="category_box group_info_category_box">${group.sub_name}</div>
-		                            </div>
-		                            <div class="group_info_member">
-		                                <div class="group_info_title"><span>멤버수</span></div>
-		                                <div class="group_info_contents"><span>${group.mem_no}</span></div>
-		                            </div>
-		                            <div class="group_info_follower">
-		                                <div class="group_info_title"><span>개설일</span></div>
-		                                <div class="group_info_contents"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${group.create_date}"/></span></div>
-		                            </div>
-		                        </div>
-		                    </div>
-                		</div>
-                	</c:forEach>
-                
-                
-                
-            </div>
+            <c:forEach var="group" items="${groupList}">
+	            <div class="section1" style="background-image:url('${contextPath}/groupImages/${group.grp_id}/${group.grp_img}')">
+	   	
+               		<div class="group_containter">
+	                    <div class="group_all">
+	                        <div class="group_img">
+	                            <img src="${contextPath}/groupImages/${group.grp_id}/${group.grp_img}" alt="group_img" />
+	                        </div>
+	                        <div class="group_name">
+	                            <a href="groupMain.html">
+	                                <span>${group.grp_name}</span>
+	                            </a>
+	                        </div>
+	                        <div class="group_info">
+	                            <div class="group_info_category">
+	                                <div class="category_box group_info_category_box">${group.main_name}</div>
+	                                <div class="category_box group_info_category_box">${group.sub_name}</div>
+	                            </div>
+	                            <div class="group_info_member">
+	                                <div class="group_info_title"><span>멤버수</span></div>
+	                                <div class="group_info_contents"><span>${group.mem_no}</span></div>
+	                            </div>
+	                            <div class="group_info_follower">
+	                                <div class="group_info_title"><span>개설일</span></div>
+	                                <div class="group_info_contents"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${group.create_date}"/></span></div>
+	                            </div>
+	                        </div>
+	                    </div>
+               		</div>
+	                
+	            </div>
+            </c:forEach>
             <!-- section1 종료 -->
 
             <!-- 컨텐츠 시작 -->
@@ -133,7 +131,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="${contextPath}/group/manager/setting/myGroupSetting">
+                                    <a href="${contextPath}/group/manager/setting?group_id=${param.group_id}">
                                         <div class="sc2_icon_menu">
                                             <div class="menu_submenu_name"><span>소모임관리</span></div>
                                             <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -192,16 +190,16 @@
 		                                                    <div class="hidden_menu">
 		                                                    
 		                                                        <ul class="hidden_menu_bar">
-		                                                            <li><a href="${contextPath}/group/manager/member/report.do?user_id=${user.user_id}&grp_id=${param.grp_id}">신고</a></li>
-		                                                            <li><a href="${contextPath}/group/manager/member/mandate.do?user_id=${user.user_id}&grp_id=${param.grp_id}">위임</a></li>
-		                                                            <li><a href="${contextPath}/group/manager/member/exile.do?user_id=${user.user_id}&grp_id=${param.grp_id}">추방</a></li>
+		                                                            <li><a href="${contextPath}/group/manager/member/report.do?user_id=${user.user_id}&group_id=${param.group_id}">신고</a></li>
+		                                                            <li><a href="${contextPath}/group/manager/member/mandate.do?user_id=${user.user_id}&group_id=${param.group_id}">위임</a></li>
+		                                                            <li><a href="${contextPath}/group/manager/member/exile.do?user_id=${user.user_id}&group_id=${param.group_id}">추방</a></li>
 		                                                        </ul>
 		                                                 
 		                                                    </div>
 	                                                    
 	                                                </div>
 	                                                <div class="profile profile-smallimg">
-	                                                    <div class="profile_image"><img src="../../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png" alt="Doggo"/></div>
+	                                                    <div class="profile_image"><img src="${contextPath}/userImages/${user.user_id}/${user.user_img}" alt="UserImg"/></div>
 	                                                    <div class="profile_info">
 	                                                        <h3>${user.nickname}</h3>
 	                                                        <div class="profile_info_detail">
@@ -238,8 +236,8 @@
 	                                                    </div>
 	                                                    <div class="hidden_menu">
 	                                                        <ul class="hidden_menu_bar">
-	                                                            <li><a href="${contextPath}/group/manager/member/approve.do?user_id=${approveUser.user_id}&grp_id=${param.grp_id}">승인</a></li>
-	                                                            <li><a href="${contextPath}/group/manager/member/reject.do?user_id=${approveUser.user_id}&grp_id=${param.grp_id}">거절</a></li>
+	                                                            <li><a href="${contextPath}/group/manager/member/approve.do?user_id=${approveUser.user_id}&group_id=${param.group_id}">승인</a></li>
+	                                                            <li><a href="${contextPath}/group/manager/member/reject.do?user_id=${approveUser.user_id}&group_id=${param.group_id}">거절</a></li>
 	                                                        </ul>
 	                                                    </div>
 	                                                </div>

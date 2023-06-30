@@ -70,7 +70,7 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("nickname", userVO.getNickname());
 				session.setAttribute("user_img", userVO.getUser_img());
 				session.setAttribute("admin", userVO.getAdmin());
-				nextPage = "/index";
+				nextPage = "/nemo/index";
 				response.sendRedirect(nextPage);
 			}else {
 				// 회원이 아님 
@@ -89,7 +89,7 @@ public class LoginController extends HttpServlet {
 			
 			if(session !=null) {
 				session.invalidate();
-				nextPage = "/index";
+				nextPage = "/nemo/index";
 				response.sendRedirect(nextPage);
 				
 			}

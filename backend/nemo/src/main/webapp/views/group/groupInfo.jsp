@@ -162,7 +162,6 @@ request.setCharacterEncoding("utf-8");
 
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 	<input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${user_id}"/>
-	<input type="hidden" id="isBookmark_hidden" name="isBookmark_hidden" value="${isBookmark}"/>
 	<input type="hidden" id="grp_addr1_hidden" name="grp_addr1_hidden" value="${groupVO.grp_addr1}" />
 	
 </body>

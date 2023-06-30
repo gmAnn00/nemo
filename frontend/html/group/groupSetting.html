@@ -141,187 +141,180 @@
                         <!-- nav 바 종료 -->
                     </div>
                 
-                    <div class="mod_section">
-                        <!-- 프로필 사진 등록 영역-->
-                        <div class="uploadArea">
-                            <div class="imgCrop">
-                                <img
-                                src="../../images/tmp01.jpg"
-                                alt="grp_img"
-                                class="grpImg"
-                                id="previewImage"
-                                />
-                            </div>
-                            <div class="profile_btn">
-                                <label for="file">
-                                    <div class="button btnComm">수정</div>
-                                </label>
-                                <input
-                                    type="file"
-                                    name="file"
-                                    id="file"
-                                    class="hidden"
-                                    accept="image/gif, image/jpeg, image/png"
-                                    onchange="readImage(this);"
-                                />
-                                <div class="buttonCancle btnComm" onClick="popupImgFileRm();">
-                                    취소
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 소모임 생성 정보 입력 영역 -->
-                        <div class="formArea">
+                    <!-- 소모임 생성 정보 입력 영역 -->
+                    <div class="formArea">
                         <form
                             action="createGroup.jsp"
                             method="post"
                             id="createGruop"
                             name="createGroup"
                         >
+                            <!-- 프로필 사진 등록 영역-->
+                            <div class="uploadArea">
+                                <div class="imgCrop">
+                                    <img
+                                    src="../../images/tmp01.jpg"
+                                    alt="grp_img"
+                                    class="grpImg"
+                                    id="previewImage"
+                                    />
+                                </div>
+                                <div class="profile_btn">
+                                    <label for="file" class="mod_btn">
+                                        <div class="button btnComm">수정</div>
+                                    </label>
+                                    <input
+                                        type="file"
+                                        name="file"
+                                        id="file"
+                                        class="hidden"
+                                        accept="image/gif, image/jpeg, image/png"
+                                        onchange="readImage(this);"
+                                    />
+                                    <div class="buttonCancle btnComm" onClick="popupImgFileRm();">취소</div>
+                                </div>
+                            </div>
                             <fieldset class="formTbl">
-                            <legend class="hidden">네모 생성 정보 입력</legend>
-                            <div>
-                                <label for="groupName">네모이름</label>
-                                <span>이젠종로학원</span>
-                            </div>
-                            <div class="groupNum">
-                                <label for="groupNum">네모인원</label>
-                                <input
-                                type="text"
-                                name="mem_no"
-                                id="groupNum"
-                                maxlength="3"
-                                placeholder="2~50"
-                                /><span>명</span>
-                            </div>
-                            <div class="innerTblArea">
-                                <label class="cateTbl">카테고리</label>
-                                <table>
-                                <tr>
-                                    <th>대분류</th>
-                                    <th>소분류</th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    <div class="selectBox">
-                                        <select
-                                        name="largeCate"
-                                        id="largeCate"
-                                        onchange="change(this);"
-                                        class="commonSelect input"
-                                        >
-                                        <option value="0">선택하기</option>
-                                        <option value="1">문화/공연/축제</option>
-                                        <option value="2">음악/악기</option>
-                                        <option value="3">사진/영상</option>
-                                        <option value="4">아웃도어/여행</option>
-                                        <option value="5">운동/스포츠</option>
-                                        <option value="6">인문학/책/글</option>
-                                        <option value="7">업종/직무</option>
-                                        <option value="8">공예/만들기</option>
-                                        <option value="9">댄스/무용</option>
-                                        <option value="10">봉사활동</option>
-                                        <option value="11">사교/인맥</option>
-                                        <option value="12">차/오토바이</option>
-                                        <option value="13">스포츠 관람</option>
-                                        <option value="14">게임/오락</option>
-                                        <option value="15">요리/제조</option>
-                                        <option value="16">반려동물</option>
-                                        <option value="17">기타</option>
-                                        </select>
-                                    </div>
-                                    </td>
-                                    <td>
-                                    <div class="selectBox">
-                                        <select
-                                        name="smallCate"
-                                        id="smallCate"
-                                        class="commonSelect select"
-                                        >
-                                        <option value="">선택하기</option>
-                                        </select>
-                                    </div>
-                                    </td>
-                                </tr>
-                                </table>
-                                <p>※대분류/소분류 모두 선택하셔야 합니다.</p>
-                            </div>
-                            <div>
-                                <label for="findZipcode">모임장소</label>
+                                <legend class="hidden">네모 생성 정보 입력</legend>
+                                    
 
-                                <input
-                                type="text"
-                                id="zipcode"
-                                name="grp_zipcode"
-                                maxlength="5"
-                                size="5"
-                                placeholder="우편번호"
-                                readonly
-                                required
-                                />
-                                <button
-                                type="button"
-                                class="findZipcode button"
-                                id="findZipcode"
-                                onclick="execDaumPostcode()"
-                                >
-                                우편번호 찾기
-                                </button>
-                                <input
-                                type="text"
-                                id="grp_addr1"
-                                name="grp_addr1"
-                                placeholder="주소"
-                                readonly
-                                />
-                                <input
-                                type="text"
-                                id="grp_addr2"
-                                name="grp_addr2"
-                                placeholder="상세주소"
-                                />
-                            </div>
-                            <div class="textAreaTd">
-                                <label for="grpDescription">네모소개</label>
-                                <textarea
-                                name="grpDescription"
-                                id="grpDescription"
-                                placeholder="최소 100자 이상 작성해주세요(최대1000자)"
-                                rows="10"
-                                maxlength="1000"
-                                ></textarea>
-                                <p>(<span>0/1000</span>)</p>
-                            </div>
-                            <div class="creatGrp">
-                                <input
-                                type="submit"
-                                name="createGrpBtn"
-                                id="createGrpBtn"
-                                class="button"
-                                value="적용"
-                                />
-                                <input
-                                type="reset"
-                                name="createCancleBtn"
-                                id="createCancleBtn"
-                                class="buttonCancle"
-                                value="취소"
-                                />
-                            </div>
+                                <div class="form_div">
+                                    <label class="profile_label" for="groupName">네모이름</label>
+                                    <span>이젠종로학원</span>
+                                </div>
+                                <div class="groupNum form_div">
+                                    <label for="groupNum" class="profile_label">네모인원</label>
+                                    <input
+                                    type="text"
+                                    name="mem_no"
+                                    id="groupNum"
+                                    maxlength="3"
+                                    placeholder="2~50"
+                                    /><span>명</span>
+                                </div>
+                                <div class="innerTblArea form_div">
+                                    <label class="cateTbl profile_label">카테고리</label>
+                                    <table>
+                                    <tr>
+                                        <th>대분류</th>
+                                        <th>소분류</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <div class="selectBox form_div">
+                                            <select
+                                            name="largeCate"
+                                            id="largeCate"
+                                            onchange="change(this);"
+                                            class="commonSelect input"
+                                            >
+                                            <option value="0">선택하기</option>
+                                            <option value="1">문화/공연/축제</option>
+                                            <option value="2">음악/악기</option>
+                                            <option value="3">사진/영상</option>
+                                            <option value="4">아웃도어/여행</option>
+                                            <option value="5">운동/스포츠</option>
+                                            <option value="6">인문학/책/글</option>
+                                            <option value="7">업종/직무</option>
+                                            <option value="8">공예/만들기</option>
+                                            <option value="9">댄스/무용</option>
+                                            <option value="10">봉사활동</option>
+                                            <option value="11">사교/인맥</option>
+                                            <option value="12">차/오토바이</option>
+                                            <option value="13">스포츠 관람</option>
+                                            <option value="14">게임/오락</option>
+                                            <option value="15">요리/제조</option>
+                                            <option value="16">반려동물</option>
+                                            <option value="17">기타</option>
+                                            </select>
+                                        </div>
+                                        </td>
+                                        <td>
+                                        <div class="selectBox form_div">
+                                            <select
+                                            name="smallCate"
+                                            id="smallCate"
+                                            class="commonSelect select"
+                                            >
+                                            <option value="">선택하기</option>
+                                            </select>
+                                        </div>
+                                        </td>
+                                    </tr>
+                                    </table>
+                                    <p>※대분류/소분류 모두 선택하셔야 합니다.</p>
+                                </div>
+                                <div class="form_div">
+                                    <label for="findZipcode" class="profile_label">모임장소</label>
 
-                            
+                                    <input
+                                    type="text"
+                                    id="zipcode"
+                                    name="grp_zipcode"
+                                    maxlength="5"
+                                    size="5"
+                                    placeholder="우편번호"
+                                    readonly
+                                    required
+                                    />
+                                    <button
+                                    type="button"
+                                    class="findZipcode button"
+                                    id="findZipcode"
+                                    onclick="execDaumPostcode()"
+                                    >
+                                    우편번호 찾기
+                                    </button>
+                                    <input
+                                    type="text"
+                                    id="grp_addr1"
+                                    name="grp_addr1"
+                                    placeholder="주소"
+                                    readonly
+                                    />
+                                    <input
+                                    type="text"
+                                    id="grp_addr2"
+                                    name="grp_addr2"
+                                    placeholder="상세주소"
+                                    />
+                                </div>
+                                <div class="textAreaTd form_div">
+                                    <label for="grpDescription" class="profile_label">네모소개</label>
+                                    <textarea
+                                    name="grpDescription"
+                                    id="grpDescription"
+                                    placeholder="최소 100자 이상 작성해주세요(최대1000자)"
+                                    rows="10"
+                                    maxlength="1000"
+                                    ></textarea>
+                                    <p>(<span>0/1000</span>)</p>
+                                </div>
+                                <div class="creatGrp form_div">
+                                    <input
+                                    type="submit"
+                                    name="createGrpBtn"
+                                    id="createGrpBtn"
+                                    class="button"
+                                    value="적용"
+                                    />
+                                    <input
+                                    type="reset"
+                                    name="createCancleBtn"
+                                    id="createCancleBtn"
+                                    class="buttonCancle"
+                                    value="취소"
+                                    />
+                                </div>
                             </fieldset>
                         </form>
-                        </div>
                     </div>
-                    <!--innerCont 영역 종료 -->
-                    </div>
-                    <!-- main content 종료-->
-
+                    
                 </div>
-
                 <!-- 컨텐츠 종료 -->
+                
             </div>
+
         </div>
         <!-- section2 종료 -->
 

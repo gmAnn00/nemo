@@ -172,7 +172,7 @@ public class GroupMangerDAO {
         	conn = dataFactory.getConnection();
         	String query = "UPDATE group_tbl"
         			+ " SET grp_mng = (SELECT user_id FROM user_tbl WHERE user_id =?)"
-        			+ " WHERE grp_id = ?";		//현재 내가 들어간 페이지의 그룹을 받아야함	
+        			+ " WHERE grp_id = ?";		
         	System.out.println(query);
         	
         	pstmt = conn.prepareStatement(query);

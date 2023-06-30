@@ -29,12 +29,7 @@ public class IndexController extends HttpServlet {
 		String nextPage = "";
 		session=request.getSession();
 		
-		//session.setAttribute("user_id", "kim");
-		//session.setAttribute("nickname", "철수에용");
-		//session.setAttribute("user_id", "hong");
-		//session.setAttribute("nickname", "홍길동닉네임");
-		//session.removeAttribute("user_id");
-		//session.removeAttribute("nickname");
+		
 		nextPage="/views/index.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
