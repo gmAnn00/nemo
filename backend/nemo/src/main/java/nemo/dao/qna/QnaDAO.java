@@ -59,16 +59,19 @@ public class QnaDAO {
 				String query="SELECT * FROM(SELECT ROWNUM AS recNum, LVL, qna_id," +
 						" parent_no, title, user_id, create_date, nickname FROM (SELECT LEVEL AS LVL, q.qna_id," +
 						" q.parent_no, q.title, q.user_id, q.create_date, u.nickname FROM qna_tbl q, user_tbl u"+
-						" WHERE q.user_id=u.user_id AND q.user_id = ? START WITH q.parent_no=0" +
+						" WHERE q.user_id=u.user_id AND q.user_id = ? OR q.parent_no IN"+
+						" (SELECT qna_id FROM qna_tbl WHERE user_id=?)"+ 
+						" START WITH q.parent_no=0" +
 						" CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))" +
 						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10"; 
 				System.out.println(query);
 				pstmt=conn.prepareStatement(query);
 				pstmt.setString(1, param_user_id);
-				pstmt.setInt(2, section);
-				pstmt.setInt(3, pageNum);
-				pstmt.setInt(4, section);
-				pstmt.setInt(5, pageNum);
+				pstmt.setString(2, param_user_id);
+				pstmt.setInt(3, section);
+				pstmt.setInt(4, pageNum);
+				pstmt.setInt(5, section);
+				pstmt.setInt(6, pageNum);
 			}
 			rs=pstmt.executeQuery();
 			
@@ -103,12 +106,35 @@ public class QnaDAO {
 	}
 	
 	//전체 글 목록 수
-	public int selectToArticles(String user_id) {
+	public int selectAdminToArticles() {
 		int totCount=0;
 		try {
 			conn=dataFactory.getConnection();
 			String query="select count(*) from qna_tbl";
 			pstmt=conn.prepareStatement(query);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				totCount=rs.getInt(1);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("전체 글 목록 수 처리중 에러");
+			e.printStackTrace();
+		}
+		return totCount;
+	}
+	//
+	public int selectUserToArticles(String user_id) {
+		int totCount=0;
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT count(*) as cnt FROM qna_tbl WHERE user_id=? or";
+			query+=" parent_no IN (SELECT qna_id FROM qna_tbl WHERE user_id=?)";
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, user_id);
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()) {
 				totCount=rs.getInt(1);

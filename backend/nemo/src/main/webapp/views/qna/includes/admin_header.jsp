@@ -48,7 +48,7 @@
   </li>
   
   <li>
-    <a href="${contextPath}/myGroupMember.html">
+    <a href="${contextPath}/viewQna">
       <div class="sc2_icon_menu">
         <div class="menu_submenu_name <c:if test="${menuSelected eq 3}">submenu_select</c:if>">
         	<span>고객센터 Q&A</span></div>

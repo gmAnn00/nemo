@@ -19,7 +19,12 @@ public class QnaService {
 	public Map helpQnA(Map<String, Integer> paginMap, String user_id, boolean isAdmin) {
 		Map atricleMap =new HashMap<>();
 		List<QnaVO> articlesList = qnaDAO.selectQnas(paginMap, user_id, isAdmin);
-		int totArticles=qnaDAO.selectToArticles(user_id);
+		int totArticles=0;
+		if(isAdmin) {
+			totArticles=qnaDAO.selectAdminToArticles();
+		} else {
+			totArticles=qnaDAO.selectUserToArticles(user_id);
+		}
 		atricleMap.put("articlesList", articlesList);
 		atricleMap.put("totArticles", totArticles);
 		return atricleMap;
