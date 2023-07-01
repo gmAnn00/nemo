@@ -54,10 +54,11 @@ form input {
   text-shadow: 1px 1px 3px #404040;
 }
 .myImage label {
-  position: relative;
-  left: 140px;
-  top: 10px;
-  cursor: pointer;
+    position: relative;
+    left: 135px;
+    top: 10px;
+    cursor: pointer;
+    width: 50px;
 }
 
 /* 비밀번호 일치 */
@@ -137,4 +138,14 @@ form button[class="emailCheckBtn"] {
 }
 form .submitCancel {
   text-align: center;
+}
+
+.delUserImg{
+    width: 50px;
+    position: relative;
+    top: 10px;
+    left: 145px;
+}
+.myImage div{
+	display: block;
 }
