@@ -21,7 +21,7 @@ import nemo.dao.schedule.ScheduleDAO;
 import nemo.service.schedule.ScheduleService;
 import nemo.vo.schedule.ScheduleVO;
 
-@WebServlet("/group/schedule/*")
+@WebServlet("/group/schedule/asdf")
 public class ScheduleController extends HttpServlet {
 	ScheduleDAO dao;
 	HttpSession session;
