@@ -1,0 +1,31 @@
+@charset "utf-8";
+.boardArea {
+	width:100%;
+	margin: 0 auto;
+	text-align: center;
+}
+.innerContent {
+	display:inline-block;
+	margin:30px 0 0 0;
+	padding: 10px 30px;
+	width: 60%;
+
+}
+.contentTitle {
+	margin: 20px 0;
+}
+.btnArea {
+	margin: 20px 0;
+}
+.comTitle {
+	padding:10px;
+	background-color: #fdf7ec;
+	margin:10px 0;
+}
+.comment {
+	margin-top:10px;
+}
+.msg {
+	margin: 30px 0;
+	font-weight: bold;
+}

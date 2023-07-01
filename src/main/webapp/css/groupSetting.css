@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+#contentsArea {
+  padding-top: 50px;
+  width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.mod_section {
+  display: flex;
+}
+
+/* 소모임 이미지 등록 - 기존 css 이용 */
+.formArea {
+  position: relative;
+}
+
+.innerCont {
+  padding: 0 100px;
+  margin: 0 auto;
+}
+
+.uploadArea {
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  flex: 0.8;
+  flex-direction: column;
+}
+
+.imgCrop {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imgCrop img {
+  width: 100%;
+  height: 100%;
+}
+.profile_btn {
+  display: flex;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.btnComm {
+  text-align: center;
+  height: 30px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  line-height: 30px;
+}
+
+/* form 태그 공통 */
+form {
+  display: flex;
+  justify-content: space-between;
+}
+.form_div {
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 20px; */
+  /* width: 500px; */
+  position: relative;
+}
+.profile_label {
+  margin-bottom: 5px;
+  position: relative;
+  top: 30px;
+  left: -110px;
+  width: 105px;
+}
+form input {
+  padding: 8px;
+}
+input[id="groupNum"] {
+  width: 22%;
+}
+.groupNum span {
+  position: absolute;
+  top: 30px;
+  right: 350px;
+}
+
+.formTbl {
+  margin-left: 50px;
+}
+
+/* 카테고리 영역 */
+.innerTblArea p {
+  font-size: 12px;
+}
+.cateTbl {
+  top: 50px;
+}
+/* select box 설정*/
+.selectBox {
+  width: 240px;
+  height: 28px;
+  margin: 5px 5px 5px 0;
+  border-radius: 4px;
+  border: 2px solid var(--sub-color);
+}
+.selectBox .commonSelect {
+  width: inherit;
+  height: inherit;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+}
+.selectBox .commonSelect option {
+  padding: 0 10px;
+  border-radius: 5px;
+}
+.selectBox .commonSelect::selection {
+  background-color: var(--sub3-color);
+}
+
+.textAreaTd textarea {
+  width: 490px;
+  padding: 5px;
+  resize: none;
+}
+.textAreaTd p {
+  text-align: right;
+}
+
+form input[type="checkbox"] {
+  display: inline-block;
+  position: relative;
+  top: 15px;
+  width: 15px;
+}
+form div span {
+  margin-top: 6px;
+}
+
+/* 주소입력 */
+form .findZipcode {
+  width: 150px;
+  position: absolute;
+  top: 22px;
+  left: 230px;
+}
+input[id="zipcode"] {
+  width: 200px;
+  margin-bottom: 10px;
+}
+form input[id="grp_addr1"] {
+  margin-bottom: 10px;
+}
+/* 가입설정 */
+.checkConfirm {
+  margin-bottom: 80px;
+}
+.checkConfirm label.confirm {
+  padding-left: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.creatGrp {
+  display: flex;
+  flex-direction: row;
+  right: 200px;
+  margin-top: 70px;
+}
+.creatGrp input {
+  flex: 0.2;
+}
+#createGrpBtn {
+  margin-right: 50px;
+}
+

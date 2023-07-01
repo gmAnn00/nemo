@@ -1,0 +1,67 @@
+.contentsArea {
+  /* width: 800px; */
+  margin: 0 auto;
+}
+.category h2 {
+  font-family: "NeoExBold";
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  /* border-bottom: 1px solid #ccc; */
+}
+.category h3 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+/* 관심사 영역 */
+.category {
+  width: 800px;
+  margin: 30px auto;
+  padding: 10px 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.largeCategory {
+  margin-top: 35px;
+}
+
+.myInterest h3 > span {
+  font-size: 14px;
+}
+.btnInterest {
+  padding: 2px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  width: 150px;
+  height: 55px;
+  background-color: var(--sub3-color);
+  border-radius: 5px;
+  border: none;
+  font-size: 0.9em;
+}
+.btnMyInterest {
+  font-size: 0.9em;
+  padding: 10px 20px 10px 8px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  width: 150px;
+  height: 55px;
+  background-color: var(--sub3-color);
+  background-image: url("../images/btn_del.png");
+  background-size: cover;
+  border: none;
+}
+.saveInterest {
+  margin: 30px 0;
+  text-align: center;
+}
+.selectLarge, .selectSmall{
+  background-color: var(--main-color);
+  color: #ffffff;
+}
+/* .saveInterest button{
+    display: inline-block;
+    padding: 10px;
+} */

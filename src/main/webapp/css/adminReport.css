@@ -1,0 +1,7 @@
+@charset "utf-8";
+table {
+    margin-top: 20px;
+}
+.list {
+    position: static!important;
+}

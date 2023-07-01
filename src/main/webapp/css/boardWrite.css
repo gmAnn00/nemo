@@ -1,0 +1,67 @@
+@charset "utf-8";
+#contentsArea {
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+/* 게시글 등록 영역 */
+/* .boardWrite {
+  margin: 0 auto;
+  width: 850px;
+  padding: 30px;
+} */
+.boardWriteArea {
+  /*margin-left: 5px;*/
+  margin-top:5px;
+}
+
+/* 제목 영역 */
+.articleWritingTitle {
+  /* width: 850px; 
+  overflow: hidden;
+  margin: 10px 0;
+  */
+  display:flex;
+  box-sizing: border-box;
+  padding: 10px 10px 0px 10px;
+  margin: 0 auto;
+}
+.headTitleArea {
+	/*
+  width: 150px;
+  height: 30px;*/
+	width: 150px;
+	box-sizing: border-box;
+	margin-right:10px;
+}
+
+.headTitle {
+	width:100%;
+	height:36px;
+}
+.titleArea {
+	/*
+  width: 670px;*/
+  box-sizing: border-box;
+  flex:1;
+}
+.titleArea .writeTitle {
+	width:100%;
+	height:36px;
+	outline: 0;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
+/* 글쓰는 영역 */
+.editorArea {
+	padding:10px;
+  margin: 0 auto;
+}
+
+
+/* 등록버튼 */
+.btnRegister {
+  text-align: right;
+  margin: 10px 15px 0 0;
+}
