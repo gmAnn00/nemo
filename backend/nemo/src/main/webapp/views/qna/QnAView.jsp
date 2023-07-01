@@ -177,9 +177,13 @@
 				            <a href="#" role="button" class="btnEdit btn">수정</a>
 				            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 			            </c:if>
-			            <c:if test="${admin eq 1 }">
-				            <a href="#" role="button" class="btnEdit btn">답글</a>
+			            <c:if test="${admin eq 1 and article.user_id != user_id}">
+				            <a href="${contextPath}/viewQna/replyForm.do?parent_no=${article.qna_id}" role="button" class="btnEdit btn">답글</a>
 			            </c:if>
+			         <c:if test="${admin eq 1 and article.user_id eq user_id}">
+			         	<a href="#" role="button" class="btnEdit btn">수정</a>
+			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
+		            </c:if>
 		       		</div>
 	            
 	              <div class="content">
@@ -192,18 +196,22 @@
 	            <!-- 기능 구현에 따라 코딩 수정요 -->
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
-		            <c:if test="${admin eq 0 }">
+		            <c:if test="${admin eq 0 and article.user_id eq user_id}">
 		            	<a href="${contextPath}/viewQna/QnAWrite.do" role="button" class="btnWrite btn">글쓰기</a>
 			            <a href="#" role="button" class="btnEdit btn">수정</a>
 			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 		            </c:if>
-		            <c:if test="${admin eq 1 }">
-			            <a href="#" role="button" class="btnEdit btn">답글</a>
+		            <c:if test="${admin eq 1 and article.user_id != user_id}">
+			            <a href="${contextPath}/viewQna/replyForm.do?parent_no=${article.qna_id}" role="button" class="btnEdit btn">답글</a>
+			        </c:if>
+			        <c:if test="${admin eq 1 and article.user_id eq user_id}">
+			        	<a href="#" role="button" class="btnEdit btn">수정</a>
+			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 		            </c:if>
 	            </div>
 	            <div class="rightArea">
 	              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-	              <a href="${referURL}" role="button" class="btnList btn">목록</a>
+	              <a href="${contextPath}/viewQna" role="button" class="btnList btn">목록</a>
 	              <a href="#boardView" role="button" class="btn btnTop "><i class="fa-solid fa-caret-up"></i>TOP</a>
 	            </div>
 	          </div>

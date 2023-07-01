@@ -378,8 +378,7 @@ public class QnaDAO {
 	public void deleteArticle(int qna_id) {
 		try {
 			conn=dataFactory.getConnection();
-			//String query="DELETE FROM qna_tbl WHERE qna_id in(SELECT qna_id FROM qna_tbl START WITH qna_id=? CONNENCT BY PRIOR qna_id=parent_no)";
-			String query="DELETE FROM qna_tbl WHERE qna_id=?";
+			String query="DELETE FROM qna_tbl WHERE qna_id in(SELECT qna_id FROM qna_tbl START WITH qna_id=? CONNECT BY PRIOR qna_id=parent_no)";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, qna_id);
 			pstmt.executeUpdate();

@@ -135,7 +135,6 @@ public class QnaController extends HttpServlet {
 
 					int article_no=qnaService.getNewArticleNo();
 					List<String> fileNameList=getImageFileNameNew(content);
-					System.out.println("크기 : "+fileNameList.size());
 					Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
 					
                     if(isImgExist) {
@@ -244,26 +243,42 @@ public class QnaController extends HttpServlet {
 					int parent_no=Integer.parseInt(req);
 					session=request.getSession();
 					session.setAttribute("parent_no", parent_no);
-					nextPage="/qna/replyFrom.jsp";
+					nextPage="/views/qna/replyForm.jsp";
 				}else if(action.equals("/addReply.do")) {
 					session=request.getSession();
 					int parent_no=(Integer)session.getAttribute("parent_no");
 					session.removeAttribute("parent_no");
-					Map<String, String> articleMap=upload(request, response);
-					String title=articleMap.get("title");
-					String content=articleMap.get("content");
-					String qna_img=articleMap.get("qna_img");
+					String title=request.getParameter("title");
+					String content=request.getParameter("content");
+
+					int qna_id=qnaService.getNewArticleNo();
+					List<String> fileNameList=getImageFileNameNew(content);
+					Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));
+					
+                    if(isImgExist) {
+                        String[] imgName=request.getParameterValues("imageName");
+                        List<String> getFileList=null;	//jaon으로 push한 배열 담는 리스트
+                        if(imgName.length!=0) {
+                        	getFileList=new ArrayList<String>();
+                            for(int i=0; i<imgName.length; i++) {
+                                System.out.println(imgName[i]);
+                                getFileList.add(imgName[i]);
+                            }
+                        } 
+						moveImageDir(fileNameList, getFileList, qna_id);
+						content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+qna_id+"&");
+					}
+
 					qnaVO.setParent_no(parent_no);
-					//qnaVO.setId("young");관리자 부분
+					qnaVO.setUser_id(user_id);
+					System.out.println("답변 user_id"+user_id);
+					qnaVO.setQna_id(qna_id);
 					qnaVO.setTitle(title);
 					qnaVO.setContent(content);
-					qnaVO.setQna_img(qna_img);
 					qnaService.addReply(qnaVO);
-
-					out=response.getWriter();
 					out.print("<script>");
-					out.print("alert('답글을 추가했습니다.');");
-					out.print("location.href='" +request.getContextPath() + "/qna/QnAView.do?articleNo=" + "';");
+					out.print("alert('답글이 등록되었습니다.');");
+					out.print("location.href='"+request.getContextPath()+"/viewQna';");
 					out.print("</script>");
 					return;
 				}
