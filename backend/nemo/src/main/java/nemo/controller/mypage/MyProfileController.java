@@ -154,7 +154,8 @@ public class MyProfileController extends HttpServlet {
 					Date birthdate = Date.valueOf(userProfileMap.get("birthdate"));
 					String originalFileName = (String)userProfileMap.get("originalFileName");
 					String user_img = null;
-					
+					String isDeleteImg = (String)userProfileMap.get("isDeleteImg");
+					System.out.println("isDeleteImg=" + isDeleteImg);
 					System.out.println("originalFileName" + originalFileName);
 					if(userProfileMap.get("user_img") == null && originalFileName == null) {
 						user_img="dall.png";
@@ -183,7 +184,21 @@ public class MyProfileController extends HttpServlet {
 						File oldFile = new File(USER_IMG_REPO + "\\" + user_id  + "\\" + originalFileName);
 						oldFile.delete();
 						
-					} else if(user_img == null || user_img.length() == 0 && originalFileName != null ) {
+					} else if(isDeleteImg.equals("true")) {
+						System.out.println("유저 이미지 삭제");
+						//Map<String, String>userImageMap = upload(request, response);					
+											
+						if(user_img != null) {
+							File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + user_img);
+							oldFile.delete();					
+						}				
+						
+						user_img = "dall.png";
+						
+						File scrFile = new File(USER_IMG_REPO + "\\temp\\" + user_img);
+						File destDir = new File(USER_IMG_REPO + "\\" + user_id);
+						FileUtils.copyFileToDirectory(scrFile, destDir, false);
+					} else if(user_img == null || user_img.length() == 0 && originalFileName != null) {
 					//유저이미지가 이미 있고, 교체하지 않았을 때
 						System.out.println("유저 이미지를 교체하지 않았습니다.");
 						user_img = originalFileName;
@@ -194,6 +209,9 @@ public class MyProfileController extends HttpServlet {
 									
 					
 					request.setAttribute("msg", "modified");
+					session.removeAttribute("user_img");
+					session.setAttribute("user_img", user_img);
+					
 					nextPage="/nemo/mypage/myProfile";
 					
 					out.print("<script>");
@@ -234,6 +252,9 @@ public class MyProfileController extends HttpServlet {
 					UserVO userVO = new UserVO(user_id, user_img);
 					myProfService.modUserImg(userVO);					
 
+					session.removeAttribute("user_img");
+					session.setAttribute("user_img", user_img);
+					
 					nextPage= "/nemo/mypage/myProfile";
 					
 					//request.setAttribute("msg", "modImg");
@@ -256,27 +277,28 @@ public class MyProfileController extends HttpServlet {
 					
 				}else if(action.equals("/userImgDelete")) {
 					//프로필 이미지 삭제					
-					String user_img = null;
-					Map<String, String>userImageMap = upload(request, response);					
+					user_id = (String) session.getAttribute("user_id");
+					UserVO userVO = myProfService.searchProfileById(user_id);
+					String user_img = userVO.getUser_img();
+					
+					//Map<String, String>userImageMap = upload(request, response);					
 										
-					if(user_img == null) {
-						user_img="dall.png";
-						//기존 이미지 삭제
-						String originalFileName = (String)userImageMap.get("originalFileName");
-						System.out.println("originalFileName" + originalFileName);
-						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + originalFileName);
+					if(user_img != null) {
+						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + user_img);
 						oldFile.delete();					
 					}				
-				
-					UserVO userVO = new UserVO(user_id, user_img);
-					myProfService.modUserImg(userVO);					
-
-					nextPage= "/nemo/mypage/myProfile";
 					
-			        out.print("<script>");
-			        out.print("alert('프로필 이미지가 삭제되었습니다.');");
-			        out.print("location.href='" + nextPage + "';");
-			        out.print("</script>");
+					user_img = "dall.png";
+					
+					File scrFile = new File(USER_IMG_REPO + "\\temp\\" + user_img);
+					File destDir = new File(USER_IMG_REPO + "\\" + user_id);
+					FileUtils.copyFileToDirectory(scrFile, destDir, false);
+					
+					userVO.setUser_img(user_img);
+					myProfService.modUserImg(userVO);		
+					
+					session.removeAttribute("user_img");
+					session.setAttribute("user_img", user_img);
 			        
 				} else if(action.equals("/delUserForm")) {
 				

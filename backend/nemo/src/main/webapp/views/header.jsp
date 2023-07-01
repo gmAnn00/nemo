@@ -29,19 +29,27 @@
         <div class="sidemenu">
             <ul class="main_menu">
             	<c:choose>
-            		<c:when test="${user_id != null}">
+            		<c:when test="${user_id != null && admin == 0}">
 	            		<li>
 	                    	<a href="#">
 	                       	 <div class="profile"><img class="fa-solid" src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${user_img}" alt="프로필사진"><span class="profile_name">${nickname}</span></div>
 	                    	</a>
 	               		 </li>
-	              		 <li><a href="${contextPath}//group/createGroup/form">소모임 만들기</a></li>
+	              		 <li><a href="${contextPath}/group/createGroup/form">소모임 만들기</a></li>
 	               		 <li><a href="${contextPath}/groupSearch">소모임 검색</a></li>
 	               		 <li><a href="${contextPath}/mypage">프로필</a></li>
 	               		 <li><a href="${contextPath}/mypage/mySchedule">내 일정</a></li>
 	               		 <li><a href="${contextPath}/mypage/myGroupList">내 소모임</a></li>
 	                	 <li><a href="${contextPath}/mypage/help">고객센터</a></li>
 	                	 <li><a href="${contextPath}/login/logout">로그아웃</a></li>
+            		</c:when>
+            		<c:when test="${user_id != null && admin == 1 }">
+            			<li></li>
+            			<li><a href="${contextPath}/index">회원 관리</a></li>
+            			<li><a href="${contextPath}/index">소모임 관리</a></li>
+            			<li><a href="${contextPath}/index">신고 관리</a></li>
+            			<li><a href="${contextPath}/index">문의사항 관리</a></li>
+            			<li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
             		<c:otherwise>
             			<li></li>
@@ -53,7 +61,7 @@
             </ul>
             <div class="sidemenu_footer">
                 <h3>Contact details</h3>
-                <p>글 넣을 거 있으면 넣기</p>
+                <p>admin@nemo.com</p>
             </div>
         </div>
         <!-- header 종료 -->
