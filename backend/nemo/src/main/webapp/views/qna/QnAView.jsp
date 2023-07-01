@@ -174,14 +174,14 @@
 	          		<div class="contentEditTool">
 		            <!-- 기능 구현에 따라 코딩 수정요 -->
 			            <c:if test="${admin eq 0 }">			          
-				            <a href="#" role="button" class="btnEdit btn">수정</a>
+				            <a href="${contextPath}/viewQna/modArticleForm.do?qna_id=${article.qna_id}" role="button" class="btnEdit btn">수정</a>
 				            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 			            </c:if>
 			            <c:if test="${admin eq 1 and article.user_id != user_id}">
 				            <a href="${contextPath}/viewQna/replyForm.do?parent_no=${article.qna_id}" role="button" class="btnEdit btn">답글</a>
 			            </c:if>
 			         <c:if test="${admin eq 1 and article.user_id eq user_id}">
-			         	<a href="#" role="button" class="btnEdit btn">수정</a>
+			         	<a href="${contextPath}/viewQna/modArticleForm.do?qna_id=${article.qna_id}" role="button" class="btnEdit btn">수정</a>
 			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 		            </c:if>
 		       		</div>
@@ -198,14 +198,14 @@
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
 		            <c:if test="${admin eq 0 and article.user_id eq user_id}">
 		            	<a href="${contextPath}/viewQna/QnAWrite.do" role="button" class="btnWrite btn">글쓰기</a>
-			            <a href="#" role="button" class="btnEdit btn">수정</a>
+			            <a href="${contextPath}/viewQna/modArticleForm.do?qna_id=${article.qna_id}" role="button" class="btnEdit btn">수정</a>
 			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 		            </c:if>
 		            <c:if test="${admin eq 1 and article.user_id != user_id}">
 			            <a href="${contextPath}/viewQna/replyForm.do?parent_no=${article.qna_id}" role="button" class="btnEdit btn">답글</a>
 			        </c:if>
 			        <c:if test="${admin eq 1 and article.user_id eq user_id}">
-			        	<a href="#" role="button" class="btnEdit btn">수정</a>
+			        	<a href="${contextPath}/viewQna/modArticleForm.do?qna_id=${article.qna_id}" role="button" class="btnEdit btn">수정</a>
 			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 		            </c:if>
 	            </div>

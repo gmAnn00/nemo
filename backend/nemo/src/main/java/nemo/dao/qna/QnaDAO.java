@@ -103,7 +103,7 @@ public class QnaDAO {
 	}
 	
 	//전체 글 목록 수
-	public int selectToArticles() {
+	public int selectToArticles(String user_id) {
 		int totCount=0;
 		try {
 			conn=dataFactory.getConnection();
@@ -323,29 +323,30 @@ public class QnaDAO {
 	
 	//글 수정하기 메서드
 	public void updateArticle(QnaVO qnaVO) {
-		int qna_id=qnaVO.getQna_id();
 		String title=qnaVO.getTitle();
 		String content=qnaVO.getContent();
-		String qna_img=qnaVO.getQna_img();
+		int qna_id=qnaVO.getQna_id();
 		try {
 			conn=dataFactory.getConnection();
-			String query="update qna_tbl set title=?, content=?";
-			if(qna_img != null && qna_img.length() != 0 ) {
-				query+=", qna_img=?";
-			}
-			query+=" where qna_id?";
+			String query="UPDATE qna_tbl set title=?, content=? WHERE qna_id=?";
+			System.out.println(query);
+			System.out.println(title);
+			System.out.println(content);
+			System.out.println(qna_id);
 			pstmt=conn.prepareStatement(query);
+			System.out.println(1);
 			pstmt.setString(1, title);
+			System.out.println(2);
 			pstmt.setString(2, content);
-			if(qna_img != null && qna_img.length() != 0 ) {
-				pstmt.setString(3, qna_img);
-				pstmt.setInt(4, qna_id);
-			}else {
-				pstmt.setInt(3, qna_id);
-			}
+			System.out.println(3);
+			pstmt.setInt(3, qna_id);
+			System.out.println(4);
 			pstmt.executeUpdate();
+			System.out.println(5);
 			pstmt.close();
+			System.out.println(6);
 			conn.close();
+			System.out.println(7);
 		}catch (Exception e) {
 			System.out.println("글 수정 중 에러");
 			e.printStackTrace();

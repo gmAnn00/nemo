@@ -189,33 +189,54 @@ public class QnaController extends HttpServlet {
 					return;
 					
 					
+				}else if(action.equals("/modArticleForm.do")) {
+					int qna_id=Integer.parseInt(request.getParameter("qna_id"));
+					QnaVO QnaVO=qnaService.viewArticle(qna_id);
+					request.setAttribute("article", QnaVO);
+					nextPage="/views/qna/modQnAWrite.jsp";
+					
 				}else if(action.equals("/modArticle.do")) {
-					Map<String, String> articleMap=upload(request, response);
-					int qna_id=Integer.parseInt(articleMap.get("qna_id"));
-					String title=articleMap.get("title");
-					String _user_id=articleMap.get("user_id");
-					String nickname=articleMap.get("nickname");
-					String content=articleMap.get("content");
-					String qna_img=articleMap.get("qna_img");
+					int qna_id=Integer.parseInt(request.getParameter("qna_id"));
+					String title=request.getParameter("title");
+					String content=request.getParameter("content");
+					List<String> fileNameListNew=getImageFileNameNew(content);	//수정으로 추가 된 이미지 파일 이름 
+					List<String> alreadyExsitfileNameList=getImageFileNameExist(content, qna_id);	//컨텐트에 있는 기존에 있는 이미지 파일 이름 
+					List<String> dirExistFileList=dirFileList(qna_id);	//폴더에 이미 있는 파일 이름
+					for(String item:fileNameListNew) {
+						System.out.println("수정으로 추가된 이미지 파일이름: " + item);
+					}
+					for(String item:alreadyExsitfileNameList) {
+						System.out.println("컨텐트에 추가 : " + item);
+					}
+					for(String item:dirExistFileList) {
+						System.out.println("폴더에 있는애: " + item);
+					}
+					removeDumy(alreadyExsitfileNameList,dirExistFileList, qna_id);
+					
+					if(fileNameListNew==null&&alreadyExsitfileNameList==null) { //이미지 파일 이름이 없으면 폴더 삭제
+						removeDir(qna_id); 
+					}
+		
+					Boolean isImgExist=Boolean.parseBoolean(request.getParameter("isImgExist"));            
+					if(isImgExist) {
+                        String[] imgName=request.getParameterValues("imageName");
+                        List<String> getFileList=null;	//jaon으로 push한 배열 담는 리스트
+                        if(imgName.length!=0) {
+                        	getFileList=new ArrayList<String>();
+                            for(int i=0; i<imgName.length; i++) {
+                                System.out.println(imgName[i]);
+                                getFileList.add(imgName[i]);
+                            }
+                        } 
+						moveImageDir(fileNameListNew, getFileList, qna_id);	//템프에 있는거 옮김
+						content=content.replace("/getReviewImage.do?", "/getImage.do?article_no="+qna_id+"&");
+					}
+
 					qnaVO.setQna_id(qna_id);
-					qnaVO.setParent_no(0);
-					qnaVO.setUser_id(_user_id);
-					qnaVO.setNickname(nickname);
 					qnaVO.setTitle(title);
 					qnaVO.setContent(content);
-					qnaVO.setQna_img(qna_img);
 					qnaService.modArticle(qnaVO);
 					
-					//이미지를 새로 첨부한 경우에만 수행
-					if(qna_img != null && qna_img.length() != 0) {
-						String originalFileName=articleMap.get("originalFileName");
-						File srcFile=new File(QNA_IMG_REPO + "\\temp\\" + qna_img);
-						File destDir=new File(QNA_IMG_REPO + "\\" + qna_id);
-						destDir.mkdirs();
-						FileUtils.moveFileToDirectory(srcFile, destDir, true);
-						File oldFile=new File(QNA_IMG_REPO + "\\" + qna_id + "\\" + originalFileName);
-						oldFile.delete();
-					}
 					out=response.getWriter();
 					out.print("<script>");
 					out.print("alert('글을 수정했습니다.');");
