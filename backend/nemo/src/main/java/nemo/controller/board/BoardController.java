@@ -29,8 +29,6 @@ import javax.swing.text.Document;
 
 import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.select.Elements;
 
 import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;

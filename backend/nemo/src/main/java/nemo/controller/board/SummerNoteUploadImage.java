@@ -21,7 +21,6 @@ import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 
 import com.google.gson.JsonObject;
-import com.oreilly.servlet.MultipartRequest;
 
 
 @WebServlet("/snUploadImage/*")
