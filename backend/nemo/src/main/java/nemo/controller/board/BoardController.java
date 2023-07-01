@@ -35,6 +35,7 @@ import org.jsoup.select.Elements;
 import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;
 import nemo.service.board.CommentService;
+import nemo.service.group.GroupInfoService;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
 import nemo.vo.group.GroupVO;
@@ -50,6 +51,7 @@ public class BoardController extends HttpServlet {
 	CommentVO commentVO;
 	Map groupInfo;
 	HttpSession session;
+	GroupInfoService groupInfoService;
 	
 	public void init(ServletConfig config) throws ServletException {
 		boardService=new BoardService();
@@ -57,6 +59,7 @@ public class BoardController extends HttpServlet {
 		boardVO=new BoardVO();
 		commentVO = new CommentVO();
 		groupInfo=new HashMap();
+		groupInfoService = new GroupInfoService();
 		
 	}
 	
@@ -83,7 +86,8 @@ public class BoardController extends HttpServlet {
 		String user_id=(String)session.getAttribute("user_id");
 		
 		int group_id = Integer.parseInt(request.getParameter("group_id"));
-		groupInfo=boardService.getGroupInfo(group_id);
+		//groupInfo=boardService.getGroupInfo(group_id);
+		groupInfo=groupInfoService.getGroupInfo(group_id);
 		request.setAttribute("groupInfo", groupInfo);
 	
 		if (boardService.checkAdmin(user_id)) {
@@ -663,6 +667,7 @@ public class BoardController extends HttpServlet {
 		//System.out.println(create_date);
 		String create_date=(new SimpleDateFormat("yyyy-MM-dd HH:mm")).format(commentVO.getCreate_date());
 		comInfo.put("comment_no", commentVO.getComment_no());
+		comInfo.put("user_id", commentVO.getUser_id());
 		comInfo.put("article_no", commentVO.getArticle_no());
 		comInfo.put("nickname", commentVO.getUserVO().getNickname());
 		comInfo.put("com_cont", commentVO.getCom_cont());

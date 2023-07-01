@@ -1,0 +1,163 @@
+@charset "utf-8";
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  padding-top: 105px;
+}
+#contentsArea {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-family: "yg-jalnan";
+  font-size: 40px;
+  font-weight: 800;
+  border-bottom: 1px solid black;
+  display: inline-block;
+  width: 85%;
+}
+ul.myScheduleMenu {
+  width: 150px;
+  height: 300px;
+  background: #ccc;
+}
+
+div.myScheduleCalAndList {
+  display: flex;
+}
+
+#myScheduleCalendarArea {
+  flex: 1;
+}
+
+.calendarTable {
+  border-collapse: collapse;
+  border-radius: 5px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #aaaaaa;
+}
+.calendarTable td {
+  width: 80px;
+  height: 75px;
+}
+.calDate {
+  height: 50px;
+  position: relative;
+  line-height: 35px;
+}
+.calDate span {
+  height: 40px;
+}
+.calWeek {
+  height: 40px;
+}
+.calendarTable {
+  background: #fff;
+}
+.calendarTable span {
+  margin: 0 15px;
+  font-size: 1.2em;
+}
+.calendarTable button {
+  margin: 0 10px;
+}
+.calendarTable .today {
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+}
+.calendarTable td.passedDay.hasDay {
+  /* 음... 지나간날 css */
+}
+.calendarTable td.hasDay {
+  text-align: center;
+  cursor: pointer;
+}
+.calendarTable td.hasDay:hover {
+  background: var(--sub1-color);
+}
+.calendarTable tbody td.selectDay.hasDay:not(.passedDay) {
+  background: var(--sub-color);
+}
+.calendarTable .blue {
+  color: rgb(73, 73, 223);
+}
+.calendarTable .red {
+  color: rgb(231, 75, 75);
+}
+
+div.myScheduleListArea {
+  flex: 1;
+  width: 40%;
+  padding-top: 10px;
+}
+div.myScheduleListArea h3 {
+ font-size: 1.2em;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    padding: 5px;    
+    border-bottom: 1px solid #909090;
+}
+div.mySchedule {
+  /* border: 1px solid red; */
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding-bottom: 12px;
+  border-radius: 15px;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+div.myScheduleImgContent {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+}
+div.groupImg {
+  width: 85px;
+  height: 85px;
+  background-image: url(../images/books.jpg);
+  background-size: 100px 100px;
+  border-radius: 5px;
+}
+div.groupImg img {
+  width: 85px;
+  height: 85px;
+  border-radius: 10px;
+}
+div.myScheduleContent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+div.mySchedule p.myScheduleDate {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 7px;
+  padding-left: 15px;
+}
+div.mySchedule p.myScheduleDate span {
+  font-size: 0.8em;
+  color: #aaa;
+  margin-left: 5px;
+}
+div.mySchedule p.myScheduleGroupName {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+div.mySchedule p.contents {
+  font-size: 1.0em;
+  margin-top: 5px;
+}
+div.mySchedule p.contents .fa-location-dot {
+  font-size: 0.8em;
+  color: var(--main-color);
+}

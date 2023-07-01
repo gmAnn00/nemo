@@ -134,7 +134,7 @@
 	              </div>
 	              <div class="writerInfo">
 	                <div class="thumbArea">
-	                  <img src="${contextPath}/${article.userVO.user_img}" alt="프로필사진"/>
+	                	<img src="${contextPath}/userImageDownload?user_id=${article.user_id}&user_img=${article.userVO.user_img}" alt="프로필사진"/>
 	                </div>
 	                <div class="profileArea">
 	                  <div class="profileInfo">
@@ -196,7 +196,7 @@
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
 					                                <a href="#" class="commentThumb">
-					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
+					                                	<img src="${contextPath}/userImageDownload?user_id=${comment.user_id}&user_img=${comment.userVO.user_img}" alt="프로필사진"/>
 					                                </a>
 					                                <div class="commentNick">
 					                                    <span  class="commentNickInfo">
@@ -238,7 +238,7 @@
 					                                </div>
 					                                <!-- 닉네임이랑 프로필 사진 같은 링크 -->
 					                                <a href="#" class="commentThumb">
-					                                    <img src="${contextPath}/${comment.userVO.user_img}" alt="프로필사진" />
+					                                    <img src="${contextPath}/userImageDownload?user_id=${comment.user_id}&user_img=${comment.userVO.user_img}" alt="프로필사진"/>
 					                                </a>
 					                                <div class="commentNick">
 					                                    <span  class="commentNickInfo">

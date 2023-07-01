@@ -1,0 +1,141 @@
+@charset "utf-8";
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+.nav_bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-right: 13px;
+  font-size: 14px;
+}
+.fa-angle-right {
+  margin: 10px;
+}
+
+/* section 공통 부분 시작 */
+#container {
+  margin-top: 40px;
+}
+
+/* section 공통 부분 종료 */
+
+.searchBox {
+  display: inline-block;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+.searchBox_Bar {
+  width: 300px;
+  border: none;
+}
+.searchBox_Bar:focus {
+  outline: none;
+}
+.searchBox > i {
+  transform: rotate(90deg);
+}
+.sc2_member {
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+}
+.sc2_member_title {
+  padding: 20px 20px 20px 0;
+}
+.sc2_member_title_name {
+  margin-right: 20px;
+}
+.sc2_admin {
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+}
+.sc2_admin_name {
+  padding-bottom: 20px;
+}
+.sc2_button {
+  border: none;
+}
+
+/* 프로필 부분 */
+.profile_section {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile_box {
+  width: 30%;
+  border: 1px solid black;
+  height: 270px;
+  margin: 20px 20px 20px 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.profile_img {
+  width: 100px;
+  height: 100px;
+  background-image: url("../images/172e317de5420a65269e6c58868117778f324a0b9c48f77dbce3a43bd11ce785.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  background-position: 50% 50%;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.profile_btns {
+  margin-top: 25px;
+}
+.profile_btns a {
+  margin-right: 10px;
+}
+/* 탭 부분 */
+
+.tabs {
+  clear: both;
+  position: relative;
+}
+
+.tab {
+  float: left;
+}
+
+.tab label {
+  margin-right: 20px;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.tab [type="radio"] {
+  display: none;
+}
+
+.tab__content {
+  position: relative;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 0.2s cubic-bezier(0.42, 0, 0.34, 1.01);
+  opacity: 0;
+}
+
+[type="radio"]:checked ~ label {
+  border-bottom: 2px solid #1d1d1d;
+  color: #1d1d1d;
+  z-index: 2;
+}
+
+[type="radio"]:checked ~ label ~ .tab__content {
+  z-index: 1;
+  opacity: 1;
+}

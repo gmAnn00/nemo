@@ -3,13 +3,10 @@
     isELIgnored="false"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,38 +48,54 @@
             <div class="flowBanner1">
                 <ul class="list01">
                     <li>
-                        <div class="imgBox sle1">
-                            <span class="box_text">문화,공연</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=문화 · 공연 · 축제&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                    		<div class="imgBox sle1">
+                           		<span class="box_text">문화,공연</span>
+                        	</div>
+                    	</a>
                     </li>
                     <li>
-                        <div class="imgBox sle2">
-                            <span class="box_text">음악,악기</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=음악 · 악기&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+	                        <div class="imgBox sle2">
+	                            <span class="box_text">음악,악기</span>
+	                        </div>
+	                    </a>
                     </li>
                     <li>
-                        <div class="imgBox sle3">
-                            <span class="box_text">사진,영상</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=사진 · 영상&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+	                        <div class="imgBox sle3">
+	                            <span class="box_text">사진,영상</span>
+	                        </div>
+                       	</a>
                     </li>
                     <li>
-                        <div class="imgBox sle4">
-                            <span class="box_text">아웃도어</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=아웃도어 · 여행&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+	                        <div class="imgBox sle4">
+	                            <span class="box_text">아웃도어</span>
+	                        </div>
+	                    </a>
                     </li>
                     <li>
-                        <div class="imgBox sle5"><span class="box_text">스포츠</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=운동 · 스포츠&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle5"><span class="box_text">스포츠</span></div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle6">
-                            <span class="box_text">인문학,책</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=인문학 · 책 · 글&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+	                        <div class="imgBox sle6">
+	                            <span class="box_text">인문학,책</span>
+	                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle7"><span class="box_text">언어</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=외국 · 언어&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle7"><span class="box_text">언어</span></div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle8"><span class="box_text">공예</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=공예 · 만들기&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle8"><span class="box_text">공예</span></div>
+                       	</a>
                     </li>
                 </ul>
             </div>
@@ -90,32 +103,48 @@
             <div class="flowBanner2">
                 <ul class="list02">
                     <li>
-                        <div class="imgBox sle9"><span class="box_text">댄스</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=댄스 · 무용&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle9"><span class="box_text">댄스</span></div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle10"><span class="box_text">봉사</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=봉사활동&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle10"><span class="box_text">봉사</span></div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle11"><span class="box_text">사교</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=사교 · 인맥&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle11"><span class="box_text">사교</span></div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle12"><span class="box_text">자동차</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=차 · 오토바이&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle12"><span class="box_text">자동차</span></div>
+                       	</a>
                     </li>
                     <li>
-                        <div class="imgBox sle13">
-                            <span class="box_text">경기관람</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=스포츠 관람&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+	                        <div class="imgBox sle13">
+	                            <span class="box_text">경기관람</span>
+	                        </div>
+	                    </a>
                     </li>
                     <li>
-                        <div class="imgBox sle14"><span class="box_text">게임</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=게임 · 오락&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle14"><span class="box_text">게임</span></div>
+                       	</a>
                     </li>
                     <li>
-                        <div class="imgBox sle15"><span class="box_text">요리</span></div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=요리 · 제조&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+                        	<div class="imgBox sle15"><span class="box_text">요리</span></div>
+                        </a>
                     </li>
                     <li>
-                        <div class="imgBox sle16">
-                            <span class="box_text">반려동물</span>
-                        </div>
+                    	<a href="${contextPath}/groupSearch?userLat=none&userLng=none&bigCate=반려동물&smallCate=none&areaBar=-1&searchText=&sort=sortByName">
+	                        <div class="imgBox sle16">
+	                            <span class="box_text">반려동물</span>
+	                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -136,10 +165,12 @@
                         <span>소모임 만들기</span>
                         <p>좋아하는 취미생활을 주변사람들과 같이 함께 시작해보세요</p>
                     </div>
-                    <div class="group_btn">
-                        <span class="btn_more">더보기</span>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
+                    <a href="${contextPath}/group/createGroup/form">
+	                    <div class="group_btn">
+	                        <span class="btn_more">더보기</span>
+	                        <i class="fa-solid fa-angle-right"></i>
+	                    </div>
+                    </a>
                     <img class="group_jm_img jm_img1" src="./images/—Pngtree—people make puzzles concept team_5356575.png" alt="bg">
                 </div>
                 
@@ -148,10 +179,12 @@
                         <span>소모임 가입하기</span>
                         <p>새로운 아이디어를 공유하고 서로의 경험을 나누어 보세요</p>
                     </div>
-                    <div class="group_btn">
-                        <span class="btn_more">더보기</span>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
+                    <a href="${contextPath}/groupSearch">
+	                    <div class="group_btn">
+	                        <span class="btn_more">더보기</span>
+	                        <i class="fa-solid fa-angle-right"></i>
+	                    </div>
+                    </a>
                     <img class="group_jm_img jm_img2" src="./images/—Pngtree—best friends happy taking selfie_5435706.png" alt="bg">
                 </div>
 
@@ -162,171 +195,86 @@
         
         
         <div class="group">
-            <!-- 관심사, 소모임 보여주는 영역 시작 -->
-            <div class="smallPage">
-                <div class="smallText">
-                    <h3 class="smallText_title">관심사 소모임</h3>
-                </div>
-                <div class="cards">
-                    <div class="card card--1">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="card card--2">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-                    
-                    <div class="card card--3">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-
-                    <div class="card card--4">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+        	<!-- 로그인 안했을 떄 랜덤 소모임 보여줌 -->
+        	<c:if test="${user_id == null}">
+        		<div class="smallPage">
+	                <div class="smallText">
+	                    <h3 class="smallText_title">추천 소모임</h3>
+	                </div>
+	                <div class="cards">
+	               		 <c:forEach var="group" items="${randomGroupsList}">
+		                    <div class="card card--1">
+		                        <div class="card__info-hover">
+		                        </div>
+		                        <div class="card__img"></div>
+		                        <a href="${contextPath}/group/groupInfo?group_id=${group.grp_id}" class="card_link">
+		                            <div class="card__img--hover" style="background-image: url('${contextPath}/groupImages/${group.grp_id}/${group.grp_img}')"></div>
+		                        </a>
+		                        <div class="card__info">
+		                            <span class="card__category">${group.main_name}</span>
+		                            <span class="card__category">${group.sub_name}</span>
+		                            <h3 class="card__title">${group.grp_name}</h3>
+		                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="" class="card__author">${group.grp_addr1}</a></span>
+		                        </div>
+		                    </div>
+	                	
+	              	  </c:forEach>
+	                </div>
+	            </div>
+        	</c:if>
+        	
+        	<c:if test="${user_id != null}">
+        		       <!-- 관심사, 소모임 보여주는 영역 시작 -->
+	            <div class="smallPage">
+	                <div class="smallText">
+	                    <h3 class="smallText_title">관심사 소모임</h3>
+	                </div>
+	               <div class="cards">
+	               		<c:forEach var="group" items="${interestGroupsList}">
+		                    <div class="card card--1">
+		                        <div class="card__info-hover">
+		                        </div>
+		                        <div class="card__img"></div>
+		                        <a href="${contextPath}/group/groupInfo?group_id=${group.grp_id}" class="card_link">
+		                            <div class="card__img--hover" style="background-image: url('${contextPath}/groupImages/${group.grp_id}/${group.grp_img}')"></div>
+		                        </a>
+		                        <div class="card__info">
+		                            <span class="card__category">${group.main_name}</span>
+		                            <span class="card__category">${group.sub_name}</span>
+		                            <h3 class="card__title">${group.grp_name}</h3>
+		                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">${group.grp_addr1}</a></span>
+		                        </div>
+		                    </div>
+	               	   </c:forEach> 
+	               </div>
+	            </div>
+	            
+	            <div class="smallPage">
+	                <div class="smallText">
+	                    <h3 class="smallText_title">가까운 소모임</h3>
+	                </div>
+	                <div class="cards">
+	              		 <c:forEach var="group" items="${nearGroupsList}">
+	               		
+		                    <div class="card card--1">
+		                        <div class="card__info-hover">
+		                        </div>
+		                        <div class="card__img"></div>
+		                        <a href="#" class="card_link">
+		                            <div class="card__img--hover" style="background-image: url('${contextPath}/groupImages/${group.grp_id}/${group.grp_img}')"></div>
+		                        </a>
+		                        <div class="card__info">
+		                            <span class="card__category">${group.main_name}</span>
+		                            <span class="card__category">${group.sub_name}</span>
+		                            <h3 class="card__title">${group.grp_name}</h3>
+		                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">${group.grp_addr1}</a></span>
+		                        </div>
+		                    </div>
+	            	   </c:forEach>
+	               </div>
+	            </div>
             <!-- 관심사, 소모임 보여주는 영역 종료 -->
-            
-            <!--가까운 소모임 영역 시작 -->
-            <div class="smallPage">
-                <div class="smallText">
-                    <h3 class="smallText_title">가까운 소모임</h3>
-                </div>
-                <div class="cards">
-                    
-                    <div class="card card--5">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="card card--6">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-                    
-                    <div class="card card--7">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-
-                    <div class="card card--8">
-                        <div class="card__info-hover">
-                            <svg class="card__like"  viewBox="0 0 24 24">
-                                <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                            </svg>
-                        </div>
-                        <div class="card__img"></div>
-                        <a href="#" class="card_link">
-                            <div class="card__img--hover"></div>
-                        </a>
-                        <div class="card__info">
-                            <span class="card__category">대분류</span>
-                            <span class="card__category">소분류</span>
-                            <h3 class="card__title">이젠종로학원</h3>
-                            <span class="card__by"><i class="fa-solid fa-location-dot"></i> <a href="#" class="card__author">서울 종로구</a></span>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+        	</c:if>
         </div>
         <!--가까운 소모임 영역 종료 -->
 	

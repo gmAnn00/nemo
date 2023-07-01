@@ -1,0 +1,140 @@
+@charset "utf-8";
+
+/*2.제목부분*/
+.modify {
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+  width: 100%;
+  padding: 20px;
+}
+
+/* 회원가입영역 */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  width: 435px;
+  position: relative;
+  /* align-items: center; */
+}
+form label {
+  margin-bottom: 5px;
+  position: relative;
+  top: 32px;
+  left: -110px;
+  width: 105px;
+}
+form input {
+  padding: 8px;
+}
+
+/*3번*/
+.myImage {
+  padding-top: 30px;
+  align-items: center;
+}
+.myImage img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--sub3-color);
+  /*background: url(../images/dall.png) 35%;*/
+  line-height: 180px;
+  text-align: left;
+  color: var(--sub3-color);
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
+}
+.myImage label {
+  position: relative;
+  left: 140px;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* 비밀번호 일치 */
+.alert {
+  font-size: 12px;
+}
+.alertSuccess {
+  color: var(--blue-color);
+}
+.alertDanger {
+  color: var(--heart-color);
+}
+
+/* 중복확인 */
+form .check {
+  width: 100px;
+  position: absolute;
+  top: 22px;
+  right: 0px;
+  /* padding: 10px; */
+}
+.resultMsg {
+  margin: 0px;
+  padding-top: 5px;
+}
+form .findZipcode {
+  width: 150px;
+  position: absolute;
+  top: 22px;
+  left: 190px;
+}
+form input[id="zipcode"] {
+  width: 150px;
+  margin-bottom: 10px;
+}
+form input[id="user_addr1"] {
+  margin-bottom: 10px;
+}
+form input[id="birthdate"] {
+  width: 150px;
+}
+form .email {
+  display: inline-block;
+}
+form .email label {
+  display: block;
+}
+form .email input {
+  width: 120px;
+}
+form .email select {
+  width: 130px;
+  padding: 7px;
+  position: relative;
+  top: 1px;
+}
+form .emailCheck {
+  display: inline-block;
+}
+.submitCancel {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+.submitCancel .button {
+  margin-right: 30px;
+  flex: 2;
+}
+form input[type="checkbox"] {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+form button[class="emailCheckBtn"] {
+  display: inline-block;
+  padding: 5px;
+}
+form .submitCancel {
+  text-align: center;
+}

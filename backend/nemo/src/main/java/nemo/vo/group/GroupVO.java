@@ -20,6 +20,26 @@ public class GroupVO {
 	public GroupVO() {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public GroupVO(int grp_id, String grp_name, String grp_mng, int mem_no, String grp_zipcode, String grp_addr1,
+			String grp_addr2, Date create_date, String grp_intro, int app_st, String main_name, String sub_name,
+			String grp_img) {
+		this.grp_id = grp_id;
+		this.grp_name = grp_name;
+		this.grp_mng = grp_mng;
+		this.mem_no = mem_no;
+		this.grp_zipcode = grp_zipcode;
+		this.grp_addr1 = grp_addr1;
+		this.grp_addr2 = grp_addr2;
+		this.create_date = create_date;
+		this.grp_intro = grp_intro;
+		this.app_st = app_st;
+		this.main_name = main_name;
+		this.sub_name = sub_name;
+		this.grp_img = grp_img;
+	}
+
 
 	public int getGrp_id() {
 		return grp_id;
