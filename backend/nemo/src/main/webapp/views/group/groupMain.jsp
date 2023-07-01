@@ -94,7 +94,7 @@
                                 <i class="fa-solid fa-house"></i>
                             </a>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
-                            <span>${groupVO.grp_name}</span>
+                            <span>나의 모임</span>
                         </div>
                         <!-- nav 바 종료 -->
                     </div>
