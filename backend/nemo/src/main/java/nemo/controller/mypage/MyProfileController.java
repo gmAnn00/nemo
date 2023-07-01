@@ -186,7 +186,10 @@ public class MyProfileController extends HttpServlet {
 						
 					} else if(isDeleteImg.equals("true")) {
 						System.out.println("유저 이미지 삭제");
-						//Map<String, String>userImageMap = upload(request, response);					
+						//프로필 이미지 삭제					
+						user_id = (String) session.getAttribute("user_id");
+						UserVO userVO = myProfService.searchProfileById(user_id);
+						user_img = userVO.getUser_img();
 											
 						if(user_img != null) {
 							File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + user_img);
@@ -284,6 +287,7 @@ public class MyProfileController extends HttpServlet {
 					//Map<String, String>userImageMap = upload(request, response);					
 										
 					if(user_img != null) {
+						
 						File oldFile = new File(USER_IMG_REPO + "\\" + user_id + "\\" + user_img);
 						oldFile.delete();					
 					}				
