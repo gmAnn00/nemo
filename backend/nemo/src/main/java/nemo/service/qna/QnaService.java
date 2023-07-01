@@ -33,8 +33,8 @@ public class QnaService {
 	}
 	
 	//추가 부분
-	public int addArticle(QnaVO qna_id) {
-		return qnaDAO.insertNewArticle(qna_id);
+	public void addArticle(QnaVO qna_id) {
+		qnaDAO.insertNewArticle(qna_id);
 	}
 	
 	//내용 보는 부분
@@ -50,14 +50,21 @@ public class QnaService {
 	}
 	
 	//삭제하는 부분
-	public List<Integer> removeArtilce(int qna_id) {
+	public List<Integer> removeArticle(int qna_id) {
 		List<Integer> qna_idList=qnaDAO.selectRemovedArticles(qna_id);
 		qnaDAO.deleteArticle(qna_id);
 		return qna_idList;
 	}
 	
 	//답변 달기
-	public int addReply(QnaVO qnaVO) {
-		return qnaDAO.insertNewArticle(qnaVO);
+	public void addReply(QnaVO qnaVO) {
+		qnaDAO.insertNewArticle(qnaVO);
+	}
+	
+	//새로운 글번호 받는 메소드
+	public int getNewArticleNo() {
+		//int article_no;
+		
+		return qnaDAO.getNewArticleNo();
 	}
 }

@@ -33,13 +33,13 @@ $(document).ready(function() {
 					var result=str.toString().split('=');
 					let img="<input type='hidden' name='imageName' value='"+result[1]+"'>";
 					console.log(img);
-					$('#articleForm').append(img);
+					$('#qnaArticleForm').append(img);
 				}
-				$('#articleForm').append('<input type="hidden" name="isImgExist" value="true">');
+				$('#qnaArticleForm').append('<input type="hidden" name="isImgExist" value="true">');
 			} else {
-				$('#articleForm').append('<input type="hidden" name="isImgExist" value="false">');
+				$('#qnaArticleForm').append('<input type="hidden" name="isImgExist" value="false">');
 			}
-			$('#articleForm').submit();
+			$('#qnaArticleForm').submit();
 
 		}
 
@@ -78,57 +78,19 @@ $(document).ready(function() {
 		            	//sendFile(files[i], this);
 		            	uploadSummerNoteImage(files[i], this);
 		            }
-		        }, onMediaDelete : function(target) {
-                    console.log();
-                    //deleteFile(target[0].src);
-                }
-		        
-		        //end of onImageUpload 콜백 
-		       /* onMediaDelete: function ($target, editor, $editable) {
-					let deletedImageUrl=$target
-						.attr('src')
-						.split('/')
-						.pop();
-						console.log(deletedImageUrl);
-				//		deleteImageFile(deletedImageUrl)
-				} //end of onMediaDelete 콜백
-			}*/
+		        }
 			}
 		});
 });
-/*
-	function sendFile(file, el) {
-		//let ctx=getContextPath();
-		var form_data = new FormData();
-		console.log('콜백오니');
-      	form_data.append('file', file);
-      	$.ajax({
-        	data: form_data,
-        	type: "POST",
-        	url: '/nemo/snUploadImage',
-        	cache: false,
-        	contentType: false,
-        	enctype: 'multipart/form-data',
-        	processData: false,
-        	success: function(img_name) {
-				console.log("성공~");
-				
-				let img=JSON.parse(img_name);
-				console.log(img.url);
-          		$(el).summernote('editor.insertImage', img.url);
-        	}
-      	});
-    }
-*/	
+
 function uploadSummerNoteImage(file,el) {
 		console.log('업로드 펑션 콜백오니');
 		let ctx=getContextPath();
 		let data = new FormData();
-		console.log(ctx+'/summernote/uploadImage');
 		data.append("file",file);
 			$.ajax({
 				data:data,
-				url: '/nemo/snUploadImage',
+				url: '/nemo/qnaSnUploadImage',
 				type:'POST',
         		cache: false,
         		contentType: false,
@@ -148,12 +110,12 @@ function uploadSummerNoteImage(file,el) {
 			});
 }
 
-	function fn_cancel(group_id){
+	function fn_cancel(){
 		console.log('여긴오니???????????????');
 		let cancelForm=document.createElement('form');
 		cancelForm.name='cancelForm';
 		cancelForm.method='post';
-		cancelForm.action="cancelAddArticle?group_id="+group_id;
+		cancelForm.action="qnaCancelAddArticle";
 		console.log(jsonArray.length);
 		if(jsonArray.length>0) {
 			for(var i=0; i<jsonArray.length; i++) {

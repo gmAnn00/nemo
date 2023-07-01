@@ -9,79 +9,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEMO</title>
+    <title>네모: 고객센터</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
-    <link rel="stylesheet" href="${contextPath}/css/boardWrite.css" />
+    <link rel="stylesheet" href="${contextPath}/css/qnaWrite.css" />
     <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css"/>
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-     
-<script type="text/javascript">
-	//이미지 미리보기 구현
-	function readImage(input) {
-		if(input.files && input.files[0]) {
-			let reader=new FileReader();
-			reader.onload=function (event) {
-				$("#preview").attr('src',event.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}else {
-			$("#preview").attr('src','');
-		}
-	}
-	//다른 액션으로 submit
-	function backToList(obj) {
-		obj.action="${contextPath}/qna/helpQnA.do";
-		obj.submit();
-	}
-</script>
-     
+    <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
+    <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
     <script src="${contextPath}/js/header.js"></script>
-    <script src="${contextPath}/js/boardWrite.js"></script>
+    <script src="${contextPath}/js/qnaWrite.js"></script>
+
  </head>
  
  
  <body>
     <!-- header 시작 -->
-    <!-- 사이드 메뉴시 배경색 조정 -->
-    <div class="menu_bg"></div>
-    <header>
-      <h1 class="logo">
-        <a href="${contextPath}/index.html"><img src="${contextPath}/images/logo.png" alt="logo"
-        /></a>
-      </h1>
-    </header>
-    <button class="burger">
-      <span></span>
-    </button>
-    <div class="sidemenu">
-      <ul class="main_menu">
-        <li>
-          <a href="#">
-            <div class="profile">
-              <i class="fa-solid fa-circle-user"></i
-              ><span class="profile_name">사이다</span>
-            </div>
-          </a>
-        </li>
-        <li><a href="#">소모임 만들기</a></li>
-        <li><a href="#">소모임 검색</a></li>
-        <li><a href="#">프로필</a></li>
-        <li><a href="#">내 일정</a></li>
-        <li><a href="#">내 소모임</a></li>
-        <li><a href="#">고객센터</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-      <div class="sidemenu_footer">
-        <h3>Contact details</h3>
-        <p>글 넣을 거 있으면 넣기</p>
-      </div>
-    </div>
+	<jsp:include page="../header.jsp" flush="true"></jsp:include>
     <!-- header 종료 -->
 
     <!-- 콘텐츠 영역 -->
@@ -127,17 +76,17 @@
 
           <!-- 메인 상단 타이틀 출력 부분-->
           <div class="sc2_subsection_title">
-            <h2 class="sc2_subsection_title_name">Q&A</h2>
+            <h2 class="sc2_subsection_title_name">고객센터 Q&A</h2>
 
             <!-- nav 바 시작 -->
             <div class="nav_bar">
-              <a href="${contextPath}/index">
+              <a href="index.html">
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>나의 모임</span>
+              <span>고객센터</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>게시판</span>
+              <span>Q&A</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
@@ -146,34 +95,32 @@
           <!-- 글쓰기 영역 -->
           <div class="boardWriteArea">
           
-            <form action="${contextPath}/viewQna/addArticle.do" method="post" enctype="multipart/form-data">
+            <form action="${contextPath}/viewQna/addArticle.do" method="post" name="qnaArticleForm" id="qnaArticleForm">
               <!-- 제목 영역 -->
               <div class="articleWritingTitle">
-
-                <select name="headTitle" id="headTitle" class="headTitle">
-                	<c:if test="${admin eq 1}">
-	                  <option value="notice">공지사항</option>
-	                </c:if>
-	                  <option value="afterMeeting">문의사항</option>
-                </select>
+				<div class="headTitleArea">
+	                <select name="headTitle" id="headTitle" class="headTitle">
+	                	<c:if test="${admin eq 1}">
+		                  <option value="notice">공지사항</option>
+		                </c:if>
+		                  <option value="afterMeeting">문의사항</option>
+	                </select>
+                </div>
                 <!-- 제목 -->
-                <textarea name="writeTitle" id="writeTitle" class="writeTitle" rows="1" placeholder="제목을 입력해주세요"></textarea>
-              </div>
+                <div class="titleArea">
+                	<input type="text" name="title" id="writeTitle" class="writeTitle" placeholder="제목을 입력해주세요"></input>
+              	</div>
+               </div>
               <!-- 글쓰는 영역 -->
-              <div class="editorArea article">
-                <textarea class="writeContent" name="writeContent" placeholder="내용을 입력해주세요"></textarea>
-              </div><br>
-              
-              <!-- 이미지 첨부 -->
-              <div class="qna_image">
-              	<input type="file" name="qna_img" onchange="readImage(this)">
-              	<img id="preview" src="#" width="200" alt="">
-              </div>
+              <div class="editorArea">
+                <textarea id="summernote" name="content"></textarea>
+              </div>              
+
 
               <!-- 등록 버튼 -->
               <div class="btnRegister">
-                <button role="button" class="button">등록</button>
-                <a href="${contextPath}/viewQna" role="button" class="buttonCancle">취소</a>
+                <a href="#" role="button" class="button">등록</a>
+                <a href="#" role="button" class="buttonCancle" onclick="fn_cancel()">취소</a>
               </div>
             </form>
 

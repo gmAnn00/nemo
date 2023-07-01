@@ -9,7 +9,6 @@
 %>
 <c:set var="article" value="${article}" />
 <c:set var="admin" value="${admin}" />
-<c:set var="comments" value="${articleViewMap.comments}" />
 <c:set var="isSame" value="${articleViewMap.isSame }" />
 <c:set var="qna_id" value="${articleViewMap.qna_id }" />
     
@@ -24,34 +23,14 @@
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
     <link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
-    <link rel="stylesheet" href="${contextPath}/css/boardView.css" />
+    <link rel="stylesheet" href="${contextPath}/css/qnaView.css" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="${contextPath}/js/header.js"></script>
-    <script src="${contextPath}/js/boardView.js"></script>
+    <script src="${contextPath}/js/qnaView.js"></script>
     
     <script type="text/javascript">
-	//이미지 미리보기 구현
-	function readImage(input) {
-		if(input.files && input.files[0]) {
-			let reader=new FileReader();
-			reader.onload=function (event) {
-				$("#preview").attr('src',event.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
-	function fn_enable(obj) {
-		document.getElementById("id_title").disabled=false;
-		document.getElementById("id_content").disabled=false;
-		let imgName=document.getElementById("id_imgFile");
-		if(imgName != null) {
-			imgName.disabled=false;
-		}
-		document.getElementById("tr_button_modify").style.display="block";
-		document.getElementById("tr_button").style.display="none";
-	}
 	function toList(obj) {
 		obj.action="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}";
 		obj.submit();
@@ -99,7 +78,6 @@
     <!-- header 종료 -->
 
 
-
     <!-- 콘텐츠 영역 -->
     <div class="section2">
       <!-- 소모임 내부 메뉴(공통) 코딩 필요 -->
@@ -143,35 +121,22 @@
         <!-- 게시글 조회 영역 시작 -->
         <div class="boardView sc2_subsection">
           <div class="sc2_subsection_title">
-            <h2 class="sc2_subsection_title_name">Q&A</h2>
+            <h2 class="sc2_subsection_title_name">고객센터 Q&A</h2>
+
             <!-- nav 바 시작 -->
             <div class="nav_bar">
-              <a href="${contextPath}/index.html">
+              <a href="index.html">
                 <i class="fa-solid fa-house nav_icon"></i>
               </a>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>나의 모임</span>
+              <span>고객센터</span>
               <i class="fa-solid fa-angle-right nav_icon"></i>
-              <span>게시글 작성</span>
+              <span>Q&A</span>
             </div>
             <!-- nav 바 종료 -->
           </div>
 
 			<div class="atricleArea">
-	          <!-- 글 위쪽 버튼 영역 -->
-	          <div class="articleToolBtns">
-	            <!-- 기능 구현에 따라 코딩 수정요 -->
-	            <c:if test="${admin eq 0 }">
-		            <a href="#" role="button" class="button btnEdit">수정</a>
-		            <a href="#" role="button" class="buttonCancle btnDel">삭제</a>
-	            </c:if>
-	            <c:if test="${admin eq 1 }">
-		            <a href="#" role="button" class="button btnEdit">답글</a>
-	            </c:if>
-	            <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 동적으로 바꿔야 함 -->
-	            <!--  <a href="javascript:history.back();" role="button" class="button2 btnList">목록</a>-->
-	            <a href="${contextPath}/qna/helpQnA?qna_id=${qna_id}" role="button" class="button2 btnList">목록</a>
-	          </div>
 	          <div class="articleContentBox">
 	            <!-- 제목 영역 -->
 	            <div class="articleHeader">
@@ -179,7 +144,7 @@
 	              	<div class="titleHead">
 	              		<span class="brackets">
 			             	<c:choose>
-			             		<c:when test="${admin eq 1}">답변</c:when>
+			             		<c:when test="${article.user_id eq 'admin'}">답변</c:when>
 			             		<c:otherwise>문의</c:otherwise>
 			             	</c:choose>
 	                	</span>
@@ -206,18 +171,21 @@
 	            </div>
 	            <!-- 내용 영역 -->
 	            <div id="contentArea" class="contentArea">
-	              <p>내용 ${article.content}</p>
-	            </div>
-	            <!-- 이미지 부분? -->
-	            <c:out value="${contextPath }/qnaImages/${article.qna_id}/${article.qna_img}"/>
-	            <c:if test="${not empty article.qna_img}">
-	            	<div>
-	            		<input type="hidden" name="originalFileName" value="${article.qna_img}">
-	            		<img src="${contextPath}/qnaImagesDownload?qna_id=${param.qna_id}&qna_img=${qnaVO.qna_img}" alt="">
-	            		<!--<img src="${contextPath}/qnaImages/${article.qna_id}/${article.qna_img}">-->
-	            		<!-- <img id="preview" src="${contextPath}/download.do?qna_id=${aricle.qna_id}&qna_id=${article.qna_id}">-->
+	          		<div class="contentEditTool">
+		            <!-- 기능 구현에 따라 코딩 수정요 -->
+			            <c:if test="${admin eq 0 }">			          
+				            <a href="#" role="button" class="btnEdit btn">수정</a>
+				            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
+			            </c:if>
+			            <c:if test="${admin eq 1 }">
+				            <a href="#" role="button" class="btnEdit btn">답글</a>
+			            </c:if>
+		       		</div>
+	            
+	              <div class="content">
+	            		${article.content}
 	            	</div>
-	            </c:if>
+	            </div>
 	            
 	          <!-- 글 아래쪽 버튼 영역 -->
 	          <div class="articleBottomBtns">
@@ -225,8 +193,9 @@
 	            <div class="leftArea">
 	              <!-- 본인 글이면 수정 삭제 뜨고 아니면 글쓰기만 뜨도록 -->
 		            <c:if test="${admin eq 0 }">
+		            	<a href="${contextPath}/viewQna/QnAWrite.do" role="button" class="btnWrite btn">글쓰기</a>
 			            <a href="#" role="button" class="btnEdit btn">수정</a>
-			            <a href="#" role="button" class="btnDel btn">삭제</a>
+			            <a href="#" role="button" class="btnDel btn" onclick="fn_deleteChk(${article.qna_id})">삭제</a>
 		            </c:if>
 		            <c:if test="${admin eq 1 }">
 			            <a href="#" role="button" class="btnEdit btn">답글</a>

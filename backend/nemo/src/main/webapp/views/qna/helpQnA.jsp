@@ -31,7 +31,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>관리자-소모임 관리 페이지</title>
+    <title>네모: 고객센터</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
@@ -162,7 +162,7 @@
 					                    </div>
 				                    </div>
 				                  </td>
-				                  <td>${article.user_id}</td>
+				                  <td>${article.userVO.nickname}</td>
 				                  <td>${article.create_date}</td>
 				                  
 				                </tr>
@@ -171,10 +171,11 @@
 					</c:choose>
 	              </tbody>
 	            </table>
-	            
-	            <div class="bottomBtn">
-	              <a href="${contextPath}/viewQna/QnAWrite.do" role="button" class="button">글쓰기</a>
-	            </div>
+	            <c:if test="${admin eq 0}">
+		            <div class="bottomBtn">
+		              <a href="${contextPath}/viewQna/QnAWrite.do" role="button" class="button">글쓰기</a>
+		            </div>
+	            </c:if>
 	            
 	            <div class="pagenation">
 					<c:if test="${totArticles != 0}">
