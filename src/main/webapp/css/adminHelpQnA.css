@@ -1,0 +1,135 @@
+@charset "utf-8";
+@font-face {
+    font-family: "yg-jalnan";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+.adminQnATitle {
+    font-family: "yg-jalnan";
+    font-size: 40px;
+    font-weight: 800;
+}
+input[type="text"] {
+    display: inline-block;
+    width: 300px;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #fff;
+}
+select {
+    display: inline-block;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    background-color: #fff;
+}
+.qnaContainer {
+    margin-top: 20px;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    padding-top: 105px;
+}
+#contentsArea {
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 50px;
+}
+#wrap h2 {
+    border-bottom: 1px solid #111;
+    margin-bottom: 50px;
+}
+.searchContainer {
+    text-align: center;
+}
+#wrap {
+    width: 100%;
+    height: 100%;
+    flex: 3;
+    padding-right: 1.875em;
+}
+.searchContainer form input {
+    width: 30%;
+}
+.qnaContainer {
+    width: 100%;
+    text-align: center;
+}
+.qnaTable {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.qnaTable td {
+    height: 30px;
+}
+table.boardList {
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    width: 800px;
+    height: 420px;
+}
+.boardList tr {
+    margin: 10px;
+    height: 30px;
+    /* border-bottom: 2px solid #ccc; */
+    padding: 5px;
+}
+.boardListHead {
+    border-bottom: 1px solid #666;
+    font-weight: bold;
+    /* margin-bottom: 5px; */
+}
+.boardList td,
+.boardList th {
+    vertical-align: middle;
+}
+.boardList tr > td:nth-child(1) {
+    width: 10%;
+}
+.boardList tr > td:nth-child(2) {
+    width: 10%;
+}
+.boardList tr > td:nth-child(4) {
+    width: 15%;
+}
+.boardList tr > td:nth-child(5) {
+    color: #333;
+    width: 15%;
+}
+/* 말머리 뒤에 | 붙이기 */
+.boardList tr > td:nth-child(3)::before {
+    margin-right: 25px;
+    content: " | ";
+}
+.boardList tr > td:nth-child(3) {
+    width: 500px;
+    text-align: left;
+}
+.pagenation {
+    height: 40px;
+    line-height: 60px;
+    text-align: center;
+    border-top: 1px solid #666;
+}
+.pagenation span {
+    margin: 5px 10px;
+}

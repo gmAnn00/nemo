@@ -1,0 +1,149 @@
+@charset "utf-8";
+
+/*3번*/
+.contentBox {
+  margin-top: 80px;
+  margin: 80px 60px 0 0;
+}
+
+/*4번 제목부분*/
+.firstText {
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+}
+.firstText > h3 {
+  margin-bottom: 10px;
+}
+/*4번*/
+.myProfile {
+  width: 750px;
+  display: flex;
+  flex-wrap: wrap;
+}
+/*4-1*/
+.myProMo {
+  margin: 30px 0 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.myProMo > h3 {
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+/*4-2*/
+.myInfo {
+  display: flex;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+}
+.myImage {
+  display: flex;
+  width: 150px;
+}
+.myImage form {
+  text-align: center;
+  margin-left: 55px;
+}
+.myImage img {
+  display: block;
+  margin-top: 85px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--sub3-color);
+  /*background: url(../images/dall.png) 35%;*/
+  line-height: 180px;
+  color: var(--sub3-color);
+  text-align: left;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #404040;
+}
+.myImage label {
+  display: inline-block;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/*4-3*/
+.profileModi {
+  /* width: 300px; */
+  margin-bottom: 20px;
+}
+/* .myModi li {
+  margin: 0 20px 10px 80px;
+} */
+.myModi {
+  margin-left: 50px;
+  padding: 40px 0 20px 40px;
+}
+
+table.profileModi {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+tbody {
+  display: flex;
+}
+th,
+td {
+  display: block;
+  height: 25px;
+  text-align: left;
+  line-height: 25px;
+  padding: 10px;
+  border-bottom: 1px solid transparent;
+}
+th {
+  padding-right: 20px;
+}
+td {
+  /* border-collapse: separate; */
+  width: 250px;
+}
+/* 회원정보 뿌려주는 곳 스타일 */
+td div {
+  /* background-clip: content-box; */
+  border-bottom: 1px solid #ccc;
+  /* padding: 0 10px;
+  border-radius: 15px;
+  background-color: var(--sub3-color); */
+}
+
+/* 관심사 */
+.myHabi {
+  width: 100%;
+  margin: 50px 0;
+  /* border-bottom: 1px solid black; */
+}
+.myHabiText {
+  display: flex;
+  justify-content: space-between;
+}
+.myHabiText > h3 {
+  font-size: 1.2em;
+}
+.myHabiI li {
+  display: inline-block;
+  margin: 30px 15px;
+  padding: 10px 20px;
+  background-color: var(--sub1-color);
+  border-radius: 20px;
+}
+/* 탈퇴 하기 */
+.withdrawal {
+  width: 720px;
+  font-size: 0.8em;
+}
+.withdrawal > h3 {
+  font-size: 1em;
+}
+.withdrawal .delMemberlink {
+  color: #ff26a5;
+}

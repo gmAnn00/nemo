@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/* 탈퇴 하기 */
+.withdrawal {
+  margin-top: 50px;
+  justify-content: space-between;
+  width: 720px;
+  font-size: 0.8em;
+  text-align: center;
+}
+.withdrawal > h3 {
+  font-size: 1.5em;
+}
+.withdrawal span {
+  color: #ff26a5;
+}
+.withdrawal form {
+  margin-top: 50px;
+  line-height: 30px;
+}
+.withdrawal input {
+  padding: 10px;
+  margin-right: 10px;
+}
+.withdrawal .buttonCancle {
+  border: 1px solid #ff26a5;
+  padding: 0 12px;
+  font-size: 0.8em;
+}
