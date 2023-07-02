@@ -296,7 +296,7 @@
 	            </div>
 	            <div class="rightArea">
 	              <!-- 목록을 전에 눌렀던 페이지 기억해서 돌아갈거면 바꿔야 함 -->
-	              <a href="${referURL}" role="button" class="btnList btn">목록</a>
+	              <a href="${contextPath}/group/board?group_id=${group.groupVO.grp_id}" role="button" class="btnList btn">목록</a>
 	              <a href="#boardView" role="button" class="btn btnTop "><i class="fa-solid fa-caret-up"></i>TOP</a>
 	            </div>
 	          </div>
