@@ -116,9 +116,9 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                       <c:set var="idx" value="${mngGroup.grp_addr1.indexOf(' ', mngGroup.grp_addr1.indexOf(' ') + 1)}" />
                       <c:set var="locationM" value="${mngGroup.grp_addr1.substring(0, idx)}"/>
                         <div class="card card--1">
-                          <div class="card__info-hover">
-                            <span>바로가기</span>
-                            <i class="fa-solid fa-arrow-right"></i>
+                          <div class="card__info-hover">                            
+                            <span></span>
+                            <span>바로가기 <i class="fa-solid fa-arrow-right"></i></span>                            
                           </div>
                           <div class="card__img"></div>
                           <a href="${contextPath}/group/groupMain?group_id=${mngGroup.grp_id}" class="card_link">
@@ -153,7 +153,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 
                 <div class="cards">
                   <c:choose>
-                    <c:when test="${empty userGroupList}">
+                    <c:when test="${empty userGroupList && empty waitGroupList}">
                       <p>가입한 소모임이 없습니다.</p>
                     </c:when>
                   
@@ -163,22 +163,31 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                       <c:set var="locationU" value="${userGroup.grp_addr1.substring(0, idx)}"/>
                         <div class="card card--1">
                           <div class="card__info-hover">
-                            <span>바로가기</span>
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <a href="${contextPath}/index"><span class="leave">탈퇴하기</span></a>
+                            <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
+                            <span>바로가기</span>	<i class="fa-solid fa-arrow-right"></i></a>
                           </div>
-                          <div class="card__img"></div>
-                          <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
-                            <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${userGroup.grp_id}/${userGroup.grp_img}')"></div>
-                          </a>
+                          <div class="card__img"></div>                          
+                          <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${userGroup.grp_id}/${userGroup.grp_img}')">
+                          	<div class="link">
+	                          	<a href="${contextPath}/index"><span class="leave"> &nbsp; &nbsp; &nbsp; &nbsp; </span></a>
+	                            <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
+	                              <span> &nbsp; &nbsp; &nbsp; &nbsp; </span>                            
+	                          	</a> 
+                          	</div>
+                          </div>
+                          
                           <div class="card__info">
-                            <span class="card__category">${userGroup.main_name}</span>
-                            <span class="card__category">${userGroup.sub_name}</span>
-                            <h3 class="card__title">${userGroup.grp_name}</h3>
-                            <span class="card__by"
-                              ><i class="fa-solid fa-location-dot"></i>
+	                          <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
+	                            <span class="card__category">${userGroup.main_name}</span>
+	                            <span class="card__category">${userGroup.sub_name}</span>
+	                            <h3 class="card__title">${userGroup.grp_name}</h3>
+	                          </a>
+                            <span class="card__by"><i class="fa-solid fa-location-dot"></i>
                               <a href="#" class="card__author">${locationU}</a>
                             </span>
                           </div>
+                         
                         </div>
                       </c:forEach>
                     </c:when>
@@ -192,8 +201,8 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                       <c:set var="locationW" value="${waitGroup.grp_addr1.substring(0, idx)}"/>                      	
                         <div class="card card--${waitGroup.grp_id}">
                           <div class="card__info-hover">
-                            <span>바로가기</span>
-                            <i class="fa-solid fa-arrow-right"></i>
+                          	<span></span>
+                            <span>바로가기 <i class="fa-solid fa-arrow-right"></i></span>                           
                           </div>
                           <div class="card__img"></div>                           
                           <a href="${contextPath}/group/groupMain?group_id=${waitGroup.grp_id}" class="card_link">                          
@@ -238,8 +247,8 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                       <c:set var="locationB" value="${bookmarkGroup.grp_addr1.substring(0, idx)}"/>                      
 		                  <div class="card card--1">		                    
 		                    <div class="card__info-hover">
-		                      <span>바로가기</span>
-		                      <i class="fa-solid fa-arrow-right"></i>
+		                      <span></span>
+		                      <span>바로가기 <i class="fa-solid fa-arrow-right"></i></span>		                    
 		                    </div>
 		                    <div class="card__img"></div>
 		                    <a href="${contextPath}/group/groupInfo?group_id=${bookmarkGroup.grp_id}" class="card_link">
