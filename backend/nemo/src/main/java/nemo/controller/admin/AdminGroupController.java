@@ -66,17 +66,19 @@ public class AdminGroupController extends HttpServlet {
 							groupList=adminGrpService.getGroupList();
 							request.setAttribute("groupList", groupList);
 							nextPage="/views/admin/adminGroup.jsp";
+							RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+						    dispatcher.forward(request, response);
 						} else if (action.equals("/delGroup.do")) {			
-			
-							
+							int grp_id=Integer.parseInt(request.getParameter("grp_id"));
+							adminGrpService.delGroup(grp_id);
+							nextPage="/nemo/adminGroup";
+							response.sendRedirect(nextPage);
 						}
-						RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-					    dispatcher.forward(request, response);
+						
 					}catch (Exception e) {
 						System.out.println("소모임 관리 처리 중 에러 ");
 						e.printStackTrace();
-					}	
-			
+					}
 			}
 		}
 	}

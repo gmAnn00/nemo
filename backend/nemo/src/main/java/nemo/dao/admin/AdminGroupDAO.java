@@ -107,6 +107,7 @@ public class AdminGroupDAO {
 				groupInfo.put("groupVO", groupVO);
 				groupInfo.put("currentMemNO", memCnt);
 				groupInfo.put("reportCnt", rCnt);
+				
 				groupList.add(groupInfo);
 			}
 			

@@ -18,4 +18,8 @@ public class AdminGroupService {
 		groupList=adminGrpDAO.selectAllGroup();
 		return groupList;
 	}
+	
+	public void delGroup(int grp_id) {
+		adminGrpDAO.delGroup(grp_id);
+	}
 }

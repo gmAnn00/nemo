@@ -169,7 +169,7 @@
                                     	 			<td>${group.groupVO.mem_no}</td>
                                     	 			<td>${group.groupVO.create_date}</td>
                                     	 			<td>${group.reportCnt}</td>
-                                    	 			<td><a class="button" href="${contextPath}/adminGroup/delGroup.do?grp_id=${group.groupVO.grp_id}">삭제</a></td>
+                                    	 			<td><a role="button" class="button" href="#" onclick="fn_delete(${group.groupVO.grp_id})">삭제</a></td>
                                     	 		</tr>
                                     	 	</c:forEach>
                                     	</c:when>
