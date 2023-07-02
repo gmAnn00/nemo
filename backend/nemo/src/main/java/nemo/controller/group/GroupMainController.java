@@ -76,6 +76,7 @@ public class GroupMainController extends HttpServlet {
 		// 최근 일정 불러옴
 		List<ScheduleVO> schdulesList = null;
 		schdulesList = groupMainService.selectPrviewScheduleById(group_id);
+		//System.out.println("schdulesList=" + schdulesList.toString());
 		request.setAttribute("schdulesList", schdulesList);
 		
 		// 최근 게시글 불러옴
