@@ -121,7 +121,5 @@ public class AdminUserDAO {
 				e.printStackTrace();
 			}
 			
-		}
-		
-	
+		}	
 }

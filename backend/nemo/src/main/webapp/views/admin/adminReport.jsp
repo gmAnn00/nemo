@@ -178,16 +178,16 @@
 															<c:forEach var="user" items="${userList}" varStatus="status">
 																<tr align="center">
 																	<td>${status.count}</td>
-																	<td>${user.userRepVO.accsued_id}</td>
-																	<td>${user.reportCnt}</td>
+																	<td>${user.userRepVO.accused_id}</td>
+																	<td>${user.repCnt}</td>
 																	<td>${user.userRepVO.reporter_id}</td>
 																	<td>${user.userRepVO.rep_date}</td>
-																	<td><a role="button" class="button" href="#" onclick="fn_Userdelete('${user.userRepVO.accsued_id}')">삭제</a></td>
+																	<td><a role="button" class="button" href="#" onclick="fn_Userdelete('${user.userRepVO.accused_id}')">삭제</a></td>
 																</tr>
 															</c:forEach>
 														</c:when>
 													  </c:choose>
-                                                </table>
+                                                </table> 
                                             </div>
                                         </div>
                                     </div>

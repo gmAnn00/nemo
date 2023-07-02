@@ -68,8 +68,8 @@ public class AdminUserController extends HttpServlet {
 						    dispatcher.forward(request, response);
 						} else if (action.equals("/delUser.do")) {			
 							String _user_id=request.getParameter("user_id");
-							if(admin<1) {
-								adminUserService.delUser(_user_id);
+							boolean isAdmin=adminUserService.delUser(_user_id);
+							if(!isAdmin) {
 								nextPage="/nemo/adminUser";
 								out.println("<script>alert('회원이 삭제 되었습니다.'); location.href='"+nextPage+"';</script>");
 								out.flush();

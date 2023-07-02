@@ -43,16 +43,17 @@ public class MemberReportDAO {
 			while(rs.next()) {
 				int repCnt=rs.getInt("repCnt");
 				String reporter_id=rs.getString("reporter_id");
-				String accsued_id=rs.getString("accused_id");
+				String accused_id=rs.getString("accused_id");
 				Date rep_date=rs.getDate("rep_date");
 				System.out.println("a");
 				Map repUserInfo=new HashMap();
 				MemberReportVO userRepVO=new MemberReportVO();
-				userRepVO.setAccused_id(accsued_id);
+				userRepVO.setAccused_id(accused_id);
 				userRepVO.setRep_date(rep_date);
 				userRepVO.setReporter_id(reporter_id);
 				repUserInfo.put("userRepVO", userRepVO);
-				repUserInfo.put("repCnt", repCnt);				
+				repUserInfo.put("repCnt", repCnt);
+				userList.add(repUserInfo);
 			}
 			rs.close();
 			pstmt.close();

@@ -31,7 +31,7 @@ function fn_Grpdelete(grp_id){
 		let newForm = $('<form></form>');
 		newForm.attr("name","newForm");
 		newForm.attr("method","post");
-		newForm.attr("action","/nemo/adminGroup/delGroup.do");
+		newForm.attr("action","/nemo/adminReport/delRepGroup.do");
 		newForm.append($('<input/>', {type: 'hidden', name: 'grp_id', value:grp_id }));
 		newForm.appendTo('body');
 
@@ -48,7 +48,7 @@ function fn_Userdelete(user_id){
 		let newForm = $('<form></form>');
 		newForm.attr("name","newForm");
 		newForm.attr("method","post");
-		newForm.attr("action","/nemo/adminUser/delUser.do");
+		newForm.attr("action","/nemo/adminReport/delRepUser.do");
 		newForm.append($('<input/>', {type: 'hidden', name: 'user_id', value:user_id }));
 		newForm.appendTo('body');
 
