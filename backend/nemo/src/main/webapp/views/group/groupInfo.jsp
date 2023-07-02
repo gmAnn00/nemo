@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="group" value="${groupInfo}" />
 <%
 request.setCharacterEncoding("utf-8");
 %>
@@ -26,16 +28,82 @@ request.setCharacterEncoding("utf-8");
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
-	<!-- section1 -->
-	<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
-	<!-- section1종료 -->
+	
+    <!-- section1 시작 -->
+    <div class="section1" style="background-image:url('${contextPath}/groupImageDownload?group_id=${group.groupVO.grp_id}&group_img=${group.groupVO.grp_img}')">
+      <div class="group_containter">
+        
+        <div class="group_all">
+            <div class="group_img">
+                <img src="${contextPath}/groupImageDownload?group_id=${group.groupVO.grp_id}&group_img=${group.groupVO.grp_img}" />
+            </div>
+            <div class="group_name">
+                <a href="${contextPath}/group/groupMain?group_id=${group.groupVO.grp_id}">
+                    <span class="group_name_title">${group.groupVO.grp_name}</span>                    
+                </a>
+                <button type="button" class="grpLikeBtn" title="네모찜하기">
+					<c:if test="${isBookmark}">
+
+						<span class="grpLike on"> <svg viewBox="0 0 24 24">
+                                <use xlink:href="#heart" />
+                                <!-- filled heart -->
+                                <use xlink:href="#heart" />
+                                <!-- outline heart -->
+                            </svg> <!-- reference path for both outline, and filled, hearts -->
+							<svg class="hide" viewBox="0 0 24 24">
+                                <defs>
+                                    <path id="heart"
+									d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
+                                </defs>
+                            </svg>
+						</span>
+						<span class="hidden">찜하기</span>
+
+					</c:if>
+					<c:if test="${!isBookmark}">
+
+						<span class="grpLike"> <svg viewBox="0 0 24 24">
+                                <use xlink:href="#heart" />
+                                <!-- filled heart -->
+                                <use xlink:href="#heart" />
+                                <!-- outline heart -->
+                            </svg> <!-- reference path for both outline, and filled, hearts -->
+							<svg class="hide" viewBox="0 0 24 24">
+                                <defs>
+                                    <path id="heart"
+									d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
+                                </defs>
+                            </svg>
+						</span>
+						<span class="hidden">찜하기</span>
+
+					</c:if>
+				</button>
+                <div class="group_info_category">
+                    <div class="category_box group_info_category_box">${group.groupVO.main_name} | ${group.groupVO.sub_name}</div>
+	                 <div class="group_info_member">
+	                     <div class="group_info_title"><span>MEMBER</span></div>
+	                     <div class="group_info_contents"><span class="group_info_number">${group.currentMemNo} / ${group.groupVO.mem_no}</span></div>
+	                 </div>
+	                 <div class="group_info_follower">
+	                     <div class="group_info_title"><span>SINCE</span></div>
+	                     <div class="group_info_contents"><span class="group_info_date"><fmt:formatDate pattern="yyyy.MM.dd." value="${group.groupVO.create_date}"/></span></div>
+	                 </div>
+            	</div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    <!-- section1 종료 -->
+
 
 	<!-- main content 시작-->
 	<div id="contentsArea" class="mainContent">
 		<div class="mainInner">
 			<!-- 소모임 이름 출력영역 -->
 			<div class="nameArea">
-				<h2 class="grpName">${groupVO.grp_name}</h2>
+				<!-- <h2 class="grpName">${groupVO.grp_name}</h2> -->
 				<button type="button" class="grpLikeBtn" title="네모찜하기">
 					<c:if test="${isBookmark}">
 

@@ -76,7 +76,7 @@ public class GroupInfoController extends HttpServlet {
 			//System.out.println(isBookmark);
 		}		
 
-		groupInfo=groupInfoService.getGroupInfo(group_id);
+		groupInfo = groupInfoService.getGroupInfo(group_id);
 		request.setAttribute("groupInfo", groupInfo);
 		
 		request.setAttribute("groupVO", groupVO);

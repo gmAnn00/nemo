@@ -43,6 +43,8 @@ body, div, h3, button, section, table, tr, td, th{
   cursor: pointer;
   text-align: center;
   background: transparent;
+  position: relative;
+  top: 4px;
 }
 
 .grpLike {

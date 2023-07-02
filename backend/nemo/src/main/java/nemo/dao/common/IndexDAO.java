@@ -259,8 +259,11 @@ public class IndexDAO {
 				
 				KaKaoGeoRes bodyJson = objectMapper.readValue(response.getBody().toString(), KaKaoGeoRes.class);
 			
-				userLatdbl = bodyJson.getDocuments().get(0).getY();
-				userLngdbl = bodyJson.getDocuments().get(0).getX();
+				if(bodyJson.getDocuments().size() != 0) {
+					userLatdbl = bodyJson.getDocuments().get(0).getY();
+					userLngdbl = bodyJson.getDocuments().get(0).getX();
+				}
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
