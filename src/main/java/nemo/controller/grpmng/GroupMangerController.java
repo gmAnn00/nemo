@@ -3,6 +3,7 @@ package nemo.controller.grpmng;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nemo.dao.grpmng.GroupMangerDAO;
+import nemo.service.group.GroupInfoService;
+import nemo.service.group.GroupMainService;
 import nemo.service.grpmng.GroupMangerService;
 import nemo.vo.group.GroupVO;
 import nemo.vo.user.UserVO;
@@ -23,14 +26,19 @@ import nemo.vo.user.UserVO;
 public class GroupMangerController extends HttpServlet{
 	HttpSession session;
 	GroupMangerService groupMangerService;
+	GroupInfoService groupInfoService;
+	GroupMainService groupMainService;
 	GroupMangerDAO groupMangerDAO;
 	UserVO userVO;
 	GroupVO groupVO;
+	Map groupInfo;
 	
 	@Override
 	public void init() throws ServletException {
 		groupMangerDAO=new GroupMangerDAO();
+		groupMainService = new GroupMainService();
 		groupMangerService=new GroupMangerService();
+		groupInfoService=new GroupInfoService();
 		userVO=new UserVO();
 		groupVO=new GroupVO();
 	}
@@ -64,6 +72,21 @@ public class GroupMangerController extends HttpServlet{
 		System.out.println(group_id);
 		
 		System.out.println("요청 매핑이름: " + action); 
+		
+		List<String> grpMngList = groupMainService.grpMng(login_id);
+		System.out.println("grpMngList=" +grpMngList.toString());
+		session.setAttribute("grpMngList", grpMngList);
+		
+		String mng_id = groupMainService.grpMng(group_id);
+		System.out.println("mng_id="+mng_id);
+		List<String> grpMemberList = groupMainService.grpMember(group_id);
+		grpMemberList.remove(mng_id);
+		session.setAttribute("grpMemberList", grpMemberList);
+		System.out.println("grpMemberList="+grpMemberList.toString());
+		
+		
+		groupInfo=groupInfoService.getGroupInfo(group_id);
+		request.setAttribute("groupInfo", groupInfo);
 		try {
 			
 			if(action==null||action.equals("/myGroupMember")) {
@@ -76,7 +99,7 @@ public class GroupMangerController extends HttpServlet{
 				request.setAttribute("userList", userList);
 				request.setAttribute("approveUserList", approveUserList);
 				
-				nextPage="/views/group/myGroupMember.jsp";
+				nextPage="/views/group/grmGroupMember.jsp";
 				
 			}
 			
@@ -91,7 +114,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('매니저를 위임했습니다');");
 					//location 포워딩 
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
+						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 		        
@@ -106,7 +129,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('멤버를 추방했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
+						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 				
@@ -123,7 +146,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('가입을 승인했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
+						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 		        
@@ -139,7 +162,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('가입 승인을 거절했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/myGroupMember?group_id="+group_id+"';");
+						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 				

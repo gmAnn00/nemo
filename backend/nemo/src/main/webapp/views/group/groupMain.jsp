@@ -3,6 +3,7 @@
     isELIgnored="false"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="isMng" value="false" />
 <c:forEach var="elem" items="${grpMngList}" >
@@ -136,10 +137,15 @@
                             >
                         </div>
                         <table class="recentScheduledTbl recentTbl">
-                            <tr>
-                                <th>모임날짜</th>
-                                <th>모임제목</th>
+	                        <colgroup>
+	                        	<col width="45%">
+	                        	<col width="25%">
+	                        	<col width="30%">
+	                       	</colgroup>
+                            <tr>                                
+                                <th>모임제목</th>                                
                                 <th>모임장소</th>
+                                <th>모임날짜</th>
                             </tr>
                             <c:choose>
                         		<c:when test="${schdulesList.isEmpty()}">
@@ -150,9 +156,9 @@
                         		<c:when test="${!schdulesList.isEmpty()}">
                         			<c:forEach var="schedule" items="${schdulesList}">
                         				<tr>
-                        					<td>${schedule.schedule}</td>
-                        					<td>${schedule.sche_title}</td>
+                        					<td>${schedule.sche_title}</td>                        				                           					
                         					<td>${schedule.location}</td>
+                        					 <td><fmt:formatDate value="${schedule.schedule}" pattern="yyyy-MM-dd HH:mm" /></td>
                         				</tr>
                         			</c:forEach>
                         		</c:when>
@@ -169,6 +175,11 @@
                             >
                         </div>
                         <table class="recentBordTbl recentTbl">
+                          <colgroup>
+	                        	<col width="50%">
+	                        	<col width="12%">
+	                        	<col width="30%">
+	                       	</colgroup>
                         	<tr>
                                 <th>글제목</th>
                                 <th>작성자</th>

@@ -67,6 +67,10 @@ public class GroupMainController extends HttpServlet {
 		List<String> grpMngList = groupMainService.grpMng(user_id);
 		session.setAttribute("grpMngList", grpMngList);
 		
+
+		
+		
+		
 		boolean isMember = groupMainService.isMember(user_id, group_id);
 		request.setAttribute("isMember", isMember);
 		

@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import nemo.service.group.GroupInfoService;
 import nemo.service.grpmng.GroupMangerService;
 import nemo.service.grpmng.GroupMangerSettingService;
 import nemo.vo.group.GroupVO;
@@ -32,15 +33,18 @@ public class GroupSettingController extends HttpServlet{
 	HttpSession session;
 	GroupMangerService groupMangerService;
 	GroupMangerSettingService groupMangerSettingService;
+	GroupInfoService groupInfoService;
 	UserVO userVO;
 	GroupVO groupVO;
 	private static String GROUP_IMG_REPO;
 	private static String GROUP_DEF_IMG;
+	Map groupInfo;
 	
 	@Override
 	public void init() throws ServletException {
 		groupMangerSettingService=new GroupMangerSettingService();
 		groupMangerService=new GroupMangerService();
+		groupInfoService=new GroupInfoService();
 		userVO=new UserVO();
 		groupVO=new GroupVO();
 	}
@@ -79,6 +83,9 @@ public class GroupSettingController extends HttpServlet{
 		session=request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
 		
+		groupInfo=groupInfoService.getGroupInfo(group_id);
+		request.setAttribute("groupInfo", groupInfo);
+		
 		System.out.println("요청 매핑이름: " + action);
 		try {
 			
@@ -106,20 +113,32 @@ public class GroupSettingController extends HttpServlet{
 				String sub_name = groupMap.get("sub_name");
 				String grp_img=groupMap.get("grp_img");
 				
-				groupVO.setGrp_name(grp_name);
-				groupVO.setGrp_mng(grp_mng);
-				groupVO.setMem_no(mem_no);
-				groupVO.setGrp_zipcode(grp_zipcode);
-				groupVO.setGrp_addr1(grp_addr1);
-				groupVO.setGrp_addr2(grp_addr2);
-				groupVO.setGrp_intro(grp_intro);
-				groupVO.setMain_name(main_name);
-				groupVO.setSub_name(sub_name);
-				groupVO.setGrp_img(grp_img);
-				
-				groupMangerSettingService.updateGroup(groupVO, group_id);
-				System.out.println(groupVO.toString());
-				
+				//인원수를 50명 초과해서 넣었을 시
+				if(mem_no>50) {
+					out = response.getWriter();
+					out.print("<script>");
+					out.print("alert('그룹 인원수를 초과했습니다 (최대 50명)');");
+					out.print("location.href='" + request.getContextPath() + 
+							"/group/manager/setting?group_id=" + group_id + "';");
+					out.print("</script>");
+				} 
+				else {
+					
+					groupVO.setGrp_name(grp_name);
+					groupVO.setGrp_mng(grp_mng);
+					groupVO.setMem_no(mem_no);
+					groupVO.setGrp_zipcode(grp_zipcode);
+					groupVO.setGrp_addr1(grp_addr1);
+					groupVO.setGrp_addr2(grp_addr2);
+					groupVO.setGrp_intro(grp_intro);
+					groupVO.setMain_name(main_name);
+					groupVO.setSub_name(sub_name);
+					groupVO.setGrp_img(grp_img);
+					
+					groupMangerSettingService.updateGroup(groupVO, group_id);
+					System.out.println(groupVO.toString());
+				}
+								
 				//이미지를 새로 첨부한 경우에만 수행
 				if(grp_img != null && grp_img.length() != 0) {
 					//새 이미지를 글 쓴것처럼 경로에 삽입하고, 기존이미지(oldFile)는 그 경로 위치에서 삭제  
@@ -130,7 +149,10 @@ public class GroupSettingController extends HttpServlet{
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 					File oldFile = new File(GROUP_IMG_REPO + "\\" + group_id + "\\" + originalFileName);
 					oldFile.delete();					
-				}				
+				}
+				
+				
+				
 				// 알림창과 수정된 글 보여주기
 				out = response.getWriter();
 				out.print("<script>");

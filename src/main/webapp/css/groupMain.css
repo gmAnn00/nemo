@@ -146,14 +146,14 @@ table {
     height: 250px;
     position: relative;
     padding-bottom: 10px;
-    background-color: var(--grpMenuBackColor);
+    
 }
 .animationSlide {
     /*width: 700px;*/
     /*width: 87.5%;*/
     width: 892px;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 .sliderPanel {
     position: relative;
@@ -167,21 +167,22 @@ table {
 }
 .memImg {
     display: inline-block;
-    width: 125px;
-    height: 125px;
-    /*padding: 0 8px;*/
-    /*background-color: var(--sub2-color);*/
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 .memImg img{
 	display: inline-block;
-    width: 125px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 .memName {
     text-align: center;
     display: inline-block;
+}
+.memName span {
+	font-size: 13px
 }
 
 .fa-chevron {
