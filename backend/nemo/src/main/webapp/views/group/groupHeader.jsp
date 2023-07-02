@@ -22,7 +22,7 @@
   <body>
 
     <!-- section1 시작 -->
-    <div class="section1" style="background-image:url('${contextPath}/groupImages/${group.groupVO.grp_id}/${group.groupVO.grp_img}')">
+    <div class="section1" style="background-image:url('${contextPath}/groupImageDownload?grp_id=${group.groupVO.grp_id}&grp_img=${group.groupVO.grp_img}')">
       <div class="group_containter">
         
         <div class="group_all">
