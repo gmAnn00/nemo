@@ -153,7 +153,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 
                 <div class="cards">
                   <c:choose>
-                    <c:when test="${empty userGroupList}">
+                    <c:when test="${empty userGroupList && empty waitGroupList}">
                       <p>가입한 소모임이 없습니다.</p>
                     </c:when>
                   
