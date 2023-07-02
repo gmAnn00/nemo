@@ -29,10 +29,10 @@
         <div class="sidemenu">
             <ul class="main_menu">
             	<c:choose>
-            		<c:when test="${user_id != null && admin == 0}">
+            		<c:when test="${user_id != null}">
 	            		<li>
-	                    	<a href="#">
-	                       	 <div class="profile"><img class="fa-solid" src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${user_img}" alt="프로필사진"><span class="profile_name">${nickname}</span></div>
+	                    	<a href="${contextPath}/mypage">
+	                    	<div class="profile"><img class="fa-solid" src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${user_img}" alt="프로필사진"><span class="profile_name">${nickname}</span></div>
 	                    	</a>
 	               		 </li>
 	              		 <li><a href="${contextPath}/group/createGroup/form">소모임 만들기</a></li>
@@ -43,14 +43,6 @@
 	                	 <li><a href="${contextPath}/mypage/help">고객센터</a></li>
 	                	 <li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
-            		<c:when test="${user_id != null && admin == 1 }">
-            			<li></li>
-            			<li><a href="${contextPath}/index">회원 관리</a></li>
-            			<li><a href="${contextPath}/index">소모임 관리</a></li>
-            			<li><a href="${contextPath}/index">신고 관리</a></li>
-            			<li><a href="${contextPath}/index">문의사항 관리</a></li>
-            			<li><a href="${contextPath}/login/logout">로그아웃</a></li>
-            		</c:when>
             		<c:otherwise>
             			<li></li>
             			<li><a href="${contextPath}/groupSearch">소모임 검색</a></li>
@@ -59,10 +51,25 @@
             		</c:otherwise>
             	</c:choose>
             </ul>
+            
             <div class="sidemenu_footer">
-                <h3>Contact details</h3>
-                <p>admin@nemo.com</p>
+                <div class="header_section2_content">
+                    <div class="header_logo">
+                        <a href="${contextPath}/index"><img src="${contextPath}/images/logo_black.png" class="img-fluid" alt="logo" /></a>
+                    </div>
+                    <div class="header_text">
+                    	<p>© 2023 NEMO</p>
+                    </div>
+                    <div class="header_social_icon">
+                        <div class="header_social_icon_box">
+                            <a href="#"><i class="fab fa-facebook-f header-facebook-bg"></i></a>
+                            <a href="#"><i class="fab fa-twitter header-twitter-bg"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g header-google-bg"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
         </div>
         <!-- header 종료 -->
 </body>

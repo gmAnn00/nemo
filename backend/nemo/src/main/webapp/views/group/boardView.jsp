@@ -289,7 +289,7 @@
 	              <a href="${contextPath}/group/board/write?group_id=${group.groupVO.grp_id}" role="button" class="btnWrite btn">글쓰기</a>
 	              
 	              <c:if test="${user_id==article.user_id }">
-		            <a href="${contextPath}/group/board/modArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnEdit btn">수정</a>
+		            <a href="#" role="button" class="btnEdit btn">수정</a>
 		            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article=article_no}" role="button" class="btnDel btn">삭제</a>
 	              </c:if>
 	              

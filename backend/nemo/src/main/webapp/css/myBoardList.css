@@ -18,6 +18,8 @@
 .comments-section p {
     line-height: 15px;
     margin: 0 auto 5px;
+    white-space: pre-line;
+    word-break: keep-all;
 }
 
 .comments-section .comment-author {
@@ -25,7 +27,6 @@
     font-size: 17px;
     letter-spacing: 0.5px;
     color: #547ef8;
-    /* color: var(--main-color); */
 }
 
 .comments-section .comment-time {
@@ -90,6 +91,8 @@
     padding: 10px;
 }
 .comment_group_title {
+	font-size: 18px;
+	font-weight: bold;
     display: inline-block;
     padding-right: 10px;
     border-right: 1px solid #ccc;
@@ -102,7 +105,7 @@
     margin-left: 85px;
     margin-bottom: 40px;
 }
-.comments-section{
+.comments-section {
     border-radius: 10px;
     box-shadow: 3px 3px 5px #ccc;
 }
