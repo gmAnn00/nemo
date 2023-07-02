@@ -16,7 +16,8 @@
 }
 
 .comments-section p {
-    line-height: 15px;
+    line-height: 20px;
+    word-break: break-all;
     margin: 0 auto 5px;
 }
 
@@ -44,7 +45,11 @@
     word-break: keep-all;
     margin-top: 5px;
 }
-
+.comment_textarea {
+	display: flex;
+    align-items: flex-end;
+    word-break: break-all;
+}
 .comments-section .comment-post-reply .comment-content,
 .comments-section .comment-post-reply .comment-author {
     color: #888888; 

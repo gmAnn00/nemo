@@ -85,15 +85,13 @@ margin: 15px 0 15px 0;
 	color: #ffbb33;
 }
 .title {
-
-	  font-size: 20px;
-
+	word-break: break-all;
+	font-size: 20px;
 }
 .titleArea {
 	display: inline-block;
-  font-size: 20px;  
-  vertical-align: middle;
-  /*width: 94%;*/
+	font-size: 20px;  
+	vertical-align: middle;
 }
 
 /* 작성자 폰트 사이즈 좀 작게 - common에서 폰트 사이즈 정해지면 그보다 작게 수정 */
@@ -155,10 +153,11 @@ margin: 15px 0 15px 0;
 
 /* 내용 영역 */
 .contentArea {
-
-  padding: 30px 10px;
+    padding: 30px 10px;
 }
-
+.content p {
+	word-break: break-all;
+}
 /* 댓글 영역 */
 .commentArea {
   border-top: 3px solid #ccc;
