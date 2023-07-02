@@ -94,6 +94,9 @@ public class AdminUserDAO {
 					userInfo.put("reportCnt", repCnt);
 					userList.add(userInfo);
 				}
+				rs.close();
+				pstmt.close();
+				conn.close();
 				
 			} catch (Exception e) {
 				System.out.println("회원 정보 조회 하는 중 에러 ");

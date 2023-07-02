@@ -110,6 +110,9 @@ public class AdminGroupDAO {
 				
 				groupList.add(groupInfo);
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("그룹 정보 조회 하는 중 에러 ");
