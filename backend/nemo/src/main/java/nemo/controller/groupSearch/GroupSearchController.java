@@ -104,7 +104,7 @@ public class GroupSearchController extends HttpServlet {
 		
 		request.setAttribute("resultList", resultList);
 		
-		
+		/*
 		if(resultList != null) {
 			Gson gson = new Gson();
 			String jsonResultList = gson.toJson(resultList);
@@ -113,7 +113,7 @@ public class GroupSearchController extends HttpServlet {
 			System.out.println(jsonResultList.getClass().getName());
 
 		}
-		 
+		 */
 		nextPage="/views/search.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

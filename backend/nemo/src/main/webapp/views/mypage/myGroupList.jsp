@@ -163,14 +163,14 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                       <c:set var="locationU" value="${userGroup.grp_addr1.substring(0, idx)}"/>
                         <div class="card card--1">
                           <div class="card__info-hover">
-                            <a href="${contextPath}/index"><span class="leave">탈퇴하기</span></a>
+                            <a href="${contextPath}/group/member/delete?group_id=${userGroup.grp_id}"><span class="leave">탈퇴하기</span></a>
                             <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
                             <span>바로가기</span>	<i class="fa-solid fa-arrow-right"></i></a>
                           </div>
                           <div class="card__img"></div>                          
                           <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${userGroup.grp_id}/${userGroup.grp_img}')">
                           	<div class="link">
-	                          	<a href="${contextPath}/index"><span class="leave"> &nbsp; &nbsp; &nbsp; &nbsp; </span></a>
+	                          	<a href="${contextPath}/group/member/delete?group_id=${userGroup.grp_id}"><span class="leave"> &nbsp; &nbsp; &nbsp; &nbsp; </span></a>
 	                            <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
 	                              <span> &nbsp; &nbsp; &nbsp; &nbsp; </span>                            
 	                          	</a> 

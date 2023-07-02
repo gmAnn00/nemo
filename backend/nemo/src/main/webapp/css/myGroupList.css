@@ -72,14 +72,34 @@
 }
 
 .card__info-hover {
+	/*
     position: absolute;
     padding: 16px;
     width: 100%;
     opacity: 0;
     top: 0;
     box-sizing: border-box;
-    text-align: right;
+    text-align: right;*/
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    box-sizing: border-box;
+    /*text-align: right;*/
+    display: flex;
+    justify-content: space-between;
 } 
+.card__info-hover span {	
+	position: relateve;
+	z-index: 1000;
+}
+card__info-hover span>i {
+	margin-left: 10px;
+}
+.card__info-hover .leave {
+	color: red;
+}
 
 .card__img--hover {
     transition: 0.2s all ease-out;
@@ -93,6 +113,23 @@
     border-top-right-radius: 12px;
     top: 0;
 }
+.card__img--hover .link {	
+    position: relative;
+    height: 100%;
+} 
+.card__img--hover .link a {
+	position: absolute;
+	width: 50%;
+	height: 50px;
+    z-index: 10;
+}
+.card__img--hover .link a.card_link {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
 
 
 /* 가입 대기중 */
