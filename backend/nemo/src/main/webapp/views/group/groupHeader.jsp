@@ -22,12 +22,12 @@
   <body>
 
     <!-- section1 시작 -->
-    <div class="section1" style="background-image:url('${contextPath}/groupImageDownload?grp_id=${group.groupVO.grp_id}&grp_img=${group.groupVO.grp_img}')">
+    <div class="section1" style="background-image:url('${contextPath}/groupImageDownload?group_id=${group.groupVO.grp_id}&group_img=${group.groupVO.grp_img}')">
       <div class="group_containter">
         
         <div class="group_all">
             <div class="group_img">
-                <img src="${contextPath}/groupImages/${group.groupVO.grp_id}/${group.groupVO.grp_img}" alt="group_img" />
+                <img src="${contextPath}/groupImageDownload?group_id=${group.groupVO.grp_id}&group_img=${group.groupVO.grp_img}" />
             </div>
             <div class="group_name">
                 <a href="${contextPath}/group/groupMain?group_id=${group.groupVO.grp_id}">
