@@ -125,7 +125,7 @@
 			                    <div class="myScheduleImgContent">		                                           
 			                      <div class="myScheduleContent">		                        
 			                        <p class="contents">${comGrpSchedule.scheduleVO.sche_title}</p>
-			                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${comGrpSchedule.scheduleVO.location}</p>
+			                        <p class="contents location"><i class="fa-solid fa-location-dot"></i>${comGrpSchedule.scheduleVO.location}</p>
 			                      </div>
 			                    </div>		                    
 			                  </div>    		                                                 
@@ -166,20 +166,19 @@
 								<div class="contentLocationMap">
 									<div class="content">
 										<div class="dateTime">
-											<!-- <input type="datetime-local" name="schedule" id="schedule"/>  -->
-											<!-- <p>
-												<input type="text"id="schedule" disabled>
-											</p>
-											<br>
-											<p>
-												<input type="text" id="sche_time" disabled>
-											</p> -->
 											<br>
 											<input id="sche_dateTime" type="datetime-local" name="sche_dateTime_new" value="">
 											<input type="datetime-local" id="sche_dateTime_old" value="" name="sche_dateTime_old" style="display:none"/>
 											<script>
-											var currentDate2 = new Date().toISOString().slice(0, 16);
-											document.getElementById("sche_dateTime").min = currentDate2;
+												var currentDate2 = new Date();
+												var currentYear = currentDate2.getFullYear();
+												var currentMonth = (currentDate2.getMonth() + 1).toString().padStart(2, '0');
+												var currentDay = currentDate2.getDate().toString().padStart(2, '0');
+												var currentHour = currentDate2.getHours().toString().padStart(2, '0');
+												var currentMinute = currentDate2.getMinutes().toString().padStart(2, '0');
+												
+												var koreanDateTime = currentYear + '-' + currentMonth + '-' + currentDay + 'T' + currentHour + ':' + currentMinute;
+												document.getElementById("sche_dateTime").min = koreanDateTime;
 											</script>
 										</div>
 										<div class="contentDetail">
@@ -243,8 +242,8 @@
 								
 								
 								<div id="editButton" class="editBtn">
-									<button type="button" id="delScheduleBtn" class="buttonCancle btnDel" onclick="delSchedule(${param.group_id})">삭제</button>
 									<input type="button" value="수정" onclick="fn_enable(this.form);" class="button btnEdit">
+									<button type="button" id="delScheduleBtn" class="buttonCancle btnDel" onclick="delSchedule(${param.group_id})">삭제</button>									
 								</div>
 							</div>
 
@@ -271,10 +270,15 @@
 												id="myDateTimeInput" required/>
 										</div>
 										<script>
-											var currentDate = new Date()
-													.toISOString().slice(0, 16);
-											document
-													.getElementById("myDateTimeInput").min = currentDate;
+										var currentDate = new Date();
+										var currentYear = currentDate.getFullYear();
+										var currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+										var currentDay = currentDate.getDate().toString().padStart(2, '0');
+										var currentHour = currentDate.getHours().toString().padStart(2, '0');
+										var currentMinute = currentDate.getMinutes().toString().padStart(2, '0');
+										
+										var koreanDateTime = currentYear + '-' + currentMonth + '-' + currentDay + 'T' + currentHour + ':' + currentMinute;
+										document.getElementById("myDateTimeInput").min = koreanDateTime;
 										</script>
 										<div class="contentDetail">
 											<textarea name="sche_cont" placeholder="모임일정 내용을 입력하세요"

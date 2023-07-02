@@ -111,7 +111,8 @@ form .email input {
 }
 form .email select {
   width: 130px;
-  padding: 7px;
+  padding-top: 8px;
+  padding-bottom: 7px;
   position: relative;
   top: 1px;
 }
@@ -145,6 +146,7 @@ form .submitCancel {
     position: relative;
     top: 10px;
     left: 145px;
+    padding: 0;
 }
 .myImage div{
 	display: block;
