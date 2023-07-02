@@ -1,7 +1,6 @@
-let schedulesList = [];
+//let schedulesList = [];
 let schedulesThisMonthList = [];
 let schedulesThisMonthArr = [];
-
 let year = 0;
 let month = 0;
 
@@ -94,7 +93,10 @@ $(document).ready(function () {
     $(target).find("#setDate").append(tag);
 
     calMoveEvtFn();
-    }); // end of then
+    }); // end of promise1 - then
+    
+    
+    fn_ajax_this_month(year, month);
 
     function assembly(year, month) {
       let calendarHTMLCode =
@@ -103,7 +105,7 @@ $(document).ready(function () {
         "<button type='button' class='prev btn'>< 이전 달</button>" +
         "<span>" +
         year +
-        "년 " +
+        "년 " + 
         month +
         "월</span>" +
         "<button type='button' class='today btn'>오늘</button>" +
@@ -211,6 +213,7 @@ $(document).ready(function () {
    let ajaxYear = year % 100;
    let ajaxMonth = month;
   // 이번달 일정 가져오는 아작스
+  /*
   $.ajax({
 	 type: "get",
      cache: false,
@@ -254,10 +257,11 @@ $(document).ready(function () {
         console.log("success안:" + schedulesThisMonthArr);
         console.log("data=" + data);
         // resolve(arr); // 이담에 ㅜㅜ...???????????
+        
         // 넣을 값 들
         let output="";
-        let month= schedulesThisMonthArr[scheduleMonth] + 'scheduleMonth 가져와서 넣기'
-         $('<h3>' + month +'월의 일정</h3>').prependTo('.thisMonthMyScheduleList');  
+        //let month= schedulesThisMonthArr[scheduleMonth] + 'scheduleMonth 가져와서 넣기'
+         //$('<h3>' + month +'월의 일정</h3>').prependTo('.thisMonthMyScheduleList');  
          //forEach 안쪽       
       
       	
@@ -269,7 +273,7 @@ $(document).ready(function () {
         alert("이번달 일정 조회중 에러 발생");
       },
        
-  });
+  });*/
   
   
 }); // end of $(document).ready
@@ -297,7 +301,7 @@ function fn_ajax2(year, month) {
         let jsonInfo = JSON.parse(data);
 
         for (key in jsonInfo.schedules) {
-          schedulesList.push(jsonInfo.schedules[key].day);
+          //schedulesList.push(jsonInfo.schedules[key].day);
           arr.push(jsonInfo.schedules[key].day);
           //arr.push(10);
         }
@@ -314,4 +318,75 @@ function fn_ajax2(year, month) {
     });
 
   });
-}
+} // end of fn_ajax2
+
+function fn_ajax_this_month(year, month) {
+  return new Promise((resolve, reject) => {
+    //이번달 일정 있는 날/없는 날 구분해서 채우기 아작스
+    let ajaxYear = year % 100;
+    let ajaxMonth = month;
+    if (ajaxMonth < 10) {
+      ajaxMonth = "0" + month;
+    }
+
+    $.ajax({
+      type: "get",
+      cache: false,
+      contentType: false,
+      dataType: "json",
+      ajax: false,
+      url: "/nemo/mypage/mySchedule/ajaxthisMSchedule?year=" + ajaxYear + "&month=" + ajaxMonth,
+      success: function (data, textStatus) {
+		console.log("data=", data);
+		//let thisMonthList = data;
+        //console.log("thisMonthList=", thisMonthList);
+        //console.log("typeofthisMonthList=",typeof thisMonthList);
+        let thisMMS = $(".thisMonthMyScheduleList");
+        thisMMS.html("");
+        console.log("data length", data.length);
+        if(data.length == 0){
+			
+			let content = `
+				<h3>${month}월의 일정</h3>
+				<p>등록된 일정이 없습니다.</p>
+			`;
+			thisMMS.html(content);
+		}else{
+			let content = `<h3>${month}월의 일정</h3>`;
+			for(key in data){
+				content += `
+					<div class="mySchedule">
+	                  	<a href="/nemo/group/schedule?group_id=${data[key].grp_name}">
+	                    <p class="myScheduleDate">${data[key].scheduleDate}<span> ${data[key].scheduleTime}</span></p>
+	                    <div class="myScheduleImgContent">
+	                      <div class="groupImg">
+	                        <img src="/nemo/groupImageDownload?group_id=${data[key].scheduleVO.grp_id}&group_img=${data[key].grp_img}" alt="소모임 사진" />
+	                      </div>	                      
+	                      <div class="myScheduleContent">
+	                        <p class="myScheduleGroupName">${data[key].grp_name}</p>
+	                        <p class="contents">${data[key].scheduleVO.sche_title}</p>
+	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${data[key].scheduleVO.location}</p>
+	                      </div>
+	                    </div>
+	                    </a>
+	                  </div>
+				`;
+			} // end of for
+			thisMMS.html(content);
+		} // end of else
+        
+        
+        
+        resolve(data);
+        
+      },
+      error: function (data, textStatus, error) {
+        //console.log(data);
+        //console.log(textStatus);
+        //console.log(error);
+        //alert("찜 추가/삭제 에러 발생");
+      },
+    });
+
+  });
+} // end of fn_ajax_this_month

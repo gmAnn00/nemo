@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.google.gson.Gson;
+
 import nemo.service.mypage.MyScheduleService;
 import nemo.vo.group.GroupVO;
 import nemo.vo.group.ScheduleVO;
@@ -139,6 +141,10 @@ public class MyScheduleController extends HttpServlet {
 					 	
 					 	List<Map> scheduleList = new ArrayList();
 					 	scheduleList = myScheduleService.selectSchedule(user_id, currentYM);
+					 	
+					 	String thisMSList = new Gson().toJson(scheduleList);
+					 	out.print(thisMSList);
+					 	
 					 	//request.setAttribute("scheduleList", scheduleList);
 					 	
 					 	
@@ -150,6 +156,7 @@ public class MyScheduleController extends HttpServlet {
 					 	}
 					 	*/
 					 	
+					 	/*
 					 	JSONArray scheduleArr = new JSONArray();
 
 						for(int i = 0; i <scheduleList.size(); i++) {						
@@ -170,13 +177,13 @@ public class MyScheduleController extends HttpServlet {
 					 	   scheduleArr.add(scheduleInfo);
 					 	}
 
-					 	JSONObject totalSchedule = new JSONObject();
-					 	totalSchedule.put("thisMschedules", scheduleArr);
-					 	String jsonTMScheInfo = totalSchedule.toJSONString();
+					 	//JSONObject totalSchedule = new JSONObject();
+					 	//totalSchedule.put("thisMschedules", scheduleArr);
+					 	String jsonTMScheInfo = scheduleArr.toJSONString();
 					 	
 					 	//System.out.println("jsonInfo=" + jsonInfo);
 					 	out.print(jsonTMScheInfo);
-					 	
+					 	*/
 					 	return;
 					}
 				

@@ -140,6 +140,7 @@
               </div>
               
               <div class="thisMonthMyScheduleList">
+              <%-- 
                <h3>이 달의 일정</h3>
                
                  <c:choose>
@@ -167,7 +168,7 @@
 	                                                 
                   	  </c:forEach>
                     </c:when>
-                  </c:choose>
+                  </c:choose>--%>
               </div>
               
             </div>

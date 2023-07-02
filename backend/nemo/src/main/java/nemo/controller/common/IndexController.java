@@ -28,7 +28,6 @@ public class IndexController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String nextPage = "";
 		session=request.getSession();
-		
 		//session.setAttribute("user_id", "kim");
 		//session.setAttribute("nickname", "철수에용");
 		//session.setAttribute("user_id", "hong");

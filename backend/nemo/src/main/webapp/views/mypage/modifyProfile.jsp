@@ -25,6 +25,7 @@
 <script src="${contextPath}/js/header.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="${contextPath}/js/join.js"></script>
+<script src="${contextPath}/js/modifyProfile.js"></script>
 <script>
 	//이미지 미리보기 구현
 	function readImage(input) {		
@@ -129,9 +130,11 @@
                 </c:when>
                 </c:choose>     
               <div>
-                <label class="imageM button" for="hidden" id="file">이미지 수정</label>
+                <label class="imageM button" for="hidden" id="file">수정</label>
                 <input type="file" id="hidden" name="user_img" style="display: none" onchange="readImage(this)"/>
                 <input type="hidden" name="originalFileName" value="${userVO.user_img}" />
+                <input type="hidden" id="isDeleteImg" name="isDeleteImg" value="false" />
+                <button type="button" class="delUserImg buttonCancle" onclick="delUserImgSubmit()">삭제</button>
               </div>           
           	</div>
 
@@ -338,9 +341,9 @@
 	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 	
-	<input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${userVO.user_id}"/>
-	<input type="hidden" id="nickname_hidden" name="user_id_hidden" value="${userVO.nickname}"/>
-	<input type="hidden" id="emailId_hidden" name="user_id_hidden" value="${emailId}"/>
-	<input type="hidden" id="emailDomain_hidden" name="user_id_hidden" value="${emailDomain}"/>
+	<input type="hidden" id="user_id_hidden" value="${userVO.user_id}"/>
+	<input type="hidden" id="nickname_hidden" value="${userVO.nickname}"/>
+	<input type="hidden" id="emailId_hidden" value="${emailId}"/>
+	<input type="hidden" id="emailDomain_hidden" value="${emailDomain}"/>
 </body>
 </html>
