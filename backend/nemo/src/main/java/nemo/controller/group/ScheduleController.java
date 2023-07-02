@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -18,11 +19,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import nemo.dao.group.ScheduleDAO;
 import nemo.service.group.ScheduleService;
 import nemo.vo.group.ScheduleVO;
+import nemo.vo.user.UserVO;
 
 @WebServlet("/group/schedule/*")
 public class ScheduleController extends HttpServlet {
@@ -69,6 +76,8 @@ public class ScheduleController extends HttpServlet {
 			
 		}else if(action.equals("/schCompare")) {	//일정 페이지에서 달력의 날짜를 눌렀을때 
 			try {
+				int group_id = Integer.parseInt(request.getParameter("group_id")); 
+				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				String selScheDate = (String)request.getParameter("selScheDate");
 				
@@ -81,23 +90,42 @@ public class ScheduleController extends HttpServlet {
 			    		//Date.valueOf(selScheDate);
 			    		//dateFormat.parse(selScheDate);
 			    System.out.println("누른 날짜 : " + selScheDate);
-			    scheduleVO = scheduleService.schCompare(7, selScheDate);
+			    scheduleVO = scheduleService.schCompare(group_id, selScheDate);
+
+			    // 현재 유저가 이 일정에 참석했는지 참석이면 true, 아니면 false 반환
+			    Boolean isAttend = scheduleService.isAttend(user_id, group_id, selScheDate);
+			    //request.setAttribute("isAttend", isAttend);
+			    
+			    // 이 일정의 참석자 가져옴
+			    List<UserVO> attendUserList = new ArrayList<UserVO>();
+			    attendUserList = scheduleService.attendUsers(group_id, selScheDate);
+			    
 			    System.out.println(scheduleVO.getSche_title());
 			    System.out.println(scheduleVO.getSchedule());
 			    System.out.println(scheduleVO.getSche_cont());
 			    System.out.println(scheduleVO.getLocation());
 			    
 			    //제이슨객체 생성
-		        JSONObject scheduleObject = new JSONObject();
+		       // JSONObject scheduleObject = new JSONObject();
+			    JsonObject scheduleObject = new JsonObject();
+			    scheduleObject.addProperty(action, isAttend);
+			    
+			    Gson gson = new Gson();
+			    String attendUserJson = gson.toJson(attendUserList);
+			    
+		        scheduleObject.addProperty("sche_title", scheduleVO.getSche_title());
+		        scheduleObject.addProperty("schedule", scheduleVO.getSchedule() != null ? dateFormat.format(scheduleVO.getSchedule()) : null);  // 포맷팅된 날짜를 JSON 문자열로 변환하여 추가
+		        scheduleObject.addProperty("sche_time", scheduleVO.getSchedule() != null ? timeFormat.format(scheduleVO.getSchedule()) : null);
+		        scheduleObject.addProperty("sche_dateTime", scheduleVO.getSchedule() != null ? dateTimeFormat.format(scheduleVO.getSchedule()) : null);
+		        scheduleObject.addProperty("sche_cont", scheduleVO.getSche_cont());
+		        scheduleObject.addProperty("location", scheduleVO.getLocation());
+		        scheduleObject.addProperty("isAttend", isAttend);
+		        scheduleObject.addProperty("attendUserJson", attendUserJson);
 		        
-		        scheduleObject.put("sche_title", scheduleVO.getSche_title());
-		        scheduleObject.put("schedule", scheduleVO.getSchedule() != null ? dateFormat.format(scheduleVO.getSchedule()) : null);  // 포맷팅된 날짜를 JSON 문자열로 변환하여 추가
-		        scheduleObject.put("sche_time", scheduleVO.getSchedule() != null ? timeFormat.format(scheduleVO.getSchedule()) : null);
-		        scheduleObject.put("sche_dateTime", scheduleVO.getSchedule() != null ? dateTimeFormat.format(scheduleVO.getSchedule()) : null);
-		        scheduleObject.put("sche_cont", scheduleVO.getSche_cont());
-		        scheduleObject.put("location", scheduleVO.getLocation());
-		        String ScheduleInfo = scheduleObject.toJSONString();	//JSON객체를 문자열로 변환
-				out.print(ScheduleInfo);	//out.print가 문자열로 클라이언트에게 보내주기때문에 문자열로 변환된 문자를 클라이언트에게 보내줌 
+		        //String ScheduleInfo = scheduleObject.toJSONString();	//JSON객체를 문자열로 변환
+				//out.print(ScheduleInfo);	//out.print가 문자열로 클라이언트에게 보내주기때문에 문자열로 변환된 문자를 클라이언트에게 보내줌
+		        String ScheduleInfo = gson.toJson(scheduleObject);
+		        out.print(ScheduleInfo);
 		    
 			} catch (Exception e) {
 				System.out.println("날짜 매칭중 오류");
@@ -218,6 +246,64 @@ public class ScheduleController extends HttpServlet {
 		        System.out.println("일정 수정 중 오류");
 		        e.printStackTrace();
 		    }
+		}else if (action.equals("/joinSchedule")) {
+			int group_id = Integer.parseInt(request.getParameter("group_id"));
+			System.out.println("delSchedule = "+request.getParameter("schedule"));
+			String scheduleStr = "";
+			String dateStr = request.getParameter("date");
+			String timeStr = request.getParameter("time");
+			scheduleStr = dateStr + " " + timeStr;
+			System.out.println("controller scheduleStr = " + scheduleStr);
+			SimpleDateFormat formatter = new SimpleDateFormat("yy/MM/dd KK:mm a", Locale.KOREA);
+			Date schedule = new Date();
+			try {
+				schedule = formatter.parse(scheduleStr);
+				System.out.println("CONTROLLER schedule = " + schedule);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			
+		    dao = new ScheduleDAO();
+		    //List<Timestamp> scheduleList = dao.getSchedule(group_id);
+		    //request.setAttribute("scheduleList", scheduleList);
+		    
+		    scheduleService.joinSchedule(user_id ,group_id, schedule);
+		    out.print("<script>");
+		    out.print("alert('일정에 참석을 신청하였습니다.');");
+		    out.print("location.href='/nemo/group/schedule?group_id=" + Integer.toString(group_id) + "';");
+		    out.print("</script>");
+		    //nextPage = "/nemo/group/schedule?group_id=" + Integer.toString(group_id);
+		    //response.sendRedirect(nextPage);
+		}else if (action.equals("/cancelSchedule")) {
+			int group_id = Integer.parseInt(request.getParameter("group_id"));
+			System.out.println("cancelSchedule = "+request.getParameter("schedule"));
+			String scheduleStr = "";
+			String dateStr = request.getParameter("date");
+			String timeStr = request.getParameter("time");
+			scheduleStr = dateStr + " " + timeStr;
+			System.out.println("controller scheduleStr = " + scheduleStr);
+			SimpleDateFormat formatter = new SimpleDateFormat("yy/MM/dd KK:mm a", Locale.KOREA);
+			Date schedule = new Date();
+			try {
+				schedule = formatter.parse(scheduleStr);
+				System.out.println("CONTROLLER schedule = " + schedule);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			
+		    dao = new ScheduleDAO();
+		    //List<Timestamp> scheduleList = dao.getSchedule(group_id);
+		    //request.setAttribute("scheduleList", scheduleList);
+		    
+		    scheduleService.cancelSchedule(user_id ,group_id, schedule);
+		    out.print("<script>");
+		    out.print("alert('일정 참석을 취소하였습니다.');");
+		    out.print("location.href='/nemo/group/schedule?group_id=" + Integer.toString(group_id) + "';");
+		    out.print("</script>");
+		    //nextPage = "/nemo/group/schedule?group_id=" + Integer.toString(group_id);
+		    //response.sendRedirect(nextPage);
 		}
 	}
 }
