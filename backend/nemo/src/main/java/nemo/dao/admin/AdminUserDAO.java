@@ -4,12 +4,15 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import nemo.vo.group.GroupVO;
 import nemo.vo.user.UserVO;
 
 public class AdminUserDAO {
@@ -66,8 +69,41 @@ public class AdminUserDAO {
 			return userList;
 		}
 		
+		public List selectAllUser() {
+			List userList=new ArrayList();
+			try {
+				conn=dataFactory.getConnection();
+				String query="SELECT u.user_id,u.join_date, u.nickname, nvl(r.cnt, 0) as repCnt FROM"+
+						" (select count(*) as cnt, accused_id from mreport_tbl group by accused_id) r"+
+						" RIGHT OUTER JOIN user_tbl u on r.accused_id=u.user_id";
+				pstmt=conn.prepareStatement(query);
+				System.out.println(query);
+				ResultSet rs=pstmt.executeQuery();
+				while(rs.next()) {
+					String user_id=rs.getString("user_id");
+					Date join_date=rs.getDate("join_date");
+					String nickname=rs.getString("nickname");
+					int repCnt=rs.getInt("repCnt");
+					
+					UserVO userVO=new UserVO();
+					userVO.setUser_id(user_id);
+					userVO.setJoin_date(join_date);
+					userVO.setNickname(nickname);
+					Map userInfo=new HashMap();
+					userInfo.put("userVO", userVO);
+					userInfo.put("reportCnt", repCnt);
+					userList.add(userInfo);
+				}
+				
+			} catch (Exception e) {
+				System.out.println("회원 정보 조회 하는 중 에러 ");
+				e.printStackTrace();
+			} 
+			return userList;
+		}
+		
 		//회원삭제 
-		public void delMember(String user_id) {
+		public void delUser(String user_id) {
 			try {
 				conn=dataFactory.getConnection();
 				String query = "delete from user_tbl where user_id=?";

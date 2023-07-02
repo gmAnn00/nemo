@@ -37,13 +37,13 @@ body {
   flex: 3;
   padding-right: 1.875em;
 }
-.memberList {
+.userList {
   padding: 10px;
 }
 .dataTables_length {
   margin-bottom: 5px;
 }
-.adminMemberTbl {
+.adminUserTbl {
   border: 1px solid #ccc;
   font-size: 14px;
   text-align: center;

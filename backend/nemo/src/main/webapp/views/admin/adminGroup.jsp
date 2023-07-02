@@ -15,7 +15,7 @@
 <html lang="ko">
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>관리자-소모임 관리 페이지</title>
+        <title>네모: 소모임 관리</title>
         <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />
@@ -23,32 +23,14 @@
         <link href="${contextPath}/DataTables/datatables.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="${contextPath}/css/adminGroup.css" />
         <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-        <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
-        <script src="${contextPath}/js/header.js"></script>
+    	<script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
+    	<script src="${contextPath}/js/header.js"></script>
         <script src="${contextPath}/DataTables/datatables.min.js"></script>
         <script src="${contextPath}/js/adminGroup.js"></script>
     </head>
     
-        <c:choose>
-		<c:when test='${msg == "addGroup"}'>
-		<script>
-			window.onload=function () {
-				alert("소모임을 등록 하셨습니다.");
-			}
-		</script>
-		</c:when>
-		<c:when test="${msg == 'deleted'}">
-		<script>
-			window.onload=function () {
-				alert("소모임 정보를 삭제 하였습니다.");
-			}
-		</script>
-		</c:when>
-	
-	</c:choose>
-    
     <body>
-<jsp:include page="../header.jsp" flush="true"></jsp:include>
+	<jsp:include page="../header.jsp" flush="true"></jsp:include>
 
         <!-- 콘텐츠 영역 시작 -->
         <div class="section2">
@@ -129,7 +111,7 @@
                 번호순 정렬
             </a>
             <a href="#" id="adminSortByGroupReportBtn" class="button">
-                신고 횟수 정렬
+                신고 횟수 정렬s
             </a>
             </div> -->
                         <div class="groupListArea">
@@ -145,7 +127,7 @@
                                             <th>최대 인원</th>
                                             <th>생성일</th>
                                             <th>신고횟수</th>
-                                            <th>삭제 처리</th>
+                                            <th>그룹삭제</th>
                                         </tr>
                                     </thead>
                                     

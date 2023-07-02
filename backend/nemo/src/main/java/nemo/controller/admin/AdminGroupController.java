@@ -72,7 +72,9 @@ public class AdminGroupController extends HttpServlet {
 							int grp_id=Integer.parseInt(request.getParameter("grp_id"));
 							adminGrpService.delGroup(grp_id);
 							nextPage="/nemo/adminGroup";
-							response.sendRedirect(nextPage);
+							out.println("<script>alert('소모임이 삭제 되었습니다.'); location.href='"+nextPage+"';</script>");
+				            out.flush();
+							//response.sendRedirect(nextPage);
 						}
 						
 					}catch (Exception e) {
