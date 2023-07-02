@@ -112,9 +112,10 @@
                     <c:when test="${!empty commingScheduleList}">                                       
                       <c:forEach var="comMySchedule" items="${commingScheduleList}">
                       <fmt:formatDate value="${comMySchedule.date}" pattern="yyyy-MM-dd hh:mm" var="date"/>
-                     <c:if test = "${today<=date}" >
+                      <c:if test = "${today<=date}" >
                                             
 	                  <div class="mySchedule">
+	                  	<a href="${contextPath}/group/schedule?group_id=${comMySchedule.grp_id}">
 	                    <p class="myScheduleDate">${comMySchedule.scheduleDate}<span> ${comMySchedule.scheduleTime}</span></p>
 	                    <div class="myScheduleImgContent">
 	                      <div class="groupImg">
@@ -126,6 +127,7 @@
 	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${comMySchedule.scheduleVO.location}</p>
 	                      </div>
 	                    </div>
+	                    </a>
 	                  </div>    
 	                                                 
                   	  </c:if>    	 
@@ -145,10 +147,10 @@
                       <p>등록된 일정이 없습니다.</p>
                     </c:when>
                     <c:when test="${!empty scheduleList}">                                       
-                      <c:forEach var="mySchedule" items="${scheduleList}">
-                      <fmt:formatDate value="${mySchedule.date}" pattern="yyyy-MM-dd hh:mm" var="date"/>                    
+                      <c:forEach var="mySchedule" items="${scheduleList}">                      
                                             
 	                  <div class="mySchedule">
+	                  	<a href="${contextPath}/group/schedule?group_id=${comMySchedule.grp_id}">
 	                    <p class="myScheduleDate">${mySchedule.scheduleDate}<span> ${mySchedule.scheduleTime}</span></p>
 	                    <div class="myScheduleImgContent">
 	                      <div class="groupImg">
@@ -160,6 +162,7 @@
 	                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${mySchedule.scheduleVO.location}</p>
 	                      </div>
 	                    </div>
+	                    </a>
 	                  </div>    
 	                                                 
                   	  </c:forEach>

@@ -1,8 +1,13 @@
 let schedulesList = [];
+let schedulesThisMonthList = [];
+let schedulesThisMonthArr = [];
+
+let year = 0;
+let month = 0;
 
 $(document).ready(function () {
   calendarMaker($("#myScheduleCalendarArea"), new Date());
-
+  
   let nowDate = new Date();
 
   function calendarMaker(target, date) {
@@ -11,8 +16,7 @@ $(document).ready(function () {
     }
     let nowDate = date;
 
-    let year = 0;
-    let month = 0;
+    
     if ($(target).length > 0) {
       year = nowDate.getFullYear();
       month = nowDate.getMonth() + 1;
@@ -201,7 +205,75 @@ $(document).ready(function () {
 	  */
 	  
   } // end of calendarMaker
-});
+  
+   year = nowDate.getFullYear();
+   month = nowDate.getMonth() + 1;
+   let ajaxYear = year % 100;
+   let ajaxMonth = month;
+  // 이번달 일정 가져오는 아작스
+  $.ajax({
+	 type: "get",
+     cache: false,
+     contentType: false,
+    // dataType: "json",
+     ajax: false,      
+     url : "/nemo/mypage/mySchedule/ajaxthisMSchedule?year=" + ajaxYear + "&month=" + ajaxMonth,
+     
+     //성공하게 되면 수행할 내용 : xml의 데이터를 통째로 가져옴
+     success : function (data) {	 
+       let jsonTMScheInfo = JSON.parse(data);
+        //값 안넘어온듯??
+                   
+        for (key in jsonTMScheInfo.thisMschedules) {
+		//이렇게 데이터를 넣으면 안될듯
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].grp_name);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].grp_img);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].scheduleDate);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].scheduleMonth);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].scheduleTime);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].date);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].user_id);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].grp_id);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].sche_title);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].sche_cont);
+		  schedulesThisMonthList.push(jsonTMScheInfo.thisMschedules[key].location);
+		  
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].grp_name);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].grp_img);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].scheduleDate);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].scheduleMonth);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].scheduleTime);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].date);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].user_id);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].grp_id);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].sche_title);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].sche_cont);
+          schedulesThisMonthArr.push(jsonTMScheInfo.thisMschedules[key].location);                 
+        }
+        
+        console.log("success안:" + schedulesThisMonthArr);
+        console.log("data=" + data);
+        // resolve(arr); // 이담에 ㅜㅜ...???????????
+        // 넣을 값 들
+        let output="";
+        let month= schedulesThisMonthArr[scheduleMonth] + 'scheduleMonth 가져와서 넣기'
+         $('<h3>' + month +'월의 일정</h3>').prependTo('.thisMonthMyScheduleList');  
+         //forEach 안쪽       
+      
+      	
+      },
+ 		error: function (data, textStatus, error) {
+        console.log(data);
+        //console.log(textStatus);
+        //console.log(error);
+        alert("이번달 일정 조회중 에러 발생");
+      },
+       
+  });
+  
+  
+}); // end of $(document).ready
+
 
 
 function fn_ajax2(year, month) {
