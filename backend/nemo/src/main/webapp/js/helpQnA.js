@@ -18,7 +18,7 @@ function submitSearchForm(){
 		alert('검색어를 입력해주세요');
 	} else {
 		$('form[name="search"]').submit();
-		alert($('form[name="search"]').attr('action')); 
+		//alert($('form[name="search"]').attr('action')); 
 		 //$('#search').submit();
 	}
 }

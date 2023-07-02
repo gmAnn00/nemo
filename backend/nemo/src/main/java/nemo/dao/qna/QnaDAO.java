@@ -394,7 +394,7 @@ public class QnaDAO {
 					query+=" WHERE content LIKE ?";
 				}else if(filter.equals("writer")) {
 					query+=" q, user_tbl u WHERE u.user_id=q.user_id"+
-							"AND u.nickname LIKE ?";
+						" AND u.nickname LIKE ?";
 				}
 				System.out.println(query);
 				pstmt=conn.prepareStatement(query);
@@ -415,8 +415,8 @@ public class QnaDAO {
 					query+=") START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))";
 					query+=" WHERE content LIKE ?";
 				} else if(filter.equals("writer")) {
-					query+=" AND u.user_id=q.user_id AND u.nickname LIKE ?)" +
-						"START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=parent_no ORDER SIBLINGS BY q.qna_id DESC))";
+					query+=") START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))";
+					query+=" WHERE nickname LIKE ?";
 				}
 				System.out.println(query);
 				pstmt=conn.prepareStatement(query);
@@ -450,47 +450,26 @@ public class QnaDAO {
 			
 			if(isAdmin) {
 				error="admin";
-				String query="SELECT * FROM (SELCET ROWNUM AS recNUM, LVL, qna_id," +
-						" parent_no, title, user_id, create, nickname, content FROM"+
-						" (SELECT LEVEL AS LVL, q.qna_id, q.parent_no, q.title, q.user_id,q_create_date, u.nickname, q.content";
+				String query="SELECT * FROM (SELECT ROWNUM AS recNUM, LVL, qna_id," +
+						" parent_no, title, user_id, create_date, nickname, content FROM"+
+						" (SELECT LEVEL AS LVL, q.qna_id, q.parent_no, q.title, q.user_id,q.create_date, u.nickname, q.content"+
+						" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id"+
+						" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))";
 				if(filter.equals("title")) {
-					query+=" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id"+
-							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLIGS BY q.qna_id DESC))"+
-							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND title LIKE ?";
-					
-					System.out.println(query);
-					pstmt=conn.prepareStatement(query);
-					pstmt.setInt(1, section);
-					pstmt.setInt(2, pageNum);
-					pstmt.setInt(3, section);
-					pstmt.setInt(4, pageNum);
-					pstmt.setString(5, "%"+keyword+"%");
-					
+					query+=" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND title LIKE ?";
 				} else if(filter.equals("content")) {
-					query+=" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id"+
-							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLIGS BY q.qna_id DESC))"+
-							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND content LIKE ?";
-					System.out.println(query);
-					pstmt=conn.prepareStatement(query);
-					pstmt.setInt(1, section);
-					pstmt.setInt(2, pageNum);
-					pstmt.setInt(3, section);
-					pstmt.setInt(4, pageNum);
-					pstmt.setString(5, "%"+keyword+"%");
-					
-				}else if(filter.equals("writer")) {
-					query+=" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id AND u.nickname LIKE ?"+
-							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLIGS BY q.qna_id DESC))"+
-							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+					query+=" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND content LIKE ?";
 
-					System.out.println(query);
-					pstmt=conn.prepareStatement(query);
-					pstmt.setString(1, "%"+keyword+"%");
-					pstmt.setInt(2, section);
-					pstmt.setInt(3, pageNum);
-					pstmt.setInt(4, section);
-					pstmt.setInt(5, pageNum);
+				}else if(filter.equals("writer")) {
+					query+=" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND nickname LIKE ?";
 				}
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setInt(1, section);
+				pstmt.setInt(2, pageNum);
+				pstmt.setInt(3, section);
+				pstmt.setInt(4, pageNum);
+				pstmt.setString(5, "%"+keyword+"%");
 
 			} else {
 				error="user";
@@ -502,47 +481,29 @@ public class QnaDAO {
 					query+="(SELECT qna_id FROM qna_tbl WHERE user_id=?)"+
 						" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))"+
 						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND title LIKE ?";
-					System.out.println(query);
-					
-					pstmt=conn.prepareStatement(query);
-					pstmt.setString(1, user_id);
-					pstmt.setString(2, user_id);
-					pstmt.setInt(3, section);
-					pstmt.setInt(4, pageNum);
-					pstmt.setInt(5, section);
-					pstmt.setInt(6, pageNum);
-					pstmt.setString(7, "%"+keyword+"%");
-					
+
 				} else if(filter.equals("content")) {
 					query+="(SELECT qna_id FROM qna_tbl WHERE user_id=?)"+
 							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))"+
 							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND CONTENT LIKE ?";
-						System.out.println(query);
 						
-						pstmt=conn.prepareStatement(query);
-						pstmt.setString(1, user_id);
-						pstmt.setString(2, user_id);
-						pstmt.setInt(3, section);
-						pstmt.setInt(4, pageNum);
-						pstmt.setInt(5, section);
-						pstmt.setInt(6, pageNum);
-						pstmt.setString(7, "%"+keyword+"%");
 					
 				} else if(filter.equals("writer")) {
 		    		query+=" (SELECT q.qna_id FROM qna_tbl q, user_tbl u WHERE q.user_id=? AND"+
-		    			" u.user_id=q.user_id AND u.nickname LIKE ? )"+
+		    			" u.user_id=q.user_id)"+
 		    			" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))"+
-		    			" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
-					System.out.println(query);
-					pstmt=conn.prepareStatement(query);
-					pstmt.setString(1, user_id);
-					pstmt.setString(2, user_id);
-					pstmt.setString(3, "%"+keyword+"%");
-					pstmt.setInt(4, section);
-					pstmt.setInt(5, pageNum);
-					pstmt.setInt(6, section);
-					pstmt.setInt(7, pageNum);	
-				}			
+		    			" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND nickname LIKE ?";
+				}	
+				
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, user_id);
+				pstmt.setInt(3, section);
+				pstmt.setInt(4, pageNum);
+				pstmt.setInt(5, section);
+				pstmt.setInt(6, pageNum);
+				pstmt.setString(7, "%"+keyword+"%");
 			}
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {

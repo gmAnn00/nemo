@@ -319,8 +319,7 @@ public class QnaController extends HttpServlet {
 					articleMap.put("section", section);
 					articleMap.put("pageNum", pageNum);
 					request.setAttribute("articleMap", articleMap);
-					nextPage="/views/qna/helpQnA.jsp"; 
-					
+					nextPage="/views/qna/helpQnA.jsp";
 				}
 				RequestDispatcher dispatcher =request.getRequestDispatcher(nextPage);// 디스패처로 자료를 넣음
 			    dispatcher.forward(request, response); // 그 자료를 포워드 즉 넘겨준는 거임
