@@ -31,7 +31,7 @@
             	<c:choose>
             		<c:when test="${user_id != null && admin == 0}">
 	            		<li>
-	                    	<a href="#">
+	                    	<a href="${contextPath}/mypage">
 	                       	 <div class="profile"><img class="fa-solid" src="${contextPath}/userImageDownload?user_id=${user_id}&user_img=${user_img}" alt="프로필사진"><span class="profile_name">${nickname}</span></div>
 	                    	</a>
 	               		 </li>
