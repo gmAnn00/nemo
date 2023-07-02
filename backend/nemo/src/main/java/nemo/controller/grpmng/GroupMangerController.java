@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import nemo.dao.grpmng.GroupMangerDAO;
 import nemo.service.group.GroupInfoService;
+import nemo.service.group.GroupMainService;
 import nemo.service.grpmng.GroupMangerService;
 import nemo.vo.group.GroupVO;
 import nemo.vo.user.UserVO;
@@ -26,6 +27,7 @@ public class GroupMangerController extends HttpServlet{
 	HttpSession session;
 	GroupMangerService groupMangerService;
 	GroupInfoService groupInfoService;
+	GroupMainService groupMainService;
 	GroupMangerDAO groupMangerDAO;
 	UserVO userVO;
 	GroupVO groupVO;
@@ -34,6 +36,7 @@ public class GroupMangerController extends HttpServlet{
 	@Override
 	public void init() throws ServletException {
 		groupMangerDAO=new GroupMangerDAO();
+		groupMainService = new GroupMainService();
 		groupMangerService=new GroupMangerService();
 		groupInfoService=new GroupInfoService();
 		userVO=new UserVO();
@@ -69,6 +72,19 @@ public class GroupMangerController extends HttpServlet{
 		System.out.println(group_id);
 		
 		System.out.println("요청 매핑이름: " + action); 
+		
+		List<String> grpMngList = groupMainService.grpMng(login_id);
+		System.out.println("grpMngList=" +grpMngList.toString());
+		session.setAttribute("grpMngList", grpMngList);
+		
+		String mng_id = groupMainService.grpMng(group_id);
+		System.out.println("mng_id="+mng_id);
+		List<String> grpMemberList = groupMainService.grpMember(group_id);
+		grpMemberList.remove(mng_id);
+		session.setAttribute("grpMemberList", grpMemberList);
+		System.out.println("grpMemberList="+grpMemberList.toString());
+		
+		
 		groupInfo=groupInfoService.getGroupInfo(group_id);
 		request.setAttribute("groupInfo", groupInfo);
 		try {

@@ -114,21 +114,21 @@
 	                        	<div class="comment_box">	                         
 		                          <div class="comment_title">
 		                            <div class="comment_textarea">
-		                              <a class="comment_group_title" href="${contextPath}/group/groupMain?group_id=${myArticle.groupVO.grp_id}">${myArticle.groupVO.grp_name}</a>
-		                              <a class="comment_board_title" href="${contextPath}/group/board/viewArticle?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}">${myArticle.boardVO.title}</a>
+		                              <h3 class="comment_group_title">${myArticle.groupVO.grp_name}</h3>
+		                              <span class="comment_board_title">${myArticle.boardVO.title}</span>
 		                            </div>
 		                          </div>
 		
 		                          <div class="comment-post">
-		                            <div class="comment-img"><img src="${contextPath}/userImages/${myArticle.userVO.user_id}/${myArticle.userVO.user_img}" /></div>
+		                            <div class="comment-img"><img src="${contextPath}/userImageDownload?user_id=${myArticle.userVO.user_id}&user_img=${myArticle.userVO.user_img}" /></div>
 		                            <div class="comment-details">
 		                              <div class="comment_details_titlebox">
 		                                <div class="comment_details_title">
 		                                  <span class="comment-author" id="user"> ${myArticle.userVO.nickname}</span>
 		                                  <span class="comment-time">${myArticle.boardVO.create_date}</span>
 		                                   <div class="comment-like-unlike">
-			                                  <span><a href="${contextPath}/group/board/modArticle?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
-			                                  <span><a href="${contextPath}/mypage/myBoardList/delWriting?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
+			                                  <span><a href="${contextPath}/group/board?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
+			                                  <span><a href="${contextPath}/mypage/myBoardList/delArticle?article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
 			                                </div>
 		                                </div>
 		                               
@@ -166,21 +166,21 @@
 	                        	<div class="comment_box">	                         
 		                          <div class="comment_title">
 		                            <div class="comment_textarea">
-		                              <a class="comment_group_title" href="${contextPath}/group/groupMain?group_id=${myComment.groupVO.grp_id}">${myComment.groupVO.grp_name}</a>
-		                              <a class="comment_board_title" href="${contextPath}/group/board/viewArticle?group_id=${myComment.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}">${myComment.boardVO.title}</a>
+		                              <h3 class="comment_group_title">${myComment.groupVO.grp_name}</h3>
+		                              <span class="comment_board_title">${myComment.boardVO.title}</span>
 		                            </div>
 		                          </div>
 		
 		                          <div class="comment-post">
-		                            <div class="comment-img"><img src="${contextPath}/userImages/${myComment.userVO.user_id}/${myComment.userVO.user_img}" /></div>
+		                            <div class="comment-img"><img src="${contextPath}/userImageDownload?user_id=${myComment.userVO.user_id}&user_img=${myComment.userVO.user_img}" /></div>
 		                            <div class="comment-details">
 		                              <div class="comment_details_titlebox">
 		                                <div class="comment_details_title">
 		                                  <span class="comment-author" id="user"> ${myComment.userVO.nickname}</span>
-		                                  <span class="comment-time">${myComment.create_date}</span>
+		                                  <span class="comment-time">${myCommentcreate_date}</span>
 		                                   <div class="comment-like-unlike">
-			                                  <span><a href="${contextPath}/group/board/viewArticle?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
-			                                  <span><a href="${contextPath}/mypage/myBoardList/delWriting?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
+			                                  <span><a href="${contextPath}/group/board?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
+			                                  <span><a href="${contextPath}/mypage/myBoardList/delComment?comment_no=${myComment.commentVO.comment_no}"><i class="fa-solid fa-xmark"></i></a></span>
 			                                </div>
 		                                </div>
 		                               
