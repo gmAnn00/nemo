@@ -6,9 +6,7 @@
   font-weight: normal;
   font-style: normal;
 }
-body {
-  padding-top: 105px;
-}
+
 #contentsArea {
   display: flex;
   flex-direction: row;
@@ -42,6 +40,7 @@ div.myScheduleCalAndList {
   border-radius: 5px;
   border-style: hidden;
   box-shadow: 0 0 0 1px #aaaaaa;
+  background: #fff;
 }
 .calendarTable td {
   width: 80px;
@@ -58,9 +57,7 @@ div.myScheduleCalAndList {
 .calWeek {
   height: 40px;
 }
-.calendarTable {
-  background: #fff;
-}
+
 .calendarTable span {
   margin: 0 15px;
   font-size: 1.2em;

@@ -22,10 +22,8 @@
 <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
 <link rel="stylesheet" href="${contextPath}/css/mySchedule.css" />
 
-<script
-  src="https://kit.fontawesome.com/bc604c01cc.js"
-  crossorigin="anonymous"
-></script>
+<script src="https://kit.fontawesome.com/bc604c01cc.js"
+  crossorigin="anonymous"></script>
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
 <script src="${contextPath}/js/mySchedule.js"></script>

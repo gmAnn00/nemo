@@ -85,7 +85,7 @@ public class MyScheduleDAO {
 				scheduleMap.put("grp_img", grp_img);
 				scheduleMap.put("scheduleDate", scheduleDate);
 				scheduleMap.put("scheduleTime", scheduleTime);				
-				scheduleMap.put("date", schedule); //오늘과 일정, 시간비교용
+				scheduleMap.put("date", schedule); //오늘이랑 DB일정 시간비교용
 				
 				commingScheduleList.add(scheduleMap);
 			}			

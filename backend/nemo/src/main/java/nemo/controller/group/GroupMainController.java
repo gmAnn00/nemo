@@ -21,9 +21,6 @@ import nemo.vo.group.GroupVO;
 import nemo.vo.group.ScheduleVO;
 import nemo.vo.user.UserVO;
 
-/**
- * Servlet implementation class GroupMainController
- */
 @WebServlet("/group/groupMain")
 public class GroupMainController extends HttpServlet {
 	HttpSession session;
