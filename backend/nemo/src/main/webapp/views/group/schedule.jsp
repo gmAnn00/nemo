@@ -290,21 +290,13 @@ request.setCharacterEncoding("utf-8");
 								<div class="participant clearfixed">
 									<h4>참석자</h4>
 									<div class="partMember">
-										<ul>
-											<li><img src="${contextPath}/images/temp.png"
-												alt="프로필사진" width="40px" /> <span>닉네임</span></li>
-											<li><img src="${contextPath}/images/temp.png"
-												alt="프로필사진" width="40px" /> <span>닉네임</span></li>
-											<li><img src="${contextPath}/images/temp.png"
-												alt="프로필사진" width="40px" /> <span>닉네임</span></li>
+										<ul id="partMemberArea">
+											
 										</ul>
 									</div>
-
+						
 									<div class="partBtn clearfixed">
-										<!-- 한번 더 누르면 참석취소 -->
-										<!-- <a href="#" role="button" class="button btnPart">참석</a> -->
-										<!-- <a href="#" role="button" class="button btnPartcan">참석취소</a> -->
-										<a type="button" id="joinSchedule" onclick="joinSchedule(${p<aram.group_id})" role="button" class="button btnPart">참석</a>
+											<button type="button" id="joinSchedule" class="button btnPart" onclick="fn_joinSchedule(${param.group_id})">참석</button>
 									</div>
 								</div>
 								<div class="editBtn" id="button_modify">
