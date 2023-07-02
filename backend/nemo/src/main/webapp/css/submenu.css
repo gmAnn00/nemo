@@ -56,3 +56,13 @@
   font-size: 24px;
   font-weight: 800;
 }
+.reportArea {
+	display: flex;
+    align-items: center;
+    color: red;
+    border-bottom: none;
+    width: 110px;
+}
+.reportTitle {
+	margin-right: 10px;
+}
