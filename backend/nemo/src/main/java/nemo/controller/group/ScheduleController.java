@@ -149,7 +149,7 @@ public class ScheduleController extends HttpServlet {
 		        scheduleVO = new ScheduleVO();
 		        scheduleVO.setSchedule(schedule);
 		        System.out.println("schedule: " + schedule);
-		        scheduleVO.setGrp_id(7);
+		        scheduleVO.setGrp_id(group_id);
 			    scheduleVO.setUser_id(user_id);
 			    scheduleVO.setSche_title(sche_title);
 			    scheduleVO.setSche_cont(sche_cont);
