@@ -294,6 +294,14 @@
 }
 .partMember img {
   border-radius: 50%;
+  height: 40px;
+}
+.partBtn button {
+  /* float: right; */
+  margin: 0.625em;
+  position: absolute;
+  top: -15px;
+  right: 0px;
 }
 .partBtn a {
   /* float: right; */
@@ -307,6 +315,9 @@
 	display: none;
 }
 
+#joinSchedule {
+	cursor: pointer;
+}
 
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
