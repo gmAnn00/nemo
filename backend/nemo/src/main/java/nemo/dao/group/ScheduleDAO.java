@@ -15,6 +15,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.group.ScheduleVO;
+import nemo.vo.user.UserVO;
 
 public class ScheduleDAO {
 	private Connection conn;	//라이브러리에 커넥션풀과 DB가 있어야한다.
@@ -104,6 +105,15 @@ public class ScheduleDAO {
 	        pstmt.setString(6, location);
 	        pstmt.executeUpdate();
 	        pstmt.close();
+	        
+	        String attendQuery = "INSERT INTO attend_tbl values(?,?,?)";
+	        pstmt = conn.prepareStatement(attendQuery);
+	        pstmt.setInt(1, grp_id);
+	        pstmt.setTimestamp(2, schedule);
+	        pstmt.setString(3, user_id);
+	        pstmt.executeQuery();
+	        pstmt.close();
+	        
 	        conn.close();
 	    } catch (Exception e) {
 	        System.out.println("새 일정 추가하기 중 오류");
@@ -244,6 +254,143 @@ public class ScheduleDAO {
 		}
 		return true;
 	}
+	
+	public void joinSchedule(String user_id, int group_id, Date schedule) {
+		try {
+			System.out.println("DAO schedule = " + schedule);
+			java.sql.Date sqlDate = new java.sql.Date(schedule.getTime());
+			//System.out.println(sqlDate);
+			conn = dataFactory.getConnection();
+			String query = "insert into attend_tbl values(?, ?, ?)";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			pstmt.setDate(2, sqlDate);
+			pstmt.setString(3, user_id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("스케줄 참가 중 오류");
+			e.printStackTrace();
+		}
+		
+	} // end of joinSchedule
+
+	public Boolean isAttend(String user_id, int group_id, String selScheDate) {
+		Boolean isAttendResult = false;
+		
+		try {
+			conn = dataFactory.getConnection();
+			//int grp_id = scheduleVO.getGrp_id();
+			//String user_id = scheduleVO.getUser_id();
+			//String query = "select schedule from schedule_tbl where grp_id = ? and schedule = ?";
+			String query = "select decode(count(*), '0', 'false', 'true') from attend_tbl where grp_id = ? and TO_CHAR(schedule, 'YYYY-MM-DD') = ? AND user_id = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			pstmt.setString(2, selScheDate);
+			pstmt.setString(3, user_id);
+
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isAttendResult = Boolean.parseBoolean(rs.getString(1));
+			}
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("참여 여부 확인 중 오류");
+			e.printStackTrace();
+		}
+		
+		return isAttendResult;
+	}
+
+	// 일정 참석 취소
+	public void cancelSchedule(String user_id, int group_id, Date schedule) {
+		try {
+			System.out.println("DAO schedule = " + schedule);
+			java.sql.Date sqlDate = new java.sql.Date(schedule.getTime());
+			//System.out.println(sqlDate);
+			conn = dataFactory.getConnection();
+			String query = "delete from attend_tbl where grp_id = ? AND schedule = ? AND user_id = ?";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			pstmt.setDate(2, sqlDate);
+			pstmt.setString(3, user_id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("스케줄 참가 취소 중 오류");
+			e.printStackTrace();
+		}
+		
+	}
+
+	// 현재 일정의 참석자 리스트 가져옴
+	public List<UserVO> attendUsers(int group_id, String selScheDate) {
+		List<UserVO> attendUserList = new ArrayList<UserVO>();
+		
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select u.* from attend_tbl a, user_tbl u "
+					+ "where a.user_id=u.user_id and a.grp_id = ? and TO_CHAR(a.schedule, 'YYYY-MM-DD') = ?";
+			//String query = "select * from schedule_tbl where grp_id = ? and TO_CHAR(schedule, 'YYYY-MM-DD') = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, group_id);
+			pstmt.setString(2, selScheDate);
+			//pstmt.setString(2, user_id);
+			//pstmt.setDate(2, schedule);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				UserVO userVO = new UserVO();
+				String user_id = rs.getString("user_id");
+				String password = rs.getString("password");
+				String user_name = rs.getString("user_name");
+				String nickname = rs.getString("nickname");
+				String zipcode = rs.getString("zipcode");
+				String user_addr1 = rs.getString("user_addr1");
+				String user_addr2 = rs.getString("user_addr2");
+				String phone = rs.getString("phone");
+				String email = rs.getString("email");
+				java.sql.Date join_date = rs.getDate("join_date");
+				java.sql.Date birthdate = rs.getDate("birthdate");
+				String user_img = rs.getString("user_img");
+				int admin = rs.getInt("admin");
+				
+				userVO.setUser_id(user_id);
+				userVO.setPassword(password);
+				userVO.setUser_name(user_name);
+				userVO.setNickname(nickname);
+				userVO.setZipcode(zipcode);
+				userVO.setUser_addr1(user_addr1);
+				userVO.setUser_addr2(user_addr2);
+				userVO.setPhone(phone);
+				userVO.setEmail(email);
+				userVO.setJoin_date(join_date);
+				userVO.setBirthdate(birthdate);
+				userVO.setUser_img(user_img);
+				userVO.setAdmin(admin);
+				
+				attendUserList.add(userVO);
+			}
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("일정 참석자 불러오는 중 오류");
+			e.printStackTrace();
+		}
+		
+		return attendUserList;
+	}
+	
 	/*public ScheduleVO findGrp(int group_id) {
 		ScheduleVO grpFind = null;
 		try {
@@ -270,6 +417,8 @@ public class ScheduleDAO {
 		}
 		return grpFind;
 	}*/
+
+	
 	
 	
 	//날짜선택시 스케줄 유무 확인
