@@ -42,6 +42,7 @@
     <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="${contextPath}/js/header.js"></script>
+    <script src="${contextPath}/js/helpQnA.js"></script>
   </head>
   <body>
     <!-- header 시작 -->
@@ -76,7 +77,7 @@
 	            <h2 class="sc2_menu_title">고객센터</h2>
 	            <ul class="sc2_menu_list">
 	              <li>
-	                <a href="${contextPath}/schedule.html">
+	                <a href="${contextPath}/viewQna">
 	                  <div class="sc2_icon_menu">
 	                    <div class="menu_submenu_name submenu_select"><span>Q&A</span></div>
 	                    <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -111,16 +112,18 @@
 
 		  
 		  <div class="boardArea">
-	          <div class="search">
-	            <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
-	            <select name="" id="boardSearch">
-	              <option value="title">제목</option>
-	              <option value="content">내용</option>
-	              <option value="writer">작성자</option>
-	            </select>
-	            <input type="text" name="" id="" />
-	            <a href="#" role="button" class="button" type="submit">검색</a>
-	          </div>
+			  <form action="${contextPath}/viewQna/search" id="search" name="search" method="get">
+		          <div class="search">
+		            <!-- 검색 부분 필요할 듯 , input 태그에 name, id 넣어야 함 -->
+		            <select name="filter" id="searchSelect">
+		              <option value="title">제목</option>
+		              <option value="content">내용</option>
+		              <option value="writer">작성자</option>
+		            </select>
+		            <input type="text" name="keyword" id="keyword" onkeyup="if(window.event.keyCode==13){submitSearchForm()}"/>
+		            <a href="#" role="button" class="button searchBtn" type="submit" onclick="submitSearchForm()">검색</a>
+		          </div>
+		       </form>
 	          
 	          <div class="boardListArea">
 	            <table class="boardList">

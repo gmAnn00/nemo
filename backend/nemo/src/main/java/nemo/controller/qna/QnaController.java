@@ -302,6 +302,25 @@ public class QnaController extends HttpServlet {
 					out.print("location.href='"+request.getContextPath()+"/viewQna';");
 					out.print("</script>");
 					return;
+				} else if(action.equals("/search")) {
+					String filter=request.getParameter("filter");
+					String keyword=request.getParameter("keyword");
+					
+					String _section=request.getParameter("section");
+					String _pageNum=request.getParameter("pageNum");
+					int section=Integer.parseInt((_section == null)?"1":_section);
+					int pageNum=Integer.parseInt((_pageNum == null)?"1":_pageNum);
+					Map<String, Integer> pagingMap=new HashMap<String, Integer>();
+					pagingMap.put("section", section);
+					pagingMap.put("pageNum", pageNum);
+					int admin = (Integer) session.getAttribute("admin");
+					
+					Map articleMap=qnaService.searchQnA(pagingMap, filter, keyword, admin > 0, user_id);
+					articleMap.put("section", section);
+					articleMap.put("pageNum", pageNum);
+					request.setAttribute("articleMap", articleMap);
+					nextPage="/views/qna/helpQnA.jsp"; 
+					
 				}
 				RequestDispatcher dispatcher =request.getRequestDispatcher(nextPage);// 디스패처로 자료를 넣음
 			    dispatcher.forward(request, response); // 그 자료를 포워드 즉 넘겨준는 거임

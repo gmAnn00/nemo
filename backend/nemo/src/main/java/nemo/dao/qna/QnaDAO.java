@@ -379,6 +379,203 @@ public class QnaDAO {
 		}
 	}
 	
+	//검색할 총 글 개수
+	public int searchTotArticles(String filter, String keyword,boolean isAdmin, String user_id) {
+		int totArticles=0;
+		String error=null;
+		try {
+			conn=dataFactory.getConnection();
+			if(isAdmin) { // 관리자 일떄
+				error="admin";
+				String query="SELECT COUNT(*) FROM qna_tbl";
+				if(filter.equals("title")) {
+					query+=" WHERE title LIKE ?";
+				}else if(filter.equals("content")) {
+					query+=" WHERE content LIKE ?";
+				}else if(filter.equals("writer")) {
+					query+=" q, user_tbl u WHERE u.user_id=q.user_id"+
+							"AND u.nickname LIKE ?";
+				}
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, "%"+keyword+"%");
+
+			} else {
+				error="user";
+				String query="SELECT count(*) as cnt FROM"+
+						" (SELECT ROWNUM AS recNUM, LVL, qna_id, parent_no, title, user_id, create_date, nickname, content"+
+						" FROM (SELECT LEVEL as LVL, q.qna_id, q.parent_no, q.title, q.user_id, q.create_date, u.nickname, q.content"+
+						" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id AND q.user_id=? OR q.parent_no IN"+
+						" (SELECT q.qna_id FROM qna_tbl q, user_tbl u WHERE q.user_id=?";  
+				if(filter.equals("title")) {
+					query+=") START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))";
+					query+=" WHERE title LIKE ?";
+
+				} else if(filter.equals("content")) {
+					query+=") START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))";
+					query+=" WHERE content LIKE ?";
+				} else if(filter.equals("writer")) {
+					query+=" AND u.user_id=q.user_id AND u.nickname LIKE ?)" +
+						"START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=parent_no ORDER SIBLINGS BY q.qna_id DESC))";
+				}
+				System.out.println(query);
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, user_id);
+				pstmt.setString(3, "%"+keyword+"%");
+				
+			}
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				totArticles=rs.getInt(1);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(error+"검색한 총글 개수 구하는 중 에러");
+			e.printStackTrace();
+		}
+		return totArticles;
+	}
+	
+	//검색한 글 목록
+	public List<QnaVO> searchArticlesAdmin(Map<String, Integer>pagingMap, String filter, String keyword,boolean isAdmin,String user_id){
+		List<QnaVO> articlesList=new ArrayList<>();
+		int section=pagingMap.get("section");
+		int pageNum=pagingMap.get("pageNum");
+		String error=null;
+		try {
+			conn=dataFactory.getConnection();
+			
+			if(isAdmin) {
+				error="admin";
+				String query="SELECT * FROM (SELCET ROWNUM AS recNUM, LVL, qna_id," +
+						" parent_no, title, user_id, create, nickname, content FROM"+
+						" (SELECT LEVEL AS LVL, q.qna_id, q.parent_no, q.title, q.user_id,q_create_date, u.nickname, q.content";
+				if(filter.equals("title")) {
+					query+=" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id"+
+							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLIGS BY q.qna_id DESC))"+
+							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND title LIKE ?";
+					
+					System.out.println(query);
+					pstmt=conn.prepareStatement(query);
+					pstmt.setInt(1, section);
+					pstmt.setInt(2, pageNum);
+					pstmt.setInt(3, section);
+					pstmt.setInt(4, pageNum);
+					pstmt.setString(5, "%"+keyword+"%");
+					
+				} else if(filter.equals("content")) {
+					query+=" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id"+
+							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLIGS BY q.qna_id DESC))"+
+							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND content LIKE ?";
+					System.out.println(query);
+					pstmt=conn.prepareStatement(query);
+					pstmt.setInt(1, section);
+					pstmt.setInt(2, pageNum);
+					pstmt.setInt(3, section);
+					pstmt.setInt(4, pageNum);
+					pstmt.setString(5, "%"+keyword+"%");
+					
+				}else if(filter.equals("writer")) {
+					query+=" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id AND u.nickname LIKE ?"+
+							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLIGS BY q.qna_id DESC))"+
+							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+
+					System.out.println(query);
+					pstmt=conn.prepareStatement(query);
+					pstmt.setString(1, "%"+keyword+"%");
+					pstmt.setInt(2, section);
+					pstmt.setInt(3, pageNum);
+					pstmt.setInt(4, section);
+					pstmt.setInt(5, pageNum);
+				}
+
+			} else {
+				error="user";
+				String query="SELECT * FROM (SELECT ROWNUM AS recNum, LVL, qna_id, parent_no, title, user_id, create_date, nickname, content"+
+						" FROM (SELECT LEVEL AS LVL, q.qna_id, q.parent_no, q.title, q.user_id, q.create_date, u.nickname, q.content "+
+						" FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id AND q.user_id = ? or q.parent_no in ";
+						
+				if(filter.equals("title")) {
+					query+="(SELECT qna_id FROM qna_tbl WHERE user_id=?)"+
+						" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))"+
+						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND title LIKE ?";
+					System.out.println(query);
+					
+					pstmt=conn.prepareStatement(query);
+					pstmt.setString(1, user_id);
+					pstmt.setString(2, user_id);
+					pstmt.setInt(3, section);
+					pstmt.setInt(4, pageNum);
+					pstmt.setInt(5, section);
+					pstmt.setInt(6, pageNum);
+					pstmt.setString(7, "%"+keyword+"%");
+					
+				} else if(filter.equals("content")) {
+					query+="(SELECT qna_id FROM qna_tbl WHERE user_id=?)"+
+							" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))"+
+							" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10 AND CONTENT LIKE ?";
+						System.out.println(query);
+						
+						pstmt=conn.prepareStatement(query);
+						pstmt.setString(1, user_id);
+						pstmt.setString(2, user_id);
+						pstmt.setInt(3, section);
+						pstmt.setInt(4, pageNum);
+						pstmt.setInt(5, section);
+						pstmt.setInt(6, pageNum);
+						pstmt.setString(7, "%"+keyword+"%");
+					
+				} else if(filter.equals("writer")) {
+		    		query+=" (SELECT q.qna_id FROM qna_tbl q, user_tbl u WHERE q.user_id=? AND"+
+		    			" u.user_id=q.user_id AND u.nickname LIKE ? )"+
+		    			" START WITH q.parent_no=0 CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))"+
+		    			" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
+					System.out.println(query);
+					pstmt=conn.prepareStatement(query);
+					pstmt.setString(1, user_id);
+					pstmt.setString(2, user_id);
+					pstmt.setString(3, "%"+keyword+"%");
+					pstmt.setInt(4, section);
+					pstmt.setInt(5, pageNum);
+					pstmt.setInt(6, section);
+					pstmt.setInt(7, pageNum);	
+				}			
+			}
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				int level=rs.getInt("LVL");
+				int qna_id=rs.getInt("qna_id");
+				int parent_no=rs.getInt("parent_no");
+				String title=rs.getString("title");
+				String _user_id = rs.getString("user_id");
+				String nickname=rs.getString("nickname");
+				Date create_datersDate=rs.getDate("create_date");
+				QnaVO qnaVO=new QnaVO();
+				qnaVO.setLevel(level);
+				qnaVO.setQna_id(qna_id);
+				qnaVO.setParent_no(parent_no);
+				qnaVO.setTitle(title);
+				qnaVO.getUserVO().setNickname(nickname);
+				qnaVO.setUser_id(_user_id);
+				qnaVO.setCreate_date(create_datersDate);
+				System.out.println(level);
+				System.out.println("qnaVO="+qnaVO.toString()); 
+				articlesList.add(qnaVO);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(error+"검색한 결과 구하는 중 에러");
+			e.printStackTrace();
+		}
+		return articlesList;
+	}
+	
 	//삭제할 글 번호 가져오기
 	public List<Integer> selectRemovedArticles(int qna_id) {
 		List<Integer> qnaList=new ArrayList<Integer>();
