@@ -22,7 +22,14 @@ request.setCharacterEncoding("utf-8");
 	crossorigin="anonymous"></script>
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
-<script src="${contextPath}/js/mySchedule.js"></script>
+
+
+<script>
+    var contextPath = "${pageContext.request.contextPath}";
+</script>
+
+<script src="${contextPath}/js/schedule.js"></script>
+
 <!--<script>
     	const ctx = ${contextPath};
     </script> -->
@@ -208,35 +215,64 @@ request.setCharacterEncoding("utf-8");
 			              </div>
 			            </div> -->
 					<!-- 일정 상세보기 -->
-					<form action="">
+					<form name = "frmSchedule"  action="">
 						<div class="scheduleDetailArea clearfixed">
 							<div class="scheduleDetail">
 								<div class="detailTop">
 									<h3>일정 상세보기</h3>
 								</div>
-								<div class="scheduleTitle">
+								<div id="schedule_Title">
 									<p>
-										<strong>이번에 종각에서 모여요</strong>
+										<input type="text" id="scheduleTitle" name="scheduleTitle_new" class="scheduleTitle" value="">
 									</p>
 								</div>
 								<div class="contentLocationMap">
 									<div class="content">
 										<div class="dateTime">
 											<!-- <input type="datetime-local" name="schedule" id="schedule"/>  -->
-											<p id="schedule"></p>
+											<!-- <p>
+												<input type="text"id="schedule" disabled>
+											</p>
 											<br>
-											<p id="sche_time"></p>
+											<p>
+												<input type="text" id="sche_time" disabled>
+											</p> -->
 											<br>
+											<input id="sche_dateTime" type="datetime-local" name="sche_dateTime_new" value="">
+											<input type="datetime-local" id="sche_dateTime_old" value="" name="sche_dateTime_old" style="display:none"/>
+											<script>
+											var currentDate2 = new Date().toISOString().slice(0, 16);
+											document.getElementById("sche_dateTime").min = currentDate2;
+											</script>
 										</div>
 										<div class="contentDetail">
-											<textarea id="sche_cont" class="contentDetailText" rows="10" readonly></textarea>
+											<textarea id="sche_cont" name="sche_cont_new" class="contentDetailText" rows="10"></textarea>
 										</div>
 									</div>
 									
+									<input type="hidden" id="detailAddr2" name="location_new" value="" required>
+									
 									<!-- 모임 위치 -->
-									<div class="locationMap">
+									<div class="locationMap" id="newMap">
 										<h4>모임 위치</h4>
-										<div class="map" id="map"></div>
+										<div class="map" id="map">
+											<div id="menu_wrap" class="bg_white menu_wrap_class">
+												<div class="option">
+													<div>
+														<form>
+															키워드 : <input type="text" id="keyword" value=""
+																size="15" placeholder="만남 장소">
+															<button type="button"
+																onclick="fn_mod_schedule(); return false;">검색하기</button>
+														</form>
+													</div>
+												</div>
+												<hr>
+												<ul id="placesList"></ul>
+												<div id="pagination"></div>
+											</div>
+										
+										</div>
 										<br>
 										<div id="clickLatlng"></div>
 										<p style="margin-top: 12px">
@@ -249,7 +285,6 @@ request.setCharacterEncoding("utf-8");
 										<script type="text/javascript"
 											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20b89d26720633d863b9bff60fd0e841&libraries=services"></script>
 
-										
 									</div>
 								</div>
 								<div class="participant clearfixed">
@@ -262,17 +297,25 @@ request.setCharacterEncoding("utf-8");
 												alt="프로필사진" width="40px" /> <span>닉네임</span></li>
 											<li><img src="${contextPath}/images/temp.png"
 												alt="프로필사진" width="40px" /> <span>닉네임</span></li>
+										</ul>
 									</div>
 
 									<div class="partBtn clearfixed">
 										<!-- 한번 더 누르면 참석취소 -->
-										<a href="#" role="button" class="button btnPart">참석</a>
+										<!-- <a href="#" role="button" class="button btnPart">참석</a> -->
 										<!-- <a href="#" role="button" class="button btnPartcan">참석취소</a> -->
+										<a type="button" id="joinSchedule" onclick="joinSchedule(${p<aram.group_id})" role="button" class="button btnPart">참석</a>
 									</div>
 								</div>
-								<div class="editBtn">
-									<a href="#" role="button" class="buttonCancle btnDel">삭제</a> <a
-										href="${contextPath}/modScheduleForm?id=${param.group_id}" role="button" class="button btnEdit">수정</a>
+								<div class="editBtn" id="button_modify">
+									<button type="button" id="modScheduleBtn" class="button btnEdit" onclick="fn_modify_schedule(this.form, ${param.group_id})">수정반영하기</button>
+									<input type="button" value="취소" onclick="toSchedule(frmSchedule, ${param.group_id})" class="button buttonCancle">
+								</div>
+								
+								
+								<div id="editButton" class="editBtn">
+									<button type="button" id="delScheduleBtn" class="buttonCancle btnDel" onclick="delSchedule(${param.group_id})">삭제</button>
+									<input type="button" value="수정" onclick="fn_enable(this.form);" class="button btnEdit">
 								</div>
 							</div>
 
@@ -322,12 +365,11 @@ request.setCharacterEncoding("utf-8");
 											<!-- 모임 위치 지번 주소 -->
 											<input type="hidden" id="detailAddr" name="location" value="" required>
 
-
-											<div id="menu_wrap" class="bg_white">
+											<div id="menu_wrap2" class="bg_white">
 												<div class="option">
 													<div>
 														<form>
-															키워드 : <input type="text" value="종로구" id="keyword"
+															키워드 : <input type="text" value="종로구" id="keyword2"
 																size="15" placeholder="만남 장소">
 															<button type="button"
 																onclick="createKakaoMap2(); return false;">검색하기</button>
@@ -335,8 +377,8 @@ request.setCharacterEncoding("utf-8");
 													</div>
 												</div>
 												<hr>
-												<ul id="placesList"></ul>
-												<div id="pagination"></div>
+												<ul id="placesList2"></ul>
+												<div id="pagination2"></div>
 											</div>
 
 											<script type="text/javascript"
