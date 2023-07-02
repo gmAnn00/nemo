@@ -21,7 +21,7 @@ $(document).ready(function() {
 			alert('제목을 입력해주세요');
 		}else if($('#summernote').summernote('isEmpty')){
 			//summernote.length<=0){
-			alert('d내용을 입력해주세요');			
+			alert('내용을 입력해주세요');			
 		} else {
 			console.log("content");
 			 $('textarea[name="content"]').val($('#summernote').summernote('code'));
