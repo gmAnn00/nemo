@@ -1,4 +1,4 @@
-package nemo.dao.report;
+package nemo.dao.admin;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,8 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.report.GroupReportVO;
-import oracle.sql.DATE;
+import nemo.vo.admin.GroupReportVO;
 
 public class GroupReportDAO {
 

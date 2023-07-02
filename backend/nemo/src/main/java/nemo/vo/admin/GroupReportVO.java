@@ -1,4 +1,4 @@
-package nemo.vo.report;
+package nemo.vo.admin;
 
 import java.sql.Date;
 

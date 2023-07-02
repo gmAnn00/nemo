@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -73,6 +75,47 @@ public class AdminGroupDAO {
 		return groupList;
 	}
 	
+	
+	public List selectAllGroup() {
+		List groupList=new ArrayList();
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT j.memCnt,g.grp_id, r.rCnt, g.grp_name, g.mem_no,g.grp_mng, g.create_date FROM"
+					+ " (SELECT count(*) AS memCnt, grp_id FROM grpjoin_tbl GROUP BY grp_id) j, group_tbl g,"
+					+ " (SELECT g1.grp_id, nvl(r1.cnt, 0) as rCnt FROM (select count(*) as cnt, grp_id from greport_tbl group by grp_id) r1 RIGHT OUTER JOIN group_tbl g1 on r1.grp_id=g1.grp_id) r"
+					+ " WHERE j.grp_id=g.grp_id and r.grp_id = g.grp_id";
+			pstmt=conn.prepareStatement(query);
+			System.out.println(query);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				int grp_id=rs.getInt("grp_id");
+				String grp_name=rs.getString("grp_name");
+				String grp_mng=rs.getString("grp_mng");
+				int mem_no=rs.getInt("mem_no");
+				Date create_date=rs.getDate("create_date");
+				int memCnt=rs.getInt("memCnt");
+				int rCnt=rs.getInt("rCnt");
+				
+				GroupVO groupVO=new GroupVO();
+				groupVO.setGrp_id(grp_id);
+				groupVO.setGrp_name(grp_name);
+				groupVO.setGrp_mng(grp_mng);
+				groupVO.setCreate_date(create_date);
+				groupVO.setMem_no(mem_no);
+				
+				Map groupInfo=new HashMap();
+				groupInfo.put("groupVO", groupVO);
+				groupInfo.put("currentMemNO", memCnt);
+				groupInfo.put("reportCnt", rCnt);
+				groupList.add(groupInfo);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("그룹 정보 조회 하는 중 에러 ");
+			e.printStackTrace();
+		} 
+		return groupList;
+	}
 	
 	//소모임 삭제
 	public void delGroup(int grp_id) {

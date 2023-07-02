@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import nemo.vo.report.MemberReportVO;
 import nemo.vo.user.UserVO;
 
 public class AdminUserDAO {
