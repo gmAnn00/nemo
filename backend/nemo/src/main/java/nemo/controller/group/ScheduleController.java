@@ -59,8 +59,8 @@ public class ScheduleController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		// 나중에 삭제해야 함
-		session.setAttribute("user_id", "chulsu");
-		session = request.getSession();
+		//session.setAttribute("user_id", "chulsu");
+		//session = request.getSession();
 		
         String grp_id = request.getParameter("group_id");
         String user_id = (String) session.getAttribute("user_id");
