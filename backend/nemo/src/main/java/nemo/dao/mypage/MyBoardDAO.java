@@ -89,7 +89,7 @@ public class MyBoardDAO {
 		List<MyBoardVO> myCommentList = new ArrayList<MyBoardVO>();
 		try {
 			conn=dataFactory.getConnection();
-			String query = "SELECT g.grp_id, g.grp_name,  b.article_no, b.title, c.com_cont, c.create_date, u.user_img, u.nickname";
+			String query = "SELECT g.grp_id, g.grp_name,  b.article_no, b.title, c.comment_no,c.com_cont, c.create_date, u.user_img, u.nickname";
 			query += " FROM group_tbl g, board_tbl b, comment_tbl c, user_tbl u";
 			query += " WHERE c.user_id=? and c.grp_id=g.grp_id and c.user_id=u.user_id and b.article_no=c.article_no";
 			System.out.println(query);
@@ -102,13 +102,14 @@ public class MyBoardDAO {
 				String grp_name = rs.getString("grp_name");
 				int article_no = rs.getInt("article_no");
 				String title = rs.getString("title");
+				int comment_no = rs.getInt("comment_no");
 				String com_cont = rs.getString("com_cont");
 				//Date create_date = rs.getDate("create_date");
 				Timestamp create_dateT = rs.getTimestamp("create_date");
 				String user_img = rs.getString("user_img");
 				String nickname = rs.getString("nickname");
 				
-				SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
+				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 				String create_date = date.format(create_dateT);
 				
 				MyBoardVO myComment = new MyBoardVO();
@@ -116,6 +117,7 @@ public class MyBoardDAO {
 				myComment.getGroupVO().setGrp_name(grp_name);
 				myComment.getBoardVO().setArticle_no(article_no);
 				myComment.getBoardVO().setTitle(title);
+				myComment.getCommentVO().setComment_no(comment_no);
 				myComment.getCommentVO().setCom_cont(com_cont);
 				//myComment.getCommentVO().setCreate_date(create_date);
 				myComment.setCreate_date(create_date);
@@ -135,6 +137,44 @@ public class MyBoardDAO {
 			e.printStackTrace();
 		}	
 		return myCommentList;
+	}
+
+	// 내 작성글 삭제
+	public void delMyArticle(int article_no) {
+		try {
+			conn=dataFactory.getConnection();
+			String query = "delete from board_tbl where article_no = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, article_no);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("delMyArticle 중 에러 ");
+			e.printStackTrace();
+		}
+		
+	}
+
+	// 내 댓글 삭제
+	public void delMyComment(int comment_no) {
+		try {
+			conn=dataFactory.getConnection();
+			String query = "delete from comment_tbl where comment_no = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, comment_no);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("delMyComment 중 에러 ");
+			e.printStackTrace();
+		}
+		
 	}
 
 	

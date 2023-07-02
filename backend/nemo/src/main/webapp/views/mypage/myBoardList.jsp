@@ -120,7 +120,7 @@
 		                          </div>
 		
 		                          <div class="comment-post">
-		                            <div class="comment-img"><img src="${contextPath}/userImages/${myArticle.userVO.user_id}/${myArticle.userVO.user_img}" /></div>
+		                            <div class="comment-img"><img src="${contextPath}/userImageDownload?user_id=${myArticle.userVO.user_id}&user_img=${myArticle.userVO.user_img}" /></div>
 		                            <div class="comment-details">
 		                              <div class="comment_details_titlebox">
 		                                <div class="comment_details_title">
@@ -128,7 +128,7 @@
 		                                  <span class="comment-time">${myArticle.boardVO.create_date}</span>
 		                                   <div class="comment-like-unlike">
 			                                  <span><a href="${contextPath}/group/board?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
-			                                  <span><a href="${contextPath}/mypage/myBoardList/delWriting?group_id=${myArticle.groupVO.grp_id}&article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
+			                                  <span><a href="${contextPath}/mypage/myBoardList/delArticle?article_no=${myArticle.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
 			                                </div>
 		                                </div>
 		                               
@@ -172,15 +172,15 @@
 		                          </div>
 		
 		                          <div class="comment-post">
-		                            <div class="comment-img"><img src="${contextPath}/userImages/${myComment.userVO.user_id}/${myComment.userVO.user_img}" /></div>
+		                            <div class="comment-img"><img src="${contextPath}/userImageDownload?user_id=${myComment.userVO.user_id}&user_img=${myComment.userVO.user_img}" /></div>
 		                            <div class="comment-details">
 		                              <div class="comment_details_titlebox">
 		                                <div class="comment_details_title">
 		                                  <span class="comment-author" id="user"> ${myComment.userVO.nickname}</span>
-		                                  <span class="comment-time">${myComment.boardVO.create_date}</span>
+		                                  <span class="comment-time">${myCommentcreate_date}</span>
 		                                   <div class="comment-like-unlike">
 			                                  <span><a href="${contextPath}/group/board?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-pen"></i></a></span>
-			                                  <span><a href="${contextPath}/mypage/myBoardList/delWriting?group_id=${myComment.groupVO.grp_id}&article_no=${myComment.boardVO.article_no}"><i class="fa-solid fa-xmark"></i></a></span>
+			                                  <span><a href="${contextPath}/mypage/myBoardList/delComment?comment_no=${myComment.commentVO.comment_no}"><i class="fa-solid fa-xmark"></i></a></span>
 			                                </div>
 		                                </div>
 		                               

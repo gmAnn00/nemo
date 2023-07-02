@@ -25,6 +25,18 @@ public class MyBoardService {
 		myCommentList = myBoardDAO.selectMyComment(user_id);
 		return myCommentList;
 	}
+
+	// 내 작성글 삭제
+	public void delMyArticle(int article_no) {
+		myBoardDAO.delMyArticle(article_no);
+		
+	}
+
+	public void delMyComment(int comment_no) {
+		myBoardDAO.delMyComment(comment_no);
+		
+	}
+
 	
 
 }

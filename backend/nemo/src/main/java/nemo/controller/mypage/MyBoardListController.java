@@ -1,6 +1,7 @@
 package nemo.controller.mypage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class MyBoardListController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		session=request.getSession();
 		String nextPage = "";
+		PrintWriter out = response.getWriter();
 
 		String action = request.getPathInfo();				
 		String user_id = (String)session.getAttribute("user_id");
@@ -74,12 +76,13 @@ public class MyBoardListController extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 					dispatcher.forward(request, response);
 					
-				} else if(action.equals("/delWriting/*")) {				
-					//글 댓글 삭제
+				} else if(action.equals("/delArticle")) {				
+					//내 작성글 삭제
+					String group_id = request.getParameter("group_id");
+					int article_no = Integer.parseInt(request.getParameter("article_no"));
 					
-					
-					
-					
+					myBoardService.delMyArticle(article_no);
+
 					
 					/*
 					user_id = (String)session.getAttribute("user_id");
@@ -90,12 +93,32 @@ public class MyBoardListController extends HttpServlet {
 					
 					*/
 				
-					
 			        System.out.println(user_id + "글 삭제");
+			        out.print("<script>");
+			        out.print("alert('작성글이 삭제되었습니다.');");
+			        out.print("location.href='/nemo/mypage/myBoardList';");
+			        out.print("</script>");
+			        return;
 					//request.setAttribute("msg", "deleted");
-					nextPage="/nemo/mypage/myBoardList";
-					response.sendRedirect(nextPage);
+					//nextPage="/nemo/mypage/myBoardList";
+					//response.sendRedirect(nextPage);
 
+				}else if(action.equals("/delComment")) {
+					//내 댓글글 삭제
+					int comment_no = Integer.parseInt(request.getParameter("comment_no"));
+					
+					myBoardService.delMyComment(comment_no);
+				
+			        System.out.println(user_id + "댓글 삭제");
+			        out.print("<script>");
+			        out.print("alert('댓글이 삭제되었습니다.');");
+			        out.print("location.href='/nemo/mypage/myBoardList';");
+			        out.print("</script>");
+			        return;
+					//request.setAttribute("msg", "deleted");
+					//nextPage="/nemo/mypage/myBoardList";
+					//response.sendRedirect(nextPage);
+					
 				}
 //			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 //			dispatcher.forward(request, response);
