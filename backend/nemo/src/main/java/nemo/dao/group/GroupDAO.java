@@ -152,4 +152,52 @@ public class GroupDAO {
 			
 			return grpMngList;
 		}
+		
+		public List grpMember(int group_id) {
+			List grpJustMemberList = new ArrayList<String>();
+			try {
+				conn = dataFactory.getConnection();
+				String query = "select user_id from grpjoin_tbl where grp_id = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, group_id);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					System.out.println(rs.getString("user_id"));
+					grpJustMemberList.add(rs.getString("user_id"));
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+				
+			} catch (Exception e) {
+				System.out.println("grpJustMember 중 오류");
+				e.printStackTrace();
+			}
+			
+			return grpJustMemberList;
+			
+		}
+		
+		public String grpMng(int group_id) {
+			String mng_id = "";
+			try {
+				conn = dataFactory.getConnection();
+				String query = "select grp_mng from group_tbl where grp_id = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, group_id);
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				mng_id = rs.getString("grp_mng");
+				
+				rs.close();
+				pstmt.close();
+				conn.close();
+				
+			} catch (Exception e) {
+				System.out.println("grpJustMember 중 오류");
+				e.printStackTrace();
+			}
+			
+			return mng_id;
+		}
 }
