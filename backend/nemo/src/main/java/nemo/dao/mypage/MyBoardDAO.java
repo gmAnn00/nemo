@@ -108,7 +108,7 @@ public class MyBoardDAO {
 				String user_img = rs.getString("user_img");
 				String nickname = rs.getString("nickname");
 				
-				SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
+				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 				String create_date = date.format(create_dateT);
 				
 				MyBoardVO myComment = new MyBoardVO();

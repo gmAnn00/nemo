@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -20,11 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 
 import nemo.dao.group.ScheduleDAO;
-import nemo.service.board.BoardService;
-import nemo.service.group.GroupInfoService;
-import nemo.service.group.GroupMainService;
 import nemo.service.group.ScheduleService;
-import nemo.vo.group.GroupVO;
 import nemo.vo.group.ScheduleVO;
 
 @WebServlet("/group/schedule/*")
@@ -33,13 +28,9 @@ public class ScheduleController extends HttpServlet {
 	HttpSession session;
 	ScheduleVO scheduleVO;
 	ScheduleService scheduleService;
-	Map groupInfo;
-	GroupInfoService groupInfoService;
-	
 	
 	public void init(ServletConfig config) throws ServletException {
 		scheduleService = new ScheduleService();
-		groupInfoService = new GroupInfoService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,16 +48,10 @@ public class ScheduleController extends HttpServlet {
 		session = request.getSession();	//여러군데에서 쓰일 세션 변수선언
 		PrintWriter out = response.getWriter();
 		
-		
-		
 		String user_id = (String)session.getAttribute("user_id");
         String grp_id = request.getParameter("group_id");
         String action = request.getPathInfo();
         System.out.println("요청 매핑이름: " + action);
-        
-        GroupVO groupVO = new GroupVO();
-		groupInfo=groupInfoService.getGroupInfo(Integer.parseInt(grp_id));
-		request.setAttribute("groupInfo", groupInfo);
        
 		if(action==null || action.equals("/schedule")) {	//일정 페이지로 이동
 			//List<ScheduleVO> scheduleList = dao.listSchedule();
