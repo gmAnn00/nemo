@@ -69,7 +69,7 @@
 	                        <h2 class="sc2_menu_title">나의 모임</h2>
 	                        <ul class="sc2_menu_list">
 	                            <li>
-	                                <a href="schedule.html">
+	                                <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
 	                                    <div class="sc2_icon_menu">
 	                                        <div class="menu_submenu_name"><span>일정</span></div>
 	                                        <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -77,7 +77,7 @@
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a href="board.html">
+	                                <a href="${contextPath}/group/board?group_id=${param.group_id}">
 	                                    <div class="sc2_icon_menu">
 	                                        <div class="menu_submenu_name"><span>게시판</span></div>
 	                                        <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -85,7 +85,7 @@
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a href="myPageGroup.html">
+	                                <a href="${contextPath}/group/manager/member?group_id=${param.group_id}">
 	                                    <div class="sc2_icon_menu">
 	                                        <div class="menu_submenu_name"><span>멤버</span></div>
 	                                        <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -93,7 +93,7 @@
 	                                </a>
 	                            </li>
 	                            <li>
-	                                <a href="groupSetting.html">
+	                                <a href="${contextPath}/group/manager/setting?group_id=${param.group_id}">
 	                                    <div class="sc2_icon_menu">
 	                                        <div class="menu_submenu_name submenu_select"><span>소모임관리</span></div>
 	                                        <i class="fa-solid fa-minus submenu_select"></i>
