@@ -38,36 +38,9 @@
         
         
         <div id="wrapper">
-            <!-- section1 시작 -->
-	        <div class="section1">
-	            <div class="group_containter">
-	                <div class="group_all">
-	                    <div class="group_img">
-	                    <img src="${contextPath}/groupImageDownload?group_id=${param.group_id}&group_img=${groupVO.grp_img}" alt="group_img" />
-	                    </div>
-	                    <div class="group_name">
-	                        <a href="#">
-	                            <span>${groupVO.grp_name}</span>
-	                        </a>
-	                    </div>
-	                    <div class="group_info">
-	                        <div class="group_info_category">
-	                            <div class="category_box group_info_category_box">${groupVO.main_name}</div>
-	                            <div class="category_box group_info_category_box">${groupVO.sub_name}</div>
-	                        </div>
-	                        <div class="group_info_member">
-	                            <div class="group_info_title"><span>멤버수</span></div>
-	                            <div class="group_info_contents"><span>${groupNum}</span></div>
-	                        </div>
-	                        <div class="group_info_follower">
-	                            <div class="group_info_title"><span>개설일</span></div>
-	                            <div class="group_info_contents"><span>${groupVO.create_date}</span></div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        <!-- section1 종료 -->
+            <!-- section1 -->
+			<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
+			<!-- section1종료 -->
 
             <!-- 컨텐츠 시작 -->
             <div class="section2"> 
@@ -180,7 +153,7 @@
                                     
                                     <!-- tab1 시작 -->
                                     <div id="tab1" class="tab-slider--body">
-                                        <div class="tab_box">
+                                        <div class="tab_box_profile">
                                             
                                             
                                             <c:forEach var="user" items="${usersList}">

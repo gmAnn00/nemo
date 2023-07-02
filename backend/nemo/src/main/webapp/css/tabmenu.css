@@ -11,6 +11,11 @@
     flex-wrap: wrap;
     flex-direction: column;
 }
+/* 탭메뉴 카드방향 조절 */
+.tab_box_profile {
+	display: flex;
+    flex-wrap: wrap;
+}
 .tab-slider--nav {
     width: 100%;
     float: left;

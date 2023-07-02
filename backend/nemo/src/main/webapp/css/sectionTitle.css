@@ -56,9 +56,11 @@
   display: flex;
 }
 .category_box {
+  width: 150px;
   font-size: 11px;
   color: white;
   margin-top: 10px;
+  letter-spacing: 1px;
 }
 
 .group_info_member,

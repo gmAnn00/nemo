@@ -3,6 +3,7 @@ package nemo.controller.group;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import nemo.service.group.GroupInfoService;
 import nemo.service.group.GroupMainService;
 import nemo.service.group.GroupMemberService;
 import nemo.vo.user.UserVO;
@@ -23,11 +25,14 @@ public class GroupMemberController extends HttpServlet {
 	HttpSession session;
 	GroupMemberService groupMemberService;
 	GroupMainService groupMainService;
+	Map groupInfo;
+	GroupInfoService groupInfoService;
 	
 	@Override
 	public void init() throws ServletException {
 		groupMemberService = new GroupMemberService();
 		groupMainService = new GroupMainService();
+		groupInfoService=new GroupInfoService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,6 +53,10 @@ public class GroupMemberController extends HttpServlet {
 		session=request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
 		String action = request.getPathInfo();
+		
+		groupInfo=groupInfoService.getGroupInfo(group_id);
+		request.setAttribute("groupInfo", groupInfo);
+		
 		System.out.println("action="+action);
 		
 		if(action == null) {

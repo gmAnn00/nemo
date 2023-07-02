@@ -114,7 +114,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('매니저를 위임했습니다');");
 					//location 포워딩 
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
+						"/group/groupMain?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 		        

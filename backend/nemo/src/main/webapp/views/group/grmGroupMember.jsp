@@ -116,7 +116,7 @@
                                     
                                     <!-- tab1 시작 -->
                                     <div id="tab1" class="tab-slider--body">
-                                        <div class="tab_box">
+                                        <div class="tab_box_profile">
                                             
                                             
                                             <c:forEach var="user" items="${userList}">
@@ -176,7 +176,7 @@
                                     
                                     <!-- tab2 시작 -->
                                     <div id="tab2" class="tab-slider--body">
-                                        <div class="tab_box">
+                                        <div class="tab_box_profile">
                                             
                                             <c:forEach var="approveUser" items="${approveUserList}">
                                             <c:set var="idx" value="${approveUser.user_addr1.indexOf(' ', approveUser.user_addr1.indexOf(' ') + 1)}" />
