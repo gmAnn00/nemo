@@ -5,6 +5,8 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.Date;
 
+import nemo.vo.user.UserVO;
+
 public class QnaVO {
 	private int qna_id;
 	private String user_id;
@@ -15,16 +17,17 @@ public class QnaVO {
 	private Date create_date;
 	private int level;
 	private String qna_img;
+	private UserVO userVO;
 
 	
 	
 	public QnaVO() {
-		System.out.println("QnaVO 생성");
+		userVO= new UserVO();
 	}
 
 
-	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String qna_img) {
-		super();
+	public QnaVO(int qna_id, String user_id, String nickname, int parent_no, String title, String content, Date create_date, int level, String qna_img)
+	{
 		this.qna_id = qna_id;
 		this.user_id = user_id;
 		this.nickname = nickname;
@@ -39,6 +42,16 @@ public class QnaVO {
 
 	public int getQna_id() {
 		return qna_id;
+	}
+
+
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
 	}
 
 
