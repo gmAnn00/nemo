@@ -35,7 +35,7 @@ public class GroupMainDAO {
 
 	public List<BoardVO> selectPreviewBoardById(int group_id) {
 		List<BoardVO> boardsList = new ArrayList<BoardVO>();
-		BoardVO boardVO = new BoardVO();
+		
 		try {
 			conn = dataFactory.getConnection();
 			
@@ -48,6 +48,7 @@ public class GroupMainDAO {
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
+				BoardVO boardVO = new BoardVO();
 				String title = rs.getString("title");
 				String nickname = rs.getString("user_id");
 				Date create_date = rs.getDate("create_date");
@@ -74,7 +75,7 @@ public class GroupMainDAO {
 
 	public List<ScheduleVO> selectPreviewScheduleById(int group_id) {
 		List<ScheduleVO> schedulesList = new ArrayList<ScheduleVO>();
-		ScheduleVO scheduleVO = new ScheduleVO();
+		
 		
 		try {
 			conn = dataFactory.getConnection();
@@ -88,6 +89,7 @@ public class GroupMainDAO {
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
+				ScheduleVO scheduleVO = new ScheduleVO();
 				Timestamp schedule = rs.getTimestamp("schedule");
 				String sche_title = rs.getString("sche_title");
 				String location = rs.getString("location");

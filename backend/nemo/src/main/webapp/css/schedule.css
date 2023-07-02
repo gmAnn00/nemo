@@ -5,85 +5,82 @@
   display: block;
   clear: both;
 }
-/* #contentsArea {
-  margin: 0 auto;
-  /* width: 1200px; 
-  display: flex;
-  position: relative;
-} */
 
 /* 일정등록, 확인 영역 시작 */
 .schedule {
   width: 53.125em;
   margin: 0 auto;
-  /* padding: 30px; */
-  /* border: 2px solid red; */
 }
 .calendarSchedule {
   margin-top: 30px;
   display: flex;
 }
-.calendarSchedule > div {
-  /* float: left; */
-}
+
 /* 달력부분 mySchedule.css----- */
 .scheduleCalendar {
   border: 1px solid #ccc;
   flex: 1;
 }
-#myscheduleCalendarArea {
-  /* width: 25.9375em; */
-  height: 28.125em;
-  /* margin: 0 auto; */
+
+div.myScheduleCalAndList {
+  display: flex;
 }
+
+#myScheduleCalendarArea {
+  flex: 1;
+}
+
 .calendarTable {
-  margin-top: 0.8125em;
-  width: 25.9375em;
-  /* border: 1px solid red; */
-  font-weight: bold;
+  border-collapse: collapse;
+  border-radius: 5px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #aaaaaa;
+  background: #fff;
 }
+/*
 .calendarTable tr {
   font-weight: normal;
 }
+
 .calendarTable .prev {
-  /* border: 0; */
   margin-right: 3.125em;
 }
 .calendarTable .next {
-  /* border: 0; */
   margin-left: 3.125em;
 }
 .calendarTable .today {
-  /* border: 0; */
-  /* color: #fff; */
-  /* padding: 0 0.4375em; */
-  /* border-radius: 0.1875em; */
   margin: 0 0.625em 0 0.9375em;
   background-color: #fff;
   border: 1px solid var(--main-color);
 }
+*/
+
 .calendarTable td {
-  width: 1.25em;
-  height: 4.375em;
+  width: 80px;
+  height: 75px;
 }
 .calDate {
-  height: 2.1875em;
+  height: 50px;
   position: relative;
   line-height: 35px;
 }
 .calDate span {
-  height: 3.125em;
+  height: 40px;
 }
 .calWeek {
-  height: 3.125em;
+  height: 40px;
 }
-.calendarTable {
-  background: #fff;
+
+.calendarTable span {
+  margin: 0 15px;
+  font-size: 1.2em;
 }
-/* .calendarTable button {
+.calendarTable button {
   margin: 0 10px;
-} */
+}
 .calendarTable .today {
+  background-color: #fff;
+  border: 1px solid var(--main-color);
 }
 .calendarTable td.passedDay.hasDay {
   /* 음... 지나간날 css */
@@ -93,16 +90,16 @@
   cursor: pointer;
 }
 .calendarTable td.hasDay:hover {
-  background: var(--sub1-color);
+  background: var(--sub3-color);
 }
 .calendarTable tbody td.selectDay.hasDay:not(.passedDay) {
-  background: var(--sub-color);
+  background: var(--sub2-color);
 }
 .calendarTable .blue {
-  color: blue;
+  color: rgb(73, 73, 223);
 }
 .calendarTable .red {
-  color: red;
+  color: rgb(231, 75, 75);
 }
 /* 달력부분 mySchedule.css-----끝 */
 
@@ -119,7 +116,8 @@
   line-height: 1.875em;
 }
 .scheduleNP table {
-  width: 100%;
+  margin : 0 auto;
+  width: 450px;
   height: 6.25em;
   text-align: center;
   font-size: 0.8125em;
@@ -155,6 +153,79 @@
   background-color: #f5f5f5;
 }
 
+/* 일정 리스트*/
+div.myScheduleListArea {
+  flex: 1;
+  width: 40%;
+  padding-top: 10px;
+}
+div.myScheduleListArea h3 {
+ font-size: 1.2em;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    padding: 5px;    
+    border-bottom: 1px solid #909090;
+}
+div.myScheduleListArea p {
+	padding-left: 20px;
+}
+div.mySchedule {
+  /* border: 1px solid red; */
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding-bottom: 12px;
+  border-radius: 15px;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+div.myScheduleImgContent {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+}
+div.groupImg {
+  width: 85px;
+  height: 85px;
+  background-image: url(../images/books.jpg);
+  background-size: 100px 100px;
+  border-radius: 5px;
+}
+div.groupImg img {
+  width: 85px;
+  height: 85px;
+  border-radius: 10px;
+}
+div.myScheduleContent {
+  display: flex;
+  flex-direction: column;  
+}
+div.mySchedule p.myScheduleDate {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 7px;
+  padding-left: 15px;
+}
+div.mySchedule p.myScheduleDate span {
+  font-size: 0.8em;
+  color: #aaa;
+  margin-left: 5px;
+}
+div.mySchedule p.myScheduleGroupName {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+div.mySchedule p.contents {
+  font-size: 1.0em;
+  margin-top: 5px;
+}
+div.mySchedule p.contents .fa-location-dot {
+  font-size: 0.8em;
+  color: var(--main-color);
+}
+
 /* -----일정조회/등록/상세보기 영역------ */
 /* 빈 일정 */
 /* .scheduleNone {
@@ -169,9 +240,7 @@
 /* 일정 조회 */
 .scheduleDetailArea {
   position: relative;
-}
-.scheduleDetail {
-  padding: 20px;
+  display: none;
 }
 .scheduleTitle p {
   text-align: left;
@@ -180,10 +249,20 @@
   border: none;
   background-color: #f5f5f5;
 }
+/*일정 상세보기 영역*/
 .scheduleDetail {
   border: 1px solid #ccc;
   padding: 20px;
+  margin-top : 15px;
   position: relative;
+}
+/*일정 추가및 수정 영역*/
+.scheduleEdit {
+  border: 1px solid #ccc;
+  position: relative;
+  margin-top: 15px;
+  padding: 15px;
+  display: none;
 }
 /* 상세일정 등록하기*/
 .detailTop {
@@ -244,7 +323,7 @@
 }
 .contentDetailText {
   resize: none;
-  width: 50em;
+  width: 99%;
   outline: 0;
 }
 .locationMap {
@@ -256,7 +335,7 @@
 }
 .map {
   width: 100%;
-  height: 15em;
+  height: 30em;
   margin: 0 auto;
   /* border: 1px solid #ccc; */
   background-color: antiquewhite;
@@ -284,6 +363,14 @@
 }
 .partMember img {
   border-radius: 50%;
+  height: 40px;
+}
+.partBtn button {
+  /* float: right; */
+  margin: 0.625em;
+  position: absolute;
+  top: -15px;
+  right: 0px;
 }
 .partBtn a {
   /* float: right; */
@@ -292,9 +379,63 @@
   top: -15px;
   right: 0px;
 }
-.scheduleEdit {
-  border: 1px solid #ccc;
-  position: relative;
-  margin-top: 1.25em;
-  padding: 15px;
+
+#button_modify {
+	display: none;
+}
+
+#joinSchedule {
+	cursor: pointer;
+}
+
+
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:100%;height:500px;}
+#menu_wrap, #menu_wrap2 {position:absolute;top:0;left:0;bottom:0;width:280px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 2;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr ,#menu_wrap2 hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option,#menu_wrap2 .option{text-align: center;}
+#menu_wrap .option p, #menu_wrap2 .option p {margin:10px 0;}  
+#menu_wrap .option button,#menu_wrap2 .option button {margin-left:5px;}
+#placesList li, #placesList2 li {list-style: none;}
+#placesList .item, #placesList2 .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span, #placesList2 .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList2 .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info, #placesList2 .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray, #placesList2 .info .gray {color:#8a8a8a;}
+#placesList .info .jibun, #placesList2 .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel, #placesList2 .info .tel {color:#009900;}
+#placesList .item .markerbg, #placesList2 .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+.marker_1 {background-position: 0 -10px;}
+.marker_2 {background-position: 0 -56px;}
+.marker_3 {background-position: 0 -102px}
+.marker_4 {background-position: 0 -148px;}
+.marker_5 {background-position: 0 -194px;}
+.marker_6 {background-position: 0 -240px;}
+.marker_7 {background-position: 0 -286px;}
+.marker_8 {background-position: 0 -332px;}
+.marker_9 {background-position: 0 -378px;}
+.marker_10 {background-position: 0 -423px;}
+.marker_11 {background-position: 0 -470px;}
+.marker_12 {background-position: 0 -516px;}
+.marker_13 {background-position: 0 -562px;}
+.marker_14 {background-position: 0 -608px;}
+.marker_15 {background-position: 0 -654px;}
+#pagination, #pagination2 {margin:10px auto;text-align: center;}
+#pagination a,#pagination2 a {display:inline-block;margin-right:10px;}
+#pagination .on,#pagination2 .on {font-weight: bold; cursor: default;color:#777;}
+
+.menu_wrap_class{
+	display:none;
+}
+
+/* 일정 있는 날 표시 */
+.scheduleDate {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: var(--heart-color);
+	margin: 0 auto;
+	margin-bottom: 3px;
 }
