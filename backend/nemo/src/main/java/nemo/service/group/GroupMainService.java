@@ -46,7 +46,14 @@ public class GroupMainService {
 	public List<String> grpMng(String user_id) {
 		return groupDAO.grpMng(user_id);
 	}
-
+	
+	public List<String> grpMember(int group_id){
+		return groupDAO.grpMember(group_id);
+	}
+	
+	public String grpMng(int group_id) {
+		return groupDAO.grpMng(group_id);
+	}
 	
 	
 
