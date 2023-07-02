@@ -163,7 +163,7 @@
                 <div class="group_jm_box jm_box1">
                     <div class="group_jm_text">
                         <span>소모임 만들기</span>
-                        <p>좋아하는 취미생활을 주변사람들과 같이 함께 시작해보세요</p>
+                        <p>좋아하는 취미생활을 모두와 함께 시작해보세요</p>
                     </div>
                     <a href="${contextPath}/group/createGroup/form">
 	                    <div class="group_btn">

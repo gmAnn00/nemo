@@ -14,6 +14,7 @@ request.setCharacterEncoding("utf-8");
 <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
 <link rel="stylesheet" href="${contextPath}/css/common.css" />
 <link rel="stylesheet" href="${contextPath}/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="${contextPath}/css/sectionTitle.css" />
 <link rel="stylesheet" href="${contextPath}/css/groupInfo.css" />
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea6bda86230b8415e663eb00385b3b43&libraries=services"></script>
@@ -25,6 +26,9 @@ request.setCharacterEncoding("utf-8");
 </head>
 <body>
 	<jsp:include page="../header.jsp" flush="true"></jsp:include>
+	<!-- section1 -->
+	<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
+	<!-- section1종료 -->
 
 	<!-- main content 시작-->
 	<div id="contentsArea" class="mainContent">

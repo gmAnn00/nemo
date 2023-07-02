@@ -93,12 +93,13 @@ svg {
   padding: 0 20px;
   margin: 0 auto;
   margin-bottom: 20px;
+  /*box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);*/
 }
 
 .shortInfoTbl {
   display: inline-block;
   /*width: 800px;*/
-  height: 300px;
+  height: 300px;  
 }
 
 /* 소모임 사진 */
@@ -145,7 +146,6 @@ svg {
 .infoDetailArea {
   /*width: 1000px;*/
   padding: 50px 100px;
-  background-color: rgb(255, 249, 243);
 }
 
 .infoDetailArea section {
