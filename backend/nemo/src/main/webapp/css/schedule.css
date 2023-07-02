@@ -153,7 +153,7 @@ div.mySchedule p.myScheduleDate {
 }
 div.mySchedule p.myScheduleDate span {
   font-size: 0.8em;
-  color: #aaa;
+  color: #666;
   margin-left: 5px;
   font-weight: normal;
 }
@@ -190,10 +190,14 @@ div.mySchedule p.contents .fa-location-dot {
   position: relative;
   display: none;
 }
+#schedule_Title {
+  display: flex;
+  flex-direction: row;
+}
 .scheduleTitle p {
   text-align: left;
   padding: 0.3125em;
-  width: 100%;
+  width: 50%;
   border: none;
   background-color: #f5f5f5;
 }
@@ -229,9 +233,10 @@ div.mySchedule p.contents .fa-location-dot {
 .scheduleTitle {
   overflow: hidden;
   padding: 0.625em 0;
-  /* background-color: #f5f5f5; */
-  text-align: center;
   width: 100%;
+  font-weight: bold;
+  font-size: 15px;
+  border: transparent;
 }
 .scheduleTitleText {
   text-align: left;
@@ -254,11 +259,15 @@ div.mySchedule p.contents .fa-location-dot {
 }
 .dateTime {
   display: block;
-  margin-bottom: 0.625em;
-  /* margin-left: 0.875em; */
+  margin-bottom: 0.625em;  
+  font-size: 0.8em;
 }
 .dateTime input {
-  margin-right: 0.625em;
+  border: transparent;
+  text-align: right;
+  padding: 5px 0;
+  position: relative;
+  right: -10px;
 }
 .contentDetail {
   margin-bottom: 0.625em;

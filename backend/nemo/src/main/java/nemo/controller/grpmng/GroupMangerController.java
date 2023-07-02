@@ -129,7 +129,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('멤버를 추방했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
+						"/group/manager/member?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 				
@@ -146,7 +146,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('가입을 승인했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
+						"/group/manager/member?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 		        
@@ -162,7 +162,7 @@ public class GroupMangerController extends HttpServlet{
 				out.print("alert('가입 승인을 거절했습니다');");
 				
 				out.print("location.href='" + request.getContextPath() + 
-						"/group/manager/member/grmGroupMember?group_id="+group_id+"';");
+						"/group/manager/member?group_id="+group_id+"';");
 				out.print("</script>");
 				return;
 				

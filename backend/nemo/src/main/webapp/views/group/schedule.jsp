@@ -158,18 +158,16 @@
 								<div class="detailTop">
 									<h3>일정 상세보기</h3>
 								</div>
-								<div id="schedule_Title">
-									<p>
-										<input type="text" id="scheduleTitle" name="scheduleTitle_new" class="scheduleTitle" value="">
-									</p>
+								<div id="schedule_Title">								
+									<input type="text" id="scheduleTitle" name="scheduleTitle_new" class="scheduleTitle" value="">
+									<div class="dateTime">
+										<input type="datetime-local" id="sche_dateTime_old" value="" name="sche_dateTime_old" style="display:none"/>							
+										<input id="sche_dateTime" type="datetime-local" name="sche_dateTime_new" value="">																				
+									</div>
 								</div>
 								<div class="contentLocationMap">
-									<div class="content">
-										<div class="dateTime">
-											<br>
-											<input id="sche_dateTime" type="datetime-local" name="sche_dateTime_new" value="">
-											<input type="datetime-local" id="sche_dateTime_old" value="" name="sche_dateTime_old" style="display:none"/>
-											<script>
+									<div class="content">										
+										<script>
 												var currentDate2 = new Date();
 												var currentYear = currentDate2.getFullYear();
 												var currentMonth = (currentDate2.getMonth() + 1).toString().padStart(2, '0');
@@ -180,7 +178,6 @@
 												var koreanDateTime = currentYear + '-' + currentMonth + '-' + currentDay + 'T' + currentHour + ':' + currentMinute;
 												document.getElementById("sche_dateTime").min = koreanDateTime;
 											</script>
-										</div>
 										<div class="contentDetail">
 											<textarea id="sche_cont" name="sche_cont_new" class="contentDetailText" rows="10"></textarea>
 										</div>
@@ -197,7 +194,7 @@
 													<div>
 														<form>
 															키워드 : <input type="text" id="keyword" value=""
-																size="15" placeholder="만남 장소">
+																size="15" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
 															<button type="button"
 																onclick="fn_mod_schedule(); return false;">검색하기</button>
 														</form>
@@ -253,7 +250,7 @@
 					<!-- 상세 일정 등록하기 -->
 					<form
 						action="${contextPath}/group/schedule/addSchedule?group_id=${param.group_id}"
-						method="post" onkeydown="return handleOuterFormKeyDown(event);">
+						method="post">
 						<div class="scheduleEditArea clearfixed">
 							<div class="scheduleEdit">
 								<div class="detailTop">
@@ -303,7 +300,7 @@
 													<div>
 														<form>
 															키워드 : <input type="text" value="종로구" id="keyword2"
-																size="15" placeholder="만남 장소">
+																size="15" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
 															<button type="button"
 																onclick="createKakaoMap2(); return false;">검색하기</button>
 														</form>

@@ -97,6 +97,7 @@ function createKakaoMap1(address) {
 }
 
 //외부 폼태그가 enter키를 먹지 않도록
+
 function handleOuterFormKeyDown(
 		event) {
 	if (event.keyCode === 13) {
