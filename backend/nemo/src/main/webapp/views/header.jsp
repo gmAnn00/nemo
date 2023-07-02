@@ -45,9 +45,9 @@
             		</c:when>
             		<c:when test="${user_id != null && admin == 1 }">
             			<li></li>
-            			<li><a href="${contextPath}/index">회원 관리</a></li>
-            			<li><a href="${contextPath}/index">소모임 관리</a></li>
-            			<li><a href="${contextPath}/index">신고 관리</a></li>
+            			<li><a href="${contextPath}/adminUser">회원 관리</a></li>
+            			<li><a href="${contextPath}/adminGroup">소모임 관리</a></li>
+            			<li><a href="${contextPath}/adminReport">신고 관리</a></li>
             			<li><a href="${contextPath}/viewQna">문의사항 관리</a></li>
             			<li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
