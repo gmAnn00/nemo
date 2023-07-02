@@ -125,7 +125,7 @@
 			                    <div class="myScheduleImgContent">		                                           
 			                      <div class="myScheduleContent">		                        
 			                        <p class="contents">${comGrpSchedule.scheduleVO.sche_title}</p>
-			                        <p class="contents"><i class="fa-solid fa-location-dot"></i>${comGrpSchedule.scheduleVO.location}</p>
+			                        <p class="contents location"><i class="fa-solid fa-location-dot"></i>${comGrpSchedule.scheduleVO.location}</p>
 			                      </div>
 			                    </div>		                    
 			                  </div>    		                                                 
@@ -243,8 +243,8 @@
 								
 								
 								<div id="editButton" class="editBtn">
-									<button type="button" id="delScheduleBtn" class="buttonCancle btnDel" onclick="delSchedule(${param.group_id})">삭제</button>
 									<input type="button" value="수정" onclick="fn_enable(this.form);" class="button btnEdit">
+									<button type="button" id="delScheduleBtn" class="buttonCancle btnDel" onclick="delSchedule(${param.group_id})">삭제</button>									
 								</div>
 							</div>
 

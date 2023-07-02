@@ -18,7 +18,6 @@
 
 /* 달력부분 mySchedule.css----- */
 .scheduleCalendar {
-  border: 1px solid #ccc;
   flex: 1;
 }
 
@@ -101,57 +100,6 @@ div.myScheduleCalAndList {
 .calendarTable .red {
   color: rgb(231, 75, 75);
 }
-/* 달력부분 mySchedule.css-----끝 */
-
-/* 예정모임, 지난모임 일정 */
-.scheduleNP {
-  /* border: 1px solid #ccc; */
-  /* width: 25.9375em; */
-  height: 28.125em;
-  margin-left: 0.9375em;
-  flex: 1;
-}
-.scheduleNP > div > strong {
-  margin-left: 1.25em;
-  line-height: 1.875em;
-}
-.scheduleNP table {
-  margin : 0 auto;
-  width: 450px;
-  height: 6.25em;
-  text-align: center;
-  font-size: 0.8125em;
-}
-.scheduleNP table th {
-  padding: 8px 8px;
-}
-.scheduleNP table td {
-  padding: 8px 8px;
-}
-.nextSchedule {
-  height: 15.625em;
-  border: 1px solid #ccc;
-}
-.nextList {
-  margin: 0.3125em auto;
-  padding: 0.3125em;
-  box-sizing: border-box;
-  height: 12.5em;
-  background-color: #f5f5f5;
-}
-.pastSchedule {
-  height: 11.4375em;
-  border: 1px solid #ccc;
-  margin-top: 0.9375em;
-}
-.pastList {
-  margin: 0.3125em auto;
-  padding: 0.3125em;
-  box-sizing: border-box;
-  flex: 1;
-  height: 8.4375em;
-  background-color: #f5f5f5;
-}
 
 /* 일정 리스트*/
 div.myScheduleListArea {
@@ -167,14 +115,12 @@ div.myScheduleListArea h3 {
     border-bottom: 1px solid #909090;
 }
 div.myScheduleListArea p {
-	padding-left: 20px;
+	padding-left: 5px;
 }
 div.mySchedule {
-  /* border: 1px solid red; */
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   margin-left: 20px;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
   border-radius: 15px;
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
 }
@@ -201,7 +147,7 @@ div.myScheduleContent {
 }
 div.mySchedule p.myScheduleDate {
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 15px;
   margin-bottom: 7px;
   padding-left: 15px;
 }
@@ -209,22 +155,24 @@ div.mySchedule p.myScheduleDate span {
   font-size: 0.8em;
   color: #aaa;
   margin-left: 5px;
+  font-weight: normal;
 }
-div.mySchedule p.myScheduleGroupName {
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 10px;
-  margin-top: 5px;
-}
+
 div.mySchedule p.contents {
   font-size: 1.0em;
-  margin-top: 5px;
+  margin-top: 8px;
+  line-height: 20px;
+}
+div.mySchedule p.contents.location {
+  font-size: 13px;
+  
 }
 div.mySchedule p.contents .fa-location-dot {
   font-size: 0.8em;
-  color: var(--main-color);
+  color: var(--main-color);  
+  padding-right: 5px;
 }
+
 
 /* -----일정조회/등록/상세보기 영역------ */
 /* 빈 일정 */
@@ -251,14 +199,12 @@ div.mySchedule p.contents .fa-location-dot {
 }
 /*일정 상세보기 영역*/
 .scheduleDetail {
-  border: 1px solid #ccc;
   padding: 20px;
   margin-top : 15px;
   position: relative;
 }
 /*일정 추가및 수정 영역*/
 .scheduleEdit {
-  border: 1px solid #ccc;
   position: relative;
   margin-top: 15px;
   padding: 15px;
@@ -285,6 +231,7 @@ div.mySchedule p.contents .fa-location-dot {
   padding: 0.625em 0;
   /* background-color: #f5f5f5; */
   text-align: center;
+  width: 100%;
 }
 .scheduleTitleText {
   text-align: left;
@@ -337,7 +284,6 @@ div.mySchedule p.contents .fa-location-dot {
   width: 100%;
   height: 30em;
   margin: 0 auto;
-  /* border: 1px solid #ccc; */
   background-color: antiquewhite;
 }
 /* 참석자 부분 */
