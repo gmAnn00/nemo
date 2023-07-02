@@ -51,7 +51,7 @@
 		                                <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>일정</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -59,7 +59,7 @@
 		                                <a href="${contextPath}/group/board?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>게시판</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -67,7 +67,7 @@
 		                                <a href="${contextPath}/group/manager/member?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>멤버</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -75,7 +75,7 @@
 		                                <a href="${contextPath}/group/manager/setting?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>소모임관리</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -86,7 +86,7 @@
 		                                <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>일정</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -94,7 +94,7 @@
 		                                <a href="${contextPath}/group/board?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>게시판</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -102,7 +102,7 @@
 		                                <a href="${contextPath}/group/member?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>멤버</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -211,28 +211,13 @@
                                 <c:set var="idx" value="${user.user_addr1.indexOf(' ', user.user_addr1.indexOf(' ') + 1)}" />
 								<c:set var="locationU" value="${user.user_addr1.substring(0, idx)}"/>
                                 	<div class="slideContent">
-                                		<!-- 프로필 카드 시작 -->
-                                        <div class="profile_box">
-                                            
-                                            <div class="profile profile-smallimg">
-                                                <div class="profile_image"><img src="${contextPath}/userImages/${user.user_id}/${user.user_img}" alt="UserImg"/></div>
-                                                <div class="profile_info">
-                                                    <h3>${user.nickname}</h3>
-                                                    <div class="profile_info_detail">
-                                                        <div class="profile_loc">
-                                                            <i class="fa-solid fa-location-dot profile_icon"></i>
-                                                            <span class="profile_loc_info">${locationU}</span>
-                                                            
-                                                        </div>
-                                                        <div class="profile_group_joinDate">
-                                                            <i class="fa-regular fa-calendar profile_icon"></i>
-                                                            <span>${user.join_date}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 프로필 카드 종료 -->
+                                		<div class="memImg">
+                                			<img src="${contextPath}/userImageDownload?user_id=${user.user_id}&user_img=${user.user_img}" />
+                                		</div>
+                                		<br/>
+                                		<div class="memName">
+                                			<span>${user.nickname}</span>
+                                		</div>
                                 	</div>
                                 </c:forEach>
                             </div>

@@ -29,36 +29,9 @@
         <jsp:include page="../header.jsp" flush="true"></jsp:include>
 		<c:forEach var="group" items="${groupList}">
 		
-        	<!-- section1 시작 -->
-            <div class="section1" style="background-image:url('${contextPath}/groupImages/${group.grp_id}/${group.grp_img}')">
-           		<div class="group_containter">
-	                 <div class="group_all">
-	                     <div class="group_img">
-	                         <img src="${contextPath}/groupImages/${group.grp_id}/${group.grp_img}" alt="group_img" />
-	                     </div>
-	                     <div class="group_name">
-	                         <a href="groupMain.html">
-	                             <span>${group.grp_name}</span>
-	                         </a>
-	                     </div>
-	                     <div class="group_info">
-	                         <div class="group_info_category">
-	                             <div class="category_box group_info_category_box">${group.main_name}</div>
-	                             <div class="category_box group_info_category_box">${group.sub_name}</div>
-	                         </div>
-	                         <div class="group_info_member">
-	                             <div class="group_info_title"><span>멤버수</span></div>
-	                             <div class="group_info_contents"><span>${group.mem_no}</span></div>
-	                         </div>
-	                         <div class="group_info_follower">
-	                             <div class="group_info_title"><span>개설일</span></div>
-	                             <div class="group_info_contents"><span><fmt:formatDate pattern="yyyy-MM-dd" value="${group.create_date}"/></span></div>
-	                         </div>
-	                     </div>
-	                 </div>
-           		</div>
-            </div>
-        	<!-- section1 종료 -->
+        	<!-- section1 -->
+			<jsp:include page="./groupHeader.jsp" flush="true"></jsp:include>
+			<!-- section1종료 -->
 
 	        <!-- section2 시작 -->
 	        <div class="section2">
@@ -267,7 +240,7 @@
 	                                    rows="10"
 	                                    maxlength="1000"
 	                                    >${group.grp_intro}</textarea>
-	                                    <p>(<span>0/1000</span>)</p>
+	                                    <p>(<span><c:out value="${fn:length(group.grp_intro)}"/>/1000</span>)</p>
 	                                    
 	                                </div>
 	                                <div class="creatGrp form_div">
@@ -299,7 +272,7 @@
 	        <!-- section2 종료 -->
 	        <script>
 			  var curMain = "${group.main_name}";
-			  var curSub = "${group.sub_name}"
+			  var curSub = "${group.sub_name}";
 			</script>
 	        <script src="${contextPath}/js/modGroup.js"></script>
 		</c:forEach>
