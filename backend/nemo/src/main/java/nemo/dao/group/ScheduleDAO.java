@@ -215,29 +215,19 @@ public class ScheduleDAO {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String scheduleNewStr = dateFormat.format(schedule);
+		String scheduleOldStr = dateFormat.format(scheduleOldTS);
 		
 		try {
 			conn = dataFactory.getConnection();
+			boolean isSameDate = scheduleNewStr.equals(scheduleOldStr);
 			
 			String checkQuery = "select COUNT(*) from schedule_tbl where grp_id = ? AND TO_CHAR(schedule, 'YYYY-MM-DD') = ?";
 			
 			String updateQuery = "update schedule_tbl set schedule = ?, user_id = ?, sche_title = ?, sche_cont = ?, location = ?"
-						+ " where grp_id = ? and schedule = ?";
-			
-			pstmt = conn.prepareStatement(checkQuery);
-			pstmt.setInt(1, grp_id);
-			pstmt.setString(2, scheduleNewStr);
-			
-			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			int count = rs.getInt(1);
-			pstmt.close();
-			rs.close();
-			if (count > 0 || location == "" || location == null) {
-				conn.close();
-				return false;
-			} else {
-				System.out.println("count=0");
+					+ " where grp_id = ? and schedule = ?";
+
+			if(isSameDate) {
+				// 일정 수정에서 날짜를 변경하지 않았으면 그냥 업데이트
 				pstmt = conn.prepareStatement(updateQuery);
 			    pstmt.setTimestamp(1, schedule);
 			    pstmt.setString(2, user_id);
@@ -249,7 +239,37 @@ public class ScheduleDAO {
 			    pstmt.executeUpdate();
 				pstmt.close();
 				conn.close();
+			}else {
+				// 일정 수정에서 날짜를 변경했으면 변경한 날짜가 이미 있는지 확인하고 있으면 거절, 없으면 업데이트
+				pstmt = conn.prepareStatement(checkQuery);
+				pstmt.setInt(1, grp_id);
+				pstmt.setString(2, scheduleNewStr);
+				
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				int count = rs.getInt(1);
+				rs.close();
+				pstmt.close();
+				
+				if (count > 0 || location == "" || location == null) {
+					conn.close();
+					return false;
+				} else {
+					System.out.println("count=0");
+					pstmt = conn.prepareStatement(updateQuery);
+				    pstmt.setTimestamp(1, schedule);
+				    pstmt.setString(2, user_id);
+				    pstmt.setString(3, sche_title);
+				    pstmt.setString(4, sche_cont);
+				    pstmt.setString(5, location);
+				    pstmt.setInt(6, grp_id);
+				    pstmt.setTimestamp(7, scheduleOldTS);
+				    pstmt.executeUpdate();
+					pstmt.close();
+					conn.close();
+				}
 			}
+
 		} catch (Exception e) {
 			System.out.println("일정 수정 중 오류");
 			e.printStackTrace();
