@@ -40,7 +40,7 @@
 	               		 <li><a href="${contextPath}/mypage">프로필</a></li>
 	               		 <li><a href="${contextPath}/mypage/mySchedule">내 일정</a></li>
 	               		 <li><a href="${contextPath}/mypage/myGroupList">내 소모임</a></li>
-	                	 <li><a href="${contextPath}/mypage/help">고객센터</a></li>
+	                	 <li><a href="${contextPath}/viewQna">고객센터</a></li>
 	                	 <li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
             		<c:otherwise>

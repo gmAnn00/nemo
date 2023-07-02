@@ -43,9 +43,9 @@ public class QnaDAO {
 			if (isAdmin) {
 				// 관리자모드로 Q&A 리스트를 조회 했을 때
 				String query="SELECT * FROM(SELECT ROWNUM AS recNum, LVL, qna_id," +
-						" parent_no, title, user_id, create_date FROM (SELECT LEVEL AS LVL, qna_id," +
-						" parent_no, title, user_id, create_date FROM qna_tbl START WITH parent_no=0" +
-						" CONNECT BY PRIOR qna_id=parent_no ORDER SIBLINGS BY qna_id DESC))" +
+						" parent_no, title, user_id, create_date, nickname FROM (SELECT LEVEL AS LVL, q.qna_id," +
+						" q.parent_no, q.title, q.user_id, q.create_date, u.nickname FROM qna_tbl q, user_tbl u WHERE q.user_id=u.user_id START WITH q.parent_no=0" +
+						" CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))" +
 						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10"; 
 				System.out.println(query);
 				pstmt=conn.prepareStatement(query);
@@ -57,20 +57,23 @@ public class QnaDAO {
 			else {
 				// 일반유저가 Q&A 리스트를 조회 했을 때
 				String query="SELECT * FROM(SELECT ROWNUM AS recNum, LVL, qna_id," +
-						" parent_no, title, user_id, create_date FROM (SELECT LEVEL AS LVL, qna_id," +
-						" parent_no, title, user_id, create_date FROM qna_tbl WHERE user_id = ? START WITH parent_no=0" +
-						" CONNECT BY PRIOR qna_id=parent_no ORDER SIBLINGS BY qna_id DESC))" +
+						" parent_no, title, user_id, create_date, nickname FROM (SELECT LEVEL AS LVL, q.qna_id," +
+						" q.parent_no, q.title, q.user_id, q.create_date, u.nickname FROM qna_tbl q, user_tbl u"+
+						" WHERE q.user_id=u.user_id AND q.user_id = ? OR q.parent_no IN"+
+						" (SELECT qna_id FROM qna_tbl WHERE user_id=?)"+ 
+						" START WITH q.parent_no=0" +
+						" CONNECT BY PRIOR q.qna_id=q.parent_no ORDER SIBLINGS BY q.qna_id DESC))" +
 						" WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10"; 
 				System.out.println(query);
 				pstmt=conn.prepareStatement(query);
 				pstmt.setString(1, param_user_id);
-				pstmt.setInt(2, section);
-				pstmt.setInt(3, pageNum);
-				pstmt.setInt(4, section);
-				pstmt.setInt(5, pageNum);
+				pstmt.setString(2, param_user_id);
+				pstmt.setInt(3, section);
+				pstmt.setInt(4, pageNum);
+				pstmt.setInt(5, section);
+				pstmt.setInt(6, pageNum);
 			}
 			rs=pstmt.executeQuery();
-			System.out.println("dddddddd");
 			
 			while(rs.next()) {
 				int level=rs.getInt("LVL");
@@ -78,14 +81,14 @@ public class QnaDAO {
 				int parent_no=rs.getInt("parent_no");
 				String title=rs.getString("title");
 				String user_id = rs.getString("user_id");
-				//String nickname=rs.getString("nickname");
+				String nickname=rs.getString("nickname");
 				Date create_datersDate=rs.getDate("create_date");
 				QnaVO qnaVO=new QnaVO();
 				qnaVO.setLevel(level);
 				qnaVO.setQna_id(qna_id);
 				qnaVO.setParent_no(parent_no);
 				qnaVO.setTitle(title);
-				//qnaVO.setNickname(nickname);
+				qnaVO.getUserVO().setNickname(nickname);
 				qnaVO.setUser_id(user_id);
 				qnaVO.setCreate_date(create_datersDate);
 				System.out.println(level);
@@ -103,12 +106,35 @@ public class QnaDAO {
 	}
 	
 	//전체 글 목록 수
-	public int selectToArticles() {
+	public int selectAdminToArticles() {
 		int totCount=0;
 		try {
 			conn=dataFactory.getConnection();
 			String query="select count(*) from qna_tbl";
 			pstmt=conn.prepareStatement(query);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				totCount=rs.getInt(1);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("전체 글 목록 수 처리중 에러");
+			e.printStackTrace();
+		}
+		return totCount;
+	}
+	//
+	public int selectUserToArticles(String user_id) {
+		int totCount=0;
+		try {
+			conn=dataFactory.getConnection();
+			String query="SELECT count(*) as cnt FROM qna_tbl WHERE user_id=? or";
+			query+=" parent_no IN (SELECT qna_id FROM qna_tbl WHERE user_id=?)";
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, user_id);
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()) {
 				totCount=rs.getInt(1);
@@ -225,23 +251,22 @@ public class QnaDAO {
 	}
 	
 	//새글 추가하는 메서드
-	public int insertNewArticle(QnaVO qnaVO) {
-		int qna_id=getNewArticleNo();
+	public void insertNewArticle(QnaVO qnaVO) {
 		try {
 			conn=dataFactory.getConnection();
 			int parent_no=qnaVO.getParent_no();
+			int article_no=qnaVO.getQna_id();
 			String title=qnaVO.getTitle();
 			String content=qnaVO.getContent();
 			String qna_img=qnaVO.getQna_img();
 			String user_id=qnaVO.getUser_id();
-			String query="insert into qna_tbl (qna_id, parent_no, title, content, qna_img, user_id) values(?,?,?,?,?,?)";
+			String query="insert into qna_tbl (qna_id, parent_no, title, content, user_id) values(?,?,?,?,?)";
 			pstmt=conn.prepareStatement(query);
-			pstmt.setInt(1, qna_id);
+			pstmt.setInt(1, article_no);
 			pstmt.setInt(2, parent_no);
 			pstmt.setString(3, title);
 			pstmt.setString(4, content);
-			pstmt.setString(5, qna_img);
-			pstmt.setString(6, user_id);
+			pstmt.setString(5, user_id);
 			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();
@@ -249,7 +274,6 @@ public class QnaDAO {
 			System.out.println("새글 추가중 에러");
 			e.printStackTrace();
 		}
-		return qna_id;
 	}
 
 	//글 내용 보는 메서드
@@ -257,7 +281,7 @@ public class QnaDAO {
 		QnaVO qnaVO = new QnaVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, qna_img " + 
+			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, qna_img, u.user_img " + 
 						" FROM qna_tbl q " +
 						" JOIN user_tbl u ON q.user_id = u.user_id " + 
 						" WHERE q.qna_id = ? " +
@@ -273,6 +297,7 @@ public class QnaDAO {
 			int parent_no=rs.getInt("parent_no");
 			String title=rs.getString("title");
 			String content=rs.getString("content");
+			String user_img=rs.getString("user_img");
 			// 좀 당황스러운데
 			String qna_img = null;
 			if (rs.getString("qna_img") != null) {
@@ -281,7 +306,9 @@ public class QnaDAO {
 			
 			Date create_date=rs.getDate("create_date");
 			qnaVO.setQna_id(_qna_id);
-			qnaVO.setNickname(nickname);
+			qnaVO.setUser_id(user_id);
+			qnaVO.getUserVO().setNickname(nickname);
+			qnaVO.getUserVO().setUser_img(user_img);
 			qnaVO.setTitle(title);
 			qnaVO.setContent(content);
 			qnaVO.setQna_img(qna_img);
@@ -298,7 +325,7 @@ public class QnaDAO {
 	}
 	
 	//글번호 생성 메서드
-	private int getNewArticleNo() {
+	public int getNewArticleNo() {
 		int _qna_id=1;
 		try {
 			conn=dataFactory.getConnection();
@@ -322,29 +349,30 @@ public class QnaDAO {
 	
 	//글 수정하기 메서드
 	public void updateArticle(QnaVO qnaVO) {
-		int qna_id=qnaVO.getQna_id();
 		String title=qnaVO.getTitle();
 		String content=qnaVO.getContent();
-		String qna_img=qnaVO.getQna_img();
+		int qna_id=qnaVO.getQna_id();
 		try {
 			conn=dataFactory.getConnection();
-			String query="update qna_tbl set title=?, content=?";
-			if(qna_img != null && qna_img.length() != 0 ) {
-				query+=", qna_img=?";
-			}
-			query+=" where qna_id?";
+			String query="UPDATE qna_tbl set title=?, content=? WHERE qna_id=?";
+			System.out.println(query);
+			System.out.println(title);
+			System.out.println(content);
+			System.out.println(qna_id);
 			pstmt=conn.prepareStatement(query);
+			System.out.println(1);
 			pstmt.setString(1, title);
+			System.out.println(2);
 			pstmt.setString(2, content);
-			if(qna_img != null && qna_img.length() != 0 ) {
-				pstmt.setString(3, qna_img);
-				pstmt.setInt(4, qna_id);
-			}else {
-				pstmt.setInt(3, qna_id);
-			}
+			System.out.println(3);
+			pstmt.setInt(3, qna_id);
+			System.out.println(4);
 			pstmt.executeUpdate();
+			System.out.println(5);
 			pstmt.close();
+			System.out.println(6);
 			conn.close();
+			System.out.println(7);
 		}catch (Exception e) {
 			System.out.println("글 수정 중 에러");
 			e.printStackTrace();
@@ -377,7 +405,7 @@ public class QnaDAO {
 	public void deleteArticle(int qna_id) {
 		try {
 			conn=dataFactory.getConnection();
-			String query="DELETE FROM qna_tbl WHERE qna_id in(SELECT qna_id FROM qna_tbl START WITH qna_id=? CONNENCT BY PRIOR qna_id=parent_no)";
+			String query="DELETE FROM qna_tbl WHERE qna_id in(SELECT qna_id FROM qna_tbl START WITH qna_id=? CONNECT BY PRIOR qna_id=parent_no)";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setInt(1, qna_id);
 			pstmt.executeUpdate();
