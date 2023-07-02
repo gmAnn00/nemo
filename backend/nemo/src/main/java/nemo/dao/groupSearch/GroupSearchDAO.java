@@ -210,8 +210,14 @@ public class GroupSearchDAO {
 						
 						KaKaoGeoRes bodyJson = objectMapper.readValue(response.getBody().toString(), KaKaoGeoRes.class);
 					
-						double lat = bodyJson.getDocuments().get(0).getY();
-						double lng = bodyJson.getDocuments().get(0).getX();
+						double lat = 0;
+						double lng = 0;
+						
+						if(bodyJson.getDocuments().size() != 0) {
+							lat = bodyJson.getDocuments().get(0).getY();
+							lng = bodyJson.getDocuments().get(0).getX();
+						}
+						
 						
 						System.out.println("lat = " + lat);
 						System.out.println("lng = " + lng);
