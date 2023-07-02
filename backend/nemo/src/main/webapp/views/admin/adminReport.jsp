@@ -116,7 +116,8 @@
                                                             <th>No</th>
                                                             <th>소모임ID</th>
                                                             <th>소모임명</th>
-                                                            <th>신고자</th>
+                                                            <th>소모임장ID</th>
+                                                            <th>신고자ID</th>
                                                             <th>총신고횟수</th>
                                                             <th>신고일</th>
                                                             <th>삭제</th>                                                                                                                    </tr>
@@ -124,7 +125,7 @@
 			    										<c:choose>
 															<c:when test="${empty groupList}">
 																<tr>
-																	<td colspan="7" align="center">
+																	<td colspan="8" align="center">
 																		신고된 소모임이 없습니다.
 																	</td>	
 																</tr>
@@ -135,6 +136,7 @@
 																		<td>${status.count}</td>
 																		<td>${group.grpRepVO.grp_id}</td>
 																		<td>${group.grpRepVO.groupVO.grp_name}</td>
+																		<td>${group.grpRepVO.groupVO.grp_mng}</td>
 																		<td>${group.grpRepVO.reporter_id}</td>																		
 																		<td>${group.repCnt}</td>
 																		<td>${group.grpRepVO.rep_date}</td>

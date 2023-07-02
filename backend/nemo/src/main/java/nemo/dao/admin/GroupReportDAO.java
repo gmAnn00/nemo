@@ -39,17 +39,19 @@ public class GroupReportDAO {
 		List<Map> groupList=new ArrayList<Map>();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECt nvl(b.cnt,0) as repCnt, a.grp_id, a.rep_date, a.reporter_id, g.grp_name"
-					+ " FROM greport_tbl a, (SELECT COUNT(*) as cnt FROM greport_tbl group by grp_id) b, group_tbl g"
-					+" WHERE g.grp_id=a.grp_id";
+			String query="select a.rCnt, a.grp_id, a.reporter_id, a.rep_date, b.grp_name, b.grp_mng"+
+					" from (select nvl(r.cnt,0) as rCnt, g.grp_id, g.reporter_id, g.rep_date from"+
+					"(SELECT count(*) as cnt,grp_id FROM greport_tbl group by grp_id) r , greport_tbl g where r.grp_id=g.grp_id) a, "
+					+ " group_tbl b where a.grp_id=b.grp_id";
 			pstmt=conn.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
-				int repCnt=rs.getInt("repCnt");
+				int repCnt=rs.getInt("rCnt");
 				int grp_id=rs.getInt("grp_id");
 				Date rep_date=rs.getDate("rep_date");
 				String reporter_id=rs.getString("reporter_id");
 				String grp_name=rs.getString("grp_name");
+				String grp_mng=rs.getString("grp_mng");
 				
 				Map repGrpInfo=new HashMap();
 				GroupReportVO grpRepVO=new GroupReportVO();
@@ -57,6 +59,7 @@ public class GroupReportDAO {
 				grpRepVO.setRep_date(rep_date);
 				grpRepVO.setReporter_id(reporter_id);
 				grpRepVO.getGroupVO().setGrp_name(grp_name);
+				grpRepVO.getGroupVO().setGrp_mng(grp_mng);
 				repGrpInfo.put("repCnt", repCnt);
 				repGrpInfo.put("grpRepVO", grpRepVO);
 				groupList.add(repGrpInfo);

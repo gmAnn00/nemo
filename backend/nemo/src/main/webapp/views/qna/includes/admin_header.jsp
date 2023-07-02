@@ -9,7 +9,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <ul class="sc2_menu_list">
   <li>
-    <a href="${contextPath}/schedule.html">
+    <a href="${contextPath}/adminGroup">
       <div class="sc2_icon_menu">
         <div class="menu_submenu_name <c:if test="${menuSelected eq 0}">submenu_select</c:if>">
         	<span>소모임 관리</span></div>
@@ -21,7 +21,7 @@
     </a>
   </li>
   <li>
-    <a href="board.html">
+    <a href="${contextPath}/adminUser">
       <div class="sc2_icon_menu">
         <div class="menu_submenu_name <c:if test="${menuSelected eq 1}">submenu_select</c:if>">
           <span>회원 관리</span>
@@ -35,7 +35,7 @@
   </li>
   
     <li>
-    <a href="${contextPath}/groupSetting.html">
+    <a href="${contextPath}/adminReport">
       <div class="sc2_icon_menu">
         <div class="menu_submenu_name <c:if test="${menuSelected eq 2}">submenu_select</c:if>">
         	<span>신고관리</span></div>
