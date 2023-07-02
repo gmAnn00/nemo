@@ -40,7 +40,7 @@
 	               		 <li><a href="${contextPath}/mypage">프로필</a></li>
 	               		 <li><a href="${contextPath}/mypage/mySchedule">내 일정</a></li>
 	               		 <li><a href="${contextPath}/mypage/myGroupList">내 소모임</a></li>
-	                	 <li><a href="${contextPath}/mypage/help">고객센터</a></li>
+	                	 <li><a href="${contextPath}/viewQna">고객센터</a></li>
 	                	 <li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
             		<c:when test="${user_id != null && admin == 1 }">
@@ -48,7 +48,7 @@
             			<li><a href="${contextPath}/index">회원 관리</a></li>
             			<li><a href="${contextPath}/index">소모임 관리</a></li>
             			<li><a href="${contextPath}/index">신고 관리</a></li>
-            			<li><a href="${contextPath}/index">문의사항 관리</a></li>
+            			<li><a href="${contextPath}/viewQna">문의사항 관리</a></li>
             			<li><a href="${contextPath}/login/logout">로그아웃</a></li>
             		</c:when>
             		<c:otherwise>
