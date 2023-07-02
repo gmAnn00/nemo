@@ -890,6 +890,9 @@ function createKakaoMap3(address) {
 let date = 0;
 let time = 0;
 function scheduleChk(selScheDate) {
+	let locationURL = location.href;
+	let searchParams = new URL(locationURL).searchParams;
+	let group_id = searchParams.get("group_id");
 	
 	let url = contextPath + "/group/schedule/schCompare";
 	
@@ -898,11 +901,13 @@ function scheduleChk(selScheDate) {
 		dataType: "text",
 		async: true,
 		url: url,
-		data: { selScheDate: selScheDate },
+		data: {"group_id" : group_id, selScheDate: selScheDate },
 		success: function(data) {			//매개변수들은 내가 정해주는 것이지만 보통 쓰는 단어들이 있다.
 			console.log(data);
 			if (data) {
 				let scheduleInfo = JSON.parse(data);
+				let attendUserList = JSON.parse(scheduleInfo.attendUserJson);
+				console.log("attendUserList=",attendUserList);
 				if (scheduleInfo.schedule && scheduleInfo.schedule !== "null") {
 					// 값이 있는 경우 처리
 					$('.scheduleDetailArea').css('display', 'block');
@@ -927,6 +932,21 @@ function scheduleChk(selScheDate) {
 			            time = scheduleInfo.sche_time;
 			          }, 1);
 					
+					console.log("isAttend=", scheduleInfo.isAttend);
+					if(scheduleInfo.isAttend){
+						let fn_name = "fn_cancelSchedule(" + group_id +")";
+						$("#joinSchedule").text("참석 취소");
+						$("#joinSchedule").attr("onclick", fn_name);
+					}
+					let content = "";
+					$("#partMemberArea").html("");
+					for(key in attendUserList){
+						content += `<li>
+										<img src="/nemo/userImageDownload?user_id=${attendUserList[key].user_id}&user_img=${attendUserList[key].user_img}" alt="프로필사진" width="40px" />
+										 <span>${attendUserList[key].nickname}</span>
+									</li>`;
+					}
+					$("#partMemberArea").html(content);
 					//setTimeout(createKakaoMap1(address), 1);
 					
 				} else {
@@ -1164,7 +1184,7 @@ function delSchedule(group_id){
 
 
 function toSchedule(obj, group_id) {
-	location.href="/nemo/group/schedule?group_id=" + group_id;	
+	location.href="/nemo/group/schedule?group_id=" + group_id;
 }
 
 function fn_modify_schedule(obj, group_id) {
@@ -1182,8 +1202,19 @@ function fn_modify_schedule(obj, group_id) {
 	obj.submit();
 }
 
-function joinSchedule(group_id) {
-	location.href="/nemo/group/schedule?group_id=" + group_id;
+function fn_joinSchedule(group_id) {
+	let sendDate = date.substring(2,4)+"/"+date.substring(5,7) + "/" + date.substring(8, 10);
+	let sendTime = time;
+	console.log("joinSchedule 호출");
+	//href="${contextPath}/group/schedule/delSchedule?group_id=${param.group_id}&schedule=${}"
+	location.href="/nemo/group/schedule/joinSchedule?group_id=" + group_id + "&date=" + sendDate + "&time=" + sendTime;
 }
 
+function fn_cancelSchedule(group_id) {
+	let sendDate = date.substring(2,4)+"/"+date.substring(5,7) + "/" + date.substring(8, 10);
+	let sendTime = time;
+	console.log("joinSchedule 호출");
+	//href="${contextPath}/group/schedule/delSchedule?group_id=${param.group_id}&schedule=${}"
+	location.href="/nemo/group/schedule/cancelSchedule?group_id=" + group_id + "&date=" + sendDate + "&time=" + sendTime;
+}
 
