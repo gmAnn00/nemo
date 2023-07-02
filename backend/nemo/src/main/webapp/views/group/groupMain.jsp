@@ -107,6 +107,15 @@
 		                                    </div>
 		                                </a>
 		                            </li>
+		                            <!-- 신고하기 추가할 것 -->
+		                            <li>
+		                                <a href="#">
+		                                    <div class="sc2_icon_menu reportArea">
+		                                        <div class="menu_submenu_name reportTitle"><span>신고하기</span></div>
+		                                        <i class="fa-solid fa-arrow-right menu_angle"></i>
+		                                    </div>
+		                                </a>
+		                            </li>
    								</c:otherwise>
    							
                             </c:choose>
