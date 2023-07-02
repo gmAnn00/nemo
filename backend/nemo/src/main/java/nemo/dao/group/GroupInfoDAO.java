@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import nemo.vo.group.GroupVO;
+import nemo.vo.user.UserVO;
 
 public class GroupInfoDAO {
 	private Connection conn;
@@ -70,12 +71,12 @@ public class GroupInfoDAO {
 	} // end of selectGroupById
 	
 	// 소모임장 찾기
-	public String selectManagerById(int group_id) {
-		String manager = "";
+	public UserVO selectManagerById(int group_id) {		
+		UserVO userVO = new UserVO();
 		
 		try {
 			conn = dataFactory.getConnection();
-			String query = "select nickname from user_tbl where user_id=(select grp_mng from group_tbl where grp_id=?)";
+			String query = "select user_id, nickname, user_img from user_tbl where user_id=(select grp_mng from group_tbl where grp_id=?)";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, group_id);
@@ -83,17 +84,24 @@ public class GroupInfoDAO {
 			
 			rs.next();
 			
-			manager = rs.getString("nickname");
+			String nickname = rs.getString("nickname");
+			String mng_img = rs.getString("user_img");
+			String mng_id = rs.getString("user_id");
 			
 			rs.close();
 			pstmt.close();
 			conn.close();
+			
+			userVO.setNickname(nickname);
+			userVO.setUser_img(mng_img);
+			userVO.setUser_id(mng_id);
+			
 		} catch (Exception e) {
 			System.out.println("selectManagerById:소모임장 구하는 중 오류");
 			e.printStackTrace();
 		}
 		
-		return manager;
+		return userVO;
 	}
 
 	// 소모임 현재 인원 찾기

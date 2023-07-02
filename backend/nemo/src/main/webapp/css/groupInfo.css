@@ -1,35 +1,18 @@
 @charset "utf-8";
-/*
-body, div, h3, button, section, table, tr, td, th{
-    box-sizing: border-box;
-    margin: 0 auto;
-}
-
-.hidden {
-    display: none;
-}*/
 
 /* 메인 컨텐츠 영역*/
 
-/*.mainContent {
-    width: 1200px;
-    margin: 0 auto;
-}*/
-
 #contentsArea {
   padding-top: 30px;
+  width: 1200px;
+  margin: 0 auto;
 }
 .mainInner {
-  /* padding: 0 100px; */
   width: 1200px;
   margin: 0 auto;
 }
 
 /* 소모임 이름 영역 */
-.nameArea {
-  margin-bottom: 20px;
-  text-align: left;
-}
 .grpName {
   display: inline-block;
   padding-left: 20px;
@@ -37,14 +20,15 @@ body, div, h3, button, section, table, tr, td, th{
 
 /*찜하트 영역*/
 .grpLikeBtn {
-  width: 20px;
-  height: 20px;
-  border: 0;
-  cursor: pointer;
-  text-align: center;
-  background: transparent;
-  position: relative;
-  top: 4px;
+   width: 20px;
+   height: 20px;
+   border: 0;
+   cursor: pointer;
+   text-align: center;
+   background: transparent;
+   position: absolute;
+   top: 25px;
+   right: 25px;
 }
 
 .grpLike {
@@ -62,7 +46,7 @@ svg use {
 }
 
 svg use:last-child {
-  fill: var(--heart-color);
+  fill: white;
   stroke: var(--heart-color);
   opacity: 0;
   transform: scale(0.33);
@@ -91,17 +75,80 @@ svg {
 
 /* 간략 정보 영역 */
 .shortInfoArea {
-  /*width: 800px;*/
-  padding: 0 20px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  /*box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);*/
+  display: flex;
+  justify-content: space-between;
+}
+.shortInfoArea h3 {
+	letter-spacing: 1px;
+}
+.shortInfoDetail {
+    width: 700px;
+    margin-top: 30px;
+}
+.detailInfo {
+	margin-top: 20px;
+    white-space: pre-line;
+    word-break: keep-all;
+    line-height: 25px;
+}
+
+.etcInfoArea {
+	margin-top: 60px;
+}
+
+.etcInfo {
+	margin-top: 20px;
 }
 
 .shortInfoTbl {
-  display: inline-block;
-  /*width: 800px;*/
-  height: 300px;  
+    width: 280px;
+    border-radius: 20px;
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+    box-sizing: border-box;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+.shortInfoTblMng {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shortInfoTblMngImgArea {
+	display: flex;
+    flex-direction: column;
+    width: 100px;
+    align-items: center;
+    margin: 20px 0;
+}
+.shortInfoTblMngImgArea span {
+	margin-top: 10px;
+	font-size: 14px;
+}
+.shortInfoTblMng img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+.shortInfoTblHeart {
+	display: flex;
+	align-items: flex-end;
+	margin: 15px 0;
+}
+.shortInfoTblTitle {
+	width: 100px;
+	font-weight: bold;
+}
+.shortInfoTblHeartContent {
+	font-size: 14px;
+}
+.shortInfoTblRecent {
+	display: flex;
+	align-items: flex-end;
+}
+.recentDate {
+	font-size: 14px;
 }
 
 /* 소모임 사진 */
@@ -146,8 +193,7 @@ svg {
 /* 소모임 자세한 정보 영역 */
 
 .infoDetailArea {
-  /*width: 1000px;*/
-  padding: 50px 100px;
+  
 }
 
 .infoDetailArea section {
@@ -166,16 +212,19 @@ svg {
 }
 
 /* 소모임 장소 영역*/
+.mapAreaSection h3{
+	letter-spacing: 1px;
+}
 .mapArea {
-  padding: 0 10px;
+  margin-top: 20px;
 }
 .mapArea #map {
-  /*width: 78%;*/
   height: 300px;
   border: 1px solid #ccc;
   background-color: #fff;
   text-align: center;
   line-height: 25px;
+  margin-bottom: 20px;
 }
 
 /* 소모임 카테고리 영역 */
@@ -191,15 +240,9 @@ svg {
 
 /* 가입하기 버튼 영역 */
 .btnArea {
-  margin: 20px 0;
+  margin: 40px 0;
   text-align: center;
 }
 .joinBtn {
   min-width: 100px;
-  /*height: 50px;
-    padding: 10px 15px;
-    background-color: rgb(255, 210, 220);
-    border: 1px solid #eee;
-    border-radius: 2px;
-    cursor: pointer; */
 }
