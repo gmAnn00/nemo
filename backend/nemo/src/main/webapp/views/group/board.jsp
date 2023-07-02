@@ -65,40 +65,70 @@
           <div class="sc2_menu">
             <h2 class="sc2_menu_title">게시판</h2>
             <ul class="sc2_menu_list">
-              <li>
-                <a href="${contextPath}/schedule.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>일정</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="${contextPath}/group/board?group_id=${group.groupVO.grp_id}">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name submenu_select">
-                      <span>게시판</span>
-                    </div>
-                    <i class="fa-solid fa-minus submenu_select"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="${contextPath}/myGroupMember.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>멤버</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="${contextPath}/groupSetting.html">
-                  <div class="sc2_icon_menu">
-                    <div class="menu_submenu_name"><span>소모임관리</span></div>
-                    <i class="fa-solid fa-angle-right menu_angle"></i>
-                  </div>
-                </a>
-              </li>
+               <c:choose>
+					<c:when test="${isMng == true }">
+						<li>
+	                      <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
+	                          <div class="sc2_icon_menu">
+	                              <div class="menu_submenu_name"><span>일정</span></div>
+	                              <i class="fa-solid fa-angle-right menu_angle"></i>
+	                          </div>
+	                      </a>
+	                  	</li>
+	                  	<li>
+	                      <a href="${contextPath}/group/board?group_id=${param.group_id}">
+	                          <div class="sc2_icon_menu">
+	                              <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
+	                              <i class="fa-solid fa-minus submenu_select"></i>
+	                          </div>
+	                      </a>
+	                  	</li>
+	                  	<li>
+	                      <a href="${contextPath}/group/manager/member?group_id=${param.group_id}">
+	                          <div class="sc2_icon_menu">
+	                              <div class="menu_submenu_name"><span>멤버</span></div>
+	                              <i class="fa-solid fa-angle-right menu_angle"></i>
+	                          </div>
+	                      </a>
+		                </li>
+		                <li>
+	                      <a href="${contextPath}/group/manager/setting?group_id=${param.group_id}">
+	                          <div class="sc2_icon_menu">
+	                              <div class="menu_submenu_name"><span>소모임관리</span></div>
+	                              <i class="fa-solid fa-angle-right menu_angle"></i>
+	                          </div>
+	                      </a>
+	                  </li>
+					</c:when>
+				
+					<c:otherwise>
+						<li>
+		                      <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
+		                          <div class="sc2_icon_menu">
+		                              <div class="menu_submenu_name"><span>일정</span></div>
+		                              <i class="fa-solid fa-angle-right menu_angle"></i>
+		                          </div>
+		                      </a>
+		                  </li>
+		                  <li>
+		                      <a href="${contextPath}/group/board?group_id=${param.group_id}">
+		                          <div class="sc2_icon_menu">
+		                              <div class="menu_submenu_name submenu_select"><span>게시판</span></div>
+		                              <i class="fa-solid fa-minus submenu_select"></i>
+		                          </div>
+		                      </a>
+		                  </li>
+		                  <li>
+		                      <a href="${contextPath}/group/member?group_id=${param.group_id}">
+		                          <div class="sc2_icon_menu">
+		                              <div class="menu_submenu_name"><span>멤버</span></div>
+		                              <i class="fa-solid fa-angle-right menu_angle"></i>
+		                          </div>
+		                      </a>
+		                  </li>
+					</c:otherwise>
+
+                </c:choose>
             </ul>
           </div>
         </div>

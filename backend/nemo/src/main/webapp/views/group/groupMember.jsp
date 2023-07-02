@@ -57,7 +57,7 @@
 		                                <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>일정</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -65,15 +65,15 @@
 		                                <a href="${contextPath}/group/board?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>게시판</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
 		                            <li>
 		                                <a href="${contextPath}/group/manager/member?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
-		                                        <div class="menu_submenu_name"><span>멤버</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <div class="menu_submenu_name submenu_select"><span>멤버</span></div>
+		                                        <i class="fa-solid fa-minus submenu_select"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -81,7 +81,7 @@
 		                                <a href="${contextPath}/group/manager/setting?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>소모임관리</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -92,7 +92,7 @@
 		                                <a href="${contextPath}/group/schedule?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>일정</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -100,15 +100,15 @@
 		                                <a href="${contextPath}/group/board?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
 		                                        <div class="menu_submenu_name"><span>게시판</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <i class="fa-solid fa-angle-right menu_angle"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
 		                            <li>
 		                                <a href="${contextPath}/group/member?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu">
-		                                        <div class="menu_submenu_name"><span>멤버</span></div>
-		                                        <i class="fa-solid fa-angle-right"></i>
+		                                        <div class="menu_submenu_name submenu_select"><span>멤버</span></div>
+		                                        <i class="fa-solid fa-minus submenu_select"></i>
 		                                    </div>
 		                                </a>
 		                            </li>
@@ -157,6 +157,8 @@
                                             
                                             
                                             <c:forEach var="user" items="${usersList}">
+                                            <c:set var="idx" value="${user.user_addr1.indexOf(' ', user.user_addr1.indexOf(' ') + 1)}" />
+											<c:set var="locationU" value="${user.user_addr1.substring(0, idx)}"/>
 	                                            <!-- 프로필 카드 시작 -->
 	                                            <div class="profile_box">
 	                                                <div class="dot_menu">
@@ -185,7 +187,7 @@
 	                                                        <div class="profile_info_detail">
 	                                                            <div class="profile_loc">
 	                                                                <i class="fa-solid fa-location-dot profile_icon"></i>
-	                                                                <span class="profile_loc_info">${user.user_addr1}</span>
+	                                                                <span class="profile_loc_info">${locationU}</span>
 	                                                            </div>
 	                                                            <div class="profile_group_joinDate">
 	                                                                <i class="fa-regular fa-calendar profile_icon"></i>
