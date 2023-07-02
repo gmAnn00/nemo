@@ -15,17 +15,20 @@ import javax.servlet.http.HttpSession;
 import nemo.service.board.BoardService;
 import nemo.service.group.GroupInfoService;
 import nemo.vo.group.GroupVO;
+import nemo.vo.user.UserVO;
 
 @WebServlet("/group/groupInfo")
 public class GroupInfoController extends HttpServlet {
 	HttpSession session;	
 	GroupInfoService groupInfoService;
 	Map groupInfo;
+	UserVO mngUserVO;
 
 	
 	@Override
 	public void init() throws ServletException {
-		groupInfoService=new GroupInfoService();		
+		groupInfoService=new GroupInfoService();
+		mngUserVO = new UserVO();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,7 +65,7 @@ public class GroupInfoController extends HttpServlet {
 
 		GroupInfoService groupInfoService = new GroupInfoService();
 		groupVO = groupInfoService.selectGroupById(group_id);
-		groupManager = groupInfoService.selectManagerById(group_id);
+		mngUserVO = groupInfoService.selectManagerById(group_id);
 		groupMemberNum = groupInfoService.selectGroupNumById(group_id);
 		groupBookmarkNum = groupInfoService.selectBookmarkNumById(group_id);
 		recentDate = groupInfoService.selectRecentDate(group_id);
@@ -80,7 +83,8 @@ public class GroupInfoController extends HttpServlet {
 		request.setAttribute("groupInfo", groupInfo);
 		
 		request.setAttribute("groupVO", groupVO);
-		request.setAttribute("groupManager", groupManager);
+		//request.setAttribute("groupManager", groupManager);		
+		request.setAttribute("mngUserVO", mngUserVO);
 		request.setAttribute("groupMemberNum", groupMemberNum);
 		request.setAttribute("groupBookmarkNum", groupBookmarkNum);
 		request.setAttribute("isBookmark", isBookmark);

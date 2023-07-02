@@ -7,16 +7,19 @@ import java.util.Map;
 import nemo.dao.group.GroupDAO;
 import nemo.dao.group.GroupInfoDAO;
 import nemo.vo.group.GroupVO;
+import nemo.vo.user.UserVO;
 
 public class GroupInfoService {
 	GroupInfoDAO groupInfoDAO;
 	GroupDAO groupDAO;
 	
 	GroupVO groupVO;
+	UserVO userVO;
 	
 	public GroupInfoService() {
 		groupInfoDAO = new GroupInfoDAO();
 		groupDAO = new GroupDAO();
+		userVO = new UserVO();
 	}
 
 	
@@ -38,9 +41,9 @@ public class GroupInfoService {
 	}
 
 	// 소모임장 가져오는 메소드
-	public String selectManagerById(int group_id) {
-		String manager= groupInfoDAO.selectManagerById(group_id);
-		return manager;
+	public UserVO selectManagerById(int group_id) {		
+		userVO = groupInfoDAO.selectManagerById(group_id);
+		return userVO;
 	}
 
 	// user_id 가 group_id 에 찜했는지 가져오는 메소드 true 면 찜함, false 면 안함

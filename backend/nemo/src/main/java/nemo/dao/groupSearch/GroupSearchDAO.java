@@ -74,18 +74,28 @@ public class GroupSearchDAO {
 			System.out.println("DAO pageNum=" + pageNum);
 
 			String query = "";
-			if(sub_name.equals("none")) {
+			if(main_name.equals("none")) {
 				query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? order by grp_name asc";
 				pstmt = conn.prepareStatement(query);
 				String searchTexts = "%" + searchText + "%";
 				pstmt.setString(1, searchTexts);
 			}else {
-				query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? AND sub_name = ? order by grp_name asc";
-				pstmt = conn.prepareStatement(query);
-				String searchTexts = "%" + searchText + "%";
-				pstmt.setString(1, searchTexts);
-				pstmt.setString(2, sub_name);
+				if(sub_name.equals("none")) {
+					query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? AND main_name = ? order by grp_name asc";
+					pstmt = conn.prepareStatement(query);
+					String searchTexts = "%" + searchText + "%";
+					pstmt.setString(1, searchTexts);
+					pstmt.setString(2, main_name);
+				}else {
+					query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? AND main_name = ? AND sub_name = ? order by grp_name asc";
+					pstmt = conn.prepareStatement(query);
+					String searchTexts = "%" + searchText + "%";
+					pstmt.setString(1, searchTexts);
+					pstmt.setString(2, main_name);
+					pstmt.setString(3, sub_name);
+				}
 			}
+			
 			
 			/*
 			if(sub_name.equals("none")) {
@@ -179,7 +189,7 @@ public class GroupSearchDAO {
 			}
 			
 			// 거리 필터
-			if(areaBar != -1 && userLat != null && userLng != null) {
+			if(areaBar != -1 && !userLat.equals("none") && !userLng.equals("none")) {
 				double userLatdbl = Double.parseDouble(userLat);
 				double userLngdbl = Double.parseDouble(userLng);
 				
@@ -200,8 +210,14 @@ public class GroupSearchDAO {
 						
 						KaKaoGeoRes bodyJson = objectMapper.readValue(response.getBody().toString(), KaKaoGeoRes.class);
 					
-						double lat = bodyJson.getDocuments().get(0).getY();
-						double lng = bodyJson.getDocuments().get(0).getX();
+						double lat = 0;
+						double lng = 0;
+						
+						if(bodyJson.getDocuments().size() != 0) {
+							lat = bodyJson.getDocuments().get(0).getY();
+							lng = bodyJson.getDocuments().get(0).getX();
+						}
+						
 						
 						System.out.println("lat = " + lat);
 						System.out.println("lng = " + lng);
@@ -411,20 +427,32 @@ public class GroupSearchDAO {
 			System.out.println("DAO section=" + section);
 			System.out.println("DAO pageNum=" + pageNum);
 			
-			String query = "SELECT count(*) FROM group_tbl WHERE grp_name LIKE ?";
-			if(sub_name.equals("none")) {
-				pstmt = conn.prepareStatement(query);
-				String searchTexts = "%" + searchText + "%";
-				pstmt.setString(1, searchTexts);
-				
-			}else {
-				query += "AND sub_name=?";
-				pstmt = conn.prepareStatement(query);
-				String searchTexts = "%" + searchText + "%";
-				pstmt.setString(1, searchTexts);
-				pstmt.setString(2, sub_name);
+			String query = "SELECT count(*) FROM group_tbl WHERE grp_name LIKE ? ";
+			
+			if(!main_name.equals("none")) {
+				if(sub_name.equals("none")) {
+					query += "AND main_name=?";
+					pstmt = conn.prepareStatement(query);
+					String searchTexts = "%" + searchText + "%";
+					pstmt.setString(1, searchTexts);
+					pstmt.setString(2, main_name);
+					
+				}else {
+					query += "AND main_name=? AND sub_name=?";
+					pstmt = conn.prepareStatement(query);
+					String searchTexts = "%" + searchText + "%";
+					pstmt.setString(1, searchTexts);
+					pstmt.setString(2, main_name);
+					pstmt.setString(3, sub_name);
 
+				}
+			}else {
+				pstmt = conn.prepareStatement(query);
+				String searchTexts = "%" + searchText + "%";
+				pstmt.setString(1, searchTexts);
 			}
+			
+			
 			
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
