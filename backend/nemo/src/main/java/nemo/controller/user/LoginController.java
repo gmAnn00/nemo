@@ -73,7 +73,11 @@ public class LoginController extends HttpServlet {
 			
 				nextPage = "/nemo/index";
 				response.sendRedirect(nextPage);
-				
+				/*PrintWriter out=response.getWriter();
+				out.print("<script>");
+				out.print("location.href='/nemo/index';");
+				out.print("</script>");
+				*/
 			}else {
 			// 회원이 아님 
 				PrintWriter out=response.getWriter();

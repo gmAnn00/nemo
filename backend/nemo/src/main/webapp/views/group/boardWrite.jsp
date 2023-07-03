@@ -4,7 +4,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="group" value="${groupInfo}" />
-
+<c:set var="isMng" value="false" />
+<c:forEach var="elem" items="${grpMngList}" >
+	<c:if test="${elem eq param.group_id}">
+		<c:set var="isMng" value="true" />
+	</c:if>
+</c:forEach>
 <!DOCTYPE html>
 <html lang="ko">
   <head>

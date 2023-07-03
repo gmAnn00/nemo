@@ -1,5 +1,6 @@
 package nemo.controller.user;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
+
 import nemo.service.user.JoinService;
 import nemo.vo.user.InterestVO;
 import nemo.vo.user.UserVO;
@@ -24,6 +27,9 @@ public class JoinController extends HttpServlet {
 	UserVO userVO;
 	InterestVO interestVO;
 	JoinService joinService;
+	
+	private static String USER_IMG_REPO;
+	private static String USER_IMG_DEF;
 	
 	@Override
 	public void init() throws ServletException {
@@ -45,6 +51,16 @@ public class JoinController extends HttpServlet {
 		String nextPage = "";
 		System.out.println("요청 매핑이름 : " +  action);
 		HttpSession session;
+		
+		USER_IMG_REPO = this.getClass().getResource("").getPath();
+		USER_IMG_REPO = USER_IMG_REPO.substring(1, USER_IMG_REPO.indexOf(".metadata"));
+		USER_IMG_REPO = USER_IMG_REPO.replace("/", "\\");
+		USER_IMG_REPO += "nemo\\src\\main\\webapp\\userImages\\";
+		
+		USER_IMG_DEF = this.getClass().getResource("").getPath();
+		USER_IMG_DEF = USER_IMG_DEF.substring(1, USER_IMG_DEF.indexOf(".metadata"));
+		USER_IMG_DEF = USER_IMG_DEF.replace("/", "\\");
+		USER_IMG_DEF += "nemo\\src\\main\\webapp\\images\\dall.png";
 		
 		if(action.equals("/agreeForm")) { //약관동의
 			
@@ -93,6 +109,11 @@ public class JoinController extends HttpServlet {
 			
 			session = request.getSession();
 			session.setAttribute("user_id_temp", user_id);
+			
+			File scrFile = new File(USER_IMG_DEF);
+			File destDir = new File(USER_IMG_REPO + "\\" + user_id);
+			destDir.mkdir();
+			FileUtils.copyFileToDirectory(scrFile, destDir, false);
 			
 			out.print("<script>");
 			out.print("alert('회원가입에 성공하셨습니다.');");

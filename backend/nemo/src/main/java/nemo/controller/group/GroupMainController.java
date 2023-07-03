@@ -59,7 +59,6 @@ public class GroupMainController extends HttpServlet {
 		groupInfo=groupInfoService.getGroupInfo(group_id);
 		request.setAttribute("groupInfo", groupInfo);
 		
-		// 로그인 컨트롤러로 옮겨야 함
 		// 유저가 소모임장인 소모임의 그룹넘버 저장
 		List<String> grpMngList = groupMainService.grpMng(user_id);
 		session.setAttribute("grpMngList", grpMngList);

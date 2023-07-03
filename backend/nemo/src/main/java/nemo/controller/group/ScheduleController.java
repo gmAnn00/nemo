@@ -29,6 +29,7 @@ import com.google.gson.JsonObject;
 
 import nemo.dao.group.ScheduleDAO;
 import nemo.service.group.GroupInfoService;
+import nemo.service.group.GroupMainService;
 import nemo.service.group.ScheduleService;
 import nemo.vo.group.GroupVO;
 import nemo.vo.group.ScheduleVO;
@@ -40,6 +41,7 @@ public class ScheduleController extends HttpServlet {
 	HttpSession session;
 	ScheduleVO scheduleVO;
 	ScheduleService scheduleService;
+	GroupMainService groupMainService;
 	GroupInfoService groupInfoService;
 	Map groupInfo;
 	
@@ -47,6 +49,7 @@ public class ScheduleController extends HttpServlet {
 		scheduleService = new ScheduleService();
 		dao = new ScheduleDAO(); // ScheduleDAO 객체 생성
 		groupInfoService=new GroupInfoService();
+		groupMainService = new GroupMainService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

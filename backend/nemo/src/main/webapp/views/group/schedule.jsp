@@ -6,6 +6,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="isMng" value="false" />
+<c:forEach var="elem" items="${grpMngList}" >
+	<c:if test="${elem eq param.group_id}">
+		<c:set var="isMng" value="true" />
+	</c:if>
+</c:forEach>
 <%
 	request.setCharacterEncoding("utf-8");
 %>

@@ -165,7 +165,7 @@ $(document).ready(function() {
 					appendItem+="<span class='replyCom'><a href='#' role='button' class='comReplyBtn' id='comReplyBtn"+commentInfo.comment_no+"'>답글쓰기</a></span>";
 					appendItem+="<span class='comMod comToolBtn modReply' id='modReply"+commentInfo.comment_no+"'>";
 					appendItem+="<a href='#' role='button' class='modReplyBtn' id='modReplyBtn"+commentInfo.comment_no+"'";
-					appendItem+="onclick='fn_cancleMod(this,"+commentInfo.comment_no+"'>취소</a></span></div></div></li>";
+					appendItem+="onclick='fn_cancleMod(this,"+commentInfo.comment_no+")'>취소</a></span></div></div></li>";
 					
 					$('.commentList').append(appendItem);
 					$('.com_cnt').text(commentInfo.com_cnt);

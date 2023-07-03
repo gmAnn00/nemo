@@ -5,7 +5,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
+<c:set var="isMng" value="false" />
+<c:forEach var="elem" items="${grpMngList}" >
+	<c:if test="${elem eq param.group_id}">
+		<c:set var="isMng" value="true" />
+	</c:if>
+</c:forEach>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -193,8 +198,7 @@
 	            	<div class="contentEditTool">
 		            	<c:if test="${user_id==article.user_id}">
 				            <a href="${contextPath}/group/board/modArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnEdit btn">수정</a>
-				            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" 
-				            role="button" class="btnDel btn">삭제</a>
+				            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnDel btn">삭제</a>
 		              	</c:if>
 	            	</div>
 	            	<div class="content">
@@ -322,7 +326,7 @@
 	              
 	              <c:if test="${user_id==article.user_id }">
 		            <a href="${contextPath}/group/board/modArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnEdit btn">수정</a>
-		            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article=article_no}" role="button" class="btnDel btn">삭제</a>
+		            <a href="${contextPath}/group/board/deleteArticle?group_id=${group.groupVO.grp_id}&article_no=${article.article_no}" role="button" class="btnDel btn">삭제</a>
 	              </c:if>
 	              
 	            </div>

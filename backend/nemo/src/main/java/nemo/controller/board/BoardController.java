@@ -35,6 +35,7 @@ import nemo.dao.board.BoardDAO;
 import nemo.service.board.BoardService;
 import nemo.service.board.CommentService;
 import nemo.service.group.GroupInfoService;
+import nemo.service.group.GroupMainService;
 import nemo.vo.board.BoardVO;
 import nemo.vo.board.CommentVO;
 import nemo.vo.group.GroupVO;
@@ -51,6 +52,7 @@ public class BoardController extends HttpServlet {
 	Map groupInfo;
 	HttpSession session;
 	GroupInfoService groupInfoService;
+	GroupMainService groupMainService;
 	
 	public void init(ServletConfig config) throws ServletException {
 		boardService=new BoardService();
@@ -59,6 +61,7 @@ public class BoardController extends HttpServlet {
 		commentVO = new CommentVO();
 		groupInfo=new HashMap();
 		groupInfoService = new GroupInfoService();
+		groupMainService = new GroupMainService();
 		
 	}
 	

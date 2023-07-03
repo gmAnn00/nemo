@@ -28,6 +28,13 @@
 	</c:otherwise>
 </c:choose>
 
+<c:set var="isMng" value="false" />
+<c:forEach var="elem" items="${grpMngList}" >
+	<c:if test="${elem eq param.group_id}">
+		<c:set var="isMng" value="true" />
+	</c:if>
+</c:forEach>
+
 <% request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>

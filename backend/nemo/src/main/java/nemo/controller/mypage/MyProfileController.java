@@ -63,7 +63,6 @@ public class MyProfileController extends HttpServlet {
 		String user_id = (String)session.getAttribute("user_id");
 
 		USER_IMG_REPO = this.getClass().getResource("").getPath();
-		//System.out.println(USER_IMG_REPO);
 		USER_IMG_REPO = USER_IMG_REPO.substring(1, USER_IMG_REPO.indexOf(".metadata"));
 		USER_IMG_REPO = USER_IMG_REPO.replace("/", "\\");
 		USER_IMG_REPO += "nemo\\src\\main\\webapp\\userImages\\";
