@@ -123,7 +123,9 @@ public class IndexDAO {
 				
 				groupList.add(groupVO);
 			}
-			
+			rs.close();
+			pstmt.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("IndexDAO:findUserById 오류");
@@ -152,7 +154,9 @@ public class IndexDAO {
 				
 				interestsList.add(interestsVO);
 			}
-			
+			rs.close();
+			pstmt.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("IndexDAO: findInterests 오류");
@@ -165,7 +169,7 @@ public class IndexDAO {
 	
 	public List<GroupVO> findInterestGroups(List<InterestsVO> interestsList) {
 		List<GroupVO> groupsList = new ArrayList<GroupVO>();
-		
+		System.out.println("findInterestGroups처음");
 		try {
 			conn = dataFactory.getConnection();
 			
@@ -197,12 +201,17 @@ public class IndexDAO {
 					
 					groupsList.add(groupVO);
 				}
+				rs.close();
+				pstmt.close();
+				
 			}
+			conn.close();
 			
-			Collections.shuffle(groupsList);
+			//Collections.shuffle(groupsList);
 			if(groupsList.size() > 4) {
 				groupsList = groupsList.subList(0, 4);
 			}
+			
 			
 			
 			
@@ -210,7 +219,7 @@ public class IndexDAO {
 			System.out.println("IndexDAO: findInterests 오류");
 			e.printStackTrace();
 		}
-		
+		System.out.println("findInterestGroups끝");
 		return groupsList;
 	}
 
@@ -242,6 +251,10 @@ public class IndexDAO {
 				
 				groupsList.add(groupVO);
 			}
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
 			
 			String APIKey = "KakaoAK c73306afc68803d77548f1b3dea5d5c2";
 			double userLatdbl = 0.0;
