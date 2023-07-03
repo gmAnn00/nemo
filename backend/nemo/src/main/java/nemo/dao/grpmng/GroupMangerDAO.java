@@ -83,7 +83,7 @@ public class GroupMangerDAO {
 		try {
 			conn = dataFactory.getConnection();
 			
-			String query = "SELECT user_tbl.* FROM user_tbl JOIN grpjoin_tbl ON user_tbl.user_id = grpjoin_tbl.user_id where grp_id=? order by join_date desc";
+			String query = "SELECT user_tbl.* FROM user_tbl JOIN grpjoin_tbl ON user_tbl.user_id = grpjoin_tbl.user_id where grpjoin_tbl.grp_id=? order by grpjoin_tbl.join_date desc";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, grp_id);
