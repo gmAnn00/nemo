@@ -256,7 +256,7 @@
 											</em>
 										</p>
 										<script type="text/javascript"
-											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20b89d26720633d863b9bff60fd0e841&libraries=services"></script>
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea6bda86230b8415e663eb00385b3b43&libraries=services"></script>
 
 									</div>
 								</div>
@@ -380,7 +380,7 @@
 										</div>
 
 										<script type="text/javascript"
-											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20b89d26720633d863b9bff60fd0e841&libraries=services"></script>
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea6bda86230b8415e663eb00385b3b43&libraries=services"></script>
 										
 									</div>
 								</div>
