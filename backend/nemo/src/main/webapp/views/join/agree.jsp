@@ -17,10 +17,7 @@
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/agree.css" />
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+	<script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/js/header.js"></script>
 </head>
 <body>

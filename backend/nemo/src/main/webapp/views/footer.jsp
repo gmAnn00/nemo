@@ -49,8 +49,8 @@
                             <h3>NEMO Links</h3>
                         </div>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">고객센터</a></li>
+                            <li><a href="${contextPath}/index">Home</a></li>
+                            <li><a href="${contextPath}/viewQna">고객센터</a></li>
                             <li><a href="#">이용약관</a></li>
                             <li><a href="#">공지사항</a></li>
                             <li><a href="#">저작권정책</a></li>
