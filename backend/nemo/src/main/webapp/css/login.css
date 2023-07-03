@@ -16,10 +16,10 @@
 }
 .imageArea {
   background-image: url(../images/야옹대가족.JPG);
-  background-size: 450px 375px;
+  background-size: 400px 350px;
   background-repeat: no-repeat;
   background-position-y: 50px;
-  width: 60%;
+  width: 50%;
   position: relative;
   
   /* 소설로그인 주석으로 필요한 css */

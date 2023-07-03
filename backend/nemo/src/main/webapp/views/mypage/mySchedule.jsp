@@ -113,7 +113,7 @@
                       <c:if test = "${today<=date}" >
                                             
 	                  <div class="mySchedule">
-	                  	<a href="${contextPath}/group/schedule?group_id=${comMySchedule.grp_id}">
+	                  	<a href="${contextPath}/group/schedule?group_id=${comMySchedule.scheduleVO.grp_id}">
 	                    <p class="myScheduleDate">${comMySchedule.scheduleDate}<span> ${comMySchedule.scheduleTime}</span></p>
 	                    <div class="myScheduleImgContent">
 	                      <div class="groupImg">
