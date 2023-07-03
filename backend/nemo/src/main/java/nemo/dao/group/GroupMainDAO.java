@@ -49,10 +49,12 @@ public class GroupMainDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BoardVO boardVO = new BoardVO();
+				int article_no = rs.getInt("article_no");
 				String title = rs.getString("title");
 				String nickname = rs.getString("user_id");
 				Date create_date = rs.getDate("create_date");
 				
+				boardVO.setArticle_no(article_no);
 				boardVO.setTitle(title);
 				boardVO.setUser_id(nickname);
 				boardVO.setCreate_date(create_date);
