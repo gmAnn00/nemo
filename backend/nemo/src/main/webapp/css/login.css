@@ -5,6 +5,9 @@
   box-sizing: border-box;
   margin: 0 auto;
   display: flex;
+ 
+ /* 소설로그인 주석으로 필요한 css */ 
+  align-items: center;
 }
 #contentsArea h2 {
   font-size: 20px;
@@ -18,6 +21,9 @@
   background-position-y: 50px;
   width: 60%;
   position: relative;
+  
+  /* 소설로그인 주석으로 필요한 css */
+  height: 500px;
 }
 .imageArea img {
   width: 180px;
@@ -46,7 +52,10 @@
   color: #000;
 }
 .loginArea {
-  width: 38%;
+  width: 38%;  
+  
+  /* 소설로그인 주석으로 필요한 css */
+  padding-bottom: 50px;
 }
 .loginArea .rememberCheck {
   margin: 0 5px 20px 5px;
