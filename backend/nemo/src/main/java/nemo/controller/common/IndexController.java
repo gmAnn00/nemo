@@ -43,25 +43,27 @@ public class IndexController extends HttpServlet {
 		session=request.getSession();
 		
 		String user_id = (String) session.getAttribute("user_id");
+
 		
-		System.out.println("indexController1");
 		
 		// 로그인 안했을 시 아무(랜덤) 소모임 보여줌
+		
 		if(user_id == null) {
+
 			List<GroupVO> randomGroupsList = indexService.findRandomGroup();
 			request.setAttribute("randomGroupsList", randomGroupsList);
-			System.out.println("indexController2");
+
 			
 		}else {
 			System.out.println("indexController3");
 			// 로그인 했을 떄 관심사/가까운 소모임 보여줌
 			UserVO userVO = new UserVO();
 			userVO = indexService.findUserById(user_id);
-			System.out.println("indexController4");
+
 			
 			List<InterestsVO> interestsList = new ArrayList<InterestsVO>();
 			interestsList = indexService.findInterests(user_id);
-			System.out.println("indexController5");
+
 			// 관심사 소모임
 			List<GroupVO> interestGroupsList = indexService.findInterestGroups(interestsList);
 			int cnt =  4-interestGroupsList.size();
@@ -72,13 +74,15 @@ public class IndexController extends HttpServlet {
 					interestGroupsList.add(temp1.get(i));
 				}
 			}
-			System.out.println("indexController6");
+
 			System.out.println("interestGroupsList=" + interestGroupsList.size());
 			request.setAttribute("interestGroupsList", interestGroupsList);
 			
 			// 가까운 소모임
 			List<GroupVO> nearGroupsList = indexService.findNearGroups(userVO.getUser_addr1());
 			cnt = 4-nearGroupsList.size();
+
+			
 			if(nearGroupsList.size() < 4) {
 				List<GroupVO> temp2 = indexService.findRandomGroup();
 				for(int i = 0; i < cnt; i++) {
