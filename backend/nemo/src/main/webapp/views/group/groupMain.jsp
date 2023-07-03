@@ -246,6 +246,7 @@
                         <!--animation-slide종료-->
                         <span class="btnEventNext" title="다음보기"><i class="fa-solid fa-chevron fa-chevron-right"></i></span>
                     </div>
+                    <!-- 멤버 영역 끝-->
                 </div>
             </div>
 
@@ -254,6 +255,7 @@
         <input type="hidden" id="groupNum_hidden" name="groupNum_hidden" value="${groupNum}" />
         <input type="hidden" id="user_id_hidden" name="user_id_hidden" value="${user_id}" />
         <input type="hidden" id="isMember_hidden" name="isMember_hidden" value="${isMember}" />
+        <input type="hidden" id="isAdmin_hidden" name="isAdmin_hidden" value="${admin}" />
 	
 	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 </body>
