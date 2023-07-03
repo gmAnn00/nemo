@@ -1,0 +1,9 @@
+@charset "utf-8";
+.adminUserTbl>thead>tr th {
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.adminUserTbl tr td {
+    font-size: 0.9em;
+}

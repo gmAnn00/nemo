@@ -8,9 +8,26 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file></welcome-file>
-    <welcome-file></welcome-file>
-    <welcome-file></welcome-file>
-    
   </welcome-file-list>
+ <!--
+  <error-page>
+   
+    <error-code>404</error-code>
+    <location>/error/error404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error/error500.jsp</location>
+  </error-page>
+   -->
+  <servlet>
+    <description></description>
+    <display-name>SummerNoteGetImg</display-name>
+    <servlet-name>SummerNoteGetImg</servlet-name>
+    <servlet-class>nemo.controller.board.SummerNoteUploadImage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SummerNoteGetImg</servlet-name>
+    <url-pattern>/snGetImg</url-pattern>
+  </servlet-mapping>
 </web-app>

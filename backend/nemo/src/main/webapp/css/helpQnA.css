@@ -134,6 +134,9 @@ width: auto;
 	color:#fb3;
 }
 
+.titleInner a:hover{
+	color:#fb3;	
+}
 .title {
   display: -webkit-box;
   /*max-width: 80%;*/

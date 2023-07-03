@@ -15,18 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nemo.service.admin.AdminGroupService;
+import nemo.service.admin.AdminUserService;
 
-
-@WebServlet("/adminGroup/*")
-public class AdminGroupController extends HttpServlet {
-	AdminGroupService adminGrpService;
+@WebServlet("/adminUser/*")
+public class AdminUserController extends HttpServlet {
+	AdminUserService adminUserService;
 	HttpSession session;
 	
 	@Override
 	public void init() throws ServletException {
-		adminGrpService=new AdminGroupService();
+		adminUserService=new AdminUserService();
 	}
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
@@ -34,8 +35,7 @@ public class AdminGroupController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
-	
-	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -43,7 +43,6 @@ public class AdminGroupController extends HttpServlet {
 		String action=request.getPathInfo();
 		String nextPage=null;
 		session=request.getSession();
-		
 		String user_id=(String)session.getAttribute("user_id");
 		if(user_id==null) {
 			out.print("<script>");
@@ -52,7 +51,6 @@ public class AdminGroupController extends HttpServlet {
 			out.print("</script>");
 		} else {
 			int admin = (Integer) session.getAttribute("admin");
-			
 			if(admin<1) {
 				out.print("<script>");
 				out.print("alert('잘못된 접근 입니다.');");
@@ -61,28 +59,34 @@ public class AdminGroupController extends HttpServlet {
 			}else {
 					System.out.println("요청 매핑 이름 : " + action);
 					try {
-						if(action == null || action.equals("/adminGroup")) {
-							List<Map> groupList=new ArrayList<Map>();
-							groupList=adminGrpService.getGroupList();
-							request.setAttribute("groupList", groupList);
-							nextPage="/views/admin/adminGroup.jsp";
+						if(action == null || action.equals("/adminUser")) {
+							List<Map> userList=new ArrayList<Map>();
+							userList=adminUserService.getUserList();
+							request.setAttribute("userList", userList);
+							nextPage="/views/admin/adminUser.jsp";
 							RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 						    dispatcher.forward(request, response);
-						} else if (action.equals("/delGroup.do")) {			
-							int grp_id=Integer.parseInt(request.getParameter("grp_id"));
-							adminGrpService.delGroup(grp_id);
-							nextPage="/nemo/adminGroup";
-							out.println("<script>alert('소모임이 삭제 되었습니다.'); location.href='"+nextPage+"';</script>");
-				            out.flush();
-							//response.sendRedirect(nextPage);
+						} else if (action.equals("/delUser.do")) {			
+							String _user_id=request.getParameter("user_id");
+							boolean isAdmin=adminUserService.delUser(_user_id);
+							if(!isAdmin) {
+								nextPage="/nemo/adminUser";
+								out.println("<script>alert('회원이 삭제 되었습니다.'); location.href='"+nextPage+"';</script>");
+								out.flush();
+								//response.sendRedirect(nextPage);
+							} else {
+								nextPage="/nemo/adminUser";
+								out.println("<script>alert('관리자는 삭제할 수 없습니다.'); location.href='"+ nextPage+ "';</script>");
+								out.flush();
+							}
+							
 						}
 						
 					}catch (Exception e) {
-						System.out.println("소모임 관리 처리 중 에러 ");
+						System.out.println("회원 관리 처리 중 에러 ");
 						e.printStackTrace();
 					}
 			}
 		}
 	}
-
 }

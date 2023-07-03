@@ -1,10 +1,6 @@
 @charset "utf-8";
-@font-face {
-    font-family: "yg-jalnan";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
+
+/*
 .adminGroupTitle {
     font-family: "yg-jalnan";
     font-size: 40px;
@@ -65,18 +61,15 @@ body {
 table {
     margin-top: 20px;
 }
-.sc2_subsection {
-    flex: 2.5;
+.adminGroupTbl>thead>tr th {
+    font-size: 0.95em;
+    text-align: center;
 }
-.sc2_subsection_title {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
+
+.adminGroupTbl tr td {
+    font-size: 0.9em;
 }
-.sc2_subsection_title_name {
-    font-size: 25px;
-    font-weight: 800;
-}
-.groupListArea {
+
+.adminGroupTbl tr>td>a:hover {
+	color:#fb3;
 }

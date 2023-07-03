@@ -8,20 +8,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>신고페이지</title>
-</head>
+<head>
+<title>네모: 신고관리</title>
+
+	<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
 	 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />
         <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
-        <link rel="stylesheet" href="${contextPath}/css/tabmenu.css" />
+        <link rel="stylesheet" href="${contextPath}/css/tabmenuAdmin.css" />
         <link href="${contextPath}/DataTables/datatables.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="${contextPath}/css/adminReport.css" />
         <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-        <script src="https://kit.fontawesome.com/3d4603cd1d.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
         <script src="${contextPath}/js/header.js"></script>
         <script src="${contextPath}/js/tabmenu.js"></script>
+        <script src="${contextPath}/DataTables/datatables.min.js"></script>
+        <script src="${contextPath}/js/adminReport.js"></script>
+ </head>       
 <body>
 
 <jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -35,7 +41,7 @@
                         <h2 class="sc2_menu_title">관리자</h2>
                         <ul class="sc2_menu_list">
                             <li>
-                                <a href="${contextPath}/adminGroup.html">
+                                <a href="${contextPath}/adminGroup">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>소모임 관리</span></div>
                                         <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -43,7 +49,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="${contextPath}/adminMember.html">
+                                <a href="${contextPath}/adminUser">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>회원 관리</span></div>
                                         <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -51,7 +57,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="${contextPath}/adminReport.html">
+                                <a href="${contextPath}/adminReport">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name submenu_select">
                                             <span>신고 관리</span>
@@ -61,7 +67,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="${contextPath}/adminHelpQnA.html">
+                                <a href="${contextPath}/viewQna">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>고객센터 Q&A</span></div>
                                         <i class="fa-solid fa-angle-right menu_angle"></i>
@@ -78,7 +84,7 @@
                         <h2 class="sc2_subsection_title_name">신고 관리</h2>
                         <!-- nav 바 시작 -->
                         <div class="nav_bar">
-                            <a href="index.html">
+                            <a href="${contextPath}/index">
                                 <i class="fa-solid fa-house nav_icon"></i>
                             </a>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
@@ -110,46 +116,39 @@
                                             <div class="list">
                                                 <table class="adminGroupTbl">
                                                     <thead>
-                                                        <tr>
-                                                            <th>소모임 번호</th>
-                                                            <th>대분류</th>
-                                                            <th>소분류</th>
-                                                            <th>소모임 이름</th>
-                                                            <th>현재 인원</th>
-                                                            <th>최대 인원</th>
-                                                            <th>소모임장</th>
-                                                            <th>생성일</th>
-                                                            <th>신고횟수</th>
-                                                            <th>삭제</th>
-                                                        </tr>
+                                                        <tr text-align="center">
+                                                            <th>No</th>
+                                                            <th>소모임ID</th>
+                                                            <th>소모임명</th>
+                                                            <th>소모임장ID</th>
+                                                            <th>신고자ID</th>
+                                                            <th>총신고횟수</th>
+                                                            <th>신고일</th>
+                                                            <th>삭제</th>                                                                                                                    </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>스포츠</td>
-                                                            <td>헬스</td>
-                                                            <td>소모임 이름1</td>
-                                                            <td>2</td>
-                                                            <td>10</td>
-                                                            <td>honggilddong</td>
-                                                            <td>2023/05/01</td>
-                                                            <td>1</td>
-                                                            <td><button class="btn">삭제</button></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>스포츠</td>
-                                                            <td>헬스</td>
-                                                            <td>소모임 이름2</td>
-                                                            <td>2</td>
-                                                            <td>10</td>
-                                                            <td>honggilddong</td>
-                                                            <td>2023/05/01</td>
-                                                            <td>2</td>
-                                                            <td><button class="btn">삭제</button></td>
-                                                        </tr>
-                                                      
-                                                    </tbody>
+			    										<c:choose>
+															<c:when test="${empty groupList}">
+																<tr>
+																	<td colspan="8" align="center">
+																		신고된 소모임이 없습니다.
+																	</td>	
+																</tr>
+															</c:when>
+															<c:when test="${!empty groupList}">
+																<c:forEach var="group" items="${groupList}" varStatus="status">
+																	<tr align="center">
+																		<td>${status.count}</td>
+																		<td><a href="${contextPath}/group/groupMain?group_id=${group.grpRepVO.grp_id}">${group.grpRepVO.grp_id}</a></td>
+																		<td><a href="${contextPath}/group/groupMain?group_id=${group.grpRepVO.grp_id}">${group.grpRepVO.groupVO.grp_name}</a></td>
+																		<td>${group.grpRepVO.groupVO.grp_mng}</td>
+																		<td>${group.grpRepVO.reporter_id}</td>																		
+																		<td>${group.repCnt}</td>
+																		<td>${group.grpRepVO.rep_date}</td>
+																		<td><a role="button" class="button" href="#" onclick="fn_Grpdelete(${group.grpRepVO.grp_id})">삭제</a></td>
+																	</tr>
+																</c:forEach>
+															</c:when>
+														</c:choose>                                                 
                                                 </table>
                                             </div>
                                         </div>
@@ -165,47 +164,36 @@
                                                 <table class="adminMemberTbl">
                                                     <thead>
                                                         <tr>
-                                                            <th>회원번호</th>
-                                                            <th>아이디</th>
-                                                            <th>이름</th>
-                                                            <th>생년월일</th>
-                                                            <th>성별</th>
-                                                            <th>이메일</th>
-                                                            <th>휴대전화</th>
-                                                            <th>가입일</th>
+                                                            <th>No</th>
+                                                            <th>피신고자ID</th>
                                                             <th>신고횟수</th>
-                                                            <th>탈퇴</th>
+                                                            <th>신고자ID</th>
+                                                            <th>신고일</th>
+                                                            <th>회원삭제</th>                                                           
                                                         </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>ho</td>
-                                                            <td>홍길동</td>
-                                                            <td>2000/01/01</td>
-                                                            <td>M</td>
-                                                            <td>gildong@gmail.com</td>
-                                                            <td>01012345678</td>
-                                                            <td>2023/05/01</td>
-                                                            <td>1</td>
-                                                            <td><button class="btn">탈퇴</button></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>hongg</td>
-                                                            <td>홍길동</td>
-                                                            <td>2000/01/01</td>
-                                                            <td>M</td>
-                                                            <td>gildong@gmail.com</td>
-                                                            <td>01012345678</td>
-                                                            <td>2023/05/01</td>
-                                                            <td>2</td>
-                                                            <td><button class="btn">탈퇴</button></td>
-                                                        </tr>
-                                                       
-                                                    </tbody>
-                                                </table>
+                                                    </thead>									
+		                                               <c:choose>
+														<c:when test="${empty userList}">
+															<tr>
+																<td colspan="6" align="center">
+																	신고된 회원이 없습니다. 
+																</td>	
+															</tr>
+														</c:when>
+														<c:when test="${!empty userList}">
+															<c:forEach var="user" items="${userList}" varStatus="status">
+																<tr align="center">
+																	<td>${status.count}</td>
+																	<td>${user.userRepVO.accused_id}</td>
+																	<td>${user.repCnt}</td>
+																	<td>${user.userRepVO.reporter_id}</td>
+																	<td>${user.userRepVO.rep_date}</td>
+																	<td><a role="button" class="button" href="#" onclick="fn_Userdelete('${user.userRepVO.accused_id}')">삭제</a></td>
+																</tr>
+															</c:forEach>
+														</c:when>
+													  </c:choose>
+                                                </table> 
                                             </div>
                                         </div>
                                     </div>
@@ -225,8 +213,7 @@
 
 <jsp:include page="../footer.jsp" flush="true"></jsp:include>
 
-		<script src="${contextPath}/DataTables/datatables.min.js"></script>
-        <script src="${contextPath}/js/adminReport.js"></script>
+
 
 </body>
 </html>
