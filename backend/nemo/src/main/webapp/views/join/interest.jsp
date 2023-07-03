@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관심자창</title>
+<title>네모: 관심사</title>
  <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
