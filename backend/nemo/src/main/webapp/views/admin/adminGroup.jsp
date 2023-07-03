@@ -91,7 +91,7 @@
                             <i class="fa-solid fa-angle-right nav_icon"></i>
                             <span>관리자</span>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
-                            <span>소모임관리</span>
+                            <span>소모임 관리</span>
                         </div>
                         <!-- nav 바 종료 -->
 

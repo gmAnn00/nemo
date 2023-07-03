@@ -88,9 +88,9 @@
                                 <i class="fa-solid fa-house nav_icon"></i>
                             </a>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
-                            <span>나의 모임</span>
+                            <span>관리자</span>
                             <i class="fa-solid fa-angle-right nav_icon"></i>
-                            <span>소모임관리</span>
+                            <span>신고 관리</span>
                         </div>
                         <!-- nav 바 종료 -->
                     </div>
