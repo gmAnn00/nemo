@@ -260,7 +260,7 @@
 		                        <div class="card__info-hover">
 		                        </div>
 		                        <div class="card__img"></div>
-		                        <a href="#" class="card_link">
+		                        <a href="${contextPath}/group/groupInfo?group_id=${group.grp_id}" class="card_link">
 		                            <div class="card__img--hover" style="background-image: url('${contextPath}/groupImages/${group.grp_id}/${group.grp_img}')"></div>
 		                        </a>
 		                        <div class="card__info">
