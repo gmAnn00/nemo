@@ -13,8 +13,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.apache.jasper.tagplugins.jstl.core.When;
-
 import nemo.vo.admin.GroupReportVO;
 
 public class GroupReportDAO {
