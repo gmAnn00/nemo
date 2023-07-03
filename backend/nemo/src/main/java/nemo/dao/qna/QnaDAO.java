@@ -281,7 +281,7 @@ public class QnaDAO {
 		QnaVO qnaVO = new QnaVO();
 		try {
 			conn=dataFactory.getConnection();
-			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, qna_img, u.user_img " + 
+			String query="SELECT qna_id, q.user_id, u.nickname, parent_no, title, content, create_date, u.user_img " + 
 						" FROM qna_tbl q " +
 						" JOIN user_tbl u ON q.user_id = u.user_id " + 
 						" WHERE q.qna_id = ? " +
@@ -299,10 +299,10 @@ public class QnaDAO {
 			String content=rs.getString("content");
 			String user_img=rs.getString("user_img");
 			// 좀 당황스러운데
-			String qna_img = null;
-			if (rs.getString("qna_img") != null) {
-				qna_img=URLDecoder.decode(rs.getString("qna_img"),"utf-8");
-			}
+			//String qna_img = null;
+			//if (rs.getString("qna_img") != null) {
+			//	qna_img=URLDecoder.decode(rs.getString("qna_img"),"utf-8");
+			//}
 			
 			Date create_date=rs.getDate("create_date");
 			qnaVO.setQna_id(_qna_id);
@@ -311,7 +311,7 @@ public class QnaDAO {
 			qnaVO.getUserVO().setUser_img(user_img);
 			qnaVO.setTitle(title);
 			qnaVO.setContent(content);
-			qnaVO.setQna_img(qna_img);
+			//qnaVO.setQna_img(qna_img);
 			qnaVO.setCreate_date(create_date);
 			rs.close();
 			pstmt.close();
