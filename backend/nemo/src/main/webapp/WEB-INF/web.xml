@@ -9,7 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
- <!--
+ 
   <error-page>
    
     <error-code>404</error-code>
@@ -19,7 +19,7 @@
     <error-code>500</error-code>
     <location>/error/error500.jsp</location>
   </error-page>
-   -->
+   
   <servlet>
     <description></description>
     <display-name>SummerNoteGetImg</display-name>
