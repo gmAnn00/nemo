@@ -59,12 +59,16 @@ public class MyBoardDAO {
 				String user_img = rs.getString("user_img");
 				String nickname = rs.getString("nickname");
 				
+				//이미지 제외 정규식
+				String textContent = content.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+				
+				
 				MyBoardVO myArticle = new MyBoardVO();
 				myArticle.getGroupVO().setGrp_id(grp_id);
 				myArticle.getGroupVO().setGrp_name(grp_name);
 				myArticle.getBoardVO().setArticle_no(article_no);
 				myArticle.getBoardVO().setTitle(title);
-				myArticle.getBoardVO().setContent(content);
+				myArticle.getBoardVO().setContent(textContent);
 				myArticle.getBoardVO().setCreate_date(create_date);
 				myArticle.getUserVO().setUser_id(user_id);
 				myArticle.getUserVO().setUser_img(user_img);
