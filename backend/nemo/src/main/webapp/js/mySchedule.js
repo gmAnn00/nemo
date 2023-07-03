@@ -356,7 +356,7 @@ function fn_ajax_this_month(year, month) {
 			for(key in data){
 				content += `
 					<div class="mySchedule">
-	                  	<a href="/nemo/group/schedule?group_id=${data[key].grp_name}">
+	                  	<a href="/nemo/group/schedule?group_id=${data[key].scheduleVO.grp_id}">
 	                    <p class="myScheduleDate">${data[key].scheduleDate}<span> ${data[key].scheduleTime}</span></p>
 	                    <div class="myScheduleImgContent">
 	                      <div class="groupImg">
