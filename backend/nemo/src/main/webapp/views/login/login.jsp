@@ -67,6 +67,7 @@
             <a href="${contextPath}/join/agreeForm" class="join">회원가입</a>
             <a href="${contextPath}/search/findidForm"class="find">아이디/비밀번호 찾기</a>
           </p>
+          <!-- 
           <input
             type="image"
             src="${contextPath}/images/login_naver.png"
@@ -85,6 +86,7 @@
             alt="구글 아이디로 로그인"
             class="googleLog"
           />
+           -->
         </form>
       </section>
     </div>
