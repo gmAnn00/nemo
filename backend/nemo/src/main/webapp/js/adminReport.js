@@ -1,5 +1,4 @@
-$("table.adminGroupTbl").DataTable();
-$("table.adminMemberTbl").DataTable();
+
 
 $(function () {
     (function ($, document) {
@@ -14,4 +13,7 @@ $(function () {
         // set height of tabs + top offset
         $("[data-tabs]").css("min-height", height + 40 + "px");
     })(jQuery, document);
+    
+    $("table.adminGroupTbl").DataTable();
+	$("table.adminMemberTbl").DataTable();
 });
