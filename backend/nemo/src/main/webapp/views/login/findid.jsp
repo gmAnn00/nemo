@@ -9,8 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디찾기창</title>
-<title>아이디/비밀번호 찾기</title>
+<title>네모: 아이디찾기</title>
+<!-- <title>아이디/비밀번호 찾기</title> -->
         <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />

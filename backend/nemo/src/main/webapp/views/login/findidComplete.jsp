@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 결과창</title>
+<title>네모: 아이디찾기</title>
 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />

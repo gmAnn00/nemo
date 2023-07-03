@@ -211,7 +211,7 @@
         <!-- 콘텐츠 영역 종료-->
 
 
-<jsp:include page="../footer.jsp" flush="true"></jsp:include>
+	<jsp:include page="../footer.jsp" flush="true"></jsp:include>
 
 
 

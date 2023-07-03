@@ -7,7 +7,7 @@ pageEncoding="UTF-8" isELIgnored="false" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>내 소모임</title>
+    <title>네모: 마이페이지</title>
     <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/common.css" />

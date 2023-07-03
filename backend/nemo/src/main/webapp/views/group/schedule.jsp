@@ -19,7 +19,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<title>일정</title>
+<title>네모:일정</title>
 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
 <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
 <link rel="stylesheet" href="${contextPath}/css/common.css" />

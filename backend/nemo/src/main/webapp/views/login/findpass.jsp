@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호창</title>
+<title>네모: 비밀번호 찾기</title>
 <link rel="shortcut icon" href="/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />

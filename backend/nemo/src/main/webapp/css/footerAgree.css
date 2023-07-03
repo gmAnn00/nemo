@@ -1,0 +1,88 @@
+#contentsArea {
+  margin-bottom: 30px;
+}
+/* 회원가입 진행 단계 */
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: var(--sub3-color);
+  border-radius: 10px;
+}
+.progress-bar span {
+  padding-right: 150px;
+  color: #777;
+}
+
+.step {
+  position: absolute;
+  height: 100%;
+  background-color: var(--sub3-color); /* Default color for incomplete steps */
+  border-radius: 0 50px 50px 0;
+  text-align: right;
+  height: 30px;
+  line-height: 30px;
+}
+.step-1 {
+  background-color: var(--main-color);
+  width: 33.33%;
+}
+.step-1 span {
+  font-weight: bold;
+  color: #402f0d;
+}
+.step-2 {
+  background-color: var(--sub-color);
+  width: 66.66%;
+}
+.step-3 {
+  background-color: var(--sub3-color);
+  width: 100%;
+}
+
+/* 약관 동의 영역 */
+.terms {
+  width: 600px;
+  margin: 50px auto;
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.terms h2 {
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+.terms h3 {
+  margin-bottom: 15px;
+  margin-top:15px;
+}
+.termsContent {
+  border: 1px solid #ccc;
+  height: 120px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 15px 20px;
+}
+.terms label {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+.terms .allAg {
+  position: relative;
+  /* top: 20px; */
+}
+.allAg label {
+  margin-top: 20px;
+}
+.terms .btn {
+  text-align: center;
+}
+.terms .btn button {
+  width: 160px;
+}
+input[type="checkbox"] {
+  position: relative;
+  top: 2px;
+}

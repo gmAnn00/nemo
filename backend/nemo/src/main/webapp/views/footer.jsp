@@ -51,7 +51,7 @@
                         <ul>
                             <li><a href="${contextPath}/index">Home</a></li>
                             <li><a href="${contextPath}/viewQna">고객센터</a></li>
-                            <li><a href="#">이용약관</a></li>
+                            <li><a href="${contextPath}/agree">이용약관</a></li>
                             <li><a href="#">공지사항</a></li>
                             <li><a href="#">저작권정책</a></li>
                             <li><a href="#">개인정보 처리방침</a></li>

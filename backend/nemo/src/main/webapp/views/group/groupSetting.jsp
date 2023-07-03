@@ -13,7 +13,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>네모</title>
+        <title>네모: 소모임 관리</title>
         <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인창</title>
+<title>네모: 로그인</title>
 	<script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="${contextPath}/js/loginCook.js"></script>

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>네모: 회원가입</title>
 
 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
