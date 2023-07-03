@@ -62,7 +62,7 @@ function fn_IdCheck() {
 			type: "post",
 			async: true,
 			// dataType: "text",
-			url: "http://localhost:8090/nemo/duplicate/id",
+			url: "/nemo/duplicate/id",
 			//왼쪽의 key에 오른쪽의 value값이 들어감
 			data: { "user_id": user_id },
 			success: function(data, textStatus) {
@@ -106,7 +106,7 @@ function fn_nicknameCheck() {
 			type: "post",
 			async: true,
 			// dataType: "text",
-			url: "http://localhost:8090/nemo/duplicate/nickname",
+			url: "/nemo/duplicate/nickname",
 			//왼쪽의 key에 오른쪽의 value값이 들어감
 			data: { "nickname": nickname },
 			success: function(data, textStatus) {
@@ -154,7 +154,7 @@ function fn_emailCheck() {
 			type: "post",
 			async: true,
 			// dataType: "text",
-			url: "http://localhost:8090/nemo/duplicate/email",
+			url: "/nemo/duplicate/email",
 			//왼쪽의 key에 오른쪽의 value값이 들어감
 			data: { "emailId": emailId, "emailDomain": emailDomain },
 			success: function(data, textStatus) {
