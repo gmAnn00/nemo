@@ -704,7 +704,7 @@ function scheduleChk(selScheDate) {
         
         $("#attendCnt").text("현재 참석인원 " + memNum + " 명");
         
-        console.log("attendUserList=", attendUserList);
+        //console.log("attendUserList=", attendUserList);
         if (scheduleInfo.schedule && scheduleInfo.schedule !== "null") {
           // 값이 있는 경우 처리
           $(".scheduleDetailArea").css("display", "block");

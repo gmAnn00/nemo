@@ -390,11 +390,12 @@ div.mySchedule p.contents .fa-location-dot {
     position: relative;
     display: inline-block;
     width: max-content;
+    display: flex;
 }
 .slideContent {
     display: inline-block;
     text-align: center;
-    /*padding: 0 8px;*/
+    padding: 0 15px;
 }
 .memImg {
     display: inline-block;
