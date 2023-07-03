@@ -61,9 +61,9 @@
           <label for="rememberCheck">
             <input type="checkbox" id="saveId" name="checkId" class="rememberCheck" />아이디 저장
           </label>
-          <label for="keepLogin">
+          <!-- <label for="keepLogin">
             <input type="checkbox" id="keepLogin" name="keepLogin" class="keepLogin" />로그인 상태 유지
-          </label>
+          </label>  -->
           <p class="joinFind">
             <a href="${contextPath}/join/agreeForm" class="join">회원가입</a>
             <a href="${contextPath}/search/findidForm"class="find">아이디/비밀번호 찾기</a>

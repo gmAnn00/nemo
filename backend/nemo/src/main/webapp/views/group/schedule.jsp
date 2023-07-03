@@ -196,12 +196,14 @@
 									<div class="titleContent">
 										<div class="detailTop">
 											<h3>일정 상세보기</h3>
-											<div class="partBtn clearfixed">
-													<button type="button" id="joinSchedule" class="button btnPart" onclick="fn_joinSchedule(${param.group_id})">참석</button>
-											</div>
+											<!--   -->
 										</div>
 										<div id="schedule_Title">								
-											<input type="text" id="scheduleTitle" name="scheduleTitle_new" class="scheduleTitle" value="">
+											
+											<div class="partBtn clearfixed">
+												<input type="text" id="scheduleTitle" name="scheduleTitle_new" class="scheduleTitle" value="">
+												<button type="button" id="joinSchedule" class="button btnPart" onclick="fn_joinSchedule(${param.group_id})">참석</button>
+											</div>
 											<div class="dateTime">
 												<input type="datetime-local" id="sche_dateTime_old" value="" name="sche_dateTime_old" style="display:none"/>							
 												<input id="sche_dateTime" type="datetime-local" name="sche_dateTime_new" value="">																				
@@ -237,8 +239,7 @@
 														<form>
 															<input type="text" id="keyword" value=""
 																size="10" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
-															<button type="button"
-																onclick="fn_mod_schedule(); return false;">검색하기</button>
+															<button type="button"onclick="fn_mod_schedule(); return false;" style="padding: 3px">검색하기</button>
 														</form>
 													</div>
 												</div>
@@ -255,7 +256,7 @@
 											</em>
 										</p>
 										<script type="text/javascript"
-											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20b89d26720633d863b9bff60fd0e841&libraries=services"></script>
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea6bda86230b8415e663eb00385b3b43&libraries=services"></script>
 
 									</div>
 								</div>
@@ -369,7 +370,7 @@
 														키워드 : <input type="text" value="종로구" id="keyword2"
 															size="10" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
 														<button type="button"
-															onclick="createKakaoMap2(); return false;">검색하기</button>
+															onclick="createKakaoMap2(); return false;" style="padding: 3px">검색하기</button>
 													</form>
 												</div>
 											</div>
@@ -379,7 +380,7 @@
 										</div>
 
 										<script type="text/javascript"
-											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20b89d26720633d863b9bff60fd0e841&libraries=services"></script>
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea6bda86230b8415e663eb00385b3b43&libraries=services"></script>
 										
 									</div>
 								</div>

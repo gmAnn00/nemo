@@ -148,7 +148,7 @@ function createKakaoMap2() {
       displayPlaces(data);
 
       // 페이지 번호를 표출합니다
-      displayPagination(pagination);
+      //displayPagination(pagination);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       alert("검색 결과가 존재하지 않습니다.");
       return;
@@ -444,7 +444,7 @@ function createKakaoMap3(address) {
       displayPlaces(data);
 
       // 페이지 번호를 표출합니다
-      displayPagination(pagination);
+      //displayPagination(pagination);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       return;
     } else if (status === kakao.maps.services.Status.ERROR) {
