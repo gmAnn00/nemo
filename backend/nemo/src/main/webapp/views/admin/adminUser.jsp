@@ -109,7 +109,7 @@
                             <div class="userListArea">
                                 <div class="userList">
                                     <!-- 테이블 동적생성 해야함 -->
-                                    <table border="1" class="adminUserTbl">
+                                    <table class="adminUserTbl">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>

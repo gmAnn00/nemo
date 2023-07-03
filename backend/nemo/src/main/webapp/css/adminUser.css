@@ -1,50 +1,9 @@
 @charset "utf-8";
-@font-face {
-  font-family: "yg-jalnan";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-/* .adminMemberTitle {
-  font-family: "yg-jalnan";
-  font-size: 40px;
-  font-weight: 800;
-  margin-bottom: 40px;
-  border-bottom: 1px solid black;
-} */
-table {
-  margin-top: 40px;
-}
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-/* body {
-  padding-top: 105px;
-} */
-#contentsArea {
-  display: flex;
-  padding-left: 40px;
-  padding-right: 40px;
-  margin-bottom: 40px;
+.adminUserTbl>thead>tr th {
+    font-size: 0.95em;
+    text-align: center;
 }
 
-#wrap {
-  width: 100%;
-  height: 100%;
-  flex: 3;
-  padding-right: 1.875em;
-}
-.userList {
-  padding: 10px;
-}
-.dataTables_length {
-  margin-bottom: 5px;
-}
-.adminUserTbl {
-  border: 1px solid #ccc;
-  font-size: 14px;
-  text-align: center;
+.adminUserTbl tr td {
+    font-size: 0.9em;
 }

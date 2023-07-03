@@ -8,14 +8,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<head>
 <title>네모: 신고관리</title>
-</head>
+
+	<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
 	 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
         <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
         <link rel="stylesheet" href="${contextPath}/css/common.css" />
         <link rel="stylesheet" href="${contextPath}/css/submenu.css" />
-        <link rel="stylesheet" href="${contextPath}/css/tabmenu.css" />
+        <link rel="stylesheet" href="${contextPath}/css/tabmenuAdmin.css" />
         <link href="${contextPath}/DataTables/datatables.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="${contextPath}/css/adminReport.css" />
         <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
@@ -24,6 +27,7 @@
         <script src="${contextPath}/js/tabmenu.js"></script>
         <script src="${contextPath}/DataTables/datatables.min.js"></script>
         <script src="${contextPath}/js/adminReport.js"></script>
+ </head>       
 <body>
 
 <jsp:include page="../header.jsp" flush="true"></jsp:include>
@@ -112,7 +116,7 @@
                                             <div class="list">
                                                 <table class="adminGroupTbl">
                                                     <thead>
-                                                        <tr>
+                                                        <tr text-align="center">
                                                             <th>No</th>
                                                             <th>소모임ID</th>
                                                             <th>소모임명</th>

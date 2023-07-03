@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* 탭 부분 */
+
+.tab_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-slider--nav {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.tab-slider--tabs {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+    height: 35px;
+    user-select: none;
+}
+
+.tab-slider--trigger {
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    margin-right: 20px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    display: inline-block;
+    transition: color 250ms ease-in-out;
+    user-select: none;
+}
+.tab-slider--trigger.active {
+    color: black;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+.tab-slider--body {
+    margin-bottom: 20px;
+}
+
+.adminGroupTbl>thead>tr th,
+.adminMemberTbl>thead>tr th {
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.adminGroupTbl tr td,
+.adminMemberTbl tr td {
+    font-size: 0.9em;
+}

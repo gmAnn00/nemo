@@ -482,17 +482,22 @@ table.dataTable td {
 }
 .dataTables_wrapper .dataTables_length {
   float: left;
+  font-size: 0.85em;
 }
 .dataTables_wrapper .dataTables_length select {
-  border: 1px solid #aaa;
+  /* border: 1px solid #aaa;*/
   border-radius: 3px;
   padding: 5px;
   background-color: transparent;
   padding: 4px;
+  margin:0 4px;
 }
 .dataTables_wrapper .dataTables_filter {
   float: right;
   text-align: right;
+  margin-bottom: 20px;
+  margin-right:5px;
+  font-size: 0.89em;
 }
 .dataTables_wrapper .dataTables_filter input {
   border: 1px solid #aaa;
@@ -505,11 +510,13 @@ table.dataTable td {
   clear: both;
   float: left;
   padding-top: 0.755em;
+  font-size:0.8em;
 }
 .dataTables_wrapper .dataTables_paginate {
   float: right;
   text-align: right;
   padding-top: 0.25em;
+  font-size: 0.8em;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   box-sizing: border-box;
@@ -695,6 +702,9 @@ table.dataTable td {
 .dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable,
 .dataTables_wrapper.no-footer div.dataTables_scrollBody > table {
   border-bottom: none;
+}
+table.dataTable {
+	margin:10px 0;
 }
 .dataTables_wrapper:after {
   visibility: hidden;

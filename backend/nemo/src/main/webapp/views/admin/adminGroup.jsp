@@ -116,7 +116,7 @@
             </div> -->
                         <div class="groupListArea">
                             <div class="groupList">
-                                <table border="1" class="adminGroupTbl">
+                                <table class="adminGroupTbl">
                                     <thead>
                                         <tr>
                                         	<th>No</th>

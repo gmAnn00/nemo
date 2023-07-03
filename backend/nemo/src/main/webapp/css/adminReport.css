@@ -5,3 +5,9 @@ table {
 .list {
     position: static!important;
 }
+
+.adminGroupTbl>thead>tr th,
+.adminMemberTbl>thead>tr th {
+    font-size: 0.9em;
+    text-align: center;
+}
