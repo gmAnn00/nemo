@@ -1,5 +1,6 @@
 package nemo.service.qna;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,19 @@ public class QnaService {
 		atricleMap.put("totArticles", totArticles);
 		return atricleMap;
 		
+	}
+	public Map searchQnA(Map pagingMap, String filter,String keyword,boolean isAdmin,String user_id){
+		Map articleMap=new HashMap();
+		int totArticles=0;
+		List<QnaVO> articlesList=new ArrayList<QnaVO>();
+		
+		totArticles=qnaDAO.searchTotArticles(filter, keyword, isAdmin, user_id);
+		articlesList=qnaDAO.searchArticlesAdmin(pagingMap, filter,keyword, isAdmin, user_id);
+			
+		
+		articleMap.put("articlesList", articlesList);
+		articleMap.put("totArticles", totArticles);
+		return articleMap;
 	}
 	
 	//리스트 부분
