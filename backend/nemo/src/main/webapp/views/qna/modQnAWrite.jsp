@@ -110,7 +110,7 @@
                 </c:if>
                 <!-- 제목 -->
                 <div class="titleArea">
-                	<input type="text" name="title" id="writeTitle" class="writeTitle" value=${article.title}></input>
+                	<input type="text" name="title" id="writeTitle" class="writeTitle" value="${article.title}"></input>
               	</div>
                </div>
               <!-- 글쓰는 영역 -->
