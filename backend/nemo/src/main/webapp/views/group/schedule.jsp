@@ -236,7 +236,7 @@
 													<div>
 														<form>
 															<input type="text" id="keyword" value=""
-																size="15" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
+																size="10" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
 															<button type="button"
 																onclick="fn_mod_schedule(); return false;">검색하기</button>
 														</form>

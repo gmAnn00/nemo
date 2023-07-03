@@ -690,6 +690,15 @@ function scheduleChk(selScheDate) {
         let scheduleInfo = JSON.parse(data);
         let attendUserList = JSON.parse(scheduleInfo.attendUserJson);
         memNum = attendUserList.length;
+        
+        if(memNum==0) {
+		  $(".btnEventPrev").hide();
+	      $(".btnEventNext").hide();
+      } else {
+		  $(".btnEventPrev").show();
+	      $(".btnEventNext").show();      
+	  }
+        
         $("#attendCnt").text("현재 참석인원 " + memNum + " 명");
         
         console.log("attendUserList=", attendUserList);
@@ -845,7 +854,15 @@ window.onload = function () {
     console.log("sliIndx: " + slideIndx);
     console.log("mod: " + mod);
     console.log("quotient: " + quotient);
-
+/*
+	if(memNum==0) {
+		  $(".btnEventPrev").hide();
+	      $(".btnEventNext").hide();
+      } else {
+		  $(".btnEventPrev").show();
+	      $(".btnEventNext").show();      
+	  }
+*/
     if (memNum <= viewNum) {
       // 총멤버수가 한번에 보여지는 수보다 작을떄
       $(".fa-solid").removeClass("btnActive");
@@ -857,7 +874,8 @@ window.onload = function () {
         cursor: "default",
         color: "#999",
       });
-    }
+    } 
+    
     if (slideIndx == 0 && quotient > 0) {
       $(".btnEventPrev").css({
         cursor: "default",
