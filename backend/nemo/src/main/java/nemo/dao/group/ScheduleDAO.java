@@ -368,7 +368,7 @@ public class ScheduleDAO {
 			//pstmt.setString(2, user_id);
 			//pstmt.setDate(2, schedule);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				UserVO userVO = new UserVO();
 				String user_id = rs.getString("user_id");
 				String password = rs.getString("password");
