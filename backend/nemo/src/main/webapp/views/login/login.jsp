@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${contextPath}/css/common.css" />
     <link rel="stylesheet" href="${contextPath}/css/normalize.css" />
     <link rel="stylesheet" href="${contextPath}/css/login.css" />
+    <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
     
 </head>
 <body>
