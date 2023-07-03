@@ -140,7 +140,7 @@
 		                                                    <div class="hidden_menu">
 		                                                    
 		                                                        <ul class="hidden_menu_bar">
-		                                                            <li><a href="${contextPath}/group/manager/member/report.do?user_id=${user.user_id}&group_id=${param.group_id}">신고</a></li>
+		                                                            <li><a href="${contextPath}/report/member?accused_id=${user.user_id}&group_id=${param.group_id}">신고</a></li>
 		                                                            <li><a href="${contextPath}/group/manager/member/mandate.do?user_id=${user.user_id}&group_id=${param.group_id}">위임</a></li>
 		                                                            <li><a href="${contextPath}/group/manager/member/exile.do?user_id=${user.user_id}&group_id=${param.group_id}">추방</a></li>
 		                                                        </ul>

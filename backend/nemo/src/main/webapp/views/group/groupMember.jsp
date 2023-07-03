@@ -173,7 +173,7 @@
 	                                                        		<li><a href="${contextPath}/group/member/delete?group_id=${param.group_id}">탈퇴</a></li>
 	                                                        	</c:if>
 	                                                            <c:if test="${user.user_id != user_id}">
-	                                                            	<li><a href="${contextPath}/group/manager/member/report.do?user_id=${user.user_id}">신고</a></li>
+	                                                            	<li><a href="${contextPath}/report/member?accused_id=${user.user_id}&group_id=${param.group_id}">신고</a></li>
 	                                                            </c:if>
 	                                                        </ul>
 	                                                 
