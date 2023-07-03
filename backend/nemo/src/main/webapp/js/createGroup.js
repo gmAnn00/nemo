@@ -351,7 +351,7 @@ function readImage(input) {
 
 function popupImgFileRm() {
   $("#grp_img").val("");
-  document.getElementById("previewImage").src = "../../images/tmp01.jpg";
+  document.getElementById("previewImage").src = "../../images/sea.jpg";
 }
 
 // input file에 change 이벤트 부여

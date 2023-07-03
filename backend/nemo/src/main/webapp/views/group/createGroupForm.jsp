@@ -60,7 +60,7 @@ function fn_app_st() {
         <div class="uploadArea">
           <div class="imgCrop">
             <img
-              src="${contextPath}/images/tmp01.jpg"
+              src="${contextPath}/images/sea.jpg"
               alt=""
               class="grpImg"
               id="previewImage"
@@ -209,7 +209,7 @@ function fn_app_st() {
                   name="createCancleBtn"
                   id="createCancleBtn"
                   class="buttonCancle"
-                  value="만들기취소"
+                  value="다시 입력"
                 />
               </div>
 

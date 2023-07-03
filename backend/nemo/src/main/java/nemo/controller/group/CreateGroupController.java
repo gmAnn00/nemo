@@ -58,7 +58,7 @@ public class CreateGroupController extends HttpServlet {
 		GROUP_DEF_IMG = this.getClass().getResource("").getPath();
 		GROUP_DEF_IMG = GROUP_DEF_IMG.substring(1, GROUP_DEF_IMG.indexOf(".metadata"));
 		GROUP_DEF_IMG = GROUP_DEF_IMG.replace("/", "\\");
-		GROUP_DEF_IMG += "nemo\\src\\main\\webapp\\images\\free-icon-group-8847475.png";
+		GROUP_DEF_IMG += "nemo\\src\\main\\webapp\\images\\sea.jpg";
 		
 		GroupVO groupVO = new GroupVO();
 		String user_id = "";
@@ -109,7 +109,7 @@ public class CreateGroupController extends HttpServlet {
 			String sub_name = groupMap.get("sub_name");
 			String grp_img =null;
 			if(groupMap.get("grp_img")==null) {
-				grp_img="free-icon-group-8847475.png";
+				grp_img="sea.jpg";
 			}else {
 				grp_img = groupMap.get("grp_img");
 			}

@@ -60,7 +60,7 @@ public class JoinController extends HttpServlet {
 		USER_IMG_DEF = this.getClass().getResource("").getPath();
 		USER_IMG_DEF = USER_IMG_DEF.substring(1, USER_IMG_DEF.indexOf(".metadata"));
 		USER_IMG_DEF = USER_IMG_DEF.replace("/", "\\");
-		USER_IMG_DEF += "nemo\\src\\main\\webapp\\images\\dall.png";
+		USER_IMG_DEF += "nemo\\src\\main\\webapp\\images\\pingoo.jpg";
 		
 		if(action.equals("/agreeForm")) { //약관동의
 			
