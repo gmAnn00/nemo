@@ -13,10 +13,7 @@
 
 <link rel="shortcut icon" href="${contextPath}/images/favicon.png" />
     <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d4603cd1d.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
     <script src="${contextPath}/js/header.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${contextPath}/js/join.js"></script>

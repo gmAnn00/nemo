@@ -22,7 +22,7 @@
         <link href="${contextPath}/DataTables/datatables.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="${contextPath}/css/adminReport.css" />
         <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
-        <script src="https://kit.fontawesome.com/97cbadfe25.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f9a2702e84.js" crossorigin="anonymous"></script>
         <script src="${contextPath}/js/header.js"></script>
         <script src="${contextPath}/js/tabmenu.js"></script>
         <script src="${contextPath}/DataTables/datatables.min.js"></script>
