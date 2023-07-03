@@ -1269,6 +1269,7 @@ function fn_ajax2(year, month) {
       //data: { "jsonInfo": jsonInfo },
       success: function (data, textStatus) {
         let jsonInfo = JSON.parse(data);
+        
         console.log(jsonInfo);
         resolve(jsonInfo);
         /*
