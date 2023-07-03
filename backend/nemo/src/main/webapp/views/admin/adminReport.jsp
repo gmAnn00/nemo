@@ -138,8 +138,8 @@
 																<c:forEach var="group" items="${groupList}" varStatus="status">
 																	<tr align="center">
 																		<td>${status.count}</td>
-																		<td>${group.grpRepVO.grp_id}</td>
-																		<td>${group.grpRepVO.groupVO.grp_name}</td>
+																		<td><a href="${contextPath}/group/groupMain?group_id=${group.grpRepVO.grp_id}">${group.grpRepVO.grp_id}</a></td>
+																		<td><a href="${contextPath}/group/groupMain?group_id=${group.grpRepVO.grp_id}">${group.grpRepVO.groupVO.grp_name}</a></td>
 																		<td>${group.grpRepVO.groupVO.grp_mng}</td>
 																		<td>${group.grpRepVO.reporter_id}</td>																		
 																		<td>${group.repCnt}</td>

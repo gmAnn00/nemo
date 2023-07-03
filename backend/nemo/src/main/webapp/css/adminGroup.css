@@ -69,3 +69,7 @@ table {
 .adminGroupTbl tr td {
     font-size: 0.9em;
 }
+
+.adminGroupTbl tr>td>a:hover {
+	color:#fb3;
+}

@@ -144,9 +144,9 @@
                                     	 	<c:forEach var="group" items="${groupList}" varStatus="status">
                                     	 		<tr align="center">
                                     	 			<td>${status.count}</td>
-                                    	 			<td>${group.groupVO.grp_id}</td>
+                                    	 			<td><a href="${contextPath}/group/groupMain?group_id=${group.groupVO.grp_id}">${group.groupVO.grp_id}</a></td>
                                     	 			<td>${group.groupVO.grp_mng}</td>
-                                    	 			<td>${group.groupVO.grp_name}</td>
+                                    	 			<td><a href="${contextPath}/group/groupMain?group_id=${group.groupVO.grp_id}">${group.groupVO.grp_name}</a></td>
                                     	 			<td>${group.currentMemNO}</td>
                                     	 			<td>${group.groupVO.mem_no}</td>
                                     	 			<td>${group.groupVO.create_date}</td>

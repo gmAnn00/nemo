@@ -154,7 +154,7 @@
 					                        		<c:forEach begin="1" end="${article.level-1}" step="1">
 									               		<span style="padding-left: 10px"></span>
 					                        		</c:forEach>
-					                        		└ [답변]<a href="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
+					                        		└ Re : <a href="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>
 					                        	</c:when>
 					                        	<c:otherwise>
 					                        		<a href="${contextPath}/viewQna/QnAView.do?qna_id=${article.qna_id}">${article.title}</a>

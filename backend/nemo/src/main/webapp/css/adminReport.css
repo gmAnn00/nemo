@@ -11,3 +11,7 @@ table {
     font-size: 0.9em;
     text-align: center;
 }
+
+.adminGroupTbl tr>td>a:hover {
+	color:#fb3;
+}
