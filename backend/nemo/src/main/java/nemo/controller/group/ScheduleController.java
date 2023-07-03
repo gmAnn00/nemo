@@ -138,7 +138,10 @@ public class ScheduleController extends HttpServlet {
 		        scheduleObject.addProperty("sche_cont", scheduleVO.getSche_cont());
 		        scheduleObject.addProperty("location", scheduleVO.getLocation());
 		        scheduleObject.addProperty("isAttend", isAttend);
-		        scheduleObject.addProperty("attendUserJson", attendUserJson);		        
+		        scheduleObject.addProperty("attendUserJson", attendUserJson);	
+		       
+		       // System.out.println("attendUserList="+attendUserList);
+		        //System.out.println("attendUserJson="+ attendUserJson);
 		       
 		        String ScheduleInfo = gson.toJson(scheduleObject);
 		        out.print(ScheduleInfo);

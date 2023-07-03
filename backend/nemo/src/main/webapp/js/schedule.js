@@ -689,6 +689,9 @@ function scheduleChk(selScheDate) {
       if (data) {
         let scheduleInfo = JSON.parse(data);
         let attendUserList = JSON.parse(scheduleInfo.attendUserJson);
+        //console.log("scheduleInfo=", scheduleInfo);
+        //console.log("scheduleInfo.attendUserJson=",scheduleInfo.attendUserJson);
+        //console.log("attendUserList=",attendUserList);
         memNum = attendUserList.length;
         
         if(memNum==0) {
@@ -1255,6 +1258,7 @@ function fn_ajax2(year, month) {
     let locationURL = location.href;
     let searchParams = new URL(locationURL).searchParams;
     let group_id = searchParams.get("group_id");
+    console.log("group_id=", group_id);
     console.log("ajaxMonth=", ajaxMonth);
     $.ajax({
       type: "get",
