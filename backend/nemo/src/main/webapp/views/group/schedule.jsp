@@ -326,9 +326,7 @@
 										<h3>상세 일정 등록하기</h3>
 									</div>
 									<div class="scheduleTitle">
-										<textarea name="sche_title" placeholder="제목을 입력하세요"
-											class="scheduleTitleText" rows="1" required>
-										</textarea>
+										<textarea name="sche_title" placeholder="제목을 입력하세요"class="scheduleTitleText" rows="1" required></textarea>
 										<div class="dateTime">
 											<input type="datetime-local" name="schedule"
 												id="myDateTimeInput" required/>
@@ -347,8 +345,7 @@
 										document.getElementById("myDateTimeInput").min = koreanDateTime;
 										</script>
 										<div class="contentDetail">
-											<textarea name="sche_cont" placeholder="내용을 입력하세요"
-												class="contentDetailText" rows="10" required></textarea>
+											<textarea name="sche_cont" placeholder="내용을 입력하세요"class="contentDetailText" rows="10" required></textarea>
 										</div>
 									</div>
 								</div>
@@ -370,7 +367,7 @@
 												<div>
 													<form>
 														키워드 : <input type="text" value="종로구" id="keyword2"
-															size="15" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
+															size="10" placeholder="만남 장소" onkeydown="return handleOuterFormKeyDown(event);">
 														<button type="button"
 															onclick="createKakaoMap2(); return false;">검색하기</button>
 													</form>
