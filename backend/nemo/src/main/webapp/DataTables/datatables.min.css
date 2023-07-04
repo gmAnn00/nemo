@@ -486,7 +486,7 @@ table.dataTable td {
 }
 .dataTables_wrapper .dataTables_length select {
   /* border: 1px solid #aaa;*/
-  border-radius: 3px;
+  /*border-radius: 3px;*/
   padding: 5px;
   background-color: transparent;
   padding: 4px;
@@ -501,7 +501,7 @@ table.dataTable td {
 }
 .dataTables_wrapper .dataTables_filter input {
   border: 1px solid #aaa;
-  border-radius: 3px;
+  /*border-radius: 3px;*/
   padding: 5px;
   background-color: transparent;
   margin-left: 3px;
