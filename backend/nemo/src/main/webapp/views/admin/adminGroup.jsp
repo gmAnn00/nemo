@@ -151,7 +151,7 @@
                                     	 			<td>${group.groupVO.mem_no}</td>
                                     	 			<td>${group.groupVO.create_date}</td>
                                     	 			<td>${group.reportCnt}</td>
-                                    	 			<td><a role="button" class="button" href="#" onclick="fn_delete(${group.groupVO.grp_id})">삭제</a></td>
+                                    	 			<td><button role="button" class="button" onclick="fn_Grpdelete(${group.groupVO.grp_id})">삭제</button></td>
                                     	 		</tr>
                                     	 	</c:forEach>
                                     	</c:when>

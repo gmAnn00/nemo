@@ -144,7 +144,7 @@
 																		<td>${group.grpRepVO.reporter_id}</td>																		
 																		<td>${group.repCnt}</td>
 																		<td>${group.grpRepVO.rep_date}</td>
-																		<td><a role="button" class="button" href="#" onclick="fn_Grpdelete(${group.grpRepVO.grp_id})">삭제</a></td>
+																		<td><a role="button" class="button" onclick="fn_Grpdelete(${group.grpRepVO.grp_id})">삭제</a></td>
 																	</tr>
 																</c:forEach>
 															</c:when>
@@ -188,7 +188,7 @@
 																	<td>${user.repCnt}</td>
 																	<td>${user.userRepVO.reporter_id}</td>
 																	<td>${user.userRepVO.rep_date}</td>
-																	<td><a role="button" class="button" href="#" onclick="fn_Userdelete('${user.userRepVO.accused_id}')">삭제</a></td>
+																	<td><button role="button" class="button" onclick="fn_Userdelete('${user.userRepVO.accused_id}')">삭제</button></td>
 																</tr>
 															</c:forEach>
 														</c:when>

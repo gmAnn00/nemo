@@ -137,7 +137,7 @@
 															<td>${user.userVO.nickname}</td>
 															<td>${user.userVO.join_date}</td>
 															<td>${user.reportCnt}</td>
-															<td><a role="button" class="button" href="#" onclick="fn_delete('${user.userVO.user_id}')">삭제</a></td>
+															<td><button role="button" class="button" onclick="fn_delete('${user.userVO.user_id}')">삭제</button></td>
 															
 														</tr>
 													</c:forEach>
