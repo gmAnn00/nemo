@@ -252,13 +252,17 @@ public class GroupSearchDAO {
 			int start = (section-1)*100+(pageNum-1)*10;
 			int cnt = 10;
 			
-			if(section > total/100 && pageNum > (total/100)/10 + 1) {
+			if(section > total/100 && pageNum > (total%100)/10 + 1) {
 				// 마지막 섹션의 마지막 페이지일때
+				
 				cnt = total%10;
 			}else {
 				cnt = 10;
 			}
-
+			System.out.println();
+			System.out.println("cnt=" + cnt);
+			System.out.println("pageNum="+pageNum);
+			System.out.println("(total/100)/10 + 1="+(total%100)/10 + 1);
 			System.out.println("resultList 개수="+resultList.size());
 			resultListSlice = resultList.stream().skip(start).limit(cnt).collect(Collectors.toList());
 			System.out.println("resultListSlice 개수=" + resultListSlice.size());
