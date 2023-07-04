@@ -1,5 +1,8 @@
 package nemo.vo.user;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Date;
 
 public class UserVO {
@@ -150,11 +153,26 @@ public class UserVO {
 	}
 
 	public String getUser_img() {
+		try {
+			if (user_img != null && user_img.length() != 0) {
+				user_img = URLDecoder.decode(user_img, "utf-8");
+			}
+		} catch (Exception e) {
+			System.out.println("이미지 가져오는 중 에러");
+		}
 		return user_img;
 	}
 
 	public void setUser_img(String user_img) {
-		this.user_img = user_img;
+		try {
+			if (user_img != null && user_img.length() != 0) {
+				this.user_img = URLEncoder.encode(user_img, "utf-8");
+			} else {
+				this.user_img = null;
+			}
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 저장 중 에러");
+		}
 	}
 
 	public int getAdmin() {
