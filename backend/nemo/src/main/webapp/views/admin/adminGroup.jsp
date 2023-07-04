@@ -40,15 +40,7 @@
                     <div class="sc2_menu">
                         <h2 class="sc2_menu_title">관리자</h2>
                         <ul class="sc2_menu_list">
-                            <li>
-                                <a href="${contextPath}/adminGroup">
-                                    <div class="sc2_icon_menu">
-                                        <div class="menu_submenu_name submenu_select"><span>소모임 관리</span></div>
-                                        <i class="fa-solid fa-minus submenu_select"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
+                        	<li>
                                 <a href="${contextPath}/adminUser">
                                     <div class="sc2_icon_menu">
                                         <div class="menu_submenu_name"><span>회원 관리</span></div>
@@ -56,6 +48,14 @@
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="${contextPath}/adminGroup">
+                                    <div class="sc2_icon_menu">
+                                        <div class="menu_submenu_name submenu_select"><span>소모임 관리</span></div>
+                                        <i class="fa-solid fa-minus submenu_select"></i>
+                                    </div>
+                                </a>
+                            </li>                            
                             <li>
                                 <a href="${contextPath}/adminReport">
                                     <div class="sc2_icon_menu">
