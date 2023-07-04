@@ -127,11 +127,14 @@
 .noticeTr {
 	background-color:#f7f7f7;
 }
-.boardList tr:not(:last-child){
+.boardList tr{
   margin: 10px;
   height: 30px;
-  border-bottom: 1px solid #f0f0f0; 
   padding: 10px;
+}
+
+.boardList tr:not(:last-child){
+  border-bottom: 1px solid #f0f0f0; 
 }
 .boardList tr:first-child {
 	height: 40px;

@@ -73,6 +73,10 @@
   /* border-bottom: 2px solid #ccc; */
   padding: 10px;
 }
+
+.boardList tr:not(:last-child){
+  border-bottom: 1px solid #f0f0f0; 
+}
 .boardList tr:first-child {
 	height: 40px;
 }
