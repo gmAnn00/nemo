@@ -1204,11 +1204,14 @@ window.onload = function () {
 
 function delSchedule(group_id) {
   //2023-07-01
-  let sendDate = date.substring(2, 4) + "/" + date.substring(5, 7) + "/" + date.substring(8, 10);
-  let sendTime = time;
-  //console.log(schedule);
-  //href="${contextPath}/group/schedule/delSchedule?group_id=${param.group_id}&schedule=${}"
-  location.href = "/nemo/group/schedule/delSchedule?group_id=" + group_id + "&date=" + sendDate + "&time=" + sendTime;
+  let result = confirm("삭제하시겠습니까?")
+  if(result) {
+	let sendDate = date.substring(2, 4) + "/" + date.substring(5, 7) + "/" + date.substring(8, 10);
+    let sendTime = time;
+    //console.log(schedule);
+    //href="${contextPath}/group/schedule/delSchedule?group_id=${param.group_id}&schedule=${}"
+    location.href = "/nemo/group/schedule/delSchedule?group_id=" + group_id + "&date=" + sendDate + "&time=" + sendTime;
+  }
 }
 
 function toSchedule(obj, group_id) {
