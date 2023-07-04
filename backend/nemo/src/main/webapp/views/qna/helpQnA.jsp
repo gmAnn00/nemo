@@ -80,7 +80,7 @@
 	                <a href="${contextPath}/viewQna">
 	                  <div class="sc2_icon_menu">
 	                    <div class="menu_submenu_name submenu_select"><span>Q&A</span></div>
-	                    <i class="fa-solid fa-angle-right menu_angle"></i>
+	                    <i class="fa-solid fa-minus submenu_select"></i>
 	                  </div>
 	                </a>
 	              </li>
