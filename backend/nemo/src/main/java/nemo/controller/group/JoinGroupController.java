@@ -46,19 +46,20 @@ public class JoinGroupController extends HttpServlet {
 		if(isMember) {
 			out.print("<script>");
 			out.print("alert('이미 가입한 소모임입니다.');");
-			out.print("location.href='/nemo/mypage/myGroupList';");
+			out.print("location.href='/nemo/group/groupMain?group_id="+group_id_str+"';");
+			//out.print("location.href='/nemo/mypage/myGroupList';");
 			out.print("</script>");
 		} else if(!isMember && isWait) {
 			joinGroupService.joinWaitList(user_id, group_id);
 			out.print("<script>");
 			out.print("alert('소모임 가입이 신청되었습니다.');");
-			out.print("location.href='/nemo/group/groupInfo?group_id="+group_id_str+"';");
+			out.print("location.href='/nemo/mypage/myGroupList';");
 			out.print("</script>");
 		}else if(!isMember && !isWait) {
 			joinGroupService.joinGroup(user_id, group_id);
 			out.print("<script>");
 			out.print("alert('소모임에 가입했습니다.');");
-			out.print("location.href='/nemo/mypage/myGroupList';");
+			out.print("location.href='/nemo/group/groupMain?group_id="+group_id_str+"';");
 			out.print("</script>");
 		}
 		
