@@ -140,7 +140,7 @@ public class GroupMangerController extends HttpServlet{
 				String user_id=request.getParameter("user_id");
 				userVO.setUser_id(user_id);
 				groupMangerService.approveUser(userVO);
-				groupMangerService.approveListUpdate();
+				groupMangerService.approveListUpdate(group_id);
 				out = response.getWriter();
 				out.print("<script>");
 				out.print("alert('가입을 승인했습니다');");

@@ -44,8 +44,8 @@ public class GroupMangerService {
 	}
 	
 	//승인 후 리스트 업데이트
-	public void approveListUpdate() {
-		groupMangerDAO.approveListUpdate();
+	public void approveListUpdate(int grp_id) {
+		groupMangerDAO.approveListUpdate(grp_id);
 	}
 	
 	//거절 메소드

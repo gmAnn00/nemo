@@ -259,14 +259,15 @@ public class GroupMangerDAO {
 	 }
 	 
 	 //가입 승인 후 waitlist update
-	 public void approveListUpdate() {	
+	 public void approveListUpdate(int grp_id) {	
 		try {
         	conn = dataFactory.getConnection();
-        	String query = "DELETE FROM waitlist_tbl WHERE user_id IN (SELECT user_id FROM grpjoin_tbl)";			
+        	String query = "DELETE FROM waitlist_tbl WHERE user_id IN (SELECT user_id FROM grpjoin_tbl WHERE grp_id=?)";			
         	System.out.println(query);
         	
         	pstmt = conn.prepareStatement(query);
-			pstmt.executeUpdate();
+			pstmt.setInt(1, grp_id);
+        	pstmt.executeUpdate();
 			
 			pstmt.close();
 			conn.close();
