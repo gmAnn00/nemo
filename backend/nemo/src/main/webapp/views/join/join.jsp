@@ -215,7 +215,7 @@
           </div>
           
           <div class="submitCancel">
-            <button type="submit" class="button">가입하기</button>
+            <a href="javascript:void(0)" type="submit" class="button" onclick="fnJoin()">가입하기</a>
             <!-- <a href="/views/interest.jsp" role="button" class="button" onclick="fnJoin();"
               >가입하기</a
             > -->

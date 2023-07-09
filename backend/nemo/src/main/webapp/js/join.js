@@ -175,4 +175,73 @@ function fn_emailCheck() {
 	}
 }
 
-
+function fnJoin(){
+	let user_id=$("#user_id").val();
+	let password=$("#password").val();
+	let passwordCheck=$("#passwordCheck").val();
+	let name=$("#name").val();
+	let nickname=$("#nickname").val();
+	let zipcode=$("#zipcode").val();
+	let birthdate=$("#birthdate").val();
+	let phone=$("#phone").val();
+	
+	let emailReg= /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+	let emailId=$("#emailId").val();
+	let emailDomain=$("#emailDomain").val();
+	let email="";
+	
+	if(!user_id){
+		alert("ID를 입력해주세요");
+		$("#user_id").focus();
+		return false;
+	}
+	if(!password){
+		alert("비밀번호를 입력해주세요");
+		$("#password").focus();
+		return false;
+	}
+	if(!passwordCheck){
+		alert("비밀번호 확인을 입력해주세요");
+		$("#passwordCheck").focus();
+		return false;
+	}
+	if(!nickname){
+		alert("닉네임을 입력해주세요");
+		$("#nickname").focus();
+		return false;
+	}
+	if(!zipcode){
+		alert("우편번호를 입력해주세요");
+		$("#findZipcode").focus();
+		return false;
+	}
+	if(!birthdate){
+		alert("생년월일 입력해주세요");
+		$("#birthdate").focus();
+		return false;
+	}
+	if(!phone){
+		alert("전화번호를 입력해주세요");
+		$("#phone").focus();
+		return false;
+	}
+	if(!emailId){
+		alert("이메일을 입력해주세요");
+		$("#emailId").focus();
+		return false;
+	}
+	if(!emailDomain){
+		alert("이메일 도메인을 입력해주세요");
+		$("#emailDomain").focus();
+		return false;
+	}
+	mail= emailId+"@"+emailDomain;
+	
+	if(!emailReg.test(mail)){
+		alert("이메일을 형식에 맞게 입력해주세요");
+		$("#emailDomain").focus();
+		return false;
+	}
+	
+	document.getElementById('frm').submit();
+}
