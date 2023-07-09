@@ -15,6 +15,7 @@ form {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  width: 450px;
 }
 form div {
   display: flex;
@@ -61,10 +62,13 @@ form input {
     width: 50px;
 }
 
-/* 비밀번호 일치 */
-.alert {
-  font-size: 12px;
+/* 중복확인 */
+.alert {  
+  font-size: 13px;
+  margin: 0px;
+  padding-top: 10px;
 }
+/* 비밀번호 일치 */
 .alertSuccess {
   color: var(--blue-color);
 }
@@ -72,18 +76,14 @@ form input {
   color: var(--heart-color);
 }
 
-/* 중복확인 */
+/*
 form .check {
   width: 100px;
   position: absolute;
   top: 22px;
   right: 0px;
-  /* padding: 10px; */
-}
-.resultMsg {
-  margin: 0px;
-  padding-top: 5px;
-}
+}*/
+
 form .findZipcode {
   width: 150px;
   position: absolute;
@@ -127,11 +127,6 @@ form .emailCheck {
 .submitCancel .button {
   margin-right: 30px;
   flex: 2;
-}
-form input[type="checkbox"] {
-  display: inline-block;
-  position: relative;
-  top: 10px;
 }
 form button[class="emailCheckBtn"] {
   display: inline-block;

@@ -67,7 +67,7 @@ form {
   margin: 0 auto;
   width: 450px;
 }
-form div {
+form>div {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -89,25 +89,25 @@ form input[id="user_id"],
 input[id="nickname"] {
   width: 70%;
 }
-/* 비밀번호 일치 */
-.alert {
-  font-size: 12px;
+/* 중복확인 */
+.alert {  
+  padding-top: 10px;
+  font-size: 13px;
 }
+/* 비밀번호 일치 */
 .alertSuccess {
   color: var(--blue-color);
 }
 .alertDanger {
   color: var(--heart-color);
 }
-
-/* 중복확인 */
+/*
 form .check {
   width: 100px;
   position: absolute;
   top: 22px;
   right: 0px;
-  /* padding: 10px; */
-}
+}*/
 form .findZipcode {
   width: 150px;
   position: absolute;
