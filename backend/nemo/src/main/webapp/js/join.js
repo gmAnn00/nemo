@@ -148,6 +148,7 @@ function fn_pwdDupCheck() {
         if (password != "" || passwordCheck != "") {
             if (password == passwordCheck) {
                 allPwdCheck = true;
+                pwdCheck = true;
                 $("#alertSuccess").show();
                 $("#alertDanger").hide();
                 $("#submit").removeAttr("disabled");
@@ -176,6 +177,7 @@ function fn_nicknameCheck() {
     }
 
     if (nickname == nicknameVO) {
+		nickCheck = true;
         $("#resultMsgNick").show();
         $("#resultMsgNick").html("지금 사용하고 있는 닉네임입니다.");
         $("#resultMsgNick").css("color", "#3384ff");
@@ -206,6 +208,7 @@ function fn_nicknameCheck() {
     }
 }
 
+//전화번호 유효성체크
 function fn_phoneCheck() {
     phoneCheck = false;
     let phone = $("#phone").val();
@@ -218,20 +221,25 @@ function fn_phoneCheck() {
         $("#resultMsgPhone").hide();
         phoneCheck = true;
     }
-}
+} //end of fn_phoneCheck();
+
+
 function fn_emailSelect() {
     var emailDomain2 = $("#emailDomain");
     console.log("수정emailDomain=", emailDomain2.val());
     if ($("#domainList").val() == "self") {
         emailDomain2.val("");
         emailDomain2.prop("readonly", false);
+        emailDomain2.removeClass('readOnly');
     } else {
+
         emailDomain2.val($("#domainList").val());
         emailDomain2.prop("readonly", true);
+        emailDomain2.addClass('readOnly');
     }
 }
 
-//이메일 중복체크
+//이메일 중복체크 및 유효성 체크
 function fn_emailCheck() {
     emailCheck = false;
     let emailReg = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -252,6 +260,7 @@ function fn_emailCheck() {
     mail = emailId + "@" + emailDomain;
 
     if (emailId == emailIdVO && emailDomain == emailDomainVO) {
+		emailCheck = true;
         $("#resultMsgEmail").show();
         $("#resultMsgEmail").html("지금 사용하고 있는 이메일입니다.");
         $("#resultMsgEmail").css("color", "#3384ff");
@@ -315,6 +324,58 @@ function fnJoin() {
             return false;
         }
         if (!pwdCheck || !allPwdCheck) {
+            alert("비밀번호를 다시 입력해주세요");
+            $("#password").focus();
+            return false;
+        }
+        if (!nickCheck) {
+            alert("닉네임을 다시 입력해주세요");
+            $("#nickname").focus();
+            return false;
+        }
+        if (!phoneCheck) {
+            alert("전화번호를 다시 입력해주세요");
+            $("#phone").focus();
+            return false;
+        }
+        if (!emailCheck) {
+            alert("이메일을 다시 입력해주세요");
+            $("#emailId").focus();
+            return false;
+        }
+    }
+    document.getElementById("frm").submit();
+}
+
+function fnModify() {
+    let isEmpty = false;
+    $("#frm")
+        .find('input[class!="ignoreFind"]')
+        .each(function () {
+            $(this).removeClass("isEmpty");
+            if (!$(this).val()) {
+                isEmpty = true;
+                $(this).addClass("isEmpty");
+            }
+        });
+
+    if (isEmpty) {
+        alert("필수항목을 입력해주세요");
+        return false;
+    } else if (!isEmpty) {
+        let emailReg = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+        let emailId = $("#emailId").val();
+        let emailDomain = $("#emailDomain").val();
+        let email = "";
+        
+        fn_phoneCheck();
+        fn_emailCheck();
+        fn_nicknameCheck();
+        fn_emailCheck();
+        
+        if (!pwdCheck || !allPwdCheck) {
+			console.log("pwdCheck:",pwdCheck);
+			console.log("allPwdCheck:",allPwdCheck);
             alert("비밀번호를 다시 입력해주세요");
             $("#password").focus();
             return false;

@@ -142,6 +142,9 @@ form .email select {
 form .emailCheck {
   display: inline-block;
 }
+.readOnly{
+	background: var(--sub3-color);
+}
 .isEmpty {
 	border: 1px solid #f43965;
 }

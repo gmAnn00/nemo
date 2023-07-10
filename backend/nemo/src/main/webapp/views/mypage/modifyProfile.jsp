@@ -131,9 +131,9 @@
                 </c:choose>     
               <div>
                 <label class="imageM button" for="hidden" id="file">수정</label>
-                <input type="file" id="hidden" name="user_img" style="display: none" onchange="readImage(this)"/>
-                <input type="hidden" name="originalFileName" value="${userVO.user_img}" />
-                <input type="hidden" id="isDeleteImg" name="isDeleteImg" value="false" />
+                <input type="file" id="hidden" name="user_img" style="display: none" class="ignoreFind" onchange="readImage(this)"/>
+                <input type="hidden" name="originalFileName" class="ignoreFind" value="${userVO.user_img}" />
+                <input type="hidden" id="isDeleteImg" name="isDeleteImg" class="ignoreFind" value="false" />
                 <button type="button" class="delUserImg buttonCancle" onclick="delUserImgSubmit()">삭제</button>
               </div>           
           	</div>
@@ -146,12 +146,13 @@
                 <input
                   type="text"
                   id="user_id"
+                  class="readOnly ignoreFind"
                   name="user_id"
                   value="${userVO.user_id}"
                   required
                   disabled
                 />
-                <input type="hidden" name="user_id" value="${userVO.user_id}" />
+                <input type="hidden" name="user_id" class="ignoreFind" value="${userVO.user_id}" />
               </div>
               <div>
                 <label for="password">비밀번호</label>
@@ -164,7 +165,9 @@
                   maxlength="20"
                   value="${userVO.password}"
                   required
+                  oninput="fn_pwdCheck()"
                 />
+                <div id="resultMsgId" class="alert resultMsg" style=display:none></div>
               </div>
               <div>
                 <label for="passwordCheck">비밀번호 확인</label>
@@ -176,6 +179,7 @@
                   minlength="8"
                   maxlength="20"
                   required
+                  oninput="fn_pwdDupCheck()"
                 />
                                 
 	                <div class="alert alertSuccess" id="alertSuccess">
@@ -193,11 +197,12 @@
                   type="text"
                   id="user_name"
                   name="user_name"
+                  class="readOnly ignoreFind"
                   value="${userVO.user_name}" 
                   required
                   disabled
                 />
-                <input type="hidden" name="user_name" value="${userVO.user_name}" />
+                <input type="hidden" name="user_name" class="ignoreFind" value="${userVO.user_name}" />
               </div>
               <div>
                 <label for="nickname">닉네임</label>                
@@ -227,6 +232,7 @@
                   type="text"
                   id="zipcode"
                   name="zipcode"
+                  class="readOnly"
                   maxlength="5"
                   size="5"
                   placeholder="우편 번호"
@@ -237,6 +243,7 @@
                 <input
                   type="text"
                   id="user_addr1"
+                  class="readOnly"
                   name="user_addr1"
                   maxlength="100"
                   size="60"
@@ -249,6 +256,7 @@
                   type="text"
                   id="user_addr2"
                   name="user_addr2"
+                  class="ignoreFind"
                   maxlength="100"
                   size="60"
                   placeholder="상세주소를 적어주세요"
@@ -293,6 +301,30 @@
                   required
                 />
               </div>
+              <script>
+			  function getCurrentDate() {
+			    var today = new Date();
+			    var year = today.getFullYear();
+			    var month = today.getMonth() + 1;
+			    var day = today.getDate();
+	
+			    if (month < 10) {
+			      month = '0' + month;
+			    }
+			    if (day < 10) {
+			      day = '0' + day;
+			    }
+			
+			    return year + '-' + month + '-' + day;
+			  }
+			
+			  var birthdateInput = document.getElementById('birthdate');
+			  var maxDate = getCurrentDate();
+			  var year = parseInt(maxDate.substr(0, 4)) - 19;
+			  maxDate = year + maxDate.substr(4);
+			
+			  birthdateInput.max = maxDate;
+		  </script>
               <div>
                 <label for="phone">전화번호</label>
                 <input
@@ -302,7 +334,9 @@
                   placeholder="예)01012345678"
                   value="${userVO.phone}"
                   required
+                  oninput="fn_phoneCheck()"
                 />
+                <div id="resultMsgPhone" class="alert resultMsg" style=display:none></div>
               </div>
               <div class="email">
               	<!-- 이메일 통째로 받아와서, @ 앞뒤로 나눠서 뿌려줘야 함 -->
@@ -310,7 +344,7 @@
                 <input type="text" id="emailId" name="emailId" value="${emailId}" oninput="fn_emailCheck()" />
                 <span>@</span>
                 <input type="text" id="emailDomain" name="emailDomain" value="${emailDomain}" oninput="fn_emailCheck()"/>
-                <select name="domainList" id="domainList" onchange="fn_emailCheck()">
+                <select name="domainList" id="domainList" onchange="fn_emailSelect(); fn_emailCheck()">
                   <option value="self">직접입력</option>
                   <option value="gmail.com">gmail.com</option>
                   <option value="naver.com">naver.com</option>
@@ -326,7 +360,8 @@
               </div>
               
               <div class="submitCancel">
-                <button type="submit" class="button">수정하기</button>
+               	<a href="javascript:void(0)" type="submit" class="button submitBtn" onclick="fnModify()">수정하기</a>
+                <!-- <button type="submit" class="button">수정하기</button> -->
                 <!-- <a href="#" role="button" class="button" onclick="fnJoin();"
                   >수정하기</a
                 > -->

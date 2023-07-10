@@ -137,6 +137,13 @@ form .submitCancel {
   text-align: center;
 }
 
+.readOnly{
+	background: var(--sub3-color);
+}
+.isEmpty {
+	border: 1px solid #f43965;
+}
+
 .delUserImg{
     width: 50px;
     position: relative;
