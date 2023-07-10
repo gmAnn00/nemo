@@ -5,16 +5,6 @@ let nickCheck=false;
 let phoneCheck=false;
 
 $(document).ready(function() {
-	$("#domainList").on("change", function() {
-		var emailDomain = $("#emailDomain");
-		if ($(this).val() == "self") {
-			emailDomain.val("");
-			emailDomain.prop("readonly", false);
-		} else {
-			emailDomain.val($(this).val());
-			emailDomain.prop("readonly", true);
-		}
-	});
 
 	$("#alertSuccess").hide();
 	$("#alertDanger").hide();
@@ -236,6 +226,17 @@ function fn_phoneCheck() {
 }
 //이메일 중복체크
 function fn_emailCheck() {
+	var emailDomain2 = $("#emailDomain");
+		console.log("수정emailDomain=", emailDomain2.val());
+		if ($("#domainList").val() == "self") {
+			emailDomain2.val("");
+			emailDomain2.prop("readonly", false);
+		} else {
+			emailDomain2.val($("#domainList").val());
+			emailDomain2.prop("readonly", true);
+		}
+	
+	
 	let emailIdVO = $("#emailId_hidden").val();
 	console.log("emailId=" + emailIdVO);
 	let emailDomainVO = $("#emailDomain_hidden").val();
