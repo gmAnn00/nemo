@@ -107,7 +107,9 @@
 		                                    </div>
 		                                </a>
 		                            </li>
-		                            <!-- 신고하기 추가할 것 -->
+		                            
+		                            <!-- 네모 관리자(admin)는 신고하기 안보여줌 -->
+		                            <c:if test="${admin == 0}">
 		                            <li>
 		                                <a href="${contextPath}/report/group?group_id=${param.group_id}">
 		                                    <div class="sc2_icon_menu reportArea">
@@ -116,6 +118,7 @@
 		                                    </div>
 		                                </a>
 		                            </li>
+		                            </c:if>
    								</c:otherwise>
    							
                             </c:choose>
