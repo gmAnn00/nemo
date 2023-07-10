@@ -41,9 +41,19 @@ $(document).ready(function() {
 //기존 선택 관심사 지우기
 function removeInterest(select) {
 	let interestList = document.getElementById("myInt");
+	let interestValues = [];
+	
 	let target = "button[value='"+ $(select).val() + "']";
 	$(target).removeClass("selectSmall");
     interestList.removeChild(select);
+    
+    //myInt 안에 있는 button(관심사)의 value 가져오기
+	$($("#myInt").children()).each(function(index, key){
+		console.log(key.value);
+		interestValues.push(key.value);
+	});
+	
+	btnSubmitCheck(interestValues.length);
 }
 
 function showSubcategories(category) {
