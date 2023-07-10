@@ -27,6 +27,27 @@ function fn_app_st() {
 	$("#app_st").val(app_st);
 	console.log($("#app_st").val());
 }
+
+function Check_test() {
+	var arrSelect=document.getElementsByName("terms");
+	let inputLength = $('#grpDescription').val().length;
+	console.log(inputLength);
+	if(inputLength<100) {
+		alert("100자 이상 입력해주세요");
+		$('#grpDescription').focus();
+	} else {
+		for(var i=0; i<arrSelect.length; i++) {
+			if(arrSelect[i].checked ) {
+				document.getElementById("createGroup").submit();
+				return true;
+			}
+		}
+		alert("약관동의 체크 해주세요.");
+		return false;	
+	}
+}
+
+
 </script>
 
 </head>
@@ -120,7 +141,7 @@ function fn_app_st() {
                         <select
                           name="main_name"
                           id="largeCate"
-                          onchange="change(this);"
+                          onchange="fn_category_selected(this);"
                           class="commonSelect input"
                         >
                           
@@ -133,6 +154,7 @@ function fn_app_st() {
                           name="sub_name"
                           id="smallCate"
                           class="commonSelect select"
+                          onchange="fn_category_selected(this);"
                         >
                           <option value="">선택하기</option>
                         </select>
@@ -182,8 +204,9 @@ function fn_app_st() {
                 <textarea
                   name="grp_intro"
                   id="grpDescription"
-                  placeholder="최소 100자 이상 작성해주세요(최대1000자)"
+                  placeholder="메세지를 입력해주세요."
                   rows="10"
+                  minlength="100"
                   maxlength="1000"
                 ></textarea>
                 <p>(<span>0/1000</span>)</p>
@@ -193,17 +216,18 @@ function fn_app_st() {
                 <input type="checkbox" name="app_st" id="app_st" value="0" onclick="fn_app_st()"/>
                 <label class="checkLabel" for="app_st">소모임장 승인제 (체크시 승인된 사람만 가입가능합니다.)</label>
 
-                <input type="checkbox" name="terms" id="terms" />
+                <input type="checkbox" name="terms" id="terms"/>
                 <label class="checkLabel" for="terms">네모 이용 약관에 동의합니다.</label>
               </div>
               <div class="creatGrp">
-                <input
-                  type="submit"
+                <a href="javascript:void(0)"
+                  type="button"
                   name="createGrpBtn"
                   id="createGrpBtn"
                   class="button"
+                  onclick="Check_test()"
                   value="소모임 만들기"
-                />
+                > 소모임 만들기 </a>
                 <input
                   type="reset"
                   name="createCancleBtn"

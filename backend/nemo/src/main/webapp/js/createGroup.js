@@ -289,6 +289,7 @@ function selectInit() {
 			//console.log("list=", list[i]);
             smallHtml += `<option value='${list[i]}' data-class='${key}'>${list[i]}</option>`;
         }
+        
     }
 
     $("select[name=main_name]").html(mainHtml);
@@ -305,6 +306,7 @@ function selectInit() {
 selectInit();
 
 $(document).on("change", "select[name=main_name]", function () {
+	$("select[name=sub_name]").removeClass("selected");
     const mainVal = $(this).val();
     $("select[name=sub_name] option").each(function (idx, item) {
         if ($(this).data("class") == mainVal || $(this).val == "") {
@@ -321,6 +323,16 @@ $(document).on("change", "select[name=sub_name]", function(){
 	console.log("소분류=", $(this).val());
 });
 
+
+function fn_category_selected(select){	
+	if($(select).val() == ''){
+		console.log("not selected");
+		$(select).removeClass("selected");
+	}else{
+		console.log("selected");
+		$(select).addClass("selected");
+	}
+}
 
 //textarea 글자수 카운터
 $(".textAreaTd>textarea").keyup(function () {

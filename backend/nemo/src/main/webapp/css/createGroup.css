@@ -25,7 +25,7 @@
   margin-bottom: 30px;
   margin-top: 30px;
   padding-bottom: 30px;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
 }
 
 .imgCrop {
@@ -116,12 +116,13 @@ input[id="groupNum"] {
 /* select box 설정*/
 .selectBox {
   width: 240px;
-  height: 28px;
+  height: 36px;
   margin: 5px 5px 5px 0;
   border-radius: 4px;
-  border: 2px solid var(--sub-color);
+  border: 1px solid #ccc;
   /* border: 2px solid var(--selectBorderColor); */
 }
+
 .selectBox .commonSelect {
   width: inherit;
   height: inherit;
@@ -138,6 +139,14 @@ input[id="groupNum"] {
 }
 .selectBox .commonSelect::selection {
   background-color: var(--sub3-color);
+}
+.commonSelect.input.selected {
+	/*outline : 2px solid var(--sub-color);*/
+	border : 2px solid var(--sub-color);
+}
+.commonSelect.select.selected {
+	/*outline : 2px solid var(--sub-color);*/
+	border : 2px solid var(--sub-color);
 }
 
 .textAreaTd textarea {
@@ -189,6 +198,7 @@ form input[id="grp_addr1"] {
 }
 #createGrpBtn {
   margin-right: 50px;
+  flex: 1;
 }
 
 /* 여기부터 구버전 css 남겨둔 것 */
