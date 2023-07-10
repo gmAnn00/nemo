@@ -49,6 +49,7 @@
               id="user_id"
               name="user_id"
               placeholder="아이디 입력(5~20자)"
+              maxlength="21"
               pattern="^([a-z0-9_]){5,20}$"
               oninput="fn_IdCheck()"
               required
@@ -67,8 +68,10 @@
               placeholder="비밀번호 입력(문자, 숫자, 특수문자포함 8~20자)"
               minlength="8"
               maxlength="20"
+              oninput="fn_pwdCheck()"
               required
             />
+            <div id="resultMsgPwd" class="alert resultMsg" style=display:none></div>
           </div>
           <div>
             <label for="passwordCheck">비밀번호 확인</label>
@@ -80,6 +83,7 @@
               minlength="8"
               maxlength="20"
               required
+              oninput="fn_pwdDupCheck()"
             />
            
 	          <div class="alert alertSuccess" id="alertSuccess">
@@ -218,14 +222,16 @@
               name="phone"
               placeholder="예)01012345678"
               required
+              oninput="fn_phoneCheck()"
             />
+            <div id="resultMsgPhone" class="alert resultMsg" style=display:none></div>
           </div>
           <div class="email">
             <label for="email">이메일주소</label>
             <input type="text" id="emailId" name="emailId" oninput="fn_emailCheck()" />
             <span>@</span>
             <input type="text" id="emailDomain" name="emailDomain" oninput="fn_emailCheck()" />
-            <select name="domainList" id="domainList">
+            <select name="domainList" id="domainList" onchange='fn_emailCheck()'>
               <option value="self">직접입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
@@ -241,7 +247,7 @@
           </div>
           
           <div class="submitCancel">
-            <a href="javascript:void(0)" type="submit" class="button" onclick="fnJoin()">가입하기</a>
+            <a href="javascript:void(0)" type="submit" class="button submitBtn" onclick="fnJoin()">가입하기</a>
             <!-- <a href="/views/interest.jsp" role="button" class="button" onclick="fnJoin();"
               >가입하기</a
             > -->
