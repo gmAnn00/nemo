@@ -95,7 +95,7 @@
 
         <div class="btn">
           <button type="submit" class="button" disabled>동의합니다</button>
-          <a href="${contextPath}index" type="button" class="buttonCancle">동의하지 않습니다</a>
+          <a href="${contextPath}/index" type="button" class="buttonCancle">동의하지 않습니다</a>
         </div>
       </form>
     </div>

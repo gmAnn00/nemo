@@ -188,6 +188,32 @@
               required
             />
           </div>
+          
+	      <script>
+		  function getCurrentDate() {
+		    var today = new Date();
+		    var year = today.getFullYear();
+		    var month = today.getMonth() + 1;
+		    var day = today.getDate();
+
+		    if (month < 10) {
+		      month = '0' + month;
+		    }
+		    if (day < 10) {
+		      day = '0' + day;
+		    }
+		
+		    return year + '-' + month + '-' + day;
+		  }
+		
+		  var birthdateInput = document.getElementById('birthdate');
+		  var maxDate = getCurrentDate();
+		  var year = parseInt(maxDate.substr(0, 4)) - 19;
+		  maxDate = year + maxDate.substr(4);
+		
+		  birthdateInput.max = maxDate;
+		  </script>
+          
           <div>
             <label for="phone">전화번호</label>
             <input

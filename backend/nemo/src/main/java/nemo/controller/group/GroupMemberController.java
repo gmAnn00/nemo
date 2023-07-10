@@ -77,13 +77,20 @@ public class GroupMemberController extends HttpServlet {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
-		}else if(action.equals("/delete")) {
+			
+		} else if(action.equals("/delete")) {
 			groupMemberService.deleteMember(user_id, group_id);
 			out.print("<script>");
 			out.print("alert('소모임을 탈퇴했습니다.');");
 			out.print("location.href='/nemo/index';");
 			out.print("</script>");
 			
+		} else if(action.equals("/cancel")) {			
+			groupMemberService.cancelMember(user_id, group_id);
+			out.print("<script>");
+			out.print("alert('소모임 가입대기가 취소되었습니다.');");
+			out.print("location.href='/nemo/mypage/myGroupList';");
+			out.print("</script>");			
 		}
 		
 		
