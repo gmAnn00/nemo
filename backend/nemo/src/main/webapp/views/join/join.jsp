@@ -231,7 +231,7 @@
             <input type="text" id="emailId" name="emailId" oninput="fn_emailCheck()" />
             <span>@</span>
             <input type="text" id="emailDomain" name="emailDomain" oninput="fn_emailCheck()" />
-            <select name="domainList" id="domainList" onchange='fn_emailCheck()'>
+            <select name="domainList" id="domainList" onchange="fn_emailSelect(); fn_emailCheck()">
               <option value="self">직접입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
