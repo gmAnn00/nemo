@@ -102,13 +102,14 @@ $(function () {
     };
 
     function selectInit() {
-        let mainHtml = "<option value='none'>대분류</option>";
-        let smallHtml = "<option value='none' data-class='none'>소분류</option>";
+        let mainHtml = "<option value='none'>대분류 전체</option>";
+        let smallHtml = "<option value='none' data-class='none'>소분류 전체</option>";
 
         for (const key in category) {
             mainHtml += `<option value="${key}">${key}</option>`;
-
+			smallHtml += `<option value='none' data-class='${key}'>소분류 전체</option>`;
             const list = category[key];
+            
             for (let i = 0; i < list.length; i++) {
                 smallHtml += `<option value='${list[i]}' data-class='${key}'>${list[i]}</option>`;
             }
@@ -218,7 +219,9 @@ $(function () {
 		 $("select[name=bigCate]").val(main_name_hidden).trigger("change");
 	}
 	if(sub_name_hidden != "none"){
-		 $("option[value=" + sub_name_hidden + "]").prop("selected", true);
+		 console.log(sub_name_hidden);
+		// $("option[value=" + sub_name_hidden + "]").prop("selected", true);
+		$("select[name=smallCate]").val(sub_name_hidden);
 	}
     //$("select[value]"+main_name_hidden +"]").prop("selected", true);
     //$("option[value="+main_name_hidden+"]").prop("selected", true);
