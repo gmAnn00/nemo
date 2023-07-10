@@ -49,8 +49,7 @@
               id="user_id"
               name="user_id"
               placeholder="아이디 입력(5~20자)"
-              minlength="5"
-              maxlength="20"
+              pattern="^([a-z0-9_]){5,20}$"
               oninput="fn_IdCheck()"
               required
             />

@@ -176,6 +176,8 @@ function fn_emailCheck() {
 }
 
 function fnJoin(){
+	
+	/*
 	let user_id=$("#user_id").val();
 	let password=$("#password").val();
 	let passwordCheck=$("#passwordCheck").val();
@@ -243,5 +245,41 @@ function fnJoin(){
 		return false;
 	}
 	
+	document.getElementById('frm').submit();*/
+	
+	let isEmpty=false;
+	
+	$('#frm').find('input[id!="user_addr2"]').each(function(){
+		
+		$(this).removeClass('isEmpty');
+		if(!$(this).val()){
+			isEmpty=true;
+			$(this).addClass('isEmpty');
+		}
+	});
+	
+	if(isEmpty){
+		alert('필수항목을 입력해주세요');
+		return false;
+	} else if(!isEmpty) {
+		let emailReg= /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		let emailId=$("#emailId").val();
+		let emailDomain=$("#emailDomain").val();
+		let email="";
+		mail= emailId+"@"+emailDomain;
+	
+		$('#emailId').removeClass('isEmpty');
+		$('#emailDomain').removeClass('isEmpty');
+	
+		if(!emailReg.test(mail)){
+			$('#emailId').addClass('isEmpty');
+			$('#emailDomain').addClass('isEmpty');
+			$("#emailId").focus();
+			alert('이메일을 형식에 맞게 입력해주세요');
+			return false;
+		}
+	}
 	document.getElementById('frm').submit();
+	
+	
 }
