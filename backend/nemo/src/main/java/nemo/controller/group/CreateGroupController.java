@@ -69,9 +69,18 @@ public class CreateGroupController extends HttpServlet {
 		System.out.println(GROUP_IMG_REPO);
 		
 		if(action.equals("/form")) {
-			String nextPage = "/views/group/createGroupForm.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-			dispatcher.forward(request, response);
+			if(user_id == null) {
+				PrintWriter out=response.getWriter();
+				System.out.println("로그인상태만 가능합니다.");
+				out.print("<script>");
+				out.print("alert('로그인 후 이용가능합니다.');");
+				out.print("location.href='" + request.getContextPath() + "/login/loginForm';");
+				out.print("</script>");
+			}else {
+				String nextPage = "/views/group/createGroupForm.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+				dispatcher.forward(request, response);	
+			}
 		}else if (action.equals("/create")) {
 			//System.out.println(request.getParameter("app_st"));
 			CreateGroupService createGroupService = new CreateGroupService();
