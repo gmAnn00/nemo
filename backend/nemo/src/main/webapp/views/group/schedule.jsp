@@ -311,7 +311,6 @@
 									<button type="button" id="delScheduleBtn" class="buttonCancle btnDel" onclick="delSchedule(${param.group_id})">삭제</button>									
 								</div>
 							</div>
-
 						</div>
 					</form>
 

@@ -280,6 +280,4 @@ function fnJoin(){
 		}
 	}
 	document.getElementById('frm').submit();
-	
-	
 }
