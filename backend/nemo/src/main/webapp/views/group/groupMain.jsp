@@ -80,6 +80,14 @@
 		                                    </div>
 		                                </a>
 		                            </li>
+					     <li>
+		                                <a href="${contextPath}/report/group?group_id=${param.group_id}">
+		                                    <div class="sc2_icon_menu reportArea">
+		                                        <div class="menu_submenu_name reportTitle"><span>소모임삭제</span></div>
+		                                        <i class="fa-solid fa-arrow-right menu_angle"></i>
+		                                    </div>
+		                                </a>
+		                            </li>
    								</c:when>
    								
    								<c:otherwise>
