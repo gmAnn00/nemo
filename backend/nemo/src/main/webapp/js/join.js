@@ -224,8 +224,7 @@ function fn_phoneCheck() {
 		phoneCheck=true;
 	}
 }
-//이메일 중복체크
-function fn_emailCheck() {
+function fn_emailSelect(){
 	var emailDomain2 = $("#emailDomain");
 		console.log("수정emailDomain=", emailDomain2.val());
 		if ($("#domainList").val() == "self") {
@@ -235,6 +234,11 @@ function fn_emailCheck() {
 			emailDomain2.val($("#domainList").val());
 			emailDomain2.prop("readonly", true);
 		}
+}
+
+//이메일 중복체크
+function fn_emailCheck() {
+	
 	
 	
 	let emailIdVO = $("#emailId_hidden").val();
