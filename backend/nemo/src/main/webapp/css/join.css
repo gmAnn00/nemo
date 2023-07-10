@@ -85,8 +85,7 @@ form label {
 form input {
   padding: 8px;
 }
-form input[id="user_id"],
-input[id="nickname"] {
+form input[id="nickname"] {
   width: 70%;
 }
 /* 중복확인 */
