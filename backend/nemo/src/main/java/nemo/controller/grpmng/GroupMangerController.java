@@ -168,6 +168,46 @@ public class GroupMangerController extends HttpServlet{
 				
 			}
 			
+			//소모임 삭제폼 이동
+			else if(action.equals("/delGroupForm")) {
+					
+				nextPage= "/views/group/delGroup.jsp";
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+				dispatcher.forward(request, response);
+					
+			} 
+			
+			//소모임 삭제
+			else if(action.equals("/delGroup")) {				
+				out = response.getWriter();
+				//"삭제" 입력받기
+				String delString = (String)request.getParameter("delString");
+				System.out.println("delString=" + delString);
+				
+				if(delString.equals("삭제하기")) {
+					groupMangerService.deleteGroup(group_id);
+					nextPage="/nemo/index";
+					out.print("<script>");
+					out.print("alert('소모임을 삭제했습니다');");
+					
+					out.print("location.href='" + nextPage + "';");
+					out.print("</script>");
+					return;
+				}
+				
+				else if(delString.equals(null)||!delString.equals("삭제하기")){
+					out.print("<script>");
+			        out.print("alert('잘못 입력하였습니다.');");
+			        out.print("location.href='" + request.getContextPath() + 
+							"/group/manager/member/delGroupForm?group_id="+group_id+"';");
+			        out.print("</script>");
+			        return;
+				}
+					   
+
+			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 

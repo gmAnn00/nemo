@@ -214,25 +214,24 @@ public class GroupMangerDAO {
      }
 
 	 //소모임 삭제
-	 public void deleteGroup(GroupVO groupVO) {
-		 
-		 int grp_id = groupVO.getGrp_id();
-			try {
-	        	conn = dataFactory.getConnection();
-	        	String query = "DELETE FROM group_tbl WHERE grp_id = ?";			
-	        	System.out.println(query);
-	        	
-	        	pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, grp_id);
-				pstmt.executeUpdate();
-				
-				pstmt.close();
-				conn.close();
-				
-			} catch (Exception e) {
-				System.out.println("그룹 삭제 중 에러!!!");
-				e.printStackTrace();
-			}
+	 public void deleteGroup(int grp_id) {
+		
+		try {
+        	conn = dataFactory.getConnection();
+        	String query = "DELETE FROM group_tbl WHERE grp_id = ?";			
+        	System.out.println(query);
+        	System.out.println(grp_id);
+        	pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, grp_id);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println("그룹 삭제 중 에러!!!");
+			e.printStackTrace();
+		}
 	 }
 	 
 	 

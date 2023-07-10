@@ -63,5 +63,9 @@ public class GroupMangerService {
 		groupMangerDAO.mandateGroupManager(userVO, grp_id);
 	}
 	
+	//소모임 삭제
+	public void deleteGroup(int grp_id) {
+		groupMangerDAO.deleteGroup(grp_id);
+	}
 	
 }

@@ -107,10 +107,10 @@
           <!-- 탈퇴 -->
           <div class="withdrawal">
             <h3>정말로 소모임을 <span>삭제</span>하시겠습니까?</h3>
-            <h4>삭제하시려면 비밀번호를 입력하고 삭제하기를 눌러주세요</h4>
-            <form action="${contextPath}/mypage/delUser" method="post">
-              비밀번호 확인 <input type="text" name="delpassword" />
-              <input type="submit" class="buttonCancle" value="탈퇴하기" />
+            <h4>삭제하시려면 "삭제하기"를 입력하고 버튼을 눌러주세요</h4>
+            <form action="${contextPath}/group/manager/member/delGroup?group_id=${param.group_id}" method="post">
+              <input type="text" name="delString" placeholder="'삭제하기'를 입력하세요"/>
+              <input type="submit" class="buttonCancle" value="소모임 삭제" />
             </form>
           </div>
         </div>
