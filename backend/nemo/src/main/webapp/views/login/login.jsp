@@ -58,7 +58,7 @@
             required
           />
           <input type="submit" value="로그인" />
-          <label for="rememberCheck">
+          <label for="saveId">
             <input type="checkbox" id="saveId" name="checkId" class="rememberCheck" />아이디 저장
           </label>
           <!-- <label for="keepLogin">
