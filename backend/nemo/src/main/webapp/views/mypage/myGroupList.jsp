@@ -167,22 +167,22 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                             <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
                             <span>바로가기</span>	<i class="fa-solid fa-arrow-right"></i></a>
                           </div>
-                          <div class="card__img"></div>                          
+                          <div class="card__img"></div>
                           <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${userGroup.grp_id}/${userGroup.grp_img}')">
                           	<div class="link">
 	                          	<a href="${contextPath}/group/member/delete?group_id=${userGroup.grp_id}"><span class="leave"> &nbsp; &nbsp; &nbsp; &nbsp; </span></a>
 	                            <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
-	                              <span> &nbsp; &nbsp; &nbsp; &nbsp; </span>                            
-	                          	</a> 
+	                              <span> &nbsp; &nbsp; &nbsp; &nbsp; </span>
+	                          	</a>
                           	</div>
                           </div>
                           
                           <div class="card__info">
-	                          <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
-	                            <span class="card__category">${userGroup.main_name}</span>
-	                            <span class="card__category">${userGroup.sub_name}</span>
-	                            <h3 class="card__title">${userGroup.grp_name}</h3>
-	                          </a>
+	                        <a href="${contextPath}/group/groupMain?group_id=${userGroup.grp_id}" class="card_link">
+	                          <span class="card__category">${userGroup.main_name}</span>
+	                          <span class="card__category">${userGroup.sub_name}</span>
+	                          <h3 class="card__title">${userGroup.grp_name}</h3>
+	                        </a>
                             <span class="card__by"><i class="fa-solid fa-location-dot"></i>
                               <a href="#" class="card__author">${locationU}</a>
                             </span>
@@ -201,21 +201,29 @@ pageEncoding="UTF-8" isELIgnored="false" %>
                       <c:set var="locationW" value="${waitGroup.grp_addr1.substring(0, idx)}"/>                      	
                         <div class="card card--${waitGroup.grp_id}">
                           <div class="card__info-hover">
-                          	<span></span>
-                            <span>바로가기 <i class="fa-solid fa-arrow-right"></i></span>                           
+                            <a href="${contextPath}/group/member/delete?group_id=${waitGroup.grp_id}"><span class="leave">취소하기</span></a>
+                            <a href="${contextPath}/group/groupMain?group_id=${waitGroup.grp_id}" class="card_link">
+                            <span>바로가기</span>	<i class="fa-solid fa-arrow-right"></i></a>
                           </div>
-                          <div class="card__img"></div>                           
-                          <a href="${contextPath}/group/groupMain?group_id=${waitGroup.grp_id}" class="card_link">                          
-                            <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${waitGroup.grp_id}/${waitGroup.grp_img}')">
-                              <div class="wait_grp">가입 대기중</div>
-                            </div>
-                          </a>
+                          <div class="card__img"></div>   
+                          <div class="card__img--hover" style="background-image:url('${contextPath}/groupImages/${waitGroup.grp_id}/${waitGroup.grp_img}')">
+                        	<div class="link">
+                        		<div class="wait_grp">가입 대기중</div>
+                         		<a href="${contextPath}/group/member/cancel?group_id=${waitGroup.grp_id}"><span class="leave"> &nbsp; &nbsp; &nbsp; &nbsp; </span></a>
+	                            <a href="${contextPath}/group/groupInfo?group_id=${waitGroup.grp_id}" class="card_link">
+	                              <span> &nbsp; &nbsp; &nbsp; &nbsp; </span>
+	                         	</a>
+                        	</div>
+                          </div>                          
+                         
                           <div class="card__info">
-                            <span class="card__category">${waitGroup.main_name}</span>
-                            <span class="card__category">${waitGroup.sub_name}</span>
-                            <h3 class="card__title">${waitGroup.grp_name}</h3>
-                            <span class="card__by"
-                              ><i class="fa-solid fa-location-dot"></i>
+                             <a href="${contextPath}/group/groupMain?group_id=${waitGroup.grp_id}" class="card_link">
+	                          <span class="card__category">${waitGroup.main_name}</span>
+	                          <span class="card__category">${waitGroup.sub_name}</span>
+	                          <h3 class="card__title">${waitGroup.grp_name}</h3>
+	                        </a>
+                            <span class="card__by">
+                              <i class="fa-solid fa-location-dot"></i>
                               <a href="#" class="card__author">${locationW}</a>
                             </span>
                           </div>

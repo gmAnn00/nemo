@@ -734,7 +734,11 @@ function scheduleChk(selScheDate) {
             let fn_name = "fn_cancelSchedule(" + group_id + ")";
             $("#joinSchedule").text("참석 취소");
             $("#joinSchedule").attr("onclick", fn_name);
-          }
+          }else{
+			let fn_name = "fn_joinSchedule(" + group_id + ")";
+			$("#joinSchedule").text("참석");
+            $("#joinSchedule").attr("onclick", fn_name);
+		  }
           let content = "";
           $("#sliderPanel_id").html("");
           for (key in attendUserList) {

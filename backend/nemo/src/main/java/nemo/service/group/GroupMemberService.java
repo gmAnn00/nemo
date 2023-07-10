@@ -22,4 +22,10 @@ public class GroupMemberService {
 		groupMemberDAO.deleteMember(user_id, group_id);
 		
 	}
+
+
+	public void cancelMember(String user_id, int group_id) {
+		groupMemberDAO.cancelMember(user_id, group_id);
+		
+	}
 }

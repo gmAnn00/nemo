@@ -86,7 +86,7 @@
 
         <h3>나이(필수)</h3>
         <input type="checkbox" id="term4" />
-        <label for="term4">만 18세 이상입니다.</label>
+        <label for="term4">만 19세 이상입니다.</label>
 
         <div class="allAg">
           <input type="checkbox" id="allAgree" />
@@ -95,7 +95,7 @@
 
         <div class="btn">
           <button type="submit" class="button" disabled>동의합니다</button>
-          <a href="${contextPath}index" type="button" class="buttonCancle">동의하지 않습니다</a>
+          <a href="${contextPath}/index" type="button" class="buttonCancle">동의하지 않습니다</a>
         </div>
       </form>
     </div>

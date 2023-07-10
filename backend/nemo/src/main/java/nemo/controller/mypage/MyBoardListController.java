@@ -104,7 +104,7 @@ public class MyBoardListController extends HttpServlet {
 					//response.sendRedirect(nextPage);
 
 				}else if(action.equals("/delComment")) {
-					//내 댓글글 삭제
+					//내 댓글 삭제
 					int comment_no = Integer.parseInt(request.getParameter("comment_no"));
 					
 					myBoardService.delMyComment(comment_no);
