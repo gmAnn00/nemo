@@ -76,7 +76,7 @@ public class LoginDAO {
 			 
 			 rs.close();
 			 pstmt.close();
-			 
+			 conn.close();
 			 
 		 }catch(Exception e){
 			 System.out.println("회원 가져오는 중 에러!!");

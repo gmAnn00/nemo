@@ -69,7 +69,7 @@ function fn_IdCheck() {
 				if (data == "usable") {
 					$("#resultMsgId").show();
 					$("#resultMsgId").html("사용할 수 있는 아이디입니다.");
-					$("#resultMsgId").css("color", "#3384ff");
+					$("#resultMsgId").css("color", "var(--blue-color)");
 				} else {
 					$("#resultMsgId").show();
 					$("#resultMsgId").html("사용할 수 없는 아이디입니다.");

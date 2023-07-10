@@ -53,9 +53,10 @@
               oninput="fn_IdCheck()"
               required
             />
-          </div>
+            
+            <div id="resultMsgId" class="alert resultMsg" style=display:none></div>
+          </div>          
           
-          <div id="resultMsgId" class="resultMsg" display="none"></div>
           
           <div>
             <label for="password">비밀번호</label>
@@ -80,13 +81,16 @@
               maxlength="20"
               required
             />
+           
+	          <div class="alert alertSuccess" id="alertSuccess">
+	            비밀번호가 일치합니다.
+	          </div>
+	          <div class="alert alertDanger" id="alertDanger">
+	            비밀번호가 일치하지않습니다.
+	          </div>
+            
           </div>
-          <div class="alert alertSuccess" id="alertSuccess">
-            비밀번호가 일치합니다.
-          </div>
-          <div class="alert alertDanger" id="alertDanger">
-            비밀번호가 일치하지않습니다.
-          </div>
+          
           <div>
             <label for="user_name">이름</label>
             <input
@@ -107,12 +111,12 @@
               placeholder="닉네임을 입력해주세요"
               oninput="fn_nicknameCheck()" 
               required
-              
             />
-            
-             <div id="resultMsgNick" class="resultMsg" display="none"></div>
-            
+                                   
+            <div id="resultMsgNick" class="alert resultMsg" style=display:none></div>
           </div>
+         
+            
           <div>
             <label for="findZipcode">주소</label>
             <button type="button" class="findZipcode button" id="findZipcode">
@@ -186,7 +190,7 @@
               type="tel"
               id="phone"
               name="phone"
-              placeholder="휴대폰 번호 입력('-' 제외 11자리 입력)"
+              placeholder="예)01012345678"
               required
             />
           </div>
@@ -204,13 +208,10 @@
               <option value="yahoo.com">yahoo.com</option>
               <option value="nate.com">nate.com</option>
             </select>
-          </div>
-          
-          <div class="emailCheck">
-           	<div id="resultMsgEmail" class="resultMsg"></div>
-                   
-          <div id="resultMsgEmail" class="resultMsg" display="none"></div>
-          
+            
+            <div class="emailCheck">
+           		<div id="resultMsgEmail" class="alert resultMsg" style=display:none></div>                         
+            </div>
           </div>
           
           <div class="submitCancel">
