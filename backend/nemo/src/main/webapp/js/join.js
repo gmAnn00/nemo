@@ -3,6 +3,7 @@ let pwdCheck=false;
 let allPwdCheck=false;
 let nickCheck=false;
 let phoneCheck=false;
+let emailCheck=false;
 
 $(document).ready(function() {
 
@@ -226,21 +227,19 @@ function fn_phoneCheck() {
 }
 //이메일 중복체크
 function fn_emailCheck() {
-	var emailDomain2 = $("#emailDomain");
-		console.log("수정emailDomain=", emailDomain2.val());
-		if ($("#domainList").val() == "self") {
-			emailDomain2.val("");
-			emailDomain2.prop("readonly", false);
-		} else {
-			emailDomain2.val($("#domainList").val());
-			emailDomain2.prop("readonly", true);
-		}
-	
+	emailCheck=false;
+	let emailReg= /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+	let emailDomain2 = $("#emailDomain");
+	if ($("#domainList").val() == "self") {
+		emailDomain2.val("");
+		emailDomain2.prop("readonly", false);
+	} else {
+		emailDomain2.val($("#domainList").val());
+		emailDomain2.prop("readonly", true);
+	}
 	
 	let emailIdVO = $("#emailId_hidden").val();
-	console.log("emailId=" + emailIdVO);
 	let emailDomainVO = $("#emailDomain_hidden").val();
-	console.log("emailDomain=" + emailDomainVO);
 	
 	let emailId = $("#emailId").val();
 	let emailDomain = $("#emailDomain").val();
@@ -252,12 +251,20 @@ function fn_emailCheck() {
 		$("#resultMsgEmail").css("color", "#f43965");
 		return; //아래 내용 수행안하고 위로 돌아감
 	}
-
+	
+	mail= emailId+"@"+emailDomain;
+	
 	if (emailId == emailIdVO && emailDomain == emailDomainVO) {
 		$("#resultMsgEmail").show();
 		$("#resultMsgEmail").html("지금 사용하고 있는 이메일입니다.");
 		$("#resultMsgEmail").css("color", "#3384ff");
-	} else {
+		return false;
+	} else if (!emailReg.test(mail)){
+		$("#resultMsgEmail").show();
+		$("#resultMsgEmail").html("이메일을 형식에 맞게 입력해주세요.");
+		$("#resultMsgEmail").css("color", "#f43965");
+		return false;
+	}else {
 		$.ajax({
 			type: "post",
 			async: true,
@@ -267,6 +274,7 @@ function fn_emailCheck() {
 			data: { "emailId": emailId, "emailDomain": emailDomain },
 			success: function(data, textStatus) {
 				if (data == "usable") {
+					emailCheck=true;
 					$("#resultMsgEmail").show();
 					$("#resultMsgEmail").html("사용할 수 있는 이메일입니다.");
 					$("#resultMsgEmail").css("color", "#3384ff");
@@ -322,16 +330,9 @@ function fnJoin(){
 			$('#phone').focus();
 			return false;
 		}
-		mail= emailId+"@"+emailDomain;
-	
-		$('#emailId').removeClass('isEmpty');
-		$('#emailDomain').removeClass('isEmpty');
-	
-		if(!emailReg.test(mail)){
-			$('#emailId').addClass('isEmpty');
-			$('#emailDomain').addClass('isEmpty');
-			$("#emailId").focus();
-			alert('이메일을 형식에 맞게 입력해주세요');
+		if(!emailCheck) {
+			alert('이메일을 다시 입력해주세요');
+			$('#emailId').focus();
 			return false;
 		}
 	}
