@@ -101,7 +101,26 @@ public class GroupMemberDAO {
 				
 				
 			} catch (Exception e) {
-				System.out.println("GroupMainDAO: selectMemberById 오류");
+				System.out.println("GroupMainDAO: deleteMember 오류");
+				e.printStackTrace();
+			}
+			
+		}
+
+		public void cancelMember(String user_id, int group_id) {
+			try {
+				conn = dataFactory.getConnection();
+				String query = "delete waitlist_tbl where user_id = ? AND grp_id = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, user_id);
+				pstmt.setInt(2, group_id);
+				pstmt.executeUpdate();
+				pstmt.close();
+				conn.close();
+				
+				
+			} catch (Exception e) {
+				System.out.println("GroupMainDAO: cancelMember 오류");
 				e.printStackTrace();
 			}
 			
