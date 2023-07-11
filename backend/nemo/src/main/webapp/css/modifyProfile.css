@@ -127,7 +127,10 @@ form .emailCheck {
 }
 .submitCancel .button {
   margin-right: 30px;
-  flex: 2;
+  flex: 1;
+}
+.submitCancel .buttonCancle {
+  flex: 1;
 }
 form button[class="emailCheckBtn"] {
   display: inline-block;
