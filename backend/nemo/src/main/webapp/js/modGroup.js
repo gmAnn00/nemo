@@ -1,3 +1,11 @@
+$(document).ready(function () {
+	let main_name_hidden = $("#main_name_hidden").val();
+	let sub_name_hidden = $("#sub_name_hidden").val();
+	
+	$("select[name=main_name]").val(main_name_hidden).trigger("change");
+	$("select[name=sub_name]").val(sub_name_hidden);
+});
+
 const category = {
     "문화 · 공연 · 축제": ["뮤지컬 · 오페라", "공연 · 연극", "영화", "전시회", "연기 · 공연제작", "문화재 탐방", "파티 · 페스티벌"],
     "음악 · 악기": [
@@ -81,9 +89,14 @@ const category = {
 };
 
 function selectInit() {
+	console.log("selectInit 호출");
 	
-    let mainHtml = `<option value="${curMain}">${curMain}</option>`;
-    let smallHtml = `<option value="${curSub}">${curSub}</option>`;
+    let mainHtml = `<option value="">대분류</option>`;
+    let smallHtml = `<option value="">소분류</option>`;
+    
+    //let main_name_hidden = $(main_name_hidden).val();
+    
+    
     for (const key in category) {
         mainHtml += `<option value="${key}">${key}</option>`;
 
@@ -107,6 +120,8 @@ function selectInit() {
 
 selectInit();
 
+
+
 $(document).on("change", "select[name=main_name]", function () {
     const mainVal = $(this).val();
     $("select[name=sub_name] option").each(function (idx, item) {
@@ -124,6 +139,42 @@ $(document).on("change", "select[name=sub_name]", function(){
 	console.log("소분류=", $(this).val());
 });
 
+function fn_category_selected(select){	
+	let main_name_hidden = $("#main_name_hidden").val();
+	let sub_name_hidden = $("#sub_name_hidden").val();
+	
+	if($(select).val() == ''){ 
+		console.log("not selected");
+		$(select).removeClass("selected");
+		$(select).parent("div").css("border", "1px solid #ccc");
+		
+		
+	}else{
+		if($(select).val() == main_name_hidden) {
+			$(".commonSelect.input").css("border", "1px solid #ccc");
+			console.log("1");
+			console.log("1select", $(select).val());
+		}else{
+			console.log("2");
+			console.log("2select", $(select).val());
+			$(select).addClass("selected");
+			$(select).parent("div").css("border", "none");
+			$(".commonSelect.input.selected").css("border", "2px solid var(--sub-color)");
+		}
+		
+		if($(select).val() == sub_name_hidden){
+			console.log("3");
+			console.log("3select", $(select).val());
+		}else{
+			console.log("4");
+			console.log("4select", $(select).val());
+			$(select).addClass("selected");
+			$(select).parent("div").css("border", "none");
+			$(".commonSelect.select.selected").css("border", "2px solid var(--sub-color)");
+		}
+		
+	}
+}
 
 //textarea 글자수 카운터
 $(".textAreaTd>textarea").keyup(function () {
@@ -223,3 +274,5 @@ function execDaumPostcode() {
     },
   }).open();
 }
+
+

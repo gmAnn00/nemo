@@ -25,6 +25,7 @@
         <script src="${contextPath}/js/header.js"></script>
         
     </head>
+   
     <body>
         <jsp:include page="../header.jsp" flush="true"></jsp:include>
 		<c:forEach var="group" items="${groupList}">
@@ -157,7 +158,8 @@
 	                                    /><span>명</span>
 	                                </div>
 	                                <div class="innerTblArea form_div">
-	                                	
+	                                	<input type="hidden" id="main_name_hidden" name="main_name_hidden" value="${group.main_name}">
+	                                	<input type="hidden" id="sub_name_hidden" name="sub_name_hidden" value="${group.sub_name}">
 	                                    <label class="cateTbl profile_label">카테고리</label>
 	                                    <table>
 	                                    <tr>
@@ -166,26 +168,29 @@
 	                                    </tr>
 	                                    <tr>
 	                                        <td>
-						                      <div class="selectBox">
+						                      <div class="selectBox box1">
 						                        <select
 						                          name="main_name"
-						                          id="largeCate"
-						                          onchange="change(this);"
+						                          id="bigCate"
+						                          onchange="fn_category_selected(this);"
 						                          class="commonSelect input"
 						                        >
-						                           
+						                        <!--  
+						                        <option value="" class="selectOption">선택하기</option>   -->
 						                        </select>
 						                     
 						                      </div>
 						                    </td>
 						                    <td>
-						                      <div class="selectBox">
+						                      <div class="selectBox box2">
 						                        <select
 						                          name="sub_name"
 						                          id="smallCate"
 						                          class="commonSelect select"
+						                          onchange="fn_category_selected(this);"
 						                        >
-						                        <option value="">선택하기</option>
+						                        <!--
+						                        <option value="">선택하기</option>  -->
 						                        </select>
 						                      </div>
 						                    </td>
@@ -244,13 +249,14 @@
 	                                    
 	                                </div>
 	                                <div class="creatGrp form_div">
-	                                    <input
-	                                    type="submit"
-	                                    name="createGrpBtn"
-	                                    id="createGrpBtn"
-	                                    class="button"
-	                                    value="적용"
-	                                    />
+	                                    <a href="javascript:void(0)"
+						                  type="button"
+						                  name="createGrpBtn"
+						                  id="createGrpBtn"
+						                  class="button"
+						                  onclick="Check_test()"
+						                  value="수정"
+						                > 수정 </a>
 	                                    <input
 	                                    type="reset"
 	                                    name="createCancleBtn"
@@ -271,8 +277,20 @@
 	        </div>
 	        <!-- section2 종료 -->
 	        <script>
-			  var curMain = "${group.main_name}";
-			  var curSub = "${group.sub_name}";
+			  //var curMain = "${group.main_name}";
+			  //var curSub = "${group.sub_name}";
+			  function Check_test() {
+		        	var arrSelect=document.getElementsByName("terms");
+		        	let inputLength = $('#grpDescription').val().length;
+		        	console.log(inputLength);
+		        	if(inputLength<100) {
+		        		alert("100자 이상 입력해주세요");
+		        		$('#grpDescription').focus();
+		        		return false;
+		        	} else {
+		        		return true;
+		        	}
+		        }
 			</script>
 	        <script src="${contextPath}/js/modGroup.js"></script>
 		</c:forEach>
