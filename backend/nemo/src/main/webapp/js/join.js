@@ -63,7 +63,7 @@ function fn_IdCheck() {
         } else {
             $.ajax({
                 type: "post",
-                async: true,
+                async: false,
                 // dataType: "text",
                 url: "/nemo/duplicate/id",
                 //왼쪽의 key에 오른쪽의 value값이 들어감
@@ -166,7 +166,7 @@ function fn_nicknameCheck() {
     nickCheck = false;
     let nicknameVO = $("#nickname_hidden").val();
     console.log("nickname=" + nicknameVO);
-
+	console.log(' 닉네임:1', nickCheck);
     let nickname = $("#nickname").val();
     //입력 안했을 경우
     if (nickname == "") {
@@ -184,7 +184,7 @@ function fn_nicknameCheck() {
     } else {
         $.ajax({
             type: "post",
-            async: true,
+            async: false,
             // dataType: "text",
             url: "/nemo/duplicate/nickname",
             //왼쪽의 key에 오른쪽의 value값이 들어감
@@ -192,6 +192,7 @@ function fn_nicknameCheck() {
             success: function (data, textStatus) {
                 if (data == "usable") {
                     nickCheck = true;
+                    console.log('ㅅ용 가능 닉네임:2', nickCheck);
                     $("#resultMsgNick").show();
                     $("#resultMsgNick").html("사용할 수 있는 닉네임입니다.");
                     $("#resultMsgNick").css("color", "#3384ff");
@@ -205,6 +206,7 @@ function fn_nicknameCheck() {
                 alert("에러가 발생했습니다.");
             },
         });
+        console.log('아작스끝 닉네임:', nickCheck);
     }
 }
 
@@ -273,7 +275,7 @@ function fn_emailCheck() {
     } else {
         $.ajax({
             type: "post",
-            async: true,
+            async: false,
             // dataType: "text",
             url: "/nemo/duplicate/email",
             //왼쪽의 key에 오른쪽의 value값이 들어감
@@ -294,6 +296,7 @@ function fn_emailCheck() {
                 alert("에러가 발생했습니다.");
             },
         });
+        console.log('이메일 아작스', emailCheck);
     }
 }
 
@@ -381,6 +384,7 @@ function fnModify() {
             return false;
         }
         if (!nickCheck) {
+			console.log('alery 닉네임:', nickCheck);
             alert("닉네임을 다시 입력해주세요");
             $("#nickname").focus();
             return false;
