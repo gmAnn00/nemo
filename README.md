@@ -1,8 +1,8 @@
 # nemo
 MVC로 구현된 project NEMO(ver 1.0) 입니다.
  - 추후 spring과 MyBatis 를 적용한 ver 2.0 프로젝트 진행 됩니다.
- - NEMO ver1.0 특징: 순수 MVC로 구현, Oracle 사용
- - [NEMO ver2.0](https://github.com/gmAnn00/nemo_spring) :Spring 적용, MyBatis 사용, MySQL사용, 컬럼구조 개편
+ - NEMO ver1.0 특징 : 순수 MVC로 구현, Oracle 사용
+ - [NEMO ver2.0](https://github.com/gmAnn00/nemo_spring) : Spring 적용, MyBatis 사용, MySQL사용, 컬럼구조 개편
 
 
 
@@ -42,12 +42,14 @@ MVC로 구현된 project NEMO(ver 1.0) 입니다.
 - Database: Oracle 18c
 - Server : Apache Tomcat 9.0
 - IDE : Eclipse, Visual Studio Code, IntelliJ
+- SCM : GitHub, SourceTree
 - Design Tools : StarUML, Figma, Photoshop, ERDCloud
 - OS : Window 10, macOS Sonoma
 
 
 ## 핵심 기술 및 주요 기능
-
+- AJAX, GPS, kakaomap & Local, Zipcode API, Calendar, Editor Summernote, Query, Paging
+  
 #### 로그인
 #### 회원가입
 #### 관심사 선택
