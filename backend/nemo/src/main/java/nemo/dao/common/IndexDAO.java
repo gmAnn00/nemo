@@ -270,6 +270,7 @@ public class IndexDAO {
 				ObjectMapper objectMapper = new ObjectMapper();
 				objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 				
+				// 카카오로컬에서 받은 json 정보를 클래스로 바꿔줌
 				KaKaoGeoRes bodyJson = objectMapper.readValue(response.getBody().toString(), KaKaoGeoRes.class);
 			
 				if(bodyJson.getDocuments().size() != 0) {

@@ -74,6 +74,7 @@ public class GroupSearchDAO {
 			System.out.println("DAO pageNum=" + pageNum);
 
 			String query = "";
+			// 대분류 소분류 검색 결과 가져오는 처리
 			if(main_name.equals("none")) {
 				query += "SELECT * FROM group_tbl WHERE grp_name LIKE ? order by grp_name asc";
 				pstmt = conn.prepareStatement(query);
@@ -96,38 +97,6 @@ public class GroupSearchDAO {
 				}
 			}
 			
-			
-			/*
-			if(sub_name.equals("none")) {
-				query += "SELECT * from"
-						+ " (SELECT ROWNUM as recNum, a.* FROM"
-						+ " (SELECT ROWNUM, g.*"
-						+ " FROM group_tbl g where grp_name LIKE ? ) a)"
-						+ " WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
-				pstmt = conn.prepareStatement(query);
-				String searchTexts = '%' + searchText + '%';
-				pstmt.setString(1, searchTexts);
-				pstmt.setInt(2, section);
-				pstmt.setInt(3, pageNum);
-				pstmt.setInt(4, section);
-				pstmt.setInt(5, pageNum);
-				
-			}else {
-				query += "SELECT * from"
-						+ " (SELECT ROWNUM as recNum, a.* FROM"
-						+ " (SELECT ROWNUM, g.*"
-						+ " FROM group_tbl g where grp_name LIKE ? AND sub_name=?) a)"
-						+ " WHERE recNum BETWEEN (?-1)*100+(?-1)*10+1 AND (?-1)*100+?*10";
-				pstmt = conn.prepareStatement(query);
-				String searchTexts = '%' + searchText + '%';
-				pstmt.setString(1, searchTexts);
-				pstmt.setString(2, sub_name);
-				pstmt.setInt(3, section);
-				pstmt.setInt(4, pageNum);
-				pstmt.setInt(5, section);
-				pstmt.setInt(6, pageNum);
-			}
-			*/
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -168,7 +137,7 @@ public class GroupSearchDAO {
 			pstmt.close();
 			conn.close();
 			
-			// 찜순, 이름순 정렬
+			// 찜순, 사람많은순 정렬
 			if(sort.equals("sortByBookmark")) {
 				resultList.sort(
 						Comparator.comparing((Map map) -> (Integer)map.get("bookmarkNum")).reversed()
@@ -254,7 +223,6 @@ public class GroupSearchDAO {
 			
 			if(section > total/100 && pageNum > (total%100)/10 + 1) {
 				// 마지막 섹션의 마지막 페이지일때
-				
 				cnt = total%10;
 			}else {
 				cnt = 10;
